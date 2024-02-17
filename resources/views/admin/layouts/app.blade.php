@@ -32,6 +32,14 @@
     <link rel="stylesheet" type="text/css" href="{{asset("assets/css/vendors/datatables.css")}}">
     <link rel="stylesheet" type="text/css" href="{{asset("assets/css/vendors/owlcarousel.css")}}">
     <!-- Plugins css Ends-->
+    <!-- Summernote -->
+    <link rel="stylesheet" type="text/css" href="{{asset("assets/css/vendors/summernote.css")}}">
+    <!-- Dropzone -->
+    <link rel="stylesheet" type="text/css" href="{{asset("assets/css/vendors/dropzone.css")}}">
+    <!-- Select2 -->
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="{{asset("assets/css/vendors/intltelinput.min.css")}}">
+    <link rel="stylesheet" type="text/css" href="{{asset("assets/css/vendors/tagify.css")}}">
     <!-- Bootstrap css-->
     <link rel="stylesheet" type="text/css" href="{{asset("assets/css/vendors/bootstrap.css")}}">
     <!-- App css-->
@@ -146,34 +154,44 @@
     <!-- Plugins JS start-->
     <script src="{{asset("assets/js/sidebar-menu.js")}}"></script>
     <script src="{{asset("assets/js/sidebar-pin.js")}}"></script>
+    <script src="{{asset("assets/js/jquery.ui.min.js")}}"></script>
     <script src="{{asset("assets/js/slick/slick.min.js")}}"></script>
     <script src="{{asset("assets/js/slick/slick.js")}}"></script>
     <script src="{{asset("assets/js/header-slick.js")}}"></script>
-    <script src="{{asset("assets/js/chart/morris-chart/raphael.js")}}"></script>
-    <script src="{{asset("assets/js/chart/morris-chart/morris.js")}}"> </script>
-    <script src="{{asset("assets/js/chart/morris-chart/prettify.min.js")}}"></script>
-    <script src="{{asset("assets/js/chart/apex-chart/apex-chart.js")}}"></script>
-    <script src="{{asset("assets/js/chart/apex-chart/stock-prices.js")}}"></script>
-    <script src="{{asset("assets/js/chart/apex-chart/moment.min.js")}}"></script>
     <script src="{{asset("assets/js/notify/bootstrap-notify.min.js")}}"></script>
     <script src="{{asset("assets/js/dashboard/default.js")}}"></script>
     <script src="{{asset("assets/js/notify/index.js")}}"></script>
     <script src="{{asset("assets/js/datatable/datatables/jquery.dataTables.min.js")}}"></script>
     <script src="{{asset("assets/js/datatable/datatables/datatable.custom.js")}}"></script>
     <script src="{{asset("assets/js/datatable/datatables/datatable.custom1.js")}}"></script>
-    <script src="{{asset("assets/js/owlcarousel/owl.carousel.js")}}"></script>
-    <script src="{{asset("assets/js/owlcarousel/owl-custom.js")}}"></script>
     <script src="{{asset("assets/js/typeahead/handlebars.js")}}"></script>
     <script src="{{asset("assets/js/typeahead/typeahead.bundle.js")}}"></script>
     <script src="{{asset("assets/js/typeahead/typeahead.custom.js")}}"></script>
     <script src="{{asset("assets/js/typeahead-search/handlebars.js")}}"></script>
     <script src="{{asset("assets/js/typeahead-search/typeahead-custom.js")}}"></script>
     <script src="{{asset("assets/js/height-equal.js")}}"></script>
+    
     <!-- Plugins JS Ends-->
+    <!-- Summernote -->
+    <script src="{{asset("assets/js/editor/summernote/summernote.js")}}"></script>
+    <script src="{{asset("assets/js/editor/summernote/summernote.custom.js")}}"></script>
+    <script src="{{asset("assets/js/editor/summernote/summernote-custom1.js")}}"></script>
+    <!-- Dropzone -->
+    <script src="{{asset("assets/js/dropzone/dropzone.js")}}"></script>
+    <script src="{{asset("assets/js/dropzone/dropzone-script.js")}}"></script>
+    <!-- Select2 -->
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script src="{{asset("assets/js/select2/tagify.js")}}"></script>
+    <script src="{{asset("assets/js/select2/tagify.polyfills.min.js")}}"></script>
+    <script src="{{asset("assets/js/select2/intltelinput.min.js")}}"></script>
+    <script src="{{asset("assets/js/select2/telephone-input.js")}}"></script>
+    <script src="{{asset("assets/js/select2/custom-inputsearch.js")}}"></script>
+    <script src="{{asset("assets/js/select2/select3-custom.js")}}"></script>
     <!-- Theme js-->
     <script src="{{asset("assets/js/script.js")}}"></script>
     <!-- Plugin used-->
   </body>
+  @yield('script')
 
 <!-- Mirrored from admin.pixelstrap.net/dunzo/template/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 17 Feb 2024 06:55:44 GMT -->
 </html>
