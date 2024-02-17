@@ -17,6 +17,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/news', function () {
+    return view('admin.pages.news.index');
+});
+
+Route::get('/category', function () {
+    return view('admin.pages.category.index');
+});
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
