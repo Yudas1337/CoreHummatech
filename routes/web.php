@@ -37,6 +37,10 @@ Route::get('/gallery', function () {
     return view('admin.pages.gallery.index');
 });
 
+Route::get('/testimonial', function () {
+    return view('admin.pages.testimonial.index');
+});
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

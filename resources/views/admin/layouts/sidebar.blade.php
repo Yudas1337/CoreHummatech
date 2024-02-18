@@ -23,10 +23,10 @@
   <li class="sidebar-list"><i class="fa fa-thumb-tack"></i>
     <a class="sidebar-link sidebar-title" href="#">
       <svg class="stroke-icon">
-        <use href="{{asset("assets/svg/icon-sprite.svg#stroke-project")}}"></use>
+        <use href="{{asset("assets/svg/icon-sprite.svg#stroke-blog")}}"></use>
       </svg>
       <svg class="fill-icon">
-        <use href="{{asset("assets/svg/icon-sprite.svg#fill-project")}}"></use>
+        <use href="{{asset("assets/svg/icon-sprite.svg#fill-blog")}}"></use>
       </svg><span>Berita</span>
     </a>
     <ul class="sidebar-submenu">
@@ -46,26 +46,49 @@
       <li><a href="/collab-category">Kategori</a></li>
     </ul>
   </li>
-  <li class="sidebar-list"><i class="fa fa-thumb-tack"></i><a class="sidebar-link sidebar-title" href="#">
+  <li class="sidebar-list"><i class="fa fa-thumb-tack"></i>
+    <a class="sidebar-link sidebar-title" href="#">
       <svg class="stroke-icon">
-        <use href="{{asset("assets/svg/icon-sprite.svg#stroke-widget")}}"></use>
+        <use href="{{asset("assets/svg/icon-sprite.svg#stroke-user")}}"></use>
       </svg>
       <svg class="fill-icon">
-        <use href="{{asset("assets/svg/icon-sprite.svg#fill-widget")}}"></use>
-      </svg><span class="lan-6">Widgets</span></a>
+        <use href="{{asset("assets/svg/icon-sprite.svg#fill-user")}}"></use>
+      </svg><span>Testimoni</span>
+    </a>
     <ul class="sidebar-submenu">
-      <li><a href="general-widget.html">General</a></li>
-      <li><a href="chart-widget.html">Chart</a></li>
+      <li><a href="/testimonial">Testimoni</a></li>
+      <li><a href="/testimonial-category">Kategori</a></li>
     </ul>
   </li>
   <li class="sidebar-list"><i class="fa fa-thumb-tack"></i><a class="sidebar-link sidebar-title link-nav" href="/gallery">
     <svg class="stroke-icon">
-      <use href="{{asset("assets/svg/icon-sprite.svg#stroke-file")}}"></use>
+      <use href="{{asset("assets/svg/icon-sprite.svg#stroke-maps")}}"></use>
     </svg>
     <svg class="fill-icon">
-      <use href="{{asset("assets/svg/icon-sprite.svg#fill-file")}}"></use>
+      <use href="{{asset("assets/svg/icon-sprite.svg#fill-maps")}}"></use>
+    </svg><span>Cabang</span></a>
+  </li>
+  <li class="sidebar-list"><i class="fa fa-thumb-tack"></i><a class="sidebar-link sidebar-title link-nav" href="/gallery">
+    <svg class="stroke-icon">
+      <use href="{{asset("assets/svg/icon-sprite.svg#stroke-gallery")}}"></use>
+    </svg>
+    <svg class="fill-icon">
+      <use href="{{asset("assets/svg/icon-sprite.svg#fill-gallery")}}"></use>
     </svg><span>Gallery</span></a>
-</li>
+  </li>
+  <li class="sidebar-list"><i class="fa fa-thumb-tack"></i><a class="sidebar-link sidebar-title" href="#">
+      <svg class="stroke-icon">
+        <use href="{{asset("assets/svg/icon-sprite.svg#stroke-knowledgebase")}}"></use>
+      </svg>
+      <svg class="fill-icon">
+        <use href="{{asset("assets/svg/icon-sprite.svg#fill-knowledgebase")}}"></use>
+      </svg><span>Pengaturan</span></a>
+    <ul class="sidebar-submenu">
+      <li><a href="/profil">Profile</a></li>
+      <li><a href="#">Kontak</a></li>
+      <li><a href="#">Syarat dan Ketentuan</a></li>
+    </ul>
+  </li>
   <li class="sidebar-list"><i class="fa fa-thumb-tack"></i><a class="sidebar-link sidebar-title" href="#">
       <svg class="stroke-icon">
         <use href="{{asset("assets/svg/icon-sprite.svg#stroke-layout")}}"></use>

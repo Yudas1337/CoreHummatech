@@ -84,7 +84,7 @@
                     <li><a href="#" class="btn btn-sm btn-primary btn-edit" type="button">Edit</a></li>
                     <li><a href="#" class="btn btn-danger btn-sm btn-delete" type="button">Hapus</a></li>
                 </ul>
-            </div>
+              </div>
             </div>
           </div>
         </div>
