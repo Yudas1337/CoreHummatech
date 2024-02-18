@@ -79,10 +79,12 @@
                 <h3>Men's Jacket</h3>
               </a>
               <p>Cotton Blend Men's Blue Jacket</p>
-              <div class="d-flex justify-content-center mt-3">
-                <button class="btn btn-primary">Edit</button>
-                <button class="btn btn-danger ms-2">Hapus</button>
-              </div>
+              <div class="mt-4">
+                <ul class="d-flex justify-content-evenly pb-3 px-2">
+                    <li><a href="#" class="btn btn-sm btn-primary btn-edit" type="button">Edit</a></li>
+                    <li><a href="#" class="btn btn-danger btn-sm btn-delete" type="button">Hapus</a></li>
+                </ul>
+            </div>
             </div>
           </div>
         </div>

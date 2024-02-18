@@ -29,6 +29,14 @@ Route::get('/category', function () {
     return view('admin.pages.category.index');
 });
 
+Route::get('/collab', function () {
+    return view('admin.pages.collab.index');
+});
+
+Route::get('/gallery', function () {
+    return view('admin.pages.gallery.index');
+});
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

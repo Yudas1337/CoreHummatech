@@ -32,6 +32,8 @@
     <link rel="stylesheet" type="text/css" href="{{asset("assets/css/vendors/datatables.css")}}">
     <link rel="stylesheet" type="text/css" href="{{asset("assets/css/vendors/owlcarousel.css")}}">
     <!-- Plugins css Ends-->
+    <!-- photoswipe -->
+    <link rel="stylesheet" type="text/css" href="{{asset("assets/css/vendors/photoswipe.css")}}">
     <!-- Summernote -->
     <link rel="stylesheet" type="text/css" href="{{asset("assets/css/vendors/summernote.css")}}">
     <!-- Dropzone -->
@@ -170,7 +172,7 @@
     <script src="{{asset("assets/js/typeahead-search/handlebars.js")}}"></script>
     <script src="{{asset("assets/js/typeahead-search/typeahead-custom.js")}}"></script>
     <script src="{{asset("assets/js/height-equal.js")}}"></script>
-    
+    <script src="https://kit.fontawesome.com/e50d9380a8.js" crossorigin="anonymous"></script>
     <!-- Plugins JS Ends-->
     <!-- Summernote -->
     <script src="{{asset("assets/js/editor/summernote/summernote.js")}}"></script>
@@ -187,6 +189,11 @@
     <script src="{{asset("assets/js/select2/telephone-input.js")}}"></script>
     <script src="{{asset("assets/js/select2/custom-inputsearch.js")}}"></script>
     <script src="{{asset("assets/js/select2/select3-custom.js")}}"></script>
+    <!-- photoswipe -->
+      
+    <script src="{{asset("assets/js/photoswipe/photoswipe.min.js")}}"></script>
+    <script src="{{asset("assets/js/photoswipe/photoswipe-ui-default.min.js")}}"></script>
+    <script src="{{asset("assets/js/photoswipe/photoswipe.js")}}"></script>
     <!-- Theme js-->
     <script src="{{asset("assets/js/script.js")}}"></script>
     <!-- Plugin used-->
