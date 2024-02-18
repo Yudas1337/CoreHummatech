@@ -9,7 +9,7 @@
   </li>
   <li class="sidebar-main-title">
     <div>
-      <h6 class="lan-1">Master</h6>
+      <h6>Master</h6>
     </div>
   </li>
   <li class="sidebar-list"><i class="fa fa-thumb-tack"></i><a class="sidebar-link sidebar-title link-nav" href="/home">
@@ -60,7 +60,7 @@
       <li><a href="/testimonial-category">Kategori</a></li>
     </ul>
   </li>
-  <li class="sidebar-list"><i class="fa fa-thumb-tack"></i><a class="sidebar-link sidebar-title link-nav" href="/gallery">
+  <li class="sidebar-list"><i class="fa fa-thumb-tack"></i><a class="sidebar-link sidebar-title link-nav" href="/branch">
     <svg class="stroke-icon">
       <use href="{{asset("assets/svg/icon-sprite.svg#stroke-maps")}}"></use>
     </svg>
@@ -89,13 +89,18 @@
       <li><a href="#">Syarat dan Ketentuan</a></li>
     </ul>
   </li>
+  <li class="sidebar-main-title">
+    <div>
+      <h6>Menu Example</h6>
+    </div>
+  </li>
   <li class="sidebar-list"><i class="fa fa-thumb-tack"></i><a class="sidebar-link sidebar-title" href="#">
       <svg class="stroke-icon">
         <use href="{{asset("assets/svg/icon-sprite.svg#stroke-layout")}}"></use>
       </svg>
       <svg class="fill-icon">
         <use href="{{asset("assets/svg/icon-sprite.svg#fill-layout")}}"></use>
-      </svg><span class="lan-7">Page layout</span></a>
+      </svg><span class="lan-7">Dropdown Example</span></a>
     <ul class="sidebar-submenu">
       <li><a href="box-layout.html">Boxed</a></li>
       <li><a href="layout-rtl.html">RTL</a></li>
@@ -112,14 +117,6 @@
       </svg>
       <svg class="fill-icon">
         <use href="{{asset("assets/svg/icon-sprite.svg#fill-file")}}"></use>
-      </svg><span>File manager</span></a>
-  </li>
-  <li class="sidebar-list"><i class="fa fa-thumb-tack">        </i><a class="sidebar-link sidebar-title link-nav" href="kanban.html">
-      <svg class="stroke-icon">
-        <use href="{{asset("assets/svg/icon-sprite.svg#stroke-board")}}"></use>
-      </svg>
-      <svg class="fill-icon">
-        <use href="{{asset("assets/svg/icon-sprite.svg#fill-board")}}"></use>
-      </svg><span>kanban Board</span></a>
+      </svg><span>Example</span></a>
   </li>
 </ul>

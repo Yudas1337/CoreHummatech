@@ -41,6 +41,10 @@ Route::get('/testimonial', function () {
     return view('admin.pages.testimonial.index');
 });
 
+Route::get('/branch', function () {
+    return view('admin.pages.branch.index');
+});
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
