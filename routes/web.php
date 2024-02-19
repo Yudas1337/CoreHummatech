@@ -34,7 +34,7 @@ Route::get('/news/show', function () {
     return view('admin.pages.news.show');
 });
 
-Route::get('/news-category', function () {
+Route::get('/category-news', function () {
     return view('admin.pages.news-category.index');
 });
 
@@ -42,7 +42,7 @@ Route::get('/collab', function () {
     return view('admin.pages.collab.index');
 });
 
-Route::get('/collab-category', function () {
+Route::get('/category-collab', function () {
     return view('admin.pages.collab-category.index');
 });
 
@@ -54,7 +54,7 @@ Route::get('/testimonial', function () {
     return view('admin.pages.testimonial.index');
 });
 
-Route::get('/testimonial-category', function () {
+Route::get('/category-testimonial', function () {
     return view('admin.pages.testimonial-category.index');
 });
 

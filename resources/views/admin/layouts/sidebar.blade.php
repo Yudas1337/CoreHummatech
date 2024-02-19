@@ -79,7 +79,7 @@
       </a>
       <ul class="sidebar-submenu">
           <li>
-              <a href="/collab-category">Kategori</a>
+              <a href="/category-collab">Kategori</a>
           </li>
           <li>
               <a href="/collab">Mitra</a>
@@ -99,7 +99,7 @@
         </a>
         <ul class="sidebar-submenu">
             <li>
-                <a href="/news-category">Kategori</a>
+                <a href="/category-news">Kategori</a>
             </li>
             <li>
                 <a href="/news">Berita</a>
@@ -119,7 +119,7 @@
         </a>
         <ul class="sidebar-submenu">
             <li>
-                <a href="/testimonial-category">Kategori</a>
+                <a href="/category-testimonial">Kategori</a>
             </li>
             <li>
                 <a href="/testimonial">Testimoni</a>
