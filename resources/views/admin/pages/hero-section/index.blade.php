@@ -1,23 +1,21 @@
 @extends('admin.layouts.app')
 
 @section('subcontent')
-    <div class="page-title">
-        <div class="row">
-            <div class="col-sm-6 p-0">
-                <h3>Hero Section</h3>
-            </div>
-            <div class="col-sm-6 p-0">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item">
-                        <a href="{{ url('/') }}">
-                            <i class="fas fa-home"></i>
-                        </a>
-                    </li>
-                    <li class="breadcrumb-item">
-                        <a href="{{ url('home') }}">Dashboard</a>
-                    </li>
-                    <li class="breadcrumb-item active">Hero Section</li>
-                </ol>
+    <div class=" p-1">
+        <div class="card border-0 shadow p-3 mt-3">
+            <div class="row">
+                <div class="col-12 col-lg-6">
+                    <h4 class="m-2">Hero Section</h4>
+                </div>
+                <div class="col-12 col-lg-6">
+                    <div class="d-flex justify-content-lg-end justify-content-start">
+                        <div class="d-flex align-items-center gap-2">
+                            <p class="m-0 me-2">Cari:</p>
+                            <input class="form-control me-2" type="text" placeholder="Search" aria-label="Search">
+                        </div>
+                        <a class="btn btn-primary m-0" href="{{ url('/hero-section/create') }}">Tambah</a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -69,29 +67,6 @@
 @endsection
 
 @section('content')
-    <div class="project-grid">
-        <div class="project-list">
-            <div class="card">
-                <div class="file-content py-2 px-4">
-                    <div class="d-flex align-items-center">
-                        <form class="form-inline" action="#" method="get">
-                            <div class="form-group mb-0">
-                                <i class="fa fa-search"></i>
-                                <input class="form-control-plaintext" type="text" placeholder="Search...">
-                            </div>
-                        </form>
-                        <div class="flex-grow-1 file-buttons">
-                            <div class="form-group mb-0 me-0"></div>
-                            <a class="btn btn-primary" href="{{ url('/hero-section/create') }}">
-                                <i class="fa fa-plus"></i> Tambah Hero
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <div class="row">
         @foreach (range(0, 10) as $item)
         <div class="col-md-12">

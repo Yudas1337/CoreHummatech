@@ -59,6 +59,10 @@ Route::get('/hero-section/edit', function () {
     return view('admin.pages.hero-section.edit');
 });
 
+Route::get('/product', function () {
+    return view('admin.pages.products.index');
+});
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
