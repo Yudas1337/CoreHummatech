@@ -83,6 +83,10 @@ Route::get('/terms-condition/edit', function () {
     return view('admin.pages.terms-condition.edit');
 });
 
+Route::get('/social-media', function () {
+    return view('admin.pages.social-media.index');
+});
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

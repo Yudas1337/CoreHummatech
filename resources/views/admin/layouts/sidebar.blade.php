@@ -154,7 +154,7 @@
                 <a href="/profil">Profile</a>
             </li>
             <li>
-                <a href="#">Syarat dan Ketentuan</a>
+                <a href="/terms-condition">Syarat dan Ketentuan</a>
             </li>
         </ul>
     </li>
@@ -174,7 +174,7 @@
                 <a href="/profil">Approval Pesan </a>
             </li>
             <li>
-                <a href="/terms-condition">Syarat & Ketentuan</a>
+                <a href="/social-media">Sosial Media</a>
             </li>
         </ul>
     </li>
