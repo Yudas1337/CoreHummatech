@@ -22,7 +22,6 @@ Route::get('/news', function () {
     return view('admin.pages.news.index');
 });
 
-
 Route::get('/news/create', function () {
     return view('admin.pages.news.create');
 });
@@ -35,12 +34,16 @@ Route::get('/news/show', function () {
     return view('admin.pages.news.show');
 });
 
-Route::get('/category', function () {
-    return view('admin.pages.news.category.index');
+Route::get('/news-category', function () {
+    return view('admin.pages.news-category.index');
 });
 
 Route::get('/collab', function () {
     return view('admin.pages.collab.index');
+});
+
+Route::get('/collab-category', function () {
+    return view('admin.pages.collab-category.index');
 });
 
 Route::get('/gallery', function () {
@@ -49,6 +52,10 @@ Route::get('/gallery', function () {
 
 Route::get('/testimonial', function () {
     return view('admin.pages.testimonial.index');
+});
+
+Route::get('/testimonial-category', function () {
+    return view('admin.pages.testimonial-category.index');
 });
 
 Route::get('/branch', function () {
