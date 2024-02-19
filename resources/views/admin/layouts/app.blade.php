@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<!-- Mirrored from admin.pixelstrap.net/dunzo/template/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 17 Feb 2024 06:54:36 GMT -->
-
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -53,6 +51,8 @@
     <link id="color" rel="stylesheet" href="{{ asset('assets/css/color-1.css') }}" media="screen">
     <!-- Responsive css-->
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/responsive.css') }}">
+
+    @yield('header-style')
 </head>
 
 <body>

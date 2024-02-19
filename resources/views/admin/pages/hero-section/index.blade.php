@@ -23,107 +23,106 @@
     </div>
 @endsection
 
+@section('header-style')
+    <style>
+        .product-box {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .product-box .img-fluid {
+            position: relative;
+            z-index: 1;
+        }
+
+        .product-box .content-center {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: rgba(var(--bs-dark-rgb), .5);
+            z-index: 2;
+            top: 0;
+            left: 0;
+            flex-direction: column;
+            color: var(--bs-white);
+        }
+
+        .product-box .content-center .title {
+            color: var(--bs-white);
+            font-size: 2.5rem;
+            font-weight: bold;
+        }
+
+        .product-box .content-center .subtitle {
+            color: var(--bs-white);
+            font-size: 1.5rem;
+        }
+
+        .product-hover {
+            z-index: 5;
+        }
+    </style>
+@endsection
+
 @section('content')
-<div class="project-grid">
-    <div class="project-list">
-        <div class="card">
-            <div class="file-content py-2 px-4">
-                <div class="d-flex align-items-center">
-                    <form class="form-inline" action="#" method="get">
-                        <div class="form-group mb-0">
-                            <i class="fa fa-search"></i>
-                            <input class="form-control-plaintext" type="text" placeholder="Search...">
+    <div class="project-grid">
+        <div class="project-list">
+            <div class="card">
+                <div class="file-content py-2 px-4">
+                    <div class="d-flex align-items-center">
+                        <form class="form-inline" action="#" method="get">
+                            <div class="form-group mb-0">
+                                <i class="fa fa-search"></i>
+                                <input class="form-control-plaintext" type="text" placeholder="Search...">
+                            </div>
+                        </form>
+                        <div class="flex-grow-1 file-buttons">
+                            <div class="form-group mb-0 me-0"></div>
+                            <a class="btn btn-primary" href="{{ url('/hero-section/create') }}">
+                                <i class="fa fa-plus"></i> Tambah Hero
+                            </a>
                         </div>
-                    </form>
-                    <div class="flex-grow-1 file-buttons">
-                        <div class="form-group mb-0 me-0"></div>
-                        <a class="btn btn-primary" href="{{ url('/hero-section/create') }}">
-                            <i class="fa fa-plus"></i> Tambah Hero
-                        </a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-<div class="row my-gallery gallery" id="aniimated-thumbnials" itemscope="">
-    <figure class="col-md-12 img-hover hover-1 rounded-4 overflow-hidden" itemprop="associatedMedia" itemscope="">
-        <a href="../assets/images/big-lightgallry/09.jpg" itemprop="contentUrl" data-size="1600x250">
-            <div>
-                <img src="../assets/images/lightgallry/09.jpg" itemprop="thumbnail" alt="Image description">
-            </div>
-        </a>
-        <figcaption itemprop="caption description">Image caption 1</figcaption>
-    </figure>
-    <figure class="col-md-12 img-hover hover-1 rounded-4 overflow-hidden" itemprop="associatedMedia" itemscope="">
-        <a href="../assets/images/big-lightgallry/09.jpg" itemprop="contentUrl" data-size="1600x250">
-            <div>
-                <img src="../assets/images/lightgallry/09.jpg" itemprop="thumbnail" alt="Image description">
-            </div>
-        </a>
-        <figcaption itemprop="caption description">Image caption 2</figcaption>
-    </figure>
-    <figure class="col-md-12 img-hover hover-1 rounded-4 overflow-hidden" itemprop="associatedMedia" itemscope="">
-        <a href="../assets/images/big-lightgallry/010.jpg" itemprop="contentUrl" data-size="1600x250">
-            <div>
-                <img src="../assets/images/lightgallry/010.jpg" itemprop="thumbnail" alt="Image description">
-            </div>
-        </a>
-        <figcaption itemprop="caption description">Image caption 3</figcaption>
-    </figure>
-    <figure class="col-md-12 img-hover hover-1 rounded-4 overflow-hidden" itemprop="associatedMedia" itemscope="">
-        <a href="../assets/images/big-lightgallry/011.jpg" itemprop="contentUrl" data-size="1600x250">
-            <div>
-                <img src="../assets/images/lightgallry/011.jpg" itemprop="thumbnail" alt="Image description">
-            </div>
-        </a>
-        <figcaption itemprop="caption description">Image caption 4</figcaption>
-    </figure>
-</div>
-<!-- Root element of PhotoSwipe. Must have class pswp.-->
-<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
-    <!--
-      Background of PhotoSwipe.
-      It's a separate element, as animating opacity is faster than rgba().
-      -->
-    <div class="pswp__bg"></div>
-    <!-- Slides wrapper with overflow:hidden.-->
-    <div class="pswp__scroll-wrap">
-        <!-- Container that holds slides. PhotoSwipe keeps only 3 slides in DOM to save memory.-->
-        <!-- don't modify these 3 pswp__item elements, data is added later on.-->
-        <div class="pswp__container">
-            <div class="pswp__item"></div>
-            <div class="pswp__item"></div>
-            <div class="pswp__item"></div>
-        </div>
-        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed.-->
-        <div class="pswp__ui pswp__ui--hidden">
-            <div class="pswp__top-bar">
-                <!-- Controls are self-explanatory. Order can be changed.-->
-                <div class="pswp__counter"></div>
-                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
-                <button class="pswp__button pswp__button--share" title="Share"></button>
-                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
-                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
-                <!-- Preloader demo https://codepen.io/dimsemenov/pen/yyBWoR-->
-                <!-- element will get class pswp__preloader--active when preloader is running-->
-                <div class="pswp__preloader">
-                    <div class="pswp__preloader__icn">
-                        <div class="pswp__preloader__cut">
-                            <div class="pswp__preloader__donut"></div>
+
+    <div class="row">
+        @foreach (range(0, 10) as $item)
+        <div class="col-md-12">
+            <div class="card rounded-4" style="height: 400px">
+                <div class="product-box rounded-4">
+                    <div class="product-img">
+                        <img class="img-fluid"
+                            src="https://images.unsplash.com/photo-1560493676-04071c5f467b?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                            alt="" />
+
+                        <div class="content-center">
+                            <h1 class="title">PT Humma Teknologi Indonesia</h1>
+                            <p class="subtitle">Perushaan Software terbaik se jawa timur</p>
+
+                            <div class="btn btn-lg btn-primary">Lihat Selengkapnya</div>
+                        </div>
+
+                        <div class="product-hover">
+                            <ul>
+                                <li>
+                                    <a href="#"><i class="fas fa-pencil"></i></a>
+                                </li>
+                                <li>
+                                    <a href="#"><i class="fas fa-trash"></i></a>
+                                </li>
+                            </ul>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
-                <div class="pswp__share-tooltip"></div>
-            </div>
-            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
-            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button>
-            <div class="pswp__caption">
-                <div class="pswp__caption__center"></div>
-            </div>
         </div>
+        @endforeach
     </div>
-</div>
 @endsection
