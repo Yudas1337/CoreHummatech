@@ -88,88 +88,79 @@
                             </div>
                         </figure>
                         <figure class="col-md-3 col-sm-6 grid-item" itemprop="associatedMedia" itemscope=""
-                            style="position: absolute; left: 685px; top: 342px;"><a
-                                href="../assets/images/big-masonry/5.jpg" itemprop="contentUrl" data-size="1600x950"><img
-                                    class="img-thumbnail" src="../assets/images/masonry/5.jpg" itemprop="thumbnail"
-                                    alt="Image description"></a>
-                            <figcaption itemprop="caption description">Image caption 5</figcaption>
+                            style="position: absolute; left: 685px; top: 342px;">
+                            <div class="product-box">
+                                <div class="product-img">
+                                    <img class="img-fluid" src="../assets/images/masonry/5.jpg" alt="">
+                                    <div class="product-hover">
+                                        <ul>
+                                            <li><a type="button" data-bs-toggle="modal" data-bs-target="#edit"><i
+                                                        class="fa fa-edit"></i></a></li>
+                                            <li><a href=""><i class="fa fa-trash"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
                         </figure>
                         <figure class="col-md-3 col-sm-6 grid-item" itemprop="associatedMedia" itemscope=""
-                            style="position: absolute; left: 0px; top: 415px;"><a
-                                href="../assets/images/big-masonry/6.jpg" itemprop="contentUrl" data-size="1600x950"><img
-                                    class="img-thumbnail" src="../assets/images/masonry/6.jpg" itemprop="thumbnail"
-                                    alt="Image description"></a>
-                            <figcaption itemprop="caption description">Image caption 6</figcaption>
+                            style="position: absolute; left: 0px; top: 415px;">
+                            <div class="product-box">
+                                <div class="product-img">
+                                    <img class="img-fluid" src="../assets/images/masonry/6.jpg" alt="">
+                                    <div class="product-hover">
+                                        <ul>
+                                            <li><a type="button" data-bs-toggle="modal" data-bs-target="#edit"><i
+                                                        class="fa fa-edit"></i></a></li>
+                                            <li><a href=""><i class="fa fa-trash"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
                         </figure>
                         <figure class="col-md-3 col-sm-6 grid-item" itemprop="associatedMedia" itemscope=""
-                            style="position: absolute; left: 342px; top: 522px;"><a
-                                href="../assets/images/big-masonry/7.jpg" itemprop="contentUrl" data-size="1600x950"><img
-                                    class="img-thumbnail" src="../assets/images/masonry/7.jpg" itemprop="thumbnail"
-                                    alt="Image description"></a>
-                            <figcaption itemprop="caption description">Image caption 7</figcaption>
+                            style="position: absolute; left: 342px; top: 522px;">
+                            <div class="product-box">
+                                <div class="product-img">
+                                    <img class="img-fluid" src="../assets/images/masonry/7.jpg" alt="">
+                                    <div class="product-hover">
+                                        <ul>
+                                            <li><a type="button" data-bs-toggle="modal" data-bs-target="#edit"><i
+                                                        class="fa fa-edit"></i></a></li>
+                                            <li><a href=""><i class="fa fa-trash"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
                         </figure>
                         <figure class="col-md-3 col-sm-6 grid-item" itemprop="associatedMedia" itemscope=""
-                            style="position: absolute; left: 1028px; top: 522px;"><a
-                                href="../assets/images/big-masonry/8.jpg" itemprop="contentUrl" data-size="1600x950"><img
-                                    class="img-thumbnail" src="../assets/images/masonry/8.jpg" itemprop="thumbnail"
-                                    alt="Image description"></a>
-                            <figcaption itemprop="caption description">Image caption 8</figcaption>
+                            style="position: absolute; left: 1028px; top: 522px;">
+                            <div class="product-box">
+                                <div class="product-img">
+                                    <img class="img-fluid" src="../assets/images/masonry/8.jpg" alt="">
+                                    <div class="product-hover">
+                                        <ul>
+                                            <li><a type="button" data-bs-toggle="modal" data-bs-target="#edit"><i
+                                                        class="fa fa-edit"></i></a></li>
+                                            <li><a href=""><i class="fa fa-trash"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
                         </figure>
                         <figure class="col-md-3 col-sm-6 grid-item" itemprop="associatedMedia" itemscope=""
-                            style="position: absolute; left: 0px; top: 688px;"><a
-                                href="../assets/images/big-masonry/9.jpg" itemprop="contentUrl" data-size="1600x950"><img
-                                    class="img-thumbnail" src="../assets/images/masonry/9.jpg" itemprop="thumbnail"
-                                    alt="Image description"></a>
-                            <figcaption itemprop="caption description">Image caption 9</figcaption>
-                        </figure>
-                        <figure class="col-md-3 col-sm-6 grid-item" itemprop="associatedMedia" itemscope=""
-                            style="position: absolute; left: 685px; top: 864px;"><a
-                                href="../assets/images/big-masonry/10.jpg" itemprop="contentUrl"
-                                data-size="1600x950"><img class="img-thumbnail" src="../assets/images/masonry/10.jpg"
-                                    itemprop="thumbnail" alt="Image description"></a>
-                            <figcaption itemprop="caption description">Image caption 10</figcaption>
-                        </figure>
-                        <figure class="col-md-3 col-sm-6 grid-item" itemprop="associatedMedia" itemscope=""
-                            style="position: absolute; left: 342px; top: 923px;"><a
-                                href="../assets/images/big-masonry/11.jpg" itemprop="contentUrl"
-                                data-size="1600x950"><img class="img-thumbnail" src="../assets/images/masonry/11.jpg"
-                                    itemprop="thumbnail" alt="Image description"></a>
-                            <figcaption itemprop="caption description">Image caption 11</figcaption>
-                        </figure>
-                        <figure class="col-md-3 col-sm-6 grid-item" itemprop="associatedMedia" itemscope=""
-                            style="position: absolute; left: 1028px; top: 1044px;"><a
-                                href="../assets/images/big-masonry/12.jpg" itemprop="contentUrl"
-                                data-size="1600x950"><img class="img-thumbnail" src="../assets/images/masonry/12.jpg"
-                                    itemprop="thumbnail" alt="Image description"></a>
-                            <figcaption itemprop="caption description">Image caption 12</figcaption>
-                        </figure>
-                        <figure class="col-md-3 col-sm-6 grid-item" itemprop="associatedMedia" itemscope=""
-                            style="position: absolute; left: 0px; top: 1046px;"><a
-                                href="../assets/images/big-masonry/13.jpg" itemprop="contentUrl"
-                                data-size="1600x950"><img class="img-thumbnail" src="../assets/images/masonry/13.jpg"
-                                    itemprop="thumbnail" alt="Image description"></a>
-                            <figcaption itemprop="caption description">Image caption 13</figcaption>
-                        </figure>
-                        <figure class="col-md-3 col-sm-6 grid-item" itemprop="associatedMedia" itemscope=""
-                            style="position: absolute; left: 685px; top: 1112px;"><a
-                                href="../assets/images/big-masonry/14.jpg" itemprop="contentUrl"
-                                data-size="1600x950"><img class="img-thumbnail" src="../assets/images/masonry/14.jpg"
-                                    itemprop="thumbnail" alt="Image description"></a>
-                            <figcaption itemprop="caption description">Image caption 14</figcaption>
-                        </figure>
-                        <figure class="col-md-3 col-sm-6 grid-item" itemprop="associatedMedia" itemscope=""
-                            style="position: absolute; left: 342px; top: 1246px;"><a
-                                href="../assets/images/big-masonry/15.jpg" itemprop="contentUrl"
-                                data-size="1600x950"><img class="img-thumbnail" src="../assets/images/masonry/15.jpg"
-                                    itemprop="thumbnail" alt="Image description"></a>
-                            <figcaption itemprop="caption description">Image caption 15</figcaption>
-                        </figure>
-                        <figure class="col-md-3 col-sm-6 grid-item" itemprop="associatedMedia" itemscope=""
-                            style="position: absolute; left: 0px; top: 1369px;"><a
-                                href="../assets/images/big-masonry/1.jpg" itemprop="contentUrl" data-size="1600x950"><img
-                                    class="img-thumbnail" src="../assets/images/masonry/1.jpg" itemprop="thumbnail"
-                                    alt="Image description"></a>
-                            <figcaption itemprop="caption description">Image caption 16 </figcaption>
+                            style="position: absolute; left: 0px; top: 688px;">
+                            <div class="product-box">
+                                <div class="product-img">
+                                    <img class="img-fluid" src="../assets/images/masonry/9.jpg" alt="">
+                                    <div class="product-hover">
+                                        <ul>
+                                            <li><a type="button" data-bs-toggle="modal" data-bs-target="#edit"><i
+                                                        class="fa fa-edit"></i></a></li>
+                                            <li><a href=""><i class="fa fa-trash"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
                         </figure>
                     </div>
                 </div>

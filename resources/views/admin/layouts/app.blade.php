@@ -26,6 +26,9 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/vendors/flag-icon.css') }}">
     <!-- Feather icon-->
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/vendors/feather-icon.css') }}">
+    <!-- Leaflet -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <link rel="stylesheet" type="text/css" href="{{asset('assets/css/vendors/feather-icon.css')}}">
     <!-- Plugins css start-->
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/vendors/slick.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/vendors/slick-theme.css') }}">
@@ -163,6 +166,11 @@
     <script src="{{ asset('assets/js/icons/feather-icon/feather.min.js') }}"></script>
     <script src="{{ asset('assets/js/icons/feather-icon/feather-icon.js') }}"></script>
     <script src="https://unpkg.com/feather-icons"></script>
+    <!-- Leaflet -->
+    <!-- <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script> -->
+    <script src="{{ asset('assets/js/map-js/leaflet.js')}}"></script>
+    <script src="{{ asset('assets/js/map-js/custom.js')}}"></script>
+    <script src="{{ asset('assets/js/map-js/map-custom2.js')}}"></script>
     <!-- scrollbar js-->
     <script src="{{ asset('assets/js/scrollbar/simplebar.js') }}"></script>
     <script src="{{ asset('assets/js/scrollbar/custom.js') }}"></script>
@@ -205,9 +213,11 @@
     <script src="{{ asset('assets/js/select2/select3-custom.js') }}"></script>
     <!-- photoswipe -->
     <script src="https://kit.fontawesome.com/4ac369a501.js" crossorigin="anonymous"></script>
+    <script src="{{ asset('assets/js/isotope.pkgd.js')}}"></script>
     <script src="{{ asset('assets/js/photoswipe/photoswipe.min.js') }}"></script>
     <script src="{{ asset('assets/js/photoswipe/photoswipe-ui-default.min.js') }}"></script>
     <script src="{{ asset('assets/js/photoswipe/photoswipe.js') }}"></script>
+    <script src="{{ asset('assets/js/masonry-gallery.js')}}"></script>
     <!-- Theme js-->
     <script src="{{ asset('assets/js/script.js') }}"></script>
     <!-- Plugin used-->
