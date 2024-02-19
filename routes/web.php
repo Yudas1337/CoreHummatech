@@ -67,6 +67,14 @@ Route::get('/product/detail', function () {
     return view('admin.pages.products.detail');
 });
 
+Route::get('/terms-condition', function () {
+    return view('admin.pages.terms-condition.index');
+});
+
+Route::get('/terms-condition/edit', function () {
+    return view('admin.pages.terms-condition.edit');
+});
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

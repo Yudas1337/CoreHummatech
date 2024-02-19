@@ -95,8 +95,8 @@
                     </div>
                     <div class="modal-footer">
                         <div class="d-flex justify-content-end">
-                            <button class="btn btn-primary" type="button" data-bs-dismiss="modal">Cancel</button>
-                            <button class="btn btn-secondary" type="submit">Tambah</button>
+                            <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">Cancel</button>
+                            <button class="btn btn-primary" type="submit">Tambah</button>
                         </div>
                     </div>
                 </form>
@@ -138,8 +138,8 @@
                     </div>
                     <div class="modal-footer">
                         <div class="d-flex justify-content-end">
-                            <button class="btn btn-primary" type="button" data-bs-dismiss="modal">Cancel</button>
-                            <button class="btn btn-secondary" type="submit">Perbarui</button>
+                            <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">Cancel</button>
+                            <button class="btn btn-primary" type="submit">Perbarui</button>
                         </div>
                     </div>
                 </form>

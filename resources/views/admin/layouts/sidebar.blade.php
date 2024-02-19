@@ -174,7 +174,7 @@
                 <a href="/profil">Approval Pesan </a>
             </li>
             <li>
-                <a href="#">Syarat & Ketentuan</a>
+                <a href="/terms-condition">Syarat & Ketentuan</a>
             </li>
         </ul>
     </li>
