@@ -187,7 +187,7 @@
             <svg class="fill-icon">
                 <use href="{{ asset('assets/svg/icon-sprite.svg#fill-gallery') }}"></use>
             </svg>
-            <span>Gallery</span>
+            <span>Galeri</span>
         </a>
     </li>
     {{-- <li class="sidebar-main-title">
