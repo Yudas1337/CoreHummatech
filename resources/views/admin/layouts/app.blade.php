@@ -162,6 +162,7 @@
     <!-- feather icon js-->
     <script src="{{ asset('assets/js/icons/feather-icon/feather.min.js') }}"></script>
     <script src="{{ asset('assets/js/icons/feather-icon/feather-icon.js') }}"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
     <!-- scrollbar js-->
     <script src="{{ asset('assets/js/scrollbar/simplebar.js') }}"></script>
     <script src="{{ asset('assets/js/scrollbar/custom.js') }}"></script>
