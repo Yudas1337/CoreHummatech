@@ -27,6 +27,14 @@ Route::get('/news/create', function () {
     return view('admin.pages.news.create');
 });
 
+Route::get('/news/edit', function () {
+    return view('admin.pages.news.edit');
+});
+
+Route::get('/news/show', function () {
+    return view('admin.pages.news.show');
+});
+
 Route::get('/category', function () {
     return view('admin.pages.news.category.index');
 });
