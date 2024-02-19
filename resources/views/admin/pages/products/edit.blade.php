@@ -1,12 +1,12 @@
-<button class="btn btn-primary m-0" type="button" data-bs-toggle="modal" data-bs-target="#tambah">Tambah</button>
+<button class="btn btn-warning px-3 m-0" type="button" data-bs-toggle="modal" data-bs-target="#edit"><i class="fas fa-pencil"></i></button>
 
 <!-- Add Modal -->
-<div class="modal fade modal-bookmark" id="tambah" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+<div class="modal fade modal-bookmark" id="edit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title fw-semibold" id="exampleModalLabel">Tambah Produk</h5>
+                <h5 class="modal-title fw-semibold" id="exampleModalLabel">Edit Produk</h5>
                 <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <form class="form-bookmark needs-validation" action="#" method="POST" id="bookmark-form" novalidate=""
@@ -42,7 +42,7 @@
                 <div class="modal-footer">
                     <div class="d-flex justify-content-end">
                         <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">Batalkan</button>
-                        <button class="btn btn-primary" type="submit">Tambah</button>
+                        <button class="btn btn-primary" type="submit">Perbaharui</button>
                     </div>
                 </div>
             </form>

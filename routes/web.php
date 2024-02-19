@@ -63,6 +63,10 @@ Route::get('/product', function () {
     return view('admin.pages.products.index');
 });
 
+Route::get('/product/detail', function () {
+    return view('admin.pages.products.detail');
+});
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
