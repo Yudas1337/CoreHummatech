@@ -33,6 +33,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/vendors/animate.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/vendors/datatables.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/vendors/owlcarousel.css') }}">
+    <script src="https://kit.fontawesome.com/e50d9380a8.js" crossorigin="anonymous"></script>
     <!-- Plugins css Ends-->
     <!-- photoswipe -->
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/vendors/photoswipe.css') }}">
@@ -102,17 +103,17 @@
             <!-- Page Sidebar Start-->
             <div class="sidebar-wrapper" data-layout="fill-svg">
                 <div>
-                    <div class="logo-wrapper"><a href="index.html"><img class="img-fluid"
-                                src="../assets/images/logo/logo.png" alt=""></a>
+                    <div class="logo-wrapper"><a href="/home">
+                        <img class="img-fluid" src="{{asset("assets/images/LOGO-HUMMATECH_Putih.png")}}" style="height: 35px; width: 160px;" alt=""></a>
                         <div class="toggle-sidebar">
                             <svg class="sidebar-toggle">
-                                <use href="https://admin.pixelstrap.net/dunzo/assets/svg/icon-sprite.svg#toggle-icon">
+                                <use href="{{asset("assets/svg/icon-sprite.svg#toggle-icon")}}">
                                 </use>
                             </svg>
                         </div>
                     </div>
                     <div class="logo-icon-wrapper"><a href="index.html"><img class="img-fluid"
-                                src="../assets/images/logo/logo-icon.png" alt=""></a></div>
+                                src="{{asset("assets/images/Logo_HUMMATECH_700px.png")}}" style="height: 35px" alt=""></a></div>
                     <nav class="sidebar-main">
                         <div class="left-arrow" id="left-arrow"><i data-feather="arrow-left"></i></div>
                         <div id="sidebar-menu">
@@ -184,7 +185,6 @@
     <script src="{{ asset('assets/js/typeahead-search/handlebars.js') }}"></script>
     <script src="{{ asset('assets/js/typeahead-search/typeahead-custom.js') }}"></script>
     <script src="{{ asset('assets/js/height-equal.js') }}"></script>
-    <script src="https://kit.fontawesome.com/e50d9380a8.js" crossorigin="anonymous"></script>
     <!-- Plugins JS Ends-->
     <!-- Summernote -->
     <script src="{{ asset('assets/js/editor/summernote/summernote.js') }}"></script>
