@@ -4,7 +4,7 @@
     <div class="page-title">
         <div class="row">
             <div class="col-sm-6 p-0">
-                <h3>Tambah Hero Section</h3>
+                <h3>Ubah Hero Section</h3>
             </div>
             <div class="col-sm-6 p-0">
                 <ol class="breadcrumb">
@@ -19,7 +19,10 @@
                     <li class="breadcrumb-item">
                         <a href="{{ url('/hero-section') }}">Hero Section</a>
                     </li>
-                    <li class="breadcrumb-item active">Tambah Data</li>
+                    <li class="breadcrumb-item">
+                        <a href="{{ url('/hero-section') }}">oue13e8u</a>
+                    </li>
+                    <li class="breadcrumb-item active">Ubah Data</li>
                 </ol>
             </div>
         </div>
@@ -85,7 +88,7 @@
 
             <div class="pt-3 me-auto d-flex gap-2 w-100 justify-content-end align-items-center">
                 <a href="{{ url('/hero-section') }}" class="btn btn-light">Batal</a>
-                <button class="btn btn-primary" type="submit">Tambah</button>
+                <button class="btn btn-primary" type="submit">Perbaharui</button>
             </div>
         </form>
     </div>

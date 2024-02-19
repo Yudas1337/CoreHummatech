@@ -112,7 +112,7 @@
                         <div class="product-hover">
                             <ul>
                                 <li>
-                                    <a href="#"><i class="fas fa-pencil"></i></a>
+                                    <a href="{{ url('/hero-section/edit') }}"><i class="fas fa-pencil"></i></a>
                                 </li>
                                 <li>
                                     <a href="#"><i class="fas fa-trash"></i></a>

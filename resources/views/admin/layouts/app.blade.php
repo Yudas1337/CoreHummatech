@@ -93,7 +93,6 @@
             <div class="ProfileCard-realName">name</div>
             </div>
             </div>
-          </script>
                 <script class="empty-template" type="text/x-handlebars-template"><div class="EmptyMessage">Your search turned up 0 results. This most likely means the backend is down, yikes!</div></script>
             </div>
         </div>
@@ -104,16 +103,18 @@
             <div class="sidebar-wrapper" data-layout="fill-svg">
                 <div>
                     <div class="logo-wrapper"><a href="/home">
-                        <img class="img-fluid" src="{{asset("assets/images/LOGO-HUMMATECH_Putih.png")}}" style="height: 35px; width: 160px;" alt=""></a>
+                            <img class="img-fluid" src="{{ asset('assets/images/LOGO-HUMMATECH_Putih.png') }}"
+                                style="height: 35px; width: 160px;" alt=""></a>
                         <div class="toggle-sidebar">
                             <svg class="sidebar-toggle">
-                                <use href="{{asset("assets/svg/icon-sprite.svg#toggle-icon")}}">
+                                <use href="{{ asset('assets/svg/icon-sprite.svg#toggle-icon') }}">
                                 </use>
                             </svg>
                         </div>
                     </div>
                     <div class="logo-icon-wrapper"><a href="index.html"><img class="img-fluid"
-                                src="{{asset("assets/images/Logo_HUMMATECH_700px.png")}}" style="height: 35px" alt=""></a></div>
+                                src="{{ asset('assets/images/Logo_HUMMATECH_700px.png') }}" style="height: 35px"
+                                alt=""></a></div>
                     <nav class="sidebar-main">
                         <div class="left-arrow" id="left-arrow"><i data-feather="arrow-left"></i></div>
                         <div id="sidebar-menu">
