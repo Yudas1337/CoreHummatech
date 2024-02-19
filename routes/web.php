@@ -22,12 +22,13 @@ Route::get('/news', function () {
     return view('admin.pages.news.index');
 });
 
+
 Route::get('/news/create', function () {
     return view('admin.pages.news.create');
 });
 
 Route::get('/category', function () {
-    return view('admin.pages.category.index');
+    return view('admin.pages.news.category.index');
 });
 
 Route::get('/collab', function () {
