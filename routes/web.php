@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -43,6 +44,14 @@ Route::get('/testimonial', function () {
 
 Route::get('/branch', function () {
     return view('admin.pages.branch.index');
+});
+
+Route::get('/hero-section', function () {
+    return view('admin.pages.hero-section.index');
+});
+
+Route::get('/hero-section/create', function () {
+    return view('admin.pages.hero-section.create');
 });
 
 Auth::routes();
