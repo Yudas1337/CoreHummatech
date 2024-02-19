@@ -1,11 +1,11 @@
 <ul class="sidebar-links" id="simple-bar">
     <li class="back-btn">
         <a href="index.html">
-            <img class="img-fluid" src="../assets/images/logo/logo-icon.png" alt="">
+            <img class="img-fluid" src="{{asset("assets/images/logo/logo-icon.png")}}" alt="">
         </a>
         <div class="mobile-back text-end">
             <span>Back</span>
-            <i class="fas fa-angle-right ps-2" aria-hidden="true"></i>
+            <i class="fa fa-angle-right ps-2" aria-hidden="true"></i>
         </div>
     </li>
     <li class="pin-title sidebar-main-title">
@@ -32,6 +32,62 @@
     </li>
     <li class="sidebar-list">
         <i class="fa fa-thumb-tack"></i>
+        <a class="sidebar-link sidebar-title link-nav" href="/hero-section">
+            <svg class="stroke-icon">
+                <use href="{{ asset('assets/svg/icon-sprite.svg#stroke-job-search') }}"></use>
+            </svg>
+            <svg class="fill-icon">
+                <use href="{{ asset('assets/svg/icon-sprite.svg#fill-job-search') }}"></use>
+            </svg>
+            <span>Hero Section</span>
+        </a>
+    </li>
+    <li class="sidebar-list">
+        <i class="fa fa-thumb-tack"></i>
+        <a class="sidebar-link sidebar-title link-nav" href="/service">
+            <svg class="stroke-icon">
+                <use href="{{ asset('assets/svg/icon-sprite.svg#stroke-bookmark') }}"></use>
+            </svg>
+            <svg class="fill-icon">
+                <use href="{{ asset('assets/svg/icon-sprite.svg#fill-bookmark') }}"></use>
+            </svg>
+            <span>Layanan</span>
+        </a>
+    </li>
+    <li class="sidebar-list">
+        <i class="fa fa-thumb-tack"></i>
+        <a class="sidebar-link sidebar-title link-nav" href="/product">
+            <svg class="stroke-icon">
+                <use href="{{ asset('assets/svg/icon-sprite.svg#stroke-ecommerce') }}"></use>
+            </svg>
+            <svg class="fill-icon">
+                <use href="{{ asset('assets/svg/icon-sprite.svg#fill-ecommerce') }}"></use>
+            </svg>
+            <span>Produk</span>
+        </a>
+    </li>
+    <li class="sidebar-list">
+      <i class="fa fa-thumb-tack"></i>
+      <a class="sidebar-link sidebar-title" href="#">
+          <svg class="stroke-icon">
+              <use href="{{ asset('assets/svg/icon-sprite.svg#stroke-learning') }}"></use>
+          </svg>
+          <svg class="fill-icon">
+              <use href="{{ asset('assets/svg/icon-sprite.svg#fill-learning') }}"></use>
+          </svg>
+          <span>Mitra</span>
+      </a>
+      <ul class="sidebar-submenu">
+          <li>
+              <a href="/collab-category">Kategori</a>
+          </li>
+          <li>
+              <a href="/collab">Mitra</a>
+          </li>
+      </ul>
+    </li>
+    <li class="sidebar-list">
+        <i class="fa fa-thumb-tack"></i>
         <a class="sidebar-link sidebar-title" href="#">
             <svg class="stroke-icon">
                 <use href="{{ asset('assets/svg/icon-sprite.svg#stroke-blog') }}"></use>
@@ -43,30 +99,10 @@
         </a>
         <ul class="sidebar-submenu">
             <li>
+                <a href="/news-category">Kategori</a>
+            </li>
+            <li>
                 <a href="/news">Berita</a>
-            </li>
-            <li>
-                <a href="/category">Kategori</a>
-            </li>
-        </ul>
-    </li>
-    <li class="sidebar-list">
-        <i class="fa fa-thumb-tack"></i>
-        <a class="sidebar-link sidebar-title" href="#">
-            <svg class="stroke-icon">
-                <use href="{{ asset('assets/svg/icon-sprite.svg#stroke-widget') }}"></use>
-            </svg>
-            <svg class="fill-icon">
-                <use href="{{ asset('assets/svg/icon-sprite.svg#fill-widget') }}"></use>
-            </svg>
-            <span>Mitra</span>
-        </a>
-        <ul class="sidebar-submenu">
-            <li>
-                <a href="/collab">Mitra</a>
-            </li>
-            <li>
-                <a href="/collab-category">Kategori</a>
             </li>
         </ul>
     </li>
@@ -83,10 +119,10 @@
         </a>
         <ul class="sidebar-submenu">
             <li>
-                <a href="/testimonial">Testimoni</a>
+                <a href="/testimonial-category">Kategori</a>
             </li>
             <li>
-                <a href="/testimonial-category">Kategori</a>
+                <a href="/testimonial">Testimoni</a>
             </li>
         </ul>
     </li>
@@ -100,18 +136,6 @@
                 <use href="{{ asset('assets/svg/icon-sprite.svg#fill-maps') }}"></use>
             </svg>
             <span>Cabang</span>
-        </a>
-    </li>
-    <li class="sidebar-list">
-        <i class="fa fa-thumb-tack"></i>
-        <a class="sidebar-link sidebar-title link-nav" href="/gallery">
-            <svg class="stroke-icon">
-                <use href="{{ asset('assets/svg/icon-sprite.svg#stroke-gallery') }}"></use>
-            </svg>
-            <svg class="fill-icon">
-                <use href="{{ asset('assets/svg/icon-sprite.svg#fill-gallery') }}"></use>
-            </svg>
-            <span>Gallery</span>
         </a>
     </li>
     <li class="sidebar-list">
@@ -130,12 +154,41 @@
                 <a href="/profil">Profile</a>
             </li>
             <li>
-                <a href="#">Kontak</a>
-            </li>
-            <li>
                 <a href="#">Syarat dan Ketentuan</a>
             </li>
         </ul>
+    </li>
+    <li class="sidebar-list">
+        <i class="fa fa-thumb-tack"></i>
+        <a class="sidebar-link sidebar-title" href="#">
+            <svg class="stroke-icon">
+                <use href="{{ asset('assets/svg/icon-sprite.svg#stroke-contact') }}"></use>
+            </svg>
+            <svg class="fill-icon">
+                <use href="{{ asset('assets/svg/icon-sprite.svg#fill-contact') }}"></use>
+            </svg>
+            <span>Kontak</span>
+        </a>
+        <ul class="sidebar-submenu">
+            <li>
+                <a href="/profil">Approval Pesan </a>
+            </li>
+            <li>
+                <a href="#">Syarat & Ketentuan</a>
+            </li>
+        </ul>
+    </li>
+    <li class="sidebar-list">
+        <i class="fa fa-thumb-tack"></i>
+        <a class="sidebar-link sidebar-title link-nav" href="/gallery">
+            <svg class="stroke-icon">
+                <use href="{{ asset('assets/svg/icon-sprite.svg#stroke-gallery') }}"></use>
+            </svg>
+            <svg class="fill-icon">
+                <use href="{{ asset('assets/svg/icon-sprite.svg#fill-gallery') }}"></use>
+            </svg>
+            <span>Gallery</span>
+        </a>
     </li>
     {{-- <li class="sidebar-main-title">
         <div>
