@@ -54,6 +54,10 @@ Route::get('/terms-condition/edit', fn () => view('admin.pages.terms-condition.e
 
 Route::get('/social-media', fn () => view('admin.pages.social-media.index'));
 
+Route::get('/service', fn () => view('admin.pages.service.index'));
+
+Route::get('/service/detail', fn () => view('admin.pages.service.detail'));
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
