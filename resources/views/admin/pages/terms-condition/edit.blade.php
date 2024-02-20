@@ -1,6 +1,6 @@
 @extends('admin.layouts.app')
 
-@section('subcontent')
+@section('content')
 <div class=" p-1">
     <div class="card border-0 shadow-bar p-3 mt-3">
         <div class="row">

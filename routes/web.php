@@ -94,6 +94,10 @@ Route::get('/social-media', function () {
     return view('admin.pages.social-media.index');
 });
 
+Route::get('/message-approval', function () {
+    return view('admin.pages.message-approval.index');
+});
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
