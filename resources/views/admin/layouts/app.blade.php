@@ -81,10 +81,7 @@
                                 src="../assets/images/logo/logo-1.png" alt=""><img class="img-fluid for-dark"
                                 src="../assets/images/logo/logo.png" alt=""></a></div>
                     <div class="toggle-sidebar">
-                        <svg class="sidebar-toggle">
-                            <use href="https://admin.pixelstrap.net/dunzo/assets/svg/icon-sprite.svg#stroke-animation">
-                            </use>
-                        </svg>
+                        <i class="fas fa-bars-staggered sidebar-toggle"></i>
                     </div>
                 </div>
                 <div class="nav-right col-xxl-7 col-xl-6 col-auto box-col-6 pull-right right-header p-0 ms-auto">
@@ -181,11 +178,11 @@
     <script src="{{ asset('assets/js/notify/index.js') }}"></script>
     <script src="{{ asset('assets/js/datatable/datatables/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('assets/js/datatable/datatables/datatable.custom.js') }}"></script>
-    <script src="{{ asset('assets/js/typeahead/handlebars.js') }}"></script>
+    {{-- <script src="{{ asset('assets/js/typeahead/handlebars.js') }}"></script>
     <script src="{{ asset('assets/js/typeahead/typeahead.bundle.js') }}"></script>
     <script src="{{ asset('assets/js/typeahead/typeahead.custom.js') }}"></script>
     <script src="{{ asset('assets/js/typeahead-search/handlebars.js') }}"></script>
-    <script src="{{ asset('assets/js/typeahead-search/typeahead-custom.js') }}"></script>
+    <script src="{{ asset('assets/js/typeahead-search/typeahead-custom.js') }}"></script> --}}
     <script src="{{ asset('assets/js/height-equal.js') }}"></script>
     <script src="{{ asset('assets/js/custom-card/custom-card.js') }}"></script>
     <!-- Plugins JS Ends-->
@@ -200,8 +197,8 @@
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <script src="{{ asset('assets/js/select2/tagify.js') }}"></script>
     <script src="{{ asset('assets/js/select2/tagify.polyfills.min.js') }}"></script>
-    <script src="{{ asset('assets/js/select2/intltelinput.min.js') }}"></script>
-    <script src="{{ asset('assets/js/select2/telephone-input.js') }}"></script>
+    {{-- <script src="{{ asset('assets/js/select2/intltelinput.min.js') }}"></script> --}}
+    {{-- <script src="{{ asset('assets/js/select2/telephone-input.js') }}"></script> --}}
     <script src="{{ asset('assets/js/select2/custom-inputsearch.js') }}"></script>
     <script src="{{ asset('assets/js/select2/select3-custom.js') }}"></script>
     <!-- photoswipe -->
@@ -214,7 +211,6 @@
     <!-- Theme js-->
     <script src="{{ asset('assets/js/script.js') }}"></script>
     <!-- Plugin used-->
+    @yield('script')
 </body>
-@yield('script')
-
 </html>

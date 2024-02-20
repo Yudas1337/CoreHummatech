@@ -154,7 +154,7 @@
         </a>
         <ul class="sidebar-submenu">
             <li>
-                <a href="/profil">Profile</a>
+                <a href="/setting/profile">Profile</a>
             </li>
             <li>
                 <a href="#">Visi & Misi</a>
