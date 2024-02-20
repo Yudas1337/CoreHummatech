@@ -22,8 +22,8 @@
 @endsection
 
 @section('content')
-    <div class="table-responsive">
-        <table class="table-striped table" id="table-datatable">
+    <div class="table-responsive user-datatable custom-scrollbar">
+        <table class="display" id="basic-1">
             <thead>
                 <tr class="bg-primary text-white">
                     <th class="text-white w-25">No</th>
@@ -86,64 +86,4 @@
             </tbody>
         </table>
     </div>
-
-
-    {{-- <div class="row">
-        <div class="col-xl-3 col-sm-6">
-            <div class="card border-0 shadow rounded">
-                <div class="card-body">
-                    <div class="text-center mt-3">
-                        <h3 class="mt-2 mb-0">Sekolah</h3>
-                    </div>
-                    <div class="mt-3 d-flex justify-content-center gap-2">
-                        <button class="btn btn-primary btn-edit" data-bs-toggle="modal" data-bs-target="#edit"
-                            type="button">Edit</button>
-                        <button class="btn btn-danger btn-edit" type="button">Hapus</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-xl-3 col-sm-6">
-            <div class="card border-0 shadow rounded">
-                <div class="card-body">
-                    <div class="text-center mt-3">
-                        <h3 class="mt-2 mb-0">Universitas</h3>
-                    </div>
-                    <div class="mt-3 d-flex justify-content-center gap-2">
-                        <button class="btn btn-primary btn-edit" data-bs-toggle="modal" data-bs-target="#edit"
-                            type="button">Edit</button>
-                        <button class="btn btn-danger btn-edit" type="button">Hapus</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-xl-3 col-sm-6">
-            <div class="card border-0 shadow rounded">
-                <div class="card-body">
-                    <div class="text-center mt-3">
-                        <h3 class="mt-2 mb-0">Pemerintah</h3>
-                    </div>
-                    <div class="mt-3 d-flex justify-content-center gap-2">
-                        <button class="btn btn-primary btn-edit" data-bs-toggle="modal" data-bs-target="#edit"
-                            type="button">Edit</button>
-                        <button class="btn btn-danger btn-edit" type="button">Hapus</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-xl-3 col-sm-6">
-            <div class="card border-0 shadow rounded">
-                <div class="card-body">
-                    <div class="text-center mt-3">
-                        <h3 class="mt-2 mb-0">Company</h3>
-                    </div>
-                    <div class="mt-3 d-flex justify-content-center gap-2">
-                        <button class="btn btn-primary btn-edit" data-bs-toggle="modal" data-bs-target="#edit"
-                            type="button">Edit</button>
-                        <button class="btn btn-danger btn-edit" type="button">Hapus</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> --}}
 @endsection
