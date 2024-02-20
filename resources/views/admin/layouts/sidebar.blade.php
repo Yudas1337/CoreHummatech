@@ -44,7 +44,7 @@
     </li>
     <li class="sidebar-list">
         <i class="fa fa-thumb-tack"></i>
-        <a class="sidebar-link sidebar-title link-nav" href="/service">
+        <a class="sidebar-link sidebar-title" href="#">
             <svg class="stroke-icon">
                 <use href="{{ asset('assets/svg/icon-sprite.svg#stroke-bookmark') }}"></use>
             </svg>
@@ -53,7 +53,18 @@
             </svg>
             <span>Layanan</span>
         </a>
-    </li>
+        <ul class="sidebar-submenu">
+            <li>
+                <a href="/service">Layanan</a>
+            </li>
+            <li>
+                <a href="#">Penjualan</a>
+            </li>
+            <li>
+                <a href="#">Galeri</a>
+            </li>
+        </ul>
+      </li>
     <li class="sidebar-list">
         <i class="fa fa-thumb-tack"></i>
         <a class="sidebar-link sidebar-title link-nav" href="/product">
@@ -108,7 +119,7 @@
     </li>
     <li class="sidebar-list">
         <i class="fa fa-thumb-tack"></i>
-        <a class="sidebar-link sidebar-title" href="#">
+        <a class="sidebar-link sidebar-title link-nav" href="/testimonial">
             <svg class="stroke-icon">
                 <use href="{{ asset('assets/svg/icon-sprite.svg#stroke-user') }}"></use>
             </svg>
@@ -117,14 +128,6 @@
             </svg>
             <span>Testimoni</span>
         </a>
-        <ul class="sidebar-submenu">
-            <li>
-                <a href="/category-testimonial">Kategori</a>
-            </li>
-            <li>
-                <a href="/testimonial">Testimoni</a>
-            </li>
-        </ul>
     </li>
     <li class="sidebar-list">
         <i class="fa fa-thumb-tack"></i>
@@ -154,7 +157,19 @@
                 <a href="/profil">Profile</a>
             </li>
             <li>
-                <a href="/terms-condition">Syarat dan Ketentuan</a>
+                <a href="#">Visi & Misi</a>
+            </li>
+            <li>
+                <a href="/terms-condition">Syarat & Ketentuan</a>
+            </li>
+            <li>
+                <a href="#">FAQ</a>
+            </li>
+            <li>
+                <a href="#">Struktur usaha</a>
+            </li>
+            <li>
+                <a href="#">Struktur organisasi</a>
             </li>
         </ul>
     </li>
@@ -177,18 +192,6 @@
                 <a href="/social-media">Sosial Media</a>
             </li>
         </ul>
-    </li>
-    <li class="sidebar-list">
-        <i class="fa fa-thumb-tack"></i>
-        <a class="sidebar-link sidebar-title link-nav" href="/gallery">
-            <svg class="stroke-icon">
-                <use href="{{ asset('assets/svg/icon-sprite.svg#stroke-gallery') }}"></use>
-            </svg>
-            <svg class="fill-icon">
-                <use href="{{ asset('assets/svg/icon-sprite.svg#fill-gallery') }}"></use>
-            </svg>
-            <span>Galeri</span>
-        </a>
     </li>
     {{-- <li class="sidebar-main-title">
         <div>
