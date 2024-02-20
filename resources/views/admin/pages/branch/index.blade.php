@@ -25,31 +25,9 @@
       <div class="col-xl-3 col-sm-6">
           <div class="card border-0 shadow rounded">
               <div class="card-body">
-                  <div class="d-flex align-items-center justify-content-center">
-                      <img src="{{ asset('assets/images/avtar/11.jpg') }}"
-                          class="rounded-circle w-50" alt="">
-                  </div>
                   <div class="text-center mt-3">
-                      <h3 class="mt-2 mb-0">Malang</h3>
                       <h4><span class="badge badge-primary">Pusat</span></h4>
-                  </div>
-                  <div class="mt-3 d-flex justify-content-center gap-2">
-                      <button class="btn btn-primary btn-edit" data-bs-toggle="modal" data-bs-target="#edit" type="button">Edit</button>
-                      <button class="btn btn-danger btn-edit" type="button">Hapus</button>
-                  </div>
-              </div>
-          </div>
-      </div>
-      <div class="col-xl-3 col-sm-6">
-          <div class="card border-0 shadow rounded">
-              <div class="card-body">
-                  <div class="d-flex align-items-center justify-content-center">
-                      <img src="{{ asset('assets/images/avtar/11.jpg') }}"
-                          class="rounded-circle w-50" alt="">
-                  </div>
-                  <div class="text-center mt-3">
-                      <h3 class="mt-2 mb-0">Banyuwangi</h3>
-                      <h4><span class="badge badge-primary">Cabang</span></h4>
+                      <h3 class="mt-2 mb-0">Malang</h3>
                   </div>
                   <div class="mt-3 d-flex justify-content-center gap-2">
                       <button class="btn btn-primary btn-edit" data-bs-toggle="modal" data-bs-target="#edit" type="button">Edit</button>
@@ -59,6 +37,7 @@
           </div>
       </div>
   </div>
+  <div class="map-js-height" id="weathermap"></div>
 </div>
 
 <!-- Add Modal -->
@@ -93,9 +72,6 @@ aria-hidden="true">
                     <div class="mb-3 mt-0 col-md-6">
                       <label for="bm-title">Longitude</label>
                       <input class="form-control" type="text" required="" placeholder="Masukkan Longitude" autocomplete="name">
-                    </div>
-                    <div class="mb-3 mt-0 col-md-12">
-                      <div class="map-js-height" id="weathermap"></div>
                     </div>
                 </div>
             </div>
@@ -142,9 +118,6 @@ aria-hidden="true">
                     <div class="mb-3 mt-0 col-md-6">
                       <label for="bm-title">Longitude</label>
                       <input class="form-control" type="text" required="" placeholder="Masukkan Longitude" autocomplete="name">
-                    </div>
-                    <div class="mb-3 mt-0 col-md-12">
-                      <div class="map-js-height" id="weathermap"></div>
                     </div>
                 </div>
             </div>
