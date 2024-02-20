@@ -58,6 +58,10 @@ Route::get('/service', fn () => view('admin.pages.service.index'));
 
 Route::get('/service/detail', fn () => view('admin.pages.service.detail'));
 
+Route::get('/message-approval', function () {
+    return view('admin.pages.message-approval.index');
+});
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

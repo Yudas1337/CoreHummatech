@@ -1,25 +1,12 @@
 @extends('admin.layouts.app')
 
-@section('subcontent')
-    {{-- <div class="page-title">
-  <div class="row">
-    <div class="col-sm-6 p-0">
-      <h3>Daftar Mitra</h3>
-    </div>
-    <div class="col-sm-6 p-0">
-      <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="index.html">
-            <svg class="stroke-icon">
-              <use href="https://admin.pixelstrap.net/dunzo/assets/svg/icon-sprite.svg#stroke-home"></use>
-            </svg></a></li>
-        <li class="breadcrumb-item">Dashboard</li>
-        <li class="breadcrumb-item active">Default      </li>
-      </ol>
-    </div>
-  </div>
-</div> --}}
-@endsection
 @section('content')
+<style>
+    .btn-xs {
+        padding: 3px 6px;
+        font-size: 10px;
+    }
+</style>
     <div class=" p-1">
         <div class="card border-0 shadow p-3 mt-3">
             <div class="row">
@@ -44,16 +31,18 @@
             <div class="col-xl-3 col-sm-6">
                 <div class="card border-0 shadow rounded">
                     <div class="card-body">
-                        <div class="d-flex align-items-center justify-content-center">
-                            <img src="{{ asset('assets/images/avtar/11.jpg') }}"
-                                class="rounded-circle w-50" alt="">
-                        </div>
-                        <div class="text-center mt-3">
-                            <h3 class="mt-2 mb-0">smkn 1 jepara</h3>
-                        </div>
-                        <div class="mt-3 d-flex justify-content-center gap-2">
-                            <button class="btn btn-primary btn-edit" data-bs-toggle="modal" data-bs-target="#edit" type="button">Edit</button>
-                            <button class="btn btn-danger btn-edit" type="button">Hapus</button>
+                        <div class="d-flex gap-3">
+                            <div class="d-flex align-items-center justify-content-start">
+                                <img src="{{ asset('assets/images/avtar/11.jpg') }}" width="80px" class="rounded" alt="" srcset="">
+                            </div>
+                            <div>
+                                <span class="badge badge-info">Sekolah</span>
+                                <p class="mt-2 mb-0 text-truncate " style="">SMK Negeri 1 Banyuwangi</p>
+                                <div class="d-flex gap-2">
+                                    <button class="btn btn-primary btn-xs" data-bs-toggle="modal" data-bs-target="#edit" type="button">Edit</button>
+                                    <button class="btn btn-danger btn-xs" data-bs-toggle="modal" data-bs-target="#edit" type="button">Hapus</button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
