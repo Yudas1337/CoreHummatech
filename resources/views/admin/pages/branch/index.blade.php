@@ -25,9 +25,9 @@
 <div class="col-lg-12">
   <div class="row">
     <div class="col-xl-3">
-        <div class="card">
+        <div class="card b-t-primary">
             <div class="card-header pb-0 text-center">
-              <h4><span class="badge badge-primary">Pusat</span></h4>
+              <h4><span class="badge badge-light-primary mb-2">Pusat</span></h4>
               <h3 class="mb-3">Malang</h3>
               <div class="card-header-right">
                 <ul class="card-option">
@@ -40,6 +40,28 @@
               </div>
             </div>
           </div>
+    </div>
+    <div class="col-xl-3">
+        <div class="card b-t-warning">
+            <div class="card-header pb-0 text-center">
+              <h4><span class="badge badge-light-warning mb-2">Cabang</span></h4>
+              <h3 class="mb-3">Banyuwangi</h3>
+              <div class="card-header-right">
+                <ul class="card-option">
+                  <li>
+                    <div><i class="icon-settings"></i></div>
+                  </li>
+                  <li><i class="fa fa-edit"></i></li>
+                  <li><i class="fa fa-trash"></i></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+    </div>
+
+    <div class="justify-content-beetween">
+        <div class="dataTables_info" id="basic-1_info" role="status" aria-live="polite" bis_skin_checked="1">Showing 1 to 10 of 14 entries</div>
+        <div class="dataTables_paginate paging_simple_numbers" id="basic-1_paginate" bis_skin_checked="1"><a class="paginate_button previous disabled" aria-controls="basic-1" data-dt-idx="0" tabindex="0" id="basic-1_previous">Previous</a><span><a class="paginate_button current" aria-controls="basic-1" data-dt-idx="1" tabindex="0">1</a><a class="paginate_button " aria-controls="basic-1" data-dt-idx="2" tabindex="0">2</a></span><a class="paginate_button next" aria-controls="basic-1" data-dt-idx="3" tabindex="0" id="basic-1_next">Next</a></div>
     </div>
 </div>
   <div class="map-js-height" id="weathermap"></div>
