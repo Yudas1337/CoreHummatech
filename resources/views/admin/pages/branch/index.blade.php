@@ -20,23 +20,28 @@
       </div>
   </div>
 </div>
+
+
 <div class="col-lg-12">
   <div class="row">
-      <div class="col-xl-3 col-sm-6">
-          <div class="card border-0 shadow rounded">
-              <div class="card-body">
-                  <div class="text-center mt-3">
-                      <h4><span class="badge badge-primary">Pusat</span></h4>
-                      <h3 class="mt-2 mb-0">Malang</h3>
-                  </div>
-                  <div class="mt-3 d-flex justify-content-center gap-2">
-                      <button class="btn btn-primary btn-edit" data-bs-toggle="modal" data-bs-target="#edit" type="button">Edit</button>
-                      <button class="btn btn-danger btn-edit" type="button">Hapus</button>
-                  </div>
+    <div class="col-xl-3">
+        <div class="card">
+            <div class="card-header pb-0 text-center">
+              <h4><span class="badge badge-primary">Pusat</span></h4>
+              <h3 class="mb-3">Malang</h3>
+              <div class="card-header-right">
+                <ul class="card-option">
+                  <li>
+                    <div><i class="icon-settings"></i></div>
+                  </li>
+                  <li><i class="fa fa-edit"></i></li>
+                  <li><i class="fa fa-trash"></i></li>
+                </ul>
               </div>
+            </div>
           </div>
-      </div>
-  </div>
+    </div>
+</div>
   <div class="map-js-height" id="weathermap"></div>
 </div>
 

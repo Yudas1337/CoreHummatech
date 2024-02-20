@@ -19,7 +19,8 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i,900&amp;display=swap"
         rel="stylesheet">
     <!-- ico-font-->
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/vendors/icofont.css') }}">
+    <link rel="stylesheet" href="myProjects/webProject/icofont/css/icofont.min.css">
+    <link rel="stylesheet" href="myProjects/webProject/icofont/css/icofont.css">
     <!-- Themify icon-->
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/vendors/themify.css') }}">
     <!-- Flag icon-->
@@ -186,6 +187,7 @@
     <script src="{{ asset('assets/js/typeahead-search/handlebars.js') }}"></script>
     <script src="{{ asset('assets/js/typeahead-search/typeahead-custom.js') }}"></script>
     <script src="{{ asset('assets/js/height-equal.js') }}"></script>
+    <script src="{{ asset('assets/js/custom-card/custom-card.js') }}"></script>
     <!-- Plugins JS Ends-->
     <!-- Summernote -->
     <script src="{{ asset('assets/js/editor/summernote/summernote.js') }}"></script>
