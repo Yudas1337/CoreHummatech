@@ -20517,7 +20517,7 @@ p.data-attributes svg {
   padding-right: 24px;
 }
 .default-dashboard div.dataTables_wrapper table.dataTable tbody > tr > td:last-child .btn {
-  border-radius: 25px;
+  border-radius: 5px;
   padding: 7px 27px;
   min-width: 50px;
 }
