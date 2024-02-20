@@ -177,7 +177,6 @@
     <script src="{{ asset('assets/js/notify/index.js') }}"></script>
     <script src="{{ asset('assets/js/datatable/datatables/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('assets/js/datatable/datatables/datatable.custom.js') }}"></script>
-    <script src="{{ asset('assets/js/datatable/datatables/datatable.custom1.js') }}"></script>
     {{-- <script src="{{ asset('assets/js/typeahead/handlebars.js') }}"></script>
     <script src="{{ asset('assets/js/typeahead/typeahead.bundle.js') }}"></script>
     <script src="{{ asset('assets/js/typeahead/typeahead.custom.js') }}"></script>

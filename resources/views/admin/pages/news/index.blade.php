@@ -55,11 +55,8 @@
                                 <a href="/news">
                                     <h4>Judul berita</h4>
                                 </a>
-                                <p class="mt-3" style="font-size: 10px">Melayani pembuatan software berdasarkan
-                                    kebutuhan klien/ customer. Produk yang
-                                    dihasilkan adlaah produk perangkat lunak
-                                    berbasis desktop, web, dan mobile (android
-                                    dan iOS......</p>
+                                <p class="mt-3" style="font-size: 13px">Melayani pembuatan software berdasarkan
+                                    kebutuhan klien/ customer. Produk ...</p>
                                 <div class="d-flex gap-1 mb-3">
                                     <small class="text-primary" style="background-color:#DEEBFF; padding: 3px 10px; border-radius:5px">Keseruan</small>
                                     <small class="text-primary" style="background-color:#DEEBFF; padding: 3px 10px; border-radius:5px">Camping</small>

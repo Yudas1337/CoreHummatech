@@ -106,6 +106,10 @@ Route::get('/message-approval', function () {
     return view('admin.pages.message-approval.index');
 });
 
+Route::get('setting/profile', function() {
+    return view('admin.pages.setting.profile.index');
+});
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
