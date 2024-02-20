@@ -11,7 +11,8 @@
                     <div class="d-flex justify-content-lg-end justify-content-start">
                         <div class="d-flex align-items-center gap-2">
                             <p class="m-0 me-2">Cari:</p>
-                            <input class="form-control me-2" type="text" placeholder="Cari sesuatu&hellip;" aria-label="Cari sesuatu&hellip;" />
+                            <input class="form-control me-2" type="text" placeholder="Cari sesuatu&hellip;"
+                                aria-label="Cari sesuatu&hellip;" />
                         </div>
                         @include('admin.pages.service.create')
                     </div>
@@ -38,16 +39,12 @@
                             dan iOS......</p>
 
                         <div class="gap-2 d-flex">
-                            <div class="d-grid" style="width: calc(75% - 1.5rem)">
+                            <div class="d-grid flex-grow-1">
                                 <a href="{{ url('/service/detail') }}" class="btn btn-primary">Lihat Detail</a>
                             </div>
-                            <div class="d-flex w-25 gap-2">
-                                <div class="d-grid">
-                                    @include('admin.pages.service.edit')
-                                </div>
-                                <div class="d-grid">
-                                    <button class="btn px-3 btn-danger" type="button"><i class="fas fa-trash"></i></button>
-                                </div>
+                            <div class="d-flex flex-shrink-0 gap-2">
+                                @include('admin.pages.service.edit')
+                                <button class="btn px-3 btn-danger" type="button"><i class="fas fa-trash"></i></button>
                             </div>
                         </div>
                     </div>
