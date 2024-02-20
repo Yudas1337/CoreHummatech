@@ -109,6 +109,16 @@ Route::get('/message-approval', function () {
 Route::get('setting/profile', function() {
     return view('admin.pages.setting.profile.index');
 });
+Route::get('/sale', function () {
+    return view('admin.pages.sale.index');
+});
+Route::get('/sale/detail', function () {
+    return view('admin.pages.sale.detail');
+});
+
+Route::get('/vision-mision', function () {
+    return view('admin.pages.vision-mision.index');
+});
 
 Auth::routes();
 

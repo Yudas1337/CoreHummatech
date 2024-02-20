@@ -58,7 +58,7 @@
                 <a href="/service">Layanan</a>
             </li>
             <li>
-                <a href="#">Penjualan</a>
+                <a href="/sale">Penjualan</a>
             </li>
             <li>
                 <a href="#">Galeri</a>
