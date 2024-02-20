@@ -143,15 +143,7 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-md-6 p-0 footer-copyright">
-                            <p class="mb-0">Copyright 2023 © Dunzo theme by pixelstrap.</p>
-                        </div>
-                        <div class="col-md-6 p-0">
-                            <p class="heart mb-0">Hand crafted &amp; made with
-                                <svg class="footer-icon">
-                                    <use href="https://admin.pixelstrap.net/dunzo/assets/svg/icon-sprite.svg#heart">
-                                    </use>
-                                </svg>
-                            </p>
+                            <p class="mb-0">Copyright {{ date("Y") }} <a href="{{ url('/') }}">PT Hummatech Digital Indonesia</a>.</p>
                         </div>
                     </div>
                 </div>
@@ -223,7 +215,5 @@
     <!-- Plugin used-->
 </body>
 @yield('script')
-
-<!-- Mirrored from admin.pixelstrap.net/dunzo/template/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 17 Feb 2024 06:55:44 GMT -->
 
 </html>
