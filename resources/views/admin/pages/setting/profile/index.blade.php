@@ -50,7 +50,7 @@
             </div>
             <div class="my-1">
                 <label for="call">Email</label>
-                <input type="text" class="form-control" placeholder="No telp">
+                <input type="email" class="form-control" placeholder="Email">
             </div>
         </div>
     </div>

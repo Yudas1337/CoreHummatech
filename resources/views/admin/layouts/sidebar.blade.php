@@ -97,6 +97,11 @@
           </li>
       </ul>
     </li>
+    <li class="sidebar-main-title">
+        <div>
+            <h6>Lainnya</h6>
+        </div>
+    </li>
     <li class="sidebar-list">
         <i class="fa fa-thumb-tack"></i>
         <a class="sidebar-link sidebar-title" href="#">

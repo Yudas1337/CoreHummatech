@@ -4,17 +4,25 @@
     <div class=" p-1">
         <div class="card border-0 shadow p-3 mt-3">
             <div class="row">
-                <div class="col-12 col-lg-6">
-                    <h4 class="m-2">Testimoni</h4>
+                <div class="col-2">
+                    <div class="d-flex align-items-center">
+                      <label for="">Filter:</label>
+                      <select name="" id="" class="form-control mx-2">
+                        <option value="" selected>Semua</option>
+                        <option value="" selected>Magang</option>
+                      </select>
+                    </div>
                 </div>
-                <div class="col-12 col-lg-6">
+                <div class="col-10">
                     <div class="d-flex justify-content-lg-end justify-content-start">
                         <div class="d-flex align-items-center gap-2">
                             <p class="m-0 me-2">Cari:</p>
-                            <input class="form-control me-2" type="text" placeholder="Cari sesuatu&hellip;"
-                                aria-label="Cari sesuatu&hellip;" />
+                            <input class="form-control me-2" type="text" placeholder="Cari&hellip;"
+                                aria-label="Cari &hellip;" />
                         </div>
-                        @include('admin.pages.testimonial.create')
+                        <button class="btn btn-primary m-0" type="button" data-bs-toggle="modal" data-bs-target="#tambah">
+                          Tambah
+                      </button>
                     </div>
                 </div>
             </div>
@@ -22,110 +30,82 @@
     </div>
 @endsection
 @section('content')
-    {{-- <div class="project-grid">
-        <div class="project-list">
-            <div class="card">
-                <div class="file-content py-2 px-4">
-                    <div class="d-flex align-items-center">
-                        <form class="form-inline" action="#" method="get">
-                            <div class="form-group mb-0">
-                                <i class="fa fa-search"></i>
-                                <input class="form-control-plaintext" type="text" placeholder="Search...">
-                            </div>
-                        </form>
-                        <div class="flex-grow-1 file-buttons">
-                            <div class="form-group mb-0 me-0"></div><a class="btn btn-primary" type="button"
-                                data-bs-toggle="modal" data-bs-target="#tambah"> <i class="fa fa-plus"></i> Buat
-                                Testimoni</a>
-                        </div>
-                    </div>
-                </div>
+<div class="card-body mb-5">
+    <div class="row g-sm-4 g-3">
+      <div class="col-xxl-4 col-md-6">
+        <div class="prooduct-details-box">  
+            <div class="position-absolute start-3 mt-2" style="z-index: 2">
+                <p class="bg-primary px-4 py-1" style="font-size: 10px">Magang</p>    
+            </div>                               
+            <div class="onhover-dropdown bg-light text-primary py-1 px-2 rounded-3 position-absolute end-0 me-4 mt-2" style=" z-index: 3;">
+                <i class="fa-solid fa-gear"></i>
+              <ul class="onhover-show-div left-dropdown">
+                <li><a class="dropdown-item text-primary" href="#" data-bs-toggle="modal" data-bs-target="#editModal"><i class="fas fa-edit"></i></a></li>
+                <li><a class="dropdown-item text-danger" href="#" data-bs-toggle="modal" data-bs-target="#deleteModal"><i class="fas fa-trash-alt"></i></a></li>
+              </ul>
             </div>
-        </div>
-    </div> --}}
-
-    <div class="row">
-        <div class="col-xl-3 col-sm-6 box-col-3">
-            <div class="card features-faq product-box">
-                <div class="faq-image product-img"><img class="img-fluid" src="../assets/images/faq/1.jpg" alt="">
-                </div>
-                <div class="card-body">
-                    <small>20 Februari 2024</small>
-                    <h6>Web Design</h6>
-                    <p>A Web Designing course belongs to the field of Computer It enables students to learn various
-                        techniques.</p>
-                </div>
-                <div class="d-flex justify-content-end gap-2 py-3 px-3">
-                    <button type="button" class="btn btn-primary btn-edit">
-                        Edit
-                    </button>
-                    <button class="btn-delete btn btn-danger">
-                        Hapus
-                    </button>
-                </div>
+          <div class="d-flex" style="z-index: 1"><img class="align-self-center img-fluid img-80 rounded-3" src="../assets/images/ecommerce/product-table-6.png" alt="#">
+            <div class="flex-grow-1 ms-3">
+              <div class="product-name mb-1">
+                <h4><a href="#">lorem ipsum</a>
+                </h4>
+            </div> 
+              <p class="text-muted m-0" style="width: 80%">Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
+              <div class="rating"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></div>
             </div>
+          </div>
         </div>
-        <div class="col-xl-3 col-sm-6 box-col-3">
-            <div class="card features-faq product-box">
-                <div class="faq-image product-img"><img class="img-fluid" src="../assets/images/faq/2.jpg" alt="">
-                </div>
-                <div class="card-body">
-                    <small>20 Februari 2024</small>
-                    <h6>Web Development</h6>
-                    <p>A Web Development course belongs to the field of Computer It enables students to learn various
-                        techniques.</p>
-                </div>
-                <div class="d-flex justify-content-end gap-2 py-3 px-3">
-                    <button type="button" class="btn btn-primary btn-edit">
-                        Edit
-                    </button>
-                    <button class="btn-delete btn btn-danger">
-                        Hapus
-                    </button>
-                </div>
+      </div>
+      <div class="col-xxl-4 col-md-6">
+        <div class="prooduct-details-box">  
+            <div class="position-absolute start-3 mt-2" style="z-index: 2">
+                <p class="bg-primary px-4 py-1" style="font-size: 10px">Magang</p>    
+            </div>                               
+            <div class="onhover-dropdown bg-light text-primary py-1 px-2 rounded-3 position-absolute end-0 me-4 mt-2" style=" z-index: 3;">
+                <i class="fa-solid fa-gear"></i>
+              <ul class="onhover-show-div left-dropdown">
+                <li><a class="dropdown-item text-primary" href="#" data-bs-toggle="modal" data-bs-target="#editModal"><i class="fas fa-edit"></i></a></li>
+                <li><a class="dropdown-item text-danger" href="#" data-bs-toggle="modal" data-bs-target="#deleteModal"><i class="fas fa-trash-alt"></i></a></li>
+              </ul>
             </div>
-        </div>
-        <div class="col-xl-3 col-sm-6 box-col-3">
-            <div class="card features-faq product-box">
-                <div class="faq-image product-img"><img class="img-fluid" src="../assets/images/faq/3.jpg" alt="">
-                </div>
-                <div class="card-body">
-                    <small>20 Februari 2024</small>
-                    <h6>UI Design</h6>
-                    <p>User interface design (UI) is the design for machines and software, such as mobile devices,
-                        computers.</p>
-                </div>
-                <div class="d-flex justify-content-end gap-2 py-3 px-3">
-                    <button type="button" class="btn btn-primary btn-edit">
-                        Edit
-                    </button>
-                    <button class="btn-delete btn btn-danger">
-                        Hapus
-                    </button>
-                </div>
+          <div class="d-flex" style="z-index: 1"><img class="align-self-center img-fluid img-80 rounded-3" src="../assets/images/ecommerce/product-table-6.png" alt="#">
+            <div class="flex-grow-1 ms-3">
+              <div class="product-name mb-1">
+                <h4><a href="#">lorem ipsum</a>
+                </h4>
+            </div> 
+              <p class="text-muted m-0" style="width: 80%">Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
+              <div class="rating"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></div>
             </div>
+          </div>
         </div>
-        <div class="col-xl-3 col-sm-6 box-col-3">
-            <div class="card features-faq product-box">
-                <div class="faq-image product-img"><img class="img-fluid" src="../assets/images/faq/4.jpg" alt="">
-                </div>
-                <div class="card-body">
-                    <small>20 Februari 2024</small>
-                    <h6>UX Design</h6>
-                    <p>User Experience design (UX) is the design for machines and software, such as mobile devices,
-                        computers.</p>
-                </div>
-                <div class="d-flex justify-content-end gap-2 py-3 px-3">
-                    <button type="button" class="btn btn-primary btn-edit">
-                        Edit
-                    </button>
-                    <button class="btn-delete btn btn-danger">
-                        Hapus
-                    </button>
-                </div>
+      </div>
+      <div class="col-xxl-4 col-md-6">
+        <div class="prooduct-details-box">  
+            <div class="position-absolute start-3 mt-2" style="z-index: 2">
+                <p class="bg-primary px-4 py-1" style="font-size: 10px">Magang</p>    
+            </div>                               
+            <div class="onhover-dropdown bg-light text-primary py-1 px-2 rounded-3 position-absolute end-0 me-4 mt-2" style=" z-index: 3;">
+                <i class="fa-solid fa-gear"></i>
+              <ul class="onhover-show-div left-dropdown">
+                <li><a class="dropdown-item text-primary" href="#" data-bs-toggle="modal" data-bs-target="#editModal"><i class="fas fa-edit"></i></a></li>
+                <li><a class="dropdown-item text-danger" href="#" data-bs-toggle="modal" data-bs-target="#deleteModal"><i class="fas fa-trash-alt"></i></a></li>
+              </ul>
             </div>
+          <div class="d-flex" style="z-index: 1"><img class="align-self-center img-fluid img-80 rounded-3" src="../assets/images/ecommerce/product-table-6.png" alt="#">
+            <div class="flex-grow-1 ms-3">
+              <div class="product-name mb-1">
+                <h4><a href="#">lorem ipsum</a>
+                </h4>
+            </div> 
+              <p class="text-muted m-0" style="width: 80%">Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
+              <div class="rating"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></div>
+            </div>
+          </div>
         </div>
+      </div>
     </div>
+</div>
 
     <!-- Add Modal -->
     <div class="modal fade modal-bookmark" id="tambah" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
