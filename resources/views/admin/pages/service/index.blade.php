@@ -24,7 +24,7 @@
 @section('content')
     <div class="row">
         @foreach (range(0, 10) as $item)
-            <div class="col-xl-3 col-sm-6">
+            <div class="col-xxl-3 col-md-4 col-sm-6">
                 <div class="card border-0 shadow rounded">
                     <img src="https://fakeimg.pl/1920x1080" alt="Milink" class="rounded-top card-img-thumbnail" />
                     <div class="card-header text-center h4 border-bottom"
