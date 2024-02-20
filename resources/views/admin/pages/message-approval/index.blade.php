@@ -68,7 +68,7 @@
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Edit Mitra</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Detail Approval</h5>
                     <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <form class="form-bookmark needs-validation" action="#" method="POST" id="bookmark-form" novalidate=""
@@ -76,30 +76,25 @@
                     <div class="modal-body">
                         <div class="row g-2">
                             <div class="mb-3 mt-0 col-md-12">
-                                <label for="bm-title">Nama Mitra</label>
-                                <input class="form-control" type="text" required="" autocomplete="name">
+                                <label for="bm-title">Nama</label>
+                                <p class="ms-2 text-muted" >AGDTS</p>
                             </div>
                             <div class="mb-3 mt-0 col-md-12">
-                                <label>Kategori</label>
-                                <select class="js-example-basic-single" aria-label=".form-select example">
-                                    <option selected="">What's Your Hobbies </option>
-                                    <option value="1">Kho-kho</option>
-                                    <option value="2">Reading Books</option>
-                                    <option value="3">Creativity</option>
-                                </select>
+                                <label for="bm-title">Email</label>
+                                <p class="ms-2 text-muted">agdts@gmail.com</p>
                             </div>
                             <div class="mb-3 mt-0 col-md-12">
-                                <label for="bm-title">Foto</label>
-                                <input class="form-control" id="formFile" type="file">
+                                <label for="bm-title">Pesan</label>
+                                <p class="ms-2 text-muted">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque odio repellat velit cupiditate excepturi ipsam.</p>
                             </div>
                         </div>
                     </div>
-                    <div class="modal-footer">
+                    <div class="modal-footer border-0 mt-3 ms-2">
                         <div class="d-flex justify-content-end">
-                            <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">Cancel</button>
-                            <button class="btn btn-primary" type="submit">Perbarui</button>
+                            <button class="btn btn-danger" type="button" data-bs-dismiss="modal">Tutup</button>
                         </div>
                     </div>
+
                 </form>
             </div>
         </div>
