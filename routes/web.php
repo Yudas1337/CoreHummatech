@@ -109,6 +109,23 @@ Route::get('/message-approval', function () {
 Route::get('setting/profile', function() {
     return view('admin.pages.setting.profile.index');
 });
+Route::get('/sale', function () {
+    return view('admin.pages.sale.index');
+});
+Route::get('/sale/detail', function () {
+    return view('admin.pages.sale.detail');
+});
+
+Route::get('/setting/vision-mision', function () {
+    return view('admin.pages.vision-mision.index');
+});
+
+Route::get('/setting/vision-mision/create', function () {
+    return view('admin.pages.vision-mision.add');
+});
+Route::get('/setting/vision-mision/edit', function () {
+    return view('admin.pages.vision-mision.edit');
+});
 
 Auth::routes();
 

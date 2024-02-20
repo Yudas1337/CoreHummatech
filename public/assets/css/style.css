@@ -29364,12 +29364,9 @@ footer {
   margin: 0 auto 25px;
   border-radius: 50%;
 }
-.pricingtable .price-value .duration {
-  margin: 0 0 0 -5px;
-}
 .pricingtable .price-value .amount {
-  font-size: 58px;
-  font-weight: 700;
+  font-size: 20px;
+  font-weight: 500;
   line-height: 45px;
   display: inline-block;
 }

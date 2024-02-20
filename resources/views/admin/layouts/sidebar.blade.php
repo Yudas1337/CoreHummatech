@@ -58,7 +58,7 @@
                 <a href="/service">Layanan</a>
             </li>
             <li>
-                <a href="#">Penjualan</a>
+                <a href="/sale">Penjualan</a>
             </li>
             <li>
                 <a href="#">Galeri</a>
@@ -162,7 +162,7 @@
                 <a href="/setting/profile">Profile</a>
             </li>
             <li>
-                <a href="#">Visi & Misi</a>
+                <a href="/setting/vision-mision">Visi & Misi</a>
             </li>
             <li>
                 <a href="/terms-condition">Syarat & Ketentuan</a>
