@@ -23,7 +23,7 @@
 
 @section('content')
     <div class="table-responsive user-datatable custom-scrollbar">
-        <table class="display" id="basic-1">
+        <table class="display table table-striped">
             <thead>
                 <tr class="bg-primary text-white">
                     <th class="text-white w-25">No</th>
