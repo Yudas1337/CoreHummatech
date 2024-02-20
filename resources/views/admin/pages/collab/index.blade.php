@@ -35,7 +35,45 @@
                             <div class="d-flex gap-3 justify-content-start">
                                 <img src="{{ asset('assets/images/avtar/11.jpg') }}" class="rounded" width="110px" alt="">
                                 <div class="">
-                                    <span class="badge" style="">Sekolah</span>
+                                    <span class="badge" style="background-color: #E8FFEE; color: #008000">Perusahaan</span>
+                                    <p class="my-3" style="font-size: 13px">PT. Pama Persada</p>
+                                    <div class="mt-2">
+                                        <button class="btn btn-primary btn-xs mt-2">Edit</button>
+                                        <button class="btn btn-danger btn-xs mt-2">Hapus</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-3 col-xl-4">
+                <div class="card border-0 shadow rounded">
+                    <div class="card-body">
+                        <div class="d-flex flex-column">
+                            <div class="d-flex gap-3 justify-content-start">
+                                <img src="{{ asset('assets/images/avtar/11.jpg') }}" class="rounded" width="110px" alt="">
+                                <div class="">
+                                    <span class="badge" style="background-color: #EAF3FF; color: #307EF3">Pemerintahan</span>
+                                    <p class="my-3" style="font-size: 13px">Pemerintah Kab.Wonogiri</p>
+                                    <div class="mt-2">
+                                        <button class="btn btn-primary btn-xs mt-2">Edit</button>
+                                        <button class="btn btn-danger btn-xs mt-2">Hapus</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-3 col-xl-4">
+                <div class="card border-0 shadow rounded">
+                    <div class="card-body">
+                        <div class="d-flex flex-column">
+                            <div class="d-flex gap-3 justify-content-start">
+                                <img src="{{ asset('assets/images/avtar/11.jpg') }}" class="rounded" width="110px" alt="">
+                                <div class="">
+                                    <span class="badge" style="background-color: #FFF8EA; color: #FFAA05">Sekolah</span>
                                     <p class="my-3" style="font-size: 13px">Smk Negeri 1 Malang</p>
                                     <div class="mt-2">
                                         <button class="btn btn-primary btn-xs mt-2">Edit</button>
