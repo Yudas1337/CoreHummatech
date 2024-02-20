@@ -171,7 +171,7 @@
         </a>
         <ul class="sidebar-submenu">
             <li>
-                <a href="/profil">Approval Pesan </a>
+                <a href="/message-approval">Approval Pesan </a>
             </li>
             <li>
                 <a href="/social-media">Sosial Media</a>

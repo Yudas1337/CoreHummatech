@@ -32,7 +32,7 @@
                         <td class="d-flex gap-2 align-items-center">
                             <a href="#" class="btn btn-success">Terima</a>
                             <a href="#" class="btn btn-danger">Tolak</a>
-                            <button type="button" data-bs-toggle="modal" data-bs-target="#edit" class="btn btn-primary"><i class="fa fa-eye"></i></button>
+                            <button type="button" data-bs-toggle="modal" data-bs-target="#edit" class="btn btn-primary px-3"><i class="fa fa-eye"></i></button>
                         </td>
                     </tr>
                     <tr>
@@ -43,7 +43,7 @@
                         <td class="d-flex gap-2 align-items-center">
                             <a href="#" class="btn btn-success">Terima</a>
                             <a href="#" class="btn btn-danger">Tolak</a>
-                            <button type="button" data-bs-toggle="modal" data-bs-target="#edit" class="btn btn-primary"><i class="fa fa-eye"></i></button>
+                            <button type="button" data-bs-toggle="modal" data-bs-target="#edit" class="btn btn-primary px-3"><i class="fa fa-eye"></i></button>
                         </td>
                     </tr>
                     <tr>
@@ -54,7 +54,7 @@
                         <td class="d-flex gap-2 align-items-center">
                             <a href="#" class="btn btn-success">Terima</a>
                             <a href="#" class="btn btn-danger">Tolak</a>
-                            <button type="button" data-bs-toggle="modal" data-bs-target="#edit" class="btn btn-primary"><i class="fa fa-eye"></i></button>
+                            <button type="button" data-bs-toggle="modal" data-bs-target="#edit" class="btn btn-primary px-3"><i class="fa fa-eye"></i></button>
                         </td>
                     </tr>
                 </tbody>
