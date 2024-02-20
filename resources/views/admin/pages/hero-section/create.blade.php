@@ -49,7 +49,7 @@
 
 @section('content')
     <div class="d-flex mb-3">
-        <a href="/news" class="btn btn-light">Kembali</a>
+        <a href="{{ url('/hero-section') }}" class="btn btn-light">Kembali</a>
     </div>
 
     <div class="card card-body">
