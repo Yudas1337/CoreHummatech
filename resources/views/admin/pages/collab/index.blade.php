@@ -1,12 +1,12 @@
 @extends('admin.layouts.app')
 
 @section('content')
-<style>
-    .btn-xs {
-        padding: 3px 6px;
-        font-size: 10px;
-    }
-</style>
+    <style>
+        .btn-xs {
+            padding: 3px 6px;
+            font-size: 10px;
+        }
+    </style>
     <div class=" p-1">
         <div class="card border-0 shadow p-3 mt-3">
             <div class="row">
@@ -28,19 +28,57 @@
     </div>
     <div class="col-lg-12">
         <div class="row">
-            <div class="col-xl-3 col-sm-6">
+            <div class="col-12 col-md-6 col-lg-4 col-xl-4">
                 <div class="card border-0 shadow rounded">
                     <div class="card-body">
-                        <div class="d-flex gap-3">
-                            <div class="d-flex align-items-center justify-content-start">
-                                <img src="{{ asset('assets/images/avtar/11.jpg') }}" width="80px" class="rounded" alt="" srcset="">
+                        <div class="d-flex flex-column">
+                            <div class="d-flex gap-3 justify-content-start">
+                                <img src="{{ asset('assets/images/avtar/11.jpg') }}" class="rounded" width="110px" alt="">
+                                <div class="">
+                                    <span class="badge badge-info">Info</span>
+                                    <h5 class="my-3">Smk Negeri 1 Malang</h5>
+                                    <div class="d-flex gap-2 mt-2">
+                                        <button class="btn btn-primary btn-sm">Edit</button>
+                                        <button class="btn btn-danger btn-sm">Hapus</button>
+                                    </div>
+                                </div>
                             </div>
-                            <div>
-                                <span class="badge badge-info">Sekolah</span>
-                                <p class="mt-2 mb-0 text-truncate " style="">SMK Negeri 1 Banyuwangi</p>
-                                <div class="d-flex gap-2">
-                                    <button class="btn btn-primary btn-xs" data-bs-toggle="modal" data-bs-target="#edit" type="button">Edit</button>
-                                    <button class="btn btn-danger btn-xs" data-bs-toggle="modal" data-bs-target="#edit" type="button">Hapus</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-4 col-xl-4">
+                <div class="card border-0 shadow rounded">
+                    <div class="card-body">
+                        <div class="d-flex flex-column">
+                            <div class="d-flex gap-3 justify-content-start">
+                                <img src="{{ asset('assets/images/avtar/11.jpg') }}" class="rounded" width="110px" alt="">
+                                <div class="">
+                                    <span class="badge badge-info">Info</span>
+                                    <h5 class="my-3">Smk Negeri 1 Malang</h5>
+                                    <div class="d-flex gap-2 mt-2">
+                                        <button class="btn btn-primary btn-sm">Edit</button>
+                                        <button class="btn btn-danger btn-sm">Hapus</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-4 col-xl-4">
+                <div class="card border-0 shadow rounded">
+                    <div class="card-body">
+                        <div class="d-flex flex-column">
+                            <div class="d-flex gap-3 justify-content-start">
+                                <img src="{{ asset('assets/images/avtar/11.jpg') }}" class="rounded" width="110px" alt="">
+                                <div class="">
+                                    <span class="badge badge-info">Info</span>
+                                    <h5 class="my-3">Smk Negeri 1 Malang</h5>
+                                    <div class="d-flex gap-2 mt-2">
+                                        <button class="btn btn-primary btn-sm">Edit</button>
+                                        <button class="btn btn-danger btn-sm">Hapus</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
