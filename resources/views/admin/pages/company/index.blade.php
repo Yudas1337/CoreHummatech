@@ -176,10 +176,10 @@
         <li class="page-item">
             <a href="#" class="page-link"><i class="fas fa-arrow-left"></i></a>
         </li>
-        @foreach (range(0,4) as $i)
-        <li class="page-item">
-            <a href="#" class="page-link {{ $i+1 !== 1 ?: 'active' }}">{{ $i+1 }}</a>
-        </li>
+        @foreach (range(0, 4) as $i)
+            <li class="page-item">
+                <a href="#" class="page-link {{ $i + 1 !== 1 ?: 'active' }}">{{ $i + 1 }}</a>
+            </li>
         @endforeach
         <li class="page-item">
             <a href="#" class="page-link"><i class="fas fa-arrow-right"></i></a>
@@ -199,9 +199,14 @@
                 <input class="form-control mb-0" type="text" name="products[]"
                     required="" autocomplete="name"
                     placeholder="Mis: Website Development" />
-                <button onclick="deleteElement('${idInput}')" type="button" class="btn px-3 mt-0 btn-danger"><i
+                <button onclick="deleteElement('${idInput}')" type="button" class="btn delete-trigger px-3 mt-0 btn-danger"><i
                         class="fas fa-trash"></i></button>
             </div>`);
+            });
+
+            $('.btn-close').click((e) => {
+                let target = $(e.target).parent('.modal').find('.delete-trigger');
+                target.each((i, el) => $(el).click());
             });
         })();
     </script>
