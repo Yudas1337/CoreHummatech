@@ -1,7 +1,7 @@
 <ul class="sidebar-links" id="simple-bar">
     <li class="back-btn">
         <a href="index.html">
-            <img class="img-fluid" src="{{asset("assets/images/logo/logo-icon.png")}}" alt="">
+            <img class="img-fluid" src="{{ asset('assets/images/logo/logo-icon.png') }}" alt="">
         </a>
         <div class="mobile-back text-end">
             <span>Back</span>
@@ -64,7 +64,7 @@
                 <a href="#">Galeri</a>
             </li>
         </ul>
-      </li>
+    </li>
     <li class="sidebar-list">
         <i class="fa fa-thumb-tack"></i>
         <a class="sidebar-link sidebar-title link-nav" href="/product">
@@ -78,24 +78,24 @@
         </a>
     </li>
     <li class="sidebar-list">
-      <i class="fa fa-thumb-tack"></i>
-      <a class="sidebar-link sidebar-title" href="#">
-          <svg class="stroke-icon">
-              <use href="{{ asset('assets/svg/icon-sprite.svg#stroke-learning') }}"></use>
-          </svg>
-          <svg class="fill-icon">
-              <use href="{{ asset('assets/svg/icon-sprite.svg#fill-learning') }}"></use>
-          </svg>
-          <span>Mitra</span>
-      </a>
-      <ul class="sidebar-submenu">
-          <li>
-              <a href="/category-collab">Kategori</a>
-          </li>
-          <li>
-              <a href="/collab">Mitra</a>
-          </li>
-      </ul>
+        <i class="fa fa-thumb-tack"></i>
+        <a class="sidebar-link sidebar-title" href="#">
+            <svg class="stroke-icon">
+                <use href="{{ asset('assets/svg/icon-sprite.svg#stroke-learning') }}"></use>
+            </svg>
+            <svg class="fill-icon">
+                <use href="{{ asset('assets/svg/icon-sprite.svg#fill-learning') }}"></use>
+            </svg>
+            <span>Mitra</span>
+        </a>
+        <ul class="sidebar-submenu">
+            <li>
+                <a href="/category-collab">Kategori</a>
+            </li>
+            <li>
+                <a href="/collab">Mitra</a>
+            </li>
+        </ul>
     </li>
     <li class="sidebar-main-title">
         <div>
