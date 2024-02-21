@@ -1,5 +1,58 @@
 @extends('admin.layouts.app')
 
+@section('header-style')
+    <style>
+        #datatable .table th {
+            background: #36405E;
+            color: white;
+        }
+
+        #datatable .table tr:nth-of-type(odd) td {
+            background: #F0F0F0 !important;
+        }
+
+        #datatable .table tr:nth-of-type(even) td {
+            background: #FFF !important;
+        }
+
+        #datatable .table tr:nth-of-type(even) .sorting_1 {
+            background: #FAFAFA !important;
+        }
+
+        #datatable .table tr:nth-of-type(odd) .sorting_1 {
+            background: #F0F0F0 !important;
+        }
+
+        .dark-only #datatable .table tr:nth-of-type(odd) .sorting_1,
+        .dark-only #datatable .table tr:nth-of-type(odd) td {
+            background: none !important;
+            color: white !important;
+        }
+
+        .dark-only #datatable tr td {
+            border-color: rgba(var(--bs-white-rgb), .25) !important;
+        }
+
+        .dark-only #datatable .table tr:nth-of-type(even) td {
+            color: white !important;
+            background: rgba(var(--bs-white-rgb), .125) !important;
+        }
+
+        .dark-only #datatable .table tr:nth-of-type(odd) .sorting_1,
+        .dark-only #datatable .table tr:nth-of-type(even) .sorting_1 {
+            background: rgba(var(--bs-white-rgb), .15) !important;
+        }
+
+        .dark-only #datatable .dataTables_paginate {
+            border-color: rgba(var(--bs-white-rgb), .15);
+        }
+        .dark-only #datatable .paginate_button,
+        .dark-only #datatable .dataTables_info {
+            color:rgba(var(--bs-white-rgb), 1) !important;
+        }
+    </style>
+@endsection
+
 @section('subcontent')
     <div class=" p-1">
         <div class="card border-0 shadow p-3 mt-3">
@@ -22,22 +75,21 @@
 @endsection
 
 @section('content')
-    <div class="table-responsive">
-        <table class="table-striped table" id="table-datatable">
+    <div class="table-responsive custom-scrollbar" id="datatable">
+        <table class="table table-striped display">
             <thead>
-                <tr class="bg-primary text-white">
-                    <th class="text-white w-25">No</th>
-                    <th class="text-white w-50">Nama Kategori</th>
-                    <th class="text-white w-25">Aksi</th>
+                <tr>
+                    <th class="w-25">No</th>
+                    <th class="w-75">Nama</th>
+                    <th class="text-end w-25">Aksi</th>
                 </tr>
             </thead>
-
             <tbody>
                 <tr>
                     <td>1</td>
                     <td>Lorem</td>
                     <td>
-                        <div class="d-flex gap-2 align-items-center">
+                        <div class="d-flex gap-2">
                             @include('admin.pages.news-category.edit')
                             @include('admin.pages.news-category.delete')
                         </div>
@@ -47,7 +99,7 @@
                     <td>2</td>
                     <td>Ipsum</td>
                     <td>
-                        <div class="d-flex gap-2 align-items-center">
+                        <div class="d-flex gap-2">
                             @include('admin.pages.news-category.edit')
                             @include('admin.pages.news-category.delete')
                         </div>
@@ -57,7 +109,7 @@
                     <td>3</td>
                     <td>Dolor</td>
                     <td>
-                        <div class="d-flex gap-2 align-items-center">
+                        <div class="d-flex gap-2">
                             @include('admin.pages.news-category.edit')
                             @include('admin.pages.news-category.delete')
                         </div>
@@ -67,7 +119,7 @@
                     <td>4</td>
                     <td>Sit</td>
                     <td>
-                        <div class="d-flex gap-2 align-items-center">
+                        <div class="d-flex gap-2">
                             @include('admin.pages.news-category.edit')
                             @include('admin.pages.news-category.delete')
                         </div>
@@ -77,7 +129,17 @@
                     <td>5</td>
                     <td>Amet</td>
                     <td>
-                        <div class="d-flex gap-2 align-items-center">
+                        <div class="d-flex gap-2">
+                            @include('admin.pages.news-category.edit')
+                            @include('admin.pages.news-category.delete')
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Constecteur</td>
+                    <td>
+                        <div class="d-flex gap-2">
                             @include('admin.pages.news-category.edit')
                             @include('admin.pages.news-category.delete')
                         </div>
@@ -86,64 +148,16 @@
             </tbody>
         </table>
     </div>
+@endsection
 
-
-    {{-- <div class="row">
-        <div class="col-xl-3 col-sm-6">
-            <div class="card border-0 shadow rounded">
-                <div class="card-body">
-                    <div class="text-center mt-3">
-                        <h3 class="mt-2 mb-0">Sekolah</h3>
-                    </div>
-                    <div class="mt-3 d-flex justify-content-center gap-2">
-                        <button class="btn btn-primary btn-edit" data-bs-toggle="modal" data-bs-target="#edit"
-                            type="button">Edit</button>
-                        <button class="btn btn-danger btn-edit" type="button">Hapus</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-xl-3 col-sm-6">
-            <div class="card border-0 shadow rounded">
-                <div class="card-body">
-                    <div class="text-center mt-3">
-                        <h3 class="mt-2 mb-0">Universitas</h3>
-                    </div>
-                    <div class="mt-3 d-flex justify-content-center gap-2">
-                        <button class="btn btn-primary btn-edit" data-bs-toggle="modal" data-bs-target="#edit"
-                            type="button">Edit</button>
-                        <button class="btn btn-danger btn-edit" type="button">Hapus</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-xl-3 col-sm-6">
-            <div class="card border-0 shadow rounded">
-                <div class="card-body">
-                    <div class="text-center mt-3">
-                        <h3 class="mt-2 mb-0">Pemerintah</h3>
-                    </div>
-                    <div class="mt-3 d-flex justify-content-center gap-2">
-                        <button class="btn btn-primary btn-edit" data-bs-toggle="modal" data-bs-target="#edit"
-                            type="button">Edit</button>
-                        <button class="btn btn-danger btn-edit" type="button">Hapus</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-xl-3 col-sm-6">
-            <div class="card border-0 shadow rounded">
-                <div class="card-body">
-                    <div class="text-center mt-3">
-                        <h3 class="mt-2 mb-0">Company</h3>
-                    </div>
-                    <div class="mt-3 d-flex justify-content-center gap-2">
-                        <button class="btn btn-primary btn-edit" data-bs-toggle="modal" data-bs-target="#edit"
-                            type="button">Edit</button>
-                        <button class="btn btn-danger btn-edit" type="button">Hapus</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> --}}
+@section('script')
+    <script>
+        $('#datatable table').DataTable({
+            searching: false,
+            columnDefs: [{
+                targets: 2,
+                sortable: false
+            }]
+        });
+    </script>
 @endsection

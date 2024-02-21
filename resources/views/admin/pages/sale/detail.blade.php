@@ -38,7 +38,7 @@
                     <h3>Paket yang Tersedia</h3>
                     <div class="p-5">
                         <div class="row pricing-col">
-                            @foreach (range(0, 5) as $item)
+                            @foreach (range(0, 2) as $item)
                                 <div class="col-lg-4 col-sm-6 box-col-3 mt-4">
                                     <div class="pricingtable">
                                         <div class="pricingtable-header">
@@ -63,6 +63,15 @@
                                     </div>
                                 </div>
                             @endforeach
+                        </div>
+                        <div class="d-flex justify-content-center mt-2">
+                            <ul class="pagination pagination-primary pagin-border-primary">
+                                <li class="page-item disabled"><a class="page-link" href="javascript:void(0)" tabindex="-1">Previous</a></li>
+                                <li class="page-item"><a class="page-link" href="javascript:void(0)">1</a></li>
+                                <li class="page-item active"><a class="page-link" href="javascript:void(0)">2 <span class="sr-only">(current)</span></a></li>
+                                <li class="page-item"><a class="page-link" href="javascript:void(0)">3</a></li>
+                                <li class="page-item"><a class="page-link" href="javascript:void(0)">Next</a></li>
+                              </ul>
                         </div>
                     </div>
                 </div>
