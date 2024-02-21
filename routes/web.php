@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\BranchController;
 use App\Http\Controllers\CategoryNewsController;
+use App\Http\Controllers\SaleController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -107,12 +108,6 @@ Route::get('/message-approval', function () {
 Route::get('setting/profile', function() {
     return view('admin.pages.setting.profile.index');
 });
-Route::get('/sale', function () {
-    return view('admin.pages.sale.index');
-});
-Route::get('/sale/detail', function () {
-    return view('admin.pages.sale.detail');
-});
 
 Route::get('/setting/vision-mision', function () {
     return view('admin.pages.vision-mision.index');
@@ -133,7 +128,6 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 // category news berita
@@ -148,3 +142,5 @@ Route::get('branch' , [BranchController::class ,'index']);
 Route::post('branch/create/' ,[BranchController::class ,'store']);
 Route::delete('brach/delete/{branch}' , [BranchController::class ,'destroy']);
 // end branch
+
+Route::resource('sale', SaleController::class);

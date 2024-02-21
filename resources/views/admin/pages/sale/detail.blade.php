@@ -1,5 +1,9 @@
 @extends('admin.layouts.app')
-
+@section('subcontent')
+<div class="py-3 my-3">
+    <a href="{{ route('sale.index') }}" class="btn btn-light"><i class="fas fa-arrow-left"></i> Kembali</a>
+</div>
+@endsection
 @section('content')
     <style>
         .btn-xs {
@@ -12,25 +16,18 @@
         <div class="card mt-3">
             <div class="d-flex justify-content-end p-2 mb-0">
                 <button class="btn btn-primary btn-sm" type="button" data-bs-toggle="modal"
-                    data-bs-target="#tambah">Tambah</button>
+                    data-bs-target="#tambah">Tambah paket</button>
             </div>
             <div class="card-body">
                 <div class="p-0">
                     <div class="d-flex gap-1">
                         <div>
-                            <img src="https://fakeimg.pl/300x300" alt="Milink.id" class="rounded-4" width="300px" />
+                            <img src="{{ asset('storage/'.$sale->image) }}" alt="{{ $sale->name }}" class="rounded-4" width="300px" />
                         </div>
                         <div class="px-3">
-                            <h1 class="mt-3">PKL / Magang</h1>
-                            <p class="">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Obcaecati
-                                reiciendis in sed, libero iusto maxime amet voluptatibus qui vero consequuntur non
-                                doloremque temporibus molestiae iure placeat enim perferendis. Tempore quasi nihil
-                                distinctio consectetur. Error consequuntur possimus, est dolor corrupti praesentium? Nam,
-                                ratione. Ipsam, enim rerum! Placeat fugit consectetur beatae nesciunt quae omnis accusamus?
-                                Sapiente omnis accusamus ipsum debitis saepe numquam eligendi nostrum quo aspernatur ad
-                                molestias fuga!
-                            </p>
-                            <a href="#" class="m-0">https://milink.id</a>
+                            <h1 class="mt-3">{{ $sale->name }}</h1>
+                            <p>{{ $sale->description }}</p>
+                            <a href="{{ $sale->proposal }}" class="m-0">{{ $sale->proposal }}</a>
                         </div>
                     </div>
                 </div>
