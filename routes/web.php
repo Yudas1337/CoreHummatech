@@ -98,6 +98,10 @@ Route::get('/service', function () {
     return view('admin.pages.service.index');
 });
 
+Route::get('/faq', function () {
+    return view('admin.pages.faq.index');
+});
+
 Route::get('/service/detail', function () {
     return view('admin.pages.service.detail');
 });

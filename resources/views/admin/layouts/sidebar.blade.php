@@ -168,7 +168,7 @@
                 <a href="/terms-condition">Syarat & Ketentuan</a>
             </li>
             <li>
-                <a href="#">FAQ</a>
+                <a href="/faq">FAQ</a>
             </li>
             <li>
                 <a href="#">Struktur usaha</a>
@@ -198,56 +198,4 @@
             </li>
         </ul>
     </li>
-    {{-- <li class="sidebar-main-title">
-        <div>
-            <h6>Menu Example</h6>
-        </div>
-    </li>
-    <li class="sidebar-list">
-        <i class="fa fa-thumb-tack"></i>
-        <a class="sidebar-link sidebar-title" href="#">
-            <svg class="stroke-icon">
-                <use href="{{asset("assets/svg/icon-sprite.svg#stroke-layout")}}"></use>
-            </svg>
-            <svg class="fill-icon">
-                <use href="{{asset("assets/svg/icon-sprite.svg#fill-layout")}}"></use>
-            </svg>
-            <span class="lan-7">Dropdown Example</span>
-        </a>
-        <ul class="sidebar-submenu">
-            <li>
-                <a href="box-layout.html">Boxed</a>
-            </li>
-            <li>
-                <a href="layout-rtl.html">RTL</a>
-            </li>
-            <li>
-                <a href="layout-dark.html">Dark Layout</a>
-            </li>
-            <li>
-                <a href="hide-on-scroll.html">Hide Nav Scroll</a>
-            </li>
-            <li>
-                <a href="footer-light.html">Footer Light</a>
-            </li>
-            <li>
-                <a href="footer-dark.html">Footer Dark</a>
-            </li>
-            <li>
-                <a href="footer-fixed.html">Footer Fixed</a>
-            </li>
-        </ul>
-    </li>
-    <li class="sidebar-list">
-        <i class="fa fa-thumb-tack"></i>
-        <a class="sidebar-link sidebar-title link-nav" href="file-manager.html">
-            <svg class="stroke-icon">
-                <use href="{{asset("assets/svg/icon-sprite.svg#stroke-file")}}"></use>
-            </svg>
-            <svg class="fill-icon">
-                <use href="{{asset("assets/svg/icon-sprite.svg#fill-file")}}"></use>
-            </svg>
-            <span>Example</span>
-        </a>
-    </li> --}}
 </ul>
