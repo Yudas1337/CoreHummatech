@@ -30,44 +30,25 @@
     </div>
 @endsection
 @section('content')
-<div class="card-body mb-5">
-    <div class="row g-sm-4 g-3">
-      <div class="col-xxl-4 col-md-6">
-        <div class="prooduct-details-box">
-            <div class="position-absolute start-3 mt-2" style="z-index: 2">
-                <p class="bg-primary px-4 py-1" style="font-size: 10px">Magang</p>
-            </div>
-            <div class="onhover-dropdown bg-light text-primary py-1 px-2 rounded-3 position-absolute end-0 me-4 mt-2" style=" z-index: 3;">
-                <i class="fa-solid fa-gear"></i>
-              <ul class="onhover-show-div left-dropdown">
-                <li><a class="dropdown-item text-primary" href="#" data-bs-toggle="modal" data-bs-target="#edit"><i class="fas fa-edit"></i></a></li>
-                <li><a class="dropdown-item text-danger" href="#" data-bs-toggle="modal" data-bs-target="#deleteModal"><i class="fas fa-trash-alt"></i></a></li>
-              </ul>
-            </div>
-          <div class="d-flex" style="z-index: 1"><img class="align-self-center img-fluid img-80 rounded-3" src="../assets/images/ecommerce/product-table-6.png" alt="#">
-            <div class="flex-grow-1 ms-3">
-              <div class="product-name mb-1">
-                <h4><a href="#">lorem ipsum</a>
-                </h4>
-            </div>
-              <p class="text-muted m-0" style="width: 80%">Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
-              <div class="rating"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></div>
-            </div>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-12 col-xl-6">
+      <div class="card">
+        <div class="card-header" style="width: 100%; background: none; margin-bottom: -20px">
+          <div class="col-sm-3 position-absolute top-0 start-0">
+            <p class="bg-primary px-3 py-1 text-light" style="border-radius: 5px 0 0 0; font-size: 12px">Magang</p>
+          </div>
+          <div class="card-header-right">
+            <ul class="list-unstyled card-option" style="text-align:center">
+              <li>
+                <div><i class="icon-settings fa-solid fa-gear"></i></div>
+              </li>
+              <li><i class="fa fa-edit text-primary"type="button" data-bs-toggle="modal" data-bs-target="#edit"></i></li>
+              <li><i class="fa fa-trash text-primary"></i></li>
+            </ul>
           </div>
         </div>
-      </div>
-      <div class="col-xxl-4 col-md-6">
-        <div class="prooduct-details-box">
-            <div class="position-absolute start-3 mt-2" style="z-index: 2">
-                <p class="bg-primary px-4 py-1" style="font-size: 10px">Magang</p>
-            </div>
-            <div class="onhover-dropdown bg-light text-primary py-1 px-2 rounded-3 position-absolute end-0 me-4 mt-2" style=" z-index: 3;">
-                <i class="fa-solid fa-gear"></i>
-              <ul class="onhover-show-div left-dropdown">
-                <li><a class="dropdown-item text-primary" href="#" data-bs-toggle="modal" data-bs-target="#edit"><i class="fas fa-edit"></i></a></li>
-                <li><a class="dropdown-item text-danger" href="#" data-bs-toggle="modal" data-bs-target="#deleteModal"><i class="fas fa-trash-alt"></i></a></li>
-              </ul>
-            </div>
+        <div class="card-body">
           <div class="d-flex" style="z-index: 1"><img class="align-self-center img-fluid img-80 rounded-3" src="../assets/images/ecommerce/product-table-6.png" alt="#">
             <div class="flex-grow-1 ms-3">
               <div class="product-name mb-1">
@@ -75,157 +56,165 @@
                 </h4>
             </div>
               <p class="text-muted m-0" style="width: 80%">Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
-              <div class="rating"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-xxl-4 col-md-6">
-        <div class="prooduct-details-box">
-            <div class="position-absolute start-3 mt-2" style="z-index: 2">
-                <p class="bg-primary px-4 py-1" style="font-size: 10px">Magang</p>
-            </div>
-            <div class="onhover-dropdown bg-light text-primary py-1 px-2 rounded-3 position-absolute end-0 me-4 mt-2" style=" z-index: 3;">
-                <i class="fa-solid fa-gear"></i>
-              <ul class="onhover-show-div left-dropdown">
-                <li><a class="dropdown-item text-primary" href="#" data-bs-toggle="modal" data-bs-target="#edit"><i class="fas fa-edit"></i></a></li>
-                <li><a class="dropdown-item text-danger" href="#" data-bs-toggle="modal" data-bs-target="#deleteModal"><i class="fas fa-trash-alt"></i></a></li>
-              </ul>
-            </div>
-          <div class="d-flex" style="z-index: 1"><img class="align-self-center img-fluid img-80 rounded-3" src="../assets/images/ecommerce/product-table-6.png" alt="#">
-            <div class="flex-grow-1 ms-3">
-              <div class="product-name mb-1">
-                <h4><a href="#">lorem ipsum</a>
-                </h4>
-            </div>
-              <p class="text-muted m-0" style="width: 80%">Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
-              <div class="rating"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></div>
             </div>
           </div>
         </div>
       </div>
     </div>
+    <div class="col-sm-12 col-xl-6">
+      <div class="card">
+        <div class="card-header" style="width: 100%; background: none; margin-bottom: -20px">
+          <div class="col-sm-3 position-absolute top-0 start-0">
+            <p class="bg-primary px-3 py-1 text-light" style="border-radius: 5px 0 0 0; font-size: 12px">Magang</p>
+          </div>
+          <div class="card-header-right">
+            <ul class="list-unstyled card-option" style="text-align:center">
+              <li>
+                <div><i class="icon-settings fa-solid fa-gear"></i></div>
+              </li>
+              <li><i class="fa fa-edit text-primary"type="button" data-bs-toggle="modal" data-bs-target="#edit"></i></li>
+              <li><i class="fa fa-trash text-primary"></i></li>
+            </ul>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="d-flex" style="z-index: 1"><img class="align-self-center img-fluid img-80 rounded-3" src="../assets/images/ecommerce/product-table-6.png" alt="#">
+            <div class="flex-grow-1 ms-3">
+              <div class="product-name mb-1">
+                <h4><a href="#">lorem ipsum</a>
+                </h4>
+            </div>
+              <p class="text-muted m-0" style="width: 80%">Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-12 col-xl-6">
+      <div class="card">
+        <div class="card-header" style="width: 100%; background: none; margin-bottom: -20px">
+          <div class="col-sm-3 position-absolute top-0 start-0">
+            <p class="bg-primary px-3 py-1 text-light" style="border-radius: 5px 0 0 0; font-size: 12px">Magang</p>
+          </div>
+          <div class="card-header-right">
+            <ul class="list-unstyled card-option" style="text-align:center">
+              <li>
+                <div><i class="icon-settings fa-solid fa-gear"></i></div>
+              </li>
+              <li><i class="fa fa-edit text-primary"type="button" data-bs-toggle="modal" data-bs-target="#edit"></i></li>
+              <li><i class="fa fa-trash text-primary"></i></li>
+            </ul>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="d-flex" style="z-index: 1"><img class="align-self-center img-fluid img-80 rounded-3" src="../assets/images/ecommerce/product-table-6.png" alt="#">
+            <div class="flex-grow-1 ms-3">
+              <div class="product-name mb-1">
+                <h4><a href="#">lorem ipsum</a>
+                </h4>
+            </div>
+              <p class="text-muted m-0" style="width: 80%">Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
 </div>
 
     <!-- Add Modal -->
-    <div class="modal fade modal-bookmark" id="tambah" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title fw-semibold" id="exampleModalLabel">Tambah Testimoni</h5>
-                <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <form class="form-bookmark needs-validation" action="#" method="POST" id="bookmark-form" novalidate=""
-                enctype="multipart/form-data">
-                <div class="modal-body">
-                    <div class="row g-2">
-                        <div class="mb-3 mt-0 col-md-12">
-                            <label for="bm-title">Nama Lengkap</label>
-                            <input class="form-control" type="text" required="" autocomplete="name" placeholder="Masukkan nama">
-                        </div>
-                    </div>
-                    <div class="mb-3 mt-0 col-md-12">
-                        <label for="bm-title">Deskripsi</label>
-                        <textarea name="" id=""  rows="4" class="form-control" placeholder="Masukkan deskripsi"></textarea>
-                    </div>
-                    <div class="mb-3 mt-0 col-md-12">
-                        <label for="bm-title">Rating</label>
-                        <div class="rating">
-                            <i class="far fa-star" style="font-size: 24px; color: #FFAA05;"></i>
-                            <i class="far fa-star" style="font-size: 24px; color: #FFAA05;"></i>
-                            <i class="far fa-star" style="font-size: 24px; color: #FFAA05;"></i>
-                            <i class="far fa-star" style="font-size: 24px; color: #FFAA05;"></i>
-                            <i class="far fa-star" style="font-size: 24px; color: #FFAA05;"></i>
-                        </div>
-                    </div>
-
-                    <div class="col-sm-6">
-                        <label for="bm-title">Tampilkan di</label>
-                        <div class="card">
-                            <div class="card-body">
-                                <form>
-                                    <div class="form-group">
-                                        <input name="basic" class="tagify" value="tag1, tag2, tag3, tag4" autofocus>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="mb-3 mt-0 col-md-12">
-                        <label for="bm-title">Foto Testimoni</label>
-                        <input class="form-control" id="formFile" type="file">
-                    </div>
-                    <div class="d-flex justify-content-end gap-2">
-                        <button class="btn btn-secondary " type="button" data-bs-dismiss="modal">Batal</button>
-                        <button class="btn btn-primary " type="submit">Simpan</button>
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-
-    <!-- Edit Modal -->
-        <!-- Edit Modal -->
-        <div class="modal fade modal-bookmark" id="edit" tabindex="-1" role="dialog"
-        aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade modal-bookmark" id="tambah" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Edit Testimoni</h5>
+                    <h5 class="modal-title fw-semibold" id="exampleModalLabel">Tambah Testimoni</h5>
                     <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <form class="form-bookmark needs-validation" action="#" method="POST" id="bookmark-form" novalidate=""
-                enctype="multipart/form-data">
-                <div class="modal-body">
-                    <div class="row g-2">
-                        <div class="mb-3 mt-0 col-md-12">
-                            <label for="bm-title">Nama Lengkap</label>
-                            <input class="form-control" type="text" required="" autocomplete="name" value="Lorem Ipsum">
-                        </div>
-                    </div>
-                    <div class="mb-3 mt-0 col-md-12">
-                        <label for="bm-title">Deskripsi</label>
-                        <textarea name="" id=""  rows="4" class="form-control">Lorem ipsum dolor sit amet consectetur. Est aliquet etiam sit dignissim sit id id in risus lorem ornare sed pellentesque.</textarea>
-                    </div>
-                    <div class="mb-3 mt-0 col-md-12">
-                        <label for="bm-title">Rating</label>
-                        <div class="rating">
-                            <i class="fa fa-star" style="font-size: 24px; color: #FFAA05;"></i>
-                            <i class="fa fa-star" style="font-size: 24px; color: #FFAA05;"></i>
-                            <i class="fa fa-star" style="font-size: 24px; color: #FFAA05;"></i>
-                            <i class="far fa-star" style="font-size: 24px; color: #FFAA05;"></i>
-                            <i class="far fa-star" style="font-size: 24px; color: #FFAA05;"></i>
-                        </div>
-                    </div>
-
-                    <div class="col-sm-6">
-                        <label for="bm-title">Tampilkan di</label>
-                        <form>
-                            <div class="form-group">
-                                <input name="basic" class="tagify" value="tag1, tag2, tag3, tag4" autofocus>
+                    enctype="multipart/form-data">
+                    <div class="modal-body">
+                        <div class="row g-2">
+                            <div class="mb-3 mt-0 col-md-12">
+                                <label for="bm-title">Nama Lengkap</label>
+                                <input class="form-control" type="text" required="" autocomplete="name" placeholder="Masukkan nama">
                             </div>
-                        </form>
-                    </div>
+                        </div>
+                        <div class="mb-3 mt-0 col-md-12">
+                            <label for="bm-title">Deskripsi</label>
+                            <textarea name="" id=""  rows="4" class="form-control" placeholder="Masukkan deskripsi"></textarea>
+                        </div>
 
+                        <div class="mb-3 mt-0 col-md-12">
+                            <label for="bm-title">Tampilkan di</label>
+                            <select class="select2 form-select" name="tags-select-mode" style="width: 100%;">
+                                <option value="option1">Option 1</option>
+                                <option value="option2">Option 2</option>
+                                <option value="option3">Option 3</option>
+                            </select>
+                        </div>
 
-                    <div class="mb-3 mt-0 col-md-12">
-                        <figure class="col-xl-3 col-md-4 col-6" itemprop="associatedMedia" itemscope=""><a href="../assets/images/big-lightgallry/01.jpg" itemprop="contentUrl" data-size="1600x950"><img class="img-thumbnail" src="../assets/images/lightgallry/01.jpg" itemprop="thumbnail" alt="Image description"></a>
-                      </figure>
-                        <label for="bm-title">Foto Testimoni</label>
-                        <input class="form-control" id="formFile" type="file">
+                        <div class="mb-3 mt-0 col-md-12">
+                            <label for="bm-title">Foto Testimoni</label>
+                            <input class="form-control" id="formFile" type="file">
+                        </div>
+                        <div class="d-flex justify-content-end gap-2">
+                            <button class="btn btn-secondary " type="button" data-bs-dismiss="modal">Batal</button>
+                            <button class="btn btn-primary " type="submit">Simpan</button>
+                        </div>
                     </div>
-                    <div class="d-flex justify-content-end gap-2">
-                        <button class="btn btn-secondary " type="button" data-bs-dismiss="modal">Batal</button>
-                        <button class="btn btn-primary " type="submit">Simpan</button>
-                    </div>
-                </div>
-            </form>
+                </form>
             </div>
         </div>
     </div>
+
+        <!-- Edit Modal -->
+        <div class="modal fade modal-bookmark" id="edit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Edit Testimoni</h5>
+                        <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <form class="form-bookmark needs-validation" action="#" method="POST" id="bookmark-form" novalidate=""
+                    enctype="multipart/form-data">
+                    <div class="modal-body">
+                        <div class="row g-2">
+                            <div class="mb-3 mt-0 col-md-12">
+                                <label for="bm-title">Nama Lengkap</label>
+                                <input class="form-control" type="text" required="" autocomplete="name" value="Lorem Ipsum">
+                            </div>
+                        </div>
+                        <div class="mb-3 mt-0 col-md-12">
+                            <label for="bm-title">Deskripsi</label>
+                            <textarea name="" id=""  rows="4" class="form-control">Lorem ipsum dolor sit amet consectetur. Est aliquet etiam sit dignissim sit id id in risus lorem ornare sed pellentesque.</textarea>
+                        </div>
+
+                        <div class="mb-3 mt-0 col-md-12">
+                            <label for="bm-title">Tampilkan di</label>
+                            <select class="select2 form-select" name="tags-select-mode" style="width: 100%;">
+                                <option value="option1">Option 1</option>
+                                <option value="option2">Option 2</option>
+                                <option value="option3">Option 3</option>
+                            </select>
+                        </div>
+
+
+                        <div class="mb-3 mt-0 col-md-12">
+                            <figure class="col-xl-3 col-md-4 col-6" itemprop="associatedMedia" itemscope=""><a href="../assets/images/big-lightgallry/01.jpg" itemprop="contentUrl" data-size="1600x950"><img class="img-thumbnail" src="../assets/images/lightgallry/01.jpg" itemprop="thumbnail" alt="Image description"></a>
+                          </figure>
+                            <label for="bm-title">Foto Testimoni</label>
+                            <input class="form-control" id="formFile" type="file">
+                        </div>
+                        <div class="d-flex justify-content-end gap-2">
+                            <button class="btn btn-secondary " type="button" data-bs-dismiss="modal">Batal</button>
+                            <button class="btn btn-primary " type="submit">Simpan</button>
+                        </div>
+                    </div>
+                </form>
+                </div>
+            </div>
+        </div>
 
     <nav class="m-b-30" aria-label="Page navigation example">
         <ul class="pagination justify-content-center pagin-border-primary pagination-primary">

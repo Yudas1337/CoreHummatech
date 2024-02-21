@@ -9,13 +9,15 @@
                 <h5 class="modal-title fw-semibold" id="exampleModalLabel">Tambah Kategori Berita</h5>
                 <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form class="form-bookmark needs-validation" action="#" method="POST" id="bookmark-form" novalidate=""
+            <form class="form-bookmark needs-validation" action="{{ route('create.category.news') }}" method="POST" id="bookmark-form" novalidate=""
                 enctype="multipart/form-data">
+                @csrf
+                @method('POST')
                 <div class="modal-body">
                     <div class="row g-2">
                         <div class="mb-3 mt-0 col-md-12">
                             <label for="bm-title">Kategori Mitra</label>
-                            <input class="form-control" type="text" required="" autocomplete="name"
+                            <input class="form-control" type="text" required="" autocomplete="name" name="name"
                                 placeholder="Masukkan Nama Kategori">
                         </div>
                     </div>

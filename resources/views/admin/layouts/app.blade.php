@@ -18,6 +18,7 @@
         rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i,900&amp;display=swap"
         rel="stylesheet">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@icon/themify-icons@1.0.1-alpha.3/themify-icons.min.css">
     <!-- ico-font-->
     <link rel="stylesheet" href="myProjects/webProject/icofont/css/icofont.min.css">
     <link rel="stylesheet" href="myProjects/webProject/icofont/css/icofont.css">
