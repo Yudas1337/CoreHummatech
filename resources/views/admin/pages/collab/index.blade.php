@@ -30,10 +30,12 @@
         <div class="row">
             <div class="col-12 col-md-6 col-lg-3 col-xl-4">
                 <div class="card border-0 shadow rounded">
+                    <div class="ribbon mt-2 ribbon-primary ribbon-space-bottom">Magang</div>
                     <div class="card-body">
                         <div class="d-flex flex-column">
                             <div class="d-flex gap-3 justify-content-start">
-                                <img src="{{ asset('assets/images/avtar/11.jpg') }}" class="rounded" width="110px" alt="">
+                                <img src="{{ asset('assets/images/avtar/11.jpg') }}" class="rounded" width="110px"
+                                    alt="">
                                 <div class="">
                                     <span class="badge" style="background-color: #E8FFEE; color: #008000">Perusahaan</span>
                                     <p class="my-3" style="font-size: 13px">PT. Pama Persada</p>
@@ -49,12 +51,15 @@
             </div>
             <div class="col-12 col-md-6 col-lg-3 col-xl-4">
                 <div class="card border-0 shadow rounded">
+                    <div class="ribbon mt-2 ribbon-primary ribbon-space-bottom">Magang</div>
                     <div class="card-body">
                         <div class="d-flex flex-column">
                             <div class="d-flex gap-3 justify-content-start">
-                                <img src="{{ asset('assets/images/avtar/11.jpg') }}" class="rounded" width="110px" alt="">
+                                <img src="{{ asset('assets/images/avtar/11.jpg') }}" class="rounded" width="110px"
+                                    alt="">
                                 <div class="">
-                                    <span class="badge" style="background-color: #EAF3FF; color: #307EF3">Pemerintahan</span>
+                                    <span class="badge"
+                                        style="background-color: #EAF3FF; color: #307EF3">Pemerintahan</span>
                                     <p class="my-3" style="font-size: 13px">Pemerintah Kab.Wonogiri</p>
                                     <div class="mt-2">
                                         <button class="btn btn-primary btn-xs mt-2">Edit</button>
@@ -68,10 +73,12 @@
             </div>
             <div class="col-12 col-md-6 col-lg-3 col-xl-4">
                 <div class="card border-0 shadow rounded">
+                    <div class="ribbon mt-2 ribbon-primary ribbon-space-bottom">Magang</div>
                     <div class="card-body">
                         <div class="d-flex flex-column">
                             <div class="d-flex gap-3 justify-content-start">
-                                <img src="{{ asset('assets/images/avtar/11.jpg') }}" class="rounded" width="110px" alt="">
+                                <img src="{{ asset('assets/images/avtar/11.jpg') }}" class="rounded" width="110px"
+                                    alt="">
                                 <div class="">
                                     <span class="badge" style="background-color: #FFF8EA; color: #FFAA05">Sekolah</span>
                                     <p class="my-3" style="font-size: 13px">Smk Negeri 1 Malang</p>
@@ -132,16 +139,16 @@
     </div>
 
     <!-- Edit Modal -->
-    <div class="modal fade modal-bookmark" id="edit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
+    <div class="modal fade modal-bookmark" id="edit" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Edit Mitra</h5>
                     <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form class="form-bookmark needs-validation" action="#" method="POST" id="bookmark-form" novalidate=""
-                    enctype="multipart/form-data">
+                <form class="form-bookmark needs-validation" action="#" method="POST" id="bookmark-form"
+                    novalidate="" enctype="multipart/form-data">
                     <div class="modal-body">
                         <div class="row g-2">
                             <div class="mb-3 mt-0 col-md-12">
