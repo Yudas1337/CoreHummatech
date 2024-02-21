@@ -28,7 +28,7 @@
     </div>
     <div class="col-lg-12">
         <div class="row">
-            <div class="col-12 col-md-6 col-lg-3 col-xl-4">
+            <div class="col-12 col-lg-3 col-md-4">
                 <div class="card border-0 shadow rounded">
                     <div class="ribbon mt-2 ribbon-primary ribbon-space-bottom">Magang</div>
                     <div class="card-body">
@@ -49,7 +49,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-12 col-md-6 col-lg-3 col-xl-4">
+            <div class="col-12 col-lg-3 col-md-4">
                 <div class="card border-0 shadow rounded">
                     <div class="ribbon mt-2 ribbon-primary ribbon-space-bottom">Magang</div>
                     <div class="card-body">
@@ -71,7 +71,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-12 col-md-6 col-lg-3 col-xl-4">
+            <div class="col-12 col-lg-3 col-md-4">
                 <div class="card border-0 shadow rounded">
                     <div class="ribbon mt-2 ribbon-primary ribbon-space-bottom">Magang</div>
                     <div class="card-body">
