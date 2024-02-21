@@ -15,11 +15,12 @@ use Illuminate\Support\ServiceProvider;
 class AppServiceProvider extends ServiceProvider
 {
     private array $register = [
-            CategoryNewsInterface::class => CategoryNewsRepository::class,
-            BranchInterface::class => BranchRepository::class,
-            CollabCategoryInterface::class => CollabCategoryRepository::class,
-            SaleInterface::class => SaleRepository::class,
+        CategoryNewsInterface::class => CategoryNewsRepository::class,
+        BranchInterface::class => BranchRepository::class,
+        CollabCategoryInterface::class => CollabCategoryRepository::class,
+        SaleInterface::class => SaleRepository::class,
     ];
+
     /**
      * Register any application services.
      */
