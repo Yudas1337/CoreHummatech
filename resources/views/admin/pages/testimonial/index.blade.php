@@ -30,44 +30,25 @@
     </div>
 @endsection
 @section('content')
-<div class="card-body mb-5">
-    <div class="row g-sm-4 g-3">
-      <div class="col-xxl-4 col-md-6">
-        <div class="prooduct-details-box">
-            <div class="position-absolute start-3 mt-2" style="z-index: 2">
-                <p class="bg-primary px-4 py-1" style="font-size: 10px">Magang</p>
-            </div>
-            <div class="onhover-dropdown bg-light text-primary py-1 px-2 rounded-3 position-absolute end-0 me-4 mt-2" style=" z-index: 3;">
-                <i class="fa-solid fa-gear"></i>
-              <ul class="onhover-show-div left-dropdown">
-                <li><a class="dropdown-item text-primary" href="#" data-bs-toggle="modal" data-bs-target="#edit"><i class="fas fa-edit"></i></a></li>
-                <li><a class="dropdown-item text-danger" href="#" data-bs-toggle="modal" data-bs-target="#deleteModal"><i class="fas fa-trash-alt"></i></a></li>
-              </ul>
-            </div>
-          <div class="d-flex" style="z-index: 1"><img class="align-self-center img-fluid img-80 rounded-3" src="../assets/images/ecommerce/product-table-6.png" alt="#">
-            <div class="flex-grow-1 ms-3">
-              <div class="product-name mb-1">
-                <h4><a href="#">lorem ipsum</a>
-                </h4>
-            </div>
-              <p class="text-muted m-0" style="width: 80%">Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
-              <div class="rating"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></div>
-            </div>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-12 col-xl-6">
+      <div class="card">
+        <div class="card-header" style="width: 100%; background: none; margin-bottom: -20px">
+          <div class="col-sm-3 position-absolute top-0 start-0">
+            <p class="bg-primary px-3 py-1 text-light" style="border-radius: 5px 0 0 0; font-size: 12px">Magang</p>
+          </div>
+          <div class="card-header-right">
+            <ul class="list-unstyled card-option" style="text-align:center">
+              <li>
+                <div><i class="icon-settings fa-solid fa-gear"></i></div>
+              </li>
+              <li><i class="fa fa-edit text-primary"type="button" data-bs-toggle="modal" data-bs-target="#edit"></i></li>
+              <li><i class="fa fa-trash text-primary"></i></li>
+            </ul>
           </div>
         </div>
-      </div>
-      <div class="col-xxl-4 col-md-6">
-        <div class="prooduct-details-box">
-            <div class="position-absolute start-3 mt-2" style="z-index: 2">
-                <p class="bg-primary px-4 py-1" style="font-size: 10px">Magang</p>
-            </div>
-            <div class="onhover-dropdown bg-light text-primary py-1 px-2 rounded-3 position-absolute end-0 me-4 mt-2" style=" z-index: 3;">
-                <i class="fa-solid fa-gear"></i>
-              <ul class="onhover-show-div left-dropdown">
-                <li><a class="dropdown-item text-primary" href="#" data-bs-toggle="modal" data-bs-target="#edit"><i class="fas fa-edit"></i></a></li>
-                <li><a class="dropdown-item text-danger" href="#" data-bs-toggle="modal" data-bs-target="#deleteModal"><i class="fas fa-trash-alt"></i></a></li>
-              </ul>
-            </div>
+        <div class="card-body">
           <div class="d-flex" style="z-index: 1"><img class="align-self-center img-fluid img-80 rounded-3" src="../assets/images/ecommerce/product-table-6.png" alt="#">
             <div class="flex-grow-1 ms-3">
               <div class="product-name mb-1">
@@ -75,36 +56,71 @@
                 </h4>
             </div>
               <p class="text-muted m-0" style="width: 80%">Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
-              <div class="rating"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-xxl-4 col-md-6">
-        <div class="prooduct-details-box">
-            <div class="position-absolute start-3 mt-2" style="z-index: 2">
-                <p class="bg-primary px-4 py-1" style="font-size: 10px">Magang</p>
-            </div>
-            <div class="onhover-dropdown bg-light text-primary py-1 px-2 rounded-3 position-absolute end-0 me-4 mt-2" style=" z-index: 3;">
-                <i class="fa-solid fa-gear"></i>
-              <ul class="onhover-show-div left-dropdown">
-                <li><a class="dropdown-item text-primary" href="#" data-bs-toggle="modal" data-bs-target="#edit"><i class="fas fa-edit"></i></a></li>
-                <li><a class="dropdown-item text-danger" href="#" data-bs-toggle="modal" data-bs-target="#deleteModal"><i class="fas fa-trash-alt"></i></a></li>
-              </ul>
-            </div>
-          <div class="d-flex" style="z-index: 1"><img class="align-self-center img-fluid img-80 rounded-3" src="../assets/images/ecommerce/product-table-6.png" alt="#">
-            <div class="flex-grow-1 ms-3">
-              <div class="product-name mb-1">
-                <h4><a href="#">lorem ipsum</a>
-                </h4>
-            </div>
-              <p class="text-muted m-0" style="width: 80%">Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
-              <div class="rating"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></div>
             </div>
           </div>
         </div>
       </div>
     </div>
+    <div class="col-sm-12 col-xl-6">
+      <div class="card">
+        <div class="card-header" style="width: 100%; background: none; margin-bottom: -20px">
+          <div class="col-sm-3 position-absolute top-0 start-0">
+            <p class="bg-primary px-3 py-1 text-light" style="border-radius: 5px 0 0 0; font-size: 12px">Magang</p>
+          </div>
+          <div class="card-header-right">
+            <ul class="list-unstyled card-option" style="text-align:center">
+              <li>
+                <div><i class="icon-settings fa-solid fa-gear"></i></div>
+              </li>
+              <li><i class="fa fa-edit text-primary"type="button" data-bs-toggle="modal" data-bs-target="#edit"></i></li>
+              <li><i class="fa fa-trash text-primary"></i></li>
+            </ul>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="d-flex" style="z-index: 1"><img class="align-self-center img-fluid img-80 rounded-3" src="../assets/images/ecommerce/product-table-6.png" alt="#">
+            <div class="flex-grow-1 ms-3">
+              <div class="product-name mb-1">
+                <h4><a href="#">lorem ipsum</a>
+                </h4>
+            </div>
+              <p class="text-muted m-0" style="width: 80%">Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-12 col-xl-6">
+      <div class="card">
+        <div class="card-header" style="width: 100%; background: none; margin-bottom: -20px">
+          <div class="col-sm-3 position-absolute top-0 start-0">
+            <p class="bg-primary px-3 py-1 text-light" style="border-radius: 5px 0 0 0; font-size: 12px">Magang</p>
+          </div>
+          <div class="card-header-right">
+            <ul class="list-unstyled card-option" style="text-align:center">
+              <li>
+                <div><i class="icon-settings fa-solid fa-gear"></i></div>
+              </li>
+              <li><i class="fa fa-edit text-primary"type="button" data-bs-toggle="modal" data-bs-target="#edit"></i></li>
+              <li><i class="fa fa-trash text-primary"></i></li>
+            </ul>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="d-flex" style="z-index: 1"><img class="align-self-center img-fluid img-80 rounded-3" src="../assets/images/ecommerce/product-table-6.png" alt="#">
+            <div class="flex-grow-1 ms-3">
+              <div class="product-name mb-1">
+                <h4><a href="#">lorem ipsum</a>
+                </h4>
+            </div>
+              <p class="text-muted m-0" style="width: 80%">Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
 </div>
 
     <!-- Add Modal -->
