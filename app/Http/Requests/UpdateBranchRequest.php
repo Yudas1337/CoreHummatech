@@ -4,14 +4,14 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateCategoryNewsRequest extends FormRequest
+class UpdateBranchRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
     {
-        return true;
+        return false;
     }
 
     /**
@@ -22,14 +22,7 @@ class UpdateCategoryNewsRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|max:50'
-        ];
-    }
-    public function messages()
-    {
-        return [
-            'name.required' => 'Nama Tidak Boleh Kosong',
-            'name.max' => 'Nama Maksimal 50 karakter'
+            //
         ];
     }
 }

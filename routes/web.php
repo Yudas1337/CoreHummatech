@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BranchController;
 use App\Http\Controllers\CategoryNewsController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -35,9 +36,7 @@ Route::get('/news/show', function () {
     return view('admin.pages.news.show');
 });
 
-Route::get('/category-news', function () {
-    return view('admin.pages.news-category.index');
-});
+
 
 Route::get('/collab', function () {
     return view('admin.pages.collab.index');
@@ -57,10 +56,6 @@ Route::get('/testimonial', function () {
 
 Route::get('/category-testimonial', function () {
     return view('admin.pages.testimonial-category.index');
-});
-
-Route::get('/branch', function () {
-    return view('admin.pages.branch.index');
 });
 
 Route::get('/hero-section', function () {
@@ -139,4 +134,15 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// category news berita
+Route::get('category-news' , [CategoryNewsController::class , 'index']);
 Route::post('create/category/news' , [CategoryNewsController::class , 'store'])->name('create.category.news');
+Route::delete('delete/category/news/{categoryNews}' ,[CategoryNewsController::class ,'destroy'])->name('delete.category.news');
+Route::put('update/category/news/{categoryNews}' ,[CategoryNewsController::class ,'update'])->name('update.category.news');
+// end category news berita
+
+// branch
+Route::get('branch' , [BranchController::class ,'index']);
+Route::post('branch/create/' ,[BranchController::class ,'store']);
+Route::delete('brach/delete/{branch}' , [BranchController::class ,'destroy']);
+// end branch

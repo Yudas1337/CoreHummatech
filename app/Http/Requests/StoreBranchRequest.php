@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateCategoryNewsRequest extends FormRequest
+class StoreBranchRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,14 +22,10 @@ class UpdateCategoryNewsRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|max:50'
-        ];
-    }
-    public function messages()
-    {
-        return [
-            'name.required' => 'Nama Tidak Boleh Kosong',
-            'name.max' => 'Nama Maksimal 50 karakter'
+            'name' => 'required|max:50',
+            'type' =>'required',
+            'latitude' =>'required',
+            'lotitude' =>'required'
         ];
     }
 }

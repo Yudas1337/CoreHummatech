@@ -46,9 +46,10 @@
         .dark-only #datatable .dataTables_paginate {
             border-color: rgba(var(--bs-white-rgb), .15);
         }
+
         .dark-only #datatable .paginate_button,
         .dark-only #datatable .dataTables_info {
-            color:rgba(var(--bs-white-rgb), 1) !important;
+            color: rgba(var(--bs-white-rgb), 1) !important;
         }
     </style>
 @endsection
@@ -75,79 +76,71 @@
 @endsection
 
 @section('content')
+    <div class="modal fade modal-bookmark" id="modal-edit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Edit Kategori Mitra</h5>
+                    <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form class="form-bookmark needs-validation" method="POST" id="form-update" novalidate=""
+                    enctype="multipart/form-data">
+                    @csrf
+                    @method('PUT')
+                    <div class="modal-body">
+                        <div class="row g-2">
+                            <div class="mb-3 mt-0 col-md-12">
+                                <label for="bm-title">Kategori Mitra</label>
+                                <input class="form-control name"name="name" type="text" required="" autocomplete="name"
+                                    placeholder="Masukkan Nama Kategori">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <div class="d-flex justify-content-end">
+                            <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">Cancel</button>
+                            <button class="btn btn-primary" type="submit">Perbarui</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
     <div class="table-responsive custom-scrollbar" id="datatable">
         <table class="table table-striped display">
             <thead>
                 <tr>
-                    <th class="w-25">No</th>
-                    <th class="w-75">Nama</th>
-                    <th class="text-end w-25">Aksi</th>
+                    <th class="text-center">No</th>
+                    <th class="text-center">Nama</th>
+                    <th class="text-center">Aksi</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>Lorem</td>
-                    <td>
-                        <div class="d-flex gap-2">
-                            @include('admin.pages.news-category.edit')
-                            @include('admin.pages.news-category.delete')
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Ipsum</td>
-                    <td>
-                        <div class="d-flex gap-2">
-                            @include('admin.pages.news-category.edit')
-                            @include('admin.pages.news-category.delete')
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>Dolor</td>
-                    <td>
-                        <div class="d-flex gap-2">
-                            @include('admin.pages.news-category.edit')
-                            @include('admin.pages.news-category.delete')
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>4</td>
-                    <td>Sit</td>
-                    <td>
-                        <div class="d-flex gap-2">
-                            @include('admin.pages.news-category.edit')
-                            @include('admin.pages.news-category.delete')
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>5</td>
-                    <td>Amet</td>
-                    <td>
-                        <div class="d-flex gap-2">
-                            @include('admin.pages.news-category.edit')
-                            @include('admin.pages.news-category.delete')
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Constecteur</td>
-                    <td>
-                        <div class="d-flex gap-2">
-                            @include('admin.pages.news-category.edit')
-                            @include('admin.pages.news-category.delete')
-                        </div>
-                    </td>
-                </tr>
+                @forelse ($categoryNews as $index=>$categoryNew)
+                    <tr>
+                        <td class="text-center">{{ $index + 1 }}</td>
+                        <td class="text-center">{{ $categoryNew->name }}</td>
+                        <td class="text-center">
+                            <div class="d-flex justify-content-center gap-2">
+                                <button class="btn-edit btn btn-warning" data-id="{{ $categoryNew->id }}" data-name="{{ $categoryNew->name }}"
+                                    id="{{ $categoryNew->id }}">
+                                    Edit
+                                </button>
+                                <button class="btn-delete btn btn-danger" data-id="{{ $categoryNew->id }}"
+                                    id="{{ $categoryNew->id }}">
+                                    Hapus
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                @empty
+                @endforelse
             </tbody>
         </table>
     </div>
+    @include('admin.components.delete-modal-component')
 @endsection
 
 @section('script')
@@ -158,6 +151,18 @@
                 targets: 2,
                 sortable: false
             }]
+        });
+        $('.btn-delete').on('click', function() {
+            var id = $(this).data('id');
+            $('#form-delete').attr('action', '/delete/category/news/' + id);
+            $('#modal-delete').modal('show');
+        });
+        $('.btn-edit').click(function() {
+            var id = $(this).data('id'); // Mengambil nilai id dari tombol yang diklik
+            var name = $(this).data('name'); // Mengambil nilai name dari tombol yang diklik
+            $('#form-update').attr('action', '/update/category/news/' + id ); // Mengubah nilai atribut action form
+            $('.name').val(name);
+            $('#modal-edit').modal('show');
         });
     </script>
 @endsection

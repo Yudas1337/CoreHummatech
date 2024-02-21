@@ -16,9 +16,14 @@
                 <div class="modal-body">
                     <div class="row g-2">
                         <div class="mb-3 mt-0 col-md-12">
-                            <label for="bm-title">Kategori Mitra</label>
+                            <label for="bm-title">Kategori</label>
                             <input class="form-control" type="text" required="" autocomplete="name" name="name"
                                 placeholder="Masukkan Nama Kategori">
+                                @error('name')
+                                    <p class="text-danger">
+                                        {{ $message }}
+                                    </p>
+                                @enderror
                         </div>
                     </div>
                 </div>

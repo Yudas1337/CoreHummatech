@@ -61,7 +61,8 @@ class CategoryNewsController extends Controller
      */
     public function update(UpdateCategoryNewsRequest $request, CategoryNews $categoryNews)
     {
-        //
+        $this->categoryNews->update($categoryNews->id , $request->validated());
+        return back();
     }
 
     /**
@@ -69,6 +70,7 @@ class CategoryNewsController extends Controller
      */
     public function destroy(CategoryNews $categoryNews)
     {
-        //
+        $this->categoryNews->delete($categoryNews->id);
+        return back();
     }
 }
