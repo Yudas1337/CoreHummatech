@@ -116,20 +116,20 @@
 
                             <div class="mb-3 mt-0 col-md-12">
                                 <label for="bm-title">Syarat dan Ketentuan</label>
-                                <input class="form-control" type="text" name="products[]" required=""
-                                    autocomplete="name" placeholder="Mis: Website Development" />
+                                <input class="form-control" type="text" name="tosLists[]" required=""
+                                    autocomplete="name" placeholder="Mis: Semua peserta magang diwajibkan untuk&hellip;" />
 
                                 <div id="product-listing"></div>
                             </div>
 
                         </div>
                     </div>
-                    <div class="modal-footerd-flex justify-content-between w-full">
+                    <div class="modal-footer align-items-center d-flex justify-content-between w-full">
                         <button type="button" class="btn me-auto add-button-trigger btn-primary m-0">Tambah</button>
                         <div>
                             <button class="btn btn-secondary m-0" type="button"
                                 data-bs-dismiss="modal">Batalkan</button>
-                            <button class="btn btn-primary m-0" type="submit">Tambah</button>
+                            <button class="btn btn-primary m-0" type="submit">Simpan</button>
                         </div>
                     </div>
                 </form>
@@ -143,38 +143,38 @@
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title fw-semibold" id="exampleModalLabel">Edit FAQ
+                    <h5 class="modal-title fw-semibold" id="exampleModalLabel">Ubah "Syarat dan Ketentuan"
                     </h5>
                     <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form class="form-bookmark needs-validation" action="#" method="POST" id="bookmark-form"
-                    novalidate="" enctype="multipart/form-data">
+                <form class="form-bookmark needs-validation" action="#" method="POST" id="bookmark-form" novalidate=""
+                    enctype="multipart/form-data">
                     <div class="modal-body">
                         <div class="row g-2">
                             <div class="mb-3 mt-0 col-md-12">
-                                <label for="bm-title">Pertanyaan</label>
-                                <input class="form-control" type="text" required="" autocomplete="name"
-                                    placeholder="Mis: Bagaimana cara&hellip;">
-                            </div>
-
-                            <div class="mb-3 mt-0 col-md-12">
-                                <label for="bm-title">Jawaban</label>
-                                <textarea name="answer" id="answer" cols="10" rows="5" class="form-control"
-                                    placeholder="Mis: Caranya adalah sebagai berikut"></textarea>
-                            </div>
-
-                            <div class="mb-3 mt-0 col-md-12">
-                                <label for="bm-title">Ditampilkan Di</label>
-                                <select name="" id="select" class="form-control">
-                                    <option disabled selected>Pilih Salah Satu</option>
+                                <label for="bm-title">Pilih Halaman</label>
+                                <select name="target" id="target" class="form-control">
+                                    <option disabled="disabled" selected="selected">Pilih halaman</option>
+                                    <option value="it">IT Consultant</option>
                                 </select>
                             </div>
+
+                            <div class="mb-3 mt-0 col-md-12">
+                                <label for="bm-title">Syarat dan Ketentuan</label>
+                                <input class="form-control" type="text" name="tosLists[]" required=""
+                                    autocomplete="name" placeholder="Mis: Semua peserta magang diwajibkan untuk&hellip;" />
+
+                                <div id="product-listing"></div>
+                            </div>
+
                         </div>
                     </div>
-                    <div class="modal-footer justify-content-start w-full">
-                        <div class="d-flex justify-content-end">
-                            <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">Batalkan</button>
-                            <button class="btn btn-primary" type="submit">Tambah</button>
+                    <div class="modal-footer align-items-center d-flex justify-content-between w-full">
+                        <button type="button" class="btn me-auto add-button-trigger btn-primary m-0">Tambah</button>
+                        <div>
+                            <button class="btn btn-secondary m-0" type="button"
+                                data-bs-dismiss="modal">Batalkan</button>
+                            <button class="btn btn-primary m-0" type="submit">Simpan</button>
                         </div>
                     </div>
                 </form>
@@ -187,23 +187,21 @@
     <script>
         const deleteElement = (id) => $('#' + id).remove();
 
-        (() => {
-            $('.add-button-trigger').click((e) => {
-                let idInput = 'input_' + Math.random().toString(36).substr(2, 9); // Generate random id
-                let target = $(e.target).parent('.modal').find('#product-listing');
-                target.append(`<div class="d-flex align-items-center mt-3 gap-2" id="${idInput}">
-                <input class="form-control mb-0" type="text" name="products[]"
+        $('.add-button-trigger').click((e) => {
+            let idInput = 'input_' + Math.random().toString(36).substr(2, 9); // Generate random id
+            let target = $(e.target).parents('.modal').find('#product-listing');
+            target.append(`<div class="d-flex align-items-center mt-3 gap-2" id="${idInput}">
+                <input class="form-control mb-0" type="text" name="tosLists[]"
                     required="" autocomplete="name"
-                    placeholder="Mis: Website Development" />
+                    placeholder="Mis: Semua peserta magang diwajibkan untuk&hellip;" />
                 <button onclick="deleteElement('${idInput}')" type="button" class="btn delete-trigger px-3 mt-0 btn-danger"><i
                         class="fas fa-trash"></i></button>
             </div>`);
-            });
+        });
 
-            $('.btn-close').click((e) => {
-                let target = $(e.target).parent('.modal').find('.delete-trigger');
-                target.each((i, el) => $(el).click());
-            });
-        })();
+        $('.btn-close').click((e) => {
+            let target = $(e.target).parent('.modal').find('.delete-trigger');
+            target.each((i, el) => $(el).click());
+        });
     </script>
 @endsection
