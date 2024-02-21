@@ -7,7 +7,7 @@ if (document.getElementById("map")) {
             '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
     }).addTo(map);
 
-    L.marker([51.5, -0.09])
+    L.marker([-7.900067415010227, 112.60688277775499])
         .addTo(map)
         .bindPopup("A pretty CSS3 popup.<br> Easily customizable.")
         .openPopup();
