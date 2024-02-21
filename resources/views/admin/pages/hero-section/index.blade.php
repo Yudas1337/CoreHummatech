@@ -99,5 +99,16 @@
             </div>
         </div>
         @endforeach
+
+        <div class="pt-3 pb-5 align-items-center d-flex gap-2 justify-content-between">
+            <div>Showing 1 to 10 from 35 entries</div>
+            <div class="pagination">
+                <li class="page-item"><a href="#" class="page-link disabled"><i class="fas fa-arrow-left"></i></a></li>
+                @foreach (range(0, 3) as $item)
+                <li class="page-item {{ $item !== 0 ?: 'active' }}" aria-current="page"><a href="#" class="page-link">{{ $item+1 }}</a></li>
+                @endforeach
+                <li class="page-item"><a href="#" class="page-link"><i class="fas fa-arrow-right"></i></a></li>
+            </div>
+        </div>
     </div>
 @endsection
