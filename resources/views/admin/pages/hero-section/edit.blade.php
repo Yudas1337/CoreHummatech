@@ -72,12 +72,12 @@
             </div>
 
             <div class="mb-3 form-group">
-                <label for="headline">Headline <small class="text-danger">*Wajib Diisi</small></label>
+                <label for="headline">Judul <small class="text-danger">*Wajib Diisi</small></label>
                 <input type="text" id="headline" class="form-control" placeholder="Contoh: Ini Adalah Headline" />
             </div>
 
             <div class="mb-3 form-group">
-                <label for="subheadline">Subheadline <small class="text-danger">*Wajib Diisi</small></label>
+                <label for="subheadline">Subjudul <small class="text-danger">*Wajib Diisi</small></label>
                 <input type="text" id="subheadline" class="form-control" placeholder="Contoh: Ini Adalah Subheadline" />
             </div>
 

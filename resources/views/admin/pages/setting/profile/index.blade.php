@@ -33,11 +33,11 @@
         </div>
         <div class="col-sm-8">
             <div class="mt-1">
-                <label for="headline">Headline <span style="font-size: 11px" class="text-danger">*Wajib diisi</span></label>
+                <label for="headline">Judul <span style="font-size: 11px" class="text-danger">*Wajib diisi</span></label>
                 <input type="text" class="form-control" id="headline" value="PT. Humma Technology Indonesia">
             </div>
             <div class="my-1">
-                <label for="subheadline">Subheadline <span style="font-size: 11px" class="text-danger">*Wajib diisi</span></label>
+                <label for="subheadline">Subjudul <span style="font-size: 11px" class="text-danger">*Wajib diisi</span></label>
                 <input type="text" class="form-control" id="subheadline" value="Perusahaan software terbaik se-jawatimur">
             </div>
             <div class="my-1">
