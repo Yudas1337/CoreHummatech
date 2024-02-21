@@ -11,7 +11,7 @@ class StoreCategoryNewsRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,14 @@ class StoreCategoryNewsRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'name' => 'required|max:50'
+        ];
+    }
+    public function messages()
+    {
+        return [
+            'name.required' => 'Nama Tidak Boleh Kosong',
+            'name.max' => 'Nama Maksimal 50 karakter'
         ];
     }
 }
