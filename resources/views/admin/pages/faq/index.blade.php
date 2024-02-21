@@ -79,25 +79,36 @@
         @endforeach
     </div>
 
+    <!-- Pagination -->
+    <div class="pt-3 pb-5 align-items-center d-flex gap-2 justify-content-between">
+        <div>Showing 1 to 10 from 35 entries</div>
+        <div class="pagination">
+            <li class="page-item"><a href="#" class="page-link disabled"><i class="fas fa-arrow-left"></i></a></li>
+            @foreach (range(0, 3) as $item)
+            <li class="page-item {{ $item !== 0 ?: 'active' }}" aria-current="page"><a href="#" class="page-link">{{ $item+1 }}</a></li>
+            @endforeach
+            <li class="page-item"><a href="#" class="page-link"><i class="fas fa-arrow-right"></i></a></li>
+        </div>
+    </div>
+
     <!-- Add Modal -->
-    <div class="modal fade modal-bookmark" id="tambah" tabindex="-1" role="dialog"
-        aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade modal-bookmark" id="tambah" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title fw-semibold" id="exampleModalLabel">Tambah FAQ
                     </h5>
-                    <button class="btn-close" type="button" data-bs-dismiss="modal"
-                        aria-label="Close"></button>
+                    <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form class="form-bookmark needs-validation" action="#" method="POST"
-                    id="bookmark-form" novalidate="" enctype="multipart/form-data">
+                <form class="form-bookmark needs-validation" action="#" method="POST" id="bookmark-form" novalidate=""
+                    enctype="multipart/form-data">
                     <div class="modal-body">
                         <div class="row g-2">
                             <div class="mb-3 mt-0 col-md-12">
                                 <label for="bm-title">Pertanyaan</label>
-                                <input class="form-control" type="text" required=""
-                                    autocomplete="name" placeholder="Mis: Bagaimana cara&hellip;">
+                                <input class="form-control" type="text" required="" autocomplete="name"
+                                    placeholder="Mis: Bagaimana cara&hellip;">
                             </div>
 
                             <div class="mb-3 mt-0 col-md-12">
@@ -116,8 +127,7 @@
                     </div>
                     <div class="modal-footer">
                         <div class="d-flex justify-content-end">
-                            <button class="btn btn-secondary" type="button"
-                                data-bs-dismiss="modal">Batalkan</button>
+                            <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">Batalkan</button>
                             <button class="btn btn-primary" type="submit">Tambah</button>
                         </div>
                     </div>
@@ -134,17 +144,16 @@
                 <div class="modal-header">
                     <h5 class="modal-title fw-semibold" id="exampleModalLabel">Edit FAQ
                     </h5>
-                    <button class="btn-close" type="button" data-bs-dismiss="modal"
-                        aria-label="Close"></button>
+                    <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form class="form-bookmark needs-validation" action="#" method="POST"
-                    id="bookmark-form" novalidate="" enctype="multipart/form-data">
+                <form class="form-bookmark needs-validation" action="#" method="POST" id="bookmark-form"
+                    novalidate="" enctype="multipart/form-data">
                     <div class="modal-body">
                         <div class="row g-2">
                             <div class="mb-3 mt-0 col-md-12">
                                 <label for="bm-title">Pertanyaan</label>
-                                <input class="form-control" type="text" required=""
-                                    autocomplete="name" placeholder="Mis: Bagaimana cara&hellip;">
+                                <input class="form-control" type="text" required="" autocomplete="name"
+                                    placeholder="Mis: Bagaimana cara&hellip;">
                             </div>
 
                             <div class="mb-3 mt-0 col-md-12">
@@ -163,8 +172,7 @@
                     </div>
                     <div class="modal-footer">
                         <div class="d-flex justify-content-end">
-                            <button class="btn btn-secondary" type="button"
-                                data-bs-dismiss="modal">Batalkan</button>
+                            <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">Batalkan</button>
                             <button class="btn btn-primary" type="submit">Tambah</button>
                         </div>
                     </div>

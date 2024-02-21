@@ -46,9 +46,10 @@
         .dark-only #datatable .dataTables_paginate {
             border-color: rgba(var(--bs-white-rgb), .15);
         }
+
         .dark-only #datatable .paginate_button,
         .dark-only #datatable .dataTables_info {
-            color:rgba(var(--bs-white-rgb), 1) !important;
+            color: rgba(var(--bs-white-rgb), 1) !important;
         }
     </style>
 @endsection
@@ -66,7 +67,44 @@
                             <p class="m-0 me-2">Cari:</p>
                             <input class="form-control me-2" type="text" placeholder="Search" aria-label="Search">
                         </div>
-                        @include('admin.pages.collab-category.create')
+
+                        <button class="btn btn-primary m-0" type="button" data-bs-toggle="modal"
+                            data-bs-target="#tambah">Tambah</button>
+
+                        <!-- Add Modal -->
+                        <div class="modal fade modal-bookmark" id="tambah" tabindex="-1" role="dialog"
+                            aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-lg" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title fw-semibold" id="exampleModalLabel">Tambah Kategori Mitra
+                                        </h5>
+                                        <button class="btn-close" type="button" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <form class="form-bookmark needs-validation" action="#" method="POST"
+                                        id="bookmark-form" novalidate="" enctype="multipart/form-data">
+                                        <div class="modal-body">
+                                            <div class="row g-2">
+                                                <div class="mb-3 mt-0 col-md-12">
+                                                    <label for="bm-title">Kategori Mitra</label>
+                                                    <input class="form-control" type="text" required=""
+                                                        autocomplete="name" placeholder="Masukkan Nama Kategori">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <div class="d-flex justify-content-end">
+                                                <button class="btn btn-secondary" type="button"
+                                                    data-bs-dismiss="modal">Cancel</button>
+                                                <button class="btn btn-primary" type="submit">Tambah</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>
@@ -90,8 +128,8 @@
                     <td>Lorem</td>
                     <td>
                         <div class="d-flex gap-2">
-                            @include('admin.pages.collab-category.edit')
-                            @include('admin.pages.collab-category.delete')
+                            <button class="btn btn-warning btn-edit" data-bs-toggle="modal" data-bs-target="#edit" type="button">Edit</button>
+                            <button class="btn btn-danger btn-edit" type="button">Tolak</button>
                         </div>
                     </td>
                 </tr>
@@ -100,8 +138,8 @@
                     <td>Ipsum</td>
                     <td>
                         <div class="d-flex gap-2">
-                            @include('admin.pages.collab-category.edit')
-                            @include('admin.pages.collab-category.delete')
+                            <button class="btn btn-warning btn-edit" data-bs-toggle="modal" data-bs-target="#edit" type="button">Edit</button>
+                            <button class="btn btn-danger btn-edit" type="button">Tolak</button>
                         </div>
                     </td>
                 </tr>
@@ -110,8 +148,8 @@
                     <td>Dolor</td>
                     <td>
                         <div class="d-flex gap-2">
-                            @include('admin.pages.collab-category.edit')
-                            @include('admin.pages.collab-category.delete')
+                            <button class="btn btn-warning btn-edit" data-bs-toggle="modal" data-bs-target="#edit" type="button">Edit</button>
+                            <button class="btn btn-danger btn-edit" type="button">Tolak</button>
                         </div>
                     </td>
                 </tr>
@@ -120,8 +158,8 @@
                     <td>Sit</td>
                     <td>
                         <div class="d-flex gap-2">
-                            @include('admin.pages.collab-category.edit')
-                            @include('admin.pages.collab-category.delete')
+                            <button class="btn btn-warning btn-edit" data-bs-toggle="modal" data-bs-target="#edit" type="button">Edit</button>
+                            <button class="btn btn-danger btn-edit" type="button">Tolak</button>
                         </div>
                     </td>
                 </tr>
@@ -130,8 +168,8 @@
                     <td>Amet</td>
                     <td>
                         <div class="d-flex gap-2">
-                            @include('admin.pages.collab-category.edit')
-                            @include('admin.pages.collab-category.delete')
+                            <button class="btn btn-warning btn-edit" data-bs-toggle="modal" data-bs-target="#edit" type="button">Edit</button>
+                            <button class="btn btn-danger btn-edit" type="button">Tolak</button>
                         </div>
                     </td>
                 </tr>
@@ -140,8 +178,8 @@
                     <td>Constecteur</td>
                     <td>
                         <div class="d-flex gap-2">
-                            @include('admin.pages.collab-category.edit')
-                            @include('admin.pages.collab-category.delete')
+                            <button class="btn btn-warning btn-edit" data-bs-toggle="modal" data-bs-target="#edit" type="button">Edit</button>
+                            <button class="btn btn-danger btn-edit" type="button">Tolak</button>
                         </div>
                     </td>
                 </tr>
@@ -151,6 +189,37 @@
 @endsection
 
 @section('script')
+    <!-- Edit Modal -->
+    <div class="modal fade modal-bookmark" id="edit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Edit Kategori Mitra</h5>
+                    <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form class="form-bookmark needs-validation" action="#" method="POST" id="bookmark-form" novalidate=""
+                    enctype="multipart/form-data">
+                    <div class="modal-body">
+                        <div class="row g-2">
+                            <div class="mb-3 mt-0 col-md-12">
+                                <label for="bm-title">Kategori Mitra</label>
+                                <input class="form-control" type="text" required="" autocomplete="name"
+                                    placeholder="Masukkan Nama Kategori">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <div class="d-flex justify-content-end">
+                            <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">Cancel</button>
+                            <button class="btn btn-primary" type="submit">Perbarui</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
     <script>
         $('#datatable table').DataTable({
             searching: false,

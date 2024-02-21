@@ -36,8 +36,6 @@ Route::get('/news/show', function () {
     return view('admin.pages.news.show');
 });
 
-
-
 Route::get('/collab', function () {
     return view('admin.pages.collab.index');
 });
@@ -125,6 +123,10 @@ Route::get('/setting/vision-mision/create', function () {
 });
 Route::get('/setting/vision-mision/edit', function () {
     return view('admin.pages.vision-mision.edit');
+});
+
+Route::get('/company', function() {
+    return view('admin.pages.company.index');
 });
 
 Auth::routes();
