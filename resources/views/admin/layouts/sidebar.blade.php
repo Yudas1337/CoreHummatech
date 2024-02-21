@@ -168,6 +168,9 @@
                 <a href="/terms-condition">Syarat & Ketentuan</a>
             </li>
             <li>
+                <a href="/departement">Jabatan</a>
+            </li>
+            <li>
                 <a href="/faq">FAQ</a>
             </li>
             <li>
