@@ -3,6 +3,7 @@
 use App\Http\Controllers\BranchController;
 use App\Http\Controllers\CategoryNewsController;
 use App\Http\Controllers\CollabCategoryController;
+use App\Http\Controllers\SaleController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -36,8 +37,6 @@ Route::get('/news/edit', function () {
 Route::get('/news/show', function () {
     return view('admin.pages.news.show');
 });
-
-
 
 Route::get('/collab', function () {
     return view('admin.pages.collab.index');
@@ -107,12 +106,6 @@ Route::get('/message-approval', function () {
 Route::get('setting/profile', function() {
     return view('admin.pages.setting.profile.index');
 });
-Route::get('/sale', function () {
-    return view('admin.pages.sale.index');
-});
-Route::get('/sale/detail', function () {
-    return view('admin.pages.sale.detail');
-});
 
 Route::get('/setting/vision-mision', function () {
     return view('admin.pages.vision-mision.index');
@@ -125,11 +118,14 @@ Route::get('/setting/vision-mision/edit', function () {
     return view('admin.pages.vision-mision.edit');
 });
 
+Route::get('/company', function() {
+    return view('admin.pages.company.index');
+});
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 // category news berita
@@ -151,3 +147,4 @@ Route::get('category-collab' , [CollabCategoryController::class ,'index']);
 Route::put('update/category/mitra/{collabCategory}' ,[CollabCategoryController::class ,'update'])->name('update.category.mitra');
 Route::delete('delete/category/mitra/{collabCategory}' ,[CollabCategoryController::class ,'destroy'])->name('delete.category.mitra');
 // end category mitra
+Route::resource('sale', SaleController::class);
