@@ -20,107 +20,54 @@
         </div>
     </div>
     <div class="p-1">
-        <h3>Visi</h3>
-        <div class="card">
-            <div class="card-body pb-0 border-l-primary border-4">
-                <div class="card-header">
-                    <div class="card-header-right">
-                        <ul class="card-option">
-                            <li>
-                                <div><i class="icon-settings"></i></div>
-                            </li>
-                            <li><a href="{{ url('/setting/vision-mision/edit') }}"><i class="fa fa-edit"></i></a></li>
-                            <li><i class="fa fa-trash"></i></li>
-                        </ul>
-                    </div>
+        <h3 class="mb-3">Visi</h3>
+        <div class="card pb-0 border-l-primary border-4 border-0 shadow">
+            <div class="card-header">
+                <div class="card-header-right">
+                    <ul class="card-option">
+                        <li>
+                            <div><i class="icon-settings"></i></div>
+                        </li>
+                        <li><i class="fa fa-pen"></i></li>
+                        <li><i class="fa fa-trash"></i></li>
+                    </ul>
                 </div>
-                <p class="card-text mb-3">
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eaque eligendi esse deleniti corrupti
-                    impedit veniam numquam voluptas sint ab, laboriosam itaque, laborum tenetur dignissimos quibusdam
-                    voluptatum, dicta suscipit! Facilis corrupti iusto ex deleniti, lorem
+                <p class="" style="width:95%;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam obcaecati nobis animi
+                    atque nesciunt, iusto, praesentium commodi tempora quasi voluptatum veritatis quaerat. Voluptatem
+                    numquam, corporis debitis unde quibusdam facere quam asperiores laboriosam nesciunt. Laboriosam soluta
+                    repellat veniam aliquid quam eaque dicta!
                 </p>
             </div>
         </div>
-        <h3>Misi</h3>
-        <div class="card">
-            <div class="card-body pb-0 border-l-primary border-4">
-                <div class="card-header">
-                    <div class="card-header-right">
-                        <ul class="card-option">
-                            <li>
-                                <div><i class="icon-settings"></i></div>
-                            </li>
-                            <li><a href="{{ url('/setting/vision-mision/edit') }}"><i class="fa fa-edit"></i></a></li>
-                            <li><i class="fa fa-trash"></i></li>
-                        </ul>
-                    </div>
+        <h3 class="mb-3">Misi</h3>
+        @foreach (range(0,2) as $item)
+        <div class="card pb-0 border-l-primary border-4 border-0 shadow">
+            <div class="card-header">
+                <div class="card-header-right">
+                    <ul class="card-option">
+                        <li>
+                            <div><i class="icon-settings"></i></div>
+                        </li>
+                        <li><i class="fa fa-pen"></i></li>
+                        <li><i class="fa fa-trash"></i></li>
+                    </ul>
                 </div>
-                <p class="card-text mb-3">
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eaque eligendi esse deleniti corrupti
-                    impedit veniam numquam voluptas sint ab, laboriosam itaque, laborum tenetur dignissimos quibusdam
-                    voluptatum, dicta suscipit! Facilis corrupti iusto ex deleniti, lorem
+                <p class="" style="width:95%;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam obcaecati nobis animi
+                    atque nesciunt, iusto, praesentium commodi tempora quasi voluptatum veritatis quaerat. Voluptatem
+                    numquam, corporis debitis unde quibusdam facere quam asperiores laboriosam nesciunt. Laboriosam soluta
+                    repellat veniam aliquid quam eaque dicta!
                 </p>
             </div>
         </div>
-        <div class="card">
-            <div class="card-body pb-0 border-l-primary border-4">
-                <div class="card-header">
-                    <div class="card-header-right">
-                        <ul class="card-option">
-                            <li>
-                                <div><i class="icon-settings"></i></div>
-                            </li>
-                            <li><a href="{{ url('/setting/vision-mision/edit') }}"><i class="fa fa-edit"></i></a></li>
-                            <li><i class="fa fa-trash"></i></li>
-                        </ul>
-                    </div>
-                </div>
-                <p class="card-text mb-3">
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eaque eligendi esse deleniti corrupti
-                    impedit veniam numquam voluptas sint ab, laboriosam itaque, laborum tenetur dignissimos quibusdam
-                    voluptatum, dicta suscipit! Facilis corrupti iusto ex deleniti, lorem
-                </p>
-            </div>
-        </div>
-        <div class="card">
-            <div class="card-body pb-0 border-l-primary border-4">
-                <div class="card-header">
-                    <div class="card-header-right">
-                        <ul class="card-option">
-                            <li>
-                                <div><i class="icon-settings"></i></div>
-                            </li>
-                            <li><a href="{{ url('/setting/vision-mision/edit') }}"><i class="fa fa-edit"></i></a></li>
-                            <li><i class="fa fa-trash"></i></li>
-                        </ul>
-                    </div>
-                </div>
-                <p class="card-text mb-3">
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eaque eligendi esse deleniti corrupti
-                    impedit veniam numquam voluptas sint ab, laboriosam itaque, laborum tenetur dignissimos quibusdam
-                    voluptatum, dicta suscipit! Facilis corrupti iusto ex deleniti, lorem
-                </p>
-            </div>
-        </div>
-        <div class="card">
-            <div class="card-body pb-0 border-l-primary border-4">
-                <div class="card-header">
-                    <div class="card-header-right">
-                        <ul class="card-option">
-                            <li>
-                                <div><i class="icon-settings"></i></div>
-                            </li>
-                            <li><a href="{{ url('/setting/vision-mision/edit') }}"><i class="fa fa-edit"></i></a></li>
-                            <li><i class="fa fa-trash"></i></li>
-                        </ul>
-                    </div>
-                </div>
-                <p class="card-text mb-3">
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eaque eligendi esse deleniti corrupti
-                    impedit veniam numquam voluptas sint ab, laboriosam itaque, laborum tenetur dignissimos quibusdam
-                    voluptatum, dicta suscipit! Facilis corrupti iusto ex deleniti, lorem
-                </p>
-            </div>
+        @endforeach
+        <div class="d-flex justify-content-center">
+            <ul class="pagination pagination-primary pagin-border-primary">
+                <li class="page-item disabled"><a class="page-link" href="javascript:void(0)" tabindex="-1">Previous</a></li>
+                <li class="page-item"><a class="page-link" href="javascript:void(0)">1</a></li>
+                <li class="page-item active"><a class="page-link" href="javascript:void(0)">2 <span class="sr-only">(current)</span></a></li>
+                <li class="page-item"><a class="page-link" href="javascript:void(0)">3</a></li>
+                <li class="page-item"><a class="page-link" href="javascript:void(0)">Next</a></li>
+              </ul>
         </div>
     </div>
 @endsection
