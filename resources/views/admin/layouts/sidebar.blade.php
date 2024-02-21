@@ -171,7 +171,7 @@
                 <a href="/faq">FAQ</a>
             </li>
             <li>
-                <a href="#">Struktur usaha</a>
+                <a href="/company">Struktur usaha</a>
             </li>
             <li>
                 <a href="#">Struktur organisasi</a>
