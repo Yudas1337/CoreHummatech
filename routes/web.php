@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\BranchController;
 use App\Http\Controllers\CategoryNewsController;
+use App\Http\Controllers\CollabCategoryController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -42,9 +43,6 @@ Route::get('/collab', function () {
     return view('admin.pages.collab.index');
 });
 
-Route::get('/category-collab', function () {
-    return view('admin.pages.collab-category.index');
-});
 
 Route::get('/gallery', function () {
     return view('admin.pages.gallery.index');
@@ -146,3 +144,10 @@ Route::get('branch' , [BranchController::class ,'index']);
 Route::post('branch/create/' ,[BranchController::class ,'store']);
 Route::delete('brach/delete/{branch}' , [BranchController::class ,'destroy']);
 // end branch
+
+//category mitra
+Route::post('create/category/mitra' , [CollabCategoryController::class , 'store'])->name('create.category.mitra');
+Route::get('category-collab' , [CollabCategoryController::class ,'index']);
+Route::put('update/category/mitra/{collabCategory}' ,[CollabCategoryController::class ,'update'])->name('update.category.mitra');
+Route::delete('delete/category/mitra/{collabCategory}' ,[CollabCategoryController::class ,'destroy'])->name('delete.category.mitra');
+// end category mitra

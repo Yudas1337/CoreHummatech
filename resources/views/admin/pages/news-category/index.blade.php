@@ -81,7 +81,7 @@
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Edit Kategori Mitra</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Edit Kategori Berita</h5>
                     <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <form class="form-bookmark needs-validation" method="POST" id="form-update" novalidate=""
@@ -91,7 +91,7 @@
                     <div class="modal-body">
                         <div class="row g-2">
                             <div class="mb-3 mt-0 col-md-12">
-                                <label for="bm-title">Kategori Mitra</label>
+                                <label for="bm-title">Kategori Berita</label>
                                 <input class="form-control name"name="name" type="text" required="" autocomplete="name"
                                     placeholder="Masukkan Nama Kategori">
                             </div>
