@@ -70,43 +70,6 @@
                         <button class="btn btn-primary m-0" type="button" data-bs-toggle="modal"
                             data-bs-target="#tambah">Tambah</button>
 
-                        <button class="btn btn-primary m-0" type="button" data-bs-toggle="modal"
-                            data-bs-target="#tambah">Tambah</button>
-
-                        <!-- Add Modal -->
-                        <div class="modal fade modal-bookmark" id="tambah" tabindex="-1" role="dialog"
-                            aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog modal-lg" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title fw-semibold" id="exampleModalLabel">Tambah Kategori Mitra
-                                        </h5>
-                                        <button class="btn-close" type="button" data-bs-dismiss="modal"
-                                            aria-label="Close"></button>
-                                    </div>
-                                    <form class="form-bookmark needs-validation" action="#" method="POST"
-                                        id="bookmark-form" novalidate="" enctype="multipart/form-data">
-                                        <div class="modal-body">
-                                            <div class="row g-2">
-                                                <div class="mb-3 mt-0 col-md-12">
-                                                    <label for="bm-title">Kategori Mitra</label>
-                                                    <input class="form-control" type="text" required=""
-                                                        autocomplete="name" placeholder="Masukkan Nama Kategori">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <div class="d-flex justify-content-end">
-                                                <button class="btn btn-secondary" type="button"
-                                                    data-bs-dismiss="modal">Cancel</button>
-                                                <button class="btn btn-primary" type="submit">Tambah</button>
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-
                     </div>
                 </div>
             </div>
@@ -126,75 +89,19 @@
             </thead>
             <tbody>
                 @forelse ($collabCategorys as $index=>$collabCategori)
-                <tr>
-                    <td class="">{{ $index + 1 }}</td>
-                    <td class="">{{ $collabCategori->name}}</td>
-                    <td class="">
-                        <div class="d-flex justify-content-center gap-2">
-                            <button class="btn btn-warning m-0 btn-edit" type="button" data-bs-toggle="modal"
-                            data-bs-target="#edit" data-id="{{ $collabCategori->id }}" data-name="{{ $collabCategori->name }}" >Edit</button>
-                            <button class="btn-delete btn btn-danger" data-id="{{ $collabCategori->id }}">
-                                Hapus
-                            </button>
-                    <td>1</td>
-                    <td>Lorem</td>
-                    <td>
-                        <div class="d-flex gap-2">
-                            <button class="btn btn-warning btn-edit" data-bs-toggle="modal" data-bs-target="#edit" type="button">Edit</button>
-                            <button class="btn btn-danger btn-edit" type="button">Tolak</button>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Ipsum</td>
-                    <td>
-                        <div class="d-flex gap-2">
-                            <button class="btn btn-warning btn-edit" data-bs-toggle="modal" data-bs-target="#edit" type="button">Edit</button>
-                            <button class="btn btn-danger btn-edit" type="button">Tolak</button>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>Dolor</td>
-                    <td>
-                        <div class="d-flex gap-2">
-                            <button class="btn btn-warning btn-edit" data-bs-toggle="modal" data-bs-target="#edit" type="button">Edit</button>
-                            <button class="btn btn-danger btn-edit" type="button">Tolak</button>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>4</td>
-                    <td>Sit</td>
-                    <td>
-                        <div class="d-flex gap-2">
-                            <button class="btn btn-warning btn-edit" data-bs-toggle="modal" data-bs-target="#edit" type="button">Edit</button>
-                            <button class="btn btn-danger btn-edit" type="button">Tolak</button>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>5</td>
-                    <td>Amet</td>
-                    <td>
-                        <div class="d-flex gap-2">
-                            <button class="btn btn-warning btn-edit" data-bs-toggle="modal" data-bs-target="#edit" type="button">Edit</button>
-                            <button class="btn btn-danger btn-edit" type="button">Tolak</button>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Constecteur</td>
-                    <td>
-                        <div class="d-flex gap-2">
-                            <button class="btn btn-warning btn-edit" data-bs-toggle="modal" data-bs-target="#edit" type="button">Edit</button>
-                            <button class="btn btn-danger btn-edit" type="button">Tolak</button>
-                        </div>
-                    </td>
-                </tr>
+                    <tr>
+                        <td class="">{{ $index + 1 }}</td>
+                        <td class="">{{ $collabCategori->name }}</td>
+                        <td class="">
+                            <div class="d-flex justify-content-center gap-2">
+                                <button class="btn btn-warning m-0 btn-edit" type="button" data-bs-toggle="modal"
+                                    data-bs-target="#edit" data-id="{{ $collabCategori->id }}"
+                                    data-name="{{ $collabCategori->name }}">Edit</button>
+                                <button class="btn-delete btn btn-danger" data-id="{{ $collabCategori->id }}">
+                                    Hapus
+                                </button>
+                        </td>
+                    </tr>
                 @empty
                 @endforelse
             </tbody>
@@ -210,8 +117,8 @@
                     <h5 class="modal-title fw-semibold" id="exampleModalLabel">Tambah Kategori </h5>
                     <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-               <form action="{{route('create.category.mitra')}}" method="post">
-                @csrf
+                <form action="{{ route('create.category.mitra') }}" method="post">
+                    @csrf
                     <div class="modal-body">
                         <div class="row g-2">
                             <div class="mb-3 mt-0 col-md-12">
@@ -238,80 +145,79 @@
     </div>
 
     <!-- Edit Modal -->
-    <div class="modal fade modal-bookmark" id="edit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Edit Kategori Mitra</h5>
-                <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <form class="form-bookmark needs-validation" method="POST" id="form-update" novalidate=""
-                enctype="multipart/form-data">
-                @csrf
-                @method('PUT')
-                <div class="modal-body">
-                    <div class="row g-2">
-                        <div class="mb-3 mt-0 col-md-12">
-                            <label for="bm-title">Kategori Mitra</label>
-                            <input class="form-control" type="text" name="name" required="" id="name-edit" autocomplete="name"
-                                placeholder="Masukkan Nama Kategori">
-                                @error('name')
-                                    <p class="text-danger">
-                                        {{ $message }}
-                                    </p>
-                                @enderror
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <div class="d-flex justify-content-end">
-                        <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">Batal</button>
-                        <button class="btn btn-primary" type="submit">Perbarui</button>
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>
-    </div>
-
-    @include('admin.components.delete-modal-component')
-
-@endsection
-
-@section('script')
-<script>
-    $('#datatable table').DataTable({
-        searching: false,
-        columnDefs: [{
-            targets: 2,
-            sortable: false
-        }]
-    });
-    $('.btn-delete').on('click', function() {
-        var id = $(this).data('id');
-        $('#form-delete').attr('action', 'delete/category/mitra/' + id);
-        $('#modal-delete').modal('show');
-    });
-    $('.btn-edit').click(function() {
-        var id = $(this).data('id'); // Mengambil nilai id dari tombol yang diklik
-        var name = $(this).data('name'); // Mengambil nilai name dari tombol yang diklik
-        $('#form-update').attr('action', 'update/category/mitra/' + id ); // Mengubah nilai atribut action form
-        $('#name-edit').val(name);
-        $('#modal-edit').modal('show');
-    });
-</script>
-    <!-- Edit Modal -->
-    <div class="modal fade modal-bookmark" id="edit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
+    <div class="modal fade modal-bookmark" id="edit" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Edit Kategori Mitra</h5>
                     <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form class="form-bookmark needs-validation" action="#" method="POST" id="bookmark-form" novalidate=""
+                <form class="form-bookmark needs-validation" method="POST" id="form-update" novalidate=""
                     enctype="multipart/form-data">
+                    @csrf
+                    @method('PUT')
+                    <div class="modal-body">
+                        <div class="row g-2">
+                            <div class="mb-3 mt-0 col-md-12">
+                                <label for="bm-title">Kategori Mitra</label>
+                                <input class="form-control" type="text" name="name" required="" id="name-edit"
+                                    autocomplete="name" placeholder="Masukkan Nama Kategori">
+                                @error('name')
+                                    <p class="text-danger">
+                                        {{ $message }}
+                                    </p>
+                                @enderror
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <div class="d-flex justify-content-end">
+                            <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">Batal</button>
+                            <button class="btn btn-primary" type="submit">Perbarui</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    @include('admin.components.delete-modal-component')
+@endsection
+
+@section('script')
+    <script>
+        $('#datatable table').DataTable({
+            searching: false,
+            columnDefs: [{
+                targets: 2,
+                sortable: false
+            }]
+        });
+        $('.btn-delete').on('click', function() {
+            var id = $(this).data('id');
+            $('#form-delete').attr('action', 'delete/category/mitra/' + id);
+            $('#modal-delete').modal('show');
+        });
+        $('.btn-edit').click(function() {
+            var id = $(this).data('id'); // Mengambil nilai id dari tombol yang diklik
+            var name = $(this).data('name'); // Mengambil nilai name dari tombol yang diklik
+            $('#form-update').attr('action', 'update/category/mitra/' + id); // Mengubah nilai atribut action form
+            $('#name-edit').val(name);
+            $('#modal-edit').modal('show');
+        });
+    </script>
+    <!-- Edit Modal -->
+    <div class="modal fade modal-bookmark" id="edit" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Edit Kategori Mitra</h5>
+                    <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form class="form-bookmark needs-validation" action="#" method="POST" id="bookmark-form"
+                    novalidate="" enctype="multipart/form-data">
                     <div class="modal-body">
                         <div class="row g-2">
                             <div class="mb-3 mt-0 col-md-12">

@@ -69,7 +69,7 @@
 @section('content')
     <div class="row">
         @foreach (range(0, 10) as $item)
-        <div class="col-md-12">
+        <div class="col-md-12 col-12 col-xl-6">
             <div class="card rounded-4" style="height: 400px">
                 <div class="product-box rounded-4">
                     <div class="product-img">
