@@ -17,6 +17,6 @@ class CategoryNewsRepository extends BaseRepository implements CategoryNewsInter
     }
     public function store(array $data): mixed
     {
-        return $this->model->query()->store($data);
+        return $this->model->query()->create($data);
     }
 }

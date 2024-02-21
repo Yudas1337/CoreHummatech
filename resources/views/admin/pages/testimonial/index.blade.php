@@ -124,124 +124,97 @@
 </div>
 
     <!-- Add Modal -->
-    <div class="modal fade modal-bookmark" id="tambah" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title fw-semibold" id="exampleModalLabel">Tambah Testimoni</h5>
-                <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <form class="form-bookmark needs-validation" action="#" method="POST" id="bookmark-form" novalidate=""
-                enctype="multipart/form-data">
-                <div class="modal-body">
-                    <div class="row g-2">
-                        <div class="mb-3 mt-0 col-md-12">
-                            <label for="bm-title">Nama Lengkap</label>
-                            <input class="form-control" type="text" required="" autocomplete="name" placeholder="Masukkan nama">
-                        </div>
-                    </div>
-                    <div class="mb-3 mt-0 col-md-12">
-                        <label for="bm-title">Deskripsi</label>
-                        <textarea name="" id=""  rows="4" class="form-control" placeholder="Masukkan deskripsi"></textarea>
-                    </div>
-                    <div class="mb-3 mt-0 col-md-12">
-                        <label for="bm-title">Rating</label>
-                        <div class="rating">
-                            <i class="far fa-star" style="font-size: 24px; color: #FFAA05;"></i>
-                            <i class="far fa-star" style="font-size: 24px; color: #FFAA05;"></i>
-                            <i class="far fa-star" style="font-size: 24px; color: #FFAA05;"></i>
-                            <i class="far fa-star" style="font-size: 24px; color: #FFAA05;"></i>
-                            <i class="far fa-star" style="font-size: 24px; color: #FFAA05;"></i>
-                        </div>
-                    </div>
-
-                    <div class="col-sm-6">
-                        <label for="bm-title">Tampilkan di</label>
-                        <div class="card">
-                            <div class="card-body">
-                                <form>
-                                    <div class="form-group">
-                                        <input name="basic" class="tagify" value="tag1, tag2, tag3, tag4" autofocus>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="mb-3 mt-0 col-md-12">
-                        <label for="bm-title">Foto Testimoni</label>
-                        <input class="form-control" id="formFile" type="file">
-                    </div>
-                    <div class="d-flex justify-content-end gap-2">
-                        <button class="btn btn-secondary " type="button" data-bs-dismiss="modal">Batal</button>
-                        <button class="btn btn-primary " type="submit">Simpan</button>
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-
-    <!-- Edit Modal -->
-        <!-- Edit Modal -->
-        <div class="modal fade modal-bookmark" id="edit" tabindex="-1" role="dialog"
-        aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade modal-bookmark" id="tambah" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Edit Testimoni</h5>
+                    <h5 class="modal-title fw-semibold" id="exampleModalLabel">Tambah Testimoni</h5>
                     <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <form class="form-bookmark needs-validation" action="#" method="POST" id="bookmark-form" novalidate=""
-                enctype="multipart/form-data">
-                <div class="modal-body">
-                    <div class="row g-2">
-                        <div class="mb-3 mt-0 col-md-12">
-                            <label for="bm-title">Nama Lengkap</label>
-                            <input class="form-control" type="text" required="" autocomplete="name" value="Lorem Ipsum">
-                        </div>
-                    </div>
-                    <div class="mb-3 mt-0 col-md-12">
-                        <label for="bm-title">Deskripsi</label>
-                        <textarea name="" id=""  rows="4" class="form-control">Lorem ipsum dolor sit amet consectetur. Est aliquet etiam sit dignissim sit id id in risus lorem ornare sed pellentesque.</textarea>
-                    </div>
-                    <div class="mb-3 mt-0 col-md-12">
-                        <label for="bm-title">Rating</label>
-                        <div class="rating">
-                            <i class="fa fa-star" style="font-size: 24px; color: #FFAA05;"></i>
-                            <i class="fa fa-star" style="font-size: 24px; color: #FFAA05;"></i>
-                            <i class="fa fa-star" style="font-size: 24px; color: #FFAA05;"></i>
-                            <i class="far fa-star" style="font-size: 24px; color: #FFAA05;"></i>
-                            <i class="far fa-star" style="font-size: 24px; color: #FFAA05;"></i>
-                        </div>
-                    </div>
-
-                    <div class="col-sm-6">
-                        <label for="bm-title">Tampilkan di</label>
-                        <form>
-                            <div class="form-group">
-                                <input name="basic" class="tagify" value="tag1, tag2, tag3, tag4" autofocus>
+                    enctype="multipart/form-data">
+                    <div class="modal-body">
+                        <div class="row g-2">
+                            <div class="mb-3 mt-0 col-md-12">
+                                <label for="bm-title">Nama Lengkap</label>
+                                <input class="form-control" type="text" required="" autocomplete="name" placeholder="Masukkan nama">
                             </div>
-                        </form>
-                    </div>
+                        </div>
+                        <div class="mb-3 mt-0 col-md-12">
+                            <label for="bm-title">Deskripsi</label>
+                            <textarea name="" id=""  rows="4" class="form-control" placeholder="Masukkan deskripsi"></textarea>
+                        </div>
 
+                        <div class="mb-3 mt-0 col-md-12">
+                            <label for="bm-title">Tampilkan di</label>
+                            <select class="select2 form-select" name="tags-select-mode" style="width: 100%;">
+                                <option value="option1">Option 1</option>
+                                <option value="option2">Option 2</option>
+                                <option value="option3">Option 3</option>
+                            </select>
+                        </div>
 
-                    <div class="mb-3 mt-0 col-md-12">
-                        <figure class="col-xl-3 col-md-4 col-6" itemprop="associatedMedia" itemscope=""><a href="../assets/images/big-lightgallry/01.jpg" itemprop="contentUrl" data-size="1600x950"><img class="img-thumbnail" src="../assets/images/lightgallry/01.jpg" itemprop="thumbnail" alt="Image description"></a>
-                      </figure>
-                        <label for="bm-title">Foto Testimoni</label>
-                        <input class="form-control" id="formFile" type="file">
+                        <div class="mb-3 mt-0 col-md-12">
+                            <label for="bm-title">Foto Testimoni</label>
+                            <input class="form-control" id="formFile" type="file">
+                        </div>
+                        <div class="d-flex justify-content-end gap-2">
+                            <button class="btn btn-secondary " type="button" data-bs-dismiss="modal">Batal</button>
+                            <button class="btn btn-primary " type="submit">Simpan</button>
+                        </div>
                     </div>
-                    <div class="d-flex justify-content-end gap-2">
-                        <button class="btn btn-secondary " type="button" data-bs-dismiss="modal">Batal</button>
-                        <button class="btn btn-primary " type="submit">Simpan</button>
-                    </div>
-                </div>
-            </form>
+                </form>
             </div>
         </div>
     </div>
+
+        <!-- Edit Modal -->
+        <div class="modal fade modal-bookmark" id="edit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Edit Testimoni</h5>
+                        <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <form class="form-bookmark needs-validation" action="#" method="POST" id="bookmark-form" novalidate=""
+                    enctype="multipart/form-data">
+                    <div class="modal-body">
+                        <div class="row g-2">
+                            <div class="mb-3 mt-0 col-md-12">
+                                <label for="bm-title">Nama Lengkap</label>
+                                <input class="form-control" type="text" required="" autocomplete="name" value="Lorem Ipsum">
+                            </div>
+                        </div>
+                        <div class="mb-3 mt-0 col-md-12">
+                            <label for="bm-title">Deskripsi</label>
+                            <textarea name="" id=""  rows="4" class="form-control">Lorem ipsum dolor sit amet consectetur. Est aliquet etiam sit dignissim sit id id in risus lorem ornare sed pellentesque.</textarea>
+                        </div>
+
+                        <div class="mb-3 mt-0 col-md-12">
+                            <label for="bm-title">Tampilkan di</label>
+                            <select class="select2 form-select" name="tags-select-mode" style="width: 100%;">
+                                <option value="option1">Option 1</option>
+                                <option value="option2">Option 2</option>
+                                <option value="option3">Option 3</option>
+                            </select>
+                        </div>
+
+
+                        <div class="mb-3 mt-0 col-md-12">
+                            <figure class="col-xl-3 col-md-4 col-6" itemprop="associatedMedia" itemscope=""><a href="../assets/images/big-lightgallry/01.jpg" itemprop="contentUrl" data-size="1600x950"><img class="img-thumbnail" src="../assets/images/lightgallry/01.jpg" itemprop="thumbnail" alt="Image description"></a>
+                          </figure>
+                            <label for="bm-title">Foto Testimoni</label>
+                            <input class="form-control" id="formFile" type="file">
+                        </div>
+                        <div class="d-flex justify-content-end gap-2">
+                            <button class="btn btn-secondary " type="button" data-bs-dismiss="modal">Batal</button>
+                            <button class="btn btn-primary " type="submit">Simpan</button>
+                        </div>
+                    </div>
+                </form>
+                </div>
+            </div>
+        </div>
 
     <nav class="m-b-30" aria-label="Page navigation example">
         <ul class="pagination justify-content-center pagin-border-primary pagination-primary">
