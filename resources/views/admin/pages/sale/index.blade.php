@@ -47,7 +47,8 @@
                     </div>
                 </div>
             </div>
-            @empty
+        @empty
+            <img src="{{ asset('assets/images/no-data.jpg') }}" alt="Tidak ada data" class="d-flex justify-self-center">
         @endforelse
     </div>
 

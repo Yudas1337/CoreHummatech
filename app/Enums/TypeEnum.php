@@ -9,4 +9,5 @@ enum TypeEnum: string
     case SALE = 'sale';
     case PARTNER = 'partner';
 
+    case PRODUCT = 'product';
 }
