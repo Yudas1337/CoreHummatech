@@ -4,9 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class Sale extends Model
+class SalesPackage extends Model
 {
     use HasFactory;
 
@@ -14,8 +14,8 @@ class Sale extends Model
     protected $guarded = ['id'];
     public $incrementing = false;
 
-    public function salesPackages(): HasMany
+    public function sale(): BelongsTo
     {
-        return $this->hasMany(SalesPackage::class);
+        return $this->belongsTo(Sale::class);
     }
 }

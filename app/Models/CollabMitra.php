@@ -5,13 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class CollabCategory extends Model
+class CollabMitra extends Model
 {
+    protected $guarded = [];
     use HasFactory;
-    protected $guarded =[];
-
-    public function collabMitra()
+    public function collabCategory()
     {
-        return $this->hasMany(CollabMitra::class);
+        return $this->belongsTo(CollabCategory::class);
     }
 }

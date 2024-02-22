@@ -3,21 +3,25 @@
 namespace App\Http\Controllers;
 
 use App\Contracts\Interfaces\SaleInterface;
+use App\Contracts\Interfaces\SalesPackageInterface;
 use App\Http\Requests\StoreSaleRequest;
 use App\Http\Requests\UpdateSaleRequest;
 use App\Models\Sale;
+use App\Models\SalesPackage;
 use App\Services\SaleService;
 use Illuminate\Http\Request;
 
 class SaleController extends Controller
 {
     private SaleInterface $sale;
+    private SalesPackageInterface $salesPackage;
     private SaleService $service;
 
-    public function __construct(SaleInterface $sale, SaleService $saleService)
+    public function __construct(SaleInterface $sale, SaleService $saleService, SalesPackageInterface $salesPackage)
     {
         $this->service = $saleService;
         $this->sale = $sale;
+        $this->salesPackage = $salesPackage;
         $this->middleware('auth');
     }
 
@@ -53,7 +57,8 @@ class SaleController extends Controller
      */
     public function show(Sale $sale)
     {
-        return view('admin.pages.sale.detail', compact('sale'));
+        $salesPackages = $this->salesPackage->get();
+        return view('admin.pages.sale.detail', compact('sale', 'salesPackages'));
     }
 
     /**
@@ -69,7 +74,7 @@ class SaleController extends Controller
      */
     public function update(UpdateSaleRequest $request, Sale $sale)
     {
-        $data = $this->service->update($sale, $request);
+        $data = $this->service->update($request , $sale);
         $this->sale->update($sale->id, $data);
 
         return back()->with('success', 'Penjualan berhasil diperbarui');

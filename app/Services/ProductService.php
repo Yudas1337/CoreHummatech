@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Enums\TypeEnum;
+use App\Http\Requests\StoreProductRequest;
 use App\Traits\UploadTrait;
 use App\Http\Requests\StoreSaleRequest;
 use App\Http\Requests\UpdateProductRequest;
@@ -10,7 +11,7 @@ use App\Http\Requests\UpdateSaleRequest;
 use App\Models\Product;
 use App\Models\Sale;
 
-class SaleService
+class ProductService
 {
     use UploadTrait;
 
@@ -36,7 +37,7 @@ class SaleService
      *
      * @return array|bool
      */
-    public function store(StoreSaleRequest $request): array|bool
+    public function store(StoreProductRequest $request): array|bool
     {
         $data = $request->validated();
 
@@ -58,14 +59,13 @@ class SaleService
     public function update(Product $product, UpdateProductRequest $request): array|bool
     {
         $data = $request->validated();
-
-        if ($request->hasFile('image') && $request->file('image')->isValid()) {
-            $this->remove($product->image);
-            $data['image'] = $request->file('image')->store(TypeEnum::PRODUCT->value, 'public');
-        } else {
-            $data['image'] = $product->image;
+        $oldThumbnail = $product->image;
+        if ($request->hasFile('image')) {
+            $this->remove($oldThumbnail);
+            $oldThumbnail = $this->upload(TypeEnum::PRODUCT->value, $request->file('image'));
+        }else{
+            $data['image'] = $oldThumbnail;
+            return $data;
         }
-
-        return $data;
     }
 }
