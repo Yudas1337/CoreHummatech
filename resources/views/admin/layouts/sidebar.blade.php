@@ -165,19 +165,22 @@
                 <a href="/setting/vision-mision">Visi & Misi</a>
             </li>
             <li>
-                <a href="/terms-condition">Syarat & Ketentuan</a>
+                <a href="/setting/terms-condition">Syarat & Ketentuan</a>
             </li>
             <li>
-                <a href="/departement">Jabatan</a>
+                <a href="/setting/departement">Jabatan</a>
             </li>
             <li>
-                <a href="/faq">FAQ</a>
+                <a href="/setting/faq">FAQ</a>
             </li>
             <li>
-                <a href="/company">Struktur usaha</a>
+                <a href="/setting/company">Struktur usaha</a>
             </li>
             <li>
-                <a href="#">Struktur organisasi</a>
+                <a href="/setting/teams">Struktur organisasi</a>
+            </li>
+            <li>
+                <a href="/setting/procedure">Prosedur</a>
             </li>
         </ul>
     </li>

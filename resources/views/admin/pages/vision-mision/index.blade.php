@@ -19,6 +19,7 @@
             </div>
         </div>
     </div>
+    
     <div class="p-1">
         <h3 class="mb-3">Visi</h3>
         <div class="card pb-0 border-l-primary border-4 border-0 shadow">

@@ -76,11 +76,11 @@ Route::get('/product/detail', function () {
     return view('admin.pages.products.detail');
 });
 
-Route::get('/terms-condition', function () {
+Route::get('/setting/terms-condition', function () {
     return view('admin.pages.terms-condition.index');
 });
 
-Route::get('/terms-condition/edit', function () {
+Route::get('/setting/terms-condition/edit', function () {
     return view('admin.pages.terms-condition.edit');
 });
 
@@ -92,7 +92,7 @@ Route::get('/service', function () {
     return view('admin.pages.service.index');
 });
 
-Route::get('/faq', function () {
+Route::get('/setting/faq', function () {
     return view('admin.pages.faq.index');
 });
 
@@ -112,6 +112,10 @@ Route::get('/setting/vision-mision', function () {
     return view('admin.pages.vision-mision.index');
 });
 
+Route::get('/setting/departement', function () {
+    return view('admin.pages.departement.index');
+});
+
 Route::get('/setting/vision-mision/create', function () {
     return view('admin.pages.vision-mision.add');
 });
@@ -119,8 +123,12 @@ Route::get('/setting/vision-mision/edit', function () {
     return view('admin.pages.vision-mision.edit');
 });
 
-Route::get('/company', function() {
+Route::get('/setting/company', function() {
     return view('admin.pages.company.index');
+});
+
+Route::get('/setting/teams', function() {
+    return view('admin.pages.teams.index');
 });
 
 Auth::routes();
