@@ -5,9 +5,7 @@ namespace App\Services;
 use App\Enums\TypeEnum;
 use App\Traits\UploadTrait;
 use App\Http\Requests\StoreSaleRequest;
-use App\Http\Requests\UpdateProductRequest;
 use App\Http\Requests\UpdateSaleRequest;
-use App\Models\Product;
 use App\Models\Sale;
 
 class SaleService
@@ -39,9 +37,12 @@ class SaleService
     public function store(StoreSaleRequest $request): array|bool
     {
         $data = $request->validated();
+        $image = $request->hasFile('image') && $request->file('image')->isValid();
+        $proposal = $request->hasFile('proposal') && $request->file('proposal')->isValid();
 
-        if ($request->hasFile('image') && $request->file('image')->isValid()) {
+        if ($image && $proposal) {
             $data['image'] = $request->file('image')->store(TypeEnum::PRODUCT->value, 'public');
+            $data['proposal'] = $request->file('proposal')->store(TypeEnum::PROPOSAL->value, 'public');
             return $data;
         }
         return false;
@@ -55,15 +56,20 @@ class SaleService
      *
      * @return array|bool
      */
-    public function update(Product $product, UpdateProductRequest $request): array|bool
+    public function update(Sale $sale, UpdateSaleRequest $request): array|bool
     {
         $data = $request->validated();
+        $image = $request->hasFile('image') && $request->file('image')->isValid();
+        $proposal = $request->hasFile('proposal') && $request->file('proposal')->isValid();
 
-        if ($request->hasFile('image') && $request->file('image')->isValid()) {
-            $this->remove($product->image);
-            $data['image'] = $request->file('image')->store(TypeEnum::PRODUCT->value, 'public');
+        if ($image && $proposal) {
+            $this->remove($sale->image);
+            $this->remove($sale->proposal);
+            $data['image'] = $request->file('image')->store(TypeEnum::SALE->value, 'public');
+            $data['proposal'] = $request->file('proposal')->store(TypeEnum::PROPOSAL->value, 'public');
         } else {
-            $data['image'] = $product->image;
+            $data['image'] = $sale->image;
+            $data['proposal'] = $sale->proposal;
         }
 
         return $data;

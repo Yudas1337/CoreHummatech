@@ -152,6 +152,7 @@ Route::put('update/category/mitra/{collabCategory}' ,[CollabCategoryController::
 Route::delete('delete/category/mitra/{collabCategory}' ,[CollabCategoryController::class ,'destroy'])->name('delete.category.mitra');
 // end category mitra
 Route::resource('sale', SaleController::class);
+Route::resource('sales-package', SalesPackageController::class);                                                 
 
 
 //product
@@ -160,4 +161,3 @@ Route::post('create/product' , [ProductController::class ,'store'])->name('creat
 Route::put('update/product/{product}' , [ProductController::class ,'update'])->name('update.product');
 Route::delete('delete/product/{product}' , [ProductController::class , 'destroy']);
 Route::get('product/detail/{product}' , [ProductController::class , 'show']);
-Route::resource('sales-package', SalesPackageController::class);
