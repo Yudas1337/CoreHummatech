@@ -70,9 +70,6 @@ Route::get('/hero-section/edit', function () {
 });
 
 
-Route::get('/product/detail', function () {
-    return view('admin.pages.products.detail');
-});
 
 Route::get('/setting/terms-condition', function () {
     return view('admin.pages.terms-condition.index');
@@ -162,4 +159,5 @@ Route::get('product' , [ProductController::class , 'index']);
 Route::post('create/product' , [ProductController::class ,'store'])->name('create.product');
 Route::put('update/product/{product}' , [ProductController::class ,'update'])->name('update.product');
 Route::delete('delete/product/{product}' , [ProductController::class , 'destroy']);
+Route::get('product/detail/{product}' , [ProductController::class , 'show']);
 Route::resource('sales-package', SalesPackageController::class);

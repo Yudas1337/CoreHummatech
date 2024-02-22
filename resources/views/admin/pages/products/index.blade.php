@@ -92,7 +92,7 @@
 
                         <div class="gap-2 d-flex">
                             <div class="d-grid flex-grow-1">
-                                <a href="{{ url('/product/detail') }}" class="btn btn-primary">Lihat Detail</a>
+                                <a href="{{ url('/product/detail/' .$product->id ) }}" class="btn btn-primary">Lihat Detail</a>
                             </div>
                             <div class="d-flex flex-shrink-0 gap-2">
                                 <button class="btn btn-warning px-3 m-0 btn-edit" type="button" data-image="{{ asset('storage/' . $product->image) }}" data-id="{{ $product->id }}" data-link="{{ $product->link }}" data-feature="{{ $product->feature }}" id="{{ $product->id }}" data-description="{{ $product->description }}" data-name="{{ $product->name }}"><i class="fas fa-pencil"></i></button>

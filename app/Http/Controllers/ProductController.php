@@ -50,7 +50,8 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        //
+        $products = $this->product->show($product->id);
+        return view('admin.pages.products.detail' , compact('products'));
     }
 
     /**

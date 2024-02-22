@@ -28,4 +28,8 @@ class ProductRepository extends BaseRepository implements ProductInterface
     {
         return $this->model->query()->findOrFail($id)->delete($id);
     }
+    public function show(mixed $id): mixed
+    {
+        return $this->model->query()->findOrFail($id);
+    }
 }
