@@ -170,4 +170,5 @@ Route::resource('sales-package', SalesPackageController::class);
 require __DIR__ . '/kader.php';
 require __DIR__ . '/farah.php';
 require __DIR__ . '/nesa.php';
+require __DIR__ . '/adi.php';
 require __DIR__ . '/rendi.php';
