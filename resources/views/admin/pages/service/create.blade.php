@@ -12,7 +12,7 @@
             <form class="form-bookmark needs-validation" action="{{ route('create.service') }}" method="POST" id="bookmark-form" novalidate=""
                 enctype="multipart/form-data">
                 @csrf
-                
+
                 <div class="modal-body">
                     <div class="row g-2">
                         <div class="form-group mb-3 mt-0 col-md-12">
