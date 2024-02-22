@@ -164,3 +164,10 @@ Route::get('product/detail/{product}' , [ProductController::class , 'show']);
 Route::get('service' , [ServiceController::class ,'index']);
 Route::post('create/service' , [ServiceController::class , 'store'])->name('create.service');
 Route::resource('sales-package', SalesPackageController::class);
+
+
+
+require __DIR__ . '/kader.php';
+require __DIR__ . '/farah.php';
+require __DIR__ . '/nesa.php';
+require __DIR__ . '/rendi.php';
