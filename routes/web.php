@@ -3,7 +3,9 @@
 use App\Http\Controllers\BranchController;
 use App\Http\Controllers\CategoryNewsController;
 use App\Http\Controllers\CollabCategoryController;
+use App\Http\Controllers\NewsController;
 use App\Http\Controllers\SaleController;
+use App\Http\Controllers\ServiceController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -87,16 +89,16 @@ Route::get('/social-media', function () {
     return view('admin.pages.social-media.index');
 });
 
-Route::get('/service', function () {
-    return view('admin.pages.service.index');
-});
+// Route::get('/service', function () {
+//     return view('admin.pages.service.index');
+// });
+
+// Route::get('/service/detail', function () {
+//     return view('admin.pages.service.detail');
+// });
 
 Route::get('/setting/faq', function () {
     return view('admin.pages.faq.index');
-});
-
-Route::get('/service/detail', function () {
-    return view('admin.pages.service.detail');
 });
 
 Route::get('/message-approval', function () {
@@ -134,14 +136,15 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 // category news berita
 Route::get('category-news' , [CategoryNewsController::class , 'index']);
 Route::post('create/category/news' , [CategoryNewsController::class , 'store'])->name('create.category.news');
 Route::delete('delete/category/news/{categoryNews}' ,[CategoryNewsController::class ,'destroy'])->name('delete.category.news');
 Route::put('update/category/news/{categoryNews}' ,[CategoryNewsController::class ,'update'])->name('update.category.news');
 // end category news berita
+
+// news
+// end news
 
 // branch
 Route::get('branch' , [BranchController::class ,'index']);
@@ -155,4 +158,7 @@ Route::get('category-collab' , [CollabCategoryController::class ,'index']);
 Route::put('update/category/mitra/{collabCategory}' ,[CollabCategoryController::class ,'update'])->name('update.category.mitra');
 Route::delete('delete/category/mitra/{collabCategory}' ,[CollabCategoryController::class ,'destroy'])->name('delete.category.mitra');
 // end category mitra
+
+Route::resource('news' , NewsController::class);
 Route::resource('sale', SaleController::class);
+Route::resource('service', ServiceController::class);

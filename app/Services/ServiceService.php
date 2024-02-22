@@ -4,11 +4,11 @@ namespace App\Services;
 
 use App\Enums\TypeEnum;
 use App\Traits\UploadTrait;
-use App\Http\Requests\StoreSaleRequest;
-use App\Http\Requests\UpdateSaleRequest;
-use App\Models\Sale;
+use App\Http\Requests\StoreServiceRequest;
+use App\Http\Requests\UpdateServiceRequest;
+use App\Models\Service;
 
-class SaleService
+class ServiceService
 {
     use UploadTrait;
 
@@ -30,16 +30,16 @@ class SaleService
     /**
      * Handle store data event to models.
      *
-     * @param StoreSaleRequest $request
+     * @param StoreServiceRequest $request
      *
      * @return array|bool
      */
-    public function store(StoreSaleRequest $request): array|bool
+    public function store(StoreServiceRequest $request): array|bool
     {
         $data = $request->validated();
 
         if ($request->hasFile('image') && $request->file('image')->isValid()) {
-            $data['image'] = $request->file('image')->store(TypeEnum::SALE->value, 'public');
+            $data['image'] = $request->file('image')->store(TypeEnum::SERVICE->value, 'public');
             return $data;
         }
         return false;
@@ -48,20 +48,20 @@ class SaleService
     /**
      * Handle update data event to models.
      *
-     * @param Sale $sale
-     * @param UpdateSaleRequest $request
+     * @param Service $service
+     * @param UpdateServiceRequest $request
      *
      * @return array|bool
      */
-    public function update(Sale $sale, UpdateSaleRequest $request): array|bool
+    public function update(Service $service, UpdateServiceRequest $request): array|bool
     {
         $data = $request->validated();
 
         if ($request->hasFile('image') && $request->file('image')->isValid()) {
-            $this->remove($sale->image);
-            $data['image'] = $request->file('image')->store(TypeEnum::SALE->value, 'public');
+            $this->remove($service->image);
+            $data['image'] = $request->file('image')->store(TypeEnum::SERVICE->value, 'public');
         } else {
-            $data['image'] = $sale->image;
+            $data['image'] = $service->image;
         }
 
         return $data;
