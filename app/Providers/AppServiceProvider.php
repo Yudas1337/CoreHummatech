@@ -9,7 +9,9 @@ use App\Contracts\Repositories\BranchRepository;
 use App\Contracts\Repositories\CategoryNewsRepository;
 use App\Contracts\Repositories\CollabCategoryRepository;
 use App\Contracts\Interfaces\SaleInterface;
+use App\Contracts\Interfaces\SalesPackageInterface;
 use App\Contracts\Repositories\SaleRepository;
+use App\Contracts\Repositories\SalesPackageRepository;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -19,6 +21,7 @@ class AppServiceProvider extends ServiceProvider
         BranchInterface::class => BranchRepository::class,
         CollabCategoryInterface::class => CollabCategoryRepository::class,
         SaleInterface::class => SaleRepository::class,
+        SalesPackageInterface::class => SalesPackageRepository::class,
     ];
 
     /**

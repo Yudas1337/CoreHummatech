@@ -4,6 +4,7 @@ use App\Http\Controllers\BranchController;
 use App\Http\Controllers\CategoryNewsController;
 use App\Http\Controllers\CollabCategoryController;
 use App\Http\Controllers\SaleController;
+use App\Http\Controllers\SalesPackageController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -148,3 +149,4 @@ Route::put('update/category/mitra/{collabCategory}' ,[CollabCategoryController::
 Route::delete('delete/category/mitra/{collabCategory}' ,[CollabCategoryController::class ,'destroy'])->name('delete.category.mitra');
 // end category mitra
 Route::resource('sale', SaleController::class);
+Route::resource('sales-package', SalesPackageController::class);
