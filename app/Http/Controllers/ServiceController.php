@@ -3,31 +3,27 @@
 namespace App\Http\Controllers;
 
 use App\Contracts\Interfaces\ServiceInterface;
+use App\Models\Service;
 use App\Http\Requests\StoreServiceRequest;
 use App\Http\Requests\UpdateServiceRequest;
-use App\Models\Service;
 use App\Services\ServiceService;
-use Illuminate\Http\Request;
 
 class ServiceController extends Controller
 {
-    private ServiceInterface $services;
-    private ServiceService $service;
-
-    public function __construct(ServiceInterface $services, ServiceService $servicesService)
+    private ServiceInterface $service;
+    private ServiceService $serviceService;
+    public function __construct(ServiceInterface $service , ServiceService $serviceService)
     {
-        $this->service = $servicesService;
-        $this->services = $services;
-        $this->middleware('auth');
+        $this->service = $service ;
+        $this->serviceService = $serviceService;
     }
-
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $services = $this->services->get();
-        return view('admin.pages.service.index', compact('services'));
+        $services = $this->service->get();
+        return view('admin.pages.service.index' , compact('services'));
     }
 
     /**
@@ -43,23 +39,23 @@ class ServiceController extends Controller
      */
     public function store(StoreServiceRequest $request)
     {
-        $data = $this->service->store($request);
-        $this->services->store($data);
-        return back()->with('success' , 'Data layanan berhasil di tambahkan');
+        $data = $this->serviceService->store($request);
+        $this->service->store($data);
+        return back()->with('success' , 'Layanan berhasil di tambahkan');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Service $services)
+    public function show(Service $service)
     {
-        return view('admin.pages.sale.detail', compact('sale'));
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Service $services)
+    public function edit(Service $service)
     {
         //
     }
@@ -67,24 +63,16 @@ class ServiceController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateServiceRequest $request, Service $services)
+    public function update(UpdateServiceRequest $request, Service $service)
     {
-        $data = $this->service->update($services, $request);
-        $this->services->update($services->id, $data);
-
-        return back()->with('success', 'Penjualan berhasil diperbarui');
+        //
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Service $services)
+    public function destroy(Service $service)
     {
-        if (!$this->services->delete($services->id)) {
-            return back()->with('error', 'Penjualan Gagal Di Hapus');
-        }
-
-        $this->service->remove($services->image);
-        return back()->with('success' , 'Penjualan Berhasil Di Hapus');
+        //
     }
 }

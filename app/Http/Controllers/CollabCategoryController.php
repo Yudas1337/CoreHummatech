@@ -10,7 +10,6 @@ use App\Http\Requests\UpdateCollabCategoryRequest;
 class CollabCategoryController extends Controller
 {
     private CollabCategoryInterface $collabCategory;
-
     public function __construct(CollabCategoryInterface $collabCategory)
     {
         $this->collabCategory = $collabCategory;
@@ -73,5 +72,6 @@ class CollabCategoryController extends Controller
     {
         $this->collabCategory->delete($collabCategory->id);
         return back();
+
     }
 }

@@ -8,8 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class Service extends Model
 {
     use HasFactory;
-
-    protected $keyType = 'char';
-    protected $guarded = ['id'];
-    public $incrementing = false;
+    protected $guarded =[];
 }

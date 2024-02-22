@@ -11,11 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('collab_mitras', function (Blueprint $table) {
+        Schema::create('services', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->foreignId('collab_category_id')->constrained();
             $table->string('image');
+            $table->string('name');
+            $table->string('description');
+            $table->string('file');
             $table->timestamps();
         });
     }
@@ -25,7 +26,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('collab_mitras');
+        Schema::dropIfExists('services');
     }
 };
 

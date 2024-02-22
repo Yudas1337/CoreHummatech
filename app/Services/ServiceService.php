@@ -4,8 +4,13 @@ namespace App\Services;
 
 use App\Enums\TypeEnum;
 use App\Traits\UploadTrait;
+use App\Http\Requests\StoreSaleRequest;
 use App\Http\Requests\StoreServiceRequest;
+use App\Http\Requests\UpdateProductRequest;
+use App\Http\Requests\UpdateSaleRequest;
 use App\Http\Requests\UpdateServiceRequest;
+use App\Models\Product;
+use App\Models\Sale;
 use App\Models\Service;
 
 class ServiceService
@@ -30,7 +35,7 @@ class ServiceService
     /**
      * Handle store data event to models.
      *
-     * @param StoreServiceRequest $request
+     * @param StoreSaleRequest $request
      *
      * @return array|bool
      */
@@ -39,7 +44,8 @@ class ServiceService
         $data = $request->validated();
 
         if ($request->hasFile('image') && $request->file('image')->isValid()) {
-            $data['image'] = $request->file('image')->store(TypeEnum::SERVICE->value, 'public');
+            $data['image'] = $request->file('image')->store(TypeEnum::SALE->value, 'public');
+            $data['file'] = $request->file('file')->store(TypeEnum::PROPOSAL->value, 'public');
             return $data;
         }
         return false;
@@ -48,8 +54,8 @@ class ServiceService
     /**
      * Handle update data event to models.
      *
-     * @param Service $service
-     * @param UpdateServiceRequest $request
+     * @param Sale $sale
+     * @param UpdateSaleRequest $request
      *
      * @return array|bool
      */
@@ -59,7 +65,8 @@ class ServiceService
 
         if ($request->hasFile('image') && $request->file('image')->isValid()) {
             $this->remove($service->image);
-            $data['image'] = $request->file('image')->store(TypeEnum::SERVICE->value, 'public');
+            $data['image'] = $request->file('image')->store(TypeEnum::SALE->value, 'public');
+            $data['file'] = $request->file('file')->store(TypeEnum::PROPOSAL->value, 'public');
         } else {
             $data['image'] = $service->image;
         }

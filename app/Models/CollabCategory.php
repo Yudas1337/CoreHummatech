@@ -9,9 +9,4 @@ class CollabCategory extends Model
 {
     use HasFactory;
     protected $guarded =[];
-
-    public function collabMitra()
-    {
-        return $this->hasMany(CollabMitra::class);
-    }
 }

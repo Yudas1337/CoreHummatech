@@ -25,7 +25,7 @@ class StoreSaleRequest extends FormRequest
             'image' => 'required|mimes:png,jpg,jpeg',
             'name' => 'required',
             'description' => 'required',
-            'proposal' => 'required'
+            'proposal' => 'required|mimes:pdf'
         ];
     }
 
@@ -36,7 +36,8 @@ class StoreSaleRequest extends FormRequest
             'image.mimes' => 'Foto/logo harus berupa png, jpg atau jpeg',
             'name.required' => 'Nama harus diisi',
             'description.required' => 'Deskripsi harus diisi',
-            'proposal.required' => 'Tautan proposal harus diisi'
+            'proposal.required' => 'File proposal harus diisi',
+            'proposal.mimes' => 'Proposal harus berupa pdf'
         ];
     }
 }

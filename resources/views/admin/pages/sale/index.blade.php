@@ -48,7 +48,10 @@
                 </div>
             </div>
         @empty
-            <img src="{{ asset('assets/images/no-data.jpg') }}" alt="Tidak ada data" class="d-flex justify-self-center">
+            <div class="text-center">
+                <img src="{{ asset('assets/images/no-data.jpg') }}" style="width: 50%; margin: -50px" alt="Tidak ada data">
+                <h5>Paket tidak tersedia</h5>
+            </div>
         @endforelse
     </div>
 
@@ -87,8 +90,8 @@
                                 <textarea class="form-control" rows="3" id="description" name="description" autocomplete="" placeholder="Masukan Deskripsi Penjualan" ></textarea>
                             </div>
                             <div class="mb-3 mt-0 col-md-12">
-                                <label for="proposal">Tautan Proposal Penjualan</label>
-                                <input type="text" class="form-control" name="proposal" id="proposal" placeholder="Masukan Tautan Proposal">
+                                <label for="proposal">Proposal</label>
+                                <input type="file" class="form-control" name="proposal" id="proposal" placeholder="Masukan Proposal">
                             </div>
                         </div>
                     </div>
@@ -132,8 +135,8 @@
                                 <textarea class="form-control" rows="3" name="description" autocomplete="" id="description-edit" placeholder="Masukan Deskripsi Penjualan"></textarea>
                             </div>
                             <div class="mb-3 mt-0 col-md-12">
-                                <label for="proposal-edit">Tautan Proposal Penjualan</label>
-                                <input type="text" class="form-control" name="proposal" id="proposal-edit" placeholder="Masukan Tautan Proposal">
+                                <label for="proposal-edit">Proposal </label>
+                                <input type="file" class="form-control" name="proposal" id="proposal-edit" placeholder="Masukan Proposal">
                             </div>
                         </div>
                     </div>
