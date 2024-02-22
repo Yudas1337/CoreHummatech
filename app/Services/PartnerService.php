@@ -7,10 +7,10 @@ use App\Http\Requests\StoreCollabMitraRequest;
 use App\Http\Requests\UpdateCollabMitraRequest;
 use App\Models\CollabMitra;
 use App\Traits\UploadTrait;
+
 class PartnerService
 {
     use UploadTrait;
-
 
     public function validateAndUpload(string $disk, object $file, string $old_file = null): string
     {
@@ -29,7 +29,6 @@ class PartnerService
         }
         return false;
     }
-
 
     public function update(CollabMitra $partner, UpdateCollabMitraRequest $request): array|bool
     {

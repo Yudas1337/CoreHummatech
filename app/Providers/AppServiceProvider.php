@@ -20,6 +20,7 @@ use App\Contracts\Interfaces\SalesPackageInterface;
 use App\Contracts\Repositories\SalesPackageRepository;
 use Illuminate\Support\ServiceProvider;
 
+
 class AppServiceProvider extends ServiceProvider
 {
     private array $register = [

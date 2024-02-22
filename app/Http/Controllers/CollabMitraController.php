@@ -9,8 +9,6 @@ use App\Http\Requests\UpdateCollabMitraRequest;
 use App\Models\CollabCategory;
 use App\Services\PartnerService;
 
-
-
 class CollabMitraController extends Controller
 {
     private CollabMitraInterface $collabMitra;
@@ -75,7 +73,7 @@ class CollabMitraController extends Controller
         return back()->with('success', 'Berhasil Di Perbarui');
     }
 
-    
+
     /**
      * Remove the specified resource from storage.
      */
@@ -86,7 +84,7 @@ class CollabMitraController extends Controller
         }
 
         $this->service->remove($collabMitra->image);
-        return back()->with('success' , 'Data Berhasil Di Hapus');
+        return back()->with('success', 'Data Berhasil Di Hapus');
         // $this->collabMitra->delete($collabMitra->id);
         // return back();
     }

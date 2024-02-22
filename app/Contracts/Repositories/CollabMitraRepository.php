@@ -28,3 +28,4 @@ class CollabMitraRepository extends BaseRepository implements CollabMitraInterfa
         return $this->model->query()->findOrFail($id)->delete($id);
     }
 }
+

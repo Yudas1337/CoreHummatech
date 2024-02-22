@@ -169,3 +169,4 @@ Route::put('update/product/{product}' , [ProductController::class ,'update'])->n
 Route::delete('delete/product/{product}' , [ProductController::class , 'destroy']);
 Route::get('product/detail/{product}' , [ProductController::class , 'show']);
 Route::resource('sales-package', SalesPackageController::class);
+

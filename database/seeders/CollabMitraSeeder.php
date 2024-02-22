@@ -15,3 +15,4 @@ class CollabMitraSeeder extends Seeder
         //
     }
 }
+

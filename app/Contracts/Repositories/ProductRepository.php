@@ -33,3 +33,4 @@ class ProductRepository extends BaseRepository implements ProductInterface
         return $this->model->query()->findOrFail($id);
     }
 }
+

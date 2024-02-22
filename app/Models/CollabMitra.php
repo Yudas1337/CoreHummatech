@@ -14,3 +14,4 @@ class CollabMitra extends Model
         return $this->belongsTo(CollabCategory::class);
     }
 }
+
