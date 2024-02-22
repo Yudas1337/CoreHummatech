@@ -26,22 +26,29 @@
             </div>
         </div>
     </div>
+
+
     <div class="col-lg-12">
         <div class="row">
+            @forelse ($collabMitras as $index=>$collabMitra)
             <div class="col-12 col-lg-3 col-md-4">
                 <div class="card border-0 shadow rounded">
                     <div class="ribbon mt-2 ribbon-primary ribbon-space-bottom">Magang</div>
                     <div class="card-body">
                         <div class="d-flex flex-column">
                             <div class="d-flex gap-3 justify-content-start">
-                                <img src="{{ asset('assets/images/avtar/11.jpg') }}" class="rounded" width="110px"
+                                <img src="{{ asset('storage/' . $collabMitra->image) }}" class="rounded" width="110px"
                                     alt="">
                                 <div class="">
-                                    <span class="badge" style="background-color: #E8FFEE; color: #008000">Perusahaan</span>
-                                    <p class="my-3" style="font-size: 13px">PT. Pama Persada</p>
+                                    <span class="badge" style="background-color: #E8FFEE; color: #008000">{{ $collabMitra->collabCategory->name }}</span>
+                                    <p class="my-3" style="font-size: 13px">{{ $collabMitra->name }}</p>
                                     <div class="mt-2">
-                                        <button class="btn btn-primary btn-xs mt-2">Edit</button>
-                                        <button class="btn btn-danger btn-xs mt-2">Hapus</button>
+                                        <button class="btn btn-warning btn-edit btn-xs mt-2" type="button" data-bs-toggle="modal"
+                                        data-bs-target="#edit" data-id="{{ $collabMitra->id }}"
+                                        data-name="{{ $collabMitra->name }}">Edit</button>
+                                        <button class="btn-delete btn btn-danger btn-xs mt-2" data-id="{{ $collabMitra->id }}">
+                                            Hapus
+                                        </button>
                                     </div>
                                 </div>
                             </div>
@@ -49,51 +56,13 @@
                     </div>
                 </div>
             </div>
-            <div class="col-12 col-lg-3 col-md-4">
-                <div class="card border-0 shadow rounded">
-                    <div class="ribbon mt-2 ribbon-primary ribbon-space-bottom">Magang</div>
-                    <div class="card-body">
-                        <div class="d-flex flex-column">
-                            <div class="d-flex gap-3 justify-content-start">
-                                <img src="{{ asset('assets/images/avtar/11.jpg') }}" class="rounded" width="110px"
-                                    alt="">
-                                <div class="">
-                                    <span class="badge"
-                                        style="background-color: #EAF3FF; color: #307EF3">Pemerintahan</span>
-                                    <p class="my-3" style="font-size: 13px">Pemerintah Kab.Wonogiri</p>
-                                    <div class="mt-2">
-                                        <button class="btn btn-primary btn-xs mt-2">Edit</button>
-                                        <button class="btn btn-danger btn-xs mt-2">Hapus</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12 col-lg-3 col-md-4">
-                <div class="card border-0 shadow rounded">
-                    <div class="ribbon mt-2 ribbon-primary ribbon-space-bottom">Magang</div>
-                    <div class="card-body">
-                        <div class="d-flex flex-column">
-                            <div class="d-flex gap-3 justify-content-start">
-                                <img src="{{ asset('assets/images/avtar/11.jpg') }}" class="rounded" width="110px"
-                                    alt="">
-                                <div class="">
-                                    <span class="badge" style="background-color: #FFF8EA; color: #FFAA05">Sekolah</span>
-                                    <p class="my-3" style="font-size: 13px">Smk Negeri 1 Malang</p>
-                                    <div class="mt-2">
-                                        <button class="btn btn-primary btn-xs mt-2">Edit</button>
-                                        <button class="btn btn-danger btn-xs mt-2">Hapus</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+
+            @empty
+
+            @endforelse
         </div>
     </div>
+
 
     <!-- Add Modal -->
     <div class="modal fade modal-bookmark" id="tambah" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
@@ -104,26 +73,28 @@
                     <h5 class="modal-title fw-semibold" id="exampleModalLabel">Tambah Mitra</h5>
                     <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form class="form-bookmark needs-validation" action="#" method="POST" id="bookmark-form" novalidate=""
+                <form class="form-bookmark needs-validation" action="{{ route('create.collab.mitra') }}" method="POST" id="bookmark-form" novalidate=""
                     enctype="multipart/form-data">
+                    @csrf
                     <div class="modal-body">
                         <div class="row g-2">
                             <div class="mb-3 mt-0 col-md-12">
                                 <label for="bm-title">Nama Mitra</label>
-                                <input class="form-control" type="text" required="" autocomplete="name">
+                                <input class="form-control" type="text" required="" autocomplete="name" name="name" placeholder="Masukkan nama mitra">
                             </div>
                             <div class="mb-3 mt-0 col-md-12">
-                                <label>Kategori</label>
-                                <select class="js-example-basic-single" aria-label=".form-select example">
-                                    <option selected="">What's Your Hobbies </option>
-                                    <option value="1">Kho-kho</option>
-                                    <option value="2">Reading Books</option>
-                                    <option value="3">Creativity</option>
+                                <label for="bm-title">Kategori</label>
+                                <select class="js-example-basic-single" aria-label=".form-select example" name="collab_category_id">
+                                    @foreach ($categories as $category)
+                                    <option value="{{ $category->id }}"
+                                        {{ $category->collab_category_id == $category->id ? 'selected' : '' }}>
+                                        {{ $category->name }}</option>
+                                    @endforeach
                                 </select>
                             </div>
                             <div class="mb-3 mt-0 col-md-12">
                                 <label for="bm-title">Foto</label>
-                                <input class="form-control" id="formFile" type="file">
+                                <input class="form-control" name="image" id="formFile" type="file">
                             </div>
                         </div>
                     </div>
@@ -147,26 +118,32 @@
                     <h5 class="modal-title" id="exampleModalLabel">Edit Mitra</h5>
                     <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form class="form-bookmark needs-validation" action="#" method="POST" id="bookmark-form"
+                <form class="form-bookmark needs-validation" method="POST" id="form-update"
                     novalidate="" enctype="multipart/form-data">
+                    @csrf
+                    @method('PUT')
                     <div class="modal-body">
                         <div class="row g-2">
                             <div class="mb-3 mt-0 col-md-12">
                                 <label for="bm-title">Nama Mitra</label>
-                                <input class="form-control" type="text" required="" autocomplete="name">
+                                <input class="form-control" type="text" required="" autocomplete="name" name="name" id="name-edit">
                             </div>
                             <div class="mb-3 mt-0 col-md-12">
-                                <label>Kategori</label>
-                                <select class="js-example-basic-single" aria-label=".form-select example">
-                                    <option selected="">What's Your Hobbies </option>
-                                    <option value="1">Kho-kho</option>
-                                    <option value="2">Reading Books</option>
-                                    <option value="3">Creativity</option>
+                                <label for="bm-title">Kategori</label>
+                                <select class="js-example-basic-single" aria-label=".form-select example" name="collab_category_id" id="category-edit">
+                                    @foreach ($categories as $category)
+                                        <option value="{{ $category->id }}" {{ $category->collab_category_id == $category->id ? 'selected' : '' }}>
+                                            {{ $category->name }}
+                                        </option>
+                                    @endforeach
                                 </select>
                             </div>
+
                             <div class="mb-3 mt-0 col-md-12">
                                 <label for="bm-title">Foto</label>
-                                <input class="form-control" id="formFile" type="file">
+                                <img id="preview_image" class="mt-2" style="max-width: 150px; display: none;" alt="Preview Gambar"> <br>
+                                {{-- <input class="form-control" id="formFile" type="file"> --}}
+                                <input class="form-control" id="formFile" type="file" onchange="previewImage(event)">
                             </div>
                         </div>
                     </div>
@@ -179,7 +156,9 @@
                 </form>
             </div>
         </div>
+
     </div>
+    @include('admin.components.delete-modal-component')
 
     <nav class="m-b-30" aria-label="Page navigation example">
         <ul class="pagination justify-content-center pagin-border-primary pagination-primary">
@@ -192,10 +171,58 @@
     </nav>
 @endsection
 @section('script')
+<script>
+    $('.btn-delete').on('click', function() {
+        var id = $(this).data('id');
+        $('#form-delete').attr('action', 'delete/collab/mitra/' + id);
+        $('#modal-delete').modal('show');
+    });
+    $('.btn-edit').click(function() {
+        var id = $(this).data('id'); // Mengambil nilai id dari tombol yang diklik
+        var name = $(this).data('name'); // Mengambil nilai name dari tombol yang diklik
+        $('#form-update').attr('action', 'update/collab/mitra/' + id); // Mengubah nilai atribut action form
+        $('#name-edit').val(name);
+        $('#image-edit').val(image);
+        $('#modal-edit').modal('show');
+    });
+</script>
+<script>
+    $('#datatable table').DataTable({
+        searching: false,
+        columnDefs: [{
+            targets: 2,
+            sortable: false
+        }]
+    });
+</script>
     <script>
-        // In your Javascript (external .js resource or <script> tag)
         $(document).ready(function() {
-            $('.js-example-basic-single').select2();
+            $(".js-example-basic-single").select2({
+                dropdownParent: $("#tambah")
+            });
         });
+        $(document).ready(function() {
+            $(".js-example-basic-single").select2({
+                dropdownParent: $("#edit")
+            });
+        });
+
+    </script>
+    <script>
+        function previewImage(event) {
+            var input = event.target;
+            var previewImage = document.getElementById('preview_image');
+
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    previewImage.src = e.target.result;
+                    previewImage.style.display = 'block';
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
     </script>
 @endsection

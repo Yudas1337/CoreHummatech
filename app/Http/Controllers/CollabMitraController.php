@@ -8,7 +8,6 @@ use App\Http\Requests\StoreCollabMitraRequest;
 use App\Http\Requests\UpdateCollabMitraRequest;
 use App\Models\CollabCategory;
 use App\Services\PartnerService;
-
 class CollabMitraController extends Controller
 {
     private CollabMitraInterface $collabMitra;
@@ -72,9 +71,7 @@ class CollabMitraController extends Controller
         $this->collabMitra->update($collabMitra->id, $data);
         return back()->with('success', 'Berhasil Di Perbarui');
     }
-
-
-    /**
+  /**
      * Remove the specified resource from storage.
      */
     public function destroy(CollabMitra $collabMitra)

@@ -3,10 +3,12 @@
 use App\Http\Controllers\BranchController;
 use App\Http\Controllers\CategoryNewsController;
 use App\Http\Controllers\CollabCategoryController;
-use App\Http\Controllers\ProductController;
+use App\Http\Controllers\NewsController;
 use App\Http\Controllers\SaleController;
-use App\Http\Controllers\SalesPackageController;
 use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\CollabMitraController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\SalesPackageController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -40,11 +42,6 @@ Route::get('/news/edit', function () {
 Route::get('/news/show', function () {
     return view('admin.pages.news.show');
 });
-
-Route::get('/collab', function () {
-    return view('admin.pages.collab.index');
-});
-
 
 Route::get('/gallery', function () {
     return view('admin.pages.gallery.index');
@@ -84,13 +81,16 @@ Route::get('/social-media', function () {
     return view('admin.pages.social-media.index');
 });
 
+// Route::get('/service', function () {
+//     return view('admin.pages.service.index');
+// });
+
+// Route::get('/service/detail', function () {
+//     return view('admin.pages.service.detail');
+// });
 
 Route::get('/setting/faq', function () {
     return view('admin.pages.faq.index');
-});
-
-Route::get('/service/detail', function () {
-    return view('admin.pages.service.detail');
 });
 
 Route::get('/message-approval', function () {
@@ -128,14 +128,15 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 // category news berita
 Route::get('category-news' , [CategoryNewsController::class , 'index']);
 Route::post('create/category/news' , [CategoryNewsController::class , 'store'])->name('create.category.news');
 Route::delete('delete/category/news/{categoryNews}' ,[CategoryNewsController::class ,'destroy'])->name('delete.category.news');
 Route::put('update/category/news/{categoryNews}' ,[CategoryNewsController::class ,'update'])->name('update.category.news');
 // end category news berita
+
+// news
+// end news
 
 // branch
 Route::get('branch' , [BranchController::class ,'index']);
@@ -149,9 +150,17 @@ Route::get('category-collab' , [CollabCategoryController::class ,'index']);
 Route::put('update/category/mitra/{collabCategory}' ,[CollabCategoryController::class ,'update'])->name('update.category.mitra');
 Route::delete('delete/category/mitra/{collabCategory}' ,[CollabCategoryController::class ,'destroy'])->name('delete.category.mitra');
 // end category mitra
-Route::resource('sale', SaleController::class);
-Route::resource('sales-package', SalesPackageController::class);
 
+Route::resource('news' , NewsController::class);
+Route::resource('sale', SaleController::class);
+Route::resource('service', ServiceController::class);
+Route::resource('sale', SaleController::class);
+
+//mitra
+Route::get('collab' , [CollabMitraController::class ,'index']);
+Route::delete('delete/collab/mitra/{collabMitra}' ,[CollabMitraController::class ,'destroy'])->name('delete.collab.mitra');
+Route::post('create/collab/mitra' , [CollabMitraController::class , 'store'])->name('create.collab.mitra');
+Route::put('update/collab/mitra/{collabMitra}' ,[CollabMitraController::class ,'update'])->name('update.collab.mitra');
 
 //product
 Route::get('product' , [ProductController::class , 'index']);
@@ -159,11 +168,8 @@ Route::post('create/product' , [ProductController::class ,'store'])->name('creat
 Route::put('update/product/{product}' , [ProductController::class ,'update'])->name('update.product');
 Route::delete('delete/product/{product}' , [ProductController::class , 'destroy']);
 Route::get('product/detail/{product}' , [ProductController::class , 'show']);
-
-// service
-Route::get('service' , [ServiceController::class ,'index']);
-Route::post('create/service' , [ServiceController::class , 'store'])->name('create.service');
 Route::resource('sales-package', SalesPackageController::class);
+
 
 require __DIR__ . '/kader.php';
 require __DIR__ . '/farah.php';
