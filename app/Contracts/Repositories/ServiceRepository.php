@@ -2,15 +2,13 @@
 
 namespace App\Contracts\Repositories;
 
-use App\Contracts\Interfaces\CollabCategoryInterface;
-use App\Models\CategoryNews;
-use App\Models\CollabCategory;
+use App\Contracts\Interfaces\ServiceInterface;
+use App\Models\Service;
 
-class CollabCategoryRepository extends BaseRepository implements CollabCategoryInterface
+class ServiceRepository extends BaseRepository implements ServiceInterface
 {
-    public function __construct(CollabCategory $collabCategory)
-    {
-        $this->model = $collabCategory;
+    public function __construct(Service $service) {
+        $this->model = $service;
     }
 
     public function get(): mixed

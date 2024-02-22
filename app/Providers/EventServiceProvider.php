@@ -3,8 +3,10 @@
 namespace App\Providers;
 
 use App\Models\Sale;
-use App\Models\SalesPackage;
+use App\Models\Service;
 use App\Observers\SaleObserver;
+use App\Observers\ServiceObserver;
+use App\Models\SalesPackage;
 use App\Observers\SalesPackageObserver;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
@@ -30,6 +32,7 @@ class EventServiceProvider extends ServiceProvider
     public function boot(): void
     {
         Sale::observe(SaleObserver::class);
+        Service::observe(ServiceObserver::class);
         SalesPackage::observe(SalesPackageObserver::class);
     }
 
