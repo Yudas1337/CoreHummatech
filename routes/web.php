@@ -5,6 +5,7 @@ use App\Http\Controllers\CategoryNewsController;
 use App\Http\Controllers\CollabCategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SaleController;
+use App\Http\Controllers\SalesPackageController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -161,3 +162,4 @@ Route::get('product' , [ProductController::class , 'index']);
 Route::post('create/product' , [ProductController::class ,'store'])->name('create.product');
 Route::put('update/product/{product}' , [ProductController::class ,'update'])->name('update.product');
 Route::delete('delete/product/{product}' , [ProductController::class , 'destroy']);
+Route::resource('sales-package', SalesPackageController::class);
