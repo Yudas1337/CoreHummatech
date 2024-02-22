@@ -69,7 +69,7 @@ class SaleController extends Controller
      */
     public function update(UpdateSaleRequest $request, Sale $sale)
     {
-        $data = $this->service->update($sale, $request);
+        $data = $this->service->update($request , $sale);
         $this->sale->update($sale->id, $data);
 
         return back()->with('success', 'Penjualan berhasil diperbarui');

@@ -22,34 +22,88 @@
 @endsection
 
 @section('content')
+    <!-- Add Modal -->
+    <div class="modal fade modal-bookmark" id="modal-edit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title fw-semibold" id="exampleModalLabel">Edit Produk</h5>
+                    <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form class="form-bookmark needs-validation" id="form-update" method="POST" id="bookmark-form" novalidate=""
+                    enctype="multipart/form-data">
+                    @csrf
+                    @method('PUT')
+                    <div class="modal-body">
+                        <div class="row g-2">
+                            <div class="form-group mb-3 mt-0 col-md-12">
+                                <label for="name">Nama Produk</label>
+                                <input class="form-control name" id="name" type="text" required
+                                    placeholder="Contoh: Produk Hummatech" autocomplete="name" />
+                            </div>
+
+                            <div class="form-group mb-3 mt-0 col-md-12">
+                                <label for="description">Deskripsi</label>
+                                <textarea rows="5" class="form-control description" id="description" name="description"
+                                    placeholder="Jelaskan deskripsi produknya"></textarea>
+                            </div>
+
+                            <div class="form-group mb-3 mt-0 col-md-12">
+                                <label for="feature">Fitur</label>
+                                <textarea rows="5" class="form-control feature" id="feature" name="feature" placeholder="Jelaskan fitur produknya"></textarea>
+                            </div>
+
+                            <div class="form-group mb-3 mt-0 col-md-12">
+                                <label for="link">Link</label>
+                                <input class="form-control link" name="link" id="link" type="url" required
+                                    placeholder="Contoh: https://hummatech.com/linknya" />
+                            </div>
+
+                            <div class="form-group mb-3 mt-0 col-md-12">
+                                <label for="photo">Foto / Logo Produk</label>
+                                <input class="form-control image" name="image" id="photo" type="file"  />
+                                <img src="" alt="" class="image" srcset="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <div class="d-flex justify-content-end">
+                            <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">Batalkan</button>
+                            <button class="btn btn-primary" type="submit">Perbaharui</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
     <div class="row">
-        @foreach (range(0, 10) as $item)
-            <div class="col-xxl-3 col-md-4 col-sm-6">
+        @forelse ($products as $product)
+            <div class="col-xxl-3 col-md-7 col-sm-6 col-12">
                 <div class="card border-0 shadow rounded">
-                    <img src="https://fakeimg.pl/1920x1080" alt="Milink" class="rounded-top card-img-thumbnail" />
+                    <img src="{{ asset('storage/' . $product->image) }}" alt="Milink"
+                        class="rounded-top card-img-thumbnail" />
                     <div class="card-header text-center h4 border-bottom"
                         style="margin-top: -1rem; border-radius: var(--bs-border-radius) var(--bs-border-radius) 0 0 !important;">
-                        Milink</div>
+                        {{ $product->name }}</div>
                     <div class="card-body">
-                        <p>Melayani pembuatan software berdasarkan
-                            kebutuhan klien/ customer. Produk yang
-                            dihasilkan adlaah produk perangkat lunak
-                            berbasis desktop, web, dan mobile (android
-                            dan iOS......</p>
+                        <p>{{ $product->description }}</p>
 
                         <div class="gap-2 d-flex">
                             <div class="d-grid flex-grow-1">
                                 <a href="{{ url('/product/detail') }}" class="btn btn-primary">Lihat Detail</a>
                             </div>
                             <div class="d-flex flex-shrink-0 gap-2">
-                                @include('admin.pages.products.edit')
-                                <button class="btn px-3 btn-danger" type="button"><i class="fas fa-trash"></i></button>
+                                <button class="btn btn-warning px-3 m-0 btn-edit" type="button" data-image="{{ asset('storage/' . $product->image) }}" data-id="{{ $product->id }}" data-link="{{ $product->link }}" data-feature="{{ $product->feature }}" id="{{ $product->id }}" data-description="{{ $product->description }}" data-name="{{ $product->name }}"><i class="fas fa-pencil"></i></button>
+                                <button class="btn px-3 btn-danger btn-delete" data-id="{{ $product->id }}" id="{{ $product->id }}" type="button"><i class="fas fa-trash"></i></button>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        @endforeach
+        @empty
+        @endforelse
     </div>
 
     <nav class="m-b-30" aria-label="Page navigation example">
@@ -61,4 +115,30 @@
             <li class="page-item"><a class="page-link" href="javascript:void(0)">Next</a></li>
         </ul>
     </nav>
+    @include('admin.components.delete-modal-component')
+
+@endsection
+@section('script')
+<script>
+     $('.btn-delete').on('click', function() {
+            var id = $(this).data('id');
+            $('#form-delete').attr('action', '/delete/product/' + id);
+            $('#modal-delete').modal('show');
+        });
+     $('.btn-edit').click(function() {
+            var id = $(this).data('id'); // Mengambil nilai id dari tombol yang diklik
+            var name = $(this).data('name'); // Mengambil nilai name dari tombol yang diklik
+            var description = $(this).data('description'); // Mengambil nilai name dari tombol yang diklik
+            var image = $(this).data('image'); // Mengambil nilai name dari tombol yang diklik
+            var feature = $(this).data('feature'); // Mengambil nilai name dari tombol yang diklik
+            var link = $(this).data('link'); // Mengambil nilai name dari tombol yang diklik
+            $('#form-update').attr('action', '/update/product/' + id ); // Mengubah nilai atribut action form
+            $('.name').val(name);
+            $('.description').val(description);
+            $('.feature').val(feature);
+            $('.image').attr('src' , image);
+            $('.link').val(link);
+            $('#modal-edit').modal('show');
+        });
+</script>
 @endsection

@@ -5,10 +5,12 @@ namespace App\Providers;
 use App\Contracts\Interfaces\BranchInterface;
 use App\Contracts\Interfaces\CategoryNewsInterface;
 use App\Contracts\Interfaces\CollabCategoryInterface;
+use App\Contracts\Interfaces\ProductInterface;
 use App\Contracts\Repositories\BranchRepository;
 use App\Contracts\Repositories\CategoryNewsRepository;
 use App\Contracts\Repositories\CollabCategoryRepository;
 use App\Contracts\Interfaces\SaleInterface;
+use App\Contracts\Repositories\ProductRepository;
 use App\Contracts\Repositories\SaleRepository;
 use Illuminate\Support\ServiceProvider;
 
@@ -19,6 +21,7 @@ class AppServiceProvider extends ServiceProvider
         BranchInterface::class => BranchRepository::class,
         CollabCategoryInterface::class => CollabCategoryRepository::class,
         SaleInterface::class => SaleRepository::class,
+        ProductInterface::class => ProductRepository::class,
     ];
 
     /**

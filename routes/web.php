@@ -3,6 +3,7 @@
 use App\Http\Controllers\BranchController;
 use App\Http\Controllers\CategoryNewsController;
 use App\Http\Controllers\CollabCategoryController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SaleController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -67,9 +68,6 @@ Route::get('/hero-section/edit', function () {
     return view('admin.pages.hero-section.edit');
 });
 
-Route::get('/product', function () {
-    return view('admin.pages.products.index');
-});
 
 Route::get('/product/detail', function () {
     return view('admin.pages.products.detail');
@@ -156,3 +154,10 @@ Route::put('update/category/mitra/{collabCategory}' ,[CollabCategoryController::
 Route::delete('delete/category/mitra/{collabCategory}' ,[CollabCategoryController::class ,'destroy'])->name('delete.category.mitra');
 // end category mitra
 Route::resource('sale', SaleController::class);
+
+
+//product
+Route::get('product' , [ProductController::class , 'index']);
+Route::post('create/product' , [ProductController::class ,'store'])->name('create.product');
+Route::put('update/product/{product}' , [ProductController::class ,'update'])->name('update.product');
+Route::delete('delete/product/{product}' , [ProductController::class , 'destroy']);
