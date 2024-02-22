@@ -150,6 +150,7 @@ Route::put('update/category/mitra/{collabCategory}' ,[CollabCategoryController::
 Route::delete('delete/category/mitra/{collabCategory}' ,[CollabCategoryController::class ,'destroy'])->name('delete.category.mitra');
 // end category mitra
 Route::resource('sale', SaleController::class);
+Route::resource('sales-package', SalesPackageController::class);
 
 
 //product

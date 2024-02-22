@@ -24,16 +24,9 @@
         <div class="row">
             <div class="col-sm-4">
                 <div class="card card-body">
-                    <div class="rounded-3 p-4">
-                        <img src="{{ asset('assets/images/Logo-Hummatech-Kotak.png') }}"
-                            style="object-fit: cover; width: 100%;">
+                    <div class="rounded-3 p-4 on">
+                        <img src="{{ asset('assets/images/Logo-Hummatech-Kotak.png') }}" style="object-fit: cover; width: 100%;">
                     </div>
-                    <div class="my-3 d-none">
-                        <label for="image">Foto <span style="font-size: 11px" class="text-danger">*wajib
-                                diisi</span></label>
-                        <input class="form-control" id="image" type="file">
-                    </div>
-
                     <div class="my-1">
                         <label for="call">No. Telp</label>
                         <input type="text" class="form-control" placeholder="No telp">

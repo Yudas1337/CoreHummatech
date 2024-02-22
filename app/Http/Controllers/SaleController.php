@@ -74,7 +74,7 @@ class SaleController extends Controller
      */
     public function update(UpdateSaleRequest $request, Sale $sale)
     {
-        $data = $this->service->update($request , $sale);
+        $data = $this->service->update($sale, $request);
         $this->sale->update($sale->id, $data);
 
         return back()->with('success', 'Penjualan berhasil diperbarui');
@@ -91,5 +91,10 @@ class SaleController extends Controller
 
         $this->service->remove($sale->image);
         return back()->with('success' , 'Penjualan Berhasil Di Hapus');
+    }
+
+    public function showProposal(Sale $sale)
+    {
+        return view('admin.pages.sale.proposal', compact('sale'));
     }
 }
