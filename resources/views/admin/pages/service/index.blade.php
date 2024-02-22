@@ -24,33 +24,31 @@
 
 @section('content')
     <div class="row">
-        @foreach (range(0, 10) as $item)
-            <div class="col-xxl-3 col-md-4 col-sm-6">
-                <div class="card border-0 shadow rounded">
-                    <img src="https://fakeimg.pl/1920x1080" alt="Milink" class="rounded-top card-img-thumbnail" />
-                    <div class="card-header text-center h4 border-bottom"
-                        style="margin-top: -1rem; border-radius: var(--bs-border-radius) var(--bs-border-radius) 0 0 !important;">
-                        Magang / PKL</div>
-                    <div class="card-body">
-                        <p>Melayani pembuatan software berdasarkan
-                            kebutuhan klien/ customer. Produk yang
-                            dihasilkan adlaah produk perangkat lunak
-                            berbasis desktop, web, dan mobile (android
-                            dan iOS......</p>
+        @forelse ($services as $service)
+        <div class="col-xxl-3 col-md-4 col-sm-6">
+            <div class="card border-0 shadow rounded">
+                <img src="{{ asset('storage/' . $service->image) }}" alt="Milink" class="rounded-top card-img-thumbnail" />
+                <div class="card-header text-center h4 border-bottom"
+                    style="margin-top: -1rem; border-radius: var(--bs-border-radius) var(--bs-border-radius) 0 0 !important;">
+                    {{ $service->name }}</div>
+                <div class="card-body">
+                    <p>{{ $service->description }}</p>
 
-                        <div class="gap-2 d-flex">
-                            <div class="d-grid flex-grow-1">
-                                <a href="{{ url('/service/detail') }}" class="btn btn-primary">Lihat Detail</a>
-                            </div>
-                            <div class="d-flex flex-shrink-0 gap-2">
-                                @include('admin.pages.service.edit')
-                                <button class="btn px-3 btn-danger" type="button"><i class="fas fa-trash"></i></button>
-                            </div>
+                    <div class="gap-2 d-flex">
+                        <div class="d-grid flex-grow-1">
+                            <a href="{{ url('/service/detail') }}" class="btn btn-primary">Lihat Detail</a>
+                        </div>
+                        <div class="d-flex flex-shrink-0 gap-2">
+                            @include('admin.pages.service.edit')
+                            <button class="btn px-3 btn-danger" type="button"><i class="fas fa-trash"></i></button>
                         </div>
                     </div>
                 </div>
             </div>
-        @endforeach
+        </div>
+        @empty
+
+        @endforelse
     </div>
 
     <nav class="m-b-30" aria-label="Page navigation example">

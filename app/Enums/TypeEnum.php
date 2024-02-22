@@ -8,4 +8,5 @@ enum TypeEnum: string
     case CENTER = 'center';
     case SALE = 'sale';
     case PRODUCT = 'product';
+    case PROPOSAL = 'proposal';
 }

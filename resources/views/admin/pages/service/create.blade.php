@@ -6,36 +6,30 @@
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title fw-semibold" id="exampleModalLabel">Tambah Produk</h5>
+                <h5 class="modal-title fw-semibold" id="exampleModalLabel">Tambah Layanan</h5>
                 <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form class="form-bookmark needs-validation" action="#" method="POST" id="bookmark-form" novalidate=""
+            <form class="form-bookmark needs-validation" action="{{ route('create.service') }}" method="POST" id="bookmark-form" novalidate=""
                 enctype="multipart/form-data">
+                @csrf
+                
                 <div class="modal-body">
                     <div class="row g-2">
                         <div class="form-group mb-3 mt-0 col-md-12">
-                            <label for="name">Nama Produk</label>
-                            <input class="form-control" id="name" type="text" required placeholder="Contoh: Produk Hummatech" autocomplete="name" />
+                            <label for="name">Foto Layanan</label>
+                            <input class="form-control" id="name" type="file" name="image" required placeholder="Contoh: Produk Hummatech" autocomplete="name" />
                         </div>
-
                         <div class="form-group mb-3 mt-0 col-md-12">
-                            <label for="description">Deskripsi</label>
-                            <textarea rows="5" class="form-control" id="description" name="description" placeholder="Jelaskan deskripsi produknya"></textarea>
+                            <label for="description">Nama Layanan</label>
+                            <input class="form-control" id="name" name="name" type="text" required placeholder="Contoh: Produk Hummatech" autocomplete="name" />
                         </div>
-
                         <div class="form-group mb-3 mt-0 col-md-12">
-                            <label for="feature">Fitur</label>
-                            <textarea rows="5" class="form-control" id="feature" name="feature" placeholder="Jelaskan fitur produknya"></textarea>
+                            <label for="feature">Deskripsi Layanan</label>
+                            <textarea rows="5" class="form-control" id="feature" name="description" placeholder="Jelaskan fitur produknya"></textarea>
                         </div>
-
                         <div class="form-group mb-3 mt-0 col-md-12">
-                            <label for="link">Link</label>
-                            <input class="form-control" id="link" type="url" required placeholder="Contoh: https://hummatech.com/linknya" />
-                        </div>
-
-                        <div class="form-group mb-3 mt-0 col-md-12">
-                            <label for="photo">Foto / Logo Produk</label>
-                            <input class="form-control" id="photo" type="file" name="photo" />
+                            <label for="link">File Proposal</label>
+                            <input class="form-control" id="link" name="file" type="file" required placeholder="Contoh: https://hummatech.com/linknya" />
                         </div>
                     </div>
                 </div>

@@ -12,8 +12,10 @@ use App\Contracts\Repositories\CollabCategoryRepository;
 use App\Contracts\Interfaces\SaleInterface;
 use App\Contracts\Repositories\ProductRepository;
 use App\Contracts\Interfaces\SalesPackageInterface;
+use App\Contracts\Interfaces\ServiceInterface;
 use App\Contracts\Repositories\SaleRepository;
 use App\Contracts\Repositories\SalesPackageRepository;
+use App\Contracts\Repositories\ServiceRepository;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -25,6 +27,7 @@ class AppServiceProvider extends ServiceProvider
         SaleInterface::class => SaleRepository::class,
         ProductInterface::class => ProductRepository::class,
         SalesPackageInterface::class => SalesPackageRepository::class,
+        ServiceInterface::class => ServiceRepository::class
     ];
 
     /**

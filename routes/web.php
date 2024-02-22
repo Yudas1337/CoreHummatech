@@ -6,6 +6,7 @@ use App\Http\Controllers\CollabCategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SaleController;
 use App\Http\Controllers\SalesPackageController;
+use App\Http\Controllers\ServiceController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -83,9 +84,6 @@ Route::get('/social-media', function () {
     return view('admin.pages.social-media.index');
 });
 
-Route::get('/service', function () {
-    return view('admin.pages.service.index');
-});
 
 Route::get('/setting/faq', function () {
     return view('admin.pages.faq.index');
@@ -160,4 +158,8 @@ Route::post('create/product' , [ProductController::class ,'store'])->name('creat
 Route::put('update/product/{product}' , [ProductController::class ,'update'])->name('update.product');
 Route::delete('delete/product/{product}' , [ProductController::class , 'destroy']);
 Route::get('product/detail/{product}' , [ProductController::class , 'show']);
+
+// service
+Route::get('service' , [ServiceController::class ,'index']);
+Route::post('create/service' , [ServiceController::class , 'store'])->name('create.service');
 Route::resource('sales-package', SalesPackageController::class);
