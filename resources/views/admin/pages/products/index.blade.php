@@ -62,8 +62,8 @@
 
                             <div class="form-group mb-3 mt-0 col-md-12">
                                 <label for="photo">Foto / Logo Produk</label>
-                                <input class="form-control image" name="image" id="photo" type="file"  />
-                                <img src="" alt="" class="image" srcset="">
+                                <input class="form-control image mb-2" name="image" id="photo" type="file"  />
+                                <img src="" alt="" class="img-fluid image" width="100%" srcset="">
                             </div>
                         </div>
                     </div>
