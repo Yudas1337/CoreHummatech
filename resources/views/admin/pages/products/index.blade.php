@@ -70,7 +70,7 @@
                     <div class="modal-footer">
                         <div class="d-flex justify-content-end">
                             <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">Batalkan</button>
-                            <button class="btn btn-primary" type="submit">Perbaharui</button>
+                            <button class="btn btn-primary" type="submit">Perbarui</button>
                         </div>
                     </div>
                 </form>
