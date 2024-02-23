@@ -39,6 +39,7 @@ class AppServiceProvider extends ServiceProvider
         ServiceInterface::class => ServiceRepository::class,
         CollabMitraInterface::class => CollabMitraRepository::class,
         SosialMediaInterface::class => SosialMediaRepository::class,
+        SectionInterface::class => SectionRepository::class
     ];
 
     /**
