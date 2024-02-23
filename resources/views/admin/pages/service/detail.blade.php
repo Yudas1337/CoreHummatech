@@ -133,6 +133,12 @@
                         </div>
                     </div>
                 @empty
+                <div class="d-flex justify-content-center">
+                    <img src="{{ asset('nodata.jpg') }}" alt="" width="400px">
+                </div>
+                <h5 class="text-center">
+                    Data Masih Kosong
+                </h5>
                 @endforelse
             </div>
         </div>
