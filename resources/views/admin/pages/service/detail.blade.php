@@ -129,7 +129,7 @@
                             <div class="card-body">
                                 <p>{{ $product->description }}</p>
 
-                                <a href="{{ $product->link }}" class="btn btn-primary">Kunjungi Situs</a>
+                                <a href="{{ $product->link }}" target="_blank" class="btn btn-primary">Kunjungi Situs</a>
                             </div>
                         </div>
                     </div>
