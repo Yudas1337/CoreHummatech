@@ -112,7 +112,7 @@
                         <div class="row g-2">
                             <div class="form-group mb-3 mt-0 col-md-12">
                                 <label for="name">Nama Produk</label>
-                                <input class="form-control name" id="name" type="text" required
+                                <input class="form-control name" name="name" id="name" type="text" required
                                     placeholder="Contoh: Produk Hummatech" autocomplete="name" />
                             </div>
 

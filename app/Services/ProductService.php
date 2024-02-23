@@ -59,13 +59,12 @@ class ProductService
     public function update(Product $product, UpdateProductRequest $request): array|bool
     {
         $data = $request->validated();
-        $oldThumbnail = $product->image;
-        if ($request->hasFile('image')) {
-            $this->remove($oldThumbnail);
-            $oldThumbnail = $this->upload(TypeEnum::PRODUCT->value, $request->file('image'));
-        }else{
-            $data['image'] = $oldThumbnail;
-            return $data;
+        if ($request->has('image')) {
+            $this->remove($product->image);
+            $data['image'] = $request->file('image')->store(TypeEnum::PRODUCT->value, 'public');
+        } else {
+            $data['image'] = $product->image;
         }
+        return $data;
     }
 }
