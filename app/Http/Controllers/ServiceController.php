@@ -70,7 +70,7 @@ class ServiceController extends Controller
      */
     public function update(UpdateServiceRequest $request, Service $service)
     {
-        $data = $this->service->update($service, $request->validated());
+        $data = $this->serviceService->update($service, $request);
         $this->service->update($service->id, $data);
 
         return back()->with('success', 'Penjualan berhasil diperbarui');
@@ -81,6 +81,11 @@ class ServiceController extends Controller
      */
     public function destroy(Service $service)
     {
-        //
+        if (!$this->service->delete($service->id)) {
+            return back()->with('error', 'Penjualan Gagal Di Hapus');
+        }
+
+        $this->serviceService->remove($service->image);
+        return back()->with('success' , 'Penjualan Berhasil Di Hapus');
     }
 }

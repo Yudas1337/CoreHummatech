@@ -40,7 +40,7 @@
                         </div>
                         <div class="d-flex flex-shrink-0 gap-2">
                             <button class="btn btn-warning px-3 m-0 btn-edit"  type="button" data-id="{{ $service->id }}" data-name="{{ $service->name }}" data-description="{{ $service->description }}" data-link="{{ $service->link }}" data-image="{{ $service->image }}"><i class="fas fa-pencil"></i></button>
-                            <button class="btn px-3 btn-danger" type="button"><i class="fas fa-trash"></i></button>
+                            <button class="btn px-3 btn-danger btn-delete" data-id="{{ $service->id }}" type="button"><i class="fas fa-trash"></i></button>
                         </div>
                     </div>
                 </div>
@@ -124,7 +124,7 @@
         var name = $(this).data('name');
         var description = $(this).data('description');
         var link = $(this).data('link');
-        $('#form-update').attr('action', '/update/service/' + id);
+        $('#form-update').attr('action', '/service/' + id);
         $('.name-edit').val(name);
         $('.description-edit').val(description);
         $('.link-edit').val(link);
