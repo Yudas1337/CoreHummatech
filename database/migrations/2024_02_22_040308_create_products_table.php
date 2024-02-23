@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('description');
             $table->string('feature');
             $table->string('link');
+            $table->foreignId('service_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->string('image');
             $table->timestamps();
         });

@@ -85,10 +85,6 @@ Route::get('/social-media', function () {
 //     return view('admin.pages.service.index');
 // });
 
-// Route::get('/service/detail', function () {
-//     return view('admin.pages.service.detail');
-// });
-
 Route::get('/setting/faq', function () {
     return view('admin.pages.faq.index');
 });

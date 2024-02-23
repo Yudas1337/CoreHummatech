@@ -36,7 +36,7 @@
 
                     <div class="gap-2 d-flex">
                         <div class="d-grid flex-grow-1">
-                            <a href="{{ url('/service/detail') }}" class="btn btn-primary">Lihat Detail</a>
+                            <a href="detail/service/{{ $service->id }}" class="btn btn-primary">Lihat Detail</a>
                         </div>
                         <div class="d-flex flex-shrink-0 gap-2">
                             @include('admin.pages.service.edit')

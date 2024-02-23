@@ -20,4 +20,9 @@ class ServiceRepository extends BaseRepository implements ServiceInterface
     {
         return $this->model->query()->create($data);
     }
+
+    public function show(mixed $id): mixed
+    {
+        return $this->model->query()->findOrFail($id);
+    }
 }

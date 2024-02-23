@@ -103,19 +103,14 @@
     <div class="card card-body p-5">
         <div class="row pb-4" id="detail-title">
             <div class="col-md-5">
-                <img src="https://fakeimg.pl/960x840?text=Test" alt="Milink.id" class="rounded-3 w-100" />
+                <img src="{{ asset('storage/' . $services->image) }}" alt="Milink.id" class="rounded-3 w-100" />
             </div>
             <div class="col-md-7">
-                <h1 class="title">PKL / Magang</h1>
-                <p class="subtitle">Lorem ipsum dolor sit amet consectetur. Aliquam facilisis malesuada tristique nibh eros
-                    adipiscing. Neque augue laoreet dui in blandit sed sed integer. Semper purus facilisis in odio
-                    consectetur
-                    cursus vulputate sagittis mi. Aliquam adipiscing consequat viverra cursus. Ullamcorper et morbi
-                    tincidunt
-                    sociis feugiat cursus rhoncus nec.
-                    Adipiscing egestas pulvinar volutpat mattis.</p>
+                <h1 class="title">{{ $services->name }}</h1>
+                <p class="subtitle">{{ $services->description }}</p>
 
-                <a href="#" class="btn btn-lg btn-primary">Kunjungi Situs </a>
+                <a href="{{ asset('storage/' . $services->file) }}" class="btn btn-lg btn-primary"
+                    download="{{ asset('storage/' . $services->file) }}">Proposal</a>
             </div>
         </div>
 
@@ -123,26 +118,23 @@
             <h1 class="title">Produk Yang Dihasilkan</h1>
 
             <div class="row">
-                @foreach (range(0, 3) as $item)
+                @forelse ($products as $product)
                     <div class="col-xxl-3 col-md-4 col-sm-6">
                         <div class="card border-0 shadow rounded">
-                            <img src="https://fakeimg.pl/1920x1080?text=Test" alt="Milink"
+                            <img src="{{ asset('storage/' . $product->image) }}" alt="Milink"
                                 class="rounded-top card-img-thumbnail" />
                             <div class="card-header text-center h4 border-bottom"
                                 style="margin-top: -1rem; border-radius: var(--bs-border-radius) var(--bs-border-radius) 0 0 !important;">
-                                Milink</div>
+                                {{ $product->name }}</div>
                             <div class="card-body">
-                                <p>Melayani pembuatan software berdasarkan
-                                    kebutuhan klien/ customer. Produk yang
-                                    dihasilkan adlaah produk perangkat lunak
-                                    berbasis desktop, web, dan mobile (android
-                                    dan iOS......</p>
+                                <p>{{ $product->description }}</p>
 
-                                <a href="#" class="btn btn-primary">Kunjungi Situs</a>
+                                <a href="{{ $product->link }}" class="btn btn-primary">Kunjungi Situs</a>
                             </div>
                         </div>
                     </div>
-                @endforeach
+                @empty
+                @endforelse
             </div>
         </div>
 
@@ -249,7 +241,8 @@
                 <div class="item"><img src="{{ asset('assets/images/slider/11.jpg') }}" alt="Drawing-room"></div>
             </div>
 
-            <div class="text-center pt-4"><a href="#">Lihat Semua Mitra <i class="fas fa-chevron-right"></i></a></div>
+            <div class="text-center pt-4"><a href="#">Lihat Semua Mitra <i class="fas fa-chevron-right"></i></a>
+            </div>
         </div>
 
         <div class="need-space" id="gallery-kelas-industri">
