@@ -16,12 +16,14 @@ use App\Contracts\Repositories\ProductRepository;
 use App\Contracts\Interfaces\SalesPackageInterface;
 use App\Contracts\Interfaces\SectionInterface;
 use App\Contracts\Interfaces\ServiceInterface;
+use App\Contracts\Interfaces\TeamInterface;
 use App\Contracts\Repositories\CollabMitraRepository;
 use App\Contracts\Repositories\PositionRepository;
 use App\Contracts\Repositories\SaleRepository;
 use App\Contracts\Repositories\SalesPackageRepository;
 use App\Contracts\Repositories\SectionRepository;
 use App\Contracts\Repositories\ServiceRepository;
+use App\Contracts\Repositories\TeamRepository;
 use Illuminate\Support\ServiceProvider;
 
 
@@ -37,7 +39,8 @@ class AppServiceProvider extends ServiceProvider
         ServiceInterface::class => ServiceRepository::class,
         CollabMitraInterface::class => CollabMitraRepository::class,
         SectionInterface::class => SectionRepository::class,
-        PositionInterface::class => PositionRepository::class
+        PositionInterface::class => PositionRepository::class,
+        TeamInterface::class => TeamRepository::class
     ];
 
     /**

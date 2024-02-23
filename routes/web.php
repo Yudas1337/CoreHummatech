@@ -104,9 +104,6 @@ Route::get('/setting/company', function() {
     return view('admin.pages.company.index');
 });
 
-Route::get('/setting/teams', function() {
-    return view('admin.pages.teams.index');
-});
 
 Auth::routes();
 
