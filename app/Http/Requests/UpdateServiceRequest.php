@@ -11,7 +11,7 @@ class UpdateServiceRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,21 @@ class UpdateServiceRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'image' => 'nullable|mimes:png,jpg,jpeg',
+            'name' => 'required',
+            'description' => 'required',
+            'link' => 'nullable',
+            'proposal' => 'nullable|mimes:pdf'
+        ];
+    }
+
+    public function messages(): array
+    {
+        return [
+            'image.mimes' => 'Foto/logo harus berupa png, jpg atau jpeg',
+            'name.required' => 'Nama harus diisi',
+            'description.required' => 'Deskripsi harus diisi',
+            'proposal.mimes' => 'Proposal harus berupa pdf'
         ];
     }
 }

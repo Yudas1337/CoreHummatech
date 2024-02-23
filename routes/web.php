@@ -55,14 +55,6 @@ Route::get('/category-testimonial', function () {
     return view('admin.pages.testimonial-category.index');
 });
 
-Route::get('/hero-section', function () {
-    return view('admin.pages.hero-section.index');
-});
-
-Route::get('/hero-section/create', function () {
-    return view('admin.pages.hero-section.create');
-});
-
 Route::get('/hero-section/edit', function () {
     return view('admin.pages.hero-section.edit');
 });
@@ -77,16 +69,8 @@ Route::get('/setting/terms-condition/edit', function () {
     return view('admin.pages.terms-condition.edit');
 });
 
-Route::get('/social-media', function () {
-    return view('admin.pages.social-media.index');
-});
-
-// Route::get('/service', function () {
-//     return view('admin.pages.service.index');
-// });
-
-// Route::get('/service/detail', function () {
-//     return view('admin.pages.service.detail');
+// Route::get('/social-media', function () {
+//     return view('admin.pages.social-media.index');
 // });
 
 Route::get('/setting/faq', function () {
@@ -105,10 +89,6 @@ Route::get('/setting/vision-mision', function () {
     return view('admin.pages.vision-mision.index');
 });
 
-Route::get('/setting/departement', function () {
-    return view('admin.pages.departement.index');
-});
-
 Route::get('/setting/vision-mision/create', function () {
     return view('admin.pages.vision-mision.add');
 });
@@ -120,16 +100,13 @@ Route::get('/setting/company', function() {
     return view('admin.pages.company.index');
 });
 
-Route::get('/setting/teams', function() {
-    return view('admin.pages.teams.index');
-});
 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 // category news berita
-Route::get('category-news' , [CategoryNewsController::class , 'index']);
+Route::get(     'category-news' , [CategoryNewsController::class , 'index']);
 Route::post('create/category/news' , [CategoryNewsController::class , 'store'])->name('create.category.news');
 Route::delete('delete/category/news/{categoryNews}' ,[CategoryNewsController::class ,'destroy'])->name('delete.category.news');
 Route::put('update/category/news/{categoryNews}' ,[CategoryNewsController::class ,'update'])->name('update.category.news');
@@ -151,7 +128,7 @@ Route::put('update/category/mitra/{collabCategory}' ,[CollabCategoryController::
 Route::delete('delete/category/mitra/{collabCategory}' ,[CollabCategoryController::class ,'destroy'])->name('delete.category.mitra');
 // end category mitra
 
-Route::resource('news' , NewsController::class);
+// Route::resource('news' , NewsController::class);
 Route::resource('sale', SaleController::class);
 Route::resource('service', ServiceController::class);
 Route::resource('sale', SaleController::class);

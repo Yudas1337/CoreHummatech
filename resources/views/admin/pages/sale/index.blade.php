@@ -33,7 +33,7 @@
                         style="margin-top: -1rem; border-radius: var(--bs-border-radius) var(--bs-border-radius) 0 0 !important;">
                         {{ $sale->name }}</div>
                     <div class="card-body">
-                        <p>{{ Str::limit($sale->description, 100) }}</p>
+                        <p>{{ Str::limit($sale->description, 80) }}</p>
 
                         <div class="gap-2 d-flex">
                             <div class="d-grid flex-grow-1">
@@ -48,14 +48,16 @@
                 </div>
             </div>
         @empty
-            <div class="text-center">
-                <img src="{{ asset('assets/images/no-data.jpg') }}" style="width: 50%; margin: -50px" alt="Tidak ada data">
-                <h5>Paket tidak tersedia</h5>
+            <div class="d-flex justify-content-center">
+                <img src="{{ asset('nodata.jpg') }}" alt="" width="400px">
             </div>
+            <h5 class="text-center">
+                Data Masih Kosong
+            </h5>
         @endforelse
     </div>
 
-    <nav class="m-b-30" aria-label="Page navigation example">
+    <nav class="mt-5" aria-label="Page navigation example">
         <ul class="pagination justify-content-center pagin-border-primary pagination-primary">
             <li class="page-item"><a class="page-link" href="javascript:void(0)">Previous</a></li>
             <li class="page-item"><a class="page-link" href="javascript:void(0)">1</a></li>

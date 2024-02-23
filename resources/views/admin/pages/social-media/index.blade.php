@@ -28,6 +28,9 @@
                         <img src="{{ asset('assets/images/avtar/11.jpg') }}" class="rounded-circle w-50" alt="">
                     </div>
                     <div class="text-center mt-3">
+                        <h1 class="mt-2 mb-0">Youtube</h1>
+                    </div>
+                    <div class="text-center mt-3">
                         <h3 class="mt-2 mb-0 text-primary">https://www.youtube.com/</h3>
                     </div>
                     <div class="mt-3 d-flex justify-content-center gap-2">
@@ -49,30 +52,31 @@
                     <h5 class="modal-title fw-semibold" id="exampleModalLabel">Tambah Sosial Media</h5>
                     <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form class="form-bookmark needs-validation" action="#" method="POST" id="bookmark-form" novalidate=""
+                <form class="form-bookmark needs-validation" action="{{ route('create.social.media') }}" method="POST" id="bookmark-form" novalidate=""
                     enctype="multipart/form-data">
+                    @csrf
                     <div class="modal-body">
                         <div class="row g-2">
                             <div class="mb-3 mt-0 col-md-12">
                                 <label for="bm-title">Nama Platform</label>
                                 <input class="form-control" type="text" required="" autocomplete="name"
-                                    placeholder="Masukkan Nama Platform">
+                                    placeholder="Masukkan Nama Platform" name="platform">
                             </div>
                             <div class="mb-3 mt-0 col-md-12">
                                 <label for="bm-title">Tautan Media Sosial</label>
                                 <input class="form-control" type="text" required="" autocomplete="name"
-                                    placeholder="Masukkan Tautan Media Sosial">
+                                    placeholder="Masukkan Tautan Media Sosial" name="link">
                             </div>
                             <div class="mb-3 mt-0 col-md-12">
                                 <label for="bm-title">Foto / Logo Sosmed</label>
-                                <input class="form-control" id="formFile" type="file">
+                                <input class="form-control" id="formFile" type="file" name="image">
                             </div>
                         </div>
                     </div>
                     <div class="modal-footer">
                         <div class="d-flex justify-content-end">
                             <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">Cancel</button>
-                            <button class="btn btn-primary" type="submit">Tambah</button>
+                            <button class="btn btn-primary" type="submit">Simpan</button>
                         </div>
                     </div>
                 </form>
@@ -112,11 +116,28 @@
                     <div class="modal-footer">
                         <div class="d-flex justify-content-end">
                             <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">Cancel</button>
-                            <button class="btn btn-primary" type="submit">Perbarui</button>
+                            <button class="btn btn-primary" type="submit">Simpan</button>
                         </div>
                     </div>
                 </form>
             </div>
         </div>
     </div>
+@endsection
+
+@section('script')
+<script>
+    $('.btn-delete').on('click', function() {
+        var id = $(this).data('id');
+        $('#form-delete').attr('action', 'delete/category/mitra/' + id);
+        $('#modal-delete').modal('show');
+    });
+    $('.btn-edit').click(function() {
+        var id = $(this).data('id'); // Mengambil nilai id dari tombol yang diklik
+        var name = $(this).data('name'); // Mengambil nilai name dari tombol yang diklik
+        $('#form-update').attr('action', 'update/category/mitra/' + id); // Mengubah nilai atribut action form
+        $('#name-edit').val(name);
+        $('#modal-edit').modal('show');
+    });
+</script>
 @endsection

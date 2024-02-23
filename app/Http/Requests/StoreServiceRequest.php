@@ -22,10 +22,22 @@ class StoreServiceRequest extends FormRequest
     public function rules(): array
     {
         return [
+            'image' => 'required|mimes:png,jpg,jpeg',
             'name' => 'required',
-            'file' => 'required',
-            'image' => 'required',
             'description' => 'required',
+            'link' => 'nullable',
+            'proposal' => 'nullable|mimes:pdf'
+        ];
+    }
+
+    public function messages(): array
+    {
+        return [
+            'image.required' => 'Foto layanan harus diisi',
+            'image.mimes' => 'Foto/logo harus berupa png, jpg atau jpeg',
+            'name.required' => 'Nama harus diisi',
+            'description.required' => 'Deskripsi harus diisi',
+            'proposal.mimes' => 'Proposal harus berupa pdf'
         ];
     }
 }

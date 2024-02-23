@@ -58,7 +58,12 @@
             </div>
 
             @empty
-
+            <div class="d-flex justify-content-center">
+                <img src="{{ asset('nodata.jpg') }}" alt="" width="400px">
+            </div>
+            <h5 class="text-center">
+                Data Masih Kosong
+            </h5>
             @endforelse
         </div>
     </div>
@@ -73,7 +78,7 @@
                     <h5 class="modal-title fw-semibold" id="exampleModalLabel">Tambah Mitra</h5>
                     <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form class="form-bookmark needs-validation" action="{{ route('create.collab.mitra') }}" method="POST" id="bookmark-form" novalidate=""
+                <form class="form-bookmark needs-validation" action="#" method="POST" id="bookmark-form" novalidate=""
                     enctype="multipart/form-data">
                     @csrf
                     <div class="modal-body">
@@ -159,16 +164,6 @@
 
     </div>
     @include('admin.components.delete-modal-component')
-
-    <nav class="m-b-30" aria-label="Page navigation example">
-        <ul class="pagination justify-content-center pagin-border-primary pagination-primary">
-            <li class="page-item"><a class="page-link" href="javascript:void(0)">Previous</a></li>
-            <li class="page-item"><a class="page-link" href="javascript:void(0)">1</a></li>
-            <li class="page-item"><a class="page-link" href="javascript:void(0)">2</a></li>
-            <li class="page-item"><a class="page-link" href="javascript:void(0)">3</a></li>
-            <li class="page-item"><a class="page-link" href="javascript:void(0)">Next</a></li>
-        </ul>
-    </nav>
 @endsection
 @section('script')
 <script>

@@ -16,20 +16,24 @@
                 <div class="modal-body">
                     <div class="row g-2">
                         <div class="form-group mb-3 mt-0 col-md-12">
-                            <label for="name">Foto Layanan</label>
-                            <input class="form-control" id="name" type="file" name="image" required placeholder="Contoh: Produk Hummatech" autocomplete="name" />
+                            <label for="image">Foto Layanan</label>
+                            <input class="form-control" id="image" type="file" name="image" required  />
                         </div>
                         <div class="form-group mb-3 mt-0 col-md-12">
-                            <label for="description">Nama Layanan</label>
-                            <input class="form-control" id="name" name="name" type="text" required placeholder="Contoh: Produk Hummatech" autocomplete="name" />
+                            <label for="name">Nama Layanan</label>
+                            <input class="form-control" id="name" name="name" type="text" required placeholder="Masukkan nama layanan" />
                         </div>
                         <div class="form-group mb-3 mt-0 col-md-12">
-                            <label for="feature">Deskripsi Layanan</label>
-                            <textarea rows="5" class="form-control" id="feature" name="description" placeholder="Jelaskan fitur produknya"></textarea>
+                            <label for="description">Deskripsi Layanan</label>
+                            <textarea rows="5" class="form-control" id="description" name="description" placeholder="Masukkan deskripsi layanan"></textarea>
                         </div>
                         <div class="form-group mb-3 mt-0 col-md-12">
-                            <label for="link">File Proposal</label>
-                            <input class="form-control" id="link" name="file" type="file" required placeholder="Contoh: https://hummatech.com/linknya" />
+                            <label for="link">Tautan Layanan <small class="text-danger">*Isi jika ada</small></label>
+                            <input class="form-control" id="link" name="link" type="text" required placeholder="Masukkan tautan layanan" />
+                        </div>
+                        <div class="form-group mb-3 mt-0 col-md-12">
+                            <label for="proposal">File Proposal <small>(opsional)</small></label>
+                            <input class="form-control" id="proposal" name="proposal" type="file" required placeholder="Contoh: https://hummatech.com/linknya" />
                         </div>
                     </div>
                 </div>

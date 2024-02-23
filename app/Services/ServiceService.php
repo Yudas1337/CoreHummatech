@@ -44,8 +44,12 @@ class ServiceService
         $data = $request->validated();
 
         if ($request->hasFile('image') && $request->file('image')->isValid()) {
-            $data['image'] = $request->file('image')->store(TypeEnum::SALE->value, 'public');
-            $data['file'] = $request->file('file')->store(TypeEnum::PROPOSAL->value, 'public');
+            $data['image'] = $request->file('image')->store(TypeEnum::SERVICE->value, 'public');
+
+            if ($request->hasFile('proposal') && $request->file('proposal')->isValid()) {
+                $data['proposal'] = $request->file('proposal')->store(TypeEnum::PROPOSAL->value, 'public');
+            }
+            
             return $data;
         }
         return false;
@@ -65,10 +69,15 @@ class ServiceService
 
         if ($request->hasFile('image') && $request->file('image')->isValid()) {
             $this->remove($service->image);
-            $data['image'] = $request->file('image')->store(TypeEnum::SALE->value, 'public');
-            $data['file'] = $request->file('file')->store(TypeEnum::PROPOSAL->value, 'public');
+            $data['image'] = $request->file('image')->store(TypeEnum::SERVICE->value, 'public');
+            
+            if ($request->hasFile('proposal') && $request->file('proposal')->isValid()) {
+                $this->remove($service->proposal);
+                $data['proposal'] = $request->file('proposal')->store(TypeEnum::PROPOSAL->value, 'public');
+            }
         } else {
             $data['image'] = $service->image;
+            $data['proposal'] = $service->proposal;
         }
 
         return $data;

@@ -40,79 +40,10 @@
                                 Magang</p>
                         </div>
                         <div class="card-header-right">
-                            <ul class="list-unstyled card-option" style="text-align:center">
-                                <li>
-                                    <div><i class="icon-settings fa-solid fa-gear"></i></div>
-                                </li>
-                                <li><i class="fa fa-edit text-primary"type="button" data-bs-toggle="modal"
+                            <ul class="list-unstyled" style="text-align:center">
+                                <li><i class="fa fa-edit text-primary mb-2 p-1" type="button" data-bs-toggle="modal"
                                         data-bs-target="#edit"></i></li>
-                                <li><i class="fa fa-trash text-primary"></i></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <div class="d-flex" style="z-index: 1"><img class="align-self-center img-fluid img-80 rounded-3"
-                                src="../assets/images/ecommerce/product-table-6.png" alt="#">
-                            <div class="flex-grow-1 ms-3">
-                                <div class="product-name mb-1">
-                                    <h4><a href="#">lorem ipsum</a>
-                                    </h4>
-                                </div>
-                                <p class="text-muted m-0" style="width: 80%">Lorem ipsum dolor, sit amet consectetur
-                                    adipisicing elit.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-12 col-xl-6">
-                <div class="card">
-                    <div class="card-header" style="width: 100%; background: none; margin-bottom: -20px">
-                        <div class="col-sm-3 position-absolute top-0 start-0">
-                            <p class="bg-primary px-3 py-1 text-light" style="border-radius: 5px 0 0 0; font-size: 12px">
-                                Magang</p>
-                        </div>
-                        <div class="card-header-right">
-                            <ul class="list-unstyled card-option" style="text-align:center">
-                                <li>
-                                    <div><i class="icon-settings fa-solid fa-gear"></i></div>
-                                </li>
-                                <li><i class="fa fa-edit text-primary"type="button" data-bs-toggle="modal"
-                                        data-bs-target="#edit"></i></li>
-                                <li><i class="fa fa-trash text-primary"></i></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <div class="d-flex" style="z-index: 1"><img class="align-self-center img-fluid img-80 rounded-3"
-                                src="../assets/images/ecommerce/product-table-6.png" alt="#">
-                            <div class="flex-grow-1 ms-3">
-                                <div class="product-name mb-1">
-                                    <h4><a href="#">lorem ipsum</a>
-                                    </h4>
-                                </div>
-                                <p class="text-muted m-0" style="width: 80%">Lorem ipsum dolor, sit amet consectetur
-                                    adipisicing elit.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-12 col-xl-6">
-                <div class="card">
-                    <div class="card-header" style="width: 100%; background: none; margin-bottom: -20px">
-                        <div class="col-sm-3 position-absolute top-0 start-0">
-                            <p class="bg-primary px-3 py-1 text-light" style="border-radius: 5px 0 0 0; font-size: 12px">
-                                Magang</p>
-                        </div>
-                        <div class="card-header-right">
-                            <ul class="list-unstyled card-option" style="text-align:center">
-                                <li>
-                                    <div><i class="icon-settings fa-solid fa-gear"></i></div>
-                                </li>
-                                <li><i class="fa fa-edit text-primary"type="button" data-bs-toggle="modal"
-                                        data-bs-target="#edit"></i></li>
-                                <li><i class="fa fa-trash text-primary"></i></li>
+                                <li><i class="fa-solid fa-trash text-primary p-1" type="button"></i></li>
                             </ul>
                         </div>
                     </div>
@@ -245,4 +176,5 @@
             <li class="page-item"><a class="page-link" href="javascript:void(0)">Next</a></li>
         </ul>
     </nav>
+    @include('admin.components.delete-modal-component')
 @endsection

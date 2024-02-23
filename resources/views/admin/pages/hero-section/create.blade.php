@@ -53,8 +53,8 @@
     </div>
 
     <div class="card card-body">
-        <form action="#" method="post" enctype="multipart/form-data">
-
+        <form action="{{ route('create.section') }}" method="post" enctype="multipart/form-data">
+            @csrf
             <div class="form-group mb-3">
                 <div class="fw-bold mb-2">Preview</div>
                 <div class="img-empty">
@@ -64,23 +64,23 @@
 
             <div class="mb-3 form-group">
                 <label for="upload">Foto / Video <small class="text-danger">*Wajib Diisi</small></label>
-                <input type="file" id="upload" class="form-control" accept="image/*,video/*"
+                <input type="file" id="upload" name="image" class="form-control" accept="image/*,video/*"
                     onchange="readURL(this)" />
             </div>
 
             <div class="mb-3 form-group">
                 <label for="headline">Judul <small class="text-danger">*Wajib Diisi</small></label>
-                <input type="text" id="headline" class="form-control" placeholder="Contoh: Ini Adalah Headline" />
+                <input type="text" id="headline" name="title" class="form-control" placeholder="Contoh: Ini Adalah Headline" />
             </div>
 
             <div class="mb-3 form-group">
                 <label for="subheadline">Subjudul <small class="text-danger">*Wajib Diisi</small></label>
-                <input type="text" id="subheadline" class="form-control" placeholder="Contoh: Ini Adalah Subheadline" />
+                <input type="text" id="subheadline" name="subtitle" class="form-control" placeholder="Contoh: Ini Adalah Subheadline" />
             </div>
 
             <div class="mb-3 form-group">
                 <label for="link">Link Youtube <small class="text-muted">(Opsional)</small></label>
-                <input type="url" id="link" class="form-control" placeholder="Contoh: https://youtu.be/oae13ksn" />
+                <input type="url" id="link" name="link" class="form-control" placeholder="Contoh: https://youtu.be/oae13ksn" />
             </div>
 
             <div class="pt-3 me-auto d-flex gap-2 w-100 justify-content-end align-items-center">
