@@ -13,5 +13,6 @@ enum TypeEnum: string
     case PRODUCT = 'product';
     case SECTION = 'section';
     case PROPOSAL = 'proposal';
-    case  TEAM  = 'team';
+    case TEAM = 'team';
+    case SOSIALMEDIA = 'sosialmedia';
 }

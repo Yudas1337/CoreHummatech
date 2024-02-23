@@ -69,9 +69,9 @@ Route::get('/setting/terms-condition/edit', function () {
     return view('admin.pages.terms-condition.edit');
 });
 
-Route::get('/social-media', function () {
-    return view('admin.pages.social-media.index');
-});
+// Route::get('/social-media', function () {
+//     return view('admin.pages.social-media.index');
+// });
 
 // Route::get('/service', function () {
 //     return view('admin.pages.service.index');
@@ -132,7 +132,7 @@ Route::put('update/category/mitra/{collabCategory}' ,[CollabCategoryController::
 Route::delete('delete/category/mitra/{collabCategory}' ,[CollabCategoryController::class ,'destroy'])->name('delete.category.mitra');
 // end category mitra
 
-Route::resource('news' , NewsController::class);
+// Route::resource('news' , NewsController::class);
 Route::resource('sale', SaleController::class);
 Route::resource('service', ServiceController::class);
 Route::resource('sale', SaleController::class);
