@@ -15,8 +15,9 @@ return new class extends Migration
             $table->id();
             $table->string('image');
             $table->string('name');
-            $table->string('description');
-            $table->string('file');
+            $table->text('description');
+            $table->string('link')->nullable();
+            $table->string('proposal')->nullable();
             $table->timestamps();
         });
     }

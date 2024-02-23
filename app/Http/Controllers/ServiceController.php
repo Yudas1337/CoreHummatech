@@ -70,7 +70,10 @@ class ServiceController extends Controller
      */
     public function update(UpdateServiceRequest $request, Service $service)
     {
-        //
+        $data = $this->service->update($service, $request->validated());
+        $this->service->update($service->id, $data);
+
+        return back()->with('success', 'Penjualan berhasil diperbarui');
     }
 
     /**

@@ -163,7 +163,7 @@
                         style="margin-top: -1rem; border-radius: var(--bs-border-radius) var(--bs-border-radius) 0 0 !important;">
                         {{ $product->name }}</div>
                     <div class="card-body">
-                        <p>{{ $product->description }}</p>
+                        <p>{{ Str::limit($product->description, 80) }}</p>
 
                         <div class="gap-2 d-flex">
                             <div class="d-grid flex-grow-1">

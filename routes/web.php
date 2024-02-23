@@ -81,10 +81,6 @@ Route::get('/social-media', function () {
     return view('admin.pages.social-media.index');
 });
 
-// Route::get('/service', function () {
-//     return view('admin.pages.service.index');
-// });
-
 Route::get('/setting/faq', function () {
     return view('admin.pages.faq.index');
 });
@@ -125,7 +121,7 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 // category news berita
-Route::get('category-news' , [CategoryNewsController::class , 'index']);
+Route::get(     'category-news' , [CategoryNewsController::class , 'index']);
 Route::post('create/category/news' , [CategoryNewsController::class , 'store'])->name('create.category.news');
 Route::delete('delete/category/news/{categoryNews}' ,[CategoryNewsController::class ,'destroy'])->name('delete.category.news');
 Route::put('update/category/news/{categoryNews}' ,[CategoryNewsController::class ,'update'])->name('update.category.news');
@@ -147,7 +143,7 @@ Route::put('update/category/mitra/{collabCategory}' ,[CollabCategoryController::
 Route::delete('delete/category/mitra/{collabCategory}' ,[CollabCategoryController::class ,'destroy'])->name('delete.category.mitra');
 // end category mitra
 
-Route::resource('news' , NewsController::class);
+// Route::resource('news' , NewsController::class);
 Route::resource('sale', SaleController::class);
 Route::resource('service', ServiceController::class);
 Route::resource('sale', SaleController::class);

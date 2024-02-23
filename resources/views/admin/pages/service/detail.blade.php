@@ -2,7 +2,7 @@
 
 @section('subcontent')
     <div class="py-3 my-3">
-        <a href="{{ url('/product') }}" class="btn btn-light"><i class="fas fa-arrow-left"></i> Kembali</a>
+        <a href="{{ route('service.index') }}" class="btn btn-light"><i class="fas fa-arrow-left"></i> Kembali</a>
     </div>
 @endsection
 
