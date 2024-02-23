@@ -58,7 +58,12 @@
             </div>
 
             @empty
-
+            <div class="d-flex justify-content-center">
+                <img src="{{ asset('nodata.jpg') }}" alt="" width="400px">
+            </div>
+            <h5 class="text-center">
+                Data Masih Kosong
+            </h5>
             @endforelse
         </div>
     </div>
@@ -159,16 +164,6 @@
 
     </div>
     @include('admin.components.delete-modal-component')
-
-    <nav class="m-b-30" aria-label="Page navigation example">
-        <ul class="pagination justify-content-center pagin-border-primary pagination-primary">
-            <li class="page-item"><a class="page-link" href="javascript:void(0)">Previous</a></li>
-            <li class="page-item"><a class="page-link" href="javascript:void(0)">1</a></li>
-            <li class="page-item"><a class="page-link" href="javascript:void(0)">2</a></li>
-            <li class="page-item"><a class="page-link" href="javascript:void(0)">3</a></li>
-            <li class="page-item"><a class="page-link" href="javascript:void(0)">Next</a></li>
-        </ul>
-    </nav>
 @endsection
 @section('script')
 <script>

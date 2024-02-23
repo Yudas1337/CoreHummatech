@@ -48,22 +48,14 @@
                 </div>
             </div>
         @empty
-            <div class="text-center">
-                <img src="{{ asset('assets/images/no-data.jpg') }}" style="width: 50%; margin: -50px" alt="Tidak ada data">
-                <h5>Paket tidak tersedia</h5>
-            </div>
+        <div class="d-flex justify-content-center">
+            <img src="{{ asset('nodata.jpg') }}" alt="" width="400px">
+        </div>
+        <h5 class="text-center">
+            Data Masih Kosong
+        </h5>
         @endforelse
     </div>
-
-    <nav class="m-b-30" aria-label="Page navigation example">
-        <ul class="pagination justify-content-center pagin-border-primary pagination-primary">
-            <li class="page-item"><a class="page-link" href="javascript:void(0)">Previous</a></li>
-            <li class="page-item"><a class="page-link" href="javascript:void(0)">1</a></li>
-            <li class="page-item"><a class="page-link" href="javascript:void(0)">2</a></li>
-            <li class="page-item"><a class="page-link" href="javascript:void(0)">3</a></li>
-            <li class="page-item"><a class="page-link" href="javascript:void(0)">Next</a></li>
-        </ul>
-    </nav>
 
     <div class="modal fade modal-bookmark" id="tambah" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">

@@ -57,7 +57,7 @@
             <li>
                 <a href="/service">Layanan</a>
             </li>
-            <li>
+            <li class="sidebar-list">
                 <a href="{{ route('sale.index') }}">Penjualan</a>
             </li>
             <li>
