@@ -2,10 +2,11 @@
 namespace App\Contracts\Repositories;
 
 use App\Contracts\Interfaces\SosialMediaInterface;
+use App\Models\SosialMedia;
 
 class SosialMediaRepository extends BaseRepository implements SosialMediaInterface
 {
-    public function __construct(SosialMediaInterface $sosialMedia)
+    public function __construct(SosialMedia $sosialMedia)
     {
         $this->model = $sosialMedia;
     }

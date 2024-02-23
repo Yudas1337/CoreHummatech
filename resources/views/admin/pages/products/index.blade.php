@@ -104,15 +104,14 @@
                     <h5 class="modal-title fw-semibold" id="exampleModalLabel">Edit Produk</h5>
                     <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form class="form-bookmark needs-validation" id="form-update" method="POST" id="bookmark-form"
-                    novalidate="" enctype="multipart/form-data">
+                <form class="form-bookmark needs-validation" id="form-update" method="POST" id="bookmark-form" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
                     <div class="modal-body">
                         <div class="row g-2">
                             <div class="form-group mb-3 mt-0 col-md-12">
                                 <label for="name">Nama Produk</label>
-                                <input class="form-control name" id="name" type="text" required
+                                <input class="form-control name" name="name" id="name" type="text" required
                                     placeholder="Contoh: Produk Hummatech" autocomplete="name" />
                             </div>
 
