@@ -116,7 +116,6 @@
 
         <div id="products" class="need-space">
             <h1 class="title">Produk Yang Dihasilkan</h1>
-
             <div class="row">
                 @forelse ($products as $product)
                     <div class="col-xxl-3 col-md-4 col-sm-6">
@@ -129,11 +128,17 @@
                             <div class="card-body">
                                 <p>{{ $product->description }}</p>
 
-                                <a href="{{ $product->link }}" class="btn btn-primary">Kunjungi Situs</a>
+                                <a href="{{ $product->link }}" target="_blank" class="btn btn-primary">Kunjungi Situs</a>
                             </div>
                         </div>
                     </div>
                 @empty
+                <div class="d-flex justify-content-center">
+                    <img src="{{ asset('nodata.jpg') }}" alt="" width="400px">
+                </div>
+                <h5 class="text-center">
+                    Data Masih Kosong
+                </h5>
                 @endforelse
             </div>
         </div>

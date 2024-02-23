@@ -68,19 +68,18 @@
 
 @section('content')
     <div class="row">
-        @foreach (range(0, 10) as $item)
+        @forelse ($sections as $section)
         <div class="col-md-12 col-12 col-xl-6">
             <div class="card rounded-4" style="height: 400px">
                 <div class="product-box rounded-4">
                     <div class="product-img">
                         <img class="img-fluid"
-                            src="https://images.unsplash.com/photo-1560493676-04071c5f467b?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                            src="{{ asset('storage/' .$section->image) }}"
                             alt="" />
 
                         <div class="content-center">
-                            <h1 class="title">PT Humma Teknologi Indonesia</h1>
-                            <p class="subtitle">Perushaan Software terbaik se jawa timur</p>
-
+                            <h1 class="title">{{ $section->title }}</h1>
+                            <p class="subtitle">{{ $section->subtitle }}</p>
                             <div class="btn btn-lg btn-primary">Lihat Selengkapnya</div>
                         </div>
 
@@ -98,17 +97,13 @@
                 </div>
             </div>
         </div>
-        @endforeach
-
-        <div class="pt-3 pb-5 align-items-center d-flex gap-2 justify-content-between">
-            <div>Showing 1 to 10 from 35 entries</div>
-            <div class="pagination">
-                <li class="page-item"><a href="#" class="page-link disabled"><i class="fas fa-arrow-left"></i></a></li>
-                @foreach (range(0, 3) as $item)
-                <li class="page-item {{ $item !== 0 ?: 'active' }}" aria-current="page"><a href="#" class="page-link">{{ $item+1 }}</a></li>
-                @endforeach
-                <li class="page-item"><a href="#" class="page-link"><i class="fas fa-arrow-right"></i></a></li>
-            </div>
+        @empty
+        <div class="d-flex justify-content-center">
+            <img src="{{ asset('nodata.jpg') }}" alt="" width="400px">
         </div>
+        <h5 class="text-center">
+            Data Masih Kosong
+        </h5>
+        @endforelse
     </div>
 @endsection

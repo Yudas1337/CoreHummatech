@@ -53,18 +53,16 @@
                     </div>
                 </div>
             @empty
+                <div class="d-flex justify-content-center">
+                    <img src="{{ asset('nodata.jpg') }}" alt="" width="400px">
+                </div>
+                <h5 class="text-center">
+                    Data Masih Kosong
+                </h5>
             @endforelse
-
-            <div class="justify-content-beetween">
-                <div class="dataTables_info" id="basic-1_info" role="status" aria-live="polite" bis_skin_checked="1">
-                    Showing 1 to 10 of 14 entries</div>
-                <div class="dataTables_paginate paging_simple_numbers" id="basic-1_paginate" bis_skin_checked="1"><a
-                        class="paginate_button previous disabled" aria-controls="basic-1" data-dt-idx="0" tabindex="0"
-                        id="basic-1_previous">Previous</a><span><a class="paginate_button current" aria-controls="basic-1"
-                            data-dt-idx="1" tabindex="0">1</a><a class="paginate_button " aria-controls="basic-1"
-                            data-dt-idx="2" tabindex="0">2</a></span><a class="paginate_button next"
-                        aria-controls="basic-1" data-dt-idx="3" tabindex="0" id="basic-1_next">Next</a></div>
-            </div>
+            <h4 class="mb-2">
+                Maps
+            </h4>
         </div>
         <div id="maps1"></div>
     </div>
@@ -203,7 +201,7 @@
 
 
 @section('script')
-<script>
-    buildMap(-7.900067415010227, 112.60688277775499)
-</script>
+    <script>
+        buildMap(-7.900067415010227, 112.60688277775499)
+    </script>
 @endsection

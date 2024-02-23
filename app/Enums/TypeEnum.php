@@ -11,5 +11,8 @@ enum TypeEnum: string
     case PARTNER = 'partner';
     case MITRA = 'mitra';
     case PRODUCT = 'product';
+    case SECTION = 'section';
     case PROPOSAL = 'proposal';
+    case TEAM = 'team';
+    case SOSIALMEDIA = 'sosialmedia';
 }
