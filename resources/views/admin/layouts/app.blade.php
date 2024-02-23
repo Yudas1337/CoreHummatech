@@ -44,6 +44,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/vendors/photoswipe.css') }}">
     <!-- Summernote -->
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/vendors/summernote.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/quill@2.0.0-rc.2/dist/quill.snow.css" rel="stylesheet" />
     <!-- Dropzone -->
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/vendors/dropzone.css') }}">
     <!-- Select2 -->
@@ -191,6 +192,7 @@
     <script src="{{ asset('assets/js/editor/summernote/summernote.js') }}"></script>
     <script src="{{ asset('assets/js/editor/summernote/summernote.custom.js') }}"></script>
     <script src="{{ asset('assets/js/editor/summernote/summernote-custom1.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/quill@2.0.0-rc.2/dist/quill.js"></script>
     <!-- Dropzone -->
     <script src="{{ asset('assets/js/dropzone/dropzone.js') }}"></script>
     <script src="{{ asset('assets/js/dropzone/dropzone-script.js') }}"></script>

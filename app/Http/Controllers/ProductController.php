@@ -13,7 +13,7 @@ class ProductController extends Controller
     private ProductInterface $product;
     private ProductService $productService;
 
-    public function __construct(ProductInterface $product , ProductService $productService)
+    public function __construct(ProductInterface $product, ProductService $productService)
     {
         $this->product = $product;
         $this->productService = $productService;
@@ -23,8 +23,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-       $products = $this->product->get();
-        return view('admin.pages.products.index' , compact('products'));
+        $products = $this->product->get();
+        return view('admin.pages.products.index', compact('products'));
     }
 
     /**
@@ -42,7 +42,7 @@ class ProductController extends Controller
     {
         $data = $this->productService->store($request);
         $this->product->store($data);
-        return back()->with('success' , 'Produk berhasil di tambahkan');
+        return back()->with('success', 'Produk berhasil di tambahkan');
     }
 
     /**
@@ -51,7 +51,7 @@ class ProductController extends Controller
     public function show(Product $product)
     {
         $products = $this->product->show($product->id);
-        return view('admin.pages.products.detail' , compact('products'));
+        return view('admin.pages.products.detail', compact('products'));
     }
 
     /**
@@ -67,8 +67,8 @@ class ProductController extends Controller
      */
     public function update(UpdateProductRequest $request, Product $product)
     {
-        $data = $this->productService->update($product , $request);
-        $this->product->update($product->id ,$data);
+        $data = $this->productService->update($product, $request);
+        $this->product->update($product->id, $data);
         return back()->with('success', 'Penjualan berhasil diperbarui');
     }
 
@@ -82,6 +82,6 @@ class ProductController extends Controller
         }
 
         $this->productService->remove($product->image);
-        return back()->with('success' , 'Testimoni Berhasil Di Hapus');
+        return back()->with('success', 'Testimoni Berhasil Di Hapus');
     }
 }

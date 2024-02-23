@@ -4,6 +4,11 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+dependencies:
+  '@icon/themify-icons':
+    specifier: ^1.0.1-alpha.3
+    version: 1.0.1-alpha.3
+
 devDependencies:
   '@popperjs/core':
     specifier: ^2.11.6
@@ -232,6 +237,10 @@ packages:
     requiresBuild: true
     dev: true
     optional: true
+
+  /@icon/themify-icons@1.0.1-alpha.3:
+    resolution: {integrity: sha512-KDE5pjBgnEVugPhcQxBmhMMT+5n2YU/A6yHHeDHSGL68gHaLp27a5WxV4LVakN0kiiA3MVdSkUPdX6n/UWS7zw==}
+    dev: false
 
   /@popperjs/core@2.11.8:
     resolution: {integrity: sha512-P1st0aksCrn9sGZhp8GMYwBnQsbvAWsZAX44oXNNvLHGqAOcoVxmjZiohstwQ7SqKnbR47akdNi+uleWD8+g6A==}

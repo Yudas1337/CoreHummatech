@@ -2,14 +2,14 @@
 
 namespace App\Contracts\Repositories;
 
-use App\Contracts\Interfaces\CollabMitraInterface;
-use App\Models\collabMitra;
+use App\Contracts\Interfaces\NewsInterface;
+use App\Models\News;
 
-class CollabMitraRepository extends BaseRepository implements CollabMitraInterface
+class NewsRepository extends BaseRepository implements NewsInterface
 {
-    public function __construct(collabMitra $collabMitra)
+    public function __construct(News $news)
     {
-        $this->model = $collabMitra;
+        $this->model = $news;
     }
 
     public function get(): mixed

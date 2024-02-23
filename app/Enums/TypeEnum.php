@@ -12,4 +12,5 @@ enum TypeEnum: string
     case MITRA = 'mitra';
     case PRODUCT = 'product';
     case PROPOSAL = 'proposal';
+    case NEWS = 'news';
 }
