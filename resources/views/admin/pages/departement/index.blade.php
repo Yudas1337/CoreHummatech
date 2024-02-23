@@ -88,10 +88,10 @@
                 </tr>
             </thead>
             <tbody>
-                @forelse (range(0,12) as $item)
+                @forelse ($positions as $index=>$position)
                     <tr>
-                        <td>{{ $item }}</td>
-                        <td>Jabatan {{ $item }}</td>
+                        <td>{{ $index + 1 }}</td>
+                        <td> {{ $position->name }}</td>
                         <td>
                             <button data-bs-target="#edit" data-bs-toggle="modal" class="btn btn-warning">Edit</button>
                             <button data-bs-target="#modal-delete" data-bs-toggle="modal" class="btn btn-danger">Hapus</button>
@@ -112,7 +112,7 @@
                     <h5 class="modal-title fw-semibold" id="exampleModalLabel">Tambah Jabatan </h5>
                     <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form action="" method="post">
+                <form action="{{ route('create.position') }}" method="post">
                     @csrf
                     <div class="modal-body">
                         <div class="row g-2">

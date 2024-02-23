@@ -93,10 +93,6 @@ Route::get('/setting/vision-mision', function () {
     return view('admin.pages.vision-mision.index');
 });
 
-Route::get('/setting/departement', function () {
-    return view('admin.pages.departement.index');
-});
-
 Route::get('/setting/vision-mision/create', function () {
     return view('admin.pages.vision-mision.add');
 });
