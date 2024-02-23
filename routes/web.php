@@ -55,14 +55,6 @@ Route::get('/category-testimonial', function () {
     return view('admin.pages.testimonial-category.index');
 });
 
-Route::get('/hero-section', function () {
-    return view('admin.pages.hero-section.index');
-});
-
-Route::get('/hero-section/create', function () {
-    return view('admin.pages.hero-section.create');
-});
-
 Route::get('/hero-section/edit', function () {
     return view('admin.pages.hero-section.edit');
 });
