@@ -20,4 +20,9 @@ class TeamRepository extends BaseRepository implements TeamInterface
     {
         return $this->model->query()->create($data);
     }
+
+    public function delete(mixed $id): mixed
+    {
+        return $this->model->query()->delete($id);
+    }
 }

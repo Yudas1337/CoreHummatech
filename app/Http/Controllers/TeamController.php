@@ -78,6 +78,10 @@ class TeamController extends Controller
      */
     public function destroy(Team $team)
     {
-        //
+        if (!$this->team->delete($team->id)) {
+            return back()->with('error', 'Testimoni Gagal Di Hapus');
+        }
+        $this->service->remove($team->image);
+        return back()->with('success' , 'Testimoni Berhasil Di Hapus');
     }
 }
