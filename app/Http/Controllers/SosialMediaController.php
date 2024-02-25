@@ -12,8 +12,10 @@ class SosialMediaController extends Controller
 {
     private SosialMediaInterface $sosialMedia;
     private SosialMediaService $service;
-    public function __construct(SosialMediaInterface $sosialMedia)
+    public function __construct(SosialMediaInterface $sosialMedia, SosialMediaService $sosialMediaService)
     {
+        $this->sosialMedia = $sosialMedia;
+        $this->service = $sosialMediaService;
     }
     /**
      * Display a listing of the resource.
@@ -74,13 +76,7 @@ class SosialMediaController extends Controller
      */
     public function destroy(SosialMedia $sosialMedia)
     {
-        if(!$this->sosialMedia->delete($sosialMedia->id))
-        {
-            return back()->with('error', 'Data Gagal Di Hapus');
-        }
-
-        $this->service->remove($sosialMedia->image);
-        return back()->with('success', 'Data BErhasil Di Hapus');
-        
+      $this->sosialMedia->delete($sosialMedia->id);
+      return back();
     }
 }
