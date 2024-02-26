@@ -1,7 +1,7 @@
 @extends('landing.layouts.app')
 @section('content')
- <!-- Start Banner
-    ============================================= -->
+    <!-- Start Banner
+        ============================================= -->
     <div class="banner-area text-center text-big top-pad-50">
         <div id="bootcarousel" class="carousel text-light slide animate_text" data-ride="carousel">
 
@@ -15,11 +15,13 @@
                                 <div class="row">
                                     <div class="col-lg-10 offset-lg-1">
                                         <div class="content">
-                                            <h2>INOVASI MENUJU <span>PERKEMBANGAN</span></h2>
+                                            <h1>INOVASI MENUJU <span>PERKEMBANGAN</span></h1>
                                             <p class="animated slideInRight">
-                                                Coming merits and was talent enough far. Sir joy northward sportsmen education. Discovery incommode earnestly no he commanded.
+                                                bertransformasi menjadi perusahaan yang mampu menjawab
+                                                tantangan di era revolusi industri 4.0
                                             </p>
-                                            <a data-animation="animated zoomInUp" class="btn btn-gradient effect btn-md" href="about-us.html">Discover More</a>
+                                            <a data-animation="animated zoomInUp" class="btn btn-gradient effect btn-md"
+                                                href="javascript:void(0)">Lihat Selengkapnya</a>
                                         </div>
                                     </div>
                                 </div>
@@ -37,9 +39,11 @@
                                         <div class="content">
                                             <h2 data-animation="animated slideInDown">Achiving <span>Success</span></h2>
                                             <p class="animated slideInRight">
-                                                Coming merits and was talent enough far. Sir joy northward sportsmen education. Discovery incommode earnestly no he commanded.
+                                                Coming merits and was talent enough far. Sir joy northward sportsmen
+                                                education. Discovery incommode earnestly no he commanded.
                                             </p>
-                                            <a data-animation="animated zoomInUp" class="btn btn-gradient effect btn-md" href="about-us.html">Discover More</a>
+                                            <a data-animation="animated zoomInUp" class="btn btn-gradient effect btn-md"
+                                                href="about-us.html">Discover More</a>
                                         </div>
                                     </div>
                                 </div>
@@ -63,7 +67,7 @@
     <!-- End Banner -->
 
     <!-- Start About Area
-    ============================================= -->
+        ============================================= -->
     <div class="about-content-area default-padding">
         <div class="container">
             <div class="content-box">
@@ -122,7 +126,7 @@
     <!-- End About -->
 
     <!-- Star Partner Area
-    ============================================= -->
+        ============================================= -->
     <div class="partner-area shape-less overflow-hidden text-light">
         <div class="container">
             <div class="item-box">
@@ -130,7 +134,8 @@
                     <div class="col-lg-6 info">
                         <h2>We're Trusted by <span>2500+</span> <br> Professional Customer</h2>
                         <p>
-                            Seeing rather her you not esteem men settle genius excuse. Deal say over you age from. Comparison new ham melancholy son themselves.
+                            Seeing rather her you not esteem men settle genius excuse. Deal say over you age from.
+                            Comparison new ham melancholy son themselves.
                         </p>
                     </div>
                     <div class="col-lg-6 clients">
@@ -156,7 +161,7 @@
     <!-- End Partner Area -->
 
     <!-- Star Services Area
-    ============================================= -->
+        ============================================= -->
     <div class="thumb-services-area inc-thumbnail default-padding bottom-less">
         <!-- Shape -->
         <div class="right-shape">
@@ -184,7 +189,8 @@
                                 <i class="flaticon-investment"></i>
                                 <h4>Financial Planning</h4>
                                 <p>
-                                    Prevailed always tolerably discourse and assurance more applauded more uncommonly. Him everything.
+                                    Prevailed always tolerably discourse and assurance more applauded more uncommonly. Him
+                                    everything.
                                 </p>
                                 <div class="bottom">
                                     <a href="services-single.html"><i class="fas fa-arrow-right"></i> Read More</a>
@@ -200,7 +206,8 @@
                                 <i class="flaticon-creativity"></i>
                                 <h4>Investment Planning</h4>
                                 <p>
-                                    Prevailed always tolerably discourse and assurance more applauded more uncommonly. Him everything.
+                                    Prevailed always tolerably discourse and assurance more applauded more uncommonly. Him
+                                    everything.
                                 </p>
                                 <div class="bottom">
                                     <a href="services-single.html"><i class="fas fa-arrow-right"></i> Read More</a>
@@ -216,7 +223,8 @@
                                 <i class="flaticon-money-1"></i>
                                 <h4>Saving & Investments</h4>
                                 <p>
-                                    Prevailed always tolerably discourse and assurance more applauded more uncommonly. Him everything.
+                                    Prevailed always tolerably discourse and assurance more applauded more uncommonly. Him
+                                    everything.
                                 </p>
                                 <div class="bottom">
                                     <a href="services-single.html"><i class="fas fa-arrow-right"></i> Read More</a>
@@ -232,7 +240,7 @@
     <!-- End Services Area -->
 
     <!-- Start Business Growth
-    ============================================= -->
+        ============================================= -->
     <div class="business-groth-area default-padding bg-gray">
         <div class="container">
             <div class="row">
@@ -240,7 +248,9 @@
                     <h4>Company Analysis</h4>
                     <h2>Annual Report <br>from starting to now</h2>
                     <p>
-                        Both rest of know draw fond post as. It agreement defective to excellent. Feebly do engage of narrow. Extensive repulsive belonging depending if promotion be zealously as. Preference inquietude ask now are dispatched led appearance. Small meant in so doubt hopes. Me smallness is existence.
+                        Both rest of know draw fond post as. It agreement defective to excellent. Feebly do engage of
+                        narrow. Extensive repulsive belonging depending if promotion be zealously as. Preference inquietude
+                        ask now are dispatched led appearance. Small meant in so doubt hopes. Me smallness is existence.
                     </p>
                     <a class="btn btn-gradient effect btn-md" href="contact-2.html">Get free quote</a>
                 </div>
@@ -255,7 +265,7 @@
     <!-- End Business Growth -->
 
     <!-- Start Gallery Area
-    ============================================= -->
+        ============================================= -->
     <div class="gallery-area overflow-hidden default-padding">
         <div class="container">
             <div class="row">
@@ -405,7 +415,7 @@
     <!-- End Projects Area -->
 
     <!-- Start Contact Area
-    ============================================= -->
+        ============================================= -->
     <div class="contact-area default-padding bg-theme inc-shape">
         <div class="container">
             <div class="row align-center">
@@ -413,7 +423,8 @@
                     <div class="content">
                         <h2>Let's talk?</h2>
                         <p>
-                            It's all about the humans behind a brand and those experiencing it, we're right there. In the middle performance quick.
+                            It's all about the humans behind a brand and those experiencing it, we're right there. In the
+                            middle performance quick.
                         </p>
                         <ul>
                             <li>
@@ -433,11 +444,13 @@
                 </div>
                 <div class="col-lg-6 offset-lg-1 contact-form-box">
                     <div class="form-box">
-                        <form action="https://validthemes.net/site-template/earna/assets/mail/contact.php" method="POST" class="contact-form">
+                        <form action="https://validthemes.net/site-template/earna/assets/mail/contact.php" method="POST"
+                            class="contact-form">
                             <div class="row">
                                 <div class="col-lg-12">
                                     <div class="form-group">
-                                        <input class="form-control" id="name" name="name" placeholder="Name" type="text">
+                                        <input class="form-control" id="name" name="name" placeholder="Name"
+                                            type="text">
                                         <span class="alert-error"></span>
                                     </div>
                                 </div>
@@ -445,13 +458,15 @@
                             <div class="row">
                                 <div class="col-lg-6">
                                     <div class="form-group">
-                                        <input class="form-control" id="email" name="email" placeholder="Email*" type="email">
+                                        <input class="form-control" id="email" name="email" placeholder="Email*"
+                                            type="email">
                                         <span class="alert-error"></span>
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="form-group">
-                                        <input class="form-control" id="phone" name="phone" placeholder="Phone" type="text">
+                                        <input class="form-control" id="phone" name="phone" placeholder="Phone"
+                                            type="text">
                                         <span class="alert-error"></span>
                                     </div>
                                 </div>
@@ -483,7 +498,7 @@
     <!-- End Contact Area -->
 
     <!-- Start Blog
-    ============================================= -->
+        ============================================= -->
     <div class="blog-area default-padding bottom-less">
         <div class="container">
             <div class="row">
@@ -508,23 +523,24 @@
 
                             <div class="info">
                                 <div class="meta">
-                                   <ul>
-                                       <li>
-                                           <img src="assets/img/team/1.jpg" alt="Author">
-                                           <span>By </span>
-                                           <a href="#">John Baus</a>
-                                       </li>
-                                       <li>
-                                           <span>In </span>
-                                           <a href="#">Agency</a>
-                                       </li>
-                                   </ul>
+                                    <ul>
+                                        <li>
+                                            <img src="assets/img/team/1.jpg" alt="Author">
+                                            <span>By </span>
+                                            <a href="#">John Baus</a>
+                                        </li>
+                                        <li>
+                                            <span>In </span>
+                                            <a href="#">Agency</a>
+                                        </li>
+                                    </ul>
                                 </div>
                                 <h4>
                                     <a href="blog-single-with-sidebar.html">Discovery incommode earnestly commanded if.</a>
                                 </h4>
                                 <p>
-                                    Easy mind life fact with see has bore ten. Parish any chatty can elinor direct for former. Up as meant widow equal an share.
+                                    Easy mind life fact with see has bore ten. Parish any chatty can elinor direct for
+                                    former. Up as meant widow equal an share.
                                 </p>
                             </div>
                         </div>
@@ -539,23 +555,24 @@
                             </div>
                             <div class="info">
                                 <div class="meta">
-                                   <ul>
-                                       <li>
-                                           <img src="assets/img/team/2.jpg" alt="Author">
-                                           <span>By </span>
-                                           <a href="#">Mohon Mark</a>
-                                       </li>
-                                       <li>
-                                           <span>In </span>
-                                           <a href="#">Creative</a>
-                                       </li>
-                                   </ul>
+                                    <ul>
+                                        <li>
+                                            <img src="assets/img/team/2.jpg" alt="Author">
+                                            <span>By </span>
+                                            <a href="#">Mohon Mark</a>
+                                        </li>
+                                        <li>
+                                            <span>In </span>
+                                            <a href="#">Creative</a>
+                                        </li>
+                                    </ul>
                                 </div>
                                 <h4>
                                     <a href="blog-single-with-sidebar.html">Expression acceptance imprudence particular</a>
                                 </h4>
                                 <p>
-                                    Easy mind life fact with see has bore ten. Parish any chatty can elinor direct for former. Up as meant widow equal an share.
+                                    Easy mind life fact with see has bore ten. Parish any chatty can elinor direct for
+                                    former. Up as meant widow equal an share.
                                 </p>
                             </div>
                         </div>
@@ -570,23 +587,25 @@
                             </div>
                             <div class="info">
                                 <div class="meta">
-                                   <ul>
-                                       <li>
-                                           <img src="assets/img/team/3.jpg" alt="Author">
-                                           <span>By </span>
-                                           <a href="#">Paul Tun</a>
-                                       </li>
-                                       <li>
-                                           <span>In </span>
-                                           <a href="#">Agency</a>
-                                       </li>
-                                   </ul>
+                                    <ul>
+                                        <li>
+                                            <img src="assets/img/team/3.jpg" alt="Author">
+                                            <span>By </span>
+                                            <a href="#">Paul Tun</a>
+                                        </li>
+                                        <li>
+                                            <span>In </span>
+                                            <a href="#">Agency</a>
+                                        </li>
+                                    </ul>
                                 </div>
                                 <h4>
-                                    <a href="blog-single-with-sidebar.html">Provided so as doubtful on striking required point</a>
+                                    <a href="blog-single-with-sidebar.html">Provided so as doubtful on striking required
+                                        point</a>
                                 </h4>
                                 <p>
-                                    Easy mind life fact with see has bore ten. Parish any chatty can elinor direct for former. Up as meant widow equal an share.
+                                    Easy mind life fact with see has bore ten. Parish any chatty can elinor direct for
+                                    former. Up as meant widow equal an share.
                                 </p>
                             </div>
                         </div>
