@@ -60,11 +60,15 @@
                     Data Masih Kosong
                 </h5>
             @endforelse
-            <h4 class="mb-2">
-                Maps
-            </h4>
         </div>
-        <div id="maps1"></div>
+        @if ($branchs == null || count($branchs) == 0)
+    <!-- Tidak ada branch yang tersedia -->
+@else
+    <h4 class="mb-2">
+        Maps
+    </h4>
+    <div id="maps1"></div>
+@endif
     </div>
 
     <!-- Add Modal -->
