@@ -24,7 +24,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('landing.index');
+});
+
+Route::get('/about-us', function () {
+    return view('landing.about');
 });
 
 Route::get('/gallery', function () {
