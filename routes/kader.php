@@ -4,6 +4,7 @@ use App\Http\Controllers\PositionController;
 use App\Http\Controllers\SectionController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\TeamController;
+use App\Http\Controllers\VisionAndMisionController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -22,3 +23,7 @@ Route::post('create/position' , [PositionController::class , 'store'])->name('cr
 Route::get('setting/teams' , [TeamController::class , 'index'])->name('setting.teams');
 Route::post('create/team' , [TeamController::class , 'store'])->name('create.team');
 Route::delete('delete/team/{team}' , [TeamController::class , 'destroy'])->name('delete.team');
+
+
+// visi and mision
+Route::get('setting/vision-mision' , [VisionAndMisionController::class ,'index']);

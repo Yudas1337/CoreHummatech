@@ -85,10 +85,6 @@ Route::get('setting/profile', function() {
     return view('admin.pages.setting.profile.index');
 });
 
-Route::get('/setting/vision-mision', function () {
-    return view('admin.pages.vision-mision.index');
-});
-
 Route::get('/setting/vision-mision/create', function () {
     return view('admin.pages.vision-mision.add');
 });
@@ -106,7 +102,7 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 // category news berita
-Route::get(     'category-news' , [CategoryNewsController::class , 'index']);
+Route::get('category-news' , [CategoryNewsController::class , 'index']);
 Route::post('create/category/news' , [CategoryNewsController::class , 'store'])->name('create.category.news');
 Route::delete('delete/category/news/{categoryNews}' ,[CategoryNewsController::class ,'destroy'])->name('delete.category.news');
 Route::put('update/category/news/{categoryNews}' ,[CategoryNewsController::class ,'update'])->name('update.category.news');
