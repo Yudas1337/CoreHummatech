@@ -2,8 +2,10 @@
 
 namespace App\Providers;
 
+use App\Models\News;
 use App\Models\Sale;
 use App\Models\SalesPackage;
+use App\Observers\NewsObserver;
 use App\Observers\SaleObserver;
 use App\Observers\SalesPackageObserver;
 use Illuminate\Auth\Events\Registered;
@@ -29,6 +31,7 @@ class EventServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        News::observe(NewsObserver::class);
         Sale::observe(SaleObserver::class);
         SalesPackage::observe(SalesPackageObserver::class);
     }

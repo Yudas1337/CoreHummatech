@@ -84,9 +84,9 @@
                                 <div class="col">
                                     <div class="mb-3">
                                         <label>Upload Foto</label>
-                                        <input type="file" name="thumbnail" id="thumbnail" class="form-control" />
+                                        <input type="file" name="image" id="image" accept="image/*" class="form-control" />
 
-                                        @error('thumbnail')
+                                        @error('image')
                                             <div class="text-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
@@ -152,7 +152,13 @@
         );
 
         FilePond.create(
-            document.querySelector('#thumbnail')
+            document.querySelector('#thumbnail'), {
+                labelIdle: 'Unggah foto, atau <span class="filepond--label-action">Cari</span>',
+                maxFiles: '1',
+                maxFileSize: '5MB',
+                labelMaxFileSizeExceeded: 'Too big bro.',
+                labelMaxFileSize: 'max {filesize}',
+            }
         );
     </script>
 

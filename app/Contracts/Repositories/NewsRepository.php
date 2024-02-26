@@ -4,6 +4,8 @@ namespace App\Contracts\Repositories;
 
 use App\Contracts\Interfaces\NewsInterface;
 use App\Models\News;
+use Illuminate\Http\Request;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 class NewsRepository extends BaseRepository implements NewsInterface
 {
@@ -12,10 +14,15 @@ class NewsRepository extends BaseRepository implements NewsInterface
         $this->model = $news;
     }
 
-    public function get(): mixed
+    public function customPaginate(Request $request, int $pagination = 10): mixed
     {
-        return $this->model->query()->get();
+        return $this->model->query()->paginate($pagination);
     }
+
+    // public function custim(): mixed
+    // {
+    //     return $this->model->query()->get();
+    // }
     public function store(array $data): mixed
     {
         return $this->model->query()->create($data);

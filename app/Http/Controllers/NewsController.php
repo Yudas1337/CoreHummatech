@@ -5,9 +5,11 @@ namespace App\Http\Controllers;
 use App\Contracts\Interfaces\CategoryNewsInterface;
 use App\Contracts\Interfaces\NewsInterface;
 use App\Http\Requests\StoreNewsRequest;
+use App\Http\Requests\UpdateNewsRequest;
 use App\Models\News;
 use App\Services\NewsService;
 use Illuminate\Http\Request;
+use Illuminate\Pagination\Paginator;
 
 class NewsController extends Controller
 {
@@ -25,9 +27,9 @@ class NewsController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $news = $this->news->get();
+        $news = $this->news->customPaginate($request, 12);
         return view('admin.pages.news.index', compact('news'));
     }
 
@@ -45,7 +47,9 @@ class NewsController extends Controller
      */
     public function store(StoreNewsRequest $request)
     {
-        dd($request->all());
+        $data = $this->newsService->store($request);
+        $this->news->store($data);
+        return redirect()->route('news.index');
     }
 
     /**
@@ -53,7 +57,7 @@ class NewsController extends Controller
      */
     public function show(News $news)
     {
-        //
+        return view('admin.pages.news.show', compact('news'));
     }
 
     /**
@@ -61,15 +65,18 @@ class NewsController extends Controller
      */
     public function edit(News $news)
     {
-        //
+        $categories = $this->newsCategory->get();
+        return view('admin.pages.news.edit', compact('news', 'categories'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, News $news)
+    public function update(UpdateNewsRequest $request, News $news)
     {
-        //
+        $data = $this->newsService->update($news, $request);
+        $this->news->update($news->id, $data);
+        return redirect()->route('news.index');
     }
 
     /**
@@ -77,6 +84,7 @@ class NewsController extends Controller
      */
     public function destroy(News $news)
     {
-        //
+        $this->news->delete($news->id);
+        return back();
     }
 }

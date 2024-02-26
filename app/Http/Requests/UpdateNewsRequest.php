@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreNewsRequest extends FormRequest
+class UpdateNewsRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,7 +24,7 @@ class StoreNewsRequest extends FormRequest
         return [
             'title' => 'min:5|required',
             'description' => 'min:8|required',
-            'image' => 'file|mimes:png,jpg,gif|required',
+            'image' => 'file|mimes:png,jpg,gif',
             'tags' => 'required',
             'category_news_id' => 'required|exists:category_news,id',
         ];

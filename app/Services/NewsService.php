@@ -5,13 +5,12 @@ namespace App\Services;
 use App\Enums\TypeEnum;
 use App\Traits\UploadTrait;
 use App\Http\Requests\StoreSaleRequest;
-use App\Http\Requests\StoreServiceRequest;
-use App\Http\Requests\UpdateProductRequest;
+use App\Http\Requests\StoreNewsRequest;
 use App\Http\Requests\UpdateSaleRequest;
-use App\Http\Requests\UpdateServiceRequest;
-use App\Models\Product;
+use App\Http\Requests\UpdateNewsRequest;
 use App\Models\Sale;
-use App\Models\Service;
+use App\Models\News;
+use Illuminate\Support\Str;
 
 class NewsService
 {
@@ -39,16 +38,20 @@ class NewsService
      *
      * @return array|bool
      */
-    public function store(StoreServiceRequest $request): array|bool
+    public function store(StoreNewsRequest $request): array|bool
     {
         $data = $request->validated();
 
-        if ($request->hasFile('image') && $request->file('image')->isValid()) {
-            $data['image'] = $request->file('image')->store(TypeEnum::SALE->value, 'public');
-            $data['file'] = $request->file('file')->store(TypeEnum::PROPOSAL->value, 'public');
-            return $data;
-        }
-        return false;
+        // Splitting tags data
+        $array = json_decode($request->tags, true);
+        $values = collect($array)->flatten()->unique()->values();
+
+        // Storing data
+        $data['image'] = $request->file('image')->store(TypeEnum::NEWS->value, 'public');
+        $data['slug'] = Str::slug($request->title);
+        $data['tags'] = $values->each(fn($value) => "$value")->join(',');
+
+        return $data;
     }
 
     /**
@@ -59,17 +62,23 @@ class NewsService
      *
      * @return array|bool
      */
-    public function update(Service $service, UpdateServiceRequest $request): array|bool
+    public function update(News $service, UpdateNewsRequest $request): array|bool
     {
         $data = $request->validated();
 
         if ($request->hasFile('image') && $request->file('image')->isValid()) {
             $this->remove($service->image);
-            $data['image'] = $request->file('image')->store(TypeEnum::SALE->value, 'public');
-            $data['file'] = $request->file('file')->store(TypeEnum::PROPOSAL->value, 'public');
+            $data['image'] = $request->file('image')->store(TypeEnum::NEWS->value, 'public');
         } else {
             $data['image'] = $service->image;
         }
+
+        // Splitting tags data
+        $array = json_decode($request->tags, true);
+        $values = collect($array)->flatten()->unique()->values();
+
+        $data['slug'] = Str::slug($request->title);
+        $data['tags'] = $values->each(fn($value) => "$value")->join(',');
 
         return $data;
     }
