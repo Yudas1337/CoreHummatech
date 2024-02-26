@@ -2,16 +2,16 @@
 
 namespace App\Contracts\Repositories;
 
-use App\Contracts\Interfaces\NewsInterface;
-use App\Models\News;
+use App\Contracts\Interfaces\EnterpriseStructureInterface;
+use App\Models\EnterpriseStructure;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator;
 
-class NewsRepository extends BaseRepository implements NewsInterface
+class EnterpriseStructureRepository extends BaseRepository implements EnterpriseStructureInterface
 {
-    public function __construct(News $news)
+    public function __construct(EnterpriseStructure $structure)
     {
-        $this->model = $news;
+        $this->model = $structure;
     }
 
     public function customPaginate(Request $request, int $pagination = 10): mixed

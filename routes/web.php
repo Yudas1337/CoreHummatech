@@ -27,22 +27,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/news', function () {
-    return view('admin.pages.news.index');
-});
-
-Route::get('/news/create', function () {
-    return view('admin.pages.news.create');
-});
-
-Route::get('/news/edit', function () {
-    return view('admin.pages.news.edit');
-});
-
-// Route::get('/news/show', function () {
-//     return view('admin.pages.news.show');
-// });
-
 Route::get('/gallery', function () {
     return view('admin.pages.gallery.index');
 });
@@ -59,8 +43,6 @@ Route::get('/hero-section/edit', function () {
     return view('admin.pages.hero-section.edit');
 });
 
-
-
 Route::get('/setting/terms-condition', function () {
     return view('admin.pages.terms-condition.index');
 });
@@ -68,10 +50,6 @@ Route::get('/setting/terms-condition', function () {
 Route::get('/setting/terms-condition/edit', function () {
     return view('admin.pages.terms-condition.edit');
 });
-
-// Route::get('/social-media', function () {
-//     return view('admin.pages.social-media.index');
-// });
 
 Route::get('/setting/faq', function () {
     return view('admin.pages.faq.index');
@@ -91,11 +69,6 @@ Route::get('/setting/vision-mision/create', function () {
 Route::get('/setting/vision-mision/edit', function () {
     return view('admin.pages.vision-mision.edit');
 });
-
-Route::get('/setting/company', function() {
-    return view('admin.pages.company.index');
-});
-
 
 Auth::routes();
 
@@ -124,7 +97,6 @@ Route::put('update/category/mitra/{collabCategory}' ,[CollabCategoryController::
 Route::delete('delete/category/mitra/{collabCategory}' ,[CollabCategoryController::class ,'destroy'])->name('delete.category.mitra');
 // end category mitra
 
-Route::resource('news' , NewsController::class);
 Route::resource('sale', SaleController::class);
 Route::resource('service', ServiceController::class);
 Route::resource('sale', SaleController::class);
@@ -143,9 +115,8 @@ Route::delete('delete/product/{product}' , [ProductController::class , 'destroy'
 Route::get('product/detail/{product}' , [ProductController::class , 'show']);
 Route::resource('sales-package', SalesPackageController::class);
 
-
-require __DIR__ . '/kader.php';
-require __DIR__ . '/farah.php';
-require __DIR__ . '/nesa.php';
-require __DIR__ . '/adi.php';
-require __DIR__ . '/rendi.php';
+require_once __DIR__ . '/kader.php';
+require_once __DIR__ . '/farah.php';
+require_once __DIR__ . '/nesa.php';
+require_once __DIR__ . '/adi.php';
+require_once __DIR__ . '/rendi.php';

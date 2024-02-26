@@ -6,6 +6,7 @@ use App\Contracts\Interfaces\BranchInterface;
 use App\Contracts\Interfaces\CategoryNewsInterface;
 use App\Contracts\Interfaces\CollabCategoryInterface;
 use App\Contracts\Interfaces\CollabMitraInterface;
+use App\Contracts\Interfaces\EnterpriseStructureInterface;
 use App\Contracts\Interfaces\NewsInterface;
 use App\Contracts\Interfaces\PositionInterface;
 use App\Contracts\Interfaces\ProductInterface;
@@ -22,6 +23,7 @@ use App\Contracts\Interfaces\TeamInterface;
 use App\Contracts\Interfaces\TestimonialInterface;
 use App\Contracts\Interfaces\VisionAndMisionInterface;
 use App\Contracts\Repositories\CollabMitraRepository;
+use App\Contracts\Repositories\EnterpriseStructureRepository;
 use App\Contracts\Repositories\NewsRepository;
 use App\Contracts\Repositories\PositionRepository;
 use App\Contracts\Repositories\SaleRepository;
@@ -32,6 +34,7 @@ use App\Contracts\Repositories\SosialMediaRepository;
 use App\Contracts\Repositories\TeamRepository;
 use App\Contracts\Repositories\TestimonialRepository;
 use App\Contracts\Repositories\VisionAndMisionRepository;
+use App\Models\EnterpriseStructure;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -51,7 +54,8 @@ class AppServiceProvider extends ServiceProvider
         PositionInterface::class => PositionRepository::class,
         TeamInterface::class => TeamRepository::class,
         TestimonialInterface::class => TestimonialRepository::class,
-        VisionAndMisionInterface::class => VisionAndMisionRepository::class
+        VisionAndMisionInterface::class => VisionAndMisionRepository::class,
+        EnterpriseStructureInterface::class => EnterpriseStructureRepository::class,
     ];
 
     /**

@@ -75,7 +75,7 @@
                                         @endforeach
                                     </div>
 
-                                    <form action="{{ route('news.show', $item->id) }}" id="form-{{ $item->id }}"
+                                    <form action="{{ route('news.destroy', $item->id) }}" id="form-{{ $item->id }}"
                                         method="post">
                                         @csrf
                                         @method('DELETE')

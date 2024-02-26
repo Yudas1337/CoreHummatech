@@ -2,11 +2,13 @@
 
 namespace App\Providers;
 
+use App\Models\EnterpriseStructure;
 use App\Models\News;
 use App\Models\Sale;
 use App\Models\SalesPackage;
 use App\Observers\NewsObserver;
 use App\Models\Testimonial;
+use App\Observers\EnterpriseStructureObserver;
 use App\Observers\SaleObserver;
 use App\Observers\SalesPackageObserver;
 use App\Observers\TestimonialObserver;
@@ -34,6 +36,7 @@ class EventServiceProvider extends ServiceProvider
     {
         News::observe(NewsObserver::class);
         Sale::observe(SaleObserver::class);
+        EnterpriseStructure::observe(EnterpriseStructureObserver::class);
         SalesPackage::observe(SalesPackageObserver::class);
         Testimonial::observe(TestimonialObserver::class);
     }
