@@ -171,7 +171,7 @@
                 <a href="/setting/departement">Jabatan</a>
             </li>
             <li>
-                <a href="/setting/faq">FAQ</a>
+                <a href="{{ route('faq.index') }}">FAQ</a>
             </li>
             <li>
                 <a href="/setting/company">Struktur usaha</a>
