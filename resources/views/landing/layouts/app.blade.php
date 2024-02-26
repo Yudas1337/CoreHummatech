@@ -1,0 +1,257 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+
+<!-- Mirrored from validthemes.net/site-template/earna/index-4.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 26 Feb 2024 03:10:25 GMT -->
+<head>
+    <!-- ========== Meta Tags ========== -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="{{ config('app.name', 'Laravel') }}" />
+
+    <!-- ========== Page Title ========== -->
+    <title>{{ config('app.name', 'Laravel') }}</title>
+
+    <!-- ========== Favicon Icon ========== -->
+    <link rel="shortcut icon" href="{{ asset('assets-home/img/favicon.png') }}" type="image/x-icon">
+
+    <!-- ========== Start Stylesheet ========== -->
+    <link href="{{ asset('assets-home/css/bootstrap.min.css') }}" rel="stylesheet" />
+    <link href="{{ asset('assets-home/css/font-awesome.min.css') }}" rel="stylesheet" />
+    <link href="{{ asset('assets-home/css/themify-icons.css') }}" rel="stylesheet" />
+    <link href="{{ asset('assets-home/css/elegant-icons.css') }}" rel="stylesheet" />
+    <link href="{{ asset('assets-home/css/flaticon-set.css') }}" rel="stylesheet" />
+    <link href="{{ asset('assets-home/css/magnific-popup.css') }}" rel="stylesheet" />
+    <link href="{{ asset('assets-home/css/owl.carousel.min.css') }}" rel="stylesheet" />
+    <link href="{{ asset('assets-home/css/owl.theme.default.min.css') }}" rel="stylesheet" />
+    <link href="{{ asset('assets-home/css/animate.css') }}" rel="stylesheet" />
+    <link href="{{ asset('assets-home/css/bootsnav.css') }}" rel="stylesheet" />
+    <link href="{{ asset('assets-home/style.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets-home/css/responsive.css') }}" rel="stylesheet" />
+    <!-- ========== End Stylesheet ========== -->
+
+</head>
+
+<body>
+
+    <!-- Start Preloader
+    ============================================= -->
+    <div id="preloader">
+        <div id="earna-preloader" class="earna-preloader">
+            <div class="animation-preloader">
+                <div class="spinner"></div>
+                <div class="txt-loading">
+                    <span data-text-preloader="L" class="letters-loading">
+                        L
+                    </span>
+                    <span data-text-preloader="O" class="letters-loading">
+                        O
+                    </span>
+                    <span data-text-preloader="A" class="letters-loading">
+                        A
+                    </span>
+                    <span data-text-preloader="D" class="letters-loading">
+                        D
+                    </span>
+                    <span data-text-preloader="I" class="letters-loading">
+                        I
+                    </span>
+                    <span data-text-preloader="N" class="letters-loading">
+                        N
+                    </span>
+                    <span data-text-preloader="G" class="letters-loading">
+                        G
+                    </span>
+                </div>
+            </div>
+            <div class="loader">
+                <div class="row">
+                    <div class="col-3 loader-section section-left">
+                        <div class="bg"></div>
+                    </div>
+                    <div class="col-3 loader-section section-left">
+                        <div class="bg"></div>
+                    </div>
+                    <div class="col-3 loader-section section-right">
+                        <div class="bg"></div>
+                    </div>
+                    <div class="col-3 loader-section section-right">
+                        <div class="bg"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Preloader -->
+
+    <!-- Header
+    ============================================= -->
+        @include('landing.layouts.header')
+    <!-- End Header -->
+
+        @yield('content')
+
+    <!-- Start Footer
+    ============================================= -->
+    <footer class="bg-dark text-light">
+        <div class="container">
+            <div class="f-items default-padding">
+                <div class="row">
+                    <div class="col-lg-4 col-md-6 item">
+                        <div class="f-item about">
+                            <img src="assets/img/logo-light.png" alt="Logo">
+                            <p>
+                                Excellence decisively nay man yet impression for contrasted remarkably. There spoke happy for you are out. Fertile how old address did showing.
+                            </p>
+                            <form action="#">
+                                <input type="email" placeholder="Your Email" class="form-control" name="email">
+                                <button type="submit"> <i class="arrow_right"></i></button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-6 item">
+                        <div class="f-item link">
+                            <h4 class="widget-title">Quick LInk</h4>
+                            <ul>
+                                <li>
+                                    <a href="index.html"><i class="fas fa-angle-right"></i> Home</a>
+                                </li>
+                                <li>
+                                    <a href="about-us.html"><i class="fas fa-angle-right"></i> About us</a>
+                                </li>
+                                <li>
+                                    <a href="about-us.html"><i class="fas fa-angle-right"></i> Compnay History</a>
+                                </li>
+                                <li>
+                                    <a href="about-us.html"><i class="fas fa-angle-right"></i> Features</a>
+                                </li>
+                                <li>
+                                    <a href="blog-with-sidebar.html"><i class="fas fa-angle-right"></i> Blog Page</a>
+                                </li>
+                                <li>
+                                    <a href="about-us.html"><i class="fas fa-angle-right"></i> Login</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 item">
+                        <div class="f-item link">
+                            <h4 class="widget-title">Community</h4>
+                            <ul>
+                                <li>
+                                    <a href="about-us.html"><i class="fas fa-angle-right"></i> Career</a>
+                                </li>
+                                <li>
+                                    <a href="about-us.html"><i class="fas fa-angle-right"></i> Leadership</a>
+                                </li>
+                                <li>
+                                    <a href="about-us.html"><i class="fas fa-angle-right"></i> Strategy</a>
+                                </li>
+                                <li>
+                                    <a href="services.html"><i class="fas fa-angle-right"></i> Services</a>
+                                </li>
+                                <li>
+                                    <a href="about-us.html"><i class="fas fa-angle-right"></i> History</a>
+                                </li>
+                                <li>
+                                    <a href="about-us.html"><i class="fas fa-angle-right"></i> Components</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 item">
+                        <div class="f-item contact-widget">
+                            <h4 class="widget-title">Contact Info</h4>
+                            <div class="address">
+                                <ul>
+                                    <li>
+                                        <div class="icon">
+                                            <i class="fas fa-home"></i>
+                                        </div>
+                                        <div class="content">
+                                            <strong>Address:</strong>
+                                            5919 Trussville Crossings Pkwy, Birmingham
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="icon">
+                                            <i class="fas fa-envelope"></i>
+                                        </div>
+                                        <div class="content">
+                                            <strong>Email:</strong>
+                                            <a href="mailto:info@validtheme.com">info@validtheme.com</a>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="icon">
+                                            <i class="fas fa-phone"></i>
+                                        </div>
+                                        <div class="content">
+                                            <strong>Phone:</strong>
+                                            <a href="tel:2151234567">+123 34598768</a>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Start Footer Bottom -->
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="footer-bottom-box">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <p>&copy; Copyright 2021. All Rights Reserved by <a href="#">validthemes</a></p>
+                        </div>
+                        <div class="col-lg-6 text-right link">
+                            <ul>
+                                <li>
+                                    <a href="about-us.html">Terms</a>
+                                </li>
+                                <li>
+                                    <a href="about-us.html">Privacy</a>
+                                </li>
+                                <li>
+                                    <a href="about-us.html">Support</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Footer Bottom -->
+    </footer>
+    <!-- End Footer -->
+
+    <!-- jQuery Frameworks
+    ============================================= -->
+    <script src="{{ asset('assets-home/js/jquery-3.6.0.min.js') }}"></script>
+    <script src="{{ asset('assets-home/js/popper.min.js') }}"></script>
+    <script src="{{ asset('assets-home/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('assets-home/js/jquery.appear.js') }}"></script>
+    <script src="{{ asset('assets-home/js/jquery.easing.min.js') }}"></script>
+    <script src="{{ asset('assets-home/js/jquery.magnific-popup.min.js') }}"></script>
+    <script src="{{ asset('assets-home/js/modernizr.custom.13711.js') }}"></script>
+    <script src="{{ asset('assets-home/js/owl.carousel.min.js') }}"></script>
+    <script src="{{ asset('assets-home/js/wow.min.js') }}"></script>
+    <script src="{{ asset('assets-home/js/progress-bar.min.js') }}"></script>
+    <script src="{{ asset('assets-home/js/circle-progress.js') }}"></script>
+    <script src="{{ asset('assets-home/js/isotope.pkgd.min.js') }}"></script>
+    <script src="{{ asset('assets-home/js/imagesloaded.pkgd.min.js') }}"></script>
+    <script src="{{ asset('assets-home/js/count-to.js') }}"></script>
+    <script src="{{ asset('assets-home/js/YTPlayer.min.js') }}"></script>
+    <script src="{{ asset('assets-home/js/bootsnav.js') }}"></script>
+    <script src="{{ asset('assets-home/js/Chart.min.js') }}"></script>
+    <script src="{{ asset('assets-home/js/custom-chart.js') }}"></script>
+    <script src="{{ asset('assets-home/js/main.js') }}"></script>
+
+</body>
+
+<!-- Mirrored from validthemes.net/site-template/earna/index-4.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 26 Feb 2024 03:11:02 GMT -->
+</html>
