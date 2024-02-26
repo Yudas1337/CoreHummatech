@@ -21,43 +21,27 @@
         </div>
     </div>
 
-    <div class="row row-cols-1 row-cols-md-3">
-        @forelse ($socialMedia as $socialmedia)
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-3">
+            @forelse ($socialMedia as $socialmedia)
             <div class="col">
-                <div class="card border-0 shadow rounded overflow-hidden my-3 mx-3" style="background-color: #f8f9fa; width: 100%; height: 100;"> <!-- Sesuaikan tinggi maksimum sesuai kebutuhan -->
-                    <div class="card-body">
-                        <div class="d-flex align-items-center">
-                            <img src="{{ asset('storage/' . $socialmedia->image) }}" class="rounded img-fluid" style="width: 85px; height: 85px; object-fit: cover;" alt="Image Alt Text">
-                            <div class="ms-3 text-wrap">
-                                <div class="row">
-                                    <div class="col">
-                                        <h2 class="mt-2 mb-0">{{$socialmedia->platform}}</h2>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col">
-                                        <a href="{{$socialmedia->link}}" style="width: 80%">{{ Str::limit($socialmedia->link, 25) }}</a>
-                                        {{-- <p class="text-primary" style="width: 85%; white-space: pre-line; overflow: hidden; text-overflow: ellipsis;">{{$socialmedia->link}}</p> --}}
-                                    </div>
-                                </div>
-                                <div class="row mt-3">
-                                    <div class="col">
-                                        <div class="d-flex flex-column flex-md-row gap-2">
-                                            <button class="btn btn-primary btn-edit" type="button" data-bs-toggle="modal"
-                                            data-bs-target="#edit" data-id="{{ $socialmedia->id }}"
-                                            data-name="{{ $socialmedia->platform }}">Edit</button>
-                                            <button class="btn btn-danger btn-delete" data-id="{{$socialmedia->id}}" type="button">Hapus</button>
-                                        </div>
-                                    </div>
-                                </div>
+                <div class="card overflow-hidden">
+                    <div class="card-body d-flex align-items-center flex-wrap">
+                        <img src="{{ asset('storage/' . $socialmedia->image) }}" class="img-fluid img-75 me-3 rounded" style="width: 80px; height: 80px; object-fit: cover;" alt="Order Thumbnail 1">
+                        <div class="d-flex flex-column">
+                            <h3 class="card-title ">{{$socialmedia->platform}}</h3>
+                            <p class="card-text" style="width: 80%; white-space: pre-line; overflow: hidden; text-overflow: ellipsis;"><a href="{{$socialmedia->link}}">{{$socialmedia->link}}</a></p>
+                            <div class="d-flex">
+                                <button class="btn btn-primary btn-edit mx-3" type="button" data-bs-toggle="modal"
+                                    data-bs-target="#edit" data-id="{{ $socialmedia->id }}" data-name="{{ $socialmedia->platform }}">Edit</button>
+                                <button class="btn btn-danger btn-delete" data-id="{{$socialmedia->id}}" type="button">Hapus</button>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        @empty
-        @endforelse
-    </div>
+            @empty
+            @endforelse
+        </div>
 
 
 
@@ -124,7 +108,7 @@
                             </div>
                             <div class="mb-3 mt-0 col-md-12">
                                 <label for="bm-title">Tautan Media Sosial</label>
-                                <input class="form-control" type="text" required="" autocomplete="name" value="{{ old('link') }}" name="link"
+                                <input class="form-control" type="text" required="" autocomplete="link" id="link-edit" name="link"
                                     placeholder="Masukkan Tautan Media Sosial">
                             </div>
                             <div class="mb-3 mt-0 col-md-12">
