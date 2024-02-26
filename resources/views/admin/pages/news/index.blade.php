@@ -53,7 +53,7 @@
     <div class="product-grid">
         <div class="product-wrapper-grid">
             <div class="row">
-                @foreach ($news as $item)
+                @forelse ($news as $item)
                     <div class="col-xl-3 col-lg-4 col-sm-6">
                         <div class="card shadow-sm">
                             <div class="product-box">
@@ -96,7 +96,14 @@
                             </div>
                         </div>
                     </div>
-                @endforeach
+                @empty
+                    <div class="d-flex justify-content-center">
+                        <img src="{{ asset('nodata.jpg') }}" alt="" width="400px">
+                    </div>
+                    <h5 class="text-center">
+                        Data Masih Kosong
+                    </h5>
+                @endforelse
             </div>
         </div>
     </div>
@@ -115,9 +122,10 @@
                 icon: "warning",
                 buttons: true,
                 dangerMode: true,
-            }).then(({ isConfirmed }) => {
-                console.log(document.getElementById(`form-${$id}`));
-                if(isConfirmed) document.getElementById(`form-${$id}`).submit();
+            }).then((e) => {
+                if(e) {
+                    $(`#form-${$id}`).submit();
+                }
             });
         }
     </script>
