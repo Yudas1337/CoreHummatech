@@ -45,7 +45,7 @@
                                     <div class="mt-2">
                                         <button class="btn btn-warning btn-edit btn-xs mt-2" type="button" data-bs-toggle="modal"
                                         data-bs-target="#edit" data-id="{{ $collabMitra->id }}"
-                                        data-name="{{ $collabMitra->name }}">Edit</button>
+                                        data-name="{{ $collabMitra->name }}" data-image="{{ $collabMitra->image }}" data-collab_category_id="{{ $collabMitra->collab_category_id }}">Edit</button>
                                         <button class="btn-delete btn btn-danger btn-xs mt-2" data-id="{{ $collabMitra->id }}">
                                             Hapus
                                         </button>
@@ -145,10 +145,9 @@
                             </div>
 
                             <div class="mb-3 mt-0 col-md-12">
-                                <label for="bm-title">Foto</label>
-                                <img id="preview_image" class="mt-2" style="max-width: 150px; display: none;" alt="Preview Gambar"> <br>
-                                {{-- <input class="form-control" id="formFile" type="file"> --}}
-                                <input class="form-control" id="formFile" type="file" onchange="previewImage(event)">
+                                <label for="bm-title">Foto</label><br>
+                                <img id="image-edit" style="width: 200px; height: auto; border: 1px solid #ccc;">
+                                <input class="form-control" type="file" name="image">
                             </div>
                         </div>
                     </div>
@@ -175,9 +174,13 @@
     $('.btn-edit').click(function() {
         var id = $(this).data('id'); // Mengambil nilai id dari tombol yang diklik
         var name = $(this).data('name'); // Mengambil nilai name dari tombol yang diklik
+        var image = $(this).data('image');
+        var collab_category_id = $(this).data('collab_category_id');
+
         $('#form-update').attr('action', 'update/collab/mitra/' + id); // Mengubah nilai atribut action form
         $('#name-edit').val(name);
-        $('#image-edit').val(image);
+        $('#category-edit').val(collab_category_id);
+        $('#image-edit').attr('src', 'storage/'+image);
         $('#modal-edit').modal('show');
     });
 </script>
@@ -202,22 +205,5 @@
             });
         });
 
-    </script>
-    <script>
-        function previewImage(event) {
-            var input = event.target;
-            var previewImage = document.getElementById('preview_image');
-
-            if (input.files && input.files[0]) {
-                var reader = new FileReader();
-
-                reader.onload = function (e) {
-                    previewImage.src = e.target.result;
-                    previewImage.style.display = 'block';
-                };
-
-                reader.readAsDataURL(input.files[0]);
-            }
-        }
     </script>
 @endsection
