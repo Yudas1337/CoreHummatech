@@ -47,7 +47,38 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="navbar-menu">
                 <ul class="nav navbar-nav navbar-center" data-in="#" data-out="#">
+                    <li>
+                        <a href="">Beranda</a>
+                    </li>
+                    <li>
+                        <a href="">Tentang</a>
+                    </li>
                     <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" >Layanan</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Software Devlopment</a></li>
+                            <li><a href="#">IT Consultan</a></li>
+                            <li><a href="#">Magang / PKL</a></li>
+                            <li><a href="#">Kelas Industri</a></li>
+                            <li><a href="#">Pengadaan Hardware</a></li>
+                            <li><a href="#">Pelatihan Programing & Digital Marketing</a></li>
+                            <li><a href="#">Guru tamu</a></li>
+                            <li><a href="#">Guru Magang</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="">Produk</a>
+                    </li>
+                    <li>
+                        <a href="">Berita</a>
+                    </li>
+                    <li>
+                        <a href="">Hubungi</a>
+                    </li>
+                    <li>
+                        <a href="">Lowongan</a>
+                    </li>
+                    {{-- <li class="dropdown">
                         <a href="#" class="dropdown-toggle active" data-toggle="dropdown" >Home</a>
                         <ul class="dropdown-menu">
                             <li class="dropdown">
@@ -163,7 +194,7 @@
                             <li><a href="contact.html">Version One</a></li>
                             <li><a href="contact-2.html">Version Two</a></li>
                         </ul>
-                    </li>
+                    </li> --}}
                 </ul>
             </div><!-- /.navbar-collapse -->
         </div>
