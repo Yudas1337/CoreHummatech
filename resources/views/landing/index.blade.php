@@ -8,14 +8,14 @@
             <!-- Wrapper for slides -->
             <div class="carousel-inner carousel-zoom">
                 <div class="carousel-item active">
-                    <div class="slider-thumb bg-fixed" style="background-image: url(assets/img/banner/5.jpg);"></div>
+                    <div class="slider-thumb bg-fixed" style="background-image: url(assets-home/img/banner/5.jpg);"></div>
                     <div class="box-table">
                         <div class="box-cell shadow dark">
                             <div class="container">
                                 <div class="row">
                                     <div class="col-lg-10 offset-lg-1">
                                         <div class="content">
-                                            <h2 data-animation="animated zoomInLeft">Business <span>Planning</span></h2>
+                                            <h2>INOVASI MENUJU <span>PERKEMBANGAN</span></h2>
                                             <p class="animated slideInRight">
                                                 Coming merits and was talent enough far. Sir joy northward sportsmen education. Discovery incommode earnestly no he commanded.
                                             </p>
@@ -28,7 +28,7 @@
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <div class="slider-thumb bg-fixed" style="background-image: url(assets/img/banner/1.jpg);"></div>
+                    <div class="slider-thumb bg-fixed" style="background-image: url(assets-home/img/banner/1.jpg);"></div>
                     <div class="box-table">
                         <div class="box-cell shadow dark">
                             <div class="container">
