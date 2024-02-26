@@ -19,6 +19,7 @@ use App\Contracts\Interfaces\ServiceInterface;
 use App\Contracts\Interfaces\SosialMediaInterface;
 use App\Contracts\Interfaces\TeamInterface;
 use App\Contracts\Interfaces\TestimonialInterface;
+use App\Contracts\Interfaces\VisionAndMisionInterface;
 use App\Contracts\Repositories\CollabMitraRepository;
 use App\Contracts\Repositories\PositionRepository;
 use App\Contracts\Repositories\SaleRepository;
@@ -28,6 +29,7 @@ use App\Contracts\Repositories\ServiceRepository;
 use App\Contracts\Repositories\SosialMediaRepository;
 use App\Contracts\Repositories\TeamRepository;
 use App\Contracts\Repositories\TestimonialRepository;
+use App\Contracts\Repositories\VisionAndMisionRepository;
 use Illuminate\Support\ServiceProvider;
 
 
@@ -46,7 +48,8 @@ class AppServiceProvider extends ServiceProvider
         SectionInterface::class => SectionRepository::class,
         PositionInterface::class => PositionRepository::class,
         TeamInterface::class => TeamRepository::class,
-        TestimonialInterface::class => TestimonialRepository::class
+        TestimonialInterface::class => TestimonialRepository::class,
+        VisionAndMisionInterface::class => VisionAndMisionRepository::class
     ];
 
     /**

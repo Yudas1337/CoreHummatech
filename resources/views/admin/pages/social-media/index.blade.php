@@ -32,7 +32,7 @@
                             <p class="card-text" style="width: 80%; white-space: pre-line; overflow: hidden; text-overflow: ellipsis;"><a href="{{$socialmedia->link}}">{{$socialmedia->link}}</a></p>
                             <div class="d-flex">
                                 <button class="btn btn-primary btn-edit mx-3" type="button" data-bs-toggle="modal"
-                                    data-bs-target="#edit" data-id="{{ $socialmedia->id }}" data-name="{{ $socialmedia->platform }}">Edit</button>
+                                    data-bs-target="#edit" data-id="{{ $socialmedia->id }}" data-image="{{ $socialmedia->image }}" data-name="{{ $socialmedia->platform }}" data-link="{{ $socialmedia->link }}">Edit</button>
                                 <button class="btn btn-danger btn-delete" data-id="{{$socialmedia->id}}" type="button">Hapus</button>
                             </div>
                         </div>
@@ -95,7 +95,7 @@
                     <h5 class="modal-title" id="exampleModalLabel">Edit Sosial Media</h5>
                     <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form class="form-bookmark needs-validation"  method="POST" id="bookmark-form"
+                <form class="form-bookmark needs-validation"  method="POST" id="form-update"
                     novalidate="" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
@@ -108,12 +108,13 @@
                             </div>
                             <div class="mb-3 mt-0 col-md-12">
                                 <label for="bm-title">Tautan Media Sosial</label>
-                                <input class="form-control" type="text" required="" autocomplete="link" id="link-edit" name="link"
+                                <input class="form-control link-edit" type="text" required="" autocomplete="link" id="link-edit" name="link"
                                     placeholder="Masukkan Tautan Media Sosial">
                             </div>
                             <div class="mb-3 mt-0 col-md-12">
-                                <label for="bm-title">Foto / Logo Sosmed</label>
-                                <input class="form-control" id="formFile" type="file" name="image">
+                                <label for="bm-title">Foto / Logo Sosmed</label><br>
+                                <img id="image-edit" style="width: 200px; height: auto; border: 1px solid #ccc;">
+                                <input class="form-control" type="file" name="image" onchange="previewImage()">
                             </div>
                         </div>
                     </div>
@@ -140,10 +141,29 @@
     $('.btn-edit').click(function() {
         var id = $(this).data('id'); // Mengambil nilai id dari tombol yang diklik
         var name = $(this).data('name'); // Mengambil nilai name dari tombol yang diklik
-        $('#form-update').attr('action', 'update/category/mitra/' + id); // Mengubah nilai atribut action form
+        var link = $(this).data('link');
+        var image = $(this).data('image');
+        $('#form-update').attr('action', 'update/social/media/' + id); // Mengubah nilai atribut action form
         $('#platform-edit').val(name);
-        $('#link-edit').val(link);
+        $('.link-edit').val(link);
+        $('#image-edit').attr('src', 'storage/'+image);
         $('#modal-edit').modal('show');
     });
+</script>
+<script>
+    function previewImage() {
+        var input = document.querySelector('input[type="file"]');
+        var image = document.getElementById('image-edit');
+
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                image.setAttribute('src', e.target.result);
+            }
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
 </script>
 @endsection

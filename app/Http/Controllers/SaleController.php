@@ -61,6 +61,12 @@ class SaleController extends Controller
         return view('admin.pages.sale.detail', compact('sale', 'salesPackages'));
     }
 
+    public function showpdf (Sale $sale)
+    {
+        $salesPackages = $this->salesPackage->get();
+        return view('admin.pages.sale.showpdf', compact('sale', 'salesPackages'));
+    }
+
     /**
      * Show the form for editing the specified resource.
      */

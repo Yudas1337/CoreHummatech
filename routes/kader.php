@@ -1,9 +1,11 @@
 <?php
 
 use App\Http\Controllers\PositionController;
+use App\Http\Controllers\SaleController;
 use App\Http\Controllers\SectionController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\TeamController;
+use App\Http\Controllers\VisionAndMisionController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -16,9 +18,19 @@ Route::post('create/section' , [SectionController::class ,'store'])->name('creat
 // position
 Route::get('setting/departement' , [PositionController::class , 'index'])->name('setting.departement');
 Route::post('create/position' , [PositionController::class , 'store'])->name('create.position');
+Route::put('update/position/{position}', [PositionController::class ,'update'])->name('update.position');
+Route::delete('delete/position/{position}' , [PositionController::class , 'destroy'])->name('delete.position');
 
 
 // team
 Route::get('setting/teams' , [TeamController::class , 'index'])->name('setting.teams');
 Route::post('create/team' , [TeamController::class , 'store'])->name('create.team');
 Route::delete('delete/team/{team}' , [TeamController::class , 'destroy'])->name('delete.team');
+
+
+// visi and mision
+Route::get('setting/vision-mision' , [VisionAndMisionController::class ,'index']);
+
+
+// show pdf
+Route::get('showpdf/{sale}' , [SaleController::class ,'showpdf']);
