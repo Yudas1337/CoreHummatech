@@ -48,10 +48,10 @@
             <div class="collapse navbar-collapse" id="navbar-menu">
                 <ul class="nav navbar-nav navbar-center" data-in="#" data-out="#">
                     <li>
-                        <a href="">Beranda</a>
+                        <a href="{{ url('/') }}">Beranda</a>
                     </li>
                     <li>
-                        <a href="">Tentang</a>
+                        <a href="{{ url('/about-us') }}">Tentang</a>
                     </li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" >Layanan</a>
@@ -103,7 +103,7 @@
                         <li>
                             <div class="content">
                                 <p>Email</p>
-                                <strong>hummatech.id@gmail.com</strong>
+                                <strong>info@hummatech.com</strong>
                             </div>
                         </li>
                         <li>

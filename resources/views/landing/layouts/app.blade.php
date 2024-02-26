@@ -1,18 +1,23 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
 
 <!-- Mirrored from validthemes.net/site-template/earna/index-4.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 26 Feb 2024 03:10:25 GMT -->
+
 <head>
     <!-- ========== Meta Tags ========== -->
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="{{ config('app.name', 'Laravel') }}" />
 
     <!-- ========== Page Title ========== -->
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    @hasSection('title')
+        <title>{!! "{$__env->yieldContent('title')} &mdash; " . config('app.name', 'Laravel') !!}</title>
+    @else
+        <title>{{ config('app.name', 'Laravel') }}</title>
+    @endif
+
+    @yield('seo')
 
     <!-- ========== Favicon Icon ========== -->
     <link rel="shortcut icon" href="{{ asset('assets-home/img/favicon.png') }}" type="image/x-icon">
@@ -31,6 +36,14 @@
     <link href="{{ asset('assets-home/style.css') }}" rel="stylesheet">
     <link href="{{ asset('assets-home/css/responsive.css') }}" rel="stylesheet" />
     <!-- ========== End Stylesheet ========== -->
+
+    @yield('style')
+
+    <style>
+        footer::after {
+            background: url({{ asset('assets-home/img/map.svg') }});
+        }
+    </style>
 
 </head>
 
@@ -88,10 +101,10 @@
 
     <!-- Header
     ============================================= -->
-        @include('landing.layouts.header')
+    @include('landing.layouts.header')
     <!-- End Header -->
 
-        @yield('content')
+    @yield('content')
 
     <!-- Start Footer
     ============================================= -->
@@ -101,9 +114,11 @@
                 <div class="row">
                     <div class="col-lg-4 col-md-6 item">
                         <div class="f-item about">
-                            <img src="assets/img/logo-light.png" alt="Logo">
+                            <img src="{{ asset('assets/images/LOGO-HUMMATECH_Putih.png') }}"
+                                style="height: 48px;width: auto;" alt="Logo">
                             <p>
-                                Excellence decisively nay man yet impression for contrasted remarkably. There spoke happy for you are out. Fertile how old address did showing.
+                                Melayani jasa pengembanganperangkat lunak, baik berbasis desktop, web, dan mobile apps.
+                                Mitra kami meliputi perorangan, swasta, bahkan juga lembaga pemerintahan.
                             </p>
                             <form action="#">
                                 <input type="email" placeholder="Your Email" class="form-control" name="email">
@@ -116,10 +131,10 @@
                             <h4 class="widget-title">Quick LInk</h4>
                             <ul>
                                 <li>
-                                    <a href="index.html"><i class="fas fa-angle-right"></i> Home</a>
+                                    <a href="{{ url('/') }}"><i class="fas fa-angle-right"></i> Home</a>
                                 </li>
                                 <li>
-                                    <a href="about-us.html"><i class="fas fa-angle-right"></i> About us</a>
+                                    <a href="{{ url('about-us') }}"><i class="fas fa-angle-right"></i> About us</a>
                                 </li>
                                 <li>
                                     <a href="about-us.html"><i class="fas fa-angle-right"></i> Compnay History</a>
@@ -172,7 +187,8 @@
                                         </div>
                                         <div class="content">
                                             <strong>Address:</strong>
-                                            5919 Trussville Crossings Pkwy, Birmingham
+                                            Perum Permata Regency 1 Blok 10/28, Perun Gpa, Ngijo, Kec. Karang Ploso,
+                                            Kabupaten Malang, Jawa Timur 65152.
                                         </div>
                                     </li>
                                     <li>
@@ -181,7 +197,7 @@
                                         </div>
                                         <div class="content">
                                             <strong>Email:</strong>
-                                            <a href="mailto:info@validtheme.com">info@validtheme.com</a>
+                                            <a href="mailto:info@hummatech.com">info@hummatech.com</a>
                                         </div>
                                     </li>
                                     <li>
@@ -190,7 +206,7 @@
                                         </div>
                                         <div class="content">
                                             <strong>Phone:</strong>
-                                            <a href="tel:2151234567">+123 34598768</a>
+                                            <a href="https://wa.me/6285176777785">085176777785</a>
                                         </div>
                                     </li>
                                 </ul>
@@ -206,7 +222,8 @@
                 <div class="footer-bottom-box">
                     <div class="row">
                         <div class="col-lg-6">
-                            <p>&copy; Copyright 2021. All Rights Reserved by <a href="#">validthemes</a></p>
+                            <p>&copy; Copyright 2021. All Rights Reserved by <a
+                                    href="{{ url('/') }}">Hummatech</a></p>
                         </div>
                         <div class="col-lg-6 text-right link">
                             <ul>
@@ -254,4 +271,5 @@
 </body>
 
 <!-- Mirrored from validthemes.net/site-template/earna/index-4.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 26 Feb 2024 03:11:02 GMT -->
+
 </html>
