@@ -42,7 +42,7 @@
         <div class="col-12 p-0">
           <div class="login-card login-dark">
             <div>
-              <div><a class="logo" href="index.html"><img class="img-fluid for-light" src="../assets/images/logo/logo-1.png" alt="looginpage"><img class="img-fluid for-dark" src="../assets/images/logo/logo.png" alt="looginpage"></a></div>
+              <div><a class="logo" href="index.html"><img class="img-fluid for-light" src="{{ asset('assets/images/LOGO-HUMMATECH_Hitam.png') }}" style="width: 200px;height: auto;" alt="looginpage"><img class="img-fluid for-dark" src="../assets/images/logo/logo.png" alt="looginpage"></a></div>
               <div class="login-main">
                 <form method="POST" action="{{ route('login') }}">
                     @csrf
@@ -88,15 +88,15 @@
 
                     <div class=" mb-0">
                         <div class="">
-                            <button type="submit" class="btn btn-primary w-100 mb-5">
+                            <button type="submit" class="btn btn-primary w-100 mb-3">
                                 {{ __('Login') }}
                             </button>
 
-                            @if (Route::has('password.request'))
+                            {{-- @if (Route::has('password.request'))
                                 <a class="btn btn-link" href="{{ route('password.request') }}">
                                     {{ __('Forgot Your Password?') }}
                                 </a>
-                            @endif
+                            @endif --}}
                         </div>
                     </div>
                 </form>

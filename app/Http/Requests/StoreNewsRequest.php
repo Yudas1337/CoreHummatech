@@ -7,14 +7,6 @@ use Illuminate\Foundation\Http\FormRequest;
 class StoreNewsRequest extends FormRequest
 {
     /**
-     * Determine if the user is authorized to make this request.
-     */
-    public function authorize(): bool
-    {
-        return true;
-    }
-
-    /**
      * Get the validation rules that apply to the request.
      *
      * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
@@ -22,11 +14,12 @@ class StoreNewsRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title' => 'min:5|required',
+            'title' => 'required',
             'description' => 'min:8|required',
-            'image' => 'file|mimes:png,jpg,gif|required',
-            'tags' => 'required',
-            'category_news_id' => 'required|exists:category_news,id',
+            'image' => 'array|required',
+            'image.*' => 'required|image',
+            'category' => 'array|required',
+            'category.*' => 'required',
         ];
     }
 

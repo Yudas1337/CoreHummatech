@@ -3,17 +3,16 @@
 namespace App\Services;
 
 use App\Enums\TypeEnum;
-use App\Enums\UploadDiskEnum;
+use App\Http\Requests\UpdateEnterpriseStructureRequest;
 use App\Traits\UploadTrait;
 use App\Http\Requests\StoreSaleRequest;
-use App\Http\Requests\StoreNewsRequest;
 use App\Http\Requests\UpdateSaleRequest;
-use App\Http\Requests\UpdateNewsRequest;
+use App\Models\EnterpriseStructure;
 use App\Models\Sale;
 use App\Models\News;
 use Illuminate\Support\Str;
 
-class NewsService
+class EnterpriseStructureService
 {
     use UploadTrait;
 
@@ -39,15 +38,14 @@ class NewsService
      *
      * @return array|bool
      */
-    public function store(StoreNewsRequest $request): array|bool
+    public function store(UpdateEnterpriseStructureRequest $request): array|bool
     {
         $data = $request->validated();
-        $data['slug'] = Str::slug($request->title);
-        $images = [];
-        foreach ($data['image'] as $image) {
-            array_push($images, $image->store(UploadDiskEnum::NEWS->value, 'public'));
-        }
-        $data['image'] = $images;
+
+        // Storing data
+        $data['image'] = $request->file('image')->store(TypeEnum::ENTERPRISESTRUCTURE->value, 'public');
+        $data['products'] = json_encode($request->products);
+
         return $data;
     }
 
@@ -59,23 +57,19 @@ class NewsService
      *
      * @return array|bool
      */
-    public function update(News $service, UpdateNewsRequest $request): array|bool
+    public function update(EnterpriseStructure $service, UpdateEnterpriseStructureRequest $request): array|bool
     {
         $data = $request->validated();
 
         if ($request->hasFile('image') && $request->file('image')->isValid()) {
             $this->remove($service->image);
-            $data['image'] = $request->file('image')->store(TypeEnum::NEWS->value, 'public');
+            $data['image'] = $request->file('image')->store(TypeEnum::ENTERPRISESTRUCTURE->value, 'public');
         } else {
             $data['image'] = $service->image;
         }
 
         // Splitting tags data
-        $array = json_decode($request->tags, true);
-        $values = collect($array)->flatten()->unique()->values();
-
-        $data['slug'] = Str::slug($request->title);
-        $data['tags'] = $values->each(fn($value) => "$value")->join(',');
+        $data['products'] = json_encode($request->products);
 
         return $data;
     }

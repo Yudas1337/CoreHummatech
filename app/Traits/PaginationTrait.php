@@ -42,7 +42,4 @@ trait PaginationTrait
             'current_page' => $currentPage
         ];
     }
-
-
-
 }

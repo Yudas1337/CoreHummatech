@@ -11,21 +11,21 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('news', function (Blueprint $table) {
-            $table->uuid('id')->primary();
-            $table->string('title');
-            $table->string('slug')->unique();
-            $table->longText('description');
+        Schema::create('enterprise_structures', function (Blueprint $table) {
+            $table->string('id')->primary();
+            $table->string('title', 191);
+            $table->text('description');
+            $table->text('products');
+            $table->text('image');
             $table->timestamps();
         });
     }
-
 
     /**
      * Reverse the migrations.
      */
     public function down(): void
     {
-        Schema::dropIfExists('news');
+        Schema::dropIfExists('enterprise_structures');
     }
 };

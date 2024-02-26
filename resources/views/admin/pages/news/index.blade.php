@@ -53,7 +53,7 @@
     <div class="product-grid">
         <div class="product-wrapper-grid">
             <div class="row">
-                @foreach ($news as $item)
+                @forelse ($news as $item)
                     <div class="col-xl-3 col-lg-4 col-sm-6">
                         <div class="card shadow-sm">
                             <div class="product-box">
@@ -63,19 +63,20 @@
                                 </div>
                                 <div class="product-details">
                                     <small style="font-size: 10px"><span
-                                            class="text-primary pe-2 fw-bold">{{ $item->categoryNews->name }}</span>{{ $item->updated_at->format('l, j F Y') }}</small>
+                                            class="text-primary pe-2 fw-bold">{{ $item->newsCategories }}</span>{{ $item->updated_at->format('l, j F Y') }}</small>
                                     <a href="/news">
                                         <h4 class="mb-1">{{ $item->title }}</h4>
                                     </a>
                                     <p class="mt-0 mb-2" style="font-size: 13px">{!! Str::words($item->description, 50, '...') !!}</p>
                                     <div class="d-flex gap-1 mb-3">
-                                        @foreach (explode(',', $item->tags) as $tag)
+                                        <!-- @foreach (explode(',', $item->tags) as $tag)
                                             <small class="text-primary"
                                                 style="background-color:#DEEBFF; padding: 3px 10px; border-radius:5px">{{ $tag }}</small>
-                                        @endforeach
+                                        @endforeach -->
+                                        {{$item->newsCategories}}
                                     </div>
 
-                                    <form action="{{ route('news.show', $item->id) }}" id="form-{{ $item->id }}"
+                                    <form action="{{ route('news.destroy', $item->id) }}" id="form-{{ $item->id }}"
                                         method="post">
                                         @csrf
                                         @method('DELETE')
@@ -96,7 +97,14 @@
                             </div>
                         </div>
                     </div>
-                @endforeach
+                @empty
+                    <div class="d-flex justify-content-center">
+                        <img src="{{ asset('nodata.jpg') }}" alt="" width="400px">
+                    </div>
+                    <h5 class="text-center">
+                        Data Masih Kosong
+                    </h5>
+                @endforelse
             </div>
         </div>
     </div>
@@ -115,9 +123,10 @@
                 icon: "warning",
                 buttons: true,
                 dangerMode: true,
-            }).then(({ isConfirmed }) => {
-                console.log(document.getElementById(`form-${$id}`));
-                if(isConfirmed) document.getElementById(`form-${$id}`).submit();
+            }).then((e) => {
+                if(e) {
+                    $(`#form-${$id}`).submit();
+                }
             });
         }
     </script>

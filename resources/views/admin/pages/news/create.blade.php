@@ -46,7 +46,7 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col">
+                            <!-- <div class="col">
                                 <div class="mb-3">
                                     <label>Kategori</label>
                                     <select name="category_news_id" class="js-example-basic-single form-control">
@@ -63,7 +63,7 @@
                                         <div class="text-danger">{{ $message }}</div>
                                     @enderror
                                 </div>
-                            </div>
+                            </div> -->
 
                             <div class="row">
                                 <div class="col">
@@ -84,7 +84,7 @@
                                 <div class="col">
                                     <div class="mb-3">
                                         <label>Upload Foto</label>
-                                        <input type="file" name="image" id="image" accept="image/*" class="form-control" />
+                                        <input type="file" name="image[]" id="a" accept="image/*" class="form-control" />
 
                                         @error('image')
                                             <div class="text-danger">{{ $message }}</div>
@@ -96,12 +96,13 @@
                                 <div class="col-12">
                                     <div class="mb-3">
                                         <label>Tag</label>
-                                        <input class="basic form-control" name="tags"
+                                        <input type="text" name="category[]" >
+                                        <!-- <input class="basic form-control" name="category[]"
                                             placeholder="Mis: Teknologi, Jelajah, Hummatech" id="tags"
                                             value="{{ old('tags') }}" />
-                                        <div class="form-text">Masukkan tag dengan koma</div>
+                                        <div class="form-text">Masukkan tag dengan koma</div> -->
 
-                                        @error('tags')
+                                        @error('category')
                                             <div class="text-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
