@@ -17,6 +17,8 @@ Route::post('create/section' , [SectionController::class ,'store'])->name('creat
 // position
 Route::get('setting/departement' , [PositionController::class , 'index'])->name('setting.departement');
 Route::post('create/position' , [PositionController::class , 'store'])->name('create.position');
+Route::put('update/position/{position}', [PositionController::class ,'update'])->name('update.position');
+Route::delete('delete/position/{position}' , [PositionController::class , 'destroy'])->name('delete.position');
 
 
 // team
