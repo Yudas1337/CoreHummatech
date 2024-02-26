@@ -15,4 +15,9 @@ class Service extends Model
     {
         return $this->hasMany(Testimonial::class);
     }
+
+    public function faqs(): HasMany
+    {
+        return $this->hasMany(Faq::class);
+    }
 }

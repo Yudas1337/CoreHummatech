@@ -69,14 +69,6 @@ Route::get('/setting/terms-condition/edit', function () {
     return view('admin.pages.terms-condition.edit');
 });
 
-// Route::get('/social-media', function () {
-//     return view('admin.pages.social-media.index');
-// });
-
-Route::get('/setting/faq', function () {
-    return view('admin.pages.faq.index');
-});
-
 Route::get('/message-approval', function () {
     return view('admin.pages.message-approval.index');
 });

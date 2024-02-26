@@ -33,64 +33,41 @@
 
 @section('content')
     <div class="row">
-        @foreach (range(1, 20) as $item)
+        @forelse ($faqs as $item)
             <div class="col-md-12">
 
                 <div class="card pb-0 border-l-primary border-4 border-0 shadow">
                     <div class="card-header">
                         <div class="card-header-right">
-                            <ul class="card-option">
-                                <li>
-                                    <div>
-                                        <a href="#" data-bs-toggle="modal" data-bs-target="#edit-data">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                                                viewBox="0 0 24 24">
-                                                <g fill="none" stroke="currentColor" stroke-width="1.5">
-                                                    <circle cx="12" cy="12" r="3" />
-                                                    <path
-                                                        d="M13.765 2.152C13.398 2 12.932 2 12 2c-.932 0-1.398 0-1.765.152a2 2 0 0 0-1.083 1.083c-.092.223-.129.484-.143.863a1.617 1.617 0 0 1-.79 1.353a1.617 1.617 0 0 1-1.567.008c-.336-.178-.579-.276-.82-.308a2 2 0 0 0-1.478.396C4.04 5.79 3.806 6.193 3.34 7c-.466.807-.7 1.21-.751 1.605a2 2 0 0 0 .396 1.479c.148.192.355.353.676.555c.473.297.777.803.777 1.361c0 .558-.304 1.064-.777 1.36c-.321.203-.529.364-.676.556a2 2 0 0 0-.396 1.479c.052.394.285.798.75 1.605c.467.807.7 1.21 1.015 1.453a2 2 0 0 0 1.479.396c.24-.032.483-.13.819-.308a1.617 1.617 0 0 1 1.567.008c.483.28.77.795.79 1.353c.014.38.05.64.143.863a2 2 0 0 0 1.083 1.083C10.602 22 11.068 22 12 22c.932 0 1.398 0 1.765-.152a2 2 0 0 0 1.083-1.083c.092-.223.129-.483.143-.863c.02-.558.307-1.074.79-1.353a1.617 1.617 0 0 1 1.567-.008c.336.178.579.276.819.308a2 2 0 0 0 1.479-.396c.315-.242.548-.646 1.014-1.453c.466-.807.7-1.21.751-1.605a2 2 0 0 0-.396-1.479c-.148-.192-.355-.353-.676-.555A1.617 1.617 0 0 1 19.562 12c0-.558.304-1.064.777-1.36c.321-.203.529-.364.676-.556a2 2 0 0 0 .396-1.479c-.052-.394-.285-.798-.75-1.605c-.467-.807-.7-1.21-1.015-1.453a2 2 0 0 0-1.479-.396c-.24.032-.483.13-.82.308a1.617 1.617 0 0 1-1.566-.008a1.617 1.617 0 0 1-.79-1.353c-.014-.38-.05-.64-.143-.863a2 2 0 0 0-1.083-1.083Z" />
-                                                </g>
-                                            </svg>
-                                        </a>
-                                    </div>
-                                </li>
-                                <li><i class="fa fa-pen"></i></li>
-                                <li><i class="fa fa-trash"></i></li>
+                            <ul class="list-unstyled" style="text-align:center">
+                                <li><i class="fa fa-edit text-primary mb-2 p-1 btn-edit" data-id="{{ $item->id }}" data-question="{{ $item->question }}" data-answer="{{ $item->answer }}" data-service_id="{{ $item->service_id }}" type="button" data-bs-toggle="modal"
+                                        data-bs-target="#edit"></i></li>
+                                <li><i class="fa-solid fa-trash text-primary p-1 btn-delete" type="button"
+                                        data-id="{{ $item->id }}"></i></li>
                             </ul>
                         </div>
-                        <div class="ribbon mt-3 ribbon-primary ribbon-space-bottom">Magang</div>
+                        <div class="ribbon mt-3 ribbon-primary ribbon-space-bottom">{{ $item->service->name }}</div>
 
                         <div class="pt-5">
-                            <h3 class="mb-2">Lorem ipsum dolor sit amet consectetur. Aliquam facilisis?</h3>
-                            <p class="mb-0" style="width:95%;">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                Veniam
-                                obcaecati nobis animi
-                                atque nesciunt, iusto, praesentium commodi tempora quasi voluptatum veritatis quaerat.
-                                Voluptatem
-                                numquam, corporis debitis unde quibusdam facere quam asperiores laboriosam nesciunt.
-                                Laboriosam
-                                soluta
-                                repellat veniam aliquid quam eaque dicta!
+                            <h3 class="mb-2">{{ $item->question }}?</h3>
+                            <p class="mb-0" style="width:95%;">{{ $item->answer }}
                             </p>
                         </div>
                     </div>
                 </div>
             </div>
-        @endforeach
+            @empty
+            <div class="d-flex justify-content-center">
+                <img src="{{ asset('nodata.jpg') }}" alt="" width="400px">
+            </div>
+            <h5 class="text-center">
+                Data Masih Kosong
+            </h5>
+        @endforelse
     </div>
 
     <!-- Pagination -->
-    <div class="pt-3 pb-5 align-items-center d-flex gap-2 justify-content-between">
-        <div>Showing 1 to 10 from 35 entries</div>
-        <div class="pagination">
-            <li class="page-item"><a href="#" class="page-link disabled"><i class="fas fa-arrow-left"></i></a></li>
-            @foreach (range(0, 3) as $item)
-            <li class="page-item {{ $item !== 0 ?: 'active' }}" aria-current="page"><a href="#" class="page-link">{{ $item+1 }}</a></li>
-            @endforeach
-            <li class="page-item"><a href="#" class="page-link"><i class="fas fa-arrow-right"></i></a></li>
-        </div>
-    </div>
-
+        {{ $faqs->links('pagination::bootstrap-5') }}
     <!-- Add Modal -->
     <div class="modal fade modal-bookmark" id="tambah" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
@@ -101,27 +78,47 @@
                     </h5>
                     <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form class="form-bookmark needs-validation" action="#" method="POST" id="bookmark-form" novalidate=""
-                    enctype="multipart/form-data">
+                <form class="form-bookmark needs-validation" action="{{ route('faq.store') }}" method="POST"
+                    id="bookmark-form" novalidate="" enctype="multipart/form-data">
+                    @csrf
                     <div class="modal-body">
                         <div class="row g-2">
                             <div class="mb-3 mt-0 col-md-12">
                                 <label for="bm-title">Pertanyaan</label>
-                                <input class="form-control" type="text" required="" autocomplete="name"
+                                <input class="form-control" type="text" required="" name="question"
+                                    value="{{ old('question') }}" autocomplete="name"
                                     placeholder="Mis: Bagaimana cara&hellip;">
+                                @error('question')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
                             </div>
 
                             <div class="mb-3 mt-0 col-md-12">
                                 <label for="bm-title">Jawaban</label>
                                 <textarea name="answer" id="answer" cols="10" rows="5" class="form-control"
-                                    placeholder="Mis: Caranya adalah sebagai berikut"></textarea>
+                                    placeholder="Mis: Caranya adalah sebagai berikut">{{ old('answer') }}</textarea>
+                                @error('answer')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
                             </div>
 
                             <div class="mb-3 mt-0 col-md-12">
                                 <label for="bm-title">Ditampilkan Di</label>
-                                <select name="" id="select" class="form-control">
+                                <select name="service_id" id="select" class="form-control">
                                     <option disabled selected>Pilih Salah Satu</option>
+                                    @foreach ($services as $item)
+                                        <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                    @endforeach
                                 </select>
+                                @error('service_id')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
                             </div>
                         </div>
                     </div>
@@ -137,7 +134,7 @@
     </div>
 
     <!-- Edit Modal -->
-    <div class="modal fade modal-bookmark" id="edit-data" tabindex="-1" role="dialog"
+    <div class="modal fade modal-bookmark" id="modal-edit" tabindex="-1" role="dialog"
         aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
@@ -146,26 +143,32 @@
                     </h5>
                     <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form class="form-bookmark needs-validation" action="#" method="POST" id="bookmark-form"
-                    novalidate="" enctype="multipart/form-data">
+                <form class="form-bookmark needs-validation" method="POST" id="form-update" novalidate=""
+                    enctype="multipart/form-data">
+                    @csrf
+                    @method('PUT')
                     <div class="modal-body">
                         <div class="row g-2">
                             <div class="mb-3 mt-0 col-md-12">
                                 <label for="bm-title">Pertanyaan</label>
-                                <input class="form-control" type="text" required="" autocomplete="name"
+                                <input class="form-control" type="text" name="question" required="" id="question-edit" autocomplete="name"
                                     placeholder="Mis: Bagaimana cara&hellip;">
                             </div>
 
                             <div class="mb-3 mt-0 col-md-12">
                                 <label for="bm-title">Jawaban</label>
-                                <textarea name="answer" id="answer" cols="10" rows="5" class="form-control"
-                                    placeholder="Mis: Caranya adalah sebagai berikut"></textarea>
+                                <textarea name="answer" cols="10" rows="5" class="form-control"
+                                    placeholder="Mis: Caranya adalah sebagai berikut" id="answer-edit"></textarea>
                             </div>
 
                             <div class="mb-3 mt-0 col-md-12">
                                 <label for="bm-title">Ditampilkan Di</label>
-                                <select name="" id="select" class="form-control">
-                                    <option disabled selected>Pilih Salah Satu</option>
+                                <select name="service_id" id="service-edit" class="form-control">
+                                    @foreach ($services as $service)
+                                        <option value="{{ $service->id }}" {{ $service->service_id == $service->id ? 'selected' : '' }}>
+                                            {{ $service->name }}
+                                        </option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>
@@ -173,11 +176,35 @@
                     <div class="modal-footer">
                         <div class="d-flex justify-content-end">
                             <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">Batalkan</button>
-                            <button class="btn btn-primary" type="submit">Tambah</button>
+                            <button class="btn btn-primary" type="submit">Perbarui</button>
                         </div>
                     </div>
                 </form>
             </div>
         </div>
     </div>
+    @include('admin.components.delete-modal-component')
+@endsection
+@section('script')
+    <script>
+        $('.btn-delete').on('click', function() {
+            var id = $(this).data('id');
+            $('#form-delete').attr('action', '/faq/' + id);
+            $('#modal-delete').modal('show');
+        });
+
+        $('.btn-edit').click(function() {
+            var id = $(this).data('id'); // Mengambil nilai id dari tombol yang diklik
+            var question = $(this).data('question'); // Mengambil nilai name dari tombol yang diklik
+            var answer = $(this).data('answer');
+            var service_id = $(this).data('service_id');
+            $('#form-update').attr('action', '/faq/' + id); // Mengubah nilai atribut action form
+            $('#question-edit').val(question);
+            $('#answer-edit').text(answer);
+            $('#service-edit').val(service_id);
+            $('#modal-edit').modal('show');
+
+            console.log(id);
+        });
+    </script>
 @endsection
