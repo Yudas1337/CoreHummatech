@@ -22,19 +22,17 @@ class UpdateCollabMitraRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|max:50',
-            'collab_category_id' => 'required',
-            'image' => 'required'
+            'name' => 'nullable|max:50',
+            'collab_category_id' => 'nullable',
+            'image' => 'nullable|mimes:png,jpg,jpeg'
         ];
     }
 
     public function messages()
     {
         return [
-            'name.required' => 'Nama Tidak Boleh Kosong',
             'name.max' => 'Nama Maksimal 50 Karakter',
-            'collab_category_id.required' => 'Kategori Tidak Boleh Kosong',
-            'image.required' => 'Foto Tidak Boleh Kosong'
+            'image.mimes' => 'Foto Harus png,jpg,jpeg'
         ];
     }
 }
