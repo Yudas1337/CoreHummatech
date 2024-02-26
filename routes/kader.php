@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\PositionController;
+use App\Http\Controllers\SaleController;
 use App\Http\Controllers\SectionController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\TeamController;
@@ -29,3 +30,7 @@ Route::delete('delete/team/{team}' , [TeamController::class , 'destroy'])->name(
 
 // visi and mision
 Route::get('setting/vision-mision' , [VisionAndMisionController::class ,'index']);
+
+
+// show pdf
+Route::get('showpdf/{sale}' , [SaleController::class ,'showpdf']);
