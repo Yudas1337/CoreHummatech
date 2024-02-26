@@ -49,7 +49,7 @@ class SaleController extends Controller
     {
         $data = $this->service->store($request);
         $this->sale->store($data);
-        return back()->with('success' , 'Penjualan berhasil di tambahkan');
+        return back()->with('success' , 'Penjualan berhasil ditambahkan');
     }
 
     /**
@@ -59,6 +59,12 @@ class SaleController extends Controller
     {
         $salesPackages = $this->salesPackage->get();
         return view('admin.pages.sale.detail', compact('sale', 'salesPackages'));
+    }
+
+    public function showpdf (Sale $sale)
+    {
+        $salesPackages = $this->salesPackage->get();
+        return view('admin.pages.sale.showpdf', compact('sale', 'salesPackages'));
     }
 
     /**

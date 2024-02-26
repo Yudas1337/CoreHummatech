@@ -12,10 +12,11 @@ class SosialMediaController extends Controller
 {
     private SosialMediaInterface $sosialMedia;
     private SosialMediaService $service;
-    public function __construct(SosialMediaInterface $sosialMedia, SosialMediaService $sosialMediaService)
+    public function __construct(SosialMediaInterface $sosialMedia, SosialMediaService $service)
     {
         $this->sosialMedia = $sosialMedia;
-        $this->service = $sosialMediaService;
+        $this->service = $service;
+        $this->middleware('auth');
     }
     /**
      * Display a listing of the resource.

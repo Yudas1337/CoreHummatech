@@ -4,14 +4,14 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateCollabMitraRequest extends FormRequest
+class StoreVisionAndMisionRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
     {
-        return true;
+        return false;
     }
 
     /**
@@ -22,18 +22,7 @@ class UpdateCollabMitraRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'nullable|max:50',
-            'collab_category_id' => 'nullable',
-            'image' => 'nullable|mimes:png,jpg,jpeg'
-        ];
-    }
-
-    public function messages()
-    {
-        return [
-            'name.max' => 'Nama Maksimal 50 Karakter',
-            'image.mimes' => 'Foto Harus png,jpg,jpeg'
+            //
         ];
     }
 }
-

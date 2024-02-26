@@ -23,8 +23,8 @@ class UpdateSosialMediaRequest extends FormRequest
     {
         return [
             'platform' => 'required|max:50',
-            'link' => 'required|url',
-            'image' => 'required|image|mimes:jpeg,png,jpg'
+            'link' => 'nullable|url',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg'
         ];
     }
 
@@ -34,10 +34,8 @@ class UpdateSosialMediaRequest extends FormRequest
             'platform.required' => 'Nama Platform Tidak Boleh Kosong',
             'platform.max' => 'Nama Maksimal 50 Karakter',
 
-            'link.required' => 'Tautan Tidak Boleh Kosong',
             'link.url' => 'Tautan Harus Berupa URL',
 
-            'image.required' => 'Gambar Tidak Boleh Kosong'
 
         ];
     }

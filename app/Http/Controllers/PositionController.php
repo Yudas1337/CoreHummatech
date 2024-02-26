@@ -63,7 +63,8 @@ class PositionController extends Controller
      */
     public function update(UpdatePositionRequest $request, Position $position)
     {
-        //
+        $this->position->update($position->id , $request->validated());
+        return back()->with('success' , 'Berhasil Merubah data');
     }
 
     /**
@@ -71,6 +72,7 @@ class PositionController extends Controller
      */
     public function destroy(Position $position)
     {
-        //
+        $this->position->delete($position->id);
+        return back()->with('success' , 'Berhasil Menghapus data');
     }
 }

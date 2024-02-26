@@ -27,7 +27,7 @@
                         <div class="px-3">
                             <h1 class="mt-3">{{ $sale->name }}</h1>
                             <p>{{ $sale->description }}</p>
-                            <a href="" class="m-0 btn btn-primary btn-sm">Lihat Proposal</a>
+                            <a href="/showpdf/{{ $sale->id }}" class="m-0 btn btn-primary btn-sm">Lihat Proposal</a>
                         </div>
                     </div>
                 </div>

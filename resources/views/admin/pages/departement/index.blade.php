@@ -93,8 +93,8 @@
                         <td>{{ $index + 1 }}</td>
                         <td> {{ $position->name }}</td>
                         <td>
-                            <button data-bs-target="#edit" data-bs-toggle="modal" class="btn btn-warning">Edit</button>
-                            <button data-bs-target="#modal-delete" data-bs-toggle="modal" class="btn btn-danger">Hapus</button>
+                            <button  class="btn btn-warning btn-edit" id="{{ $position->id }}" data-id="{{ $position->id }}" data-name="{{ $position->name }}">Edit</button>
+                            <button class="btn btn-danger btn-delete" id="{{ $position->id }}" data-id="{{ $position->id }}">Hapus</button>
                         </td>
                     </tr>
                 @empty
@@ -140,7 +140,7 @@
     </div>
 
     <!-- Edit Modal -->
-    <div class="modal fade modal-bookmark" id="edit" tabindex="-1" role="dialog"
+    <div class="modal fade modal-bookmark" id="modal-edit" tabindex="-1" role="dialog"
         aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
@@ -184,13 +184,13 @@
     <script>
         $('.btn-delete').on('click', function() {
             var id = $(this).data('id');
-            $('#form-delete').attr('action', 'delete/category/mitra/' + id);
+            $('#form-delete').attr('action', '/delete/position/' + id);
             $('#modal-delete').modal('show');
         });
         $('.btn-edit').click(function() {
             var id = $(this).data('id'); // Mengambil nilai id dari tombol yang diklik
             var name = $(this).data('name'); // Mengambil nilai name dari tombol yang diklik
-            $('#form-update').attr('action', 'update/category/mitra/' + id); // Mengubah nilai atribut action form
+            $('#form-update').attr('action', '/update/position/' + id); // Mengubah nilai atribut action form
             $('#name-edit').val(name);
             $('#modal-edit').modal('show');
         });
