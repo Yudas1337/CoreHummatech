@@ -78,7 +78,7 @@
                     <h5 class="modal-title fw-semibold" id="exampleModalLabel">Tambah Mitra</h5>
                     <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form class="form-bookmark needs-validation" action="#" method="POST" id="bookmark-form" novalidate=""
+                <form class="form-bookmark needs-validation" action="create/collab/mitra" method="POST" id="bookmark-form" novalidate=""
                     enctype="multipart/form-data">
                     @csrf
                     <div class="modal-body">
@@ -89,7 +89,7 @@
                             </div>
                             <div class="mb-3 mt-0 col-md-12">
                                 <label for="bm-title">Kategori</label>
-                                <select class="js-example-basic-single" aria-label=".form-select example" name="collab_category_id">
+                                <select class="tambah" aria-label=".form-select example" name="collab_category_id">
                                     @foreach ($categories as $category)
                                     <option value="{{ $category->id }}"
                                         {{ $category->collab_category_id == $category->id ? 'selected' : '' }}>
@@ -192,7 +192,7 @@
 </script>
     <script>
         $(document).ready(function() {
-            $(".js-example-basic-single").select2({
+            $(".tambah").select2({
                 dropdownParent: $("#tambah")
             });
         });
