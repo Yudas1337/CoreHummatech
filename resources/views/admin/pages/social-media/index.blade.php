@@ -32,7 +32,7 @@
                             <p class="card-text" style="width: 80%; white-space: pre-line; overflow: hidden; text-overflow: ellipsis;"><a href="{{$socialmedia->link}}">{{$socialmedia->link}}</a></p>
                             <div class="d-flex">
                                 <button class="btn btn-primary btn-edit mx-3" type="button" data-bs-toggle="modal"
-                                    data-bs-target="#edit" data-id="{{ $socialmedia->id }}" data-name="{{ $socialmedia->platform }}">Edit</button>
+                                    data-bs-target="#edit" data-id="{{ $socialmedia->id }}" data-name="{{ $socialmedia->platform }}" data-link="{{ $socialmedia->link }}">Edit</button>
                                 <button class="btn btn-danger btn-delete" data-id="{{$socialmedia->id}}" type="button">Hapus</button>
                             </div>
                         </div>
@@ -95,7 +95,7 @@
                     <h5 class="modal-title" id="exampleModalLabel">Edit Sosial Media</h5>
                     <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form class="form-bookmark needs-validation"  method="POST" id="bookmark-form"
+                <form class="form-bookmark needs-validation"  method="POST" id="form-update"
                     novalidate="" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
@@ -140,7 +140,8 @@
     $('.btn-edit').click(function() {
         var id = $(this).data('id'); // Mengambil nilai id dari tombol yang diklik
         var name = $(this).data('name'); // Mengambil nilai name dari tombol yang diklik
-        $('#form-update').attr('action', 'update/category/mitra/' + id); // Mengubah nilai atribut action form
+        var link = $(this).data('link');
+        $('#form-update').attr('action', 'update/social/media/' + id); // Mengubah nilai atribut action form
         $('#platform-edit').val(name);
         $('#link-edit').val(link);
         $('#modal-edit').modal('show');

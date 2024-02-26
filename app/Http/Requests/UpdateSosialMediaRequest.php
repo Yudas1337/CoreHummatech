@@ -24,7 +24,7 @@ class UpdateSosialMediaRequest extends FormRequest
         return [
             'platform' => 'required|max:50',
             'link' => 'required|url',
-            'image' => 'required|image|mimes:jpeg,png,jpg'
+            'image' => 'nullable|image|mimes:jpeg,png,jpg'
         ];
     }
 
@@ -37,7 +37,6 @@ class UpdateSosialMediaRequest extends FormRequest
             'link.required' => 'Tautan Tidak Boleh Kosong',
             'link.url' => 'Tautan Harus Berupa URL',
 
-            'image.required' => 'Gambar Tidak Boleh Kosong'
 
         ];
     }
