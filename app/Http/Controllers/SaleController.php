@@ -49,7 +49,7 @@ class SaleController extends Controller
     {
         $data = $this->service->store($request);
         $this->sale->store($data);
-        return back()->with('success' , 'Penjualan berhasil di tambahkan');
+        return back()->with('success' , 'Penjualan berhasil ditambahkan');
     }
 
     /**

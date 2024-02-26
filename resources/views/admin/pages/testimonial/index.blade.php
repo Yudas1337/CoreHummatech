@@ -36,14 +36,13 @@
                 <div class="card">
                     <div class="card-header" style="width: 100%; background: none; margin-bottom: -20px">
                         <div class="col-sm-3 position-absolute top-0 start-0">
-                            <p class="bg-primary px-3 py-1 text-light" style="border-radius: 5px 0 0 0; font-size: 12px">
-                                Magang</p>
+                            <p class="bg-primary px-3 py-1 text-light" style="border-radius: 5px 0 0 0; font-size: 12px">Magang</p>
                         </div>
                         <div class="card-header-right">
                             <ul class="list-unstyled" style="text-align:center">
                                 <li><i class="fa fa-edit text-primary mb-2 p-1" type="button" data-bs-toggle="modal"
                                         data-bs-target="#edit"></i></li>
-                                <li><i class="fa-solid fa-trash text-primary p-1" type="button"></i></li>
+                                <li><i class="fa-solid fa-trash text-primary p-1 btn-delete" type="button"></i></li>
                             </ul>
                         </div>
                     </div>
@@ -52,8 +51,7 @@
                                 src="../assets/images/ecommerce/product-table-6.png" alt="#">
                             <div class="flex-grow-1 ms-3">
                                 <div class="product-name mb-1">
-                                    <h4><a href="#">lorem ipsum</a>
-                                    </h4>
+                                    <h4><a href="#">lorem ipsum</a></h4>
                                 </div>
                                 <p class="text-muted m-0" style="width: 80%">Lorem ipsum dolor, sit amet consectetur
                                     adipisicing elit.</p>
@@ -75,33 +73,33 @@
                     <h5 class="modal-title fw-semibold" id="exampleModalLabel">Tambah Testimoni</h5>
                     <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form class="form-bookmark needs-validation" action="#" method="POST" id="bookmark-form"
+                <form class="form-bookmark needs-validation" action="{{ route('testimonial.store') }}" method="POST" id="bookmark-form"
                     novalidate="" enctype="multipart/form-data">
+                    @csrf
                     <div class="modal-body">
                         <div class="row g-2">
                             <div class="mb-3 mt-0 col-md-12">
-                                <label for="bm-title">Nama Lengkap</label>
-                                <input class="form-control" type="text" required="" autocomplete="name"
-                                    placeholder="Masukkan nama">
+                                <label for="name">Nama Lengkap</label>
+                                <input class="form-control" type="text" id="name" autocomplete="name" name="name"  placeholder="Masukkan nama">
                             </div>
                         </div>
                         <div class="mb-3 mt-0 col-md-12">
-                            <label for="bm-title">Deskripsi</label>
-                            <textarea name="" id="" rows="4" class="form-control" placeholder="Masukkan deskripsi"></textarea>
+                            <label for="description">Deskripsi</label>
+                            <textarea name="description" id="description" rows="4" class="form-control" placeholder="Masukkan deskripsi"></textarea>
                         </div>
 
                         <div class="mb-3 mt-0 col-md-12">
-                            <label for="bm-title">Tampilkan di</label>
-                            <select class="select2 form-select" name="tags-select-mode" style="width: 100%;">
-                                <option value="option1">Option 1</option>
-                                <option value="option2">Option 2</option>
-                                <option value="option3">Option 3</option>
+                            <label for="service_id">Tampilkan di</label>
+                            <select class="form-select" aria-label="Default select example" name="service_id">
+                                @foreach ($services as $service)
+                                <option value="{{ $service->id }}">{{ $service->name }}</option>
+                                @endforeach
                             </select>
                         </div>
 
                         <div class="mb-3 mt-0 col-md-12">
-                            <label for="bm-title">Foto Testimoni</label>
-                            <input class="form-control" id="formFile" type="file">
+                            <label for="image">Foto Testimoni</label>
+                            <input class="form-control" id="image" name="image" type="file">
                         </div>
                         <div class="d-flex justify-content-end gap-2">
                             <button class="btn btn-secondary " type="button" data-bs-dismiss="modal">Batal</button>
@@ -177,4 +175,13 @@
         </ul>
     </nav>
     @include('admin.components.delete-modal-component')
+@endsection
+@section('script')
+    <script>
+        $('.btn-delete').on('click', function() {
+            var id = $(this).data('id');
+            $('#form-delete').attr('action', '/testimoni/' + id);
+            $('#modal-delete').modal('show');
+        });
+    </script>
 @endsection
