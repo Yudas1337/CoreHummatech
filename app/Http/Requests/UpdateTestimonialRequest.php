@@ -11,7 +11,7 @@ class UpdateTestimonialRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,22 @@ class UpdateTestimonialRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'image' => 'nullable|mimes:png,jpg,jpeg',
+            'name' => 'required',
+            'description' => 'required|max:115',
+            'service_id' => 'required|exists:services,id',
+        ];
+    }
+
+    public function messages(): array
+    {
+        return [
+            'image.mimes' => 'Foto harus berupa png, jpg atau jpeg',
+            'name.required' => 'Nama harus diisi',
+            'description.required' => 'Deskripsi harus diisi',
+            'description.max' => 'Deskripsi maksimal :max karakter',
+            'services_id.required' => 'Tampilkan di layanan apa?',
+            'services_id.exists' => 'Layanan tidak ditemukan',
         ];
     }
 }

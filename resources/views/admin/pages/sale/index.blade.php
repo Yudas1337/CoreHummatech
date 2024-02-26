@@ -40,7 +40,7 @@
                                 <a href="{{ route('sale.show', $sale->id) }}" class="btn btn-primary">Lihat Detail</a>
                             </div>
                             <div class="d-flex flex-shrink-0 gap-2">
-                                <button class="btn px-3 btn-warning btn-edit" data-bs-toggle="modal" type="button" data-id="{{ $sale->id }}" data-image="{{ $sale->image }}" data-name="{{ $sale->name }}" data-description="{{ $sale->description }}" data-proposal="{{ $sale->proposal }}"><i class="fas fa-edit"></i></button>
+                                <button class="btn px-3 btn-warning btn-edit" type="button" data-id="{{ $sale->id }}" data-image="{{ $sale->image }}" data-name="{{ $sale->name }}" data-description="{{ $sale->description }}" data-proposal="{{ $sale->proposal }}"><i class="fas fa-edit"></i></button>
                                 <button class="btn px-3 btn-danger btn-delete" type="button" data-id="{{ $sale->id }}"><i class="fas fa-trash"></i></button>
                             </div>
                         </div>
@@ -81,7 +81,10 @@
                         <div class="row g-2">
                             <div class="mb-3 mt-0 col-md-12">
                                 <label for="image">Foto</label>
-                                <input class="form-control" name="image" id="image" type="file">
+                                <figure class="col-xl-3 col-md-4 col-6" itemprop="associatedMedia" itemscope="">
+                                    <img class="img-thumbnail" id="image-preview" itemprop="thumbnail">
+                                </figure>
+                                <input class="form-control" name="image" id="image" type="file" onchange="preview(event)">
                             </div>
                             <div class="mb-3 mt-0 col-md-12">
                                 <label for="name">Nama Penjualan</label>
@@ -109,7 +112,7 @@
     </div>
 
     <!-- Edit Modal -->
-    <div class="modal fade modal-bookmark" id="edit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    <div class="modal fade modal-bookmark" id="modal-edit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
@@ -117,7 +120,7 @@
                     <h5 class="modal-title" id="exampleModalLabel">Edit Penjualan</h5>
                     <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form class="form-bookmark needs-validation" method="POST" id="form-update" novalidate=""
+                <form class="form-bookmark needs-validation" method="POST" id="form-edit" novalidate=""
                     enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
@@ -125,8 +128,10 @@
                         <div class="row g-2">
                             <div class="mb-3 mt-0 col-md-12">
                                 <label for="image">Foto</label><br>
-                                <img id="image-show" height="200px" class="mb-2">
-                                <input class="form-control" id="image" name="image" type="file">
+                                <figure class="col-xl-3 col-md-4 col-6" itemprop="associatedMedia" itemscope="">
+                                    <img class="img-thumbnail" id="image-edit" itemprop="thumbnail">
+                                </figure>
+                                <input class="form-control" id="image" name="image" type="file" onchange="previewImage(event)">
                             </div>
                             <div class="mb-3 mt-0 col-md-12">
                                 <label for="name-edit">Nama Penjualan</label>
@@ -162,13 +167,12 @@
         var image = $(this).data('image');
         var name = $(this).data('name');
         var description = $(this).data('description');
-        var proposal = $(this).data('proposal');
         $('#form-update').attr('action', '/sale/' + id);
         $('#name-edit').val(name);
-        $('#proposal-edit').val(proposal);
         $('#description-edit').val(description);
-        $('#image-show').attr('src', 'storage/' + image);
-        $('#edit').modal('show');
+        $('#image-edit').attr('src', 'storage/' + image);
+        $('#form-edit').attr('action', '/sale/' + id);
+        $('#modal-edit').modal('show');
     });
 
     $('.btn-delete').on('click', function() {
@@ -176,5 +180,40 @@
         $('#form-delete').attr('action', '/sale/' + id);
         $('#modal-delete').modal('show');
     });
+</script>
+
+<script>
+    function previewImage(event) {
+        var input = event.target;
+        var previewImage = document.getElementById('image-edit');
+
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                previewImage.src = e.target.result;
+                previewImage.style.display = 'block';
+            };
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+</script>
+<script>
+    function preview(event) {
+        var input = event.target;
+        var previewImage = document.getElementById('image-preview');
+
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                previewImage.src = e.target.result;
+                previewImage.style.display = 'block';
+            };
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
 </script>
 @endsection

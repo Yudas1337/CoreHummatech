@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Contracts\Interfaces\ServiceInterface;
 use App\Contracts\Interfaces\TestimonialInterface;
+use App\Http\Requests\StoreTestimonialRequest;
+use App\Http\Requests\UpdateTestimonialRequest;
 use App\Models\Testimonial;
 use App\Services\TestimonialService;
 use Illuminate\Http\Request;
@@ -27,9 +29,9 @@ class TestimonialController extends Controller
      */
     public function index()
     {
-        $testimonial = $this->testimonial->get();
+        $testimonials = $this->testimonial->get();
         $services = $this->serviceData->get();
-        return view('admin.pages.testimonial.index', compact('testimonial','services'));
+        return view('admin.pages.testimonial.index', compact('testimonials','services'));
     }
 
     /**
@@ -43,7 +45,7 @@ class TestimonialController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreTestimonialRequest $request)
     {
         $data = $this->service->store($request);
         $this->testimonial->store($data);
@@ -69,7 +71,7 @@ class TestimonialController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Testimonial $testimonial)
+    public function update(UpdateTestimonialRequest $request, Testimonial $testimonial)
     {
         $data = $this->service->update($testimonial, $request);
         $this->testimonial->update($testimonial->id, $data);
