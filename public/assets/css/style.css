@@ -256,6 +256,7 @@ body.dark-only.box-layout {
   --text-gray: rgba(153, 153, 169, 0.8);
   --product-shadow: 0px 1px 0px rgb(55 70 87);
   --light-shade-primary: rgba(48, 126, 243, 0.2);
+  --light-primary:#DDEAFF;
 }
 
 /**=====================
@@ -49694,4 +49695,28 @@ html[dir=rtl] body.dark-only .page-wrapper .page-body-wrapper .page-body .card:n
 
 .shadow-md{
   box-shadow: 0px 2px 13px #0000000d
+}
+
+.btn-light-primary{
+  background-color: #DDEAFF;
+  color: var(--dark-primary);
+  font-weight: 500;
+}
+
+.btn-light-warning{
+  background-color: #FFF6E4;
+  color: #FFAA05;
+  font-weight: 500;
+}
+
+.btn-light-danger{
+  background-color: #FFE8EA;
+  color: #DC3545;
+  font-weight: 500;
+}
+
+
+.btn-mini {
+  padding: .6rem 0.4rem;
+  font-size: 11px;
 }

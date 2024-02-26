@@ -1,4 +1,4 @@
-<button class="btn btn-primary m-0" type="button" data-bs-toggle="modal" data-bs-target="#tambah">Tambah</button>
+<button class="btn btn-primary m-0" type="button" data-bs-toggle="modal" data-bs-target="#tambah">Tambah Layanan</button>
 
 <!-- Add Modal -->
 <div class="modal fade modal-bookmark" id="tambah" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
@@ -39,7 +39,7 @@
                 </div>
                 <div class="modal-footer">
                     <div class="d-flex justify-content-end">
-                        <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">Batalkan</button>
+                        <button class="btn btn-light-danger" type="button" data-bs-dismiss="modal">Batalkan</button>
                         <button class="btn btn-primary" type="submit">Tambah</button>
                     </div>
                 </div>

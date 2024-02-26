@@ -136,11 +136,8 @@ Route::post('create/collab/mitra' , [CollabMitraController::class , 'store'])->n
 Route::put('update/collab/mitra/{collabMitra}' ,[CollabMitraController::class ,'update'])->name('update.collab.mitra');
 
 //product
-Route::get('product' , [ProductController::class , 'index']);
-Route::post('create/product' , [ProductController::class ,'store'])->name('create.product');
-Route::put('update/product/{product}' , [ProductController::class ,'update'])->name('update.product');
-Route::delete('delete/product/{product}' , [ProductController::class , 'destroy']);
-Route::get('product/detail/{product}' , [ProductController::class , 'show']);
+Route::resource('product', ProductController::class);
+
 Route::resource('sales-package', SalesPackageController::class);
 
 
