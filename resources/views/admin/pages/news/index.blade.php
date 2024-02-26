@@ -63,16 +63,17 @@
                                 </div>
                                 <div class="product-details">
                                     <small style="font-size: 10px"><span
-                                            class="text-primary pe-2 fw-bold">{{ $item->categoryNews->name }}</span>{{ $item->updated_at->format('l, j F Y') }}</small>
+                                            class="text-primary pe-2 fw-bold">{{ $item->newsCategories }}</span>{{ $item->updated_at->format('l, j F Y') }}</small>
                                     <a href="/news">
                                         <h4 class="mb-1">{{ $item->title }}</h4>
                                     </a>
                                     <p class="mt-0 mb-2" style="font-size: 13px">{!! Str::words($item->description, 50, '...') !!}</p>
                                     <div class="d-flex gap-1 mb-3">
-                                        @foreach (explode(',', $item->tags) as $tag)
+                                        <!-- @foreach (explode(',', $item->tags) as $tag)
                                             <small class="text-primary"
                                                 style="background-color:#DEEBFF; padding: 3px 10px; border-radius:5px">{{ $tag }}</small>
-                                        @endforeach
+                                        @endforeach -->
+                                        {{$item->newsCategories}}
                                     </div>
 
                                     <form action="{{ route('news.show', $item->id) }}" id="form-{{ $item->id }}"

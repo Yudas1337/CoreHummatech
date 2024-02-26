@@ -27,6 +27,8 @@ use App\Contracts\Repositories\PositionRepository;
 use App\Contracts\Interfaces\CategoryNewsInterface;
 use App\Contracts\Interfaces\SalesPackageInterface;
 use App\Contracts\Interfaces\CollabCategoryInterface;
+use App\Contracts\Interfaces\NewsCategoryInterface;
+use App\Contracts\Interfaces\NewsImageInterface;
 use App\Contracts\Repositories\CollabMitraRepository;
 use App\Contracts\Repositories\SosialMediaRepository;
 use App\Contracts\Repositories\TestimonialRepository;
@@ -34,6 +36,8 @@ use App\Contracts\Interfaces\VisionAndMisionInterface;
 use App\Contracts\Repositories\CategoryNewsRepository;
 use App\Contracts\Repositories\SalesPackageRepository;
 use App\Contracts\Repositories\CollabCategoryRepository;
+use App\Contracts\Repositories\NewsCategoryRepository;
+use App\Contracts\Repositories\NewsImageRepository;
 use App\Contracts\Repositories\VisionAndMisionRepository;
 
 class AppServiceProvider extends ServiceProvider
@@ -54,7 +58,9 @@ class AppServiceProvider extends ServiceProvider
         TeamInterface::class => TeamRepository::class,
         TestimonialInterface::class => TestimonialRepository::class,
         VisionAndMisionInterface::class => VisionAndMisionRepository::class,
-        FaqInterface::class => FaqRepository::class
+        FaqInterface::class => FaqRepository::class,
+        NewsCategoryInterface::class => NewsCategoryRepository::class,
+        NewsImageInterface::class => NewsImageRepository::class,
     ];
 
     /**

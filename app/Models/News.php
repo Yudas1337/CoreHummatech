@@ -2,29 +2,45 @@
 
 namespace App\Models;
 
-use App\Base\Interfaces\HasCategoryNews;
+use App\Base\Interfaces\HasNewsCategories;
+use App\Base\Interfaces\HasNewsImages;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class News extends Model implements HasCategoryNews
+class News extends Model implements HasNewsImages, HasNewsCategories
 {
     use HasFactory;
 
     protected $fillable = [
         'title',
         'slug',
-        'image',
         'description',
-        'tags',
-        'category_news_id',
     ];
 
-    protected $autoincrement = false;
-    protected $keyType = 'string';
+    protected $table = 'news';
+    protected $primaryKey = 'id';
+    public $incrementing = false;
+    public $keyType = 'char';
 
-    public function categoryNews(): BelongsTo
+    /**
+     * newsImages
+     *
+     * @return HasMany
+     */
+    public function newsImages(): HasMany
     {
-        return $this->belongsTo(CategoryNews::class);
+        return $this->hasMany(NewsImage::class);
+    }
+
+    /**
+     * newsCategories
+     *
+     * @return HasMany
+     */
+    public function newsCategories(): HasMany
+    {
+        return $this->hasMany(NewsCategory::class);
     }
 }

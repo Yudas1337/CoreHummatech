@@ -4,10 +4,14 @@ namespace App\Providers;
 
 use App\Models\Faq;
 use App\Models\News;
+use App\Models\NewsCategory;
+use App\Models\NewsImage;
 use App\Models\Sale;
 use App\Models\Testimonial;
 use App\Models\SalesPackage;
 use App\Observers\FaqObserver;
+use App\Observers\NewsCategoryObserver;
+use App\Observers\NewsImageObserver;
 use App\Observers\NewsObserver;
 use App\Observers\SaleObserver;
 use App\Observers\TestimonialObserver;
@@ -39,6 +43,8 @@ class EventServiceProvider extends ServiceProvider
         SalesPackage::observe(SalesPackageObserver::class);
         Testimonial::observe(TestimonialObserver::class);
         Faq::observe(FaqObserver::class);
+        NewsImage::observe(NewsImageObserver::class);
+        // NewsCategory::observe(NewsCategoryObserver::class);
     }
 
     /**

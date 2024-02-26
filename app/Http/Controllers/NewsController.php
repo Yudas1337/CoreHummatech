@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Contracts\Interfaces\CategoryNewsInterface;
+use App\Contracts\Interfaces\NewsCategoryInterface;
+use App\Contracts\Interfaces\NewsImageInterface;
 use App\Contracts\Interfaces\NewsInterface;
 use App\Http\Requests\StoreNewsRequest;
 use App\Http\Requests\UpdateNewsRequest;
@@ -15,13 +17,18 @@ class NewsController extends Controller
 {
     private NewsInterface $news;
     private NewsService $newsService;
-    private CategoryNewsInterface $newsCategory;
+    private CategoryNewsInterface $category;
 
-    public function __construct(NewsInterface $news, NewsService $newsService, CategoryNewsInterface $newsCategory)
+    private NewsImageInterface $newsImage;
+    private NewsCategoryInterface $newsCategory;
+
+    public function __construct(NewsInterface $news, NewsService $newsService, CategoryNewsInterface $category, NewsCategoryInterface $newsCategoryInterface, NewsImageInterface $newsImageInterface)
     {
+        $this->newsImage = $newsImageInterface;
+        $this->newsCategory = $newsCategoryInterface;
         $this->news = $news;
         $this->newsService = $newsService;
-        $this->newsCategory = $newsCategory;
+        $this->category = $category;
     }
 
     /**
@@ -38,7 +45,7 @@ class NewsController extends Controller
      */
     public function create()
     {
-        $categories = $this->newsCategory->get();
+        $categories = $this->category->get();
         return view('admin.pages.news.create', compact('categories'));
     }
 
@@ -48,8 +55,21 @@ class NewsController extends Controller
     public function store(StoreNewsRequest $request)
     {
         $data = $this->newsService->store($request);
-        $this->news->store($data);
-        return redirect()->route('news.index');
+        $newsId = $this->news->store($data)->id;
+        // dd($data);
+        foreach ($data['image'] as $img) {
+            $this->newsImage->store([
+                'news_id' => $newsId,
+                'photo' => $img,
+            ]);
+        }
+        foreach ($data['category'] as $ctgr) {
+            $this->newsCategory->store([
+                'news_id' => $newsId,
+                'category_id' => $ctgr,
+            ]);
+        }
+        return redirect()->route('news.index')->with('success', "Berhasil menambah berita");
     }
 
     /**
@@ -65,7 +85,7 @@ class NewsController extends Controller
      */
     public function edit(News $news)
     {
-        $categories = $this->newsCategory->get();
+        $categories = $this->category->get();
         return view('admin.pages.news.edit', compact('news', 'categories'));
     }
 
