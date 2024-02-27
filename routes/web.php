@@ -66,13 +66,13 @@ Route::get('/message-approval', function () {
     return view('admin.pages.message-approval.index');
 });
 
-Route::get('setting/profile', function() {
-    return view('admin.pages.setting.profile.index');
-});
+// Route::get('setting/profile', function() {
+//     return view('admin.pages.setting.profile.index');
+// });
 
-Route::get('/setting/vision-mision/create', function () {
-    return view('admin.pages.vision-mision.add');
-});
+// Route::get('/setting/vision-mision/create', function () {
+//     return view('admin.pages.vision-mision.add');
+// });
 Route::get('/setting/vision-mision/edit', function () {
     return view('admin.pages.vision-mision.edit');
 });

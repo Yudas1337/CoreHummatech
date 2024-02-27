@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreVisionAndMisionRequest extends FormRequest
+class UpdateProfileRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,7 +22,14 @@ class StoreVisionAndMisionRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'title' => 'max:255',
+            'subtitle' => 'max:255',
+            'image' => 'nullable|mimes:png,jpg',
+
+            'description' => 'required',
+            'address' => 'required',
+            'email' => 'required',
+            'phone' => 'required',
         ];
     }
 }
