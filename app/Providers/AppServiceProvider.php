@@ -10,12 +10,7 @@ use App\Contracts\Interfaces\EnterpriseStructureInterface;
 use Illuminate\Support\ServiceProvider;
 use App\Contracts\Interfaces\FaqInterface;
 use App\Contracts\Interfaces\NewsInterface;
-use App\Contracts\Interfaces\PositionInterface;
-use App\Contracts\Interfaces\ProductInterface;
 use App\Contracts\Interfaces\ProfileInterface;
-use App\Contracts\Repositories\BranchRepository;
-use App\Contracts\Repositories\CategoryNewsRepository;
-use App\Contracts\Repositories\CollabCategoryRepository;
 
 use App\Contracts\Interfaces\SaleInterface;
 use App\Contracts\Interfaces\TeamInterface;
@@ -29,7 +24,6 @@ use App\Contracts\Interfaces\VisionAndMisionInterface;
 use App\Contracts\Repositories\CollabMitraRepository;
 use App\Contracts\Repositories\EnterpriseStructureRepository;
 use App\Contracts\Repositories\NewsRepository;
-use App\Contracts\Repositories\PositionRepository;
 use App\Contracts\Repositories\ProfileRepository;
 
 use App\Contracts\Repositories\SaleRepository;
@@ -70,7 +64,7 @@ class AppServiceProvider extends ServiceProvider
         TeamInterface::class => TeamRepository::class,
         TestimonialInterface::class => TestimonialRepository::class,
         VisionAndMisionInterface::class => VisionAndMisionRepository::class,
-        ProfileInterface::class => ProfileRepository::class
+        ProfileInterface::class => ProfileRepository::class,
         EnterpriseStructureInterface::class => EnterpriseStructureRepository::class,
         FaqInterface::class => FaqRepository::class,
         NewsCategoryInterface::class => NewsCategoryRepository::class,
