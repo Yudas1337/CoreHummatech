@@ -152,11 +152,7 @@
                 sortable: false
             }]
         });
-        $('.btn-delete').on('click', function() {
-            var id = $(this).data('id');
-            $('#form-delete').attr('action', '/delete/category/news/' + id);
-            $('#modal-delete').modal('show');
-        });
+        c
         $('.btn-edit').click(function() {
             var id = $(this).data('id'); // Mengambil nilai id dari tombol yang diklik
             var name = $(this).data('name'); // Mengambil nilai name dari tombol yang diklik

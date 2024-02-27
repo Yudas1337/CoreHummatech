@@ -1,8 +1,7 @@
 @extends('admin.layouts.app')
 
 @section('subcontent')
-    <div class=" p-1">
-        <div class="card border-0 shadow p-3 mt-3">
+        <div class="card border-0 p-3 mt-3">
             <div class="row">
                 <div class="col-12 col-lg-6">
                     <h4 class="m-2">Hero Section</h4>
@@ -18,7 +17,6 @@
                 </div>
             </div>
         </div>
-    </div>
 @endsection
 
 @section('header-style')
@@ -70,7 +68,7 @@
     <div class="row">
         @forelse ($sections as $section)
         <div class="col-md-12 col-12 col-xl-6">
-            <div class="card rounded-4" style="height: 400px">
+            <div class="card rounded-4" style="height: 280px">
                 <div class="product-box rounded-4">
                     <div class="product-img">
                         <img class="img-fluid"
@@ -78,15 +76,15 @@
                             alt="" />
 
                         <div class="content-center">
-                            <h1 class="title">{{ $section->title }}</h1>
-                            <p class="subtitle">{{ $section->subtitle }}</p>
+                            <h3 class="title">{{ $section->title }}</h3>
+                            <p class="subtitle fs-6">{{ $section->subtitle }}</p>
                             <div class="btn btn-lg btn-primary">Lihat Selengkapnya</div>
                         </div>
 
                         <div class="product-hover">
                             <ul>
                                 <li>
-                                    <a href="{{ url('/hero-section/edit') }}"><i class="fas fa-pencil"></i></a>
+                                    <a href="{{ route('hero.edit', $section->id) }}"><i class="fas fa-pencil"></i></a>
                                 </li>
                                 <li>
                                     <a href="#"><i class="fas fa-trash"></i></a>
@@ -106,4 +104,7 @@
         </h5>
         @endforelse
     </div>
+
+    @include('admin.components.delete-modal-component')
 @endsection
+<section></section>

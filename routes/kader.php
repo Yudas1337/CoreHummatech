@@ -14,6 +14,8 @@ Route::get('detail/service/{service}' , [ServiceController::class , 'show'])->na
 Route::get('hero-section' , [SectionController::class , 'index'])->name('hero.section');
 Route::get('hero-section/create' , [SectionController::class , 'create']);
 Route::post('create/section' , [SectionController::class ,'store'])->name('create.section');
+Route::get('edit/section/{section}', [SectionController::class ,'edit'])->name('hero.edit');
+Route::put('edit/section/{section}', [SectionController::class ,'update'])->name('hero.update');
 
 // position
 Route::get('setting/departement' , [PositionController::class , 'index'])->name('setting.departement');

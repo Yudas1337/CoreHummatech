@@ -58,7 +58,7 @@ class SectionController extends Controller
      */
     public function edit(Section $section)
     {
-        //
+        return view('admin.pages.hero-section.edit', compact('section'));
     }
 
     /**
@@ -66,7 +66,8 @@ class SectionController extends Controller
      */
     public function update(UpdateSectionRequest $request, Section $section)
     {
-        //
+        $this->section->update($section->id, $request->all());
+        return to_route('hero.section')->with('succes', 'Hero section berhasil diperbarui');
     }
 
     /**
