@@ -25,101 +25,162 @@
 @endsection
 
 @section('content')
-    <div class="row">
-        <div class="col-sm-12">
+<form enctype="multipart/form-data" action="{{ route('news.store') }}" class="form theme-form"
+    method="POST">
+    @csrf
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12">
             <div class="card">
-                <div class="card-body">
-                    <form enctype="multipart/form-data" action="{{ route('news.store') }}" class="form theme-form"
-                        method="POST">
-                        @csrf
-                        <div class="row">
-                            <div class="col">
-                                <div class="mb-3">
-                                    <label>Judul Berita</label>
-                                    <input class="form-control" value="{{ old('title') }}" type="text" name="title"
-                                        placeholder="Mis: Peluncuran Humma Academy" />
-
-                                    @error('title')
-                                        <div class="text-danger">{{ $message }}</div>
-                                    @enderror
-                                </div>
+                <div class="card-body add-post">
+                <form class="row needs-validation" novalidate="">
+                    <div class="col-sm-12">
+                        <div class="mb-3">
+                            <label>Judul Berita</label>
+                            <input class="form-control" value="{{ old('title') }}" type="text" name="title" placeholder="Mis: Peluncuran Humma Academy" />
+                            @error('title')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="mb-3">
+                            <div class="col-form-label">Kategori Berita
+                                <select class="js-example-basic-multiple col-sm-12" multiple="multiple" name="category[]">
+                                @forelse ($categories as $category)
+                                    <option value="{{ $category->id }}">{{ $category->name }}</option>  
+                                @empty
+                                    <option disabled>Belum ada kategori berita</option>
+                                @endforelse
+                                </select>
+                                @error('category')
+                                <div class="text-danger">{{ $message }}</div>
+                                @enderror
                             </div>
                         </div>
-                        <div class="row">
-                            <!-- <div class="col">
-                                <div class="mb-3">
-                                    <label>Kategori</label>
-                                    <select name="category_news_id" class="js-example-basic-single form-control">
-                                        <option disabled selected>Pilih Kategori</option>
-                                        @forelse ($categories as $category)
-                                            <option {{ old('category_news_id') === $category->id ?: 'selected' }}
-                                                value="{{ $category->id }}">{{ $category->name }}</option>
-                                        @empty
-                                            <option value="add-new">Tambahkan Kategori Baru</option>
-                                        @endforelse
-                                    </select>
-
-                                    @error('category_news_id')
-                                        <div class="text-danger">{{ $message }}</div>
-                                    @enderror
-                                </div>
-                            </div> -->
-
-                            <div class="row">
-                                <div class="col">
-                                    <div class="mb-3">
-                                        <label>Deskripsi Berita</label>
-                                        <div id="editor" style="height: 250px">{!! old('description') !!}</div>
-                                        <input type="hidden" id="description" value="{!! old('description') !!}"
-                                            name="description" />
-
-                                        @error('description')
-                                            <div class="text-danger">{{ $message }}</div>
-                                        @enderror
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="row">
-                                <div class="col">
-                                    <div class="mb-3">
-                                        <label>Upload Foto</label>
-                                        <input type="file" name="image[]" id="a" accept="image/*" class="form-control" />
-
-                                        @error('image')
-                                            <div class="text-danger">{{ $message }}</div>
-                                        @enderror
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-12">
-                                    <div class="mb-3">
-                                        <label>Tag</label>
-                                        <input type="text" name="category[]" >
-                                        <!-- <input class="basic form-control" name="category[]"
-                                            placeholder="Mis: Teknologi, Jelajah, Hummatech" id="tags"
-                                            value="{{ old('tags') }}" />
-                                        <div class="form-text">Masukkan tag dengan koma</div> -->
-
-                                        @error('category')
-                                            <div class="text-danger">{{ $message }}</div>
-                                        @enderror
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <div class="text-end">
-                                        <a class="btn btn-danger" href="/news">Cancel</a>
-                                        <button type="submit" class="btn btn-success me-3">Tambahkan</button>
-                                    </div>
-                                </div>
-                            </div>
+                        <div class="mb-3">
+                            <label>Deskripsi Berita</label>
+                            <div id="editor" style="height: 200px">{!! old('description') !!}</div>
+                            <input type="hidden" id="description" value="{!! old('description') !!}"
+                                name="description" />
+        
+                            @error('description')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+                    </div>
+                </form>
+                <div class="mb-3">
+                    <label for="dropzone">Gambar Berita</label>
+                    <form class="dropzone" id="singleFileUpload" action="https://admin.pixelstrap.net/upload.php">
+                        <div class="m-0 dz-message needsclick">
+                            <h4 class="mb-0">Drop files here or click to upload.</h4>
                         </div>
                     </form>
                 </div>
+                <div class="text-end">
+                    <a class="btn btn-light-danger me-3" href="/news">Tutup</a>
+                    <button type="submit" class="btn btn-primary me-3">Tambah</button>
+                </div>
+                </div>
+            </div>
+            </div>
+        </div>
+        </div>
+    {{-- <div class="row">
+        <div class="col">
+            <div class="mb-3">
+                <label>Judul Berita</label>
+                <input class="form-control" value="{{ old('title') }}" type="text" name="title"
+                    placeholder="Mis: Peluncuran Humma Academy" />
+
+                @error('title')
+                    <div class="text-danger">{{ $message }}</div>
+                @enderror
             </div>
         </div>
     </div>
+    <div class="row">
+        <!-- <div class="col">
+            <div class="mb-3">
+                <label>Kategori</label>
+                <select name="category_news_id" class="js-example-basic-single form-control">
+                    <option disabled selected>Pilih Kategori</option>
+                    @forelse ($categories as $category)
+                        <option {{ old('category_news_id') === $category->id ?: 'selected' }}
+                            value="{{ $category->id }}">{{ $category->name }}</option>
+                    @empty
+                        <option value="add-new">Tambahkan Kategori Baru</option>
+                    @endforelse
+                </select>
+
+                @error('category_news_id')
+                    <div class="text-danger">{{ $message }}</div>
+                @enderror
+            </div>
+        </div> -->
+
+        <div class="row">
+            <div class="col">
+                <div class="mb-3">
+                    <label>Deskripsi Berita</label>
+                    <div id="editor" style="height: 250px">{!! old('description') !!}</div>
+                    <input type="hidden" id="description" value="{!! old('description') !!}"
+                        name="description" />
+
+                    @error('description')
+                        <div class="text-danger">{{ $message }}</div>
+                    @enderror
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <div class="mb-3">
+                    <label>Upload Foto</label>
+                    <div class="row">
+                        <div class="col">
+                            <div class="mb-3">
+                            <label>Upload project file</label>
+                            <form class="dropzone" id="singleFileUpload" action="https://admin.pixelstrap.net/upload.php">
+                                <div class="m-0 dz-message needsclick"><i class="icon-cloud-up"></i>
+                                    <h4 class="mb-0">Drop files here or click to upload.</h4>
+                                </div>
+                            </form>
+                            </div>
+                        </div>
+                        </div>
+                    @error('image')
+                        <div class="text-danger">{{ $message }}</div>
+                    @enderror
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="mb-3">
+                    <div class="col-form-label">Kategori berita
+                        <select class="js-example-basic-multiple col-sm-12" multiple="multiple" name="category[]">
+                        @forelse ($categories as $category)
+                            <option value="{{ $category->id }}">{{ $category->name }}</option>  
+                        @empty
+                            <option disabled>Belum ada kategori berita</option>
+                        @endforelse
+                        </select>
+                        @error('category')
+                        <div class="text-danger">{{ $message }}</div>
+                        @enderror
+                    </div>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="text-end">
+                    <a class="btn btn-light-danger" href="/news">Tutup</a>
+                    <button type="submit" class="btn btn-primary me-3">Tambahkan</button>
+                </div>
+            </div>
+        </div>
+    </div> --}}
+</form>
 @endsection
 
 @section('script')
@@ -130,7 +191,15 @@
     <script src="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.js"></script>
     <script src="https://unpkg.com/filepond-plugin-image-edit/dist/filepond-plugin-image-edit.js"></script>
     <script src="https://unpkg.com/filepond/dist/filepond.js"></script>
-
+    <script src="../assets/js/dropzone/dropzone.js"></script>
+    <script src="../assets/js/dropzone/dropzone-script.js"></script>
+    <script src="../assets/js/select2/select2.full.min.js"></script>
+    <script src="../assets/js/select2/select2-custom.js"></script>
+    <script src="../assets/js/editor/ckeditor/ckeditor.js"></script>
+    <script src="../assets/js/editor/ckeditor/adapters/jquery.js"></script>
+    <script src="../assets/js/slick/slick.min.js"></script>
+    <script src="../assets/js/slick/slick.js"></script>
+    <script src="../assets/js/header-slick.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify"></script>
     <script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.polyfills.min.js"></script>
 
@@ -205,4 +274,7 @@
             $('#description').val(quill.root.innerHTML);
         });
     </script>
+
+    <script src="../assets/js/dropzone/dropzone.js"></script>
+    <script src="../assets/js/dropzone/dropzone-script.js"></script>
 @endsection
