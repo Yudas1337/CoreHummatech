@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Enums\TypeEnum;
+use App\Enums\UploadDiskEnum;
 use App\Traits\UploadTrait;
 use App\Http\Requests\StoreSaleRequest;
 use App\Http\Requests\StoreNewsRequest;
@@ -41,16 +42,12 @@ class NewsService
     public function store(StoreNewsRequest $request): array|bool
     {
         $data = $request->validated();
-
-        // Splitting tags data
-        $array = json_decode($request->tags, true);
-        $values = collect($array)->flatten()->unique()->values();
-
-        // Storing data
-        $data['image'] = $request->file('image')->store(TypeEnum::NEWS->value, 'public');
         $data['slug'] = Str::slug($request->title);
-        $data['tags'] = $values->each(fn($value) => "$value")->join(',');
-
+        $images = [];
+        foreach ($data['image'] as $image) {
+            array_push($images, $image->store(UploadDiskEnum::NEWS->value, 'public'));
+        }
+        $data['image'] = $images;
         return $data;
     }
 

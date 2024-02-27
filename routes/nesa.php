@@ -22,4 +22,3 @@ Route::put('update/profile/{profile}' ,[ProfileController::class ,'update'])->na
 
 // Route::post('/store/profile', 'ProfileController@storeOrUpdate')->name('store.profile');
 // Route::put('/update/profile/{id}', 'ProfileController@storeOrUpdate')->name('update.profile');
-

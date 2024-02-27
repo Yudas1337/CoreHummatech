@@ -1,11 +1,11 @@
-<div class="modal fade" id="modal-delete" tabindex="-1" aria-labelledby="exampleModalLabel1">
+<div class="modal fade" id="modal-delete" tabindex="-1" aria-labelledby="modal-deleteLabel1">
     <div class="modal-dialog modal-sm" role="document">
         <form id="form-delete" method="POST">
             @method('DELETE')
             @csrf
             <div class="modal-content">
                 <div class="modal-header d-flex align-items-center">
-                    <h5 class="modal-title" id="exampleModalLabel1">
+                    <h5 class="modal-title" id="modal-deleteLabel1">
                         Hapus data
                     </h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>

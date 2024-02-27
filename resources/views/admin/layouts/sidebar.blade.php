@@ -67,7 +67,7 @@
     </li>
     <li class="sidebar-list">
         <i class="fa fa-thumb-tack"></i>
-        <a class="sidebar-link sidebar-title link-nav" href="/product">
+        <a class="sidebar-link sidebar-title link-nav" href="{{ route('product.index') }}">
             <svg class="stroke-icon">
                 <use href="{{ asset('assets/svg/icon-sprite.svg#stroke-ecommerce') }}"></use>
             </svg>
@@ -171,7 +171,7 @@
                 <a href="/setting/departement">Jabatan</a>
             </li>
             <li>
-                <a href="/setting/faq">FAQ</a>
+                <a href="{{ route('faq.index') }}">FAQ</a>
             </li>
             <li>
                 <a href="/setting/company">Struktur usaha</a>

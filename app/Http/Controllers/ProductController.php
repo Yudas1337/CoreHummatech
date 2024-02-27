@@ -36,7 +36,8 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        $services = $this->service->get();
+        return view('admin.pages.products.create', compact('services'));
     }
 
     /**

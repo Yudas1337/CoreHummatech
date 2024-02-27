@@ -18,11 +18,6 @@ class NewsRepository extends BaseRepository implements NewsInterface
     {
         return $this->model->query()->paginate($pagination);
     }
-
-    // public function custim(): mixed
-    // {
-    //     return $this->model->query()->get();
-    // }
     public function store(array $data): mixed
     {
         return $this->model->query()->create($data);
