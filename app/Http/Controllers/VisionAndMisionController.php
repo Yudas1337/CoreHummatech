@@ -36,7 +36,8 @@ class VisionAndMisionController extends Controller
      */
     public function store(StoreVisionAndMisionRequest $request)
     {
-        //
+        $this->visionAndMision->store($request->validated());
+        return back();
     }
 
     /**

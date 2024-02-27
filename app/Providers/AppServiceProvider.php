@@ -9,6 +9,7 @@ use App\Contracts\Interfaces\CollabMitraInterface;
 use App\Contracts\Interfaces\NewsInterface;
 use App\Contracts\Interfaces\PositionInterface;
 use App\Contracts\Interfaces\ProductInterface;
+use App\Contracts\Interfaces\ProfileInterface;
 use App\Contracts\Repositories\BranchRepository;
 use App\Contracts\Repositories\CategoryNewsRepository;
 use App\Contracts\Repositories\CollabCategoryRepository;
@@ -24,6 +25,7 @@ use App\Contracts\Interfaces\VisionAndMisionInterface;
 use App\Contracts\Repositories\CollabMitraRepository;
 use App\Contracts\Repositories\NewsRepository;
 use App\Contracts\Repositories\PositionRepository;
+use App\Contracts\Repositories\ProfileRepository;
 use App\Contracts\Repositories\SaleRepository;
 use App\Contracts\Repositories\SalesPackageRepository;
 use App\Contracts\Repositories\SectionRepository;
@@ -51,7 +53,8 @@ class AppServiceProvider extends ServiceProvider
         PositionInterface::class => PositionRepository::class,
         TeamInterface::class => TeamRepository::class,
         TestimonialInterface::class => TestimonialRepository::class,
-        VisionAndMisionInterface::class => VisionAndMisionRepository::class
+        VisionAndMisionInterface::class => VisionAndMisionRepository::class,
+        ProfileInterface::class => ProfileRepository::class
     ];
 
     /**

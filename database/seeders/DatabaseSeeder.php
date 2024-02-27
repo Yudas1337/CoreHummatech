@@ -20,5 +20,7 @@ class DatabaseSeeder extends Seeder
             'password' => bcrypt('hummatech'),
             'role' => 'admin',
         ]);
+
+        $this->call(ProfileSeeder::class);
     }
 }
