@@ -9,9 +9,9 @@ use Illuminate\Pagination\LengthAwarePaginator;
 
 class EnterpriseStructureRepository extends BaseRepository implements EnterpriseStructureInterface
 {
-    public function __construct(EnterpriseStructure $structure)
+    public function __construct(EnterpriseStructure $enterpriseStructure)
     {
-        $this->model = $structure;
+        $this->model = $enterpriseStructure;
     }
 
     public function customPaginate(Request $request, int $pagination = 10): mixed

@@ -41,6 +41,7 @@ use App\Contracts\Repositories\CollabCategoryRepository;
 use App\Contracts\Repositories\NewsCategoryRepository;
 use App\Contracts\Repositories\NewsImageRepository;
 use App\Contracts\Repositories\VisionAndMisionRepository;
+use Illuminate\Pagination\Paginator;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -79,6 +80,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        Paginator::useBootstrapFive();
     }
 }

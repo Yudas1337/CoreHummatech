@@ -3,14 +3,15 @@
 namespace App\Services;
 
 use App\Enums\TypeEnum;
+use App\Http\Requests\StoreEnterpriseStructureRequest;
 use App\Http\Requests\UpdateEnterpriseStructureRequest;
 use App\Traits\UploadTrait;
 use App\Http\Requests\StoreSaleRequest;
 use App\Http\Requests\UpdateSaleRequest;
 use App\Models\EnterpriseStructure;
 use App\Models\Sale;
-use App\Models\News;
-use Illuminate\Support\Str;
+use Illuminate\Support\Arr;
+
 
 class EnterpriseStructureService
 {
@@ -38,13 +39,15 @@ class EnterpriseStructureService
      *
      * @return array|bool
      */
-    public function store(UpdateEnterpriseStructureRequest $request): array|bool
+    public function store(StoreEnterpriseStructureRequest $request): array|bool
     {
         $data = $request->validated();
 
-        // Storing data
         $data['image'] = $request->file('image')->store(TypeEnum::ENTERPRISESTRUCTURE->value, 'public');
-        $data['products'] = json_encode($request->products);
+
+        // Converting products json
+        $dataProducts = Arr::where($data['products'], fn($value) => !is_null($value));
+        $data['products'] = $dataProducts > 0 ? json_encode($dataProducts) : json_encode([]);
 
         return $data;
     }
@@ -62,14 +65,14 @@ class EnterpriseStructureService
         $data = $request->validated();
 
         if ($request->hasFile('image') && $request->file('image')->isValid()) {
-            $this->remove($service->image);
             $data['image'] = $request->file('image')->store(TypeEnum::ENTERPRISESTRUCTURE->value, 'public');
         } else {
             $data['image'] = $service->image;
         }
 
-        // Splitting tags data
-        $data['products'] = json_encode($request->products);
+        // Converting products json
+        $dataProducts = Arr::where($data['products'], fn($value) => !is_null($value));
+        $data['products'] = $dataProducts > 0 ? json_encode($dataProducts) : json_encode([]);
 
         return $data;
     }

@@ -227,7 +227,7 @@
                 <div class="container">
                     <div class="row align-center">
                         <div class="col-lg-4 info">
-                            <h2>Menghadirkan produk  dengan kualitas dan  inovasi terbaik</h2>
+                            <h2>Menghadirkan produk dengan kualitas dan inovasi terbaik</h2>
                             <p>
                                 Lorem ipsum dolor sit amet consectetur. Blandit donec pulvinar eget senectus posuere amet
                                 ultricies justo enim tempus pellentesque. </p>

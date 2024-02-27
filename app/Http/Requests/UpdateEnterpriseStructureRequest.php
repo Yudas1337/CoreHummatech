@@ -23,7 +23,9 @@ class UpdateEnterpriseStructureRequest extends FormRequest
     {
         return [
             'title' => 'required',
-            'products.*' => 'min:1',
+            'image' => 'nullable',
+            'description' => 'nullable',
+            'products.*' => 'nullable',
         ];
     }
 
@@ -31,7 +33,6 @@ class UpdateEnterpriseStructureRequest extends FormRequest
     {
         return [
             'title.required' => 'Kolom Judul harus diisi dahulu.',
-            'products.*.min' => 'Tiap Kolom Produk tidak boleh kosong.',
         ];
     }
 }

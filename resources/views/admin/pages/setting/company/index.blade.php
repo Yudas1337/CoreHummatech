@@ -39,7 +39,7 @@
                                                         type="text" required="" autocomplete="name"
                                                         placeholder="Hummatech Digital Indonesia" />
 
-                                                    @error('name')
+                                                    @error('title')
                                                         <div class="text-danger">{{ $message }}</div>
                                                     @enderror
                                                 </div>
@@ -88,8 +88,8 @@
                                                         class="btn add-button-trigger btn-primary mt-3">Tambah
                                                         Produk</button>
 
-                                                    @error('product')
-                                                        <div class="text-danger">{{ $message }}</div>
+                                                    @error('products.*')
+                                                        <div class="text-danger mt-3">{{ $message }}</div>
                                                     @enderror
                                                 </div>
                                                 <div class="mb-3 mt-0 col-md-12">
@@ -125,18 +125,20 @@
 @section('content')
     <div class="row">
         @forelse ($data as $item)
-            <div class="col-md-4 col-lg-3">
+            <div class="col-xl-4 col-xxl-3">
                 <div class="card card-body shadow rounded-4">
                     <img src="{{ Storage::url($item->image) }}" alt="{{ $item->title }}" class="w-100 rounded-3" />
 
                     <div class="pt-4">
                         <h1 class="h4 border-bottom pb-3 mb-3 text-primary">{{ $item->title }}</h1>
 
-                        <div class="row mb-3">
-                            @foreach ($item->products as $product)
-                                <div class="col-6 mb-2">&mdash; {{ $product }}</div>
-                            @endforeach
-                        </div>
+                        @if (count(json_decode($item->products)) > 0)
+                            <div class="row mb-3">
+                                @foreach (json_decode($item->products) as $product)
+                                    <div class="col-6 mb-2">&mdash; {{ $product }}</div>
+                                @endforeach
+                            </div>
+                        @endif
 
                         <form action="{{ route('company.destroy', $item->id) }}" id="form-{{ $item->id }}"
                             method="post">
@@ -152,7 +154,7 @@
                         </div>
 
                         <!-- Edit Modal -->
-                        <div class="modal fade modal-bookmark" id="edit-{{ $item->id }}" tabindex="-1"
+                        <div class="modal fade modal-bookmark modal-edit" id="edit-{{ $item->id }}" tabindex="-1"
                             role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog modal-lg" role="document">
                                 <div class="modal-content">
@@ -162,7 +164,8 @@
                                         <button class="btn-close" type="button" data-bs-dismiss="modal"
                                             aria-label="Close"></button>
                                     </div>
-                                    <form class="form-bookmark needs-validation" action="{{ route('company.update', $item->id) }}" method="POST"
+                                    <form class="form-bookmark needs-validation"
+                                        action="{{ route('company.update', $item->id) }}" method="POST"
                                         id="bookmark-form" novalidate="" enctype="multipart/form-data">
                                         @csrf
                                         @method('PUT')
@@ -171,8 +174,9 @@
                                                 <div class="mb-3 mt-0 col-md-12">
                                                     <label for="bm-title">Nama</label>
                                                     <input class="form-control" name="title"
-                                                        value="{{ old('title', $item->title) }}" type="text" required=""
-                                                        autocomplete="name" placeholder="Hummatech Digital Indonesia" />
+                                                        value="{{ old('title', $item->title) }}" type="text"
+                                                        required="" autocomplete="name"
+                                                        placeholder="Hummatech Digital Indonesia" />
 
                                                     @error('name')
                                                         <div class="text-danger">{{ $message }}</div>
@@ -193,12 +197,12 @@
                                                             class="opacity-75">(Opsional)</span></label>
 
                                                     <input class="form-control" type="text"
-                                                        value="{{ old('products', $item->products) ? old('products', $item->products)[0] : '' }}"
+                                                        value="{{ old('products', json_decode($item->products)) ? old('products', json_decode($item->products))[0] : '' }}"
                                                         name="products[]" required="" autocomplete="name"
                                                         placeholder="Mis: Website Development" />
 
                                                     <div id="product-listing">
-                                                        @foreach (old('products', $item->products) as $index => $itemProductInput)
+                                                        @foreach (old('products', json_decode($item->products)) as $index => $itemProductInput)
                                                             @if ($index > 0)
                                                                 @php
                                                                     $uniqueID = uniqid();
@@ -224,17 +228,18 @@
                                                         class="btn add-button-trigger btn-primary mt-3">Tambah
                                                         Produk</button>
 
-                                                    @error('product')
+                                                    @error('products.*')
                                                         <div class="text-danger">{{ $message }}</div>
                                                     @enderror
                                                 </div>
                                                 <div class="mb-3 mt-0 col-md-12">
                                                     <label for="bm-title">Foto</label>
 
-                                                    <img src="{{ Storage::url($item->image) }}" alt="{{ $item->title }}" class="w-100 mb-3 border rounded-3">
+                                                    <img id="image-edit-preview" src="{{ Storage::url($item->image) }}"
+                                                        alt="{{ $item->title }}" class="w-100 mb-3 border rounded-3">
 
-                                                    <input name="image" class="form-control" type="file"
-                                                        required="" autocomplete="name" />
+                                                    <input name="image" class="form-control" id="image"
+                                                        type="file" required="" autocomplete="name" />
 
                                                     @error('image')
                                                         <div class="text-danger">{{ $message }}</div>
@@ -269,7 +274,9 @@
 
     @include('admin.components.delete-modal-component')
 
-    {{ $data->links() }}
+    <div class="mb-4">
+        {{ $data->links() }}
+    </div>
 @endsection
 
 @section('script')
@@ -279,6 +286,21 @@
             $('#form-delete').attr('action', `/setting/company/${id}`);
             $('#modal-delete').modal('show');
         });
+    </script>
+
+    <script>
+        // Function to handle image preview
+        function previewImage(event) {
+            var reader = new FileReader();
+            reader.onload = function() {
+                var output = document.getElementById('image-edit-preview');
+                output.src = reader.result;
+            }
+            reader.readAsDataURL(event.target.files[0]);
+        }
+
+        // Add event listener to the input element
+        document.getElementById('image').addEventListener('change', previewImage);
     </script>
 
     <script>
