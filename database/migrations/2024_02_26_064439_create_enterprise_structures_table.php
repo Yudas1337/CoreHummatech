@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('enterprise_structures', function (Blueprint $table) {
             $table->string('id')->primary();
             $table->string('title', 191);
-            $table->text('description');
-            $table->text('products');
+            $table->text('description')->nullable();
+            $table->text('products')->nullable();
             $table->text('image');
             $table->timestamps();
         });

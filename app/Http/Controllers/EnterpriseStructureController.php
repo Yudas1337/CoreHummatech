@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Contracts\Interfaces\EnterpriseStructureInterface;
+use App\Http\Requests\StoreEnterpriseStructureRequest;
 use App\Http\Requests\UpdateEnterpriseStructureRequest;
 use App\Models\EnterpriseStructure;
 use App\Services\EnterpriseStructureService;
@@ -38,7 +39,7 @@ class EnterpriseStructureController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(UpdateEnterpriseStructureRequest $request)
+    public function store(StoreEnterpriseStructureRequest $request)
     {
         $data = $this->enterpriseService->store($request);
         $this->enterprise->store($data);
@@ -60,10 +61,10 @@ class EnterpriseStructureController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateEnterpriseStructureRequest $request, EnterpriseStructure $enterprise)
+    public function update(UpdateEnterpriseStructureRequest $request, EnterpriseStructure $enterpriseStructure)
     {
-        $data = $this->enterpriseService->update($enterprise, $request);
-        $this->enterprise->update($enterprise->id, $data);
+        $data = $this->enterpriseService->update($enterpriseStructure, $request);
+        $this->enterprise->update($enterpriseStructure->id, $data);
         return redirect()->route('company.index');
     }
 

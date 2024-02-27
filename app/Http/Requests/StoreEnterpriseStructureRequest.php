@@ -24,7 +24,7 @@ class StoreEnterpriseStructureRequest extends FormRequest
         return [
             'title' => 'required',
             'description' => 'nullable',
-            'products.*' => 'min:1',
+            'products.*' => 'nullable',
             'image' => 'required|image',
         ];
     }
