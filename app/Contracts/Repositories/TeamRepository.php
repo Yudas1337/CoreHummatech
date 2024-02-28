@@ -21,6 +21,11 @@ class TeamRepository extends BaseRepository implements TeamInterface
         return $this->model->query()->create($data);
     }
 
+    public function update(mixed $id, array $data): mixed
+    {
+        return $this->model->query()->update($data, $id);
+    }
+
     public function delete(mixed $id): mixed
     {
         return $this->model->query()->delete($id);

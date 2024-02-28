@@ -40,17 +40,16 @@
             <!-- Wrapper for slides -->
             <div class="carousel-inner carousel-zoom">
                 <div class="carousel-item active">
-                    <div class="slider-thumb bg-fixed" style="background-image: url(assets-home/img/banner/5.jpg);"></div>
+                    <div class="slider-thumb bg-fixed" style="background-image: url(assets-home/img/banner/home2.jpg);"></div>
                     <div class="box-table">
                         <div class="box-cell shadow dark">
                             <div class="container">
                                 <div class="row">
                                     <div class="col-lg-10 offset-lg-1">
                                         <div class="content">
-                                            <h1>INOVASI MENUJU <span>PERKEMBANGAN</span></h1>
+                                            <h2>HummaTech <span>Software Development</span></h2>
                                             <p class="animated slideInRight">
-                                                bertransformasi menjadi perusahaan yang mampu menjawab
-                                                tantangan di era revolusi industri 4.0
+                                                Tempat menyelesaikan masalah dengan inovasi digital, keahlian pengembangan, dan desain yang kreatif. Ciptakan ekosistem digital bersama Hummatech.
                                             </p>
                                             <a data-animation="animated zoomInUp" class="btn btn-gradient effect btn-md"
                                                 href="javascript:void(0)">Lihat Selengkapnya</a>
@@ -62,17 +61,37 @@
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <div class="slider-thumb bg-fixed" style="background-image: url(assets-home/img/banner/1.jpg);"></div>
+                    <div class="slider-thumb bg-fixed" style="background-image: url(assets-home/img/banner/hom1.jpg);"></div>
                     <div class="box-table">
                         <div class="box-cell shadow dark">
                             <div class="container">
                                 <div class="row">
                                     <div class="col-lg-10 offset-lg-1">
                                         <div class="content">
-                                            <h2 data-animation="animated slideInDown">Achiving <span>Success</span></h2>
+                                            <h2 data-animation="animated slideInDown"> Kelas Industri <span>Hummatech </span></h2>
                                             <p class="animated slideInRight">
-                                                Coming merits and was talent enough far. Sir joy northward sportsmen
-                                                education. Discovery incommode earnestly no he commanded.
+                                                pengalaman lebih dari 10 tahun ini, Hummatech berkomitmen untuk berkontribusi pada dunia pendidikan di bidang teknologi informasi.
+                                            </p>
+                                            <a data-animation="animated zoomInUp" class="btn btn-gradient effect btn-md"
+                                                href="about-us.html">Discover More</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="slider-thumb bg-fixed" style="background-image: url(assets-home/img/banner/home3.jpg);"></div>
+                    <div class="box-table">
+                        <div class="box-cell shadow dark">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-lg-10 offset-lg-1">
+                                        <div class="content">
+                                            <h2 data-animation="animated slideInDown"> Hummatech <span>Training  </span></h2>
+                                            <p class="animated slideInRight">
+                                                Tingkatkan skill digital Anda untuk memaksimalkan potensi terbaik dan meraih prestasi yang gemilang di era industri 4.0 dan 5.0.
                                             </p>
                                             <a data-animation="animated zoomInUp" class="btn btn-gradient effect btn-md"
                                                 href="about-us.html">Discover More</a>
@@ -534,7 +553,7 @@
                                         class="m-0 fw-800 {{ $now->format('l') == 'Monday' ? 'text-active' : 'text-black' }}">
                                         08:00</p>
                                 </div>
-                                
+
                                 <div>
                                     <p
                                         class="m-0 fw-800 {{ $now->format('l') == 'Monday' ? 'text-active' : 'text-inactive' }}">
