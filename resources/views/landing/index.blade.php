@@ -496,6 +496,7 @@
                                         class="m-0 fw-800 {{ $now->format('l') == 'Monday' ? 'text-active' : 'text-black' }}">
                                         08:00</p>
                                 </div>
+                                
                                 <div>
                                     <p
                                         class="m-0 fw-800 {{ $now->format('l') == 'Monday' ? 'text-active' : 'text-inactive' }}">
