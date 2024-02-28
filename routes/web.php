@@ -47,9 +47,6 @@ Route::get('/hero-section/edit', function () {
     return view('admin.pages.hero-section.edit');
 });
 
-Route::get('/setting/terms-condition', function () {
-    return view('admin.pages.terms-condition.index');
-});
 
 Route::get('/setting/terms-condition/edit', function () {
     return view('admin.pages.terms-condition.edit');

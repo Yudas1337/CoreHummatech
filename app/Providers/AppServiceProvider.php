@@ -37,6 +37,7 @@ use App\Contracts\Repositories\PositionRepository;
 use App\Contracts\Interfaces\SalesPackageInterface;
 use App\Contracts\Interfaces\NewsCategoryInterface;
 use App\Contracts\Interfaces\NewsImageInterface;
+use App\Contracts\Interfaces\TermsconditionInterface;
 use App\Contracts\Repositories\SosialMediaRepository;
 use App\Contracts\Repositories\TestimonialRepository;
 use App\Contracts\Repositories\CategoryNewsRepository;
@@ -44,6 +45,8 @@ use App\Contracts\Repositories\SalesPackageRepository;
 use App\Contracts\Repositories\CollabCategoryRepository;
 use App\Contracts\Repositories\NewsCategoryRepository;
 use App\Contracts\Repositories\NewsImageRepository;
+use App\Contracts\Repositories\TermsconditionRepository;
+use App\Contracts\Repositories\TermsconditionRepostory;
 use App\Contracts\Repositories\VisionAndMisionRepository;
 use Illuminate\Pagination\Paginator;
 
@@ -70,6 +73,7 @@ class AppServiceProvider extends ServiceProvider
         FaqInterface::class => FaqRepository::class,
         NewsCategoryInterface::class => NewsCategoryRepository::class,
         NewsImageInterface::class => NewsImageRepository::class,
+        TermsconditionInterface::class => TermsconditionRepository::class
     ];
 
     /**

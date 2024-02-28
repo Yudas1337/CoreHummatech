@@ -20,4 +20,9 @@ class Service extends Model
     {
         return $this->hasMany(Faq::class);
     }
+
+    public function termsconditions(): HasMany
+    {
+        return $this->hasMany(Termscondition::class);
+    }
 }
