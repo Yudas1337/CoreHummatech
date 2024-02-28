@@ -6,6 +6,7 @@ use App\Contracts\Interfaces\VisionAndMisionInterface;
 use App\Models\VisionAndMision;
 use App\Http\Requests\StoreVisionAndMisionRequest;
 use App\Http\Requests\UpdateVisionAndMisionRequest;
+use App\Models\MisionItems;
 
 class VisionAndMisionController extends Controller
 {
@@ -36,8 +37,20 @@ class VisionAndMisionController extends Controller
      */
     public function store(StoreVisionAndMisionRequest $request)
     {
-        $this->visionAndMision->store($request->validated());
-        return back();
+        $visionAndMision = VisionAndMision::create(['vision' => $request->vision]);
+
+        if (isset($request->missions) && is_array($request->missions)) {
+            foreach ($request->missions as $key => $mission) {
+                MisionItems::create([
+                    'vision_and_mission_id' => $visionAndMision->id,
+                    'mission' => $request->mission[$key],
+                ]);
+            }
+
+            return back()->with('success', 'Data berhasil ditambahkan');
+        } else {
+            return back()->with('error', 'Data missions tidak valid');
+        }
     }
 
     /**

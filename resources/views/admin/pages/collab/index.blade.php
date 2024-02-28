@@ -1,5 +1,31 @@
 @extends('admin.layouts.app')
 
+@section('subcontent')
+<div class="d-flex justify-content-between align-items-end pt-4">
+    <div class="col-12 col-lg-3 ">
+        <label for="kategori" class="form-label">Pilih kategori</label>
+        <select class="form-select" aria-label="Default select example" name="kategori">
+            <option>Semua</option>
+            @forelse ($collabMitras as $collabMitra)
+                <option value="{{ $collabMitra->id }}">{{ $collabMitra->name }}</option>
+            @empty
+                <option value="" disabled>Belum ada kategori produk</option>
+            @endforelse
+        </select>
+    </div>
+    <div class="col-12 col-lg-7 d-flex justify-content-end">
+        <div class="d-flex gap-2 col-sm-7">
+            <div class="input-group">
+                <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-magnifying-glass"></i></span>
+                <input type="text" class="form-control" placeholder="Cari Produk" aria-label="Username" aria-describedby="basic-addon1">
+            </div>
+            <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#tambah">Tambah</button>
+        </div>
+    </div>
+</div>
+
+@endsection
+
 @section('content')
     <style>
         .btn-xs {
@@ -7,46 +33,25 @@
             font-size: 10px;
         }
     </style>
-    <div class=" p-1">
-        <div class="card border-0 shadow p-3 mt-3">
-            <div class="row">
-                <div class="col-12 col-lg-6">
-                    <h4 class="m-2">Mitra</h4>
-                </div>
-                <div class="col-12 col-lg-6">
-                    <div class="d-flex justify-content-lg-end justify-content-start">
-                        <div class="d-flex align-items-center gap-2">
-                            <p class="m-0 me-2">Cari:</p>
-                            <input class="form-control me-2" type="text" placeholder="Search" aria-label="Search">
-                        </div>
-                        <button class="btn btn-primary m-0" type="button" data-bs-toggle="modal"
-                            data-bs-target="#tambah">Tambah</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-    <div class="col-lg-12">
+    <div class="col-lg-12 pt-5">
         <div class="row">
             @forelse ($collabMitras as $index=>$collabMitra)
             <div class="col-12 col-lg-3 col-md-4">
                 <div class="card border-0 shadow rounded">
-                    <div class="ribbon mt-2 ribbon-primary ribbon-space-bottom">Magang</div>
+                    {{-- <div class="ribbon mt-2 ribbon-primary ribbon-space-bottom">Magang</div> --}}
                     <div class="card-body">
                         <div class="d-flex flex-column">
                             <div class="d-flex gap-3 justify-content-start">
                                 <img src="{{ asset('storage/' . $collabMitra->image) }}" class="rounded" width="110px"
                                     alt="">
                                 <div class="">
-                                    <span class="badge" style="background-color: #E8FFEE; color: #008000">{{ $collabMitra->collabCategory->name }}</span>
+                                    <span class="badge" style="background-color: #FFF8EA; color: #FFAA05">{{ $collabMitra->collabCategory->name }}</span>
                                     <p class="my-3" style="font-size: 13px">{{ $collabMitra->name }}</p>
                                     <div class="mt-2">
-                                        <button class="btn btn-warning btn-edit btn-xs mt-2" type="button" data-bs-toggle="modal"
+                                        <button class="btn btn-edit btn-xs mt-2" style="background-color: #DDEAFF; color: #307EF3" type="button" data-bs-toggle="modal"
                                         data-bs-target="#edit" data-id="{{ $collabMitra->id }}"
                                         data-name="{{ $collabMitra->name }}" data-image="{{ $collabMitra->image }}" data-collab_category_id="{{ $collabMitra->collab_category_id }}">Edit</button>
-                                        <button class="btn-delete btn btn-danger btn-xs mt-2" data-id="{{ $collabMitra->id }}">
+                                        <button class="btn-delete btn btn-xs mt-2" style="background-color: #FFE8EA; color: #DC3545" data-id="{{ $collabMitra->id }}">
                                             Hapus
                                         </button>
                                     </div>

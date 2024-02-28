@@ -97,7 +97,7 @@
                             </div>
                             <div class="mb-3 mt-0 col-md-12">
                                 <label for="bm-title">Misi</label>
-                                <input class="form-control" type="text" name="misions[]"
+                                <input class="form-control" type="text" name="mission[]"
                                     required="" autocomplete="name"
                                     placeholder="Masukkan Misi" />
 
@@ -131,7 +131,7 @@
             let idInput = 'input_' + Math.random().toString(36).substr(2, 9); // Generate random id
             let target = $(e.target).parent().find('#product-listing');
             target.append(`<div class="d-flex align-items-center mt-3 gap-2" id="${idInput}">
-            <input class="form-control mb-0" type="text" name="misions[]"
+            <input class="form-control mb-0" type="text" name="mission[]"
                 required="" autocomplete="name"
                 placeholder="Masukkan Misi" />
             <button onclick="deleteElement('${idInput}')" type="button" class="btn delete-trigger px-3 mt-0 btn-danger"><i

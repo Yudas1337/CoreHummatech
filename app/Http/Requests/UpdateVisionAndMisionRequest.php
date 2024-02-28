@@ -11,7 +11,7 @@ class UpdateVisionAndMisionRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,8 @@ class UpdateVisionAndMisionRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'vision.*' => 'nullable|string',
+            'mission.*' => 'nullable|string',
         ];
     }
 }
