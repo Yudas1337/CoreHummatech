@@ -20,9 +20,9 @@
             <div class="row align-center">
                 <div class="col-lg-5 info">
                     <div class="content">
-                        <h2>Let's talk?</h2>
+                        <h2>Hubungi Kami</h2>
                         <p>
-                            It's all about the humans behind a brand and those experiencing it, we're right there. In the middle performance quick.
+                            Kami di Sini untuk Anda! Hubungi Kami untuk Bantuan Langsung
                         </p>
                         <ul>
                             <li>
@@ -32,7 +32,8 @@
                                 <div class="content">
                                     <h5>Address</h5>
                                     <p>
-                                        22 Baker Street, <br> London, United Kingdom, <br> W1U 3BW
+                                        Perum. Permata Regency 1 Blok 10 No. 28 Kec. Karang Ploso,
+                                        Kab. Malang, Jawa Timur, Indonesia
                                     </p>
                                 </div>
                             </li>
@@ -43,7 +44,18 @@
                                 <div class="content">
                                     <h5>Contact</h5>
                                     <p>
-                                        +44-20-7328-4499 <br> +99-34-8878-9989
+                                        +123456789
+                                    </p>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="icon">
+                                    <i class="fas fa-phone"></i>
+                                </div>
+                                <div class="content">
+                                    <h5>Email</h5>
+                                    <p>
+                                        example@gmaio.com
                                     </p>
                                 </div>
                             </li>
