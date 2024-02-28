@@ -104,7 +104,47 @@
     ============================================= -->
     @include('landing.news.layouts.header')
     <!-- End Header -->
+    <style>
+        .custom-tabs {
+          padding-top: 25px;
+          padding-bottom: 2px;
+      }
 
+      .custom-tabs li {
+          margin-right: 80px;
+      }
+
+      .custom-tabs li a {
+          position: relative;
+      }
+
+      .custom-tabs li a:after {
+          content: "";
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          width: 100%;
+          height: 5px;
+          background-color: transparent;
+          transition: background-color 0.3s;
+      }
+
+      .custom-tabs li.active a:after {
+          background-color: #337ab7;
+      }
+      </style>
+      <div class="about-us-area default-padding">
+          <div class="container">
+              <ul class="nav navbar-nav custom-tabs">
+                  <li class="active"><a href="#">Terbaru</a></li>
+                  <li><a href="#">It technology</a></li>
+                  <li><a href="#">Berita perusahaan</a></li>
+                  <li><a href="#">Teknologi</a></li>
+                  <li><a href="#">tutorial</a></li>
+                  <li><a href="#">Businnes</a></li>
+              </ul>
+          </div>
+      </div>
     @yield('content')
 
     <!-- Start Footer
