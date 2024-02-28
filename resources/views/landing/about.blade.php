@@ -120,8 +120,8 @@
         </div>
     </div>
 
-    <div class="work-process-area features-area default-padding-bottom">
-        <div class="container">
+    <div class="work-process-area features-area default-padding-bottom py-5">
+        <div class="container pt-5">
             <div class="row">
                 <div class="col-lg-8 offset-lg-2">
                     <div class="site-heading text-center">

@@ -9045,4 +9045,21 @@ nav.navbar.bootsnav {
         display: none;
     }
 }
-
+  
+.btn-stroke-gradient {
+    background: none;
+    border: 3px solid;
+    border-image: linear-gradient(to right, #1273eb, #18ebeb, #1273eb);
+    border-image-slice: 1;
+    border-radius: 20%;
+    color: black;
+    -webkit-background-clip: text;
+    background-clip: text;
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 12px 40px;
+    cursor: pointer;
+    transition: border-image 0.3s ease;
+    margin-right: 10px;
+}
