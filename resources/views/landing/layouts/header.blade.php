@@ -73,7 +73,7 @@
                         <a href="/berita" target="_blank">Berita</a>
                     </li>
                     <li>
-                        <a href="">Hubungi</a>
+                        <a href="/contact">Hubungi</a>
                     </li>
                     <li>
                         <a href="">Lowongan</a>
