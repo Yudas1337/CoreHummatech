@@ -67,7 +67,7 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="">Produk</a>
+                        <a href="{{ url('/produk') }}">Produk</a>
                     </li>
                     <li>
                         <a href="/berita" target="_blank">Berita</a>
