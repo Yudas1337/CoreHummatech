@@ -14,15 +14,15 @@
 
     <!-- ========== Page Title ========== -->
     @hasSection('title')
-        <title>{!! "{$__env->yieldContent('title')} &mdash; " . config('app.name', 'Laravel') !!}</title>
+        <title>{!! "{$__env->yieldContent('title')} &mdash; " . Hummatech !!}</title>
     @else
-        <title>{{ config('app.name', 'Laravel') }}</title>
+        <title>Hummatech</title>
     @endif
 
     @yield('seo')
 
     <!-- ========== Favicon Icon ========== -->
-    <link rel="shortcut icon" href="{{ asset('assets-home/img/favicon.png') }}" type="image/x-icon">
+    <link rel="shortcut icon" href="{{ asset('logofavicon.png') }}" type="image/x-icon">
 
     <!-- ========== Start Stylesheet ========== -->
     <link href="{{ asset('assets-home/css/bootstrap.min.css') }}" rel="stylesheet" />
