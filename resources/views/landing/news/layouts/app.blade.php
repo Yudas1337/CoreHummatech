@@ -102,7 +102,7 @@
 
     <!-- Header
     ============================================= -->
-    @include('landing.layouts.header')
+    @include('landing.news.layouts.header')
     <!-- End Header -->
 
     @yield('content')

@@ -70,7 +70,7 @@
                         <a href="">Produk</a>
                     </li>
                     <li>
-                        <a href="">Berita</a>
+                        <a href="/berita" target="_blank">Berita</a>
                     </li>
                     <li>
                         <a href="">Hubungi</a>

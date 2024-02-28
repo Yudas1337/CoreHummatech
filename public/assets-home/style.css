@@ -518,7 +518,7 @@ input {
 
 .default-padding {
     padding-top: 120px;
-    padding-bottom: 120px;
+    padding-bottom: -120px;
 }
 
 .default-padding-top {
