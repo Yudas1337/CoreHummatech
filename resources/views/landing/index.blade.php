@@ -526,7 +526,7 @@
             <div class="row">
                 <div class="col-lg-8 offset-lg-2">
                     <div class="site-heading text-center">
-                        <h4>jAM OPERASIONAL</h4>
+                        <h4>JAM OPERASIONAL</h4>
                         <h3>Jam Operasional Kantor</h3>
                         <H3>PT.HUMMA TEKNOLOGI INDONESIA</H3>
                         <div class="devider"></div>

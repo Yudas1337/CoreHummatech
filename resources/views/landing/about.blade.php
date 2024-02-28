@@ -254,10 +254,59 @@
         </div>
     </div>
 
+    <div class="work-process-area features-area default-padding-bottom">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 offset-lg-2">
+                    <div class="site-heading text-center">
+                        <h4>STRUKTUR ORGANISASI</h4>
+                        <h2>Fondasi Keberhasilan dan Kolaborasi di Tempat Kerja</h2>
+                        <div class="devider"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="work-process-items features-content">
+                <div class="text-center">
+                    <img src="{{ asset('assets_landing/stuktur.png') }}" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="work-process-area features-area default-padding-bottom">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 offset-lg-2">
+                    <div class="site-heading text-center">
+                        <h4>STRUKTUR USAHA</h4>
+                        <h2>Struktur Usaha yang Membawa Inovasi dan Keberlanjutan</h2>
+                        <div class="devider"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="work-process-items features-content">
+                <div class="text-center">
+                    <img src="{{ asset('assets_landing/struktur-usaha.png') }}" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+    
     <div class="team-area default-padding bottom-less">
         <div class="container">
             <div class="team-items text-center">
                 <div class="row">
+                    <div class="col-lg-8 offset-lg-2">
+                        <div class="site-heading text-center">
+                            <h4>TIM KAMI</h4>
+                            <h2>Bersatu Demi Kesuksesan: Introducing Tim Kami yang Berdedikasi dan Profesional</h2>
+                            <div class="devider"></div>
+                        </div>
+                    </div>
                     <!-- Single Item -->
                     <div class="single-item col-lg-4 col-md-6">
                         <div class="item">
