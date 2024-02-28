@@ -11,9 +11,9 @@ Route::post('create/social/media/' , [SosialMediaController::class , 'store'])->
 Route::delete('delete/social/media/{sosialMedia}' ,[SosialMediaController::class ,'destroy'])->name('delete.social.media');
 Route::put('update/social/media/{sosialMedia}' ,[SosialMediaController::class ,'update'])->name('update.social.media');
 
-//vision & mision
-// Route::get('vision-mision' , [VisionAndMisionController::class ,'index']);
-// Route::post('create/vision/mision/' , [VisionAndMisionController::class , 'store'])->name('create.vision.mision');
+// vision & mision
+Route::get('vision-mision' , [VisionAndMisionController::class ,'index']);
+Route::post('create/vision/mision/' , [VisionAndMisionController::class , 'store'])->name('create.vision.mision');
 
 //profile
 Route::get('setting/profile', [ProfileController::class, 'index']);

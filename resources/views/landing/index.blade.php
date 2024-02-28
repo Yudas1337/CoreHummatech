@@ -1,4 +1,9 @@
 @extends('landing.layouts.app')
+@section('seo')
+<meta name="description" content="{{ config('app.name', 'Laravel') }}" />
+<meta name="title" content="Hummatech - Perusahaan Software Terbaik di Malang" />
+<meta name="description" content="Hummatech adalah perusahaan software development terbaik di Malang. Kami menyediakan solusi perangkat lunak yang inovatif dan berkualitas tinggi." />
+@endsection
 @section('content')
     <!-- Start Banner
                                     ============================================= -->
@@ -384,7 +389,7 @@
                 </div>
             </div>
         </div>
-        
+
     </div>
 
     <!-- End collab  Area -->
@@ -491,6 +496,7 @@
                                         class="m-0 fw-800 {{ $now->format('l') == 'Monday' ? 'text-active' : 'text-black' }}">
                                         08:00</p>
                                 </div>
+                                
                                 <div>
                                     <p
                                         class="m-0 fw-800 {{ $now->format('l') == 'Monday' ? 'text-active' : 'text-inactive' }}">

@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 
-
 <!-- Mirrored from validthemes.net/site-template/earna/index-4.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 26 Feb 2024 03:10:25 GMT -->
 
 <head>
@@ -9,6 +8,9 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="{{ config('app.name', 'Laravel') }}" />
+    <meta name="title" content="Hummatech - Perusahaan Software Terbaik di Malang" />
+    <meta name="description" content="Hummatech adalah perusahaan software development terbaik di Malang. Kami menyediakan solusi perangkat lunak yang inovatif dan berkualitas tinggi." />
 
     <!-- ========== Page Title ========== -->
     @hasSection('title')
@@ -46,7 +48,6 @@
     </style>
 
 </head>
-
 <body>
 
     <!-- Start Preloader

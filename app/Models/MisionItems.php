@@ -5,14 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class VisionAndMision extends Model
+class MisionItems extends Model
 {
     use HasFactory;
-    // protected $fillable = ['vision'];
     protected $guarded = [];
 
-    public function items()
+    public function visionAndMission()
     {
-        return $this->hasMany(MisionItems::class);
+        return $this->belongsTo(MisionItems::class);
     }
+
 }
