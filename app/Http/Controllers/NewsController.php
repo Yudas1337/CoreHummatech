@@ -6,6 +6,7 @@ use App\Contracts\Interfaces\CategoryNewsInterface;
 use App\Contracts\Interfaces\NewsCategoryInterface;
 use App\Contracts\Interfaces\NewsImageInterface;
 use App\Contracts\Interfaces\NewsInterface;
+use App\Helpers\ResponseHelper;
 use App\Http\Requests\StoreNewsRequest;
 use App\Http\Requests\UpdateNewsRequest;
 use App\Models\News;
@@ -54,7 +55,6 @@ class NewsController extends Controller
      */
     public function store(StoreNewsRequest $request)
     {
-        dd($request);
         $data = $this->newsService->store($request);
         $newsId = $this->news->store($data)->id;
         foreach ($data['image'] as $img) {
@@ -69,7 +69,7 @@ class NewsController extends Controller
                 'category_id' => $ctgr,
             ]);
         }
-        return redirect()->route('news.index')->with('success', "Berhasil menambah berita");
+        return ResponseHelper::success(null , trans('alert.add_success'));
     }
 
     /**

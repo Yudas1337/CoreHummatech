@@ -6,6 +6,7 @@
     <link href="https://unpkg.com/filepond-plugin-image-edit/dist/filepond-plugin-image-edit.css" rel="stylesheet" />
 
     <link href="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.css" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets_landing/dist/imageuploadify.min.css') }}" rel="stylesheet" />
 
     <style>
         .ql-toolbar button {
@@ -25,66 +26,84 @@
 @endsection
 
 @section('content')
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-sm-12">
-            <div class="card">
-                <div class="card-body add-post">
-                    <form enctype="multipart/form-data" action="{{ route('news.store') }}" class="form theme-form" method="POST">
-                        @csrf
-                    <div class="col-sm-12">
-                        <div class="mb-3">
-                            <label>Judul Berita</label>
-                            <input class="form-control" value="{{ old('title') }}" type="text" name="title" placeholder="Mis: Peluncuran Humma Academy" />
-                            @error('title')
-                                <div class="text-danger">{{ $message }}</div>
-                            @enderror
-                        </div>
-                        <div class="mb-3">
-                            <div class="col-form-label">Kategori Berita
-                                <select class="js-example-basic-multiple col-sm-12" multiple="multiple" name="category[]">
-                                @forelse ($categories as $category)
-                                    <option value="{{ $category->id }}">{{ $category->name }}</option>  
-                                @empty
-                                    <option disabled>Belum ada kategori berita</option>
-                                @endforelse
-                                </select>
-                                @error('category')
-                                <div class="text-danger">{{ $message }}</div>
-                                @enderror
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card">
+                    <div class="card-body add-post">
+                        <form enctype="multipart/form-data" action="{{ route('news.store') }}" class="form theme-form"
+                            method="POST">
+                            @csrf
+                            <div class="col-sm-12">
+                                <div class="mb-3">
+                                    <label>Judul Berita</label>
+                                    <input class="form-control" value="{{ old('title') }}" type="text" name="title"
+                                        placeholder="Mis: Peluncuran Humma Academy" />
+                                    @error('title')
+                                        <div class="text-danger">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                                <div class="mb-3">
+                                    <div class="col-form-label">Kategori Berita
+                                        <select class="js-example-basic-multiple col-sm-12" multiple="multiple"
+                                            name="category[]">
+                                            @forelse ($categories as $category)
+                                                <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                            @empty
+                                                <option disabled>Belum ada kategori berita</option>
+                                            @endforelse
+                                        </select>
+                                        @error('category')
+                                            <div class="text-danger">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label>Deskripsi Berita</label>
+                                    <div id="editor" style="height: 200px">{!! old('description') !!}</div>
+                                    <input type="hidden" id="description" value="{!! old('description') !!}"
+                                        name="description" />
+
+                                    @error('description')
+                                        <div class="text-danger">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                                <div class="mb-3">
+                                    <label for="dropzone">Gambar Berita</label>
+                                    <input id="image-uploadify" type="file" name="image[]" accept="image/*" multiple>
+                                    @error('image')
+                                        <div class="text-danger">{{ $message }}
+                                        </div>
+                                    @enderror
+                                    @error('image.*')
+                                        <div class="text-danger">{{ $message }}
+                                        </div>
+                                    @enderror
+                                </div>
+                                <div class="text-end">
+                                    <a class="btn btn-light-danger me-3" href="/news">Tutup</a>
+                                    <button type="submit" class="btn btn-send btn-primary me-3">Tambah</button>
+                                </div>
                             </div>
-                        </div>
-                        <div class="mb-3">
-                            <label>Deskripsi Berita</label>
-                            <div id="editor" style="height: 200px">{!! old('description') !!}</div>
-                            <input type="hidden" id="description" value="{!! old('description') !!}"
-                                name="description" />
-        
-                            @error('description')
-                                <div class="text-danger">{{ $message }}</div>
-                            @enderror
-                        </div>
-                        <div class="mb-3">
-                            <label for="dropzone">Gambar Berita</label>
-                            <input type="file" name="image[]" id="thumbnail" multiple>
-                        </div>
-                        <div class="text-end">
-                            <a class="btn btn-light-danger me-3" href="/news">Tutup</a>
-                            <button type="submit" class="btn btn-primary me-3">Tambah</button>
-                        </div>
+                        </form>
                     </div>
-                </form>
                 </div>
             </div>
-            </div>
         </div>
-        </div>
+    </div>
 @endsection
 
 @section('script')
     <!-- Load FilePond library -->
+    <script src="{{ asset('assets_landing/dist/imageuploadify.min.js') }}"></script>
+    <script>
+        $(document).ready(function() {
+            $('#image-uploadify').imageuploadify();
+        })
+    </script>
     <script src="https://unpkg.com/filepond-plugin-image-exif-orientation/dist/filepond-plugin-image-exif-orientation.js">
     </script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://unpkg.com/filepond-plugin-file-validate-size/dist/filepond-plugin-file-validate-size.js"></script>
     <script src="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.js"></script>
     <script src="https://unpkg.com/filepond-plugin-image-edit/dist/filepond-plugin-image-edit.js"></script>
