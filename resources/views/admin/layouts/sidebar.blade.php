@@ -165,7 +165,7 @@
                 <a href="/setting/vision-mision">Visi & Misi</a>
             </li>
             <li>
-                <a href="/setting/terms-condition">Syarat & Ketentuan</a>
+                <a href="{{ route('terms_condition.index') }}">Syarat & Ketentuan</a>
             </li>
             <li>
                 <a href="/setting/departement">Jabatan</a>

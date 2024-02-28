@@ -11,6 +11,7 @@ use App\Models\Sale;
 use App\Models\Testimonial;
 use App\Observers\EnterpriseStructureObserver;
 use App\Models\SalesPackage;
+use App\Models\Termscondition;
 use App\Observers\FaqObserver;
 use App\Observers\NewsImageObserver;
 use App\Observers\NewsObserver;
@@ -18,6 +19,7 @@ use App\Observers\SaleObserver;
 use App\Observers\TestimonialObserver;
 use Illuminate\Auth\Events\Registered;
 use App\Observers\SalesPackageObserver;
+use App\Observers\TermsconditionObserve;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 
@@ -46,6 +48,7 @@ class EventServiceProvider extends ServiceProvider
         Testimonial::observe(TestimonialObserver::class);
         Faq::observe(FaqObserver::class);
         NewsImage::observe(NewsImageObserver::class);
+        Termscondition::observe(TermsconditionObserve::class);
         // NewsCategory::observe(NewsCategoryObserver::class);
     }
 
