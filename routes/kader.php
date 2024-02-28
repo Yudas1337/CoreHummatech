@@ -9,6 +9,11 @@ use App\Http\Controllers\VisionAndMisionController;
 use Illuminate\Support\Facades\Route;
 
 
+// news
+Route::get('/berita', function () {
+    return view('landing.news.index');
+});
+
 Route::post('create/service' , [ServiceController::class , 'store'])->name('create.service');
 Route::get('detail/service/{service}' , [ServiceController::class , 'show'])->name('detail.service');
 Route::get('hero-section' , [SectionController::class , 'index'])->name('hero.section');

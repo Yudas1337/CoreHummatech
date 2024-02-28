@@ -37,8 +37,6 @@
     <link href="{{ asset('assets-home/css/bootsnav.css') }}" rel="stylesheet" />
     <link href="{{ asset('assets-home/style.css') }}" rel="stylesheet">
     <link href="{{ asset('assets-home/css/responsive.css') }}" rel="stylesheet" />
-    <link rel="stylesheet" href="owlcarousel/owl.carousel.min.css">
-    <link rel="stylesheet" href="owlcarousel/owl.theme.default.min.css">
     <!-- ========== End Stylesheet ========== -->
 
     @yield('style')
@@ -104,7 +102,7 @@
 
     <!-- Header
     ============================================= -->
-    @include('landing.layouts.header')
+    @include('landing.news.layouts.header')
     <!-- End Header -->
 
     @yield('content')
@@ -120,64 +118,68 @@
                             <img src="{{ asset('assets/images/LOGO-HUMMATECH_Putih.png') }}"
                                 style="height: 48px;width: auto;" alt="Logo">
                             <p>
-                                bertransformasi menjadi perusahaan yang mampu menjawab tantangan di era revolusi industri 4.0
+                                Melayani jasa pengembanganperangkat lunak, baik berbasis desktop, web, dan mobile apps.
+                                Mitra kami meliputi perorangan, swasta, bahkan juga lembaga pemerintahan.
                             </p>
+                            <form action="#">
+                                <input type="email" placeholder="Your Email" class="form-control" name="email">
+                                <button type="submit"> <i class="arrow_right"></i></button>
+                            </form>
                         </div>
                     </div>
                     <div class="col-lg-2 col-md-6 item">
                         <div class="f-item link">
-                            <h4 class="widget-title">Sosial Media</h4>
+                            <h4 class="widget-title">Quick LInk</h4>
                             <ul>
                                 <li>
-                                    <a href="#"><i class="fas fa-angle-right"></i> Youtube</a>
+                                    <a href="{{ url('/') }}"><i class="fas fa-angle-right"></i> Home</a>
                                 </li>
                                 <li>
-                                    <a href="#"><i class="fas fa-angle-right"></i> Instagram</a>
+                                    <a href="{{ url('about-us') }}"><i class="fas fa-angle-right"></i> About us</a>
                                 </li>
                                 <li>
-                                    <a href="#"><i class="fas fa-angle-right"></i> Facebook</a>
+                                    <a href="about-us.html"><i class="fas fa-angle-right"></i> Compnay History</a>
                                 </li>
                                 <li>
-                                    <a href="#"><i class="fas fa-angle-right"></i>  Linkedin</a>
+                                    <a href="about-us.html"><i class="fas fa-angle-right"></i> Features</a>
                                 </li>
                                 <li>
+                                    <a href="blog-with-sidebar.html"><i class="fas fa-angle-right"></i> Blog Page</a>
+                                </li>
+                                <li>
+                                    <a href="about-us.html"><i class="fas fa-angle-right"></i> Login</a>
+                                </li>
                             </ul>
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-6 item">
                         <div class="f-item link">
-                            <h4 class="widget-title">Layanan Kami</h4>
+                            <h4 class="widget-title">Community</h4>
                             <ul>
                                 <li>
-                                    <a href="about-us.html"><i class="fas fa-angle-right"></i> Software Development</a>
+                                    <a href="about-us.html"><i class="fas fa-angle-right"></i> Career</a>
                                 </li>
                                 <li>
-                                    <a href="about-us.html"><i class="fas fa-angle-right"></i>  IT Consultan</a>
+                                    <a href="about-us.html"><i class="fas fa-angle-right"></i> Leadership</a>
                                 </li>
                                 <li>
-                                    <a href="about-us.html"><i class="fas fa-angle-right"></i> Magang/Pkl</a>
+                                    <a href="about-us.html"><i class="fas fa-angle-right"></i> Strategy</a>
                                 </li>
                                 <li>
-                                    <a href="services.html"><i class="fas fa-angle-right"></i> Kelas Industri</a>
+                                    <a href="services.html"><i class="fas fa-angle-right"></i> Services</a>
                                 </li>
                                 <li>
-                                    <a href="about-us.html"><i class="fas fa-angle-right"></i> Pengadaan Hardware</a>
+                                    <a href="about-us.html"><i class="fas fa-angle-right"></i> History</a>
                                 </li>
                                 <li>
-                                    <a href="about-us.html"><i class="fas fa-angle-right"></i> Pelatihan Programing & Digital Marketing</a>
-                                </li>
-                                <li>
-                                    <a href="about-us.html"><i class="fas fa-angle-right"></i> Guru Tamu</a>
-                                </li>
-                                <li>
-                                    <a href="about-us.html"><i class="fas fa-angle-right"></i> Guru Magang</a>
+                                    <a href="about-us.html"><i class="fas fa-angle-right"></i> Components</a>
                                 </li>
                             </ul>
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-6 item">
                         <div class="f-item contact-widget">
-                            <h4 class="widget-title">Hubungi Kami</h4>
+                            <h4 class="widget-title">Contact Info</h4>
                             <div class="address">
                                 <ul>
                                     <li>
@@ -185,8 +187,9 @@
                                             <i class="fas fa-home"></i>
                                         </div>
                                         <div class="content">
-                                            <strong>Alamat:</strong>
-                                            Perum. Permata Regency 1 Blok 10 No. 28 Kec. Karang Ploso, Kab. Malang, Jawa Timur, Indonesia
+                                            <strong>Address:</strong>
+                                            Perum Permata Regency 1 Blok 10/28, Perun Gpa, Ngijo, Kec. Karang Ploso,
+                                            Kabupaten Malang, Jawa Timur 65152.
                                         </div>
                                     </li>
                                     <li>
@@ -195,7 +198,7 @@
                                         </div>
                                         <div class="content">
                                             <strong>Email:</strong>
-                                            <a href="mailto:hummatech.id@gmail.com">hummatech.id@gmail.com</a>
+                                            <a href="mailto:info@hummatech.com">info@hummatech.com</a>
                                         </div>
                                     </li>
                                     <li>
@@ -217,11 +220,24 @@
         <!-- Start Footer Bottom -->
         <div class="footer-bottom">
             <div class="container">
-                <div class="footer-bottom-box mt-0 p-4">
+                <div class="footer-bottom-box">
                     <div class="row">
-                        <div class="col-lg-8">
+                        <div class="col-lg-6">
                             <p>&copy; Copyright 2021. All Rights Reserved by <a
-                                    href="{{ url('/') }}">PT. Humma Teknologi DIgital Indonesia</a></p>
+                                    href="{{ url('/') }}">Hummatech</a></p>
+                        </div>
+                        <div class="col-lg-6 text-right link">
+                            <ul>
+                                <li>
+                                    <a href="about-us.html">Terms</a>
+                                </li>
+                                <li>
+                                    <a href="about-us.html">Privacy</a>
+                                </li>
+                                <li>
+                                    <a href="about-us.html">Support</a>
+                                </li>
+                            </ul>
                         </div>
                     </div>
                 </div>
@@ -252,9 +268,6 @@
     <script src="{{ asset('assets-home/js/Chart.min.js') }}"></script>
     <script src="{{ asset('assets-home/js/custom-chart.js') }}"></script>
     <script src="{{ asset('assets-home/js/main.js') }}"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="jquery.min.js"></script>
-    <script src="owlcarousel/owl.carousel.min.js"></script>
 
 </body>
 
