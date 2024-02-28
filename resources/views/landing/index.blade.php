@@ -4,6 +4,33 @@
 <meta name="title" content="Hummatech - Perusahaan Software Terbaik di Malang" />
 <meta name="description" content="Hummatech adalah perusahaan software development terbaik di Malang. Kami menyediakan solusi perangkat lunak yang inovatif dan berkualitas tinggi." />
 @endsection
+
+@section('style')
+    <style>
+        #owl-carousel-mitra::before,
+        #owl-carousel-mitra::after {
+            position: absolute;
+            height: 100%;
+            z-index: 2;
+            content: '';
+            width: 150px;
+        }
+
+        #owl-carousel-mitra::before {
+            left: 0;
+            top: 0;
+            bottom: 0;
+            background: linear-gradient(to right, rgba(var(--bs-white-rgb), 1), 65%, transparent);
+        }
+
+        #owl-carousel-mitra::after {
+            right: 0;
+            top: 0;
+            bottom: 0;
+            background: linear-gradient(to left, rgba(var(--bs-white-rgb), 1), 65%, transparent);
+        }
+    </style>
+@endsection
 @section('content')
     <!-- Start Banner
                                     ============================================= -->
@@ -86,14 +113,17 @@
                     <div class="col-lg-6 info wow fadeInRight">
                         <h2>Menghadirkan Solusi Terintegrasi untuk Masa Depan Digital</h2>
                         <p>
-                            Kini Hummatech bertransformasi menjadi
+                            Kini <span class="text-primary">Hummatech</span> bertransformasi menjadi
                             perusahaan yang mampu menjawab
                             tantangan di era revolusi industri 4.0
                             dengan menciptakan produk berbasis
                             integrated system berupa perangkat lunak
                             berbasis web dan mobile, Internet of Things
                             (IoT), Artificial Intelligence (AI), Game, dan
-                            Augmented Reality. </p>
+                            Augmented Reality. 
+                        </p>
+                        <a data-animation="animated zoomInUp" class="btn btn-gradient effect btn-md" href="javascript:void(0)">Selengkapnya
+                        </a>
                     </div>
                 </div>
             </div>
@@ -227,9 +257,9 @@
     </div>
     <!-- End Services Area -->
     <div class="partner-area bg-gray shadow-less overflow-hidden text-light">
-        <div class="container-fluid">
-            <div class="item-box">
-                <div class="row align-center mx-3">
+        <div class="container-fluid mx-5">
+            <div class="item-box mx-5">
+                <div class="row align-center mx-5">
                     <div class="col-lg-4 info">
                         <h2>Menghadirkan produk dengan kualitas dan inovasi terbaik</h2>
                         <p>
@@ -254,7 +284,7 @@
                                         </p>
                                         <div class="bottom">
                                             <a href="" class="text-primary"><i class="fas fa-arrow-right"></i>
-                                                Lihat Selengkapnya</a>
+                                                Kunjungi website</a>
                                         </div>
                                     </div>
                                 </div>
@@ -276,7 +306,7 @@
                                         </p>
                                         <div class="bottom">
                                             <a href="" class="text-primary"><i class="fas fa-arrow-right"></i>
-                                                Lihat Selengkapnya</a>
+                                                Kunjungi website</a>
                                         </div>
                                     </div>
                                 </div>
@@ -298,7 +328,7 @@
                                         </p>
                                         <div class="bottom">
                                             <a href="" class="text-primary"><i class="fas fa-arrow-right"></i>
-                                                Lihat Selengkapnya</a>
+                                                Kunjungi website</a>
                                         </div>
                                     </div>
                                 </div>
@@ -320,7 +350,7 @@
                                         </p>
                                         <div class="bottom">
                                             <a href="" class="text-primary"><i class="fas fa-arrow-right"></i>
-                                                Lihat Selengkapnya</a>
+                                                Kunjungi website</a>
                                         </div>
                                     </div>
                                 </div>
@@ -342,7 +372,7 @@
                                         </p>
                                         <div class="bottom">
                                             <a href="" class="text-primary"><i class="fas fa-arrow-right"></i>
-                                                Lihat Selengkapnya</a>
+                                                Kunjungi website</a>
                                         </div>
                                     </div>
                                 </div>
@@ -364,12 +394,11 @@
                                         </p>
                                         <div class="bottom">
                                             <a href="" class="text-primary"><i class="fas fa-arrow-right"></i>
-                                                Lihat Selengkapnya</a>
+                                                Kunjungi website</a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-
                         </div>
                     </div>
                 </div>
@@ -385,6 +414,19 @@
                         <h4>MITRA KAMI</h4>
                         <h3>Tumbuh bersama : Kolaborasi menuju kesuksesan</h3>
                         <div class="devider"></div>
+                        <div class="owl-carousel owl-theme" id="owl-carousel-mitra">
+                <div class="item"><img src="{{ asset('assets/images/slider/1.jpg') }}" alt="Drawing-room"></div>
+                <div class="item"><img src="{{ asset('assets/images/slider/2.jpg') }}" alt="Drawing-room"></div>
+                <div class="item"><img src="{{ asset('assets/images/slider/3.jpg') }}" alt="Drawing-room"></div>
+                <div class="item"><img src="{{ asset('assets/images/slider/4.jpg') }}" alt="Drawing-room"></div>
+                <div class="item"><img src="{{ asset('assets/images/slider/5.jpg') }}" alt="Drawing-room"></div>
+                <div class="item"><img src="{{ asset('assets/images/slider/6.jpg') }}" alt="Drawing-room"></div>
+                <div class="item"><img src="{{ asset('assets/images/slider/7.jpg') }}" alt="Drawing-room"></div>
+                <div class="item"><img src="{{ asset('assets/images/slider/8.jpg') }}" alt="Drawing-room"></div>
+                <div class="item"><img src="{{ asset('assets/images/slider/9.jpg') }}" alt="Drawing-room"></div>
+                <div class="item"><img src="{{ asset('assets/images/slider/10.jpg') }}" alt="Drawing-room"></div>
+                <div class="item"><img src="{{ asset('assets/images/slider/11.jpg') }}" alt="Drawing-room"></div>
+            </div>
                     </div>
                 </div>
             </div>
@@ -398,7 +440,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 offset-lg-2">
-                    <div class="site-heading text-center mt-3">
+                    <div class="site-heading text-center mt-4">
                         <h4>BERITA TENTANG PERUSAHAAN KAMI</h4>
                         <h3>Melangkah Ke Depan: Kabar Terbaru Mengenai Perkembangan Perusahaan Kami</h3>
                         <div class="devider"></div>
@@ -417,9 +459,9 @@
                                         <div class="item">
                                             <div class="thumb">
                                                 <a href="blog-single-with-sidebar.html"><img
-                                                        src="{{ asset('assets-home/img/blog/2.jpg') }}"
+                                                        src="{{ asset('assets_landing/berita.png') }}"
                                                         alt="Thumb"></a>
-                                                <div class="date">Auguest 25, 2021</div>
+                                                <div class="date text-uppercase">Selasa, 12 Februari 2024</div>
                                             </div>
                                             <div class="info">
                                                 <div class="meta">
@@ -434,15 +476,11 @@
                                                         Kaget, Nomor 3 Bikin Merinding.</a>
                                                 </h4>
                                                 <p class="line-clamp">
-                                                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Est debitis
-                                                    placeat, quaerat omnis earum repudiandae at mollitia alias facere, iusto
-                                                    eum! Soluta, odit. Consequuntur dolorem fugit nostrum repellendus
-                                                    dolores
-                                                    vero necessitatibus. Enim beatae quos aperiam numquam porro autem
-                                                    recusandae
-                                                    error molestiae sequi.
+                                                    Lorem ipsum dolor sit amet consectetur. Pretium sit convallis sed 
+                                                    tortor suspendisse ac metus pharetra. Praesent mattis sit massa 
+                                                    justo et suspendisse.......
                                                 </p>
-                                                <a href="" class="btn btn-outline-primary">Baca Selengkapnya</a>
+                                                <a href="" class="btn btn-outline-primary rounded-pill py-2 px-4 text-dark">Baca Selengkapnya</a>
                                             </div>
                                         </div>
                                     </div>
@@ -450,7 +488,7 @@
                             </div>
                             <!-- Pagination -->
                             <div class="row">
-                                <div class="col-md-12 pagi-area text-center mb-3">
+                                <div class="col-md-12 pagi-area text-center mb-5 mt-3">
                                     <a class="text-primary" href=""><svg xmlns="http://www.w3.org/2000/svg"
                                             width="32" height="32" viewBox="0 0 24 24">
                                             <path fill="currentColor"
@@ -469,8 +507,8 @@
             <div class="row">
                 <div class="col-lg-8 offset-lg-2">
                     <div class="site-heading text-center">
-                        <h4>JAM OPRASIONAL</h4>
-                        <h3>Jam Oprasional Kantor</h3>
+                        <h4>jAM OPERASIONAL</h4>
+                        <h3>Jam Operasional Kantor</h3>
                         <H3>PT.HUMMA TEKNOLOGI INDONESIA</H3>
                         <div class="devider"></div>
                     </div>
@@ -481,7 +519,7 @@
             \carbon\Carbon::setLocale('id');
             $now = \Carbon\Carbon::now();
         @endphp
-        <div class="container mb-3">
+        <div class="container mb-5">
             <div class="row">
                 <div class="  {{ $now->format('l') == 'Monday' ? 'card-time-active' : 'card-time' }} mb-4">
                     <div class="row">
