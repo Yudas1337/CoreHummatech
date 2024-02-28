@@ -70,7 +70,11 @@ class TeamController extends Controller
      */
     public function update(UpdateTeamRequest $request, Team $team)
     {
-        //
+    //  dd($request->all());
+
+        $data = $this->service->update($team, $request);
+        $this->team->update($team->id, $data);
+        return back()->with('success' , 'Team Berhasil Di Update');
     }
 
     /**

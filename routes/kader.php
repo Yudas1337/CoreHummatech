@@ -39,6 +39,7 @@ Route::delete('delete/position/{position}' , [PositionController::class , 'destr
 // team
 Route::get('setting/teams' , [TeamController::class , 'index'])->name('setting.teams');
 Route::post('create/team' , [TeamController::class , 'store'])->name('create.team');
+Route::put('update/team/{team}', [TeamController::class ,'update'])->name('update.team');
 Route::delete('delete/team/{team}' , [TeamController::class , 'destroy'])->name('delete.team');
 
 
