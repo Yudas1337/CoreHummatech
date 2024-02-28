@@ -233,14 +233,14 @@
                                                     @enderror
                                                 </div>
                                                 <div class="mb-3 mt-0 col-md-12">
-                                                    <label for="bm-title">Foto</label>
 
                                                     <img id="image-edit-preview" src="{{ Storage::url($item->image) }}"
-                                                        alt="{{ $item->title }}" class="w-100 mb-3 border rounded-3">
-
-                                                    <input name="image" class="form-control" id="image"
-                                                        type="file" required="" autocomplete="name" />
-
+                                                    alt="{{ $item->title }}" class="w-50 mb-3 border rounded-3">
+                                                    <div>
+                                                        <label for="bm-title">Foto</label>
+                                                        <input name="image" class="form-control" id="image"
+                                                            type="file" required="" autocomplete="name" />
+                                                    </div>
                                                     @error('image')
                                                         <div class="text-danger">{{ $message }}</div>
                                                     @enderror
