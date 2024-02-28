@@ -25,15 +25,13 @@
 @endsection
 
 @section('content')
-<form enctype="multipart/form-data" action="{{ route('news.store') }}" class="form theme-form"
-    method="POST">
-    @csrf
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-sm-12">
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
             <div class="card">
                 <div class="card-body add-post">
-                <form class="row needs-validation" novalidate="">
+                    <form enctype="multipart/form-data" action="{{ route('news.store') }}" class="form theme-form" method="POST">
+                        @csrf
                     <div class="col-sm-12">
                         <div class="mb-3">
                             <label>Judul Berita</label>
@@ -66,121 +64,21 @@
                                 <div class="text-danger">{{ $message }}</div>
                             @enderror
                         </div>
+                        <div class="mb-3">
+                            <label for="dropzone">Gambar Berita</label>
+                            <input type="file" name="image[]" id="thumbnail" multiple>
+                        </div>
+                        <div class="text-end">
+                            <a class="btn btn-light-danger me-3" href="/news">Tutup</a>
+                            <button type="submit" class="btn btn-primary me-3">Tambah</button>
+                        </div>
                     </div>
                 </form>
-                <div class="mb-3">
-                    <label for="dropzone">Gambar Berita</label>
-                    <form class="dropzone" id="singleFileUpload" action="https://admin.pixelstrap.net/upload.php">
-                        <div class="m-0 dz-message needsclick">
-                            <h4 class="mb-0">Drop files here or click to upload.</h4>
-                        </div>
-                    </form>
-                </div>
-                <div class="text-end">
-                    <a class="btn btn-light-danger me-3" href="/news">Tutup</a>
-                    <button type="submit" class="btn btn-primary me-3">Tambah</button>
-                </div>
                 </div>
             </div>
             </div>
         </div>
         </div>
-    {{-- <div class="row">
-        <div class="col">
-            <div class="mb-3">
-                <label>Judul Berita</label>
-                <input class="form-control" value="{{ old('title') }}" type="text" name="title"
-                    placeholder="Mis: Peluncuran Humma Academy" />
-
-                @error('title')
-                    <div class="text-danger">{{ $message }}</div>
-                @enderror
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <!-- <div class="col">
-            <div class="mb-3">
-                <label>Kategori</label>
-                <select name="category_news_id" class="js-example-basic-single form-control">
-                    <option disabled selected>Pilih Kategori</option>
-                    @forelse ($categories as $category)
-                        <option {{ old('category_news_id') === $category->id ?: 'selected' }}
-                            value="{{ $category->id }}">{{ $category->name }}</option>
-                    @empty
-                        <option value="add-new">Tambahkan Kategori Baru</option>
-                    @endforelse
-                </select>
-
-                @error('category_news_id')
-                    <div class="text-danger">{{ $message }}</div>
-                @enderror
-            </div>
-        </div> -->
-
-        <div class="row">
-            <div class="col">
-                <div class="mb-3">
-                    <label>Deskripsi Berita</label>
-                    <div id="editor" style="height: 250px">{!! old('description') !!}</div>
-                    <input type="hidden" id="description" value="{!! old('description') !!}"
-                        name="description" />
-
-                    @error('description')
-                        <div class="text-danger">{{ $message }}</div>
-                    @enderror
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col">
-                <div class="mb-3">
-                    <label>Upload Foto</label>
-                    <div class="row">
-                        <div class="col">
-                            <div class="mb-3">
-                            <label>Upload project file</label>
-                            <form class="dropzone" id="singleFileUpload" action="https://admin.pixelstrap.net/upload.php">
-                                <div class="m-0 dz-message needsclick"><i class="icon-cloud-up"></i>
-                                    <h4 class="mb-0">Drop files here or click to upload.</h4>
-                                </div>
-                            </form>
-                            </div>
-                        </div>
-                        </div>
-                    @error('image')
-                        <div class="text-danger">{{ $message }}</div>
-                    @enderror
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-12">
-                <div class="mb-3">
-                    <div class="col-form-label">Kategori berita
-                        <select class="js-example-basic-multiple col-sm-12" multiple="multiple" name="category[]">
-                        @forelse ($categories as $category)
-                            <option value="{{ $category->id }}">{{ $category->name }}</option>  
-                        @empty
-                            <option disabled>Belum ada kategori berita</option>
-                        @endforelse
-                        </select>
-                        @error('category')
-                        <div class="text-danger">{{ $message }}</div>
-                        @enderror
-                    </div>
-                </div>
-            </div>
-            <div class="col-12">
-                <div class="text-end">
-                    <a class="btn btn-light-danger" href="/news">Tutup</a>
-                    <button type="submit" class="btn btn-primary me-3">Tambahkan</button>
-                </div>
-            </div>
-        </div>
-    </div> --}}
-</form>
 @endsection
 
 @section('script')
@@ -224,8 +122,10 @@
         FilePond.create(
             document.querySelector('#thumbnail'), {
                 labelIdle: 'Unggah foto, atau <span class="filepond--label-action">Cari</span>',
-                maxFiles: '1',
-                maxFileSize: '5MB',
+                maxFiles: '5',
+                maxFileSize: '100MB',
+                autoProcessQueue: false,
+                uploadMultiple: true,
                 labelMaxFileSizeExceeded: 'Too big bro.',
                 labelMaxFileSize: 'max {filesize}',
             }

@@ -54,9 +54,9 @@ class NewsController extends Controller
      */
     public function store(StoreNewsRequest $request)
     {
+        dd($request);
         $data = $this->newsService->store($request);
         $newsId = $this->news->store($data)->id;
-        // dd($data);
         foreach ($data['image'] as $img) {
             $this->newsImage->store([
                 'news_id' => $newsId,

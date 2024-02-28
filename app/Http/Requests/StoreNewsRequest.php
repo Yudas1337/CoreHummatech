@@ -16,8 +16,6 @@ class StoreNewsRequest extends FormRequest
         return [
             'title' => 'required',
             'description' => 'min:8|required',
-            'image' => 'array|required',
-            'image.*' => 'required|image',
             'category' => 'array|required',
             'category.*' => 'required',
         ];
@@ -32,7 +30,6 @@ class StoreNewsRequest extends FormRequest
             'description.required' => 'Harap masukkan deskripsi dahulu',
             'image.mimes' => 'Format gambar tidak valid. Harap pilih format jpeg, png, atau jpg',
             'image.required' => 'Harap pilih thumbnail gambar',
-            'tags.required' => 'Harap pilih setidaknya satu tag',
             'category_news_id.required' => 'Harap pilih kategori berita',
             'category_news_id.exists' => 'Kategori berita tidak valid',
         ];
