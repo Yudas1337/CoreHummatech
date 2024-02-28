@@ -1,7 +1,7 @@
 @extends('landing.news.layouts.app')
 @section('content')
 
-<div class="blog-area full-blog blog-standard full-blog grid-colum default-padding mb-5" >
+<div class="blog-area full-blog blog-standard full-blog grid-colum  mb-5" >
     <div class="container">
         <div class="blog-items content-less">
             <div class="blog-content">

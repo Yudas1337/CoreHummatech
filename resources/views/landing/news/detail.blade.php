@@ -1,6 +1,6 @@
 @extends('landing.news.index')
 @section('content')
-<div class="blog-area right-sidebar full-blog default-padding">
+<div class="blog-area right-sidebar full-blog ">
     <div class="container">
         <div class="blog-items">
             <div class="row">
