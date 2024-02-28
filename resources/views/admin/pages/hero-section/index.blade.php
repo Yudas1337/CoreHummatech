@@ -87,7 +87,7 @@
                                     <a href="{{ route('hero.edit', $section->id) }}"><i class="fas fa-pencil"></i></a>
                                 </li>
                                 <li>
-                                    <a href="#"><i class="fas fa-trash"></i></a>
+                                    <a class="btn-delete" data-id="{{ $section->id }}"><i class="fas fa-trash"></i></a>
                                 </li>
                             </ul>
                         </div>
@@ -107,4 +107,12 @@
 
     @include('admin.components.delete-modal-component')
 @endsection
-<section></section>
+@section('script')
+    <script>
+         $('.btn-delete').on('click', function() {
+            var id = $(this).data('id');
+            $('#form-delete').attr('action', '/delete/section/' + id);
+            $('#modal-delete').modal('show');
+        });
+    </script>
+@endsection

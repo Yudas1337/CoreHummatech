@@ -75,6 +75,11 @@ class SectionController extends Controller
      */
     public function destroy(Section $section)
     {
-        //
+        if (!$this->section->delete($section->id)) {
+            return back()->with('error', 'Hero section Gagal Di Hapus');
+        }
+
+        $this->service->remove($section->image);
+        return back()->with('success' , 'Hero section Berhasil Di Hapus');
     }
 }

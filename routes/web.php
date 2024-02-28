@@ -28,10 +28,7 @@ Route::get('/', function () {
 });
 
 Route::get('/about-us', function () {
-    return view('landing.abo
-
-
-    ut');
+    return view('landing.about');
 });
 
 Route::get('/gallery', function () {
