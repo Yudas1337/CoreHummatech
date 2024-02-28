@@ -58,22 +58,20 @@
                         <div class="card shadow-sm">
                             <div class="product-box">
                                 <div class="product-img">
-                                    <img class="img-fluid" src="{{ Storage::url($item->image) }}" alt=""
-                                        style="object-fit:cover; width:242vw; height:20vh;">
+                                    <img class="img-fluid" src="{{ asset('storage/' . ($item->newsImages[0]->photo ?? '')) }}"
+                                        alt="" style="object-fit:cover; width:242vw; height:20vh;">
                                 </div>
                                 <div class="product-details">
-                                    <small style="font-size: 10px"><span
-                                            class="text-primary pe-2 fw-bold">{{ $item->newsCategories }}</span>{{ $item->updated_at->format('l, j F Y') }}</small>
+                                    <small style="font-size: 13px"><span
+                                            class="text-primary mb-3 fw-bold"></span>{{ $item->updated_at->format('l, j F Y') }}</small>
                                     <a href="/news">
-                                        <h4 class="mb-1">{{ $item->title }}</h4>
+                                        <h4 class="mb-1 mt-3">{{ $item->title }}</h4>
                                     </a>
                                     <p class="mt-0 mb-2" style="font-size: 13px">{!! Str::words($item->description, 50, '...') !!}</p>
                                     <div class="d-flex gap-1 mb-3">
-                                        <!-- @foreach (explode(',', $item->tags) as $tag)
-                                            <small class="text-primary"
-                                                style="background-color:#DEEBFF; padding: 3px 10px; border-radius:5px">{{ $tag }}</small>
-                                        @endforeach -->
-                                        {{$item->newsCategories}}
+                                        @foreach ($item->newsCategories as $category)
+                                            {{ $category->name }}
+                                        @endforeach
                                     </div>
 
                                     <form action="{{ route('news.destroy', $item->id) }}" id="form-{{ $item->id }}"
@@ -124,7 +122,7 @@
                 buttons: true,
                 dangerMode: true,
             }).then((e) => {
-                if(e) {
+                if (e) {
                     $(`#form-${$id}`).submit();
                 }
             });
