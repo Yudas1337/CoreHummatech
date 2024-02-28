@@ -142,7 +142,7 @@
       <div class="about-us-area default-padding">
           <div class="container">
               <ul class="nav navbar-nav custom-tabs">
-                  <li class="active"><a href="/" target="_blank">Tentang Hummatech</a></li>
+                  <li class=""><a href="/" target="_blank">Tentang Hummatech</a></li>
                   <li class="active"><a href="#">Terbaru</a></li>
                   <li><a href="#">It technology</a></li>
                   <li><a href="#">Berita perusahaan</a></li>
