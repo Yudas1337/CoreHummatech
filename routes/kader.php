@@ -13,6 +13,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/berita', function () {
     return view('landing.news.index');
 });
+Route::get('/detail', function () {
+    return view('landing.news.detail');
+})->name('news.detail');
 
 Route::post('create/service' , [ServiceController::class , 'store'])->name('create.service');
 Route::get('detail/service/{service}' , [ServiceController::class , 'show'])->name('detail.service');

@@ -1,46 +1,6 @@
 @extends('landing.news.layouts.app')
 @section('content')
-<style>
-  .custom-tabs {
-    padding-top: 25px;
-    padding-bottom: 2px;
-}
 
-.custom-tabs li {
-    margin-right: 80px;
-}
-
-.custom-tabs li a {
-    position: relative;
-}
-
-.custom-tabs li a:after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 5px;
-    background-color: transparent;
-    transition: background-color 0.3s;
-}
-
-.custom-tabs li.active a:after {
-    background-color: #337ab7;
-}
-</style>
-<div class="about-us-area default-padding">
-    <div class="container">
-        <ul class="nav navbar-nav custom-tabs">
-            <li class="active"><a href="#">Terbaru</a></li>
-            <li><a href="#">It technology</a></li>
-            <li><a href="#">Berita perusahaan</a></li>
-            <li><a href="#">Teknologi</a></li>
-            <li><a href="#">tutorial</a></li>
-            <li><a href="#">Businnes</a></li>
-        </ul>
-    </div>
-</div>
 <div class="blog-area full-blog blog-standard full-blog grid-colum default-padding mb-5" >
     <div class="container">
         <div class="blog-items content-less">
@@ -51,7 +11,7 @@
                         <div class="col-lg-4 col-md-6 single-item">
                             <div class="item">
                                 <div class="thumb">
-                                    <a href="blog-single-with-sidebar.html"><img src="assets-home/img/blog/1.jpg" alt="Thumb"></a>
+                                    <a href="{{ route('news.detail') }}"><img src="assets-home/img/blog/1.jpg" alt="Thumb"></a>
                                     <div class="date">January 25, 2021</div>
                                 </div>
                                 <div class="info">
@@ -69,7 +29,7 @@
                                        </ul>
                                     </div>
                                     <h4>
-                                        <a href="blog-single-with-sidebar.html">Suppose cottage between and way. Minuter own.</a>
+                                        <a href="{{ route('news.detail') }}">Suppose cottage between and way. Minuter own.</a>
                                     </h4>
                                     <p>
                                         One order all scale sense her gay style wrote. Incommode our not one ourselves residence. Shall there whose those.
@@ -82,7 +42,7 @@
                         <div class="col-lg-4 col-md-6 single-item">
                             <div class="item">
                                 <div class="thumb">
-                                    <a href="blog-single-with-sidebar.html"><img src="assets-home/img/blog/2.jpg" alt="Thumb"></a>
+                                    <a href="{{ route('news.detail') }}"><img src="assets-home/img/blog/2.jpg" alt="Thumb"></a>
                                     <div class="date">February 18, 2021</div>
                                 </div>
                                 <div class="info">
@@ -100,7 +60,7 @@
                                        </ul>
                                     </div>
                                     <h4>
-                                        <a href="blog-single-with-sidebar.html">Agreement far boy otherwise rapturous. </a>
+                                        <a href="{{ route('news.detail') }}">Agreement far boy otherwise rapturous. </a>
                                     </h4>
                                     <p>
                                         One order all scale sense her gay style wrote. Incommode our not one ourselves residence. Shall there whose those.
@@ -113,7 +73,7 @@
                         <div class="col-lg-4 col-md-6 single-item">
                             <div class="item">
                                 <div class="thumb">
-                                    <a href="blog-single-with-sidebar.html"><img src="assets-home/img/blog/3.jpg" alt="Thumb"></a>
+                                    <a href="{{ route('news.detail') }}"><img src="assets-home/img/blog/3.jpg" alt="Thumb"></a>
                                     <div class="date">March 24, 2021</div>
                                 </div>
                                 <div class="info">
@@ -131,7 +91,7 @@
                                        </ul>
                                     </div>
                                     <h4>
-                                        <a href="blog-single-with-sidebar.html">Attachment resolution sentiments shoot in the point</a>
+                                        <a href="{{ route('news.detail') }}">Attachment resolution sentiments shoot in the point</a>
                                     </h4>
                                     <p>
                                         One order all scale sense her gay style wrote. Incommode our not one ourselves residence. Shall there whose those.
@@ -144,7 +104,7 @@
                         <div class="col-lg-4 col-md-6 single-item">
                             <div class="item">
                                 <div class="thumb">
-                                    <a href="blog-single-with-sidebar.html"><img src="assets-home/img/blog/4.jpg" alt="Thumb"></a>
+                                    <a href="{{ route('news.detail') }}"><img src="assets-home/img/blog/4.jpg" alt="Thumb"></a>
                                     <div class="date">April 18, 2021</div>
                                 </div>
                                 <div class="info">
@@ -162,7 +122,7 @@
                                        </ul>
                                     </div>
                                     <h4>
-                                        <a href="blog-single-with-sidebar.html">Add matter family active mutual put happen. </a>
+                                        <a href="{{ route('news.detail') }}">Add matter family active mutual put happen. </a>
                                     </h4>
                                     <p>
                                         One order all scale sense her gay style wrote. Incommode our not one ourselves residence. Shall there whose those.
@@ -175,7 +135,7 @@
                         <div class="col-lg-4 col-md-6 single-item">
                             <div class="item">
                                 <div class="thumb">
-                                    <a href="blog-single-with-sidebar.html"><img src="assets-home/img/blog/5.jpg" alt="Thumb"></a>
+                                    <a href="{{ route('news.detail') }}"><img src="assets-home/img/blog/5.jpg" alt="Thumb"></a>
                                     <div class="date">June 25, 2021</div>
                                 </div>
                                 <div class="info">
@@ -193,7 +153,7 @@
                                        </ul>
                                     </div>
                                     <h4>
-                                        <a href="blog-single-with-sidebar.html">Unsatiable entreaties sympathize nay</a>
+                                        <a href="{{ route('news.detail') }}">Unsatiable entreaties sympathize nay</a>
                                     </h4>
                                     <p>
                                         One order all scale sense her gay style wrote. Incommode our not one ourselves residence. Shall there whose those.
@@ -206,7 +166,7 @@
                         <div class="col-lg-4 col-md-6 single-item">
                             <div class="item">
                                 <div class="thumb">
-                                    <a href="blog-single-with-sidebar.html"><img src="assets-home/img/blog/6.jpg" alt="Thumb"></a>
+                                    <a href="{{ route('news.detail') }}"><img src="assets-home/img/blog/6.jpg" alt="Thumb"></a>
                                     <div class="date">Auguest 25, 2021</div>
                                 </div>
                                 <div class="info">
@@ -224,7 +184,7 @@
                                        </ul>
                                     </div>
                                     <h4>
-                                        <a href="blog-single-with-sidebar.html">Cottage between and way. Minuter own.</a>
+                                        <a href="{{ route('news.detail') }}">Cottage between and way. Minuter own.</a>
                                     </h4>
                                     <p>
                                         One order all scale sense her gay style wrote. Incommode our not one ourselves residence. Shall there whose those.
