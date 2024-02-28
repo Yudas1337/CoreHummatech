@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content="{{ config('app.name', 'Laravel') }}" />
     <meta name="title" content="Hummatech - Perusahaan Software Terbaik di Malang" />
-    <meta name="description" content="Hummatech adalah perusahaan software development terbaik di Malang. Kami menyediakan solusi perangkat lunak yang inovatif dan berkualitas tinggi." />-- Ganti "Your Name" dengan nama Anda atau nama perusahaan -->
+    <meta name="description" content="Hummatech adalah perusahaan software development terbaik di Malang. Kami menyediakan solusi perangkat lunak yang inovatif dan berkualitas tinggi." />
 
     <!-- ========== Page Title ========== -->
     @hasSection('title')
