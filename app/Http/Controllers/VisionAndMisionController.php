@@ -7,21 +7,27 @@ use App\Models\VisionAndMision;
 use App\Http\Requests\StoreVisionAndMisionRequest;
 use App\Http\Requests\UpdateVisionAndMisionRequest;
 use App\Models\MisionItems;
+use App\Services\VisionAndMisionService;
 
 class VisionAndMisionController extends Controller
 {
     private VisionAndMisionInterface $visionAndMision;
-    public function __construct(VisionAndMisionInterface $visionAndMision)
+    private VisionAndMisionService $vismisionservices;
+    public function __construct(VisionAndMisionInterface $visionAndMision, VisionAndMisionService $vismisionservices)
     {
         $this->visionAndMision = $visionAndMision;
+        $this->vismisionservices = $vismisionservices;
+        $this->middleware('auth');
     }
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $visionAndMisions = $this->visionAndMision->get();
-        return view('admin.pages.vision-mision.index' , compact('visionAndMisions'));
+        $visionAndMisions = $this->visionAndMision->get()->first();
+        $mision = MisionItems::where('vision_and_mission_id', $visionAndMisions ? $visionAndMisions->id : '')->get();
+        // dd($visionAndMisions);
+        return view('admin.pages.vision-mision.index', compact('visionAndMisions', 'mision'));
     }
 
     /**
@@ -37,20 +43,18 @@ class VisionAndMisionController extends Controller
      */
     public function store(StoreVisionAndMisionRequest $request)
     {
-        $visionAndMision = VisionAndMision::create(['vision' => $request->vision]);
-
-        if (isset($request->missions) && is_array($request->missions)) {
-            foreach ($request->missions as $key => $mission) {
-                MisionItems::create([
-                    'vision_and_mission_id' => $visionAndMision->id,
-                    'mission' => $request->mission[$key],
-                ]);
+        $visionAndMisions = $this->visionAndMision->get()->first();
+        $data = $this->vismisionservices->store($request);
+        foreach ($data as $item) {
+            if ($visionAndMisions) {
+                 $this->visionAndMision->update($visionAndMisions->id, $item);
+                $useId = $visionAndMisions;
+            } else{
+                $useId = $this->visionAndMision->store($item);
             }
-
-            return back()->with('success', 'Data berhasil ditambahkan');
-        } else {
-            return back()->with('error', 'Data missions tidak valid');
         }
+        $this->vismisionservices->storemision($request, $useId);
+        return redirect()->back();
     }
 
     /**
@@ -74,7 +78,17 @@ class VisionAndMisionController extends Controller
      */
     public function update(UpdateVisionAndMisionRequest $request, VisionAndMision $visionAndMision)
     {
-        //
+        $data = $this->vismisionservices->update($request);
+        foreach ($data as $item) {
+            $this->visionAndMision->update($visionAndMision->id, $item);
+        }
+    }
+
+    public function updatemision(UpdateVisionAndMisionRequest $request, MisionItems $misionItems)
+    {
+        $this->vismisionservices->updatemision($request, $misionItems);
+
+        return redirect()->back();
     }
 
     /**
@@ -82,6 +96,15 @@ class VisionAndMisionController extends Controller
      */
     public function destroy(VisionAndMision $visionAndMision)
     {
-        //
+        $this->visionAndMision->delete($visionAndMision->id);
+
+        return redirect()->back();
+    }
+
+    public function destroymision(MisionItems $misionItems)
+    {
+        $this->vismisionservices->destroy($misionItems);
+
+        return redirect()->back();
     }
 }

@@ -8,7 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class MisionItems extends Model
 {
     use HasFactory;
-    protected $guarded = [];
+
+    protected $fillable = [
+        'mission',
+        'vision_and_mission_id'
+    ];
 
     public function visionAndMission()
     {

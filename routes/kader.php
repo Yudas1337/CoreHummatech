@@ -44,7 +44,7 @@ Route::delete('delete/team/{team}' , [TeamController::class , 'destroy'])->name(
 
 
 // visi and mision
-Route::get('setting/vision-mision' , [VisionAndMisionController::class ,'index']);
+// Route::get('setting/vision-mision' , [VisionAndMisionController::class ,'index']);
 
 
 // show pdf

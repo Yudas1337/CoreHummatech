@@ -162,7 +162,7 @@
                 <a href="/setting/profile">Profile</a>
             </li>
             <li>
-                <a href="/setting/vision-mision">Visi & Misi</a>
+                <a href="{{ route('vision.mision') }}">Visi & Misi</a>
             </li>
             <li>
                 <a href="{{ route('terms_condition.index') }}">Syarat & Ketentuan</a>
