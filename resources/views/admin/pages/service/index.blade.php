@@ -34,11 +34,11 @@
 
                     <div class="gap-2 d-flex">
                         <div class="d-grid flex-grow-1">
-                            <a href="detail/service/{{ $service->id }}" class="btn btn-light-primary">Lihat Detail</a>
+                            <a href="detail/service/{{ $service->id }}" class="btn btn-light-primary btn-sm">Lihat Detail</a>
                         </div>
                         <div class="d-flex flex-shrink-0 gap-2">
-                            <button class="btn btn-light-warning px-3 m-0 btn-edit"  type="button" data-id="{{ $service->id }}" data-name="{{ $service->name }}" data-description="{{ $service->description }}" data-link="{{ $service->link }}" data-image="{{ $service->image }}"><i class="fas fa-pencil"></i></button>
-                            <button class="btn px-3 btn-light-danger btn-delete" data-id="{{ $service->id }}" type="button"><i class="fas fa-trash"></i></button>
+                            <button class="btn btn-light-warning px-3 m-0 btn-edit btn-sm"  type="button" data-id="{{ $service->id }}" data-name="{{ $service->name }}" data-description="{{ $service->description }}" data-link="{{ $service->link }}" data-image="{{ $service->image }}"><i class="fas fa-pencil"></i></button>
+                            <button class="btn px-3 btn-light-danger btn-delete btn-sm" data-id="{{ $service->id }}" type="button"><i class="fas fa-trash"></i></button>
                         </div>
                     </div>
                 </div>
