@@ -1,4 +1,4 @@
-@extends('landing.layouts.app')
+@extends('landing.layouts.layouts.app')
 @section('content')
 <div class="breadcrumb-area text-center shadow dark text-light bg-cover" style="background-image: url(assets-home/img/banner/2.jpg);">
     <div class="container">
