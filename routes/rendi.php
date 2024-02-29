@@ -1,4 +1,6 @@
 <?php
+
+use App\Http\Controllers\ProcedureController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\VisionAndMisionController;
 //faq
@@ -12,3 +14,5 @@ Route::put('update/vision/mision/{visionAndMision}' ,[VisionAndMisionController:
 Route::put('update/mision/mision/{misionItems}' ,[VisionAndMisionController::class ,'updatemision'])->name('update.mision.mision');
 Route::delete('delete/vision/mision/{visionAndMision}', [VisionAndMisionController::class, 'destroy'])->name('destroy.vision.mision');
 Route::delete('delete/mision/mision/{misionItems}', [VisionAndMisionController::class, 'destroymision'])->name('destroy.mision.mision');
+//procedure
+Route::resource('procedure', ProcedureController::class);

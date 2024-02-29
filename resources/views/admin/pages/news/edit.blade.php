@@ -7,6 +7,8 @@
 
     <link href="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.css" rel="stylesheet" type="text/css" />
 
+    <link href="{{ asset('assets_landing/dist/imageuploadify.min.css') }}" rel="stylesheet" />
+
     <style>
         .ql-toolbar button {
             padding: .5rem;
@@ -29,16 +31,16 @@
         <div class="col-sm-12">
             <div class="card">
                 <div class="card-body">
-                    <form enctype="multipart/form-data" action="{{ route('news.update', $news->id) }}" class="form theme-form"
-                        method="POST">
+                    <form enctype="multipart/form-data" action="{{ route('news.update', $news->id) }}"
+                        class="form theme-form" method="POST">
                         @csrf
                         @method('PUT')
                         <div class="row">
                             <div class="col">
                                 <div class="mb-3">
                                     <label>Judul Berita</label>
-                                    <input class="form-control" value="{{ old('title', $news->title) }}" type="text" name="title"
-                                        placeholder="Mis: Peluncuran Humma Academy" />
+                                    <input class="form-control" value="{{ old('title', $news->title) }}" type="text"
+                                        name="title" placeholder="Mis: Peluncuran Humma Academy" />
 
                                     @error('title')
                                         <div class="text-danger">{{ $message }}</div>
@@ -51,9 +53,9 @@
                                 <div class="mb-3">
                                     <label>Kategori</label>
                                     <select name="category_news_id" class="js-example-basic-single form-control">
-                                        <option disabled selected>Pilih Kategori</option>
                                         @forelse ($categories as $category)
-                                            <option {{ $news->category_news_id === $category->id || old('category_news_id') === $category->id ? 'selected' : '' }}
+                                            <option
+                                                {{ $news->category_news_id === $category->id || old('category_news_id') === $category->id ? 'selected' : '' }}
                                                 value="{{ $category->id }}">{{ $category->name }}</option>
                                         @empty
                                             <option value="add-new">Tambahkan Kategori Baru</option>
@@ -71,8 +73,8 @@
                                     <div class="mb-3">
                                         <label>Deskripsi Berita</label>
                                         <div id="editor" style="height: 250px">{!! old('description', $news->description) !!}</div>
-                                        <input type="hidden" id="description" value="{{ old('description', $news->description) }}"
-                                            name="description" />
+                                        <input type="hidden" id="description"
+                                            value="{{ old('description', $news->description) }}" name="description" />
 
                                         @error('description')
                                             <div class="text-danger">{{ $message }}</div>
@@ -84,32 +86,20 @@
                             <div class="row">
                                 <div class="col">
                                     <div class="mb-3">
-                                        <label>Upload Foto</label>
-                                        <div class="mb-3">
-                                            <img src="{{ Storage::url($news->image) }}" alt="{{ $news->title }}" class="rounded-3">
-                                        </div>
-                                        <input type="file" name="image" id="image" accept="image/*" class="form-control" />
-
+                                        <label for="dropzone">Gambar Berita</label>
+                                        <input id="image-uploadify" type="file" name="image[]" accept="image/*" multiple>
                                         @error('image')
-                                            <div class="text-danger">{{ $message }}</div>
+                                            <div class="text-danger">{{ $message }}
+                                            </div>
+                                        @enderror
+                                        @error('image.*')
+                                            <div class="text-danger">{{ $message }}
+                                            </div>
                                         @enderror
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-12">
-                                    <div class="mb-3">
-                                        <label>Tag</label>
-                                        <input class="basic form-control" name="tags"
-                                            placeholder="Mis: Teknologi, Jelajah, Hummatech" id="tags"
-                                            value="{{ old('tags', $news->tags) }}", />
-                                        <div class="form-text">Masukkan tag dengan koma</div>
-
-                                        @error('tags')
-                                            <div class="text-danger">{{ $message }}</div>
-                                        @enderror
-                                    </div>
-                                </div>
                                 <div class="col-12">
                                     <div class="text-end">
                                         <a class="btn btn-danger" href="{{ route('news.index') }}">Batalkan</a>
@@ -126,6 +116,12 @@
 @endsection
 
 @section('script')
+    <script src="{{ asset('assets_landing/dist/imageuploadify.min.js') }}"></script>
+    <script>
+        $(document).ready(function() {
+            $('#image-uploadify').imageuploadify();
+        })
+    </script>
     <!-- Load FilePond library -->
     <script src="https://unpkg.com/filepond-plugin-image-exif-orientation/dist/filepond-plugin-image-exif-orientation.js">
     </script>

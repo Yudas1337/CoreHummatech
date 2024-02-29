@@ -67,7 +67,7 @@
                                     <a href="/news">
                                         <h4 class="mb-1 mt-3">{{ $item->title }}</h4>
                                     </a>
-                                    <p class="mt-0 mb-2" style="font-size: 13px">{!! Str::words($item->description, 50, '...') !!}</p>
+                                    <p class="mt-0 mb-2" style="font-size: 13px">{!! Str::words($item->description, 14, '...') !!}</p>
                                     <div class="d-flex gap-1 mb-3">
                                         @foreach ($item->newsCategories as $category)
                                             {{ $category->name }}

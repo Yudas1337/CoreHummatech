@@ -25,4 +25,9 @@ class Service extends Model
     {
         return $this->hasMany(Termscondition::class);
     }
+
+    public function procedures(): HasMany
+    {
+        return $this->hasMany(Procedure::class);
+    }
 }
