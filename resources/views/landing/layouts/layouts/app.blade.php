@@ -110,7 +110,7 @@
 
     <!-- Header
     ============================================= -->
-    @include('landing.layouts.layouts.app')
+    @include('landing.layouts.layouts.header')
     <!-- End Header -->
 
     @yield('content')
