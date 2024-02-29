@@ -295,7 +295,7 @@
             </div>
         </div>
     </div>
-    
+
     <div class="team-area default-padding bottom-less">
         <div class="container">
             <div class="team-items text-center">
