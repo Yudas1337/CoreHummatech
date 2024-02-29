@@ -9063,3 +9063,11 @@ nav.navbar.bootsnav {
     transition: border-image 0.3s ease;
     margin-right: 10px;
 }
+
+.bg-gradient-gray {
+    background: linear-gradient(
+        to right,
+        #EAEBFD,
+        #fff
+    );
+}
