@@ -8,8 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class VisionAndMision extends Model
 {
     use HasFactory;
-    // protected $fillable = ['vision'];
-    protected $guarded = [];
+    protected $fillable = ['vision'];
 
     public function items()
     {

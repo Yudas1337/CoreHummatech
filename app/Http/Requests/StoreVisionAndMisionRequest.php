@@ -22,7 +22,7 @@ class StoreVisionAndMisionRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'vision.*' => 'required|string',
+            'vision' => 'required_if:vision,|string',
             'mission.*' => 'required|string',
         ];
     }

@@ -22,7 +22,7 @@ class UpdateVisionAndMisionRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'vision.*' => 'nullable|string',
+            'vision' => 'nullable|string',
             'mission.*' => 'nullable|string',
         ];
     }

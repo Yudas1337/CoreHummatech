@@ -27,6 +27,6 @@ class VisionAndMisionRepository extends BaseRepository implements VisionAndMisio
     }
     public function update(mixed $id, array $data): mixed
     {
-        return $this->model->findOrFail($id)->update($id);
+        return $this->model->findOrFail($id)->update($data);
     }
 }
