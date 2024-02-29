@@ -70,7 +70,7 @@
                         <a href="{{ url('/produk') }}">Produk</a>
                     </li>
                     <li>
-                        <a href="/berita" target="_blank">Berita</a>
+                        <a href="/berita">Berita</a>
                     </li>
                     <li>
                         <a href="/contact">Hubungi</a>
