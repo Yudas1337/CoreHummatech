@@ -1,4 +1,4 @@
-@extends('landing.layouts.app')
+@extends('landing.layouts.layouts.app')
 
 @section('style')
     <style>
