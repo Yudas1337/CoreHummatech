@@ -5,6 +5,12 @@ use App\Http\Controllers\TestimonialController;
 use Illuminate\Support\Facades\Route;
 
 Route::resource('testimonial', TestimonialController::class);
-Route::get('produk', function() {
-    return view('landing.produk');
+
+Route::prefix('produk')->group(function () {
+    Route::get('', function () {
+        return view('landing.product');
+    });
+    Route::get('milink', function () {
+        return view('landing.product.milink');
+    });
 });
