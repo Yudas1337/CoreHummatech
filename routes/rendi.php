@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ForceController;
 use App\Http\Controllers\ProcedureController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\VisionAndMisionController;
@@ -16,3 +17,5 @@ Route::delete('delete/vision/mision/{visionAndMision}', [VisionAndMisionControll
 Route::delete('delete/mision/mision/{misionItems}', [VisionAndMisionController::class, 'destroymision'])->name('destroy.mision.mision');
 //procedure
 Route::resource('procedure', ProcedureController::class);
+//Force
+Route::resource('force', ForceController::class);

@@ -8,10 +8,11 @@ use App\Contracts\Interfaces\FaqInterface;
 use App\Contracts\Interfaces\NewsInterface;
 use App\Contracts\Interfaces\SaleInterface;
 use App\Contracts\Interfaces\TeamInterface;
+use App\Contracts\Interfaces\ForceInterface;
 use App\Contracts\Interfaces\BranchInterface;
 use App\Contracts\Repositories\FaqRepository;
-use App\Contracts\Interfaces\ProductInterface;
 
+use App\Contracts\Interfaces\ProductInterface;
 use App\Contracts\Interfaces\ProfileInterface;
 use App\Contracts\Interfaces\SectionInterface;
 use App\Contracts\Interfaces\ServiceInterface;
@@ -19,13 +20,14 @@ use App\Contracts\Repositories\NewsRepository;
 use App\Contracts\Repositories\SaleRepository;
 use App\Contracts\Repositories\TeamRepository;
 use App\Contracts\Interfaces\PositionInterface;
+use App\Contracts\Repositories\ForceRepository;
 use App\Contracts\Interfaces\NewsImageInterface;
 use App\Contracts\Interfaces\ProcedureInterface;
 use App\Contracts\Repositories\BranchRepository;
 use App\Contracts\Repositories\ProductRepository;
+
 use App\Contracts\Repositories\ProfileRepository;
 use App\Contracts\Repositories\SectionRepository;
-
 use App\Contracts\Repositories\ServiceRepository;
 use App\Contracts\Interfaces\CollabMitraInterface;
 use App\Contracts\Interfaces\SosialMediaInterface;
@@ -77,6 +79,7 @@ class AppServiceProvider extends ServiceProvider
         NewsImageInterface::class => NewsImageRepository::class,
         TermsconditionInterface::class => TermsconditionRepository::class,
         ProcedureInterface::class => ProcedureRepository::class,
+        ForceInterface::class => ForceRepository::class
     ];
 
     /**

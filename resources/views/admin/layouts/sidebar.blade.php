@@ -215,7 +215,7 @@
         </a>
         <ul class="sidebar-submenu">
             <li>
-                <a href="">Angkatan</a>
+                <a href="{{ route('force.index') }}">Angkatan</a>
             </li>
             <li>
                 <a href="/social-media">Galeri Alumni</a>
