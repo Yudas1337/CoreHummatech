@@ -25,7 +25,7 @@ class UpdateSectionRequest extends FormRequest
             'image' => 'nullable',
             'title' => 'required',
             'subtitle' => 'required',
-            'link' => 'required'
+            'link' => 'nullable'
         ];
     }
 }
