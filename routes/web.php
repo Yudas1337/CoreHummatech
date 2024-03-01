@@ -87,7 +87,7 @@ Route::put('update/category/news/{categoryNews}' ,[CategoryNewsController::class
 
 // branch
 Route::get('branch' , [BranchController::class ,'index']);
-Route::post('branch/create/' ,[BranchController::class ,'store']);
+Route::post('branch/create' ,[BranchController::class ,'store']);
 Route::delete('brach/delete/{branch}' , [BranchController::class ,'destroy']);
 // end branch
 
