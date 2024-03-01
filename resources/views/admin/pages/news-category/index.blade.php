@@ -124,11 +124,11 @@
                         <td class="text-center">{{ $categoryNew->name }}</td>
                         <td class="text-center">
                             <div class="d-flex justify-content-center gap-2">
-                                <button class="btn-edit btn btn-warning" data-id="{{ $categoryNew->id }}" data-name="{{ $categoryNew->name }}"
+                                <button class="btn-edit btn btn-warning btn-edit" data-id="{{ $categoryNew->id }}" data-name="{{ $categoryNew->name }}"
                                     id="{{ $categoryNew->id }}">
                                     Edit
                                 </button>
-                                <button class="btn-delete btn btn-danger" data-id="{{ $categoryNew->id }}"
+                                <button class="btn-delete btn btn-danger btn-delete" data-id="{{ $categoryNew->id }}"
                                     id="{{ $categoryNew->id }}">
                                     Hapus
                                 </button>
@@ -152,13 +152,17 @@
                 sortable: false
             }]
         });
-        c
         $('.btn-edit').click(function() {
             var id = $(this).data('id'); // Mengambil nilai id dari tombol yang diklik
             var name = $(this).data('name'); // Mengambil nilai name dari tombol yang diklik
             $('#form-update').attr('action', '/update/category/news/' + id ); // Mengubah nilai atribut action form
             $('.name').val(name);
             $('#modal-edit').modal('show');
+        });
+        $('.btn-delete').on('click', function() {
+            var id = $(this).data('id');
+            $('#form-delete').attr('action', '/delete/category/news/' + id);
+            $('#modal-delete').modal('show');
         });
     </script>
 @endsection
