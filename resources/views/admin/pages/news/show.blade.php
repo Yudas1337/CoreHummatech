@@ -14,7 +14,7 @@
         <div class="img-news">
             <img src="{{ asset('storage/'.$news->newsImages[0]->photo ?? '') }}" class="w-100" alt="{{ $news->newsImages[0]->photo ?? '' }}" />
         </div>
-        <div class="news-description">
+        <div class="news-description mt-3">
             {!! $news->description !!}
         </div>
         <div class="row">
