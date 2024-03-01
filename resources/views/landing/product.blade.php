@@ -111,13 +111,13 @@
                     <div class="col-lg-6 info">
                         <h1>Milink.id</h1>
                         <p>
-                            Lorem ipsum dolor sit amet consectetur. Tincidunt pellentesque 
-                            pellentesque sed in. Sit nunc velit aliquam quis faucibus nibh 
-                            nisl pellentesque. Massa natoque mattis quisque ut molestie turpis 
-                            at fusce integer. Tincidunt lorem egestas sed ipsum proin. Ac 
-                            vestibulum euismod amet dignissim et lobortis blandit bibendum. 
-                            Nulla venenatis vitae dui sapien duis dolor sed ut dictum. Neque 
-                            diam senectus suspendisse id. Pretium congue erat pharetra aliquet. 
+                            Lorem ipsum dolor sit amet consectetur. Tincidunt pellentesque
+                            pellentesque sed in. Sit nunc velit aliquam quis faucibus nibh
+                            nisl pellentesque. Massa natoque mattis quisque ut molestie turpis
+                            at fusce integer. Tincidunt lorem egestas sed ipsum proin. Ac
+                            vestibulum euismod amet dignissim et lobortis blandit bibendum.
+                            Nulla venenatis vitae dui sapien duis dolor sed ut dictum. Neque
+                            diam senectus suspendisse id. Pretium congue erat pharetra aliquet.
                             Platea aliquet aliquam ac vitae senectus quis.
                         </p>
 
@@ -136,13 +136,13 @@
                     <div class="col-lg-6 info">
                         <h1>Mischool</h1>
                         <p>
-                            Lorem ipsum dolor sit amet consectetur. Tincidunt pellentesque 
-                            pellentesque sed in. Sit nunc velit aliquam quis faucibus nibh 
-                            nisl pellentesque. Massa natoque mattis quisque ut molestie turpis 
-                            at fusce integer. Tincidunt lorem egestas sed ipsum proin. Ac 
-                            vestibulum euismod amet dignissim et lobortis blandit bibendum. 
-                            Nulla venenatis vitae dui sapien duis dolor sed ut dictum. Neque 
-                            diam senectus suspendisse id. Pretium congue erat pharetra aliquet. 
+                            Lorem ipsum dolor sit amet consectetur. Tincidunt pellentesque
+                            pellentesque sed in. Sit nunc velit aliquam quis faucibus nibh
+                            nisl pellentesque. Massa natoque mattis quisque ut molestie turpis
+                            at fusce integer. Tincidunt lorem egestas sed ipsum proin. Ac
+                            vestibulum euismod amet dignissim et lobortis blandit bibendum.
+                            Nulla venenatis vitae dui sapien duis dolor sed ut dictum. Neque
+                            diam senectus suspendisse id. Pretium congue erat pharetra aliquet.
                             Platea aliquet aliquam ac vitae senectus quis.
                         </p>
 
@@ -171,13 +171,13 @@
                     <div class="col-lg-6 info">
                         <h1>Jurnal Mengajar</h1>
                         <p>
-                            Lorem ipsum dolor sit amet consectetur. Tincidunt pellentesque 
-                            pellentesque sed in. Sit nunc velit aliquam quis faucibus nibh 
-                            nisl pellentesque. Massa natoque mattis quisque ut molestie turpis 
-                            at fusce integer. Tincidunt lorem egestas sed ipsum proin. Ac 
-                            vestibulum euismod amet dignissim et lobortis blandit bibendum. 
-                            Nulla venenatis vitae dui sapien duis dolor sed ut dictum. Neque 
-                            diam senectus suspendisse id. Pretium congue erat pharetra aliquet. 
+                            Lorem ipsum dolor sit amet consectetur. Tincidunt pellentesque
+                            pellentesque sed in. Sit nunc velit aliquam quis faucibus nibh
+                            nisl pellentesque. Massa natoque mattis quisque ut molestie turpis
+                            at fusce integer. Tincidunt lorem egestas sed ipsum proin. Ac
+                            vestibulum euismod amet dignissim et lobortis blandit bibendum.
+                            Nulla venenatis vitae dui sapien duis dolor sed ut dictum. Neque
+                            diam senectus suspendisse id. Pretium congue erat pharetra aliquet.
                             Platea aliquet aliquam ac vitae senectus quis.
                         </p>
 
