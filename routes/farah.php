@@ -16,7 +16,7 @@ Route::prefix('produk')->group(function () {
 });
 
 Route::prefix('service')->group(function () {
-    Route::get('detail', function () {
-        return view('landing.service.service-detail');
-    });
+});
+Route::get('layanan', function () {
+    return view('landing.service.service-detail');
 });
