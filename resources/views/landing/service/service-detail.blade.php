@@ -390,7 +390,7 @@
                                                             Lorem ipsum dolor sit amet consectetur. Amet etiam at diam pharetra ipsum at. Cursus tempus nullam ultrices sollicitudin.
                                                         </p>
                                                         <div class="mb-3">
-                                                            <a class="btn btn-stroke-gradient effect btn-sm" href="">Lihat Detail</a>
+                                                            <a class="btn btn-stroke-gradient effect btn-sm" href="{{ url('layanan/software-development/financial-planning') }}">Lihat Detail</a>
                                                             <a class="btn btn-gradient effect btn-sm" href="">Ajukan Proposal</a>
                                                         </div>
                                                     </div>
@@ -412,7 +412,7 @@
                                                             Lorem ipsum dolor sit amet consectetur. Amet etiam at diam pharetra ipsum at. Cursus tempus nullam ultrices sollicitudin.
                                                         </p>
                                                         <div class="mb-3">
-                                                            <a class="btn btn-stroke-gradient effect btn-sm" href="">Lihat Detail</a>
+                                                            <a class="btn btn-stroke-gradient effect btn-sm" href="{{ url('layanan/software-development/financial-planning') }}">Lihat Detail</a>
                                                             <a class="btn btn-gradient effect btn-sm" href="">Ajukan Proposal</a>
                                                         </div>
                                                     </div>

@@ -56,7 +56,7 @@
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" >Layanan</a>
                         <ul class="dropdown-menu">
-                            <li><a href="{{ url('layanan/software-development') }}">Software Development</a></li>
+                            <li><a href="{{ url('service/detail') }}">Software Development</a></li>
                             <li><a href="#">IT Consultan</a></li>
                             <li><a href="#">Magang / PKL</a></li>
                             <li><a href="#">Kelas Industri</a></li>
