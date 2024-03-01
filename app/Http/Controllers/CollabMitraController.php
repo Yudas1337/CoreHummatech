@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Contracts\Interfaces\CollabMitraInterface;
+use App\Contracts\Interfaces\ServiceInterface;
 use App\Models\CollabMitra;
 use App\Http\Requests\StoreCollabMitraRequest;
 use App\Http\Requests\UpdateCollabMitraRequest;
@@ -12,10 +13,12 @@ class CollabMitraController extends Controller
 {
     private CollabMitraInterface $collabMitra;
     private PartnerService $service;
-    public function __construct(CollabMitraInterface $collabMitra, PartnerService $partnerService)
+    private ServiceInterface $serviceintervace;
+    public function __construct(CollabMitraInterface $collabMitra, PartnerService $partnerService, ServiceInterface $serviceintervace)
     {
         $this->collabMitra = $collabMitra;
         $this->service = $partnerService;
+        $this->serviceintervace = $serviceintervace;
         $this->middleware('auth');
     }
     /**
@@ -25,7 +28,8 @@ class CollabMitraController extends Controller
     {
         $collabMitras = $this->collabMitra->get();
         $categories = CollabCategory::all();
-        return view('admin.pages.collab.index', compact('collabMitras', 'categories'));
+        $services = $this->serviceintervace->get();
+        return view('admin.pages.collab.index', compact('collabMitras', 'categories', 'services'));
     }
 
     /**

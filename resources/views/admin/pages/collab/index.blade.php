@@ -42,7 +42,7 @@
                     <div class="card-body">
                         <div class="d-flex flex-column">
                             <div class="d-flex gap-3 justify-content-start">
-                                <img src="{{ asset('storage/' . $collabMitra->image) }}" class="rounded" width="110px"
+                                <img src="{{ asset('storage/' . $collabMitra->image) }}" class="rounded" width="110px" height="110px" class="object-fit-cover"
                                     alt="">
                                 <div class="">
                                     <span class="badge" style="background-color: #FFF8EA; color: #FFAA05">{{ $collabMitra->collabCategory->name }}</span>
@@ -99,6 +99,15 @@
                                     <option value="{{ $category->id }}"
                                         {{ $category->collab_category_id == $category->id ? 'selected' : '' }}>
                                         {{ $category->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="mb-3 mt-0 col-md-12">
+                                <label for="">Pilih Halaman</label>
+                                <select name="service_id" id="" class="form-select">
+                                    <option value selected disabled>Pilih halaman</option>
+                                    @foreach ($services as $service)
+                                    <option value="{{ $service->id }}">{{ $service->name }}</option>
                                     @endforeach
                                 </select>
                             </div>

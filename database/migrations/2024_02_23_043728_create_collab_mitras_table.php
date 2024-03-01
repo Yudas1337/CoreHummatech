@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->foreignId('collab_category_id')->constrained();
+            $table->foreignId('service_id')->constrained('services');
             $table->string('image');
             $table->timestamps();
         });

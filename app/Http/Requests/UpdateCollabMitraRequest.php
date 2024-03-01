@@ -24,7 +24,8 @@ class UpdateCollabMitraRequest extends FormRequest
         return [
             'name' => 'nullable|max:50',
             'collab_category_id' => 'nullable',
-            'image' => 'nullable|mimes:png,jpg,jpeg'
+            'image' => 'nullable|mimes:png,jpg,jpeg',
+            'service_id' => 'nullable'
         ];
     }
 
