@@ -2,7 +2,6 @@
 
 @section('subcontent')
     <div class="page-title">
-        <p class="text-secondary"><span class="text-primary fs-5 pe-3">{{ $news->categoryNews->name }}</span>
             {{ $news->updated_at->format('l, j F Y') }}</p>
         <h2>{{ $news->title }}</h2>
     </div>
