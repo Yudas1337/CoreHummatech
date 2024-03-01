@@ -498,7 +498,6 @@
                             <div class="title-service">
                                 <h4 class="m-0">Prosedur</h4>
                                 <div class="dash"></div>
-                                  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
                                   <style>
                                     .timeline-container {
                                       position: relative;
