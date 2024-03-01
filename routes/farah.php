@@ -15,8 +15,8 @@ Route::prefix('produk')->group(function () {
     });
 });
 
-Route::prefix('layanan')->group(function () {
-    Route::get('software-development', function () {
-        return view('landing.layanan.software-development');
+Route::prefix('service')->group(function () {
+    Route::get('detail', function () {
+        return view('landing.service.service-detail');
     });
 });
