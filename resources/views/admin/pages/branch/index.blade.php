@@ -202,10 +202,3 @@
         map.fitBounds(bounds);
     </script>
 @endsection
-
-
-@section('script')
-    <script>
-        buildMap(-7.900067415010227, 112.60688277775499)
-    </script>
-@endsection
