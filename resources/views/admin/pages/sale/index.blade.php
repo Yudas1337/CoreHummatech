@@ -34,11 +34,11 @@
 
                         <div class="gap-2 d-flex">
                             <div class="d-grid flex-grow-1">
-                                <a href="{{ route('sale.show', $sale->id) }}" class="btn btn-light-primary">Lihat Detail</a>
+                                <a href="{{ route('sale.show', $sale->id) }}" class="btn btn-light-primary btn-sm">Lihat Detail</a>
                             </div>
                             <div class="d-flex flex-shrink-0 gap-2">
-                                <button class="btn px-3 btn-light-warning btn-edit" type="button" data-id="{{ $sale->id }}" data-image="{{ $sale->image }}" data-name="{{ $sale->name }}" data-description="{{ $sale->description }}" data-proposal="{{ $sale->proposal }}"><i class="fas fa-edit"></i></button>
-                                <button class="btn px-3 btn-light-danger btn-delete" type="button" data-id="{{ $sale->id }}"><i class="fas fa-trash"></i></button>
+                                <button class="btn px-3 btn-light-warning btn-edit btn-sm" type="button" data-id="{{ $sale->id }}" data-image="{{ $sale->image }}" data-name="{{ $sale->name }}" data-description="{{ $sale->description }}" data-proposal="{{ $sale->proposal }}"><i class="fas fa-edit"></i></button>
+                                <button class="btn px-3 btn-light-danger btn-delete btn-sm" type="button" data-id="{{ $sale->id }}"><i class="fas fa-trash"></i></button>
                             </div>
                         </div>
                     </div>
@@ -82,18 +82,38 @@
                                     <img class="img-thumbnail" id="image-preview" itemprop="thumbnail">
                                 </figure>
                                 <input class="form-control" name="image" id="image" type="file" onchange="preview(event)">
+                                @error('image')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                             <div class="mb-3 mt-0 col-md-12">
                                 <label for="name">Nama Penjualan</label>
                                 <input class="form-control" id="name" type="text" name="name" autocomplete="name" placeholder="Masukan Nama Penjualan">
+                                @error('name')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                             <div class="mb-3 mt-0 col-md-12">
                                 <label for="description">Deskripsi</label>
                                 <textarea class="form-control" rows="3" id="description" name="description" autocomplete="" placeholder="Masukan Deskripsi Penjualan" ></textarea>
+                                @error('description')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                             <div class="mb-3 mt-0 col-md-12">
                                 <label for="proposal">Proposal</label>
                                 <input type="file" class="form-control" name="proposal" id="proposal" placeholder="Masukan Proposal">
+                                @error('proposal')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                         </div>
                     </div>
@@ -129,18 +149,38 @@
                                     <img class="img-thumbnail" id="image-edit" itemprop="thumbnail">
                                 </figure>
                                 <input class="form-control" id="image" name="image" type="file" onchange="previewImage(event)">
+                                @error('image')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                             <div class="mb-3 mt-0 col-md-12">
                                 <label for="name-edit">Nama Penjualan</label>
                                 <input class="form-control" type="text" id="name-edit" autocomplete="name" name="name" placeholder="Masukan Nama Penjualan">
+                                @error('name')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                             <div class="mb-3 mt-0 col-md-12">
                                 <label for="description-edit">Deskripsi</label>
                                 <textarea class="form-control" rows="3" name="description" autocomplete="" id="description-edit" placeholder="Masukan Deskripsi Penjualan"></textarea>
+                                @error('description')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                             <div class="mb-3 mt-0 col-md-12">
                                 <label for="proposal-edit">Proposal </label>
                                 <input type="file" class="form-control" name="proposal" id="proposal-edit" placeholder="Masukan Proposal">
+                                @error('proposal')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                         </div>
                     </div>
