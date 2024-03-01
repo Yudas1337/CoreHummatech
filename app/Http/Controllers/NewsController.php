@@ -10,6 +10,8 @@ use App\Helpers\ResponseHelper;
 use App\Http\Requests\StoreNewsRequest;
 use App\Http\Requests\UpdateNewsRequest;
 use App\Models\News;
+use App\Models\NewsCategory;
+use App\Models\NewsImage;
 use App\Services\NewsService;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\Paginator;
@@ -77,7 +79,9 @@ class NewsController extends Controller
      */
     public function show(News $news)
     {
-        return view('admin.pages.news.show', compact('news'));
+        $categories = NewsCategory::where('news_id' , $news->id)->get();
+        $newsImages = NewsImage::where('news_id'  , $news->id)->get();
+        return view('admin.pages.news.show', compact('news' ,'newsImages' ,'categories'));
     }
 
     /**
@@ -85,6 +89,7 @@ class NewsController extends Controller
      */
     public function edit(News $news)
     {
+
         $categories = $this->category->get();
         return view('admin.pages.news.edit', compact('news', 'categories'));
     }
