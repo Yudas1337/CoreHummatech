@@ -66,16 +66,25 @@
                 <label for="upload">Foto / Video <small class="text-danger">*Wajib Diisi</small></label>
                 <input type="file" id="upload" name="image" class="form-control" accept="image/*,video/*"
                     onchange="readURL(this)" />
+                    @error('image')
+                        <small class="text-danger">{{ $message }}</small>
+                    @enderror
             </div>
 
             <div class="mb-3 form-group">
                 <label for="headline">Judul <small class="text-danger">*Wajib Diisi</small></label>
                 <input type="text" id="headline" name="title" class="form-control" placeholder="Contoh: Ini Adalah Headline" />
+                @error('title')
+                    <small class="text-danger">{{ $message }}</small>
+                @enderror
             </div>
 
             <div class="mb-3 form-group">
                 <label for="subheadline">Subjudul <small class="text-danger">*Wajib Diisi</small></label>
                 <input type="text" id="subheadline" name="subtitle" class="form-control" placeholder="Contoh: Ini Adalah Subheadline" />
+                @error('subtitle')
+                    <small class="text-danger">{{ $message }}</small>
+                @enderror
             </div>
 
             <div class="mb-3 form-group">

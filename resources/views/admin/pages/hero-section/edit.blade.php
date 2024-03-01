@@ -59,7 +59,7 @@
             <div class="form-group mb-3">
                 <div class="fw-bold mb-2">Preview</div>
                 <div class="img-empty">
-                    <img src="{{ asset('storage/'. $section->image) }}" id="upload-img" alt="{{ $section->name }}" />
+                    <img src="{{ asset('storage/' . $section->image) }}" id="upload-img" alt="{{ $section->name }}" />
                 </div>
             </div>
 
@@ -67,21 +67,36 @@
                 <label for="upload">Foto / Video <small class="text-danger">*Wajib Diisi</small></label>
                 <input type="file" id="upload" class="form-control" accept="image/*,video/*" name="image"
                     onchange="readURL(this)" />
+                @error('image')
+                    <small class="text-danger">{{ $message }}</small>
+                @enderror
             </div>
 
             <div class="mb-3 form-group">
                 <label for="headline">Judul <small class="text-danger">*Wajib Diisi</small></label>
-                <input type="text" id="headline" class="form-control" name="title" placeholder="Contoh: Ini Adalah Headline" value="{{ old('title', $section->title) }}"/>
+                <input type="text" id="headline" class="form-control" name="title"
+                    placeholder="Contoh: Ini Adalah Headline" value="{{ old('title', $section->title) }}" />
+                @error('title')
+                    <small class="text-danger">{{ $message }}</small>
+                @enderror
             </div>
 
             <div class="mb-3 form-group">
                 <label for="subheadline">Subjudul <small class="text-danger">*Wajib Diisi</small></label>
-                <input type="text" id="subheadline" class="form-control" name="subtitle" placeholder="Contoh: Ini Adalah Subheadline" value="{{ old('subtitle', $section->subtitle) }}"/>
+                <input type="text" id="subheadline" class="form-control" name="subtitle"
+                    placeholder="Contoh: Ini Adalah Subheadline" value="{{ old('subtitle', $section->subtitle) }}" />
+                @error('subtitle')
+                    <small class="text-danger">{{ $message }}</small>
+                @enderror
             </div>
 
             <div class="mb-3 form-group">
                 <label for="link">Link Youtube <small class="text-muted">(Opsional)</small></label>
-                <input type="url" id="link" class="form-control" name="link" placeholder="Contoh: https://youtu.be/oae13ksn" value="{{ old('link', $section->link) }}"/>
+                <input type="url" id="link" class="form-control" name="link"
+                    placeholder="Contoh: https://youtu.be/oae13ksn" value="{{ old('link', $section->link) }}" />
+                @error('link')
+                    <small class="text-danger">{{ $message }}</small>
+                @enderror
             </div>
 
             <div class="pt-3 me-auto d-flex gap-2 w-100 justify-content-end align-items-center">

@@ -25,7 +25,7 @@ class StoreSectionRequest extends FormRequest
             'image' => 'required',
             'title' => 'required',
             'subtitle' => 'required',
-            'link' => 'required'
+            'link' => 'nullable'
         ];
     }
 }
