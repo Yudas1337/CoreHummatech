@@ -28,7 +28,7 @@
                 Gambar
             </p>
             @foreach ($newsImages as $newsImage)
-            <div class="col-12 col-xl-5">
+            <div class="col-12 col-xl-5 mt-3 mb-3">
                 <img src="{{ asset('storage/' . $newsImage->photo) }}" alt="">
             </div>
             @endforeach
