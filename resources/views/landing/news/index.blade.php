@@ -5,10 +5,10 @@ style="background-image: url({{ asset('assets-home/img/banner/10.jpg') }});">
 <div class="container">
     <div class="row">
         <div class="col-lg-8 offset-lg-2">
-            <h1>Tentang Kami</h1>
+            <h1>Berita</h1>
             <ul class="breadcrumb">
                 <li><a href="#"><i class="fas fa-home"></i> Beranda</a></li>
-                <li class="active">Tentang Kami</li>
+                <li class="active">Berita</li>
             </ul>
         </div>
     </div>

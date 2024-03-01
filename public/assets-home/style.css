@@ -594,8 +594,8 @@ input {
 }
 
 .btn-sm {
-    padding: 14px 40px;
-    font-size: 14px;
+    padding: 14px 20px;
+    font-size: 12px;
 }
 
 a:hover,
@@ -5912,9 +5912,8 @@ body,
 }
 
 .blog-area .sidebar .title h4 {
-    font-weight: 600;
+    font-weight: 700;
     margin-bottom: 30px;
-    margin-top: -5px;
     position: relative;
     text-transform: capitalize;
     z-index: 1;
@@ -5930,7 +5929,7 @@ body,
     content: "";
     height: 2px;
     width: 50px;
-    border-bottom: 2px solid #1273eb;
+    border-bottom: 3px solid #1273eb;
 }
 
 .blog-area .sidebar input[type="text"] {
@@ -9064,10 +9063,55 @@ nav.navbar.bootsnav {
     margin-right: 10px;
 }
 
+.btn-stroke-gradient.btn-sm{
+    padding: 10px 30px;
+    font-size: 12px;
+}
+
 .bg-gradient-gray {
     background: linear-gradient(
         to right,
         #EAEBFD,
         #fff
     );
+}
+
+.dash{
+    display: inline-block;
+    width: 50px;
+    height: 3px;
+    background: #1273eb;
+    position: relative;
+    z-index: 1;
+    left: 16px;
+    top: -15px;
+}
+
+.dash::before{
+    position: absolute;
+    left: -15px;
+    top: 0;
+    content: "";
+    height: 3px;
+    width: 10px;
+    background: #1273eb;
+}
+
+.title-service h4{
+    font-weight: 700;
+}
+
+.img-box img{
+    object-fit: cover;
+    width: fit-content;
+}
+
+.product-service{
+    flex-direction: row-reverse;
+}
+
+@media only screen and (max-width: 600px) {
+    .product-service {
+        flex-direction: row;
+    }
 }

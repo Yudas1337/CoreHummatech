@@ -14,3 +14,9 @@ Route::prefix('produk')->group(function () {
         return view('landing.product.milink');
     });
 });
+
+Route::prefix('layanan')->group(function () {
+    Route::get('software-development', function () {
+        return view('landing.layanan.software-development');
+    });
+});
