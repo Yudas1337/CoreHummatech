@@ -6,6 +6,9 @@
             <p>{{ $news->updated_at->format('l, j F Y') }}</p>
             <a href="/news" class="btn btn-primary">Kembali</a>
         </div>
+        <p class="mb-0 fs-6" style="font-weight: 600">
+            Judul
+        </p>
         <h2>{{ $news->title }}</h2>
     </div>
 @endsection
@@ -15,9 +18,15 @@
             <img src="{{ asset('storage/'.$news->newsImages[0]->photo ?? '') }}" class="w-100" alt="{{ $news->newsImages[0]->photo ?? '' }}" />
         </div>
         <div class="news-description mt-3">
+            <p class="mb-0 fs-6" style="font-weight: 600">
+                Deskripsi
+            </p>
             {!! $news->description !!}
         </div>
         <div class="row">
+            <p class="mb-0 fs-6" style="font-weight: 600">
+                Gambar
+            </p>
             @foreach ($newsImages as $newsImage)
             <div class="col-12 col-xl-5">
                 <img src="{{ asset('storage/' . $newsImage->photo) }}" alt="">
