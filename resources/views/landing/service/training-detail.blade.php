@@ -116,11 +116,6 @@
 </div>
 
 <div class="thumb-services-area inc-thumbnail mb-5">
-    <!-- Shape -->
-    <div class="right-shape">
-        <img src="{{ asset('assets-home/img/shape/9.png') }}" alt="Shape">
-    </div>
-    <!-- Shape -->
     <div class="container">
         <div class="row">
             <div class="col-lg-8 offset-lg-2">
