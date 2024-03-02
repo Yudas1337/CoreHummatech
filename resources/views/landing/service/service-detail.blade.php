@@ -444,7 +444,7 @@
                                                         </p>
                                                         <div class="mb-3">
                                                             <a class="btn btn-stroke-gradient effect btn-sm"
-                                                                href="{{ url('layanan/software-development/financial-planning') }}">Lihat
+                                                                href="{{ url('layanan/pelatihan') }}">Lihat
                                                                 Detail</a>
                                                             <a class="btn btn-gradient effect btn-sm"
                                                                 href="">Ajukan Proposal</a>
@@ -472,7 +472,7 @@
                                                         </p>
                                                         <div class="mb-3">
                                                             <a class="btn btn-stroke-gradient effect btn-sm"
-                                                                href="{{ url('layanan/software-development/financial-planning') }}">Lihat
+                                                                href="{{ url('layanan/pelatihan') }}">Lihat
                                                                 Detail</a>
                                                             <a class="btn btn-gradient effect btn-sm"
                                                                 href="">Ajukan Proposal</a>
@@ -639,13 +639,13 @@
                             <div class="galeri">
                                 <div class="d-flex flex-wrap col-12">
                                     <img src="{{ asset('assets-home/img/projects/1.jpg') }}"
-                                        style="object-fit: cover; width: 21vw; height: 15vw" class="m-2">
+                                        style="object-fit: cover; width: 18vw; height: 12vw" class="m-2">
                                     <img src="{{ asset('assets-home/img/projects/1.jpg') }}"
-                                        style="object-fit: cover; width: 21vw; height: 15vw" class="m-2">
+                                        style="object-fit: cover; width: 18vw; height: 12vw" class="m-2">
                                     <img src="{{ asset('assets-home/img/projects/1.jpg') }}"
-                                        style="object-fit: cover; width: 21vw; height: 15vw" class="m-2">
+                                        style="object-fit: cover; width: 18vw; height: 12vw" class="m-2">
                                     <img src="{{ asset('assets-home/img/projects/1.jpg') }}"
-                                        style="object-fit: cover; width: 21vw; height: 15vw" class="m-2">
+                                        style="object-fit: cover; width: 18vw; height: 12vw" class="m-2">
                                 </div>
                             </div>
                         </div>

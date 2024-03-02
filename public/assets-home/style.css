@@ -3311,6 +3311,11 @@ body,
     right: 0;
     top: 120px;
 }
+.thumb-services-area .left-shape {
+    position: absolute;
+    left: 10vw;
+    top: 120px;
+}
 
 .thumb-services-area .single-item {
     margin-bottom: 30px;
@@ -9114,4 +9119,52 @@ nav.navbar.bootsnav {
     .product-service {
         flex-direction: row;
     }
+}
+
+.package-name {
+    display: flex;
+    align-items: center;
+}
+
+.package-name img{
+    margin-right: 20px;
+}
+
+.package-name h4{
+    font-weight: 600;
+}
+
+.package {
+    border-radius: 20px;
+    box-shadow: 1px 4px 20px -2px rgb(0 0 0 / 10%);
+    padding: 3.5rem 2.5rem;
+    font-family: "Poppins", sans-serif;
+}
+
+.package-description {
+    text-align: left;
+    font-size: 17px;
+    margin: 20px 0;
+}
+
+.package-price {
+    text-align: left;
+    margin-bottom: 4rem;
+}
+.package-price h1{
+    font-weight: 600;
+    color: #170F49;
+}
+.package-price span {
+    font-size: 19px;
+    color: #6F6C90;
+    font-weight: 400;
+}
+
+.package .ajukan {
+    background-color: #1360EF;
+    padding: 1.5rem 5rem;
+    color: #fff;
+    border-radius: 20px;
+    margin: 4rem 0 !important;
 }
