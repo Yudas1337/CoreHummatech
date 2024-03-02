@@ -20,3 +20,8 @@ Route::put('update/profile/{profile}' ,[ProfileController::class ,'update'])->na
 Route::get('alumni-detail', function (){
     return view('landing.service.alumni-detail');
 });
+
+Route::get('vacancy', function (){
+    return view('landing.vacancy.index');
+});
+

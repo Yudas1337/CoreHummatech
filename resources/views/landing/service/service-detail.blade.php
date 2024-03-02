@@ -608,7 +608,7 @@
                                             <p>Lorem ipsum dolor sit amet consectetur. Tincidunt pellentesque pellentesque
                                                 sed in. Sit nunc velit aliquam quis faucibus nibh nisl pellentesque. Massa
                                             </p>
-                                            <div class="btn btn-gradient effect btn-sm">Lihat Detail Alumni</div>
+                                            <a href="{{url('alumni-detail')}}" class="btn btn-gradient effect btn-sm">Lihat Detail Alumni</a>
                                         </div>
                                     </div>
                                 </div>
@@ -624,7 +624,7 @@
                                             <p>Lorem ipsum dolor sit amet consectetur. Tincidunt pellentesque pellentesque
                                                 sed in. Sit nunc velit aliquam quis faucibus nibh nisl pellentesque. Massa
                                             </p>
-                                            <div class="btn btn-gradient effect btn-sm">Lihat Detail Alumni</div>
+                                            <a href="{{url('alumni-detail')}}" class="btn btn-gradient effect btn-sm">Lihat Detail Alumni</a>
                                         </div>
                                     </div>
                                 </div>

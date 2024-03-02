@@ -36,6 +36,52 @@
             top: -7.5rem;
             right: -7.5rem;
         }
+        .img-box {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .background-img {
+            position: absolute;
+            top:-30%;
+            left: -65%;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: left;
+            opacity: 0.1; /* Sesuaikan nilai opacity sesuai kebutuhan */
+
+        }
+
+        .img-box img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+
+        .shape {
+            /* Gaya untuk shape */
+            /* ... */
+        }
+
+
+        .background-img-shape {
+            position: absolute;
+            top: -3%;
+            left: -110%;
+            width: 40%;
+            height: 40%;
+            background-size: cover;
+            background-position: left;
+            opacity: 0.4;
+        }
+        .about-us-area-shape .about-triangle {
+            position: absolute;
+            z-index: -1;
+            top: -7.5rem;
+            right: -7.5rem;
+        }
+
 
         @media screen and (max-width: 992px) {
             .about-us-area .about-triangle {
@@ -89,28 +135,28 @@
                 <div class="row">
 
                     <div class="col-lg-8 services-single-content wow fadeInUp offset-lg-2">
-                        <div class="mt-5">
-
-                            <div class="about-content-area pb-5 mb-5">
-                                <div class="row">
-                                    <div class="col-lg-5 thumb wow fadeInUp">
-                                        <div class="img-box">
-                                            <img src="{{ asset('assets-home/img/about/2.jpg') }}" alt="Thumb">
-                                            <div class="shape" style="background-image: url(assets/img/shape/1.png);"></div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-7 wow fadeInDown">
-                                        <h2>Angkatan 1922 - 1903</h2>
-                                        <p>
-                                            Lorem ipsum dolor sit amet consectetur.
-                                            Tincidunt pellentesque pellentesque sed in.
-                                            Sit nunc velit aliquam quis faucibus nibh nisl pellentesque.
-                                            Massa natoque mattis quisque ut molestie turpis at fusce integer.
-                                            Tincidunt lorem egestas
-                                        </p>
+                        <div class="about-content-area pb-5 mb-5">
+                            <div class="row">
+                                <div class="col-lg-5 thumb wow fadeInUp">
+                                    <div class="background-img" style="background-image: url('{{ asset('assets-home/img/shape/14.png') }}');"></div>
+                                    <div class="img-box">
+                                        <img src="{{ asset('assets-home/img/about/2.jpg') }}" alt="Thumb">
+                                        <div class="shape" style="background-image: url(assets/img/shape/1.png);"></div>
                                     </div>
                                 </div>
+                                <div class="col-lg-7 wow fadeInDown">
+                                    <h2>Angkatan 1922 - 1903</h2>
+                                    <p>
+                                        Lorem ipsum dolor sit amet consectetur.
+                                        Tincidunt pellentesque pellentesque sed in.
+                                        Sit nunc velit aliquam quis faucibus nibh nisl pellentesque.
+                                        Massa natoque mattis quisque ut molestie turpis at fusce integer.
+                                        Tincidunt lorem egestas
+                                    </p>
+                                </div>
                             </div>
+                        </div>
+                        <div class="mt-5">
 
                         </div>
 
@@ -154,13 +200,41 @@
                                 </div>
                             </div>
 
+                            {{-- <div class="about-content-area-shape pb-5 mb-5">
+                                <div class="row">
+                                    <div class="col-lg-6 wow fadeInDown">
+                                        <div class="text-content">
+                                            <h2>Mischool</h2>
+                                            <p>
+                                                Lorem ipsum dolor sit amet consectetur.
+                                                Tincidunt pellentesque pellentesque sed in.
+                                                Sit nunc velit aliquam quis faucibus nibh nisl pellentesque.
+                                                Massa natoque mattis quisque ut molestie turpis at fusce integer.
+                                                Tincidunt lorem egestas
+                                            </p>
+                                            <a class="btn btn-stroke-gradient effect btn-sm" href="">Lihat detail</a>
+                                            <a class="btn btn-gradient effect btn-sm" href="">Kunjungi website</a>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 thumb wow fadeInUp">
+                                        <div class="img-box">
+                                            <img src="{{ asset('assets-home/img/about/2.jpg') }}" alt="Thumb">
+                                            <div class="shape" style="background-image: url(assets/img/shape/3.png);"></div>
+                                        </div>
+                                        <div class="background-img-shape" style="background-image: url('{{ asset('assets-home/img/shape/3.png') }}');"></div>
+                                    </div>
+
+                                </div>
+                            </div> --}}
+
                             <div class="about-content-area pb-5 mb-5">
                                 <div class="row product-service">
                                     <div class="col-lg-6 thumb wow fadeInUp">
                                         <div class="img-box">
                                             <img src="{{ asset('assets-home/img/about/2.jpg') }}" alt="Thumb">
-                                            <div class="shape" style="background-image: url(assets/img/shape/1.png);"></div>
+                                            <div class="shape" style="background-image: url(assets/img/shape/3.png);"></div>
                                         </div>
+                                        <div class="background-img-shape" style="background-image: url('{{ asset('assets-home/img/shape/3.png') }}');"></div>
                                     </div>
                                     <div class="col-lg-6 wow fadeInDown">
                                         <h2>Mischool</h2>
