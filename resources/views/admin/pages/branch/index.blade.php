@@ -36,11 +36,13 @@
                 <div class="col-xl-3">
                     <div class="card b-t-warning">
                         <div class="card-header pb-0 text-center">
-                            <h4><span class="badge badge-light-warning mb-2">Cabang</span></h4>
+                            <h4><span
+                                    class="badge {{ $branch->type == 'center' ? 'badge-light-success' : 'badge-light-warning' }} mb-2">{{ $branch->type == 'center' ? 'Pusat' : 'Cabang' }}</span>
+                            </h4>
                             <h3 class="mb-3">{{ $branch->name }}</h3>
                             <div class="row mb-3">
                                 <div class="col">
-                                    <button class="btn btn-warning w-100">Edit</button>
+                                    <button class="btn btn-warning w-100 btn-edit" type="button" data-id="{{ $branch->id }}" data-name="{{ $branch->name }}" data-lotitude="{{ $branch->lotitude }}" data-latitude="{{ $branch->latitude }}" data-type="{{ $branch->type }}">Edit</button>
                                 </div>
                                 <div class="col">
                                     <button class="btn-delete btn btn-danger w-100" data-id="{{ $branch->id }}"
@@ -62,13 +64,13 @@
             @endforelse
         </div>
         @if ($branchs == null || count($branchs) == 0)
-    <!-- Tidak ada branch yang tersedia -->
-@else
-    <h4 class="mb-2">
-        Maps
-    </h4>
-    <div id="maps1"></div>
-@endif
+            <!-- Tidak ada branch yang tersedia -->
+        @else
+            <h4 class="mb-2">
+                Maps
+            </h4>
+            <div id="maps1"></div>
+        @endif
     </div>
 
     <!-- Add Modal -->
@@ -80,7 +82,8 @@
                     <h5 class="modal-title fw-semibold" id="exampleModalLabel">Tambah Cabang</h5>
                     <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form class="form-bookmark needs-validation" action="/branch/create" method="POST" id="bookmark-form" enctype="multipart/form-data">
+                <form class="form-bookmark needs-validation" action="/branch/create" method="POST" id="bookmark-form"
+                    enctype="multipart/form-data">
                     @csrf
                     @method('POST')
                     <div class="modal-body">
@@ -94,9 +97,13 @@
                                 <label>Jenis Cabang</label>
                                 <select name="type" class="form-select form-select-sm"
                                     aria-label=".form-select-sm example">
-                                    <option selected="">Pilih Jenis Cabang </option>
-                                    <option value="center">Pusat</option>
-                                    <option value="branch">Cabang</option>
+                                    <option selected="" disabled>Pilih Jenis Cabang </option>
+                                    @if ($branchs->where('type', 'center')->count() > 0)
+                                        <option value="branch">Cabang</option>
+                                    @else
+                                        <option value="center">Pusat</option>
+                                        <option value="branch">Cabang</option>
+                                    @endif
                                 </select>
                             </div>
                             <div class="mb-3 mt-0 col-md-6">
@@ -123,7 +130,7 @@
     </div>
 
     <!-- Edit Modal -->
-    <div class="modal fade modal-bookmark" id="edit" tabindex="-1" role="dialog"
+    <div class="modal fade modal-bookmark" id="modal-edit" tabindex="-1" role="dialog"
         aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
@@ -131,31 +138,32 @@
                     <h5 class="modal-title" id="exampleModalLabel">Edit Mitra</h5>
                     <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form class="form-bookmark needs-validation" action="#" method="POST" id="bookmark-form"
+                <form class="form-bookmark needs-validation" action="#" method="POST" id="form-edit"
                     novalidate="" enctype="multipart/form-data">
+                    @csrf
+                    @method('PUT')
                     <div class="modal-body">
                         <div class="row g-2">
                             <div class="mb-3 mt-0 col-md-12">
                                 <label for="bm-title">Nama</label>
-                                <input class="form-control" type="text" required="" placeholder="Nama Cabang"
+                                <input class="form-control" id="edit-name" type="text" name="name" required="" placeholder="Nama Cabang"
                                     autocomplete="name">
                             </div>
                             <div class="mb-3 mt-0 col-md-12">
                                 <label>Jenis Cabang</label>
-                                <select class="form-select form-select-sm" aria-label=".form-select-sm example">
-                                    <option selected="">Pilih Jenis Cabang </option>
-                                    <option value="Pusat">Pusat</option>
-                                    <option value="Cabang">Cabang</option>
+                                <select class="form-select form-select-sm" id="edit-type" name="type" aria-label=".form-select-sm example">
+                                    <option value="center">Pusat</option>
+                                    <option value="branch">Cabang</option>
                                 </select>
                             </div>
                             <div class="mb-3 mt-0 col-md-6">
                                 <label for="bm-title">Latitude</label>
-                                <input class="form-control" type="text" required="" placeholder="Masukan Latitude"
+                                <input class="form-control" type="text" id="edit-latitude" name="latitude" required="" placeholder="Masukan Latitude"
                                     autocomplete="name">
                             </div>
                             <div class="mb-3 mt-0 col-md-6">
                                 <label for="bm-title">Longitude</label>
-                                <input class="form-control" type="text" required=""
+                                <input class="form-control" type="text" id="edit-longitude" name="lotitude" required=""
                                     placeholder="Masukkan Longitude" autocomplete="name">
                             </div>
                         </div>
@@ -170,11 +178,45 @@
             </div>
         </div>
     </div>
+
     @include('admin.components.delete-modal-component')
 @endsection
 @section('script')
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
     <script>
+        $('#edit-type').on('change', function() {
+            var isConfirm = false;
+            @if ($branchs->where('type', 'center')->count() > 0)
+            if ($(this).val() == 'center') {
+                isConfirm = confirm('Apakah yakin ingin mengganti jenis cabang menjadi pusat?');
+                if (!isConfirm) {
+                    $(this).val('branch');
+                }
+            } else {
+                isConfirm = confirm('Apakah yakin ingin mengganti jenis cabang menjadi cabang?');
+                if (!isConfirm) {
+                    $(this).val('center');
+                }
+            }
+            @endif
+        });
+        $('.btn-edit').on('click', function() {
+            var id = $(this).data('id');
+            var name = $(this).data('name');
+            var type = $(this).data('type');
+            var latitude = $(this).data('latitude');
+            var lotitude = $(this).data('lotitude');
+            $('#edit-name').val(name);
+            if (type == 'center') {
+                $('#edit-type').find('option[value="center"]').attr('selected', true);
+            } else {
+                $('#edit-type').find('option[value="branch"]').attr('selected', true);
+            }
+            $('#edit-latitude').val(latitude);
+            $('#edit-longitude').val(lotitude);
+            $('#form-edit').attr('action', '/branch/update/' + id);
+            $('#modal-edit').modal('show');
+        });
         $('.btn-delete').on('click', function() {
             var id = $(this).data('id');
             $('#form-delete').attr('action', '/brach/delete/' + id);

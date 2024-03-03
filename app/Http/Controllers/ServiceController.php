@@ -4,10 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Contracts\Interfaces\ProductInterface;
 use App\Contracts\Interfaces\ServiceInterface;
+use App\Contracts\Interfaces\TestimonialInterface;
 use App\Models\Service;
 use App\Http\Requests\StoreServiceRequest;
 use App\Http\Requests\UpdateServiceRequest;
 use App\Models\Product;
+use App\Models\Termscondition;
 use App\Services\ServiceService;
 
 class ServiceController extends Controller
@@ -15,10 +17,15 @@ class ServiceController extends Controller
     private ServiceInterface $service;
     private ServiceService $serviceService;
     private ProductInterface $product ;
-    public function __construct(ServiceInterface $service , ServiceService $serviceService , ProductInterface $product)
+    private Termscondition $termscondition;
+    private TestimonialInterface $testimonial;
+    public function __construct(ServiceInterface $service , ServiceService $serviceService , ProductInterface $product, Termscondition $termscondition, TestimonialInterface $testimonial)
     {
         $this->service = $service ;
+        $this->product = $product;
+        $this->termscondition = $termscondition;
         $this->serviceService = $serviceService;
+        $this->testimonial = $testimonial;
     }
     /**
      * Display a listing of the resource.
@@ -55,7 +62,10 @@ class ServiceController extends Controller
     {
         $services = $this->service->show($service->id);
         $products = Product::where('service_id' , $service->id)->get();
-        return view('admin.pages.service.detail' , compact('services' , 'products'));
+        $termsconditions = $this->termscondition->where('service_id' , $service->id)->get();
+        $testimonials = $this->testimonial->get()->where('service_id' , $service->id);
+
+        return view('admin.pages.service.detail' , compact('services' , 'products', 'termsconditions', 'testimonials'));
     }
 
     /**

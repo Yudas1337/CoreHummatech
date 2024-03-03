@@ -33,7 +33,7 @@
     <div class="container-fluid">
         <div class="row">
             @forelse ($testimonials as $testimoni)
-                
+
                 <div class="col-sm-12 col-xl-6">
                     <div class="card">
                         <div class="card-header" style="width: 100%; background: none; margin-bottom: -20px">
@@ -88,6 +88,13 @@
                     <div class="modal-body">
                         <div class="row g-2">
                             <div class="mb-3 mt-0 col-md-12">
+                                <label for="image">Foto Testimoni</label>
+                                <figure class="col-xl-3 col-md-4 col-6" itemprop="associatedMedia" itemscope="">
+                                    <img class="img-thumbnail" id="image-preview" itemprop="thumbnail">
+                                </figure>
+                                <input class="form-control" id="image" name="image" type="file" onchange="preview(event)">
+                            </div>
+                            <div class="mb-3 mt-0 col-md-12">
                                 <label for="name">Nama Lengkap</label>
                                 <input class="form-control @error('name') is-invalid @enderror" type="text" id="name" autocomplete="name" name="name"  placeholder="Masukkan nama">
                                 @error('name')
@@ -118,13 +125,6 @@
                             </select>
                         </div>
 
-                        <div class="mb-3 mt-0 col-md-12">
-                            <label for="image">Foto Testimoni</label>
-                            <figure class="col-xl-3 col-md-4 col-6" itemprop="associatedMedia" itemscope="">
-                                <img class="img-thumbnail" id="image-preview" itemprop="thumbnail">
-                            </figure>
-                            <input class="form-control" id="image" name="image" type="file" onchange="preview(event)">
-                        </div>
                         <div class="d-flex justify-content-end gap-2">
                             <button class="btn btn-secondary " type="button" data-bs-dismiss="modal">Batal</button>
                             <button class="btn btn-primary " type="submit">Simpan</button>
@@ -235,7 +235,7 @@
             });
         });
     </script>
-    
+
     <script>
         function previewImage(event) {
             var input = event.target;

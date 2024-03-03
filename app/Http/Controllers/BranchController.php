@@ -6,20 +6,26 @@ use App\Contracts\Interfaces\BranchInterface;
 use App\Models\Branch;
 use App\Http\Requests\StoreBranchRequest;
 use App\Http\Requests\UpdateBranchRequest;
+use App\Services\BranchService;
 
 class BranchController extends Controller
 {
     private BranchInterface $branch;
-    public function __construct(BranchInterface $branch)
+    private BranchService $service;
+    public function __construct(BranchInterface $branch, BranchService $service)
     {
         $this->branch = $branch;
+        $this->service = $service;
+        $this->middleware('auth');
     }
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
+
         $branchs = $this->branch->get();
+
         return view('admin.pages.branch.index' , compact('branchs'));
     }
 
@@ -61,7 +67,9 @@ class BranchController extends Controller
      */
     public function update(UpdateBranchRequest $request, Branch $branch)
     {
-        //
+        $data = $this->service->updatecenter($request, $branch);
+        $this->branch->update($branch->id, $data);
+        return back();
     }
 
     /**

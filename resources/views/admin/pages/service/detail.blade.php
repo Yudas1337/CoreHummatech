@@ -155,12 +155,15 @@
             </div>
             <div class="mb-4">
                 <h1 class="title">Syarat dan Ketentuan</h1>
-
+                @forelse ($termsconditions as $item)
                 <div class="card card-info card-body">
-                    <p class="mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae hic impedit, nesciunt
-                        at nulla placeat accusamus error excepturi fugit repudiandae recusandae reprehenderit quibusdam
-                        provident esse explicabo accusantium assumenda doloremque velit.</p>
+                    <p class="mb-0">{{ $item->termcondition }}</p>
                 </div>
+                @empty
+                <div class="d-flex justify-content-center">
+                    <h6>Belum ada Syarat dan Ketentuan, <a href="{{ route('terms_condition.index') }}" class="" type="button">tambah</a></h6>
+                </div>
+                @endforelse
             </div>
         </div>
 
@@ -168,7 +171,7 @@
             <h1 class="title">Testimoni</h1>
 
             <div class="row">
-                @foreach (range(0, 3) as $item)
+                @forelse ($testimonials as $item)
                     <div class="col-md-6">
                         <div class="card card-body rounded-4 shadow d-flex flex-row gap-3">
                             <img src="https://fakeimg.pl/1080x1080?text=Test" class="rounded-3" height="120px"
@@ -185,7 +188,11 @@
                             </div>
                         </div>
                     </div>
-                @endforeach
+                @empty
+                <div class="d-flex justify-content-center">
+                    <img src="{{ asset('nodata.jpg') }}" alt="" width="400px">
+                </div>
+                @endforelse
             </div>
         </div>
 

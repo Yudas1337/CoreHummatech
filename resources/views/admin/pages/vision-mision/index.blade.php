@@ -85,6 +85,17 @@
                     id="bookmark-form" novalidate="" enctype="multipart/form-data">
                     @csrf
                     <div class="modal-body">
+                        <ul class="nav nav-tabs justify-content-center" role="tablist">
+                            <li class="nav-item" role="presentation">
+                              <a class="nav-link active" data-bs-toggle="tab" href="#" role="tab"> Tab 1 </a>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                              <a class="nav-link" data-bs-toggle="tab" href="#" role="tab"> Tab 2 </a>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                              <a class="nav-link" data-bs-toggle="tab" href="#" role="tab"> Tab 3 </a>
+                            </li>
+                          </ul>
                         <div class="row g-2">
                             <div class="mb-3 mt-0 col-md-12">
                                 <label for="bm-title">Visi</label>
