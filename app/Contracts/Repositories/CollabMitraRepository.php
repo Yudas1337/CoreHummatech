@@ -3,7 +3,7 @@
 namespace App\Contracts\Repositories;
 
 use App\Contracts\Interfaces\CollabMitraInterface;
-use App\Models\collabMitra;
+use App\Models\CollabMitra;
 
 class CollabMitraRepository extends BaseRepository implements CollabMitraInterface
 {
