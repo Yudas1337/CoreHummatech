@@ -7,7 +7,7 @@ use App\Models\collabMitra;
 
 class CollabMitraRepository extends BaseRepository implements CollabMitraInterface
 {
-    public function __construct(collabMitra $collabMitra)
+    public function __construct(CollabMitra $collabMitra)
     {
         $this->model = $collabMitra;
     }
