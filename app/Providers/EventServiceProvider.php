@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\Branch;
 use App\Models\EnterpriseStructure;
 use App\Models\Faq;
 use App\Models\News;
@@ -56,7 +57,9 @@ class EventServiceProvider extends ServiceProvider
         parent::boot();
 
         $services = Service::all();
+        $branchs = Branch::all();
         View::share('services', $services);
+        View::share('branchs', $branchs);
     }
 
     /**

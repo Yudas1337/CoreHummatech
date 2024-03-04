@@ -239,6 +239,7 @@
 
     <!-- jQuery Frameworks
     ============================================= -->
+    @yield('script')
     <script src="{{ asset('assets-home/js/jquery-3.6.0.min.js') }}"></script>
     <script src="{{ asset('assets-home/js/popper.min.js') }}"></script>
     <script src="{{ asset('assets-home/js/bootstrap.min.js') }}"></script>

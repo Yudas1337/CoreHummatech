@@ -19,6 +19,8 @@ Route::get('/detail', function () {
     return view('landing.news.detail');
 })->name('news.detail');
 
+Route::get('news/index' , [NewsController::class , 'index']);
+
 Route::post('create/service' , [ServiceController::class , 'store'])->name('create.service');
 Route::get('detail/service/{service}' , [ServiceController::class , 'show'])->name('detail.service');
 Route::get('hero-section' , [SectionController::class , 'index'])->name('hero.section');
