@@ -4,7 +4,7 @@
     <div class="page-title">
         <div class="d-flex justify-content-between">
             <p>{{ $news->updated_at->format('l, j F Y') }}</p>
-            <a href="/news" class="btn btn-primary">Kembali</a>
+            <a href="/news/index" class="btn btn-primary">Kembali</a>
         </div>
         <p class="mb-0 fs-6" style="font-weight: 600">
             Judul

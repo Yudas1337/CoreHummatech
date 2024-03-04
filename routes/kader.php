@@ -15,7 +15,8 @@ Route::get('berita' , [NewsController::class , 'news']);
 Route::get('/contact', function () {
     return view('landing.contact');
 })->name('contact');
-Route::get('/detail', function () {
+
+Route::get('/detail/news', function () {
     return view('landing.news.detail');
 })->name('news.detail');
 
@@ -43,6 +44,11 @@ Route::post('create/team' , [TeamController::class , 'store'])->name('create.tea
 Route::put('update/team/{team}', [TeamController::class ,'update'])->name('update.team');
 Route::delete('delete/team/{team}' , [TeamController::class , 'destroy'])->name('delete.team');
 
+
+
+Route::get('data/product', function () {
+    return view('landing.product');
+});
 
 // visi and mision
 // Route::get('setting/vision-mision' , [VisionAndMisionController::class ,'index']);

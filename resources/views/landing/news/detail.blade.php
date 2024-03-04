@@ -1,4 +1,4 @@
-@extends('landing.news.index')
+@extends('landing.layouts.layouts.app')
 @section('content')
 <div class="blog-area right-sidebar full-blog mt-5">
     <div class="container">
@@ -10,7 +10,7 @@
                         <div class="single-item">
                             <div class="item">
                                 <div class="thumb">
-                                    <a href="blog-single-with-sidebar.html"><img src="assets-home/img/blog/11.jpg" alt="Thumb"></a>
+                                    <a href=""><img src="{{ asset('assets-home/img/blog/11.jpg') }}" alt="Thumb"></a>
                                     <div class="date">January 25, 2021</div>
                                 </div>
                                 <div class="info">
@@ -28,7 +28,7 @@
                                        </ul>
                                     </div>
                                     <h3>
-                                        <a href="blog-single-with-sidebar.html">Overcame breeding or my concerns removings</a>
+                                        <a href="">Overcame breeding or my concerns removings</a>
                                     </h3>
                                     <p>
                                         One order all scale sense her gay style wrote. Incommode our not one ourselves residence. Shall there whose those stand she end. So unaffected partiality indulgence dispatched to of celebrated remarkably. Unfeeling are had allowance own perceived abilities. Unfeeling are had allowance own perceived abilities.

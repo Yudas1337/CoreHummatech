@@ -16,7 +16,7 @@
                     <div class="d-flex align-items-center">
                         <label for="search">Cari:</label>
                         <input type="text" id="search" class="form-control mx-3">
-                        <a href="news/create" class="btn btn-primary">Tambah</a>
+                        <a href="/news/create" class="btn btn-primary">Tambah</a>
 
                         <div class="modal fade" id="add" tabindex="-1" aria-labelledby="exampleModalLabel"
                             aria-hidden="true">

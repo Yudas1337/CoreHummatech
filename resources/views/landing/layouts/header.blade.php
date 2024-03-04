@@ -64,7 +64,7 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="{{ url('/produk') }}">Produk</a>
+                        <a href="{{ url('/data/product') }}">Produk</a>
                     </li>
                     <li>
                         <a href="/berita">Berita</a>
