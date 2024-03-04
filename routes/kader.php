@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\NewsController;
 use App\Http\Controllers\PositionController;
 use App\Http\Controllers\SaleController;
 use App\Http\Controllers\SectionController;
@@ -10,15 +11,15 @@ use Illuminate\Support\Facades\Route;
 
 
 // news
-Route::get('/berita', function () {
-    return view('landing.news.index');
-});
+Route::get('berita' , [NewsController::class , 'news']);
 Route::get('/contact', function () {
     return view('landing.contact');
 })->name('contact');
 Route::get('/detail', function () {
     return view('landing.news.detail');
 })->name('news.detail');
+
+Route::get('news/index' , [NewsController::class , 'index']);
 
 Route::post('create/service' , [ServiceController::class , 'store'])->name('create.service');
 Route::get('detail/service/{service}' , [ServiceController::class , 'show'])->name('detail.service');

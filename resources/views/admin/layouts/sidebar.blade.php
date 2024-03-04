@@ -118,7 +118,7 @@
                 <a href="/category-news">Kategori</a>
             </li>
             <li>
-                <a href="/news">Berita</a>
+                <a href="/news/index">Berita</a>
             </li>
         </ul>
     </li>

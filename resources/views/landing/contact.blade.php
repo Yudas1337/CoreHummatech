@@ -1,5 +1,12 @@
 @extends('landing.layouts.layouts.app')
 @section('content')
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+<style>
+    #maps1 {
+        height: 400px;
+        /* Tentukan tinggi peta sesuai kebutuhan */
+    }
+</style>
 <div class="breadcrumb-area text-center shadow dark text-light bg-cover" style="background-image: url(assets-home/img/banner/2.jpg);">
     <div class="container">
         <div class="row">
@@ -117,9 +124,42 @@
     ============================================= -->
     <div class="maps-area">
         <div class="google-maps">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d14767.262289338461!2d70.79414485000001!3d22.284975!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sin!4v1424308883981"></iframe>
+            <div id="maps1"></div>
         </div>
     </div>
     <!-- End Google Maps -->
 
+@endsection
+@section('script')
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+<script>
+    var map = L.map('maps1');
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors'
+    }).addTo(map);
+
+    var markers = [];
+    var bounds = L.latLngBounds();
+
+    @foreach ($branchs as $branch)
+        var marker = L.marker([{{ $branch->latitude }}, {{ $branch->lotitude }}]).addTo(map);
+        marker.bindPopup("<div class='popup-content'><b>{{ $branch->name }}</b><br>{{ $branch->address }}</div>");
+        markers.push(marker);
+        bounds.extend(marker.getLatLng());
+
+        @if ($branch->type === 'center')
+            map.setView(marker.getLatLng(), 12);
+            marker.openPopup();
+        @endif
+    @endforeach
+
+    map.fitBounds(bounds);
+</script>
+
+<style>
+    .popup-content {
+        margin-top: 10px; /* Atur jarak antara marker dan pop-up */
+    }
+</style>
 @endsection

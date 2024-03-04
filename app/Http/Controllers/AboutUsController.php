@@ -3,20 +3,24 @@
 namespace App\Http\Controllers;
 
 use App\Contracts\Interfaces\ProfileInterface;
-use App\Models\Profile;
+use App\Contracts\Interfaces\VisionAndMisionInterface;
+use App\Models\MisionItems;
 
 class AboutUsController extends Controller
 {
-    private ProfileInterface $profile ;
-    public function __construct(Profile $profile)
+    private ProfileInterface $profile;
+    private VisionAndMisionInterface $visionMision;
+    public function __construct(ProfileInterface $profile, VisionAndMisionInterface $visionMision,)
     {
         $this->profile = $profile;
+        $this->visionMision = $visionMision;
     }
 
     public function index()
     {
-        $profile = $this->profile->get();
-        return view('landing.index' , compact('profile'));
+        $profiles = $this->profile->get();
+        $visionMisions = $this->visionMision->get();
+        $missions = MisionItems::all();
+        return view('landing.about' , compact('profiles', 'visionMisions', 'missions'));
     }
-
 }

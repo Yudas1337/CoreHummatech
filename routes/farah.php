@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AboutUsController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\TestimonialController;
 use Illuminate\Support\Facades\Route;
@@ -12,6 +13,8 @@ Route::prefix('produk')->group(function () {
     // Route::get('milink', function () {
     //     return view('landing.product.milink');
     // });
+Route::get('produk', function () {
+        return view('landing.product');
 });
 
 Route::get('layanan', function () {
@@ -21,3 +24,5 @@ Route::get('layanan', function () {
 Route::get('layanan/pelatihan', function () {
     return view('landing.service.training-detail');
 });
+
+Route::get('/about-us', [AboutUsController::class, 'index']);
