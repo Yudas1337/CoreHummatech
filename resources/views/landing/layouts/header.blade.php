@@ -47,7 +47,7 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="navbar-menu">
                 <ul class="nav navbar-nav navbar-center" data-in="#" data-out="#">
-                    <li>
+                    <li class="active">
                         <a href="{{ url('/') }}">Beranda</a>
                     </li>
                     <li>
@@ -66,7 +66,7 @@
                     <li>
                         <a href="{{ url('/data/product') }}">Produk</a>
                     </li>
-                    <li>
+                    <li class="{{ request()->is('/berita') ? 'active' : '' }}">
                         <a href="/berita">Berita</a>
                     </li>
                     <li>
