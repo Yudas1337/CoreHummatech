@@ -112,4 +112,10 @@ class NewsController extends Controller
         $this->news->delete($news->id);
         return back();
     }
+
+    public function news ()
+    {
+        $newss = $this->news->get();
+        return view('landing.news.index' , compact('newss'));
+    }
 }

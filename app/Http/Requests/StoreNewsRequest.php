@@ -32,7 +32,7 @@ class StoreNewsRequest extends FormRequest
             'description.required' => 'Harap masukkan deskripsi dahulu',
             'image.mimes' => 'Format gambar tidak valid. Harap pilih format jpeg, png, atau jpg',
             'image.required' => 'Harap pilih thumbnail gambar',
-            'category_news_id.required' => 'Harap pilih kategori berita',
+            'new.required' => 'Harap pilih kategori berita',
             'category_news_id.exists' => 'Kategori berita tidak valid',
         ];
     }

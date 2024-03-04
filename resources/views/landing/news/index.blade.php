@@ -64,192 +64,34 @@ style="background-image: url({{ asset('assets-home/img/banner/10.jpg') }});">
             <div class="blog-content">
                 <div class="blog-item-box">
                     <div class="row">
-                        <!-- Single Item -->
+                        @forelse ($newss as $news)
                         <div class="col-lg-4 col-md-6 single-item">
                             <div class="item">
                                 <div class="thumb">
-                                    <a href="{{ route('news.detail') }}"><img src="assets-home/img/blog/1.jpg" alt="Thumb"></a>
-                                    <div class="date">January 25, 2021</div>
-                                </div>
+                                    <a href="{{ route('news.detail') }}"><img src="{{ asset('storage/' . $news->newsImages[0]->photo) }}" alt="Thumb"></a>
+                                    <div class="date">{{ \Carbon\Carbon::parse($news->created_at)->locale('id_ID')->isoFormat('D MMMM Y') }}</div>                                </div>
                                 <div class="info">
                                     <div class="meta">
                                         <ul>
                                            <li>
                                                <img src="assets-home/img/team/1.jpg" alt="Author">
                                                <span>By </span>
-                                               <a href="#">John Baus</a>
-                                           </li>
-                                           <li>
-                                               <span>In </span>
-                                               <a href="#">Agency</a>
+                                               <a href="#">Hummatech</a>
                                            </li>
                                        </ul>
                                     </div>
                                     <h4>
-                                        <a href="{{ route('news.detail') }}">Suppose cottage between and way. Minuter own.</a>
+                                        <a href="{{ route('news.detail') }}">{{ $news->title }}</a>
                                     </h4>
                                     <p>
-                                        One order all scale sense her gay style wrote. Incommode our not one ourselves residence. Shall there whose those.
+                                        {!! Str::limit($news->description, 200) !!}
                                     </p>
                                 </div>
                             </div>
                         </div>
-                        <!-- End Single Item -->
-                        <!-- Single Item -->
-                        <div class="col-lg-4 col-md-6 single-item">
-                            <div class="item">
-                                <div class="thumb">
-                                    <a href="{{ route('news.detail') }}"><img src="assets-home/img/blog/2.jpg" alt="Thumb"></a>
-                                    <div class="date">February 18, 2021</div>
-                                </div>
-                                <div class="info">
-                                    <div class="meta">
-                                        <ul>
-                                           <li>
-                                               <img src="assets-home/img/team/2.jpg" alt="Author">
-                                               <span>By </span>
-                                               <a href="#">Paul Anu</a>
-                                           </li>
-                                           <li>
-                                               <span>In </span>
-                                               <a href="#">Creative</a>
-                                           </li>
-                                       </ul>
-                                    </div>
-                                    <h4>
-                                        <a href="{{ route('news.detail') }}">Agreement far boy otherwise rapturous. </a>
-                                    </h4>
-                                    <p>
-                                        One order all scale sense her gay style wrote. Incommode our not one ourselves residence. Shall there whose those.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End Single Item -->
-                        <!-- Single Item -->
-                        <div class="col-lg-4 col-md-6 single-item">
-                            <div class="item">
-                                <div class="thumb">
-                                    <a href="{{ route('news.detail') }}"><img src="assets-home/img/blog/3.jpg" alt="Thumb"></a>
-                                    <div class="date">March 24, 2021</div>
-                                </div>
-                                <div class="info">
-                                    <div class="meta">
-                                        <ul>
-                                           <li>
-                                               <img src="assets-home/img/team/3.jpg" alt="Author">
-                                               <span>By </span>
-                                               <a href="#">Mark Henri</a>
-                                           </li>
-                                           <li>
-                                               <span>In </span>
-                                               <a href="#">Business</a>
-                                           </li>
-                                       </ul>
-                                    </div>
-                                    <h4>
-                                        <a href="{{ route('news.detail') }}">Attachment resolution sentiments shoot in the point</a>
-                                    </h4>
-                                    <p>
-                                        One order all scale sense her gay style wrote. Incommode our not one ourselves residence. Shall there whose those.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End Single Item -->
-                        <!-- Single Item -->
-                        <div class="col-lg-4 col-md-6 single-item">
-                            <div class="item">
-                                <div class="thumb">
-                                    <a href="{{ route('news.detail') }}"><img src="assets-home/img/blog/4.jpg" alt="Thumb"></a>
-                                    <div class="date">April 18, 2021</div>
-                                </div>
-                                <div class="info">
-                                    <div class="meta">
-                                        <ul>
-                                           <li>
-                                               <img src="assets-home/img/team/4.jpg" alt="Author">
-                                               <span>By </span>
-                                               <a href="#">John Baus</a>
-                                           </li>
-                                           <li>
-                                               <span>In </span>
-                                               <a href="#">Agency</a>
-                                           </li>
-                                       </ul>
-                                    </div>
-                                    <h4>
-                                        <a href="{{ route('news.detail') }}">Add matter family active mutual put happen. </a>
-                                    </h4>
-                                    <p>
-                                        One order all scale sense her gay style wrote. Incommode our not one ourselves residence. Shall there whose those.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End Single Item -->
-                        <!-- Single Item -->
-                        <div class="col-lg-4 col-md-6 single-item">
-                            <div class="item">
-                                <div class="thumb">
-                                    <a href="{{ route('news.detail') }}"><img src="assets-home/img/blog/5.jpg" alt="Thumb"></a>
-                                    <div class="date">June 25, 2021</div>
-                                </div>
-                                <div class="info">
-                                    <div class="meta">
-                                        <ul>
-                                           <li>
-                                               <img src="assets-home/img/team/5.jpg" alt="Author">
-                                               <span>By </span>
-                                               <a href="#">Dia Jack</a>
-                                           </li>
-                                           <li>
-                                               <span>In </span>
-                                               <a href="#">Creative</a>
-                                           </li>
-                                       </ul>
-                                    </div>
-                                    <h4>
-                                        <a href="{{ route('news.detail') }}">Unsatiable entreaties sympathize nay</a>
-                                    </h4>
-                                    <p>
-                                        One order all scale sense her gay style wrote. Incommode our not one ourselves residence. Shall there whose those.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End Single Item -->
-                        <!-- Single Item -->
-                        <div class="col-lg-4 col-md-6 single-item">
-                            <div class="item">
-                                <div class="thumb">
-                                    <a href="{{ route('news.detail') }}"><img src="assets-home/img/blog/6.jpg" alt="Thumb"></a>
-                                    <div class="date">Auguest 25, 2021</div>
-                                </div>
-                                <div class="info">
-                                    <div class="meta">
-                                        <ul>
-                                           <li>
-                                               <img src="assets-home/img/team/6.jpg" alt="Author">
-                                               <span>By </span>
-                                               <a href="#">John Baus</a>
-                                           </li>
-                                           <li>
-                                               <span>In </span>
-                                               <a href="#">Agency</a>
-                                           </li>
-                                       </ul>
-                                    </div>
-                                    <h4>
-                                        <a href="{{ route('news.detail') }}">Cottage between and way. Minuter own.</a>
-                                    </h4>
-                                    <p>
-                                        One order all scale sense her gay style wrote. Incommode our not one ourselves residence. Shall there whose those.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End Single Item -->
+                        @empty
+
+                        @endforelse
                     </div>
 
                     <!-- Pagination -->
