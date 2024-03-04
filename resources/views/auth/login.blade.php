@@ -8,7 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Hummatech adalah perusahaan software development terbaik di Malang. Kami menyediakan solusi perangkat lunak yang inovatif dan berkualitas tinggi.">
-    <meta name="keywords" content="admin template, Dunzo admin template, dashboard template, flat admin template, responsive admin template, web app">
+    <meta name="keywords" content="Hummatech, Hummatech adalah perusahaan software development terbaik di Malang. Kami menyediakan solusi perangkat lunak yang inovatif dan berkualitas tinggi.">
     <meta name="author" content="pixelstrap">
     <link rel="icon" href="{{ asset('logofavicon.png') }}" type="image/x-icon">
     <link rel="shortcut icon" href="{{ asset('logofavicon.png') }}" type="image/x-icon">
