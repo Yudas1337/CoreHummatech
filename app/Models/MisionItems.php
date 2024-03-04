@@ -11,7 +11,9 @@ class MisionItems extends Model
 
     protected $fillable = [
         'mission',
-        'vision_and_mission_id'
+        'vision_and_mission_id',
+        'status',
+        'service_id'
     ];
 
     public function visionAndMission()

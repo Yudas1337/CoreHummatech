@@ -38,9 +38,12 @@ class ProfileService
     public function store(StoreProfileRequest $request): array|bool
     {
         $data = $request->validated();
+        $image = $request->hasFile('image') && $request->file('image')->isValid();
+        $proposal = $request->hasFile('proposal') && $request->file('proposal')->isValid();
 
-        if ($request->hasFile('image') && $request->file('image')->isValid()) {
+        if ($image && $proposal) {
             $data['image'] = $request->file('image')->store(TypeEnum::PROFILE->value, 'public');
+            $data['proposal'] = $request->file('proposal')->store(TypeEnum::PROFILE->value, 'public');
             return $data;
         }
 
@@ -62,6 +65,16 @@ class ProfileService
             if ($profile->image != NULL) {
                 $this->remove($profile->image);
             }
+
+            if ($request->hasFile('proposal') && $request->file('proposal')->isValid()) {
+                if ($profile->proposal != NULL) {
+                    $this->remove($profile->proposal);
+                }
+                $data['proposal'] = $request->file('proposal')->store(TypeEnum::PROFILE->value, 'public');
+            } else {
+                $data['proposal'] = $profile->proposal;
+            }
+
             $data['image'] = $request->file('image')->store(TypeEnum::PROFILE->value, 'public');
         } else {
             $data['image'] = $profile->image;

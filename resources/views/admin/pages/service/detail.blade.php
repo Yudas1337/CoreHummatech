@@ -134,11 +134,8 @@
                     </div>
                 @empty
                 <div class="d-flex justify-content-center">
-                    <img src="{{ asset('nodata.jpg') }}" alt="" width="400px">
+                    <h6>Belum ada produk yang di hasilkan, <a href="{{ route('product.index') }}" class="" type="button">tambah</a></h6>
                 </div>
-                <h5 class="text-center">
-                    Data Masih Kosong
-                </h5>
                 @endforelse
             </div>
         </div>
@@ -146,12 +143,16 @@
         <div id="tos-mission" class="need-space">
             <div class="mb-4">
                 <h1 class="title">Misi</h1>
+                @forelse ($mision as $item)
 
                 <div class="card card-info card-body">
-                    <p class="mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae hic impedit, nesciunt
-                        at nulla placeat accusamus error excepturi fugit repudiandae recusandae reprehenderit quibusdam
-                        provident esse explicabo accusantium assumenda doloremque velit.</p>
+                    <p class="mb-0">{{ $item->mission }}</p>
                 </div>
+                @empty
+                <div class="d-flex justify-content-center">
+                    <h6>Belum ada Misi, <a href="{{ route('vision.mision') }}" class="" type="button">tambah</a></h6>
+                </div>
+                @endforelse
             </div>
             <div class="mb-4">
                 <h1 class="title">Syarat dan Ketentuan</h1>
@@ -190,7 +191,7 @@
                     </div>
                 @empty
                 <div class="d-flex justify-content-center">
-                    <img src="{{ asset('nodata.jpg') }}" alt="" width="400px">
+                    <h6>Belum ada Testimoni, <a href="{{ route('testimonial.index') }}" class="" type="button">tambah</a></h6>
                 </div>
                 @endforelse
             </div>
@@ -200,12 +201,12 @@
             <h1 class="title">FAQ</h1>
 
             <div class="accordion" id="accordionExample">
-                @foreach (range(0, 3) as $item)
+                @forelse ($faqs as $item)
                     <div class="accordion-item">
                         <h2 class="accordion-header">
                             <button class="accordion-button d-flex collapsed align-items-center gap-3" type="button"
-                                data-bs-toggle="collapse" data-bs-target="#collapse-{{ $item }}"
-                                aria-expanded="true" aria-controls="collapse-{{ $item }}">
+                                data-bs-toggle="collapse" data-bs-target="#collapse-{{ $item->id }}"
+                                aria-expanded="true" aria-controls="collapse-{{ $item->id }}">
 
                                 <svg width="27" height="30" viewBox="0 0 27 30" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
@@ -215,24 +216,23 @@
                                         fill="#363636" />
                                 </svg>
 
-                                <h1 class="h5 mb-0">Collapse Title #{{ $item }}</h1>
+                                <h1 class="h5 mb-0">#{{ $item->question }}</h1>
 
                                 <i class="fas fa-chevron-down icon-collapse"></i>
                             </button>
                         </h2>
-                        <div id="collapse-{{ $item }}" class="accordion-collapse collapse"
+                        <div id="collapse-{{ $item->id }}" class="accordion-collapse collapse"
                             data-bs-parent="#accordionExample">
                             <div class="accordion-body">
-                                <strong>This is the first item's accordion body.</strong> It is shown by default, until the
-                                collapse plugin adds the appropriate classes that we use to style each element. These
-                                classes control the overall appearance, as well as the showing and hiding via CSS
-                                transitions. You can modify any of this with custom CSS or overriding our default variables.
-                                It's also worth noting that just about any HTML can go within the
-                                <code>.accordion-body</code>, though the transition does limit overflow.
+                                <p>{{ $item->answer }}</p>
                             </div>
                         </div>
                     </div>
-                @endforeach
+                    @empty
+                    <div class="d-flex justify-content-center">
+                        <h6>Belum ada FAQ, <a href="{{ route('faq.index') }}" class="" type="button">tambah</a></h6>
+                    </div>
+                @endforelse
             </div>
         </div>
 

@@ -24,26 +24,28 @@
     <div class="p-1">
         <h3 class="mb-3">Visi</h3>
         @if ($visionAndMisions)
-        <div class="card pb-0 border-l-primary border-4 border-0 shadow">
-            <div class="card-header">
-                <div class="card-header-right">
-                    <ul class="">
-                        <li><i class="fa fa-pen text-primary btn-edit-visi" type="button"
-                                data-id="{{ $visionAndMisions ? $visionAndMisions->id : '' }}" data-visi="{{ $visionAndMisions ? $visionAndMisions->vision : '' }}"></i></li>
-                        <li><i class="fa fa-trash text-primary btn-delete" data-id="{{ $visionAndMisions ? $visionAndMisions->id : ''  }}"></i></li>
-                    </ul>
+            <div class="card pb-0 border-l-primary border-4 border-0 shadow">
+                <div class="card-header">
+                    <div class="card-header-right">
+                        <ul class="">
+                            <li><i class="fa fa-pen text-primary btn-edit-visi" type="button"
+                                    data-id="{{ $visionAndMisions ? $visionAndMisions->id : '' }}"
+                                    data-visi="{{ $visionAndMisions ? $visionAndMisions->vision : '' }}"></i></li>
+                            <li><i class="fa fa-trash text-primary btn-delete"
+                                    data-id="{{ $visionAndMisions ? $visionAndMisions->id : '' }}"></i></li>
+                        </ul>
+                    </div>
+                    <p class="" style="width:95%;">{{ $visionAndMisions ? $visionAndMisions->vision : '' }}
+                    </p>
                 </div>
-                <p class="" style="width:95%;">{{ $visionAndMisions ? $visionAndMisions->vision : '' }}
-                </p>
             </div>
-        </div>
         @else
-        <div class="d-flex justify-content-center">
-            <img src="{{ asset('nodata.jpg') }}" alt="" width="400px">
-        </div>
-        <h5 class="text-center">
-            Data Masih Kosong
-        </h5>
+            <div class="d-flex justify-content-center">
+                <img src="{{ asset('nodata.jpg') }}" alt="" width="200px">
+            </div>
+            <h5 class="text-center">
+                Data Masih Kosong
+            </h5>
         @endif
         <h3 class="mb-3">Misi</h3>
         @forelse ($mision as $item)
@@ -61,9 +63,33 @@
                     </p>
                 </div>
             </div>
-            @empty
+        @empty
             <div class="d-flex justify-content-center">
-                <img src="{{ asset('nodata.jpg') }}" alt="" width="400px">
+                <img src="{{ asset('nodata.jpg') }}" alt="" width="200px">
+            </div>
+            <h5 class="text-center">
+                Data Masih Kosong
+            </h5>
+        @endforelse
+        <h3 class="mb-3">Misi Layanan</h3>
+        @forelse ($misionservice as $item)
+            <div class="card pb-0 border-l-primary border-4 border-0 shadow">
+                <div class="card-header">
+                    <div class="card-header-right">
+                        <ul class="">
+                            <li><i class="fa fa-pen text-primary btn-edit-misi" type="button" data-id="{{ $item->id }}"
+                                    data-misi="{{ $item->mission }}"></i></li>
+                            <li><i class="fa fa-trash text-primary btn-delete-misi" data-id="{{ $item->id }}"></i></li>
+                        </ul>
+                    </div>
+                    <p class="" style="width:95%;">
+                        {{ $item->mission }}
+                    </p>
+                </div>
+            </div>
+        @empty
+            <div class="d-flex justify-content-center">
+                <img src="{{ asset('nodata.jpg') }}" alt="" width="200px">
             </div>
             <h5 class="text-center">
                 Data Masih Kosong
@@ -77,63 +103,106 @@
         aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
-                <div class="modal-header">
+                <div class="dflex justify-content-between p-2 mx-3 mt-2">
                     <h5 class="modal-title fw-semibold" id="exampleModalLabel">Tambah Visi Misi</h5>
-                    <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form class="form-bookmark needs-validation" action="{{ route('create.vision.mision') }}" method="POST"
-                    id="bookmark-form" novalidate="" enctype="multipart/form-data">
-                    @csrf
-                    <div class="modal-body">
-                        <ul class="nav nav-tabs justify-content-center" role="tablist">
-                            <li class="nav-item" role="presentation">
-                              <a class="nav-link active" data-bs-toggle="tab" href="#" role="tab"> Tab 1 </a>
-                            </li>
-                            <li class="nav-item" role="presentation">
-                              <a class="nav-link" data-bs-toggle="tab" href="#" role="tab"> Tab 2 </a>
-                            </li>
-                            <li class="nav-item" role="presentation">
-                              <a class="nav-link" data-bs-toggle="tab" href="#" role="tab"> Tab 3 </a>
-                            </li>
-                          </ul>
-                        <div class="row g-2">
-                            <div class="mb-3 mt-0 col-md-12">
-                                <label for="bm-title">Visi</label>
-                                <input class="form-control" type="text" value="{{ $visionAndMisions ? $visionAndMisions->vision : '' }}" autocomplete="name"
-                                    placeholder="Masukkan Visi" name="vision">
-                                    @error('vision')
-                                    <p class="text-danger">{{ $message }}</p>
-                                    @enderror
-                            </div>
-                            <div class="mb-3 mt-0 col-md-12">
-                                <label for="bm-title">Misi</label>
-                                <input class="form-control" type="text" name="mission[]" required=""
-                                    autocomplete="name" placeholder="Masukkan Misi" />
-                                    @error('mission.*')
-                                    <p class="text-danger">{{ $message }}</p>
-                                    @enderror
+                <div class="advance-options">
+                    <ul class="nav border-tab" id="chat-options-tab" role="tablist">
+                        <li class="nav-item"><a class="nav-link active" id="chats-tab" data-bs-toggle="tab" href="#chats"
+                                role="tab" aria-controls="chats" aria-selected="true">Kantor</a></li>
+                        <li class="nav-item"><a class="nav-link" id="contacts-tab" data-bs-toggle="tab" href="#contacts"
+                                role="tab" aria-controls="contacts" aria-selected="false">Layanan</a></li>
+                    </ul>
+                    <div class="tab-content" id="chat-options-tabContent">
+                        <div class="tab-pane fade show active" id="chats" role="tabpanel" aria-labelledby="chats-tab">
+                            <form class="form-bookmark needs-validation" action="{{ route('create.vision.mision') }}"
+                                method="POST" id="bookmark-form" novalidate="" enctype="multipart/form-data">
+                                @csrf
+                                <input type="hidden" name="status" value="office">
+                                <div class="modal-body">
+                                    <div class="row g-2">
+                                        <div class="mb-3 mt-0 col-md-12">
+                                            <label for="bm-title">Visi</label>
+                                            <input class="form-control" type="text"
+                                                value="{{ $visionAndMisions ? $visionAndMisions->vision : '' }}"
+                                                autocomplete="name" placeholder="Masukkan Visi" name="vision">
+                                            @error('vision')
+                                                <p class="text-danger">{{ $message }}</p>
+                                            @enderror
+                                        </div>
+                                        <div class="mb-3 mt-0 col-md-12">
+                                            <label for="bm-title">Misi</label>
+                                            <input class="form-control" type="text" name="mission[]" required=""
+                                                autocomplete="name" placeholder="Masukkan Misi" />
+                                            @error('mission.*')
+                                                <p class="text-danger">{{ $message }}</p>
+                                            @enderror
 
-                                <div id="product-listing"></div>
+                                            <div id="product-listing"></div>
 
-                                <button type="button" class="btn add-button-trigger btn-primary mt-3">Tambah
-                                    Misi</button>
-                            </div>
+                                            <button type="button" class="btn add-button-trigger btn-primary mt-3">Tambah
+                                                Misi</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <div class="d-flex justify-content-end">
+                                        <button class="btn btn-secondary" type="button"
+                                            data-bs-dismiss="modal">Batal</button>
+                                        <button class="btn btn-primary" type="submit">Simpan</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="tab-pane fade" id="contacts" role="tabpanel" aria-labelledby="contacts-tab">
+                            <form class="form-bookmark needs-validation" action="{{ route('create.vision.mision') }}"
+                                method="POST" id="bookmark-form" novalidate="" enctype="multipart/form-data">
+                                @csrf
+                                <input type="hidden" name="status" value="service">
+                                <div class="modal-body">
+                                    <div class="row g-2">
+                                        <div class="mb-3 mt-0 col-md-12">
+                                            <label for="">Tampilkan di </label>
+                                            <select class="form-select" name="service_id" id="">
+                                                <option value selected disabled>Pilih Halaman</option>
+                                                @foreach ($services as $service)
+                                                    <option value="{{ $service->id }}">{{ $service->name }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                        <div class="mb-3 mt-0 col-md-12">
+                                            <label for="bm-title">Misi</label>
+                                            <input class="form-control" type="text" name="mission[]" required=""
+                                                autocomplete="name" placeholder="Masukkan Misi" />
+                                            @error('mission.*')
+                                                <p class="text-danger">{{ $message }}</p>
+                                            @enderror
+
+                                            <div id="product-listing"></div>
+
+                                            <button type="button" class="btn add-button-trigger btn-primary mt-3">Tambah
+                                                Misi</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <div class="d-flex justify-content-end">
+                                        <button class="btn btn-secondary" type="button"
+                                            data-bs-dismiss="modal">Batal</button>
+                                        <button class="btn btn-primary" type="submit">Simpan</button>
+                                    </div>
+                                </div>
+                            </form>
                         </div>
                     </div>
-                    <div class="modal-footer">
-                        <div class="d-flex justify-content-end">
-                            <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">Batal</button>
-                            <button class="btn btn-primary" type="submit">Simpan</button>
-                        </div>
-                    </div>
-                </form>
+                </div>
             </div>
         </div>
     </div>
 
     <!--Modal Edit Visi-->
-    <div class="modal fade modal-bookmark" id="edit-visi" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
+    <div class="modal fade modal-bookmark" id="edit-visi" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">

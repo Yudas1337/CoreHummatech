@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Contracts\Interfaces\ServiceInterface;
 use App\Contracts\Interfaces\VisionAndMisionInterface;
 use App\Models\VisionAndMision;
 use App\Http\Requests\StoreVisionAndMisionRequest;
@@ -13,10 +14,12 @@ class VisionAndMisionController extends Controller
 {
     private VisionAndMisionInterface $visionAndMision;
     private VisionAndMisionService $vismisionservices;
-    public function __construct(VisionAndMisionInterface $visionAndMision, VisionAndMisionService $vismisionservices)
+    private ServiceInterface $service;
+    public function __construct(VisionAndMisionInterface $visionAndMision, VisionAndMisionService $vismisionservices, ServiceInterface $service)
     {
         $this->visionAndMision = $visionAndMision;
         $this->vismisionservices = $vismisionservices;
+        $this->service = $service;
         $this->middleware('auth');
     }
     /**
@@ -26,8 +29,9 @@ class VisionAndMisionController extends Controller
     {
         $visionAndMisions = $this->visionAndMision->get()->first();
         $mision = MisionItems::where('vision_and_mission_id', $visionAndMisions ? $visionAndMisions->id : '')->get();
-        // dd($visionAndMisions);
-        return view('admin.pages.vision-mision.index', compact('visionAndMisions', 'mision'));
+        $services = $this->service->get();
+        $misionservice = MisionItems::where('vision_and_mission_id', null)->get();
+        return view('admin.pages.vision-mision.index', compact('visionAndMisions', 'mision', 'services', 'misionservice'));
     }
 
     /**
@@ -45,13 +49,18 @@ class VisionAndMisionController extends Controller
     {
         $visionAndMisions = $this->visionAndMision->get()->first();
         $data = $this->vismisionservices->store($request);
-        foreach ($data as $item) {
-            if ($visionAndMisions) {
-                 $this->visionAndMision->update($visionAndMisions->id, $item);
-                $useId = $visionAndMisions;
-            } else{
-                $useId = $this->visionAndMision->store($item);
+        if($request->status == 'office'){
+            foreach ($data as $item) {
+                if ($visionAndMisions) {
+                     $this->visionAndMision->update($visionAndMisions->id, $item);
+                    $useId = $visionAndMisions;
+                } else{
+                    $useId = $this->visionAndMision->store($item);
+                }
             }
+        } else {
+
+            $useId = $visionAndMisions;
         }
         $this->vismisionservices->storemision($request, $useId);
         return redirect()->back();
