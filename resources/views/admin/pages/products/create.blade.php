@@ -70,9 +70,4 @@
             dropdownParent: $("#tambah")
         });
     });
-<<<<<<< HEAD
-=======
-
-
->>>>>>> e4e55c059537a3eaff673052d855713ca9b55877
 </script>
