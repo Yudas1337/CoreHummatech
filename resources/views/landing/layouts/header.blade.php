@@ -76,7 +76,7 @@
                         <a href="/contact">Hubungi</a>
                     </li>
                     <li>
-                        <a href="{{ url('vacancy') }}">Lowongan</a>
+                        <a href="/vacancy">Lowongan</a>
                     </li>
                 </ul>
             </div><!-- /.navbar-collapse -->
