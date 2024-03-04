@@ -99,4 +99,11 @@ class ServiceController extends Controller
         $this->serviceService->remove($service->image);
         return back()->with('success' , 'Penjualan Berhasil Di Hapus');
     }
+
+    public function service($slug)
+    {
+        $slugs = $this->service->slug($slug);
+        $services = $this->service->get();
+        return view('landing.service.service-detail', compact('slugs' , 'services'));
+    }
 }

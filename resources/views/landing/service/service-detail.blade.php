@@ -86,7 +86,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 offset-lg-2">
-                    <h1>Software Development</h1>
+                    <h1>{{ $slugs->name }}</h1>
                     <ul class="breadcrumb">
                         <li><a href="#"><i class="fas fa-home"></i> Beranda</a></li>
                         <li class="active">Layanan</li>
@@ -658,14 +658,9 @@
                             <h4 class="widget-title">Daftar Layanan</h4>
                             <div class="content">
                                 <ul>
-                                    <li class="current-item"><a href="#">Software Development</a></li>
-                                    <li><a href="#">IT Consultan</a></li>
-                                    <li><a href="#">Magang / PKL</a></li>
-                                    <li><a href="#">Kelas Industri</a></li>
-                                    <li><a href="#">Pengadaan Hardware</a></li>
-                                    <li><a href="#">Pelatihan Programing & Digital Marketing</a></li>
-                                    <li><a href="#">Guru Tamu</a></li>
-                                    <li><a href="#">Guru Magang</a></li>
+                                    @foreach ($services as $service)
+                                    <li class=""><a href="{{ route('slug', ['slug' => $service->slug]) }}">{{ $service->name }}</a></li>
+                                    @endforeach
                                 </ul>
                             </div>
                         </div>

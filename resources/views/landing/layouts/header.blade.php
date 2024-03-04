@@ -56,14 +56,11 @@
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" >Layanan</a>
                         <ul class="dropdown-menu">
-                            <li><a href="{{ url('layanan') }}">Software Development</a></li>
-                            <li><a href="#">IT Consultan</a></li>
-                            <li><a href="#">Magang / PKL</a></li>
-                            <li><a href="#">Kelas Industri</a></li>
-                            <li><a href="#">Pengadaan Hardware</a></li>
-                            <li><a href="#">Pelatihan Programing & Digital Marketing</a></li>
-                            <li><a href="#">Guru tamu</a></li>
-                            <li><a href="#">Guru Magang</a></li>
+                            @forelse ($services as $service)
+                                <li><a href="{{ route('slug', ['slug' => $service->slug]) }}">{{ $service->name }}</a></li>
+                            @empty
+                                <li><a href="javascript:void(0)">Layanan Masih Kosong</a></li>
+                            @endforelse
                         </ul>
                     </li>
                     <li>

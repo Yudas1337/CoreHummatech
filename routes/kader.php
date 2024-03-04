@@ -49,3 +49,7 @@ Route::delete('delete/team/{team}' , [TeamController::class , 'destroy'])->name(
 
 // show pdf
 Route::get('showpdf/{sale}' , [SaleController::class ,'showpdf']);
+
+// layanan
+
+Route::get('{slug}', [ServiceController::class, 'service'])->name('slug');
