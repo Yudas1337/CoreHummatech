@@ -31,6 +31,10 @@
                                     <input type="file" class="form-control" name="image">
                                 </div>
                                 <div class="my-1">
+                                    <label for="proposal">Proposal Perusahaan</label>
+                                    <input type="file" class="form-control" name="proposal">
+                                </div>
+                                <div class="my-1">
                                     <label for="call">No. Telp</label>
                                     <input type="text" class="form-control" name="phone" placeholder="No telp" value="{{ $profil->phone }}">
                                 </div>
@@ -81,9 +85,13 @@
                                         <img src="../assets/images/Figure.png" id="selectedImage" style="object-fit: cover; width: 100%;" class="img-fluid" alt="Logo">
                                     </div>
                                 </div>
-                                <div class="my-1">
+                                <div class="my-1 mb-3">
                                     <label for="image">Foto Profil</label>
                                     <input type="file" id="inputImage" class="form-control" name="image" accept="image/*" onchange="displayImage(event)">
+                                </div>
+                                <div class="my-1">
+                                    <label for="proposal">Proposal Perusahaan</label>
+                                    <input type="file" class="form-control" name="proposal">
                                 </div>
                                 <div class="my-1">
                                     <label for="call">No. Telp</label>

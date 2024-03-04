@@ -51,7 +51,6 @@
                             <input class="form-control" id="link" type="url" name="link" required
                                 placeholder="Contoh: https://hummatech.com/linknya" />
                         </div>
-
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -70,4 +69,6 @@
             dropdownParent: $("#tambah")
         });
     });
+
+    
 </script>
