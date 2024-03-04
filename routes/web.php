@@ -7,6 +7,7 @@ use App\Http\Controllers\NewsController;
 use App\Http\Controllers\SaleController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\CollabMitraController;
+use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SalesPackageController;
 use Illuminate\Support\Facades\Auth;
@@ -111,7 +112,7 @@ Route::put('update/collab/mitra/{collabMitra}' ,[CollabMitraController::class ,'
 
 //product
 Route::resource('product', ProductController::class);
-
+Route::resource('gallery', GalleryController::class);
 Route::resource('sales-package', SalesPackageController::class);
 
 require_once __DIR__ . '/kader.php';

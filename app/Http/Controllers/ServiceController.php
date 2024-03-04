@@ -16,9 +16,9 @@ class ServiceController extends Controller
 {
     private ServiceInterface $service;
     private ServiceService $serviceService;
-    private ProductInterface $product ;
     private Termscondition $termscondition;
     private TestimonialInterface $testimonial;
+
     public function __construct(ServiceInterface $service , ServiceService $serviceService , ProductInterface $product, Termscondition $termscondition, TestimonialInterface $testimonial)
     {
         $this->service = $service ;

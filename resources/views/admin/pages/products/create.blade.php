@@ -9,7 +9,7 @@
                 <h5 class="modal-title fw-semibold" id="exampleModalLabel">Tambah Produk</h5>
                 <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form class="form-bookmark needs-validation" action="{{ route('create.product') }}" method="POST"
+            <form class="form-bookmark needs-validation" action="{{ route('product.store') }}" method="POST"
                 id="bookmark-form" novalidate="" enctype="multipart/form-data">
                 @csrf
                 <div class="modal-body">
@@ -51,6 +51,7 @@
                             <input class="form-control" id="link" type="url" name="link" required
                                 placeholder="Contoh: https://hummatech.com/linknya" />
                         </div>
+
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -69,6 +70,4 @@
             dropdownParent: $("#tambah")
         });
     });
-
-    
 </script>
