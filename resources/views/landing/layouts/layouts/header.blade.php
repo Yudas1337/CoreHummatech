@@ -72,7 +72,7 @@
                         <a href="/contact">Hubungi</a>
                     </li>
                     <li>
-                        <a href="/vacancy">Lowongan</a>
+                        <a href="/data/lowongan">Lowongan</a>
                     </li>
                 </ul>
             </div><!-- /.navbar-collapse -->
