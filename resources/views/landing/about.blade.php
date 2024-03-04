@@ -100,7 +100,7 @@
                         @forelse ($profiles as $profile)
                             <h2>{{ $profile->subtitle }}</h2>
                             <p>
-                                {{ $profile->description }}
+                                {!! Str::limit($profile->description, 200) !!}
                             </p>
 
                             <a class="btn btn-gradient effect btn-md" href="#">Unduh Portofolio</a>
@@ -110,7 +110,7 @@
                                 <img src="{{ asset('storage/'. $profile->image) }}" alt="Thumb">
                             </div>
                         </div>
-                            
+
                         @empty
                             <p>Belum ada profile perusahaan</p>
                         @endforelse
@@ -150,7 +150,7 @@
                             </div>
                         </div>
 
-                        @foreach ($missions as $mission)    
+                        @foreach ($missions as $mission)
                             <div class="single-item col-lg-4 col-md-6 mb-4 wow fadeInRight" data-wow-delay="500ms"
                                 style="visibility: visible; animation-delay: 500ms; animation-name: fadeInRight;">
                                 <div class="item">
