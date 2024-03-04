@@ -25,11 +25,11 @@ class UpdateProfileRequest extends FormRequest
             'title' => 'max:255',
             'subtitle' => 'max:255',
             'image' => 'nullable|mimes:png,jpg',
-
             'description' => 'required',
             'address' => 'required',
             'email' => 'required',
             'phone' => 'required',
+            'proposal' => 'nullable|mimes:pdf'
         ];
     }
 }
