@@ -3,11 +3,12 @@
 namespace App\Services;
 
 use App\Enums\TypeEnum;
+use App\Models\MisionItems;
+use App\Traits\UploadTrait;
+use App\Models\VisionAndMision;
+use App\Enums\VisionAndMisionEnum;
 use App\Http\Requests\StoreVisionAndMisionRequest;
 use App\Http\Requests\UpdateVisionAndMisionRequest;
-use App\Models\MisionItems;
-use App\Models\VisionAndMision;
-use App\Traits\UploadTrait;
 
 class VisionAndMisionService
 {
@@ -22,13 +23,25 @@ class VisionAndMisionService
 
     public function storemision(StoreVisionAndMisionRequest $request, $useId)
     {
-        foreach ($request->mission as $key => $value) {
-            $data[] = [
-                'vision_and_mission_id' => $useId->id,
-                'mission' => $value,
-            ];
+
+        if ($request->status == 'office') {
+            foreach ($request->mission as $key => $value) {
+                $data[] = [
+                    'vision_and_mission_id' => $useId->id,
+                    'mission' => $value,
+                    'status' => VisionAndMisionEnum::OFFICE->value,
+                ];
 
 
+            }
+        } else{
+            foreach ($request->mission as $key => $value) {
+                $data[] = [
+                    'service_id' => $request->service_id,
+                    'mission' => $value,
+                    'status' => VisionAndMisionEnum::SERVICE->value,
+                ];
+            }
         }
         foreach ($data as $item){
             MisionItems::create($item);
