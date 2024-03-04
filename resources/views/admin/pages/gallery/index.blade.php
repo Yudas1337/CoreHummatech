@@ -270,6 +270,15 @@
                             <label for="bm-title">Judul Galeri</label>
                             <input class="form-control" id="formFile" name="name" type="text">
                         </div>
+                        <div class="mb-3 mt-0 col-md-12">
+                            <label for="bm-title">Tampilkan Pada</label>
+                            <select name="service_id" id="showdata" class="form-select">
+                                <option selected disabled>Pilih Salah Satu Layanan</option>
+                                @foreach ($services as $item)
+                                    <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
                     </div>
                     <form class="dropzone" id="singleFileUpload" action="https://admin.pixelstrap.net/upload.php">
                         <div class="dropzone-wrapper">
@@ -278,14 +287,14 @@
                                     berformat gambar (jpg, jpeg, png)</span>
                             </div>
                         </div>
-                </div>
-                <div class="modal-footer">
-                    <div class="d-flex justify-content-end">
-                        <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">Cancel</button>
-                        <button class="btn btn-primary" type="submit">Tambah</button>
+                    </form>
+                    <div class="modal-footer">
+                        <div class="d-flex justify-content-end">
+                            <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">Cancel</button>
+                            <button class="btn btn-primary" type="submit">Tambah</button>
+                        </div>
                     </div>
                 </div>
-                </form>
             </div>
         </div>
     </div>
@@ -324,5 +333,27 @@
 @section('script')
     <script>
         feather.replace();
+    </script>
+
+    <script>
+        Dropzone.autoDiscover = false;
+        var myDropzone = new Dropzone("#singleFileUpload", {
+            maxFilesize: 10,
+            maxFile: 1,
+            acceptedFiles: ".jpg,.png,.gif",
+            addRemoveLinks: true,
+            dictDefaultMessage: "Drop files here or click to upload",
+            autoProcessQueue: false,
+            init: function() {
+                this.on("removedfile", function(file) {
+                    console.log("File " + file.name + " removed");
+                });
+            },
+
+            maxfilesexceeded: function(file) {
+                this.removeAllFiles();
+                this.addFile(file);
+            }
+        });
     </script>
 @endsection

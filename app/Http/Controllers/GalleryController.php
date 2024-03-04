@@ -3,16 +3,19 @@
 namespace App\Http\Controllers;
 
 use App\Contracts\Interfaces\GalleryInterface;
+use App\Contracts\Interfaces\ServiceInterface;
 use App\Models\Gallery;
 use Illuminate\Http\Request;
 
 class GalleryController extends Controller
 {
-    private GalleryInterface $gallery;
+    private GalleryInterface $model;
+    private ServiceInterface $serviceModel;
 
-    public function __construct(GalleryInterface $gallery)
+    public function __construct(GalleryInterface $gallery, ServiceInterface $service)
     {
-        $this->gallery = $gallery;
+        $this->serviceModel = $service;
+        $this->model = $gallery;
     }
 
     /**
@@ -20,8 +23,9 @@ class GalleryController extends Controller
      */
     public function index()
     {
-        $gallery = $this->gallery->get();
-        return view('admin.pages.gallery.index', compact('gallery'));
+        $serviceData = $this->serviceModel->get()->pluck('name', 'id');
+        $gallery = $this->model->get();
+        return view('admin.pages.gallery.index', compact('gallery', 'serviceData'));
     }
 
     /**
