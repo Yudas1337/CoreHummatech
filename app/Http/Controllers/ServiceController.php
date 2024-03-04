@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Contracts\Interfaces\FaqInterface;
 use App\Contracts\Interfaces\ProductInterface;
 use App\Contracts\Interfaces\ServiceInterface;
 use App\Contracts\Interfaces\TestimonialInterface;
 use App\Models\Service;
 use App\Http\Requests\StoreServiceRequest;
 use App\Http\Requests\UpdateServiceRequest;
+use App\Models\MisionItems;
 use App\Models\Product;
 use App\Models\Termscondition;
 use App\Services\ServiceService;
@@ -18,14 +20,15 @@ class ServiceController extends Controller
     private ServiceService $serviceService;
     private Termscondition $termscondition;
     private TestimonialInterface $testimonial;
+    private FaqInterface $faq;
 
-    public function __construct(ServiceInterface $service , ServiceService $serviceService , ProductInterface $product, Termscondition $termscondition, TestimonialInterface $testimonial)
+    public function __construct(ServiceInterface $service , ServiceService $serviceService, Termscondition $termscondition, TestimonialInterface $testimonial, FaqInterface $faq)
     {
         $this->service = $service ;
-        $this->product = $product;
         $this->termscondition = $termscondition;
         $this->serviceService = $serviceService;
         $this->testimonial = $testimonial;
+        $this->faq = $faq;
     }
     /**
      * Display a listing of the resource.
@@ -64,8 +67,11 @@ class ServiceController extends Controller
         $products = Product::where('service_id' , $service->id)->get();
         $termsconditions = $this->termscondition->where('service_id' , $service->id)->get();
         $testimonials = $this->testimonial->get()->where('service_id' , $service->id);
+        $mision = MisionItems::where('service_id' , $service->id)->get();
+        $faqs = $this->faq->get()->where('service_id' , $service->id);
 
-        return view('admin.pages.service.detail' , compact('services' , 'products', 'termsconditions', 'testimonials'));
+
+        return view('admin.pages.service.detail' , compact('services' , 'products', 'termsconditions', 'testimonials', 'mision', 'faqs'));
     }
 
     /**
@@ -98,5 +104,12 @@ class ServiceController extends Controller
 
         $this->serviceService->remove($service->image);
         return back()->with('success' , 'Penjualan Berhasil Di Hapus');
+    }
+
+    public function service($slug)
+    {
+        $slugs = $this->service->slug($slug);
+        $services = $this->service->get();
+        return view('landing.service.service-detail', compact('slugs' , 'services'));
     }
 }

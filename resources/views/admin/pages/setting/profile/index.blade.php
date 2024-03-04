@@ -26,11 +26,11 @@
                                 <div class="rounded-3 p-4 position-relative">
                                     <img src="{{ asset('storage/' . $profil->image) }}" style="object-fit: cover; width: 100%;" class="img-fluid" alt="Logo">
                                 </div>
-                                <div class="my-1">
+                                <div class="my-1 mb-2">
                                     <label for="image">Foto Profil</label>
                                     <input type="file" class="form-control" name="image">
                                 </div>
-                                <div class="my-1">
+                                <div class="my-1 mb-2">
                                     <label for="proposal">Proposal Perusahaan</label>
                                     <input type="file" class="form-control" name="proposal">
                                 </div>
@@ -85,11 +85,11 @@
                                         <img src="../assets/images/Figure.png" id="selectedImage" style="object-fit: cover; width: 100%;" class="img-fluid" alt="Logo">
                                     </div>
                                 </div>
-                                <div class="my-1 mb-3">
+                                <div class="my-1 mb-2">
                                     <label for="image">Foto Profil</label>
                                     <input type="file" id="inputImage" class="form-control" name="image" accept="image/*" onchange="displayImage(event)">
                                 </div>
-                                <div class="my-1">
+                                <div class="my-1 mb-2">
                                     <label for="proposal">Proposal Perusahaan</label>
                                     <input type="file" class="form-control" name="proposal">
                                 </div>

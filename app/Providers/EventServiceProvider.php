@@ -11,6 +11,7 @@ use App\Models\Sale;
 use App\Models\Testimonial;
 use App\Observers\EnterpriseStructureObserver;
 use App\Models\SalesPackage;
+use App\Models\Service;
 use App\Models\Termscondition;
 use App\Observers\FaqObserver;
 use App\Observers\NewsImageObserver;
@@ -22,6 +23,7 @@ use App\Observers\SalesPackageObserver;
 use App\Observers\TermsconditionObserve;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
+use Illuminate\Support\Facades\View;
 
 class EventServiceProvider extends ServiceProvider
 {
@@ -50,6 +52,11 @@ class EventServiceProvider extends ServiceProvider
         NewsImage::observe(NewsImageObserver::class);
         Termscondition::observe(TermsconditionObserve::class);
         // NewsCategory::observe(NewsCategoryObserver::class);
+
+        parent::boot();
+
+        $services = Service::all();
+        View::share('services', $services);
     }
 
     /**

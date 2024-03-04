@@ -9,7 +9,7 @@
                 <h5 class="modal-title fw-semibold" id="exampleModalLabel">Tambah Produk</h5>
                 <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form class="form-bookmark needs-validation" action="{{ route('product.store') }}" method="POST"
+            <form class="form-bookmark needs-validation" action="{{ route('product.create') }}" method="POST"
                 id="bookmark-form" novalidate="" enctype="multipart/form-data">
                 @csrf
                 <div class="modal-body">
@@ -70,4 +70,9 @@
             dropdownParent: $("#tambah")
         });
     });
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> e4e55c059537a3eaff673052d855713ca9b55877
 </script>

@@ -86,7 +86,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 offset-lg-2">
-                    <h1>Software Development</h1>
+                    <h1>{{ $slugs->name }}</h1>
                     <ul class="breadcrumb">
                         <li><a href="#"><i class="fas fa-home"></i> Beranda</a></li>
                         <li class="active">Layanan</li>
@@ -102,25 +102,18 @@
                 <div class="row">
 
                     <div class="col-lg-8 services-single-content wow fadeInUp">
-                        <img src="{{ asset('assets-home/img/blog/11.jpg') }}" alt="Thumb">
-                        <h2 class="wow fadeInLeft">Software Development</h2>
+                        <img src="{{ asset('storage/' . $slugs->image) }}" alt="Thumb">
+                        <h2 class="wow fadeInLeft">{{ $slugs->name }}</h2>
                         <p class="wow fadeInLeft">
-                            We denounce with righteous indige nation and dislike men who are so beguiled and demo realized
-                            by the
-                            charms of pleasure of the moment, so blinded by desire, that they cannot foresee the pain and
-                            trouble that
-                            are bound to ensue cannot foresee. These cases are perfectly simple and easy to distinguish. In
-                            a free hour,
-                            when our power of choice is untrammelled data structures manages data in technology.
+                            {{ $slugs->description }}
                         </p>
-                        <a class="btn btn-gradient effect btn-md" href="">Kunjungi website</a>
+                        <a href="{{ $slugs->link }}" target="_blank" class="btn btn-gradient effect btn-md" href="">Kunjungi website</a>
 
                         <div class="mt-5">
                             <div class="title-service">
                                 <h4 class="m-0">Produk Yang Dihasilkan</h4>
                                 <div class="dash"></div>
                             </div>
-
                             <div class="about-content-area pb-5 mb-5">
                                 <div class="row">
                                     <div class="col-lg-5 thumb wow fadeInUp">
@@ -156,30 +149,6 @@
                                     </div>
                                     <div class="col-lg-7 wow fadeInDown">
                                         <h2>Mischool</h2>
-                                        <p>
-                                            Lorem ipsum dolor sit amet consectetur.
-                                            Tincidunt pellentesque pellentesque sed in.
-                                            Sit nunc velit aliquam quis faucibus nibh nisl pellentesque.
-                                            Massa natoque mattis quisque ut molestie turpis at fusce integer.
-                                            Tincidunt lorem egestas
-                                        </p>
-                                        <a class="btn btn-gradient effect btn-md" href="">Lihat detail</a>
-                                        <a class="btn btn-gradient effect btn-md" href="">Kunjungi website</a>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="about-content-area my-5">
-                                <div class="row">
-                                    <div class="col-lg-5 thumb wow fadeInUp">
-                                        <div class="img-box">
-                                            <img src="{{ asset('assets-home/img/about/2.jpg') }}" alt="Thumb">
-                                            <div class="shape" style="background-image: url(assets/img/shape/1.png);">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-7 wow fadeInDown">
-                                        <h2>Jurnal mengajar</h2>
                                         <p>
                                             Lorem ipsum dolor sit amet consectetur.
                                             Tincidunt pellentesque pellentesque sed in.
@@ -658,20 +627,15 @@
                             <h4 class="widget-title">Daftar Layanan</h4>
                             <div class="content">
                                 <ul>
-                                    <li class="current-item"><a href="#">Software Development</a></li>
-                                    <li><a href="#">IT Consultan</a></li>
-                                    <li><a href="#">Magang / PKL</a></li>
-                                    <li><a href="#">Kelas Industri</a></li>
-                                    <li><a href="#">Pengadaan Hardware</a></li>
-                                    <li><a href="#">Pelatihan Programing & Digital Marketing</a></li>
-                                    <li><a href="#">Guru Tamu</a></li>
-                                    <li><a href="#">Guru Magang</a></li>
+                                    @foreach ($services as $service)
+                                    <li class=""><a href="{{ route('slug', ['slug' => $service->slug]) }}">{{ $service->name }}</a></li>
+                                    @endforeach
                                 </ul>
                             </div>
                         </div>
                         <!-- End Single Widget -->
                         <div class="single-widget quick-contact text-light"
-                            style="background-image: url(assets/img/about/1.jpg);">
+                            style="background-image: url({{ $service->image }});">
                             <div class="content">
                                 <i class="fas fa-phone"></i>
                                 <h4>Need any help?</h4>
