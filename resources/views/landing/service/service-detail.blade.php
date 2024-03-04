@@ -114,11 +114,6 @@
                                 <h4 class="m-0">Produk Yang Dihasilkan</h4>
                                 <div class="dash"></div>
                             </div>
-                            @forelse ( as )
-
-                            @empty
-
-                            @endforelse
                             <div class="about-content-area pb-5 mb-5">
                                 <div class="row">
                                     <div class="col-lg-5 thumb wow fadeInUp">
