@@ -90,7 +90,12 @@ style="background-image: url({{ asset('assets-home/img/banner/10.jpg') }});">
                             </div>
                         </div>
                         @empty
-
+                        <div class="d-flex justify-content-center col-12 mt-4">
+                            <img src="https://cdn.dribbble.com/users/1785628/screenshots/5605512/media/85e0b8eb83996fae287916b8b2e3cc66.gif" width="600px" alt="" srcset="">
+                        </div>
+                        <h4 class="fs-1 text-center text-dark col-12 mt-3" style="font-weight: 600">
+                            Data Masih Kosong
+                        </h4>
                         @endforelse
                     </div>
 
