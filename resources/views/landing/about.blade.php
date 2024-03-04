@@ -97,24 +97,23 @@
                 <div class="row align-center">
                     <div class="col-lg-6 info">
                         <h4 class="subtitle">Profile Perusahaan</h4>
-                        <h2>Menghadirkan Solusi Terintegrasi untuk Masa Depan Digital</h2>
-                        <p>
-                            Kini <a class="text-primary" href="{{ url('/') }}">Hummatech</a>
-                            bertransformasi menjadi perusahaan yang mampu menjawab
-                            tantangan di era revolusi industri 4.0 dengan menciptakan produk berbasis
-                            integrated system berupa perangkat lunak berbasis web dan mobile, Internet of Things
-                            (IoT), Artificial Intelligence (AI), Game, dan
-                            Augmented Reality.
-                        </p>
+                        @forelse ($profiles as $profile)
+                            <h2>{{ $profile->subtitle }}</h2>
+                            <p>
+                                {{ $profile->description }}
+                            </p>
 
-                        <a class="btn btn-gradient effect btn-md" href="{{ url('/') }}">Unduh Portofolio</a>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="thumb">
-                            <img src="{{ asset('assets-home/img/about/5.jpg') }}" alt="Thumb">
-                            {{-- <h2><strong>28</strong> years of <br> working experience</h2> --}}
+                            <a class="btn btn-gradient effect btn-md" href="#">Unduh Portofolio</a>
                         </div>
-                    </div>
+                        <div class="col-lg-6">
+                            <div class="thumb">
+                                <img src="{{ asset('storage/'. $profile->image) }}" alt="Thumb">
+                            </div>
+                        </div>
+                            
+                        @empty
+                            <p>Belum ada profile perusahaan</p>
+                        @endforelse
                 </div>
             </div>
         </div>
@@ -135,126 +134,53 @@
         <div class="container">
             <div class="work-process-items features-content">
                 <div class="row">
-                    <!-- Single Item -->
-                    <div class="single-item col-lg-4 col-md-6 mb-4 wow fadeInRight" data-wow-delay="300ms"
-                        style="visibility: visible; animation-delay: 300ms; animation-name: fadeInRight;">
-                        <div class="item">
-                            <i class="flaticon-speech-bubble"></i>
-                            <div class="top">
-                                <span>01</span>
-                                <h4>Visi</h4>
+                    @forelse ($visionMisions as $key=>$visionMision)
+                        <div class="single-item col-lg-4 col-md-6 mb-4 wow fadeInRight" data-wow-delay="300ms"
+                            style="visibility: visible; animation-delay: 300ms; animation-name: fadeInRight;">
+                            <div class="item">
+                                <i class="flaticon-speech-bubble"></i>
+                                <div class="top">
+                                    <span>{{ sprintf("%02d", ++$key) }}</span>
+                                    <h4>Visi</h4>
+                                </div>
+                                <p>
+                                    {{ $visionMision->vision }}
+                                </p>
+                                <a href="about-us.html"><i class="arrow_right"></i></a>
                             </div>
-                            <p>
-                                Lorem ipsum dolor sit amet consectetur. Mattis augue consequat in ante quam. Nisl mauris
-                                scelerisque vel tellus lorem fermentum aliquet. Non justo quam amet morbi. Dolor curabitur
-                                vulputate libero in maecenas odio pellentesque. Consectetur lectus viverra scelerisque
-                                libero volutpat consectetur porta.
-                            </p>
-                            <a href="about-us.html"><i class="arrow_right"></i></a>
                         </div>
-                    </div>
-                    <!-- Single Item -->
-                    <!-- Single Item -->
-                    <div class="single-item col-lg-4 col-md-6 mb-4 wow fadeInRight" data-wow-delay="500ms"
-                        style="visibility: visible; animation-delay: 500ms; animation-name: fadeInRight;">
-                        <div class="item">
-                            <i class="flaticon-label"></i>
-                            <div class="top">
-                                <span>02</span>
-                                <h4>Misi</h4>
+
+                        @foreach ($missions as $mission)    
+                            <div class="single-item col-lg-4 col-md-6 mb-4 wow fadeInRight" data-wow-delay="500ms"
+                                style="visibility: visible; animation-delay: 500ms; animation-name: fadeInRight;">
+                                <div class="item">
+                                    <i class="flaticon-label"></i>
+                                    <div class="top">
+                                        <span>{{ sprintf("%02d", ++$key) }}</span>
+                                        <h4>Misi</h4>
+                                    </div>
+                                    <p>
+                                        {{ $mission->mission }}
+                                    </p>
+                                    <a href="about-us.html"><i class="arrow_right"></i></a>
+                                </div>
                             </div>
-                            <p>
-                                Lorem ipsum dolor sit amet consectetur. Mattis augue consequat in ante quam. Nisl mauris
-                                scelerisque vel tellus lorem fermentum aliquet. Non justo quam amet morbi. Dolor curabitur
-                                vulputate libero in maecenas odio pellentesque. Consectetur lectus viverra scelerisque
-                                libero volutpat consectetur porta.
-                            </p>
-                            <a href="about-us.html"><i class="arrow_right"></i></a>
+                        @endforeach
+
+                    @empty
+                        <div class="text-center">
+                            <img src="{{ asset('nodata.jpg') }}" alt="" width="20%">
+                            <h5 class="text-center">
+                                Belum ada visi-misi
+                            </h5>
                         </div>
-                    </div>
-                    <!-- Single Item -->
-                    <!-- Single Item -->
-                    <div class="single-item col-lg-4 col-md-6 mb-4 wow fadeInRight" data-wow-delay="700ms"
-                        style="visibility: visible; animation-delay: 700ms; animation-name: fadeInRight;">
-                        <div class="item">
-                            <i class="flaticon-file"></i>
-                            <div class="top">
-                                <span>03</span>
-                                <h4>Misi</h4>
-                            </div>
-                            <p>
-                                Lorem ipsum dolor sit amet consectetur. Mattis augue consequat in ante quam. Nisl mauris
-                                scelerisque vel tellus lorem fermentum aliquet. Non justo quam amet morbi. Dolor curabitur
-                                vulputate libero in maecenas odio pellentesque. Consectetur lectus viverra scelerisque
-                                libero volutpat consectetur porta.
-                            </p>
-                            <a href="about-us.html"><i class="arrow_right"></i></a>
-                        </div>
-                    </div>
-                    <!-- Single Item -->
-                    <!-- Single Item -->
-                    <div class="single-item col-lg-4 col-md-6 mb-4 wow fadeInRight" data-wow-delay="500ms"
-                        style="visibility: visible; animation-delay: 500ms; animation-name: fadeInRight;">
-                        <div class="item">
-                            <i class="flaticon-label"></i>
-                            <div class="top">
-                                <span>04</span>
-                                <h4>Misi</h4>
-                            </div>
-                            <p>
-                                Lorem ipsum dolor sit amet consectetur. Mattis augue consequat in ante quam. Nisl mauris
-                                scelerisque vel tellus lorem fermentum aliquet. Non justo quam amet morbi. Dolor curabitur
-                                vulputate libero in maecenas odio pellentesque. Consectetur lectus viverra scelerisque
-                                libero volutpat consectetur porta.
-                            </p>
-                            <a href="about-us.html"><i class="arrow_right"></i></a>
-                        </div>
-                    </div>
-                    <!-- Single Item -->
-                    <!-- Single Item -->
-                    <div class="single-item col-lg-4 col-md-6 mb-4 wow fadeInRight" data-wow-delay="700ms"
-                        style="visibility: visible; animation-delay: 700ms; animation-name: fadeInRight;">
-                        <div class="item">
-                            <i class="flaticon-file"></i>
-                            <div class="top">
-                                <span>05</span>
-                                <h4>Misi</h4>
-                            </div>
-                            <p>
-                                Lorem ipsum dolor sit amet consectetur. Mattis augue consequat in ante quam. Nisl mauris
-                                scelerisque vel tellus lorem fermentum aliquet. Non justo quam amet morbi. Dolor curabitur
-                                vulputate libero in maecenas odio pellentesque. Consectetur lectus viverra scelerisque
-                                libero volutpat consectetur porta.
-                            </p>
-                            <a href="about-us.html"><i class="arrow_right"></i></a>
-                        </div>
-                    </div>
-                    <!-- Single Item -->
-                    <!-- Single Item -->
-                    <div class="single-item col-lg-4 col-md-6 mb-4 wow fadeInRight" data-wow-delay="500ms"
-                        style="visibility: visible; animation-delay: 500ms; animation-name: fadeInRight;">
-                        <div class="item">
-                            <i class="flaticon-label"></i>
-                            <div class="top">
-                                <span>06</span>
-                                <h4>Misi</h4>
-                            </div>
-                            <p>
-                                Lorem ipsum dolor sit amet consectetur. Mattis augue consequat in ante quam. Nisl mauris
-                                scelerisque vel tellus lorem fermentum aliquet. Non justo quam amet morbi. Dolor curabitur
-                                vulputate libero in maecenas odio pellentesque. Consectetur lectus viverra scelerisque
-                                libero volutpat consectetur porta.
-                            </p>
-                            <a href="about-us.html"><i class="arrow_right"></i></a>
-                        </div>
-                    </div>
-                    <!-- Single Item -->
+                    @endforelse
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="work-process-area features-area default-padding-bottom">
+    <div class="work-process-area features-area default-padding-bottom pt-5 mt-5">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 offset-lg-2">
@@ -572,4 +498,15 @@
             </div>
         </div>
     </div>
+@endsection
+@section('script')
+    <script>
+        $(document).ready(function() {
+            var delay = 500;
+            $('[class^="wow fadeInRight"]').each(function(index) {
+                $(this).attr('data-wow-delay', delay + 'ms');
+                delay += 300;
+            });
+        });
+    </script>
 @endsection

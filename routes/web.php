@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AboutUsController;
 use App\Http\Controllers\BranchController;
 use App\Http\Controllers\CategoryNewsController;
 use App\Http\Controllers\CollabCategoryController;
@@ -27,9 +28,7 @@ Route::get('/', function () {
     return view('landing.index');
 });
 
-Route::get('/about-us', function () {
-    return view('landing.about');
-});
+Route::get('/about-us', [AboutUsController::class, 'index']);
 
 Route::get('/gallery', function () {
     return view('admin.pages.gallery.index');
