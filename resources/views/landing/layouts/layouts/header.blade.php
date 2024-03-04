@@ -75,7 +75,7 @@
                         <a href="/contact">Hubungi</a>
                     </li>
                     <li>
-                        <a href="">Lowongan</a>
+                        <a href="/vacancy">Lowongan</a>
                     </li>
                 </ul>
             </div><!-- /.navbar-collapse -->
