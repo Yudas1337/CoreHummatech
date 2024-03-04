@@ -50,6 +50,10 @@ Route::get('data/product', function () {
     return view('landing.product');
 });
 
+Route::get('detail/product', function () {
+    return view('landing.product.product-detail');
+});
+
 // visi and mision
 // Route::get('setting/vision-mision' , [VisionAndMisionController::class ,'index']);
 
