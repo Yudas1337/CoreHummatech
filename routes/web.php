@@ -41,6 +41,7 @@ Route::get('contact', function () {
     return view('landing.contact');
 })->name('contact');
 
+
 Route::get('message-approval', function () {
     return view('admin.pages.message-approval.index');
 });

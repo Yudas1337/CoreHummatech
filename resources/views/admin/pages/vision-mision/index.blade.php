@@ -161,7 +161,19 @@
                                 <input type="hidden" name="status" value="service">
                                 <div class="modal-body">
                                     <div class="row g-2">
+
                                         <div class="mb-3 mt-0 col-md-12">
+                                            <label for="service_id">Tampilkan di</label>
+                                            <select class="tambah" aria-label=".form-select example" name="service_id">
+                                                @foreach ($services as $service)
+                                                <option value="{{ $service->id }}"
+                                                    {{ $service->service_id == $service->id ? 'selected' : '' }}>
+                                                    {{ $service->name }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+
+                                        {{-- <div class="mb-3 mt-0 col-md-12">
                                             <label for="">Tampilkan di </label>
                                             <select class="form-select" name="service_id" id="">
                                                 <option value selected disabled>Pilih Halaman</option>
@@ -169,7 +181,7 @@
                                                     <option value="{{ $service->id }}">{{ $service->name }}</option>
                                                 @endforeach
                                             </select>
-                                        </div>
+                                        </div> --}}
                                         <div class="mb-3 mt-0 col-md-12">
                                             <label for="bm-title">Misi</label>
                                             <input class="form-control" type="text" name="mission[]" required=""
@@ -271,6 +283,18 @@
 @endsection
 
 @section('script')
+<script>
+    $(document).ready(function() {
+        $(".tambah").select2({
+            dropdownParent: $("#tambah")
+        });
+    });
+    $(document).ready(function() {
+        $(".js-example-basic-single").select2({
+            dropdownParent: $("#edit")
+        });
+    });
+</script>
     <script>
         const deleteElement = (id) => $('#' + id).remove();
 

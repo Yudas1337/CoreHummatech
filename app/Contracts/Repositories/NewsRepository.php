@@ -17,10 +17,12 @@ class NewsRepository extends BaseRepository implements NewsInterface
     {
       return $this->model->query()->get();
     }
+
     public function customPaginate(Request $request, int $pagination = 10): mixed
     {
         return $this->model->query()->paginate($pagination);
     }
+
     public function store(array $data): mixed
     {
         return $this->model->query()->create($data);

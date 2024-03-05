@@ -29,6 +29,30 @@
             bottom: 0;
             background: linear-gradient(to left, rgba(var(--bs-white-rgb), 1), 65%, transparent);
         }
+
+        .team-area {
+            overflow: hidden;
+            width: 100%;
+        }
+
+        .team-slider {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .team-item img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+        margin: 0 auto;
+    }
+
+        @media (max-width: 767px) {
+            .owl-carousel {
+                display: block;
+            }
+        }
     </style>
 @endsection
 @section('content')
@@ -39,20 +63,24 @@
 
             <!-- Wrapper for slides -->
             <div class="carousel-inner carousel-zoom">
+                @forelse ($section as $section)
                 <div class="carousel-item active">
-                    <div class="slider-thumb bg-fixed" style="background-image: url(assets-home/img/banner/home2.jpg);"></div>
+                    <div class="slider-thumb bg-fixed" style="background-image: url({{ asset('storage/' . $section->image) }});"></div>
                     <div class="box-table">
                         <div class="box-cell shadow dark">
                             <div class="container">
                                 <div class="row">
                                     <div class="col-lg-10 offset-lg-1">
                                         <div class="content">
-                                            <h2>HummaTech <span>Software Development</span></h2>
+                                            <h2>{{$section->title}}</h2>
                                             <p class="animated slideInRight">
-                                                Tempat menyelesaikan masalah dengan inovasi digital, keahlian pengembangan, dan desain yang kreatif. Ciptakan ekosistem digital bersama Hummatech.
+                                                {{$section->subtitle}}
                                             </p>
-                                            <a data-animation="animated zoomInUp" class="btn btn-gradient effect btn-md"
-                                                href="javascript:void(0)">Lihat Selengkapnya</a>
+                                            @if (!empty($section->link))
+                                                <a data-animation="animated zoomInUp" class="btn btn-gradient effect btn-md" href="{{ $section->link }}">
+                                                    Lihat Selengkapnya
+                                                </a>
+                                            @endif
                                         </div>
                                     </div>
                                 </div>
@@ -61,19 +89,23 @@
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <div class="slider-thumb bg-fixed" style="background-image: url(assets-home/img/banner/hom1.jpg);"></div>
+                    <div class="slider-thumb bg-fixed" style="background-image: url({{ asset('storage/' . $section->image) }});"></div>
                     <div class="box-table">
                         <div class="box-cell shadow dark">
                             <div class="container">
                                 <div class="row">
+                                    {{-- <span>Hummatech </span> --}}
                                     <div class="col-lg-10 offset-lg-1">
                                         <div class="content">
-                                            <h2 data-animation="animated slideInDown"> Kelas Industri <span>Hummatech </span></h2>
+                                            <h2 data-animation="animated slideInDown">{{$section->title}}</h2>
                                             <p class="animated slideInRight">
-                                                pengalaman lebih dari 10 tahun ini, Hummatech berkomitmen untuk berkontribusi pada dunia pendidikan di bidang teknologi informasi.
+                                                {{$section->subtitle}}
                                             </p>
-                                            <a data-animation="animated zoomInUp" class="btn btn-gradient effect btn-md"
-                                                href="about-us.html">Discover More</a>
+                                            @if (!empty($section->link))
+                                                <a data-animation="animated zoomInUp" class="btn btn-gradient effect btn-md" href="{{ $section->link }}">
+                                                    Lihat Selengkapnya
+                                                </a>
+                                            @endif
                                         </div>
                                     </div>
                                 </div>
@@ -81,27 +113,9 @@
                         </div>
                     </div>
                 </div>
-                <div class="carousel-item">
-                    <div class="slider-thumb bg-fixed" style="background-image: url(assets-home/img/banner/home3.jpg);"></div>
-                    <div class="box-table">
-                        <div class="box-cell shadow dark">
-                            <div class="container">
-                                <div class="row">
-                                    <div class="col-lg-10 offset-lg-1">
-                                        <div class="content">
-                                            <h2 data-animation="animated slideInDown"> Hummatech <span>Training  </span></h2>
-                                            <p class="animated slideInRight">
-                                                Tingkatkan skill digital Anda untuk memaksimalkan potensi terbaik dan meraih prestasi yang gemilang di era industri 4.0 dan 5.0.
-                                            </p>
-                                            <a data-animation="animated zoomInUp" class="btn btn-gradient effect btn-md"
-                                                href="about-us.html">Discover More</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @empty
+
+                @endforelse
             </div>
             <!-- End Wrapper for slides -->
 
@@ -117,34 +131,41 @@
     </div>
     <!-- End Banner -->
 
-    <!-- Start About Area
-                                    ============================================= -->
+    <!-- Start About Area -->
     <div class="about-us-area default-padding-bottom mt-5">
         <div class="container">
             <div class="about-items">
+
+                @forelse ($profile as $profil)
+
                 <div class="row align-center">
                     <div class="col-lg-6">
                         <div class="thumb wow fadeInUp">
-                            <img src="assets-home/img/about/5.jpg" alt="Thumb">
+                            <img src="{{ asset('storage/' . $profil->image) }}" alt="Thumb">
 
                         </div>
                     </div>
                     <div class="col-lg-6 info wow fadeInRight">
-                        <h2>Menghadirkan Solusi Terintegrasi untuk Masa Depan Digital</h2>
-                        <p>
-                            Kini <span class="text-primary">Hummatech</span> bertransformasi menjadi
-                            perusahaan yang mampu menjawab
-                            tantangan di era revolusi industri 4.0
-                            dengan menciptakan produk berbasis
-                            integrated system berupa perangkat lunak
-                            berbasis web dan mobile, Internet of Things
-                            (IoT), Artificial Intelligence (AI), Game, dan
-                            Augmented Reality. 
+                        <h2>{{$profil->title}}</h2>
+                        <p>{{$profil->description}}
                         </p>
-                        <a data-animation="animated zoomInUp" class="btn btn-gradient effect btn-md" href="javascript:void(0)">Selengkapnya
+                        <a data-animation="animated zoomInUp" class="btn btn-gradient effect btn-md" href="{{url('/about-us')}}">Selengkapnya
                         </a>
                     </div>
                 </div>
+
+                @empty
+
+                <div class="col-12">
+                    <div class="d-flex justify-content-center">
+                        <img src="{{ asset('nodata-gif.gif') }}" alt="" width="800px">
+                    </div>
+                    <h4 class="text-center text-dark" style="font-weight:600">
+                        Belum ada Profil
+                    </h4>
+                </div>
+
+                @endforelse
             </div>
         </div>
     </div>
@@ -172,252 +193,98 @@
         <div class="container">
             <div class="services-items text-center">
                 <div class="row">
-                    <!-- Single Item -->
-                    <div class="col-lg-4 col-md-6 single-item wow fadeInRight" data-wow-delay="300ms">
-                        <div class="item" style="background-image: url(assets-home/img/services/1.jpg);">
-                            <div class="info">
-                                <h4>Software Development</h4>
-                                <p>
-                                    Lorem ipsum dolor sit amet consectetur. Neque commodo id massa turpis. Odio augue ut vel
-                                    turpis sapien facilisi suscipit.
-                                </p>
-                                <div class="bottom">
-                                    <a href="services-single.html"><i class="fas fa-arrow-right"></i> Lihat Selengkapnya</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- End Single Item -->
-                    <!-- Single Item -->
-                    <div class="col-lg-4 col-md-6 single-item wow fadeInRight" data-wow-delay="500ms">
-                        <div class="item" style="background-image: url(assets-home/img/services/2.jpg);">
-                            <div class="info">
-                                <h4>Software Development</h4>
-                                <p>
-                                    Prevailed always tolerably discourse and assurance more applauded more uncommonly. Him
-                                    everything.
-                                </p>
-                                <div class="bottom">
-                                    <a href="services-single.html"><i class="fas fa-arrow-right"></i> Lihat Selengkapnya</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- End Single Item -->
+                    @forelse ($service as $service)
+
                     <!-- Single Item -->
                     <div class="col-lg-4 col-md-6 single-item wow fadeInRight" data-wow-delay="700ms">
-                        <div class="item" style="background-image: url(assets-home/img/services/3.jpg);">
+                        <div class="item" style="background-image: url({{ asset('storage/' . $service->image) }});">
                             <div class="info">
-                                <h4>Software Development</h4>
+                                <h4>{{$service->name}}</h4>
                                 <p>
-                                    Lorem ipsum dolor sit amet consectetur. Neque commodo id massa turpis. Odio augue ut vel
-                                    turpis sapien facilisi suscipit..
+                                   {{$service->description}}
                                 </p>
                                 <div class="bottom">
-                                    <a href="services-single.html"><i class="fas fa-arrow-right"></i> Lihat Selengkapnya</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- End Single Item -->
-                    <!-- Single Item -->
-                    <div class="col-lg-4 col-md-6 single-item wow fadeInRight" data-wow-delay="300ms">
-                        <div class="item" style="background-image: url(assets-home/img/services/1.jpg);">
-                            <div class="info">
-                                <h4>Software Development</h4>
-                                <p>
-                                    Lorem ipsum dolor sit amet consectetur. Neque commodo id massa turpis. Odio augue ut vel
-                                    turpis sapien facilisi suscipit.
-                                </p>
-                                <div class="bottom">
-                                    <a href="services-single.html"><i class="fas fa-arrow-right"></i> Lihat Selengkapnya</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- End Single Item -->
-                    <!-- Single Item -->
-                    <div class="col-lg-4 col-md-6 single-item wow fadeInRight" data-wow-delay="500ms">
-                        <div class="item" style="background-image: url(assets-home/img/services/2.jpg);">
-                            <div class="info">
-                                <h4>Software Development</h4>
-                                <p>
-                                    Prevailed always tolerably discourse and assurance more applauded more uncommonly. Him
-                                    everything.
-                                </p>
-                                <div class="bottom">
-                                    <a href="services-single.html"><i class="fas fa-arrow-right"></i> Lihat
+                                    @if (!empty($service->link))
+
+                                    <a href="{{$service->link}}"><i class="fas fa-arrow-right"></i> Lihat
                                         Selengkapnya</a>
+
+                                    @endif
                                 </div>
                             </div>
                         </div>
                     </div>
                     <!-- End Single Item -->
-                    <!-- Single Item -->
-                    <div class="col-lg-4 col-md-6 single-item wow fadeInRight" data-wow-delay="700ms">
-                        <div class="item" style="background-image: url(assets-home/img/services/3.jpg);">
-                            <div class="info">
-                                <h4>Software Development</h4>
-                                <p>
-                                    Lorem ipsum dolor sit amet consectetur. Neque commodo id massa turpis. Odio augue ut vel
-                                    turpis sapien facilisi suscipit..
-                                </p>
-                                <div class="bottom">
-                                    <a href="services-single.html"><i class="fas fa-arrow-right"></i> Lihat
-                                        Selengkapnya</a>
-                                </div>
-                            </div>
+
+                    @empty
+
+                    <div class="col-12">
+                        <div class="d-flex justify-content-center">
+                            <img src="{{ asset('nodata-gif.gif') }}" alt="" width="800px">
                         </div>
+                        <h4 class="text-center text-dark" style="font-weight:600">
+                            Belum ada Layanan
+                        </h4>
                     </div>
-                    <!-- End Single Item -->
+
+                    @endforelse
                 </div>
             </div>
         </div>
     </div>
     <!-- End Services Area -->
     <div class="partner-area bg-gray shadow-less overflow-hidden text-light">
-        <div class="container-fluid mx-5">
-            <div class="item-box mx-5">
-                <div class="row align-center mx-5">
-                    <div class="col-lg-4 info">
-                        <h2>Menghadirkan produk dengan kualitas dan inovasi terbaik</h2>
+        <div class="container-fluid">
+            <div class="item-box">
+                <div class="row align-items-center">
+
+                    <div class="col-lg-4 col-md-12 info">
+                        <h2> Menghadirkan produk dengan kualitas dan inovasi terbaik</h2>
                         <p>
                             Lorem ipsum dolor sit amet consectetur. Blandit donec pulvinar eget senectus posuere amet
-                            ultricies justo enim tempus pellentesque. </p>
+                            ultricies justo enim tempus pellentesque.
+                        </p>
                     </div>
-                    <div class="col-lg-8 clients">
+
+                    <div class="col-lg-8 col-md-12 clients">
                         <div class="partner-carousel owl-carousel owl-theme text-center">
-                            <div class="single-item">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <div class="d-flex justify-content-center">
-                                            <img src="{{ asset('assets_landing/milink.png') }}" alt=""
-                                                srcset="">
-                                        </div>
-                                        <h4 class="text-center text-dark mt-3" style="font-weight:600">
-                                            Milink
-                                        </h4>
-                                        <p class="text-dark">
-                                            Lorem ipsum dolor sit amet consectetur. Neque commodo id massa turpis. Odio
-                                            augue ut vel turpis sapien facilisi suscipit.
-                                        </p>
-                                        <div class="bottom">
-                                            <a href="" class="text-primary"><i class="fas fa-arrow-right"></i>
-                                                Kunjungi website</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            @forelse ($product as $produk)
 
+                            <!-- Ulangi blok ini untuk setiap item partner -->
                             <div class="single-item">
                                 <div class="card">
                                     <div class="card-body">
                                         <div class="d-flex justify-content-center">
-                                            <img src="{{ asset('assets_landing/milink.png') }}" alt=""
-                                                srcset="">
+                                            <img class="img-fluid" src="{{ asset('storage/' . $produk->image) }}" alt="" srcset="">
                                         </div>
                                         <h4 class="text-center text-dark mt-3" style="font-weight:600">
-                                            Milink
+                                            {{$produk->name}}
                                         </h4>
                                         <p class="text-dark">
-                                            Lorem ipsum dolor sit amet consectetur. Neque commodo id massa turpis. Odio
-                                            augue ut vel turpis sapien facilisi suscipit.
+                                            {{$produk->description}}
                                         </p>
                                         <div class="bottom">
-                                            <a href="" class="text-primary"><i class="fas fa-arrow-right"></i>
-                                                Kunjungi website</a>
+                                            @if (!empty($produk->link))
+                                                <a href="{{ $produk->link }}" class="text-primary">
+                                                    <i class="fas fa-arrow-right"></i> Lihat Selengkapnya
+                                                </a>
+                                            @endif
+                                            {{-- <a href="" class="text-primary"><i class="fas fa-arrow-right"></i>
+                                                Kunjungi website</a> --}}
                                         </div>
                                     </div>
                                 </div>
                             </div>
-
-                            <div class="single-item">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <div class="d-flex justify-content-center">
-                                            <img src="{{ asset('assets_landing/milink.png') }}" alt=""
-                                                srcset="">
-                                        </div>
-                                        <h4 class="text-center text-dark mt-3" style="font-weight:600">
-                                            Milink
-                                        </h4>
-                                        <p class="text-dark">
-                                            Lorem ipsum dolor sit amet consectetur. Neque commodo id massa turpis. Odio
-                                            augue ut vel turpis sapien facilisi suscipit.
-                                        </p>
-                                        <div class="bottom">
-                                            <a href="" class="text-primary"><i class="fas fa-arrow-right"></i>
-                                                Kunjungi website</a>
-                                        </div>
-                                    </div>
+                            @empty
+                            <div class="col-12">
+                                <div class="d-flex justify-content-center">
+                                    <img src="{{ asset('nodata-gif.gif') }}" alt="" width="800px">
                                 </div>
+                                <h4 class="text-center text-dark" style="font-weight:600">
+                                    Belum ada produk
+                                </h4>
                             </div>
-
-                            <div class="single-item">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <div class="d-flex justify-content-center">
-                                            <img src="{{ asset('assets_landing/milink.png') }}" alt=""
-                                                srcset="">
-                                        </div>
-                                        <h4 class="text-center text-dark mt-3" style="font-weight:600">
-                                            Milink
-                                        </h4>
-                                        <p class="text-dark">
-                                            Lorem ipsum dolor sit amet consectetur. Neque commodo id massa turpis. Odio
-                                            augue ut vel turpis sapien facilisi suscipit.
-                                        </p>
-                                        <div class="bottom">
-                                            <a href="" class="text-primary"><i class="fas fa-arrow-right"></i>
-                                                Kunjungi website</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="single-item">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <div class="d-flex justify-content-center">
-                                            <img src="{{ asset('assets_landing/milink.png') }}" alt=""
-                                                srcset="">
-                                        </div>
-                                        <h4 class="text-center text-dark mt-3" style="font-weight:600">
-                                            Milink
-                                        </h4>
-                                        <p class="text-dark">
-                                            Lorem ipsum dolor sit amet consectetur. Neque commodo id massa turpis. Odio
-                                            augue ut vel turpis sapien facilisi suscipit.
-                                        </p>
-                                        <div class="bottom">
-                                            <a href="" class="text-primary"><i class="fas fa-arrow-right"></i>
-                                                Kunjungi website</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="single-item">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <div class="d-flex justify-content-center">
-                                            <img src="{{ asset('assets_landing/milink.png') }}" alt=""
-                                                srcset="">
-                                        </div>
-                                        <h4 class="text-center text-dark mt-3" style="font-weight:600">
-                                            Milink
-                                        </h4>
-                                        <p class="text-dark">
-                                            Lorem ipsum dolor sit amet consectetur. Neque commodo id massa turpis. Odio
-                                            augue ut vel turpis sapien facilisi suscipit.
-                                        </p>
-                                        <div class="bottom">
-                                            <a href="" class="text-primary"><i class="fas fa-arrow-right"></i>
-                                                Kunjungi website</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            @endforelse
                         </div>
                     </div>
                 </div>
@@ -425,34 +292,37 @@
         </div>
     </div>
     <!-- End Product Area -->
-    <div class=" team-area mt-5 bottom-less mx-3">
+
+    <div class="team-area mt-5 bottom-less mx-3">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 offset-lg-2">
                     <div class="site-heading text-center mt-3">
                         <h4>MITRA KAMI</h4>
-                        <h3>Tumbuh bersama : Kolaborasi menuju kesuksesan</h3>
+                        <h3>Tumbuh bersama: Kolaborasi menuju kesuksesan</h3>
                         <div class="devider"></div>
-                        <div class="owl-carousel owl-theme" id="owl-carousel-mitra">
-                <div class="item"><img src="{{ asset('assets/images/slider/1.jpg') }}" alt="Drawing-room"></div>
-                <div class="item"><img src="{{ asset('assets/images/slider/2.jpg') }}" alt="Drawing-room"></div>
-                <div class="item"><img src="{{ asset('assets/images/slider/3.jpg') }}" alt="Drawing-room"></div>
-                <div class="item"><img src="{{ asset('assets/images/slider/4.jpg') }}" alt="Drawing-room"></div>
-                <div class="item"><img src="{{ asset('assets/images/slider/5.jpg') }}" alt="Drawing-room"></div>
-                <div class="item"><img src="{{ asset('assets/images/slider/6.jpg') }}" alt="Drawing-room"></div>
-                <div class="item"><img src="{{ asset('assets/images/slider/7.jpg') }}" alt="Drawing-room"></div>
-                <div class="item"><img src="{{ asset('assets/images/slider/8.jpg') }}" alt="Drawing-room"></div>
-                <div class="item"><img src="{{ asset('assets/images/slider/9.jpg') }}" alt="Drawing-room"></div>
-                <div class="item"><img src="{{ asset('assets/images/slider/10.jpg') }}" alt="Drawing-room"></div>
-                <div class="item"><img src="{{ asset('assets/images/slider/11.jpg') }}" alt="Drawing-room"></div>
-            </div>
+
+                        <div class="team-slider owl-carousel">
+                            @forelse ($mitras as $mitra)
+                                <div class="team-item">
+                                    <img src="{{ asset('storage/' . $mitra->image) }}" alt="Mitra Image" class="img-fluid">
+                                </div>
+                            @empty
+                            <div class="col-12">
+                                <div class="d-flex justify-content-center">
+                                    <img src="{{ asset('nodata-gif.gif') }}" alt="" width="800px">
+                                </div>
+                                <h4 class="text-center text-dark" style="font-weight:600">
+                                    Belum ada Mitra
+                                </h4>
+                            </div>
+                            @endforelse
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-
     </div>
-
     <!-- End collab  Area -->
 
     <div class="bg-gray">
@@ -472,47 +342,89 @@
                 <div class="blog-items content-less">
                     <div class="blog-content">
                         <div class="blog-item-box">
-                            <div class="row">
-                                @foreach (range(1, 3) as $item)
-                                    <div class="col-lg-4 col-md-6 single-item">
-                                        <div class="item">
-                                            <div class="thumb">
-                                                <a href="blog-single-with-sidebar.html"><img
-                                                        src="{{ asset('assets_landing/berita.png') }}"
-                                                        alt="Thumb"></a>
-                                                <div class="date text-uppercase">Selasa, 12 Februari 2024</div>
-                                            </div>
-                                            <div class="info">
-                                                <div class="meta">
-                                                    <ul>
-                                                        <li>
-                                                            <a href="#">MAGANG</a>
-                                                        </li>
-                                                    </ul>
+                            @php
+                                $newsChunks = array_chunk($news->toArray(), 3);
+                            @endphp
+
+                            @if(count($news) > 0)
+                                <div id="newsCarousel" class="carousel slide" data-ride="carousel">
+                                    <div class="carousel-inner">
+                                            <div class="">
+                                                <div class="row">
+                                                    @foreach ($news as $index => $newsItem)
+                                                        @if ($index < 3)
+                                                            <div class="col-lg-4 col-md-6 single-item">
+                                                                <div class="item">
+                                                                    <div class="thumb">
+                                                                        <div id="carouselImages" class="carousel slide" data-ride="carousel">
+                                                                            <div class="carousel-inner">
+
+                                                                                @php
+                                                                                    $newsImages = \App\Models\NewsImage::where('news_id', $newsItem['id'])->get();
+                                                                                @endphp
+                                                                                @foreach ($newsImages as $imageIndex => $image)
+                                                                                    <div class="carousel-item @if($imageIndex == 0) active @endif">
+                                                                                        <img src="{{ asset('storage/' . $image->photo) }}" alt="Thumb">
+                                                                                    </div>
+                                                                                @endforeach
+                                                                            </div>
+                                                                            <a class="carousel-control-prev" href="#carouselImages" role="button" data-slide="prev">
+                                                                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                                                                <span class="sr-only">Previous</span>
+                                                                            </a>
+                                                                            <a class="carousel-control-next" href="#carouselImages" role="button" data-slide="next">
+                                                                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                                                                <span class="sr-only">Next</span>
+                                                                            </a>
+                                                                        </div>
+                                                                        <div class="date text-uppercase">
+                                                                            {{ \Carbon\Carbon::parse($newsItem['created_at'])->locale('id_ID')->isoFormat('dddd, D MMMM YYYY') }}
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="info">
+                                                                        <div class="meta">
+                                                                            <ul>
+                                                                                <li>
+                                                                                    <a href="#">MAGANG</a>
+                                                                                </li>
+                                                                            </ul>
+                                                                        </div>
+                                                                        <h4>
+                                                                            <a href="blog-single-with-sidebar.html">{{ $newsItem['title'] }}</a>
+                                                                        </h4>
+                                                                        <p class="line-clamp">{!! Str::limit($newsItem['description'], 30) !!}
+                                                                        </p>
+                                                                        <a href="/berita" class="btn btn-outline-primary rounded-pill py-2 px-4 text-dark">Baca Selengkapnya</a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        @endif
+                                                    @endforeach
                                                 </div>
-                                                <h4>
-                                                    <a href="blog-single-with-sidebar.html">7 (Tujuh) Fakta Yang Bikin Kamu
-                                                        Kaget, Nomor 3 Bikin Merinding.</a>
-                                                </h4>
-                                                <p class="line-clamp">
-                                                    Lorem ipsum dolor sit amet consectetur. Pretium sit convallis sed 
-                                                    tortor suspendisse ac metus pharetra. Praesent mattis sit massa 
-                                                    justo et suspendisse.......
-                                                </p>
-                                                <a href="" class="btn btn-outline-primary rounded-pill py-2 px-4 text-dark">Baca Selengkapnya</a>
                                             </div>
-                                        </div>
+
                                     </div>
-                                @endforeach
+                                </div>
+                            @else
+                            <div class="col-12">
+                                <div class="d-flex justify-content-center">
+                                    <img src="{{ asset('nodata-gif.gif') }}" alt="" width="800px">
+                                </div>
+                                <h4 class="text-center text-dark" style="font-weight:600">
+                                    Belum ada Berita
+                                </h4>
                             </div>
+                            @endif
+
                             <!-- Pagination -->
                             <div class="row">
                                 <div class="col-md-12 pagi-area text-center mb-5 mt-3">
-                                    <a class="text-primary" href=""><svg xmlns="http://www.w3.org/2000/svg"
-                                            width="32" height="32" viewBox="0 0 24 24">
+                                    <a class="text-primary" href="">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24">
                                             <path fill="currentColor"
                                                 d="M16.15 13H5q-.425 0-.712-.288T4 12q0-.425.288-.712T5 11h11.15L13.3 8.15q-.3-.3-.288-.7t.288-.7q.3-.3.713-.312t.712.287L19.3 11.3q.15.15.213.325t.062.375q0 .2-.062.375t-.213.325l-4.575 4.575q-.3.3-.712.288t-.713-.313q-.275-.3-.288-.7t.288-.7z" />
-                                        </svg> LIhat Berita Lainnya</a>
+                                        </svg> Lihat Berita Lainnya
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -520,194 +432,182 @@
                 </div>
             </div>
         </div>
+
+
     </div>
-    <div class="team-area mt-5 bottom-less mx-3">
+
+    <div class="gallery-area overflow-hidden default-padding">
         <div class="container">
             <div class="row">
+
                 <div class="col-lg-8 offset-lg-2">
-                    <div class="site-heading text-center">
-                        <h4>JAM OPERASIONAL</h4>
-                        <h3>Jam Operasional Kantor</h3>
-                        <H3>PT.HUMMA TEKNOLOGI INDONESIA</H3>
+                    <div class="site-heading text-center mt-4">
+                        <h4>portofolio</h4>
+                        <h3>Inspirasi dari Karya: Portfolio Hummatech Menggambarkan Keunggulan Produk</h3>
                         <div class="devider"></div>
                     </div>
                 </div>
-            </div>
-        </div>
-        @php
-            \carbon\Carbon::setLocale('id');
-            $now = \Carbon\Carbon::now();
-        @endphp
-        <div class="container mb-5">
-            <div class="row">
-                <div class="  {{ $now->format('l') == 'Monday' ? 'card-time-active' : 'card-time' }} mb-4">
-                    <div class="row">
-                        <div class="col-5">
-                            <p class="m-0 fw-800 {{ $now->format('l') == 'Monday' ? 'text-active' : 'text-black' }}">Senin
-                            </p>
-                        </div>
-                        <div class="col-7">
-                            <div class="justify-content-between d-flex">
-                                <div>
-                                    <p
-                                        class="m-0 fw-800 {{ $now->format('l') == 'Monday' ? 'text-active' : 'text-black' }}">
-                                        08:00</p>
-                                </div>
-
-                                <div>
-                                    <p
-                                        class="m-0 fw-800 {{ $now->format('l') == 'Monday' ? 'text-active' : 'text-inactive' }}">
-                                        Sampai</p>
-                                </div>
-                                <div>
-                                    <p
-                                        class="m-0 fw-800 {{ $now->format('l') == 'Monday' ? 'text-active' : 'text-black' }}">
-                                        16:00</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class=" {{ $now->format('l') == 'Tuesday' ? 'card-time-active' : 'card-time' }} mb-4">
-                    <div class="row">
-                        <div class="col-5">
-                            <p class="m-0 fw-800 {{ $now->format('l') == 'Tuesday' ? 'text-active' : 'text-black' }}">
-                                Selasa</p>
-                        </div>
-                        <div class="col-7">
-                            <div class="justify-content-between d-flex">
-                                <div>
-                                    <p
-                                        class="m-0 fw-800 {{ $now->format('l') == 'Tuesday' ? 'text-active' : 'text-black' }}">
-                                        08:00</p>
-                                </div>
-                                <div>
-                                    <p
-                                        class="m-0 fw-800 {{ $now->format('l') == 'Tuesday' ? 'text-active' : 'text-inactive' }}">
-                                        Sampai</p>
-                                </div>
-                                <div>
-                                    <p
-                                        class="m-0 fw-800 {{ $now->format('l') == 'Tuesday' ? 'text-active' : 'text-black' }}">
-                                        16:00</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class=" {{ $now->format('l') == 'Wednesday' ? 'card-time-active' : 'card-time' }} mb-4">
-                    <div class="row">
-                        <div class="col-5">
-                            <p class="m-0 fw-800 {{ $now->format('l') == 'Wednesday' ? 'text-active' : 'text-black' }}">
-                                Rabu</p>
-                        </div>
-                        <div class="col-7">
-                            <div class="justify-content-between d-flex">
-                                <div>
-                                    <p
-                                        class="m-0 fw-800 {{ $now->format('l') == 'Wednesday' ? 'text-active' : 'text-black' }}">
-                                        08:00</p>
-                                </div>
-                                <div>
-                                    <p
-                                        class="m-0 fw-800 {{ $now->format('l') == 'Wednesday' ? 'text-active' : 'text-inactive' }}">
-                                        Sampai</p>
-                                </div>
-                                <div>
-                                    <p
-                                        class="m-0 fw-800 {{ $now->format('l') == 'Wednesday' ? 'text-active' : 'text-black' }}">
-                                        16:00</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class=" {{ $now->format('l') == 'Thursday' ? 'card-time-active' : 'card-time' }} mb-4">
-                    <div class="row">
-                        <div class="col-5">
-                            <p class="m-0 fw-800 {{ $now->format('l') == 'Thursday' ? 'text-active' : 'text-black' }}">
-                                Kamis</p>
-                        </div>
-                        <div class="col-7">
-                            <div class="justify-content-between d-flex">
-                                <div>
-                                    <p
-                                        class="m-0 fw-800 {{ $now->format('l') == 'Thursday' ? 'text-active' : 'text-black' }}">
-                                        08:00</p>
-                                </div>
-                                <div>
-                                    <p
-                                        class="m-0 fw-800 {{ $now->format('l') == 'Thursday' ? 'text-active' : 'text-inactive' }}">
-                                        Sampai</p>
-                                </div>
-                                <div>
-                                    <p
-                                        class="m-0 fw-800 {{ $now->format('l') == 'Thursday' ? 'text-active' : 'text-black' }}">
-                                        16:00</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class=" {{ $now->format('l') == 'Friday' ? 'card-time-active' : 'card-time' }} mb-4">
-                    <div class="row">
-                        <div class="col-5">
-                            <p class="m-0 fw-800 {{ $now->format('l') == 'Friday' ? 'text-active' : 'text-black' }}">
-                                Jum'at</p>
-                        </div>
-                        <div class="col-7">
-                            <div class="justify-content-between d-flex">
-                                <div>
-                                    <p
-                                        class="m-0 fw-800 {{ $now->format('l') == 'Friday' ? 'text-active' : 'text-black' }}">
-                                        08:00</p>
-                                </div>
-                                <div>
-                                    <p
-                                        class="m-0 fw-800 {{ $now->format('l') == 'Friday' ? 'text-active' : 'text-inactive' }}">
-                                        Sampai</p>
-                                </div>
-                                <div>
-                                    <p
-                                        class="m-0 fw-800 {{ $now->format('l') == 'Friday' ? 'text-active' : 'text-black' }}">
-                                        16:00</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card-disabel mb-4">
-                    <div class="row">
-                        <div class="col-5">
-                            <p class="m-0 fw-800 ">Sabtu</p>
-                        </div>
-                        <div class="col-7">
-                            <div class="justify-content-end d-flex">
-                                <div>
-                                    <p class="m-0 fw-800 text-danger">Libur</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card-disabel mb-4">
-                    <div class="row">
-                        <div class="col-5">
-                            <p class="m-0 fw-800 ">Minggu</p>
-                        </div>
-                        <div class="col-7">
-                            <div class="justify-content-end d-flex">
-                                <div>
-                                    <p class="m-0 fw-800 text-danger">Libur</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
             </div>
-
         </div>
+        <div class="container">
+            <div class="case-items-area">
+                <div class="masonary">
+                    <div id="portfolio-grid" class="gallery-items colums-3">
+                        <!-- Single Item -->
+                        <div class="pf-item">
+                            <div class="item">
+                                <div class="thumb">
+                                    <img src="assets/images/banner/3.jpg" alt="Thumb">
+                                </div>
+                                <div class="content">
+                                    <div class="info">
+                                        <h4><a href="project-single.html">Startup Funding</a></h4>
+                                        <span>Finance, Assets</span>
+                                    </div>
+                                    <div class="button">
+                                        <a href="assets/images/banner/3.jpg" class="item popup-gallery">
+                                            <i class="fas fa-plus"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End Single Item -->
 
+                        <!-- Single Item -->
+                        <div class="pf-item wide">
+                            <div class="item">
+                                <div class="thumb">
+                                    <img src="assets/images/banner/3.jpg" alt="Thumb">
+                                </div>
+                                <div class="content">
+                                    <div class="info">
+                                        <h4><a href="project-single.html">Accounting Advisory</a></h4>
+                                        <span>Creative, Minimal</span>
+                                    </div>
+                                    <div class="button">
+                                        <a href="assets/images/banner/3.jpg" class="item popup-gallery">
+                                            <i class="fas fa-plus"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End Single Item -->
+
+                        <!-- Single Item -->
+                        <div class="pf-item">
+                            <div class="item">
+                                <div class="thumb">
+                                    <img src="assets/images/big-lightgallry/01.jpg" alt="Thumb">
+                                </div>
+                                <div class="content">
+                                    <div class="info">
+                                        <h4><a href="project-single.html">Merger & Acquisition</a></h4>
+                                        <span>Benifits, Business</span>
+                                    </div>
+                                    <div class="button">
+                                        <a href="assets/images/big-lightgallry/01.jpg" class="item popup-gallery">
+                                            <i class="fas fa-plus"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End Single Item -->
+
+                        <!-- Single Item -->
+                        <div class="pf-item">
+                            <div class="item">
+                                <div class="thumb">
+                                    <img src="assets/images/big-lightgallry/02.jpg" alt="Thumb">
+                                </div>
+                                <div class="content">
+                                    <div class="info">
+                                        <h4><a href="project-single.html">Assets For Technology</a></h4>
+                                        <span>Invest, Earning</span>
+                                    </div>
+                                    <div class="button">
+                                        <a href="assets/images/big-lightgallry/02.jpg" class="item popup-gallery">
+                                            <i class="fas fa-plus"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Single Item -->
+
+                        <!-- Single Item -->
+                        <div class="pf-item">
+                            <div class="item">
+                                <div class="thumb">
+                                    <img src="assets/images/big-lightgallry/03.jpg" alt="Thumb">
+                                </div>
+                                <div class="content">
+                                    <div class="info">
+                                        <h4><a href="project-single.html">Business Matching</a></h4>
+                                        <span>Finance, Assets</span>
+                                    </div>
+                                    <div class="button">
+                                        <a href="assets/images/big-lightgallry/03.jpg" class="item popup-gallery">
+                                            <i class="fas fa-plus"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Single Item -->
+
+                        <!-- Single Item -->
+                        <div class="pf-item">
+                            <div class="item">
+                                <div class="thumb">
+                                    <img src="assets/images/banner/2.jpg" alt="Thumb">
+                                </div>
+                                <div class="content">
+                                    <div class="info">
+                                        <h4><a href="project-single.html">Startup Funding</a></h4>
+                                        <span>Finance, Assets</span>
+                                    </div>
+                                    <div class="button">
+                                        <a href="assets/images/banner/2.jpg" class="item popup-gallery">
+                                            <i class="fas fa-plus"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Single Item -->
+
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+<script>
+    $(document).ready(function(){
+        $(".team-slider").owlCarousel({
+            items: 5,
+            loop: true,
+            autoplay: true,
+            autoplayTimeout: 3000,
+            responsive: {
+                0: {
+                    items: 1
+                },
+                768: {
+                    items: 3
+                },
+                992: {
+                    items: 5
+                }
+            }
+        });
+    });
+</script>
 @endsection

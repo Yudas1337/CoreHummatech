@@ -77,6 +77,7 @@
                     </li>
                     <li>
                         <a href="/data/lowongan">Lowongan</a>
+
                     </li>
                 </ul>
             </div><!-- /.navbar-collapse -->

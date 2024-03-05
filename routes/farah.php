@@ -5,6 +5,7 @@ use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\TestimonialController;
 use Illuminate\Support\Facades\Route;
 use \App\Http\Controllers\HomeProductController;
+use App\Http\Controllers\StructureController;
 
 Route::resource('testimonial', TestimonialController::class);
 
@@ -23,4 +24,6 @@ Route::get('layanan/pelatihan', function () {
 
 Route::get('/about-us', [AboutUsController::class, 'index']);
 
-Route::post('organization/create', []);
+Route::post('structure/create', [StructureController::class, 'store'])->name('structure.create');
+
+Route::get('setting/structure', [StructureController::class, 'index'])->name('structure.index');
