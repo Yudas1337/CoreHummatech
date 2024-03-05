@@ -29,6 +29,7 @@ Route::get('/', function () {
 });
 
 Route::get('/about-us', [AboutUsController::class, 'index']);
+Route::get('{slugService}', [ServiceController::class, 'ShowService']);
 
 Route::get('/gallery', function () {
     return view('admin.pages.gallery.index');

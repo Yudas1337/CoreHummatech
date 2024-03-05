@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Route;
 // news
 Route::get('berita' , [NewsController::class , 'news']);
 Route::get('{slugnews}', [NewsController::class, 'showNews'])->name('news.slug');
+
 Route::get('/contact', function () {
      return view('landing.contact');
 })->name('contact');
@@ -51,13 +52,8 @@ Route::get('detail/product', function () {
     return view('landing.product.product-detail');
 });
 
-// visi and mision
-// Route::get('setting/vision-mision' , [VisionAndMisionController::class ,'index']);
-
 
 // show pdf
 Route::get('showpdf/{sale}' , [SaleController::class ,'showpdf']);
 
 // layanan
-
-Route::get('{slug}', [ServiceController::class, 'service'])->name('slug');
