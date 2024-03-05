@@ -174,10 +174,10 @@
                 <a href="{{ route('faq.index') }}">FAQ</a>
             </li>
             <li>
-                <a href="/setting/company">Struktur usaha</a>
+                <a href="/setting/structure">Struktur</a>
             </li>
             <li>
-                <a href="/setting/teams">Struktur organisasi</a>
+                <a href="/setting/teams">Tim</a>
             </li>
             <li>
                 <a href="{{ route('procedure.index') }}">Prosedur</a>
