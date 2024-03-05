@@ -5,7 +5,6 @@ use App\Http\Controllers\ProcedureController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\VisionAndMisionController;
 //faq
-Route::resource('faq', 'App\Http\Controllers\FaqController');
 //terms
 // vision & mision
 Route::post('create/vision/mision/' , [VisionAndMisionController::class , 'store'])->name('create.vision.mision');
@@ -14,6 +13,4 @@ Route::put('update/mision/mision/{misionItems}' ,[VisionAndMisionController::cla
 Route::delete('delete/vision/mision/{visionAndMision}', [VisionAndMisionController::class, 'destroy'])->name('destroy.vision.mision');
 Route::delete('delete/mision/mision/{misionItems}', [VisionAndMisionController::class, 'destroymision'])->name('destroy.mision.mision');
 //procedure
-Route::resource('procedure', ProcedureController::class);
 //Force
-Route::resource('force', ForceController::class);

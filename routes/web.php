@@ -8,9 +8,13 @@ use App\Http\Controllers\NewsController;
 use App\Http\Controllers\SaleController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\CollabMitraController;
+use App\Http\Controllers\FaqController;
+use App\Http\Controllers\ForceController;
+use App\Http\Controllers\ProcedureController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SalesPackageController;
 use App\Http\Controllers\SectionController;
+use App\Http\Controllers\SosialMediaController;
 use App\Http\Controllers\TermsconditionController;
 use App\Http\Controllers\VisionAndMisionController;
 use Illuminate\Support\Facades\Auth;
@@ -35,6 +39,14 @@ Route::get('/', function () {
 Route::get('contact', function () {
     return view('landing.contact');
 })->name('contact');
+
+Route::get('message-approval', function () {
+    return view('admin.pages.message-approval.index');
+});
+Route::resource('force', ForceController::class);
+Route::get('social-media' , [SosialMediaController::class ,'index']);
+Route::resource('procedure', ProcedureController::class);
+Route::resource('faq', FaqController::class);
 Route::resource('terms_condition', TermsconditionController::class);
 Route::get('vision-mision' , [VisionAndMisionController::class ,'index'])->name('vision.mision');
 Route::get('hero-section', [SectionController::class , 'index'])->name('hero.section');
@@ -68,9 +80,6 @@ Route::get('/setting/faq', function () {
     return view('admin.pages.faq.index');
 });
 
-Route::get('/message-approval', function () {
-    return view('admin.pages.message-approval.index');
-});
 
 // Route::get('setting/profile', function() {
 //     return view('admin.pages.setting.profile.index');
