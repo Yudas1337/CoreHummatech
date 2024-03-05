@@ -92,7 +92,7 @@
 @endsection
 
 @section('content')
-    <div class="grid-container">
+    <div class="grid-container mb-3">
         @forelse ($teams as $team)
             <div class="card social-profile m-0">
                 <div class="card-header" style="background: rgba(48, 126, 243, 0.05)">
@@ -178,15 +178,12 @@
         </div>
     </div>
 
-    <ul class="pagination justify-content-center my-5">
-        <li class="page-team"><a href="#" class="page-link"><i class="fas fa-arrow-left"></i></a></li>
-        @foreach (range(0, 5) as $team)
-            <li class="page-team {{ $team !== 0 ?: 'active' }}">
-                <a href="#" class="page-link">{{ $team + 1 }}</a>
-            </li>
-        @endforeach
-        <li class="page-team"><a href="#" class="page-link"><i class="fas fa-arrow-right"></i></a></li>
-    </ul>
+    @if($teams->hasPages())
+    <div class="mb-3">
+        {{ $teams->links() }}
+    </div>
+    @endif
+
     @include('admin.components.delete-modal-component')
 @endsection
 @section('script')
