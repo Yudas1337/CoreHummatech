@@ -80,5 +80,5 @@ class ProfileController extends Controller
     {
         $this->profile->delete($profile->id);
         return back();
-    }
+    } 
 }

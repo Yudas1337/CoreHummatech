@@ -35,4 +35,9 @@ class NewsImageRepository extends BaseRepository implements NewsImageInterface {
             ->findOrFail($id)
             ->delete();
     }
+
+    public function show(mixed $id): mixed
+    {
+        return $this->model->query()->findOrFail($id)->show($id);
+    }
 }

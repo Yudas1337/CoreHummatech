@@ -89,6 +89,7 @@ class AppServiceProvider extends ServiceProvider
         OrganizationInterface::class => OrganizationRepository::class,
         GalleryInterface::class => GalleryRepository::class,
         VacancyInterface::class => VacancyRepository::class
+
     ];
 
     /**

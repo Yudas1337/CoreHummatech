@@ -11,3 +11,5 @@ use App\Contracts\Interfaces\Eloquent\UpdateInterface;
 
 interface NewsInterface extends CustomPaginationInterface, UpdateInterface, StoreInterface, DeleteInterface , GetInterface , SlugInterface
 {}
+
+
