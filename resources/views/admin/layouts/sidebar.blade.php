@@ -42,7 +42,7 @@
             <span>Hero Section</span>
         </a>
     </li>
-    <li class="sidebar">
+    <li class="sidebar-list">
         <i class="fa fa-thumb-tack"></i>
         <a class="sidebar-link sidebar-title" href="#">
             <svg class="stroke-icon">
