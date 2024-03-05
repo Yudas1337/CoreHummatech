@@ -52,7 +52,9 @@ use App\Contracts\Repositories\CollabCategoryRepository;
 use App\Contracts\Repositories\TermsconditionRepository;
 use App\Contracts\Repositories\VisionAndMisionRepository;
 use App\Contracts\Interfaces\EnterpriseStructureInterface;
+use App\Contracts\Interfaces\VacancyInterface;
 use App\Contracts\Repositories\EnterpriseStructureRepository;
+use App\Contracts\Repositories\VacancyRepository;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -79,7 +81,8 @@ class AppServiceProvider extends ServiceProvider
         NewsImageInterface::class => NewsImageRepository::class,
         TermsconditionInterface::class => TermsconditionRepository::class,
         ProcedureInterface::class => ProcedureRepository::class,
-        ForceInterface::class => ForceRepository::class
+        ForceInterface::class => ForceRepository::class,
+        VacancyInterface::class => VacancyRepository::class
     ];
 
     /**
