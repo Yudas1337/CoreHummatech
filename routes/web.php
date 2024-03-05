@@ -11,6 +11,7 @@ use App\Http\Controllers\CollabMitraController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SalesPackageController;
 use App\Http\Controllers\SectionController;
+use App\Http\Controllers\VisionAndMisionController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -33,6 +34,7 @@ Route::get('/', function () {
 Route::get('contact', function () {
     return view('landing.contact');
 })->name('contact');
+Route::get('vision-mision' , [VisionAndMisionController::class ,'index'])->name('vision.mision');
 Route::get('hero-section', [SectionController::class , 'index'])->name('hero.section');
 Route::get('berita', [NewsController::class, 'news']);
 Route::get('/about-us', [AboutUsController::class, 'index']);
