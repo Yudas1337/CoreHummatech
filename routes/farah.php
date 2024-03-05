@@ -21,4 +21,4 @@ Route::get('layanan/pelatihan', function () {
 
 Route::get('/about-us', [AboutUsController::class, 'index']);
 
-Route::post('organization/')
+Route::post('organization/create', []);

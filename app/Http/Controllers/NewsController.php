@@ -118,4 +118,10 @@ class NewsController extends Controller
         $newss = $this->news->get();
         return view('landing.news.index' , compact('newss'));
     }
+
+    public function showNews($slugnews)
+    {
+        $newss = $this->news->slug($slugnews);
+        return view('landing.news.detail' , compact('newss'));
+    }
 }

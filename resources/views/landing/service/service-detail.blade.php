@@ -2,6 +2,65 @@
 
 @section('style')
     <style>
+        .timeline-container {
+            position: relative;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background-color: #ccc;
+            left: 50%;
+            margin-left: -1px;
+        }
+
+        .timeline-item {
+            position: relative;
+            padding: 20px;
+            margin-bottom: 50px;
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            top: 11px;
+            width: 20px;
+            height: 20px;
+            background-color: #fff;
+            border: 2px solid #ccc;
+            border-radius: 50%;
+            left: 50%;
+            margin-left: -11px;
+        }
+
+        .timeline-item .timeline-content {
+            position: relative;
+            background-color: #f5f5f5;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 20px;
+        }
+
+        .timeline-item .timeline-title {
+            margin-top: 0;
+            color: inherit;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .timeline-item .timeline-date {
+            margin-bottom: 10px;
+            color: #999;
+        }
+
+        .timeline-item .timeline-description {
+            margin-bottom: 0;
+        }
+    </style>
+    <style>
         .subtitle {
             text-transform: uppercase;
             font-weight: 600;
@@ -99,7 +158,7 @@
     <div class="services-details-area default-padding">
         <div class="container">
             <div class="services-details-items">
-                <div class="row">
+                <div class="row">`  
 
                     <div class="col-lg-8 services-single-content wow fadeInUp">
                         <img src="{{ asset('storage/' . $slugs->image) }}" alt="Thumb">
@@ -107,7 +166,8 @@
                         <p class="wow fadeInLeft">
                             {!! Str::limit($slugs->description, 800) !!}
                         </p>
-                        <a href="{{ $slugs->link }}" target="_blank" class="btn btn-gradient effect btn-md" href="">Kunjungi website</a>
+                        <a href="{{ $slugs->link }}" target="_blank" class="btn btn-gradient effect btn-md"
+                            href="">Kunjungi website</a>
 
                         <div class="mt-5">
                             <div class="title-service">
@@ -467,94 +527,36 @@
                             <div class="title-service">
                                 <h4 class="m-0">Prosedur</h4>
                                 <div class="dash"></div>
-                                  <style>
-                                    .timeline-container {
-                                      position: relative;
-                                    }
 
-                                    .timeline::before {
-                                      content: '';
-                                      position: absolute;
-                                      top: 0;
-                                      bottom: 0;
-                                      width: 2px;
-                                      background-color: #ccc;
-                                      left: 50%;
-                                      margin-left: -1px;
-                                    }
-
-                                    .timeline-item {
-                                      position: relative;
-                                      padding: 20px;
-                                      margin-bottom: 50px;
-                                    }
-
-                                    .timeline-item::after {
-                                      content: '';
-                                      position: absolute;
-                                      top: 11px;
-                                      width: 20px;
-                                      height: 20px;
-                                      background-color: #fff;
-                                      border: 2px solid #ccc;
-                                      border-radius: 50%;
-                                      left: 50%;
-                                      margin-left: -11px;
-                                    }
-
-                                    .timeline-item .timeline-content {
-                                      position: relative;
-                                      background-color: #f5f5f5;
-                                      border: 1px solid #ccc;
-                                      border-radius: 5px;
-                                      padding: 20px;
-                                    }
-
-                                    .timeline-item .timeline-title {
-                                      margin-top: 0;
-                                      color: inherit;
-                                      font-size: 18px;
-                                      font-weight: bold;
-                                    }
-
-                                    .timeline-item .timeline-date {
-                                      margin-bottom: 10px;
-                                      color: #999;
-                                    }
-
-                                    .timeline-item .timeline-description {
-                                      margin-bottom: 0;
-                                    }
-                                  </style>
-                                  <div class="container">
+                                <div class="container">
                                     <div class="row">
-                                      <div class="col-md-12">
-                                        <div class="timeline-container">
-                                          <div class="timeline">
-                                            <div class="timeline-item">
-                                              <div class="timeline-content">
-                                                <h4 class="timeline-title">Event 1</h4>
-                                                <p class="timeline-date">Date 1</p>
-                                                <p class="timeline-description">Description 1</p>
-                                              </div>
+                                        <div class="col-md-12">
+                                            <div class="timeline-container">
+                                                <div class="timeline">
+                                                    <div class="timeline-item">
+                                                        <div class="timeline-content">
+                                                            <h4 class="timeline-title">Event 1</h4>
+                                                            <p class="timeline-date">Date 1</p>
+                                                            <p class="timeline-description">Description 1</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="timeline-item">
+                                                        <div class="timeline-content">
+                                                            <h4 class="timeline-title">Event 2</h4>
+                                                            <p class="timeline-date">Date 2</p>
+                                                            <p class="timeline-description">Description 2</p>
+                                                        </div>
+                                                    </div>
+                                                    <!-- Tambahkan lebih banyak event di sini -->
+                                                </div>
                                             </div>
-                                            <div class="timeline-item">
-                                              <div class="timeline-content">
-                                                <h4 class="timeline-title">Event 2</h4>
-                                                <p class="timeline-date">Date 2</p>
-                                                <p class="timeline-description">Description 2</p>
-                                              </div>
-                                            </div>
-                                            <!-- Tambahkan lebih banyak event di sini -->
-                                          </div>
                                         </div>
-                                      </div>
                                     </div>
-                                  </div>
+                                </div>
 
-                                  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-                                  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-                                  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+                                <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+                                <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+                                <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 
 
                             </div>
@@ -577,7 +579,8 @@
                                             <p>Lorem ipsum dolor sit amet consectetur. Tincidunt pellentesque pellentesque
                                                 sed in. Sit nunc velit aliquam quis faucibus nibh nisl pellentesque. Massa
                                             </p>
-                                            <a href="{{url('alumni-detail')}}" class="btn btn-gradient effect btn-sm">Lihat Detail Alumni</a>
+                                            <a href="{{ url('alumni-detail') }}"
+                                                class="btn btn-gradient effect btn-sm">Lihat Detail Alumni</a>
                                         </div>
                                     </div>
                                 </div>
@@ -593,7 +596,8 @@
                                             <p>Lorem ipsum dolor sit amet consectetur. Tincidunt pellentesque pellentesque
                                                 sed in. Sit nunc velit aliquam quis faucibus nibh nisl pellentesque. Massa
                                             </p>
-                                            <a href="{{url('alumni-detail')}}" class="btn btn-gradient effect btn-sm">Lihat Detail Alumni</a>
+                                            <a href="{{ url('alumni-detail') }}"
+                                                class="btn btn-gradient effect btn-sm">Lihat Detail Alumni</a>
                                         </div>
                                     </div>
                                 </div>
@@ -628,7 +632,7 @@
                             <div class="content">
                                 <ul>
                                     @foreach ($services as $service)
-                                    <li class=""><a href="{{ route('slug', ['slug' => $service->slug]) }}">{{ $service->name }}</a></li>
+                                        <li class=""><a href="/{{ $service->slug }}">{{ $service->name }}</a></li>
                                     @endforeach
                                 </ul>
                             </div>

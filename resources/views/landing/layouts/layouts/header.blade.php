@@ -46,7 +46,7 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="navbar-menu">
                 <ul class="nav navbar-nav navbar-center" data-in="#" data-out="#">
-                    <li>
+                    <li class="{{ request()->is('/') ? 'active' : '' }}">
                         <a href="{{ url('/') }}">Beranda</a>
                     </li>
                     <li>
@@ -56,23 +56,23 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" >Layanan</a>
                         <ul class="dropdown-menu">
                             @forelse ($services as $service)
-                                <li><a href="{{ route('slug', ['slug' => $service->slug]) }}">{{ $service->name }}</a></li>
+                                <li><a href="/{{ $service->slug }}">{{ $service->name }}</a></li>
                             @empty
                                 <li><a href="javascript:void(0)">Layanan Masih Kosong</a></li>
                             @endforelse
                         </ul>
                     </li>
                     <li>
-                        <a href="{{ url('/produk') }}">Produk</a>
+                        <a href="{{ url('/data/product') }}">Produk</a>
                     </li>
-                    <li>
+                    <li class="{{ request()->is('berita*', 'detail/news') ? 'active' : '' }}">
                         <a href="/berita">Berita</a>
                     </li>
-                    <li>
+                    <li class="{{ request()->is('contact') ? 'active' : '' }}">
                         <a href="/contact">Hubungi</a>
                     </li>
-                    <li>
-                        <a href="/vacancy">Lowongan</a>
+                    <li class="{{ request()->is('data/lowongan') ? 'active' : '' }}">
+                        <a href="/data/lowongan">Lowongan</a>
                     </li>
                 </ul>
             </div><!-- /.navbar-collapse -->

@@ -100,17 +100,17 @@
                         @forelse ($profiles as $profile)
                             <h2>{{ $profile->subtitle }}</h2>
                             <p>
-                                {{ $profile->description }}
+                                {!! Str::limit($profile->description, 200) !!}
                             </p>
 
-                            <a class="btn btn-gradient effect btn-md" href="#">Unduh Portofolio</a>
+                            <a class="btn btn-gradient effect btn-md" href="{{ asset('storage/' .$profile->proposal) }}" download="{{ asset('storage/' .$profile->proposal) }}" >Unduh Portofolio</a>
                         </div>
                         <div class="col-lg-6">
                             <div class="thumb">
                                 <img src="{{ asset('storage/'. $profile->image) }}" alt="Thumb">
                             </div>
                         </div>
-                            
+
                         @empty
                             <p>Belum ada profile perusahaan</p>
                         @endforelse
@@ -150,7 +150,7 @@
                             </div>
                         </div>
 
-                        @foreach ($missions as $mission)    
+                        @foreach ($missions as $mission)
                             <div class="single-item col-lg-4 col-md-6 mb-4 wow fadeInRight" data-wow-delay="500ms"
                                 style="visibility: visible; animation-delay: 500ms; animation-name: fadeInRight;">
                                 <div class="item">
@@ -168,12 +168,14 @@
                         @endforeach
 
                     @empty
-                        <div class="text-center">
-                            <img src="{{ asset('nodata.jpg') }}" alt="" width="20%">
-                            <h5 class="text-center">
-                                Belum ada visi-misi
-                            </h5>
+                    <div class="col-12">
+                        <div class="d-flex justify-content-center">
+                            <img src="{{ asset('nodata-gif.gif') }}" alt="" width="800px">
                         </div>
+                        <h4 class="text-center text-dark" style="font-weight:600">
+                            Belum ada visi-misi
+                        </h4>
+                    </div>
                     @endforelse
                 </div>
             </div>

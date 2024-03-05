@@ -53,8 +53,10 @@ use App\Contracts\Repositories\TermsconditionRepository;
 use App\Contracts\Repositories\VisionAndMisionRepository;
 use App\Contracts\Interfaces\EnterpriseStructureInterface;
 use App\Contracts\Interfaces\OrganizationInterface;
-use App\Contracts\Repositories\EnterpriseStructureRepository;
 use App\Contracts\Repositories\OrganizationRepository;
+use App\Contracts\Interfaces\VacancyInterface;
+use App\Contracts\Repositories\EnterpriseStructureRepository;
+use App\Contracts\Repositories\VacancyRepository;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -82,7 +84,8 @@ class AppServiceProvider extends ServiceProvider
         TermsconditionInterface::class => TermsconditionRepository::class,
         ProcedureInterface::class => ProcedureRepository::class,
         ForceInterface::class => ForceRepository::class,
-        OrganizationInterface::class => OrganizationRepository::class
+        OrganizationInterface::class => OrganizationRepository::class,
+        VacancyInterface::class => VacancyRepository::class,
     ];
 
     /**

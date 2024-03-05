@@ -82,7 +82,12 @@ class ServiceController extends Controller
     {
         //
     }
-
+    public function ShowService($slug)
+    {
+        $slugs = $this->service->slug($slug);
+        $services = $this->service->get();
+        return view('landing.service.service-detail', compact('slugs' , 'services'));
+    }
     /**
      * Update the specified resource in storage.
      */
@@ -107,10 +112,5 @@ class ServiceController extends Controller
         return back()->with('success' , 'Penjualan Berhasil Di Hapus');
     }
 
-    public function service($slug)
-    {
-        $slugs = $this->service->slug($slug);
-        $services = $this->service->get();
-        return view('landing.service.service-detail', compact('slugs' , 'services'));
-    }
+
 }

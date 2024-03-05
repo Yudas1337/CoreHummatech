@@ -1,4 +1,4 @@
-@extends('landing.layouts.app')
+@extends('landing.layouts.layouts.app')
 
 @section('style')
     <style>
@@ -121,7 +121,7 @@
                             Platea aliquet aliquam ac vitae senectus quis.
                         </p>
 
-                        <a class="btn btn-stroke-gradient effect btn-md" href="{{ url('produk/milink') }}">Lihat Detail</a>
+                        <a class="btn btn-stroke-gradient effect btn-md" href="{{ url('/detail/product') }}">Lihat Detail</a>
                         <a class="btn btn-gradient effect btn-md" href="">Kunjungi website</a>
                     </div>
                 </div>

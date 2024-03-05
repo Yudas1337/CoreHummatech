@@ -22,7 +22,7 @@
     @yield('seo')
 
     <!-- ========== Favicon Icon ========== -->
-    <link rel="shortcut icon" href="{{ asset('assets-home/img/favicon.png') }}" type="image/x-icon">
+    <link rel="shortcut icon" href="{{ asset('mobilelogo.png') }}" type="image/x-icon">
 
     <!-- ========== Start Stylesheet ========== -->
     <link href="{{ asset('assets-home/css/bootstrap.min.css') }}" rel="stylesheet" />

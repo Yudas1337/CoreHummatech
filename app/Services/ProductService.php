@@ -9,6 +9,7 @@ use App\Http\Requests\StoreSaleRequest;
 use App\Http\Requests\UpdateProductRequest;
 use App\Http\Requests\UpdateSaleRequest;
 use App\Models\Product;
+use App\Models\ProductFeature;
 use App\Models\Sale;
 
 class ProductService
@@ -41,11 +42,42 @@ class ProductService
     {
         $data = $request->validated();
 
+        $data = [
+            'name' => $request->name,
+            'description' => $request->description,
+            'link' => $request->link,
+            'service_id' => $request->service_id,
+        ];
+        // dd($data);
+
         if ($request->hasFile('image') && $request->file('image')->isValid()) {
             $data['image'] = $request->file('image')->store(TypeEnum::PRODUCT->value, 'public');
             return $data;
         }
-        return false;
+        return $data;
+    }
+
+    public function storefeature(StoreProductRequest $request, $product_id)
+    {
+        // dd($product_id->id);
+        foreach ($request->feature as $item) {
+            $data = [
+                'product_id' => $product_id->id,
+                'name' => $item,
+            ];
+            ProductFeature::create($data);
+        }
+    }
+    public function updatefeature(UpdateProductRequest $request, $product)
+    {
+        // dd($product_id->id);
+        foreach ($request->feature as $item) {
+            $data = [
+                'product_id' => $product->id,
+                'name' => $item,
+            ];
+            ProductFeature::create($data);
+        }
     }
 
     /**
@@ -59,12 +91,25 @@ class ProductService
     public function update(Product $product, UpdateProductRequest $request): array|bool
     {
         $data = $request->validated();
+        $data = [
+            'name' => $request->name,
+            'description' => $request->description,
+            'link' => $request->link,
+            'service_id' => $request->service_id,
+        ];
+        // dd($data);
         if ($request->has('image')) {
             $this->remove($product->image);
             $data['image'] = $request->file('image')->store(TypeEnum::PRODUCT->value, 'public');
         } else {
             $data['image'] = $product->image;
         }
+
+        foreach ($request->id_feature as $fitur)
+        {
+            ProductFeature::findOrfail($fitur)->delete();
+        }
+
         return $data;
     }
 }

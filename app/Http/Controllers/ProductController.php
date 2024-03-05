@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Contracts\Interfaces\ProductInterface;
-use App\Contracts\Interfaces\ServiceInterface;
 use App\Models\Product;
+use App\Models\ProductFeature;
+use App\Services\ProductService;
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
-use App\Services\ProductService;
+use App\Contracts\Interfaces\ProductInterface;
+use App\Contracts\Interfaces\ServiceInterface;
 
 class ProductController extends Controller
 {
@@ -37,6 +38,7 @@ class ProductController extends Controller
     public function create()
     {
         $services = $this->service->get();
+        // dd($services);
         return view('admin.pages.products.create', compact('services'));
     }
 
@@ -46,8 +48,9 @@ class ProductController extends Controller
     public function store(StoreProductRequest $request)
     {
         $data = $this->productService->store($request);
-        $this->product->store($data);
-        return back()->with('success', 'Produk berhasil di tambahkan');
+        $product_id = $this->product->store($data);
+        $this->productService->storefeature($request, $product_id);
+        return to_route('product.index')->with('success', 'Produk berhasil di tambahkan');
     }
 
     /**
@@ -62,9 +65,13 @@ class ProductController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
+
     public function edit(Product $product)
     {
-        //
+        $services = $this->service->get();
+        $productfeature = ProductFeature::where('product_id', $product->id)->get();
+        // dd($productfeature);
+        return view('admin.pages.products.edit', compact('product', 'services', 'productfeature'));
     }
 
     /**
@@ -72,9 +79,18 @@ class ProductController extends Controller
      */
     public function update(UpdateProductRequest $request, Product $product)
     {
+        // dd($request->all());
         $data = $this->productService->update($product, $request);
         $this->product->update($product->id, $data);
-        return back()->with('success', 'Penjualan berhasil diperbarui');
+        $this->productService->updatefeature($request, $product);
+        return to_route('product.index')->with('success', 'Produk Berhasil Di Update');
+    }
+
+    public function feature(ProductFeature $ProductFeature)
+    {
+        // dd($ProductFeature);
+        $ProductFeature->delete();
+        return back();
     }
 
     /**
