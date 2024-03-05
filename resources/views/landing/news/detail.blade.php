@@ -10,8 +10,8 @@
                         <div class="single-item">
                             <div class="item">
                                 <div class="thumb">
-                                    <a href=""><img src="{{ asset('assets-home/img/blog/11.jpg') }}" alt="Thumb"></a>
-                                    <div class="date">January 25, 2021</div>
+                                    <a href=""><img src="{{ asset('storage/' . $newss->newsImages[0]->photo ) }}" alt="Thumb"></a>
+                                    <div class="date">{{ \Carbon\Carbon::parse($newss->created_at)->locale('id_ID')->isoFormat('D MMMM Y') }}</div>
                                 </div>
                                 <div class="info">
                                     <div class="meta">
@@ -19,22 +19,15 @@
                                            <li>
                                                <img src="assets-home/img/team/1.jpg" alt="Author">
                                                <span>By </span>
-                                               <a href="#">John Baus</a>
-                                           </li>
-                                           <li>
-                                               <span>In </span>
-                                               <a href="#">Agency</a>
+                                               <a href="#">HUMMATECH</a>
                                            </li>
                                        </ul>
                                     </div>
                                     <h3>
-                                        <a href="">Overcame breeding or my concerns removings</a>
+                                        <a href="javascript:void(0)">{{ $newss->title }}</a>
                                     </h3>
                                     <p>
-                                        One order all scale sense her gay style wrote. Incommode our not one ourselves residence. Shall there whose those stand she end. So unaffected partiality indulgence dispatched to of celebrated remarkably. Unfeeling are had allowance own perceived abilities. Unfeeling are had allowance own perceived abilities.
-                                    </p>
-                                    <p>
-                                        One order all scale sense her gay style wrote. Incommode our not one ourselves residence. Shall there whose those stand she end. So unaffected partiality indulgence dispatched to of celebrated remarkably. Unfeeling are had allowance own perceived abilities. Unfeeling are had allowance own perceived abilities.
+                                        {!! $newss->description !!}
                                     </p>
                                 </div>
                             </div>

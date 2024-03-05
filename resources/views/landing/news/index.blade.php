@@ -68,7 +68,7 @@ style="background-image: url({{ asset('assets-home/img/banner/10.jpg') }});">
                         <div class="col-lg-4 col-md-6 single-item">
                             <div class="item">
                                 <div class="thumb">
-                                    <a href="{{ route('news.detail') }}"><img src="{{ asset('storage/' . $news->newsImages[0]->photo) }}" alt="Thumb"></a>
+                                    <a href="{{ route('news.slug', ['slugnews' => $news->slug]) }}"><img src="{{ asset('storage/' . $news->newsImages[0]->photo) }}" alt="Thumb"></a>
                                     <div class="date">{{ \Carbon\Carbon::parse($news->created_at)->locale('id_ID')->isoFormat('D MMMM Y') }}</div>                                </div>
                                 <div class="info">
                                     <div class="meta">
@@ -81,7 +81,7 @@ style="background-image: url({{ asset('assets-home/img/banner/10.jpg') }});">
                                        </ul>
                                     </div>
                                     <h4>
-                                        <a href="{{ route('news.detail') }}">{{ $news->title }}</a>
+                                        <a href="{{ route('news.slug', ['slugnews' => $news->slug]) }}">{{ $news->title }}</a>
                                     </h4>
                                     <p>
                                         {!! Str::limit($news->description, 200) !!}

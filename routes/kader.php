@@ -12,13 +12,8 @@ use Illuminate\Support\Facades\Route;
 
 // news
 Route::get('berita' , [NewsController::class , 'news']);
-Route::get('/contact', function () {
-    return view('landing.contact');
-})->name('contact');
-
-Route::get('/detail/news', function () {
-    return view('landing.news.detail');
-})->name('news.detail');
+Route::get('{slugnews}', [NewsController::class, 'showNews'])->name('news.slug');
+Route::get('/contact', function () { return view('landing.contact');})->name('contact');
 
 Route::get('news/index' , [NewsController::class , 'index']);
 
