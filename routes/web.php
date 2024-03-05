@@ -112,6 +112,8 @@ Route::put('update/collab/mitra/{collabMitra}' ,[CollabMitraController::class ,'
 //product
 Route::resource('product', ProductController::class);
 Route::resource('gallery', GalleryController::class);
+Route::get('product/feature/{product}' ,[ProductController::class ,'feature'])->name('product.feature');
+
 Route::resource('sales-package', SalesPackageController::class);
 
 require_once __DIR__ . '/kader.php';

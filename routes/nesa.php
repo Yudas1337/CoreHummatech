@@ -21,7 +21,7 @@ Route::get('alumni-detail', function (){
     return view('landing.service.alumni-detail');
 });
 
-Route::get('vacancy', function (){
+Route::get('data/lowongan', function (){
     return view('landing.vacancy.index');
 });
 

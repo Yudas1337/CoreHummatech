@@ -292,7 +292,14 @@
                 target.each((i, el) => $(el).click());
             });
         })();
-
+        $('.btn-edit-mision-service').click(function() {
+            var id = $(this).data('id');
+            var mision = $(this).data('mision');
+            $('#form-update-mision').attr('action', '/update/mision/' + id);
+            $('#mision-edit').val(mision);
+            $('#mision-edit-service').val(mision);
+            $('#edit-mision-service').modal('show');
+        });
         $('.btn-edit-visi').click(function() {
             var id = $(this).data('id');
             var visi = $(this).data('visi');

@@ -95,6 +95,33 @@
             @if ($key % 2 === 1)
                 <div class="right-shape">
                     <img src="{{ asset('assets-home/img/shape/9.png') }}" alt="Shape">
+        <div class="right-shape">
+            <img src="assets-home/img/shape/9.png" alt="Shape">
+        </div>
+        <div class="container">
+            <div class="about-items">
+                <div class="row align-center">
+                    <div class="col-lg-5">
+                        <div class="thumb">
+                            <img src="{{ asset('assets_landing/produk/milink.png') }}" alt="Thumb" >
+                        </div>
+                    </div>
+                    <div class="col-lg-6 info">
+                        <h1>Milink.id</h1>
+                        <p>
+                            Lorem ipsum dolor sit amet consectetur. Tincidunt pellentesque
+                            pellentesque sed in. Sit nunc velit aliquam quis faucibus nibh
+                            nisl pellentesque. Massa natoque mattis quisque ut molestie turpis
+                            at fusce integer. Tincidunt lorem egestas sed ipsum proin. Ac
+                            vestibulum euismod amet dignissim et lobortis blandit bibendum.
+                            Nulla venenatis vitae dui sapien duis dolor sed ut dictum. Neque
+                            diam senectus suspendisse id. Pretium congue erat pharetra aliquet.
+                            Platea aliquet aliquam ac vitae senectus quis.
+                        </p>
+
+                        <a class="btn btn-stroke-gradient effect btn-md" href="{{ url('/detail/product') }}">Lihat Detail</a>
+                        <a class="btn btn-gradient effect btn-md" href="">Kunjungi website</a>
+                    </div>
                 </div>
                 <div class="container">
                     <div class="about-items">

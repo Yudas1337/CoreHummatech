@@ -21,7 +21,7 @@
     <div class="page-title">
         <div class="d-flex justify-content-between">
             <h3>Berita baru</h3>
-            <a href="/news" class="btn btn-light">Kembali</a>
+            <a href="/news/index" class="btn btn-light">Kembali</a>
         </div>
     </div>
 @endsection
