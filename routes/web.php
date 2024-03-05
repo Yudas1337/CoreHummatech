@@ -68,9 +68,6 @@ Route::get('{slugnews}', [NewsController::class, 'showNews'])->name('news.slug')
 Route::get('/gallery', function () {
     return view('admin.pages.gallery.index');
 });
-
-
-
 Route::get('/category-testimonial', function () {
     return view('admin.pages.testimonial-category.index');
 });

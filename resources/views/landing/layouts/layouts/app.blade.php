@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content="{{ config('app.name', 'Laravel') }}" />
     <meta name="title" content="Hummatech - Perusahaan Software Terbaik di Malang" />
-    <meta name="description" content="Hummatech adalah perusahaan software development terbaik di Malang. Kami menyediakan solusi perangkat lunak yang inovatif dan berkualitas tinggi." />
+    <meta name="description" content="Hummatech , Hummatech adalah perusahaan software development terbaik di Malang. Kami menyediakan solusi perangkat lunak yang inovatif dan berkualitas tinggi." />
 
     <!-- ========== Page Title ========== -->
     @hasSection('title')
@@ -22,7 +22,7 @@
     @yield('seo')
 
     <!-- ========== Favicon Icon ========== -->
-    <link rel="shortcut icon" href="{{ asset('assets-home/img/favicon.png') }}" type="image/x-icon">
+    <link rel="shortcut icon" href="{{ asset('mobilelogo.png') }}" type="image/x-icon">
 
     <!-- ========== Start Stylesheet ========== -->
     <link href="{{ asset('assets-home/css/bootstrap.min.css') }}" rel="stylesheet" />
