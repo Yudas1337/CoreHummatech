@@ -11,11 +11,8 @@ class Gallery extends Model implements HasService
 {
     use HasFactory;
 
-    protected $fillable = [
-        'service_id',
-        'image',
-        'name'
-    ];
+    protected $guarded = [];
+
 
     /**
      * Relation to service

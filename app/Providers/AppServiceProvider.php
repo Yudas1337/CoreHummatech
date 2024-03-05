@@ -50,8 +50,10 @@ use App\Contracts\Repositories\SalesPackageRepository;
 use App\Contracts\Repositories\TermsconditionRepostory;
 use App\Contracts\Repositories\CollabCategoryRepository;
 use App\Contracts\Repositories\TermsconditionRepository;
+use App\Contracts\Repositories\GaleryImageRepository;
 use App\Contracts\Repositories\VisionAndMisionRepository;
 use App\Contracts\Interfaces\EnterpriseStructureInterface;
+use App\Contracts\Interfaces\GaleryImageInterface;
 use App\Contracts\Interfaces\OrganizationInterface;
 use App\Contracts\Repositories\OrganizationRepository;
 use App\Contracts\Interfaces\GalleryInterface;
@@ -88,8 +90,9 @@ class AppServiceProvider extends ServiceProvider
         ForceInterface::class => ForceRepository::class,
         OrganizationInterface::class => OrganizationRepository::class,
         GalleryInterface::class => GalleryRepository::class,
-        VacancyInterface::class => VacancyRepository::class
-    ];
+        VacancyInterface::class => VacancyRepository::class,
+        GaleryImageInterface::class => GaleryImageRepository::class
+        ];
 
     /**
      * Register any application services.
