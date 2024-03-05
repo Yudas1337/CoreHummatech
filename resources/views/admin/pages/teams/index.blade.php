@@ -47,45 +47,63 @@
         aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title fw-semibold" id="exampleModalLabel">Tambah Data</h5>
-                    <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <ul class="simple-wrapper nav nav-tabs modal-header" id="myTab" role="tablist">
+                        <li class="nav-item"><a class="nav-link active txt-primary" id="profile-tabs" data-bs-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Struktur organisasi</a></li>
+                        <li class="nav-item"><a class="nav-link txt-primary" id="contact-tab" data-bs-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Tim</a></li>
+                        <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </ul>
+
+                <div class="modal-body">
+                    <div class="tab-content" id="myTabContent">
+                        <div class="tab-pane fade show active" id="profile" role="tabpanel">
+                          <div class="pt-3 mb-0">
+                            <form class="form-bookmark needs-validation" action="{{ route('organization.create') }}" method="POST" id="bookmark-form" novalidate="" enctype="multipart/form-data">
+                                @csrf
+                                <div class="mb-3 mt-0 col-md-12">
+                                    <label for="formFile">Foto struktur organisasi</label>
+                                    <input class="form-control" name="image" id="formFile" type="file" />
+                                </div>
+                                <div class="d-flex justify-content-end gap-2">
+                                    <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">Cancel</button>
+                                    <button class="btn btn-primary" type="submit">Tambah</button>
+                                </div>
+                            </form>
+                          </div>
+                        </div>
+                        <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+                          <div class="pt-3">
+                            <form class="form-bookmark needs-validation" action="{{ route('create.team') }}" method="POST" id="bookmark-form" novalidate="" enctype="multipart/form-data">
+                                @csrf
+                                <div class="mb-3 mt-0 col-md-12">
+                                    <label for="bm-title">Nama Lengkap</label>
+                                    <input class="form-control" name="name" type="text" required="" autocomplete="name"
+                                        placeholder="Mis: Agus Prasetya">
+                                </div>
+                                <div class="mb-3 mt-0 col-md-12">
+                                    <label for="bm-title">Pilih Jabatan</label>
+                                    <select id="departement" name="position_id" class="form-select">
+                                        <option value="null" disabled="disabled" selected="selected">Pilih Jabatan</option>
+                                        @forelse ($positions as  $position)
+                                            <option value="{{ $position->id }}">{{ $position->name }}</option>
+                                        @empty
+                                            <option value="null" disabled="disabled" selected="selected">Jabatan Masih Kosong
+                                            </option>
+                                        @endforelse
+                                    </select>
+                                </div>
+                                <div class="mb-3 mt-0 col-md-12">
+                                    <label for="bm-title">Foto / Logo Sosmed</label>
+                                    <input class="form-control" name="image" id="formFile" type="file" />
+                                </div>
+                                <div class="d-flex justify-content-end gap-2">
+                                    <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">Cancel</button>
+                                    <button class="btn btn-primary" type="submit">Tambah</button>
+                                </div>
+                            </form>
+                          </div>
+                        </div>
+                    </div>
                 </div>
-                <form class="form-bookmark needs-validation" action="{{ route('create.team') }}" method="POST"
-                    id="bookmark-form" novalidate="" enctype="multipart/form-data">
-                    @csrf
-                    <div class="modal-body">
-                        <div class="row g-2">
-                            <div class="mb-3 mt-0 col-md-12">
-                                <label for="bm-title">Nama Lengkap</label>
-                                <input class="form-control" name="name" type="text" required="" autocomplete="name"
-                                    placeholder="Mis: Agus Prasetya">
-                            </div>
-                            <div class="mb-3 mt-0 col-md-12">
-                                <label for="bm-title">Pilih Jabatan</label>
-                                <select id="departement" name="position_id" class="form-select">
-                                    <option value="null" disabled="disabled" selected="selected">Pilih Jabatan</option>
-                                    @forelse ($positions as  $position)
-                                        <option value="{{ $position->id }}">{{ $position->name }}</option>
-                                    @empty
-                                        <option value="null" disabled="disabled" selected="selected">Jabatan Masih Kosong
-                                        </option>
-                                    @endforelse
-                                </select>
-                            </div>
-                            <div class="mb-3 mt-0 col-md-12">
-                                <label for="bm-title">Foto / Logo Sosmed</label>
-                                <input class="form-control" name="image" id="formFile" type="file" />
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <div class="d-flex justify-content-end">
-                            <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">Cancel</button>
-                            <button class="btn btn-primary" type="submit">Tambah</button>
-                        </div>
-                    </div>
-                </form>
             </div>
         </div>
     </div>

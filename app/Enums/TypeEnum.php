@@ -19,4 +19,5 @@ enum TypeEnum: string
     case TESTIMONIAL = 'testimonial';
     case PROFILE = 'profile';
     case ENTERPRISESTRUCTURE = 'business';
+    case ORGANIZATION = 'organization';
 }
