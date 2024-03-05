@@ -171,13 +171,13 @@
                 <a href="/setting/departement">Jabatan</a>
             </li>
             <li>
-                <a href="{{ route('faq.index') }}">FAQ</a>
-            </li>
-            <li>
                 <a href="/setting/structure">Struktur</a>
             </li>
             <li>
                 <a href="/setting/teams">Tim</a>
+            </li>
+            <li>
+                <a href="{{ route('faq.index') }}">FAQ</a>
             </li>
             <li>
                 <a href="{{ route('procedure.index') }}">Prosedur</a>
