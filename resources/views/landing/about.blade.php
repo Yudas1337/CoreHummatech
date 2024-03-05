@@ -202,14 +202,30 @@
     </div>
 </div>
 
-<div class="work-process-area features-area default-padding-bottom">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 offset-lg-2">
-                <div class="site-heading text-center">
-                    <h4>STRUKTUR USAHA</h4>
-                    <h2>Struktur Usaha yang Membawa Inovasi dan Keberlanjutan</h2>
-                    <div class="devider"></div>
+    <div class="about-us-area default-padding">
+        <div class="container">
+            <img src="{{ asset('assets-home/img/about-polygon.svg') }}" class="about-triangle" alt="Polygon" />
+            <div class="about-items">
+                <div class="row align-center">
+                    <div class="col-lg-6 info">
+                        <h4 class="subtitle text-center">Profile Perusahaan</h4>
+                        @forelse ($profiles as $profile)
+                            <h2>{{ $profile->subtitle }}</h2>
+                            <p>
+                                {!! Str::limit($profile->description, 200) !!}
+                            </p>
+
+                            <a class="btn btn-gradient effect btn-md" href="{{ asset('storage/' .$profile->proposal) }}" download="{{ asset('storage/' .$profile->proposal) }}" >Unduh Portofolio</a>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="thumb">
+                                <img src="{{ asset('storage/'. $profile->image) }}" alt="Thumb">
+                            </div>
+                        </div>
+
+                        @empty
+                            <p class="text-center">Belum ada profile perusahaan</p>
+                        @endforelse
                 </div>
             </div>
         </div>

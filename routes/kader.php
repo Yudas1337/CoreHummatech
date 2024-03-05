@@ -11,15 +11,13 @@ use Illuminate\Support\Facades\Route;
 
 
 // news
-Route::get('berita' , [NewsController::class , 'news']);
-Route::get('{slugnews}', [NewsController::class, 'showNews'])->name('news.slug');
-Route::get('/contact', function () { return view('landing.contact');})->name('contact');
+
+
 
 Route::get('news/index' , [NewsController::class , 'index']);
 
 Route::post('create/service' , [ServiceController::class , 'store'])->name('create.service');
 Route::get('detail/service/{service}' , [ServiceController::class , 'show'])->name('detail.service');
-Route::get('hero-section' , [SectionController::class , 'index'])->name('hero.section');
 Route::get('hero-section/create' , [SectionController::class , 'create']);
 Route::post('create/section' , [SectionController::class ,'store'])->name('create.section');
 Route::get('edit/section/{section}', [SectionController::class ,'edit'])->name('hero.edit');
@@ -45,13 +43,8 @@ Route::get('detail/product', function () {
     return view('landing.product.product-detail');
 });
 
-// visi and mision
-// Route::get('setting/vision-mision' , [VisionAndMisionController::class ,'index']);
-
 
 // show pdf
 Route::get('showpdf/{sale}' , [SaleController::class ,'showpdf']);
 
 // layanan
-
-Route::get('{slug}', [ServiceController::class, 'service'])->name('slug');

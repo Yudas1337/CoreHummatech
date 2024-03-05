@@ -38,8 +38,10 @@
                     <i class="fa fa-bars"></i>
                 </button>
                 <a class="navbar-brand h-100" href="index.html">
-                    <img src="{{ asset('assets/images/LOGO-HUMMATECH_Putih.png') }}" style="width: 200px;height: auto !important" class="logo logo-display" alt="Logo">
-                    <img src="{{ asset('assets/images/LOGO-HUMMATECH_Hitam.png') }}" style="width: 200px;height: auto !important" class="logo logo-scrolled" alt="Logo">
+                    <img src="{{ asset('assets/images/LOGO-HUMMATECH_Putih.png') }}"
+                        style="width: 200px;height: auto !important" class="logo logo-display" alt="Logo">
+                    <img src="{{ asset('assets/images/LOGO-HUMMATECH_Hitam.png') }}"
+                        style="width: 200px;height: auto !important" class="logo logo-scrolled" alt="Logo">
                 </a>
             </div>
             <!-- End Header Navigation -->
@@ -54,10 +56,11 @@
                         <a href="{{ url('/about-us') }}">Tentang</a>
                     </li>
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" >Layanan</a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Layanan</a>
                         <ul class="dropdown-menu">
                             @forelse ($services as $service)
-                                <li><a href="{{ route('slug', ['slug' => $service->slug]) }}">{{ $service->name }}</a></li>
+                                <li><a href="/{{ $service->slug }}">{{ $service->name }}</a>
+                                </li>
                             @empty
                                 <li><a href="javascript:void(0)">Layanan Masih Kosong</a></li>
                             @endforelse
@@ -83,9 +86,11 @@
         <div class="side">
             <a href="#" class="close-side"><i class="icon_close"></i></a>
             <div class="widget">
-                <img src="{{ asset('assets/images/LOGO-HUMMATECH_Hitam.png') }}" style="width: 200px;height: auto !important" alt="Logo">
+                <img src="{{ asset('assets/images/LOGO-HUMMATECH_Hitam.png') }}"
+                    style="width: 200px;height: auto !important" alt="Logo">
                 <p>
-                    Melayani jasa pengembanganperangkat lunak, baik berbasis desktop, web, dan mobile apps. Mitra kami meliputi perorangan, swasta, bahkan juga lembaga pemerintahan.
+                    Melayani jasa pengembanganperangkat lunak, baik berbasis desktop, web, dan mobile apps. Mitra kami
+                    meliputi perorangan, swasta, bahkan juga lembaga pemerintahan.
                 </p>
             </div>
             <div class="widget address">
@@ -94,7 +99,8 @@
                         <li>
                             <div class="content">
                                 <p>Address</p>
-                                <strong>Perum Permata Regency 1 Blok 10/28, Perun Gpa, Ngijo, Kec. Karang Ploso, Kabupaten Malang, Jawa Timur 65152.</strong>
+                                <strong>Perum Permata Regency 1 Blok 10/28, Perun Gpa, Ngijo, Kec. Karang Ploso,
+                                    Kabupaten Malang, Jawa Timur 65152.</strong>
                             </div>
                         </li>
                         <li>

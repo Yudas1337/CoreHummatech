@@ -9,8 +9,15 @@ use App\Http\Controllers\SaleController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\CollabMitraController;
 use App\Http\Controllers\GalleryController;
+use App\Http\Controllers\FaqController;
+use App\Http\Controllers\ForceController;
+use App\Http\Controllers\ProcedureController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SalesPackageController;
+use App\Http\Controllers\SectionController;
+use App\Http\Controllers\SosialMediaController;
+use App\Http\Controllers\TermsconditionController;
+use App\Http\Controllers\VisionAndMisionController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -24,12 +31,31 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+Auth::routes();
 
+Route::get('home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/', function () {
     return view('landing.index');
 });
+Route::get('contact', function () {
+    return view('landing.contact');
+})->name('contact');
 
+Route::get('message-approval', function () {
+    return view('admin.pages.message-approval.index');
+});
+Route::get('branch' , [BranchController::class ,'index']);
+Route::resource('force', ForceController::class);
+Route::get('social-media' , [SosialMediaController::class ,'index']);
+Route::resource('procedure', ProcedureController::class);
+Route::resource('faq', FaqController::class);
+Route::resource('terms_condition', TermsconditionController::class);
+Route::get('vision-mision' , [VisionAndMisionController::class ,'index'])->name('vision.mision');
+Route::get('hero-section', [SectionController::class , 'index'])->name('hero.section');
+Route::get('berita', [NewsController::class, 'news']);
 Route::get('/about-us', [AboutUsController::class, 'index']);
+Route::get('{slugService}', [ServiceController::class, 'ShowService']);
+Route::get('{slugnews}', [NewsController::class, 'showNews'])->name('news.slug');
 
 Route::get('/gallery', function () {
     return view('admin.pages.gallery.index');
@@ -56,9 +82,6 @@ Route::get('/setting/faq', function () {
     return view('admin.pages.faq.index');
 });
 
-Route::get('/message-approval', function () {
-    return view('admin.pages.message-approval.index');
-});
 
 // Route::get('setting/profile', function() {
 //     return view('admin.pages.setting.profile.index');
@@ -71,9 +94,7 @@ Route::get('/message-approval', function () {
 //     return view('admin.pages.vision-mision.edit');
 // });
 
-Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 // category news berita
 Route::get('category-news' , [CategoryNewsController::class , 'index']);
@@ -86,7 +107,6 @@ Route::put('update/category/news/{categoryNews}' ,[CategoryNewsController::class
 // end news
 
 // branch
-Route::get('branch' , [BranchController::class ,'index']);
 Route::post('branch/create' ,[BranchController::class ,'store']);
 Route::put('branch/update/{branch}' , [BranchController::class ,'update']);
 Route::delete('brach/delete/{branch}' , [BranchController::class ,'destroy']);
@@ -111,8 +131,7 @@ Route::put('update/collab/mitra/{collabMitra}' ,[CollabMitraController::class ,'
 
 //product
 Route::resource('product', ProductController::class);
-Route::resource('gallery', GalleryController::class);
-Route::get('product/feature/{product}' ,[ProductController::class ,'feature'])->name('product.feature');
+Route::delete('product/feature/{ProductFeature}' ,[ProductController::class ,'feature'])->name('product.feature');
 
 Route::resource('sales-package', SalesPackageController::class);
 
