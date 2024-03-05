@@ -103,7 +103,7 @@
                                 {!! Str::limit($profile->description, 200) !!}
                             </p>
 
-                            <a class="btn btn-gradient effect btn-md" href="javascript:void(0)">Unduh Portofolio</a>
+                            <a class="btn btn-gradient effect btn-md" href="{{ asset('storage/' .$profile->portofolio) }}">Unduh Portofolio</a>
                         </div>
                         <div class="col-lg-6">
                             <div class="thumb">
