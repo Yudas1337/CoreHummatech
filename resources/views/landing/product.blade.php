@@ -51,33 +51,27 @@
 @endsection
 
 @section('seo')
-    <!-- ========== Breadcrumb Markup (JSON-LD) ========== -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "BreadcrumbList",
-      "itemListElement": [
+<!-- ========== Breadcrumb Markup (JSON-LD) ========== -->
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
         {
-          "@type": "ListItem",
-          "position": 1,
-          "name": "Beranda",
-          "item": "{{ url('/') }}"
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Beranda",
+            "item": "{{ url('/') }}"
         },
         {
-          "@type": "ListItem",
-          "position": 2,
-          "name": "Tentang Kami",
-          "item": "{{ url('/about-us') }}"
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Produk",
+            "item": "{{ url('/produk') }}"
         },
-        {
-          "@type": "ListItem",
-          "position": 4,
-          "name": "Produk",
-          "item": "{{ url('/produk') }}"
-        },
-      ]
-    }
-    </script>
+    ]
+}
+</script>
 @endsection
 
 @section('content')
@@ -88,15 +82,18 @@
                 <div class="col-lg-8 offset-lg-2">
                     <h1>Produk</h1>
                     <ul class="breadcrumb">
-                        <li><a href="#"><i class="fas fa-home"></i> Beranda</a></li>
+                        <li><a href="/"><i class="fas fa-home"></i> Beranda</a></li>
                         <li class="active">Produk</li>
                     </ul>
                 </div>
             </div>
         </div>
     </div>
-
     <div class="thumb-services-area inc-thumbnail default-padding bottom-less">
+        @forelse ($products as $key => $product)
+            @if ($key % 2 === 1)
+                <div class="right-shape">
+                    <img src="{{ asset('assets-home/img/shape/9.png') }}" alt="Shape">
         <div class="right-shape">
             <img src="assets-home/img/shape/9.png" alt="Shape">
         </div>
@@ -125,67 +122,63 @@
                         <a class="btn btn-gradient effect btn-md" href="">Kunjungi website</a>
                     </div>
                 </div>
-            </div>
-        </div>
-        <div class="right-shape">
-            <img src="assets-home/img/shape/9.png" alt="Shape">
-        </div>
-        <div class="container my-5 py-5">
-            <div class="about-items">
-                <div class="row align-center">
-                    <div class="col-lg-6 info">
-                        <h1>Mischool</h1>
-                        <p>
-                            Lorem ipsum dolor sit amet consectetur. Tincidunt pellentesque
-                            pellentesque sed in. Sit nunc velit aliquam quis faucibus nibh
-                            nisl pellentesque. Massa natoque mattis quisque ut molestie turpis
-                            at fusce integer. Tincidunt lorem egestas sed ipsum proin. Ac
-                            vestibulum euismod amet dignissim et lobortis blandit bibendum.
-                            Nulla venenatis vitae dui sapien duis dolor sed ut dictum. Neque
-                            diam senectus suspendisse id. Pretium congue erat pharetra aliquet.
-                            Platea aliquet aliquam ac vitae senectus quis.
-                        </p>
+                <div class="container">
+                    <div class="about-items">
+                        <div class="row align-center">
+                            <div class="col-lg-5">
+                                <div class="thumb">
+                                    <img src="{{ asset('assets_landing/produk/milink.png') }}" alt="Thumb">
+                                </div>
+                            </div>
+                            <div class="col-lg-6 info">
+                                <h1>{{ $product->name }}</h1>
+                                <p>
+                                    {{ $product->description }}
+                                </p>
 
-                        <a class="btn btn-stroke-gradient effect btn-md" href="">Lihat Detail</a>
-                        <a class="btn btn-gradient effect btn-md" href="">Kunjungi website</a>
-                    </div>
-                    <div class="col-lg-5">
-                        <div class="thumb">
-                            <img src="{{ asset('assets_landing/produk/milink.png') }}" alt="Thumb" >
+                                <a class="btn btn-stroke-gradient effect btn-md" href="{{ url('produk/milink') }}">Lihat
+                                    Detail</a>
+                                <a class="btn btn-gradient effect btn-md" href="{{ $product->link }}">Kunjungi website</a>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-        <div class="right-shape">
-            <img src="assets-home/img/shape/9.png" alt="Shape">
-        </div>
-        <div class="container">
-            <div class="about-items">
-                <div class="row align-center">
-                    <div class="col-lg-5">
-                        <div class="thumb">
-                            <img src="{{ asset('assets_landing/produk/milink.png') }}" alt="Thumb" >
+            @else
+                <div class="right-shape">
+                    <img src="{{ asset('assets-home/img/shape/9.png') }}" alt="Shape">
+                </div>
+                <div class="container my-5 py-5">
+                    <div class="about-items">
+                        <div class="row align-center">
+                            <div class="col-lg-6 info">
+                                <h1>{{ $product->name }}</h1>
+                                <p>
+                                    {{ $product->description }}
+                                </p>
+
+                                <a class="btn btn-stroke-gradient effect btn-md" href="{{ url('produk/milink') }}">Lihat
+                                    Detail</a>
+                                <a class="btn btn-gradient effect btn-md" href="{{ $product->link }}">Kunjungi website</a>
+                            </div>
+                            <div class="col-lg-5">
+                                <div class="thumb">
+                                    <img src="{{ asset('assets_landing/produk/milink.png') }}" alt="Thumb">
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="col-lg-6 info">
-                        <h1>Jurnal Mengajar</h1>
-                        <p>
-                            Lorem ipsum dolor sit amet consectetur. Tincidunt pellentesque
-                            pellentesque sed in. Sit nunc velit aliquam quis faucibus nibh
-                            nisl pellentesque. Massa natoque mattis quisque ut molestie turpis
-                            at fusce integer. Tincidunt lorem egestas sed ipsum proin. Ac
-                            vestibulum euismod amet dignissim et lobortis blandit bibendum.
-                            Nulla venenatis vitae dui sapien duis dolor sed ut dictum. Neque
-                            diam senectus suspendisse id. Pretium congue erat pharetra aliquet.
-                            Platea aliquet aliquam ac vitae senectus quis.
-                        </p>
-
-                        <a class="btn btn-stroke-gradient effect btn-md" href="">Lihat Detail</a>
-                        <a class="btn btn-gradient effect btn-md" href="">Kunjungi website</a>
-                    </div>
                 </div>
+            @endif
+        @empty
+
+        <div class="col-12">
+            <div class="d-flex justify-content-center">
+                <img src="{{ asset('nodata-gif.gif') }}" alt="" width="800px">
             </div>
+            <h4 class="text-center text-dark" style="font-weight:600">
+                Belum ada visi-misi
+            </h4>
         </div>
+        @endforelse
     </div>
 @endsection

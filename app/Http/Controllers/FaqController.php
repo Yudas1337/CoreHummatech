@@ -23,14 +23,9 @@ class FaqController extends Controller
     public function index()
     {
         $faqs = $this->faq->customPaginate(request(), 5);
-        // dd($faqs);
-
         $services = $this->service->get();
         return view('admin.pages.faq.index', compact('faqs', 'services'));
     }
-
-
-
 
     /**
      * Show the form for creating a new resource.
@@ -45,7 +40,6 @@ class FaqController extends Controller
      */
     public function store(StoreFaqRequest $request)
     {
-        // dd($request->validated());
         $this->faq->store($request->validated());
         return redirect()->route('faq.index');
     }

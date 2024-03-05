@@ -61,7 +61,7 @@
                 <a href="{{ route('sale.index') }}">Penjualan</a>
             </li>
             <li>
-                <a href="#">Galeri</a>
+                <a href="{{ route('gallery.index') }}">Galeri</a>
             </li>
         </ul>
     </li>

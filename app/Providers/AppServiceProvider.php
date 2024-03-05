@@ -54,6 +54,8 @@ use App\Contracts\Repositories\VisionAndMisionRepository;
 use App\Contracts\Interfaces\EnterpriseStructureInterface;
 use App\Contracts\Interfaces\OrganizationInterface;
 use App\Contracts\Repositories\OrganizationRepository;
+use App\Contracts\Interfaces\GalleryInterface;
+use App\Contracts\Repositories\GalleryRepository;
 use App\Contracts\Interfaces\VacancyInterface;
 use App\Contracts\Repositories\EnterpriseStructureRepository;
 use App\Contracts\Repositories\VacancyRepository;
@@ -85,7 +87,8 @@ class AppServiceProvider extends ServiceProvider
         ProcedureInterface::class => ProcedureRepository::class,
         ForceInterface::class => ForceRepository::class,
         OrganizationInterface::class => OrganizationRepository::class,
-        VacancyInterface::class => VacancyRepository::class,
+        GalleryInterface::class => GalleryRepository::class,
+        VacancyInterface::class => VacancyRepository::class
     ];
 
     /**

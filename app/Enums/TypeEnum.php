@@ -18,6 +18,7 @@ enum TypeEnum: string
     case SOSIALMEDIA = 'sosialmedia';
     case TESTIMONIAL = 'testimonial';
     case PROFILE = 'profile';
+    case GALLERY = 'gallery';
     case ENTERPRISESTRUCTURE = 'business';
     case ORGANIZATION = 'organization';
     case VACANCY = 'vacancy';

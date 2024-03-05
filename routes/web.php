@@ -8,6 +8,7 @@ use App\Http\Controllers\NewsController;
 use App\Http\Controllers\SaleController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\CollabMitraController;
+use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\FaqController;
 use App\Http\Controllers\ForceController;
 use App\Http\Controllers\ProcedureController;
@@ -67,7 +68,12 @@ Route::get('{slugnews}', [NewsController::class, 'showNews'])->name('news.slug')
 
 Route::get('/gallery', function () {
     return view('admin.pages.gallery.index');
+})->name('gallery.index');
+
+Route::get('/testimonial', function () {
+    return view('admin.pages.testimonial.index');
 });
+
 Route::get('/category-testimonial', function () {
     return view('admin.pages.testimonial-category.index');
 });

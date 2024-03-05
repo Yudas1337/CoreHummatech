@@ -1,6 +1,8 @@
 @extends('landing.layouts.layouts.app')
 
 @section('style')
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet" />
+
     <style>
         .subtitle {
             text-transform: uppercase;
@@ -17,7 +19,7 @@
 
         .about-us-area .thumb {
             padding-left: unset;
-            padding-right: 50px;
+            /* padding-right: 50px; */
         }
 
         .about-us-area .thumb::after {
@@ -47,6 +49,21 @@
                 padding-right: unset;
             }
         }
+
+        .pagination {
+            display: flex !important;
+            gap: .5rem;
+        }
+
+        .pagination .page-item {
+            margin: 0 !important;
+        }
+
+        .pagination .page-item .page-link {
+            padding: .75rem 1rem !important;
+            border-radius: 8px;
+            margin: 0;
+        }
     </style>
 @endsection
 
@@ -71,7 +88,7 @@
         },
       ]
     }
-    </script>
+</script>
 @endsection
 
 @section('content')
@@ -103,17 +120,17 @@
                                 {!! Str::limit($profile->description, 200) !!}
                             </p>
 
-                            <a class="btn btn-gradient effect btn-md" href="{{ asset('storage/' .$profile->proposal) }}" download="{{ asset('storage/' .$profile->proposal) }}" >Unduh Portofolio</a>
+                            <a class="btn btn-gradient effect btn-md" href="javascript:void(0)">Unduh Portofolio</a>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="thumb">
+                            <img src="{{ asset('storage/' . $profile->image) }}" alt="Thumb">
                         </div>
-                        <div class="col-lg-6">
-                            <div class="thumb">
-                                <img src="{{ asset('storage/'. $profile->image) }}" alt="Thumb">
-                            </div>
-                        </div>
+                    </div>
 
-                        @empty
-                            <p>Belum ada profile perusahaan</p>
-                        @endforelse
+                @empty
+                    <p>Belum ada profile perusahaan</p>
+                    @endforelse
                 </div>
             </div>
         </div>
@@ -140,7 +157,7 @@
                             <div class="item">
                                 <i class="flaticon-speech-bubble"></i>
                                 <div class="top">
-                                    <span>{{ sprintf("%02d", ++$key) }}</span>
+                                    <span>{{ sprintf('%02d', ++$key) }}</span>
                                     <h4>Visi</h4>
                                 </div>
                                 <p>
@@ -156,7 +173,7 @@
                                 <div class="item">
                                     <i class="flaticon-label"></i>
                                     <div class="top">
-                                        <span>{{ sprintf("%02d", ++$key) }}</span>
+                                        <span>{{ sprintf('%02d', ++$key) }}</span>
                                         <h4>Misi</h4>
                                     </div>
                                     <p>
@@ -168,14 +185,14 @@
                         @endforeach
 
                     @empty
-                    <div class="col-12">
-                        <div class="d-flex justify-content-center">
-                            <img src="{{ asset('nodata-gif.gif') }}" alt="" width="800px">
+                        <div class="col-12">
+                            <div class="d-flex justify-content-center">
+                                <img src="{{ asset('nodata-gif.gif') }}" alt="" width="800px">
+                            </div>
+                            <h4 class="text-center text-dark" style="font-weight:600">
+                                Belum ada visi-misi
+                            </h4>
                         </div>
-                        <h4 class="text-center text-dark" style="font-weight:600">
-                            Belum ada visi-misi
-                        </h4>
-                    </div>
                     @endforelse
                 </div>
             </div>
@@ -236,266 +253,50 @@
                         </div>
                     </div>
                     <!-- Single Item -->
-                    <div class="single-item col-lg-4 col-md-6">
-                        <div class="item">
-                            <div class="thumb">
-                                <img src="{{ asset('assets-home/img/team/1.jpg') }}" alt="Thumb">
-                                <div class="social">
-                                    <a href="#" class="share-icon facebook">
-                                        <i class="fab fa-facebook-f"></i>
-                                    </a>
-                                    <a href="#" class="share-icon twitter">
-                                        <i class="fab fa-twitter"></i>
-                                    </a>
-                                    <a href="#" class="share-icon instagram">
-                                        <i class="fab fa-instagram"></i>
-                                    </a>
+                    @forelse ($teams as $team)
+                        <div class="single-item col-lg-4 col-md-6">
+                            <div class="item">
+                                <div class="thumb">
+                                    <img src="{{ url(Storage::url($team->image)) }}" alt="Thumb">
+                                    <div class="social">
+                                        <a href="#" class="share-icon facebook">
+                                            <i class="fab fa-facebook-f"></i>
+                                        </a>
+                                        <a href="#" class="share-icon twitter">
+                                            <i class="fab fa-twitter"></i>
+                                        </a>
+                                        <a href="#" class="share-icon instagram">
+                                            <i class="fab fa-instagram"></i>
+                                        </a>
+                                    </div>
+                                    <div class="share">
+                                        <i class="fas fa-share-alt"></i>
+                                    </div>
                                 </div>
-                                <div class="share">
-                                    <i class="fas fa-share-alt"></i>
-                                </div>
-                            </div>
-                            <div class="info">
-                                <div class="content">
-                                    <h4>M. Abdul Kader</h4>
-                                    <span>Project Leader</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- End Single Item -->
-                    <!-- Single Item -->
-                    <div class="single-item col-lg-4 col-md-6">
-                        <div class="item">
-                            <div class="thumb">
-                                <img src="{{ asset('assets-home/img/team/2.jpg') }}" alt="Thumb">
-                                <div class="social">
-                                    <a href="#" class="share-icon facebook">
-                                        <i class="fab fa-facebook-f"></i>
-                                    </a>
-                                    <a href="#" class="share-icon twitter">
-                                        <i class="fab fa-twitter"></i>
-                                    </a>
-                                    <a href="#" class="share-icon instagram">
-                                        <i class="fab fa-instagram"></i>
-                                    </a>
-                                </div>
-                                <div class="share">
-                                    <i class="fas fa-share-alt"></i>
-                                </div>
-                            </div>
-                            <div class="info">
-                                <div class="content">
-                                    <h4>Farah Amalia</h4>
-                                    <span>Website Developer</span>
+                                <div class="info">
+                                    <div class="content">
+                                        <h4>{{ $team->name }}</h4>
+                                        <span>{{ $team->position->name }}</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <!-- End Single Item -->
-                    <!-- Single Item -->
-                    <div class="single-item col-lg-4 col-md-6">
-                        <div class="item">
-                            <div class="thumb">
-                                <img src="{{ asset('assets-home/img/team/3.jpg') }}" alt="Thumb">
-                                <div class="social">
-                                    <a href="#" class="share-icon facebook">
-                                        <i class="fab fa-facebook-f"></i>
-                                    </a>
-                                    <a href="#" class="share-icon twitter">
-                                        <i class="fab fa-twitter"></i>
-                                    </a>
-                                    <a href="#" class="share-icon instagram">
-                                        <i class="fab fa-instagram"></i>
-                                    </a>
-                                </div>
-                                <div class="share">
-                                    <i class="fas fa-share-alt"></i>
-                                </div>
+                    @empty
+                        <div class="col-12">
+                            <div class="d-flex justify-content-center">
+                                <img src="{{ asset('nodata-gif.gif') }}" alt="" width="800px">
                             </div>
-                            <div class="info">
-                                <div class="content">
-                                    <h4>Ni'am</h4>
-                                    <span>UI/UX Designer</span>
-                                </div>
-                            </div>
+                            <h4 class="text-center text-dark" style="font-weight:600">
+                                Belum ada tim yang didaftarkan
+                            </h4>
+                        </div>
+                    @endforelse
+
+                    <div class="col-12" id="pagination">
+                        <div class="d-flex justify-content-center">
+                            {{ $teams->links('vendor.pagination.pagination-home') }}
                         </div>
                     </div>
-                    <!-- End Single Item -->
-                    <!-- Single Item -->
-                    <div class="single-item col-lg-4 col-md-6">
-                        <div class="item">
-                            <div class="thumb">
-                                <img src="{{ asset('assets-home/img/team/4.jpg') }}" alt="Thumb">
-                                <div class="social">
-                                    <a href="#" class="share-icon facebook">
-                                        <i class="fab fa-facebook-f"></i>
-                                    </a>
-                                    <a href="#" class="share-icon twitter">
-                                        <i class="fab fa-twitter"></i>
-                                    </a>
-                                    <a href="#" class="share-icon instagram">
-                                        <i class="fab fa-instagram"></i>
-                                    </a>
-                                </div>
-                                <div class="share">
-                                    <i class="fas fa-share-alt"></i>
-                                </div>
-                            </div>
-                            <div class="info">
-                                <div class="content">
-                                    <h4>Nesa</h4>
-                                    <span>Website Developer</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- End Single Item -->
-                    <!-- Single Item -->
-                    <div class="single-item col-lg-4 col-md-6">
-                        <div class="item">
-                            <div class="thumb">
-                                <img src="{{ asset('assets-home/img/team/5.jpg') }}" alt="Thumb">
-                                <div class="social">
-                                    <a href="#" class="share-icon facebook">
-                                        <i class="fab fa-facebook-f"></i>
-                                    </a>
-                                    <a href="#" class="share-icon twitter">
-                                        <i class="fab fa-twitter"></i>
-                                    </a>
-                                    <a href="#" class="share-icon instagram">
-                                        <i class="fab fa-instagram"></i>
-                                    </a>
-                                </div>
-                                <div class="share">
-                                    <i class="fas fa-share-alt"></i>
-                                </div>
-                            </div>
-                            <div class="info">
-                                <div class="content">
-                                    <h4>Rendy</h4>
-                                    <span>Website Developer</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- End Single Item -->
-                    <!-- Single Item -->
-                    <div class="single-item col-lg-4 col-md-6">
-                        <div class="item">
-                            <div class="thumb">
-                                <img src="{{ asset('assets-home/img/team/6.jpg') }}" alt="Thumb">
-                                <div class="social">
-                                    <a href="#" class="share-icon facebook">
-                                        <i class="fab fa-facebook-f"></i>
-                                    </a>
-                                    <a href="#" class="share-icon twitter">
-                                        <i class="fab fa-twitter"></i>
-                                    </a>
-                                    <a href="#" class="share-icon instagram">
-                                        <i class="fab fa-instagram"></i>
-                                    </a>
-                                </div>
-                                <div class="share">
-                                    <i class="fas fa-share-alt"></i>
-                                </div>
-                            </div>
-                            <div class="info">
-                                <div class="content">
-                                    <h4>Amir Zuhdi Wibowo</h4>
-                                    <span>Website Developer</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- End Single Item -->
-                    <!-- Single Item -->
-                    <div class="single-item col-lg-4 col-md-6">
-                        <div class="item">
-                            <div class="thumb">
-                                <img src="{{ asset('assets-home/img/team/6.jpg') }}" alt="Thumb">
-                                <div class="social">
-                                    <a href="#" class="share-icon facebook">
-                                        <i class="fab fa-facebook-f"></i>
-                                    </a>
-                                    <a href="#" class="share-icon twitter">
-                                        <i class="fab fa-twitter"></i>
-                                    </a>
-                                    <a href="#" class="share-icon instagram">
-                                        <i class="fab fa-instagram"></i>
-                                    </a>
-                                </div>
-                                <div class="share">
-                                    <i class="fas fa-share-alt"></i>
-                                </div>
-                            </div>
-                            <div class="info">
-                                <div class="content">
-                                    <h4>Dito</h4>
-                                    <span>Website Developer</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- End Single Item -->
-                    <!-- Single Item -->
-                    <div class="single-item col-lg-4 col-md-6">
-                        <div class="item">
-                            <div class="thumb">
-                                <img src="{{ asset('assets-home/img/team/6.jpg') }}" alt="Thumb">
-                                <div class="social">
-                                    <a href="#" class="share-icon facebook">
-                                        <i class="fab fa-facebook-f"></i>
-                                    </a>
-                                    <a href="#" class="share-icon twitter">
-                                        <i class="fab fa-twitter"></i>
-                                    </a>
-                                    <a href="#" class="share-icon instagram">
-                                        <i class="fab fa-instagram"></i>
-                                    </a>
-                                </div>
-                                <div class="share">
-                                    <i class="fas fa-share-alt"></i>
-                                </div>
-                            </div>
-                            <div class="info">
-                                <div class="content">
-                                    <h4>Femas</h4>
-                                    <span>App Developer</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- End Single Item -->
-                    <!-- Single Item -->
-                    <div class="single-item col-lg-4 col-md-6">
-                        <div class="item">
-                            <div class="thumb">
-                                <img src="{{ asset('assets-home/img/team/6.jpg') }}" alt="Thumb">
-                                <div class="social">
-                                    <a href="#" class="share-icon facebook">
-                                        <i class="fab fa-facebook-f"></i>
-                                    </a>
-                                    <a href="#" class="share-icon twitter">
-                                        <i class="fab fa-twitter"></i>
-                                    </a>
-                                    <a href="#" class="share-icon instagram">
-                                        <i class="fab fa-instagram"></i>
-                                    </a>
-                                </div>
-                                <div class="share">
-                                    <i class="fas fa-share-alt"></i>
-                                </div>
-                            </div>
-                            <div class="info">
-                                <div class="content">
-                                    <h4>Panji</h4>
-                                    <span>Website Developer</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- End Single Item -->
                 </div>
             </div>
         </div>
