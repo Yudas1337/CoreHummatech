@@ -24,20 +24,27 @@
                     <div class="form-group mb-3 mt-0 col-md-12">
                         <label for="feature">Fitur <small class="text-danger">* Masukan Judul Fitur Beserta
                                 Deskripsi</small></label>
-                                <input type="hidden" name="id_feature[]" value="{{ $product->features->first()->id }}" id="">
-                        <input class="form-control" value="{{ $product->features->first()->name }}" data-id="{{ $product->features->first()->id }}" type="text"
-                            name="feature[]" autocomplete="name" placeholder="Masukan Fitur" />
+                        <input type="hidden" name="id_feature[]" value="{{ $product->features->first()->id }}"
+                            id="">
+                        <div class="d-flex align-items-center mt-3 gap-2">
+                            <input type="text" name="title[]" value="{{ $product->features->first()->title }}"
+                                id="" class="form-control" placeholder="Masukan Judul">
+                            <input class="form-control m-0" type="text" name="feature[]"
+                                value="{{ $product->features->first()->name }}" autocomplete="name"
+                                placeholder="Masukan Fitur" />
+                        </div>
 
                         <div id="product-listing">
                             @foreach ($product->features->skip(1) as $feature)
                                 <div class="d-flex align-items-center mt-3 gap-2" id="input_{{ $feature->id }}">
                                     <input type="hidden" name="id_feature[]" value="{{ $feature->id }}" id="">
-                                    <input class="form-control mb-0" type="text" name="feature[]"
-                                        value="{{ $feature->name }}" required=""
-                                        autocomplete="name" placeholder="Masukan Fitur" />
-                                    <button onclick="deleteElement('input_{{ $feature->id }}')" data-id="{{ $feature->id }}" type="button"
-                                        class="btn btn-delete px-3 mt-0 btn-danger"><i
-                                            class="fas fa-trash"></i></button>
+                                    <input type="text" name="title[]" value="{{ $feature->title }}" id=""
+                                        class="form-control" placeholder="Masukan Judul">
+                                    <input class="form-control m-0" type="text" name="feature[]"
+                                        value="{{ $feature->name }}" autocomplete="name" placeholder="Masukan Fitur" />
+                                    <button onclick="deleteElement('input_{{ $feature->id }}')"
+                                        data-id="{{ $feature->id }}" type="button"
+                                        class="btn btn-delete px-3 mt-0 btn-danger"><i class="fas fa-trash"></i></button>
                                 </div>
                             @endforeach
                         </div>
@@ -90,6 +97,9 @@
                 let idInput = 'input_' + Math.random().toString(36).substr(2, 9); // Generate random id
                 let target = $(e.target).parent().find('#product-listing');
                 target.append(`<div class="d-flex align-items-center mt-3 gap-2" id="${idInput}">
+    <input class="form-control mb-0" type="text" name="title[]"
+        required="" autocomplete="name"
+        placeholder="Masukan Judul" />
     <input class="form-control mb-0" type="text" name="feature[]"
         required="" autocomplete="name"
         placeholder="Masukan Fitur" />

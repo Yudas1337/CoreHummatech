@@ -87,22 +87,15 @@
                 <div class="row align-center">
                     <div class="col-lg-5">
                         <div class="thumb">
-                            <img src="{{ asset('assets_landing/produk/milink.png') }}" alt="Thumb" >
+                            <img src="{{ asset('storage/'. $product->image) }}" alt="Thumb">
                         </div>
                     </div>
                     <div class="col-lg-6 info">
-                        <h1>Milink.id</h1>
+                        <h1>{{ $product->name }}</h1>
                         <p>
-                            Lorem ipsum dolor sit amet consectetur. Tincidunt pellentesque 
-                            pellentesque sed in. Sit nunc velit aliquam quis faucibus nibh 
-                            nisl pellentesque. Massa natoque mattis quisque ut molestie turpis 
-                            at fusce integer. Tincidunt lorem egestas sed ipsum proin. Ac 
-                            vestibulum euismod amet dignissim et lobortis blandit bibendum. 
-                            Nulla venenatis vitae dui sapien duis dolor sed ut dictum. Neque 
-                            diam senectus suspendisse id. Pretium congue erat pharetra aliquet. 
-                            Platea aliquet aliquam ac vitae senectus quis.
+                            {{ $product->description }}
                         </p>
-                        <a class="btn btn-gradient effect btn-md" href="">Kunjungi website</a>
+                        <a class="btn btn-gradient effect btn-md" href="{{ $product->link }}">Kunjungi website</a>
                     </div>
                 </div>
             </div>
@@ -127,86 +120,22 @@
         <div class="container-full w-75">
             <div class="services-items">
                 <div class="row">
-                    <!-- Single Item -->
-                    <div class="col-lg-4 col-md-6 single-item">
-                        <div class="item">
-                            <div class="info">
-                                <h4>Kustom Tautan</h4>
-                                <p>
-                                    Lorem ipsum dolor sit amet consectetur. Enim mi amet morbi quam varius varius faucibus suspendisse amet iaculis pulvinar.
-                                </p>
-                                <div class="bottom">
-                                    <span>01</span>
-                                    <a href="">Fitur</a>
+                    @foreach ($product->features as $item)
+                        <div class="col-lg-4 col-md-6 single-item">
+                            <div class="item">
+                                <div class="info">
+                                    <h4>{{ $item->title }}</h4>
+                                    <p>
+                                        {{ $item->name }}
+                                    </p>
+                                    <div class="bottom">
+                                        <span>0{{ str_pad($loop->iteration, 1, '0', STR_PAD_LEFT) }}</span>
+                                        <a href="">Fitur</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <!-- End Single Item -->
-                    <!-- Single Item -->
-                    <div class="col-lg-4 col-md-6 single-item">
-                        <div class="item">
-                            <div class="info">
-                                <h4>Kustom Tautan</h4>
-                                <p>
-                                    Lorem ipsum dolor sit amet consectetur. Enim mi amet morbi quam varius varius faucibus suspendisse amet iaculis pulvinar.
-                                </p>
-                                <div class="bottom">
-                                    <span>02</span>
-                                    <a href="">Fitur</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- End Single Item -->
-                    <!-- Single Item -->
-                    <div class="col-lg-4 col-md-6 single-item">
-                        <div class="item">
-                            <div class="info">
-                                <h4>Kustom Tautan</h4>
-                                <p>
-                                    Lorem ipsum dolor sit amet consectetur. Enim mi amet morbi quam varius varius faucibus suspendisse amet iaculis pulvinar.
-                                </p>
-                                <div class="bottom">
-                                    <span>03</span>
-                                    <a href="">Fitur</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- End Single Item -->
-                    <!-- Single Item -->
-                    <div class="col-lg-4 col-md-6 single-item">
-                        <div class="item">
-                            <div class="info">
-                                <h4>Kustom Tautan</h4>
-                                <p>
-                                    Lorem ipsum dolor sit amet consectetur. Enim mi amet morbi quam varius varius faucibus suspendisse amet iaculis pulvinar.
-                                </p>
-                                <div class="bottom">
-                                    <span>04</span>
-                                    <a href="">Fitur</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- End Single Item -->
-                    <!-- Single Item -->
-                    <div class="col-lg-4 col-md-6 single-item">
-                        <div class="item">
-                            <div class="info">
-                                <h4>Kustom Tautan</h4>
-                                <p>
-                                    Lorem ipsum dolor sit amet consectetur. Enim mi amet morbi quam varius varius faucibus suspendisse amet iaculis pulvinar.
-                                </p>
-                                <div class="bottom">
-                                    <span>05</span>
-                                    <a href="">Fitur</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- End Single Item -->
+                    @endforeach
                 </div>
             </div>
         </div>
@@ -221,7 +150,6 @@
                 <div class="row align-center bg-gradient-gray">
                     <div class="col-lg-7 testimonials-content">
                         <div class="testimonials-carousel owl-carousel owl-theme">
-                            <!-- Single Item -->
                             <div class="item">
                                 <div class="info">
                                     <p>
@@ -239,8 +167,6 @@
                                     </div>
                                 </div>
                             </div>
-                            <!-- End Single Item -->
-                            <!-- Single Item -->
                             <div class="item">
                                 <div class="info">
                                     <p>
@@ -258,7 +184,6 @@
                                     </div>
                                 </div>
                             </div>
-                            <!-- End Single Item -->
                         </div>
                     </div>
                     <div class="col-lg-5 info">
@@ -296,15 +221,21 @@
                             <div class="accordion" id="accordionExample">
                                 <div class="card">
                                     <div class="card-header" id="headingOne">
-                                        <h4 class="mb-0" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                               Why is collaborative learning so important? 
+                                        <h4 class="mb-0" data-toggle="collapse" data-target="#collapseOne"
+                                            aria-expanded="true" aria-controls="collapseOne">
+                                            Why is collaborative learning so important?
                                         </h4>
                                     </div>
 
-                                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
+                                        data-parent="#accordionExample">
                                         <div class="card-body">
                                             <p>
-                                                Companions shy had solicitude favourable own. Which could saw guest man now heard but. Lasted my coming uneasy marked so should. Gravity letters it amongst herself dearest an windows by. Wooded ladies she basket season age her uneasy saw. Discourse unwilling am no described dejection incommode no listening of. Before nature his parish boy. 
+                                                Companions shy had solicitude favourable own. Which could saw guest man now
+                                                heard but. Lasted my coming uneasy marked so should. Gravity letters it
+                                                amongst herself dearest an windows by. Wooded ladies she basket season age
+                                                her uneasy saw. Discourse unwilling am no described dejection incommode no
+                                                listening of. Before nature his parish boy.
                                             </p>
                                             <div class="ask-question">
                                                 <span>Still no luck?</span>
@@ -314,14 +245,20 @@
                                 </div>
                                 <div class="card">
                                     <div class="card-header" id="headingTwo">
-                                        <h4 class="mb-0 collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                              Do you offer free trials?
+                                        <h4 class="mb-0 collapsed" data-toggle="collapse" data-target="#collapseTwo"
+                                            aria-expanded="false" aria-controls="collapseTwo">
+                                            Do you offer free trials?
                                         </h4>
                                     </div>
-                                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
+                                        data-parent="#accordionExample">
                                         <div class="card-body">
                                             <p>
-                                                Companions shy had solicitude favourable own. Which could saw guest man now heard but. Lasted my coming uneasy marked so should. Gravity letters it amongst herself dearest an windows by. Wooded ladies she basket season age her uneasy saw. Discourse unwilling am no described dejection incommode no listening of. Before nature his parish boy. 
+                                                Companions shy had solicitude favourable own. Which could saw guest man now
+                                                heard but. Lasted my coming uneasy marked so should. Gravity letters it
+                                                amongst herself dearest an windows by. Wooded ladies she basket season age
+                                                her uneasy saw. Discourse unwilling am no described dejection incommode no
+                                                listening of. Before nature his parish boy.
                                             </p>
                                             <div class="ask-question">
                                                 <span>Still no luck?</span> <a href="#">Ask a question</a>
@@ -331,14 +268,20 @@
                                 </div>
                                 <div class="card">
                                     <div class="card-header" id="headingThree">
-                                        <h4 class="mb-0 collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                          What kind of support do you offer?
-                                      </h4>
+                                        <h4 class="mb-0 collapsed" data-toggle="collapse" data-target="#collapseThree"
+                                            aria-expanded="false" aria-controls="collapseThree">
+                                            What kind of support do you offer?
+                                        </h4>
                                     </div>
-                                    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                                    <div id="collapseThree" class="collapse" aria-labelledby="headingThree"
+                                        data-parent="#accordionExample">
                                         <div class="card-body">
                                             <p>
-                                                Companions shy had solicitude favourable own. Which could saw guest man now heard but. Lasted my coming uneasy marked so should. Gravity letters it amongst herself dearest an windows by. Wooded ladies she basket season age her uneasy saw. Discourse unwilling am no described dejection incommode no listening of. Before nature his parish boy. 
+                                                Companions shy had solicitude favourable own. Which could saw guest man now
+                                                heard but. Lasted my coming uneasy marked so should. Gravity letters it
+                                                amongst herself dearest an windows by. Wooded ladies she basket season age
+                                                her uneasy saw. Discourse unwilling am no described dejection incommode no
+                                                listening of. Before nature his parish boy.
                                             </p>
                                             <div class="ask-question">
                                                 <span>Still no luck?</span> <a href="#">Ask a question</a>
@@ -348,14 +291,20 @@
                                 </div>
                                 <div class="card">
                                     <div class="card-header" id="headingFour">
-                                        <h4 class="mb-0 collapsed" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-                                          Can I share my courses with non-registered users?
-                                      </h4>
+                                        <h4 class="mb-0 collapsed" data-toggle="collapse" data-target="#collapseFour"
+                                            aria-expanded="false" aria-controls="collapseFour">
+                                            Can I share my courses with non-registered users?
+                                        </h4>
                                     </div>
-                                    <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
+                                    <div id="collapseFour" class="collapse" aria-labelledby="headingFour"
+                                        data-parent="#accordionExample">
                                         <div class="card-body">
                                             <p>
-                                                Companions shy had solicitude favourable own. Which could saw guest man now heard but. Lasted my coming uneasy marked so should. Gravity letters it amongst herself dearest an windows by. Wooded ladies she basket season age her uneasy saw. Discourse unwilling am no described dejection incommode no listening of. Before nature his parish boy. 
+                                                Companions shy had solicitude favourable own. Which could saw guest man now
+                                                heard but. Lasted my coming uneasy marked so should. Gravity letters it
+                                                amongst herself dearest an windows by. Wooded ladies she basket season age
+                                                her uneasy saw. Discourse unwilling am no described dejection incommode no
+                                                listening of. Before nature his parish boy.
                                             </p>
                                             <div class="ask-question">
                                                 <span>Still no luck?</span> <a href="#">Ask a question</a>
@@ -366,7 +315,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                 </div>
             </div>
         </div>
@@ -378,7 +327,7 @@
         $('.testimonials-carousel').owlCarousel({
             loop: false,
             nav: true,
-            margin:30,
+            margin: 30,
             dots: false,
             autoplay: false,
             items: 1,

@@ -3,6 +3,7 @@ namespace App\Contracts\Repositories;
 
 use App\Contracts\Interfaces\TeamInterface;
 use App\Models\Team;
+use Illuminate\Http\Request;
 
 class TeamRepository extends BaseRepository implements TeamInterface
 {
@@ -11,9 +12,9 @@ class TeamRepository extends BaseRepository implements TeamInterface
         $this->model = $team;
     }
 
-    public function get(): mixed
+    public function customPaginate(Request $request, int $pagination = 10): mixed
     {
-        return $this->model->query()->get();
+        return $this->model->query()->paginate($pagination);
     }
 
     public function store(array $data): mixed

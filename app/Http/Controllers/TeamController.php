@@ -8,6 +8,7 @@ use App\Models\Team;
 use App\Http\Requests\StoreTeamRequest;
 use App\Http\Requests\UpdateTeamRequest;
 use App\Services\TeamService;
+use Illuminate\Http\Request;
 
 class TeamController extends Controller
 {
@@ -24,9 +25,9 @@ class TeamController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $teams = $this->team->get();
+        $teams = $this->team->customPaginate($request, 12);
         $positions = $this->position->get();
         return view('admin.pages.teams.index' , compact('teams' , 'positions'));
     }
