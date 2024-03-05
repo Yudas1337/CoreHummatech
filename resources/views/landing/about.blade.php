@@ -103,7 +103,7 @@
                                 {!! Str::limit($profile->description, 200) !!}
                             </p>
 
-                            <button class="btn btn-gradient effect btn-md" href="{{ asset('storage/' .$profile->proposal) }}" download="{{ asset('storage/' .$profile->proposal) }}" >Unduh Portofolio</button>
+                            <a class="btn btn-gradient effect btn-md" href="{{ asset('storage/' .$profile->proposal) }}" download="{{ asset('storage/' .$profile->proposal) }}" >Unduh Portofolio</a>
                         </div>
                         <div class="col-lg-6">
                             <div class="thumb">
