@@ -89,7 +89,6 @@
             </div>
         </div>
     </div>
-
     <div class="thumb-services-area inc-thumbnail default-padding bottom-less">
         @forelse ($products as $key => $product)
             @if ($key % 2 === 1)

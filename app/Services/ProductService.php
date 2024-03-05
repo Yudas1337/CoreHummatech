@@ -2,15 +2,16 @@
 
 namespace App\Services;
 
-use App\Enums\TypeEnum;
-use App\Http\Requests\StoreProductRequest;
-use App\Traits\UploadTrait;
-use App\Http\Requests\StoreSaleRequest;
-use App\Http\Requests\UpdateProductRequest;
-use App\Http\Requests\UpdateSaleRequest;
-use App\Models\Product;
-use App\Models\ProductFeature;
 use App\Models\Sale;
+use App\Enums\TypeEnum;
+use App\Models\Product;
+use App\Traits\UploadTrait;
+use Illuminate\Support\Str;
+use App\Models\ProductFeature;
+use App\Http\Requests\StoreSaleRequest;
+use App\Http\Requests\UpdateSaleRequest;
+use App\Http\Requests\StoreProductRequest;
+use App\Http\Requests\UpdateProductRequest;
 
 class ProductService
 {
@@ -44,6 +45,7 @@ class ProductService
 
         $data = [
             'name' => $request->name,
+            'slug' => Str::slug($request->name),
             'description' => $request->description,
             'link' => $request->link,
             'service_id' => $request->service_id,
@@ -60,10 +62,11 @@ class ProductService
     public function storefeature(StoreProductRequest $request, $product_id)
     {
         // dd($product_id->id);
-        foreach ($request->feature as $item) {
+        foreach ($request->feature as $index => $item) {
             $data = [
                 'product_id' => $product_id->id,
                 'name' => $item,
+                'title' => $request->title[$index]
             ];
             ProductFeature::create($data);
         }
@@ -71,10 +74,11 @@ class ProductService
     public function updatefeature(UpdateProductRequest $request, $product)
     {
         // dd($product_id->id);
-        foreach ($request->feature as $item) {
+        foreach ($request->feature as $index => $item) {
             $data = [
                 'product_id' => $product->id,
                 'name' => $item,
+                'title' => $request->title[$index]
             ];
             ProductFeature::create($data);
         }
@@ -93,6 +97,7 @@ class ProductService
         $data = $request->validated();
         $data = [
             'name' => $request->name,
+            'slug' => Str::slug($request->name),
             'description' => $request->description,
             'link' => $request->link,
             'service_id' => $request->service_id,

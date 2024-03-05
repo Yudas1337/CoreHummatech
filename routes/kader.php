@@ -1,13 +1,14 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\NewsController;
-use App\Http\Controllers\PositionController;
 use App\Http\Controllers\SaleController;
+use App\Http\Controllers\TeamController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SectionController;
 use App\Http\Controllers\ServiceController;
-use App\Http\Controllers\TeamController;
+use App\Http\Controllers\PositionController;
 use App\Http\Controllers\VisionAndMisionController;
-use Illuminate\Support\Facades\Route;
 
 
 // news
@@ -34,11 +35,11 @@ Route::post('create/team' , [TeamController::class , 'store'])->name('create.tea
 Route::put('update/team/{team}', [TeamController::class ,'update'])->name('update.team');
 Route::delete('delete/team/{team}' , [TeamController::class , 'destroy'])->name('delete.team');
 
-Route::get('data/product', [\App\Http\Controllers\HomeProductController::class, 'index'])->name('product');
 
-Route::get('detail/product', function () {
-    return view('landing.product.product-detail');
-});
+
+Route::get('data/product',[ProductController::class ,'product']);
+
+Route::get('detail/{product:slug}',[ProductController::class ,'showproduct'])->name('detail.product');
 
 
 // show pdf

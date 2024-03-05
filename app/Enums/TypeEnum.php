@@ -20,4 +20,5 @@ enum TypeEnum: string
     case PROFILE = 'profile';
     case GALLERY = 'gallery';
     case ENTERPRISESTRUCTURE = 'business';
+    case VACANCY = 'vacancy';
 }
