@@ -8,13 +8,9 @@ use \App\Http\Controllers\HomeProductController;
 
 Route::resource('testimonial', TestimonialController::class);
 
-Route::prefix('produk')->group(function () {
-    Route::get('/', [HomeProductController::class, 'index']);
-    // Route::get('milink', function () {
-    //     return view('landing.product.milink');
-    // });
-Route::get('produk', function () {
-        return view('landing.product');
+Route::prefix('/produk')->group(function() {
+    Route::get('/', [HomeProductController::class, 'index'])->name('produk-home');
+    // Route::get('/{produk}', 'produk')->name('produk.detail');
 });
 
 Route::get('layanan', function () {

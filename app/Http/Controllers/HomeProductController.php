@@ -17,6 +17,7 @@ class HomeProductController extends Controller
     public function index()
     {
         $products = $this->product->get();
+        // dd($products);
         return view('landing.product', compact('products'));
     }
 

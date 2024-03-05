@@ -46,9 +46,7 @@ Route::delete('delete/team/{team}' , [TeamController::class , 'destroy'])->name(
 
 
 
-Route::get('data/product', function () {
-    return view('landing.product');
-});
+Route::get('data/product', [\App\Http\Controllers\HomeProductController::class, 'index'])->name('product');
 
 Route::get('detail/product', function () {
     return view('landing.product.product-detail');

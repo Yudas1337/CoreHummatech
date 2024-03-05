@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Contracts\Interfaces\GalleryInterface;
 use App\Contracts\Interfaces\ServiceInterface;
+use App\Http\Requests\StoreGalleryRequest;
 use App\Models\Gallery;
 use Illuminate\Http\Request;
 
@@ -31,9 +32,8 @@ class GalleryController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
     }
 
     /**
@@ -41,7 +41,7 @@ class GalleryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->dd();
     }
 
     /**

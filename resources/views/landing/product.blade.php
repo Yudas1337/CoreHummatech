@@ -171,14 +171,15 @@
                 </div>
             @endif
         @empty
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-md-6 text-center">
-                        <h3 class="fw-bold">Mohon Maaf</h3>
-                        <p>Daftar Produk Tidak Tersedia Untuk Saat Ini.</p>
-                    </div>
-                </div>
+
+        <div class="col-12">
+            <div class="d-flex justify-content-center">
+                <img src="{{ asset('nodata-gif.gif') }}" alt="" width="800px">
             </div>
+            <h4 class="text-center text-dark" style="font-weight:600">
+                Belum ada visi-misi
+            </h4>
+        </div>
         @endforelse
     </div>
 @endsection

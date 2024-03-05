@@ -104,16 +104,16 @@
                             </p>
 
                             <a class="btn btn-gradient effect btn-md" href="javascript:void(0)">Unduh Portofolio</a>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="thumb">
+                            <img src="{{ asset('storage/' . $profile->image) }}" alt="Thumb">
                         </div>
-                        <div class="col-lg-6">
-                            <div class="thumb">
-                                <img src="{{ asset('storage/'. $profile->image) }}" alt="Thumb">
-                            </div>
-                        </div>
+                    </div>
 
-                        @empty
-                            <p>Belum ada profile perusahaan</p>
-                        @endforelse
+                @empty
+                    <p>Belum ada profile perusahaan</p>
+                    @endforelse
                 </div>
             </div>
         </div>
@@ -140,7 +140,7 @@
                             <div class="item">
                                 <i class="flaticon-speech-bubble"></i>
                                 <div class="top">
-                                    <span>{{ sprintf("%02d", ++$key) }}</span>
+                                    <span>{{ sprintf('%02d', ++$key) }}</span>
                                     <h4>Visi</h4>
                                 </div>
                                 <p>
@@ -156,7 +156,7 @@
                                 <div class="item">
                                     <i class="flaticon-label"></i>
                                     <div class="top">
-                                        <span>{{ sprintf("%02d", ++$key) }}</span>
+                                        <span>{{ sprintf('%02d', ++$key) }}</span>
                                         <h4>Misi</h4>
                                     </div>
                                     <p>
@@ -168,14 +168,14 @@
                         @endforeach
 
                     @empty
-                    <div class="col-12">
-                        <div class="d-flex justify-content-center">
-                            <img src="{{ asset('nodata-gif.gif') }}" alt="" width="800px">
+                        <div class="col-12">
+                            <div class="d-flex justify-content-center">
+                                <img src="{{ asset('nodata-gif.gif') }}" alt="" width="800px">
+                            </div>
+                            <h4 class="text-center text-dark" style="font-weight:600">
+                                Belum ada visi-misi
+                            </h4>
                         </div>
-                        <h4 class="text-center text-dark" style="font-weight:600">
-                            Belum ada visi-misi
-                        </h4>
-                    </div>
                     @endforelse
                 </div>
             </div>
