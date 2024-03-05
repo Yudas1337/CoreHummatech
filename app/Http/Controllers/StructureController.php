@@ -25,7 +25,8 @@ class StructureController extends Controller
      */
     public function index()
     {
-
+        $structures = $this->structure->get();
+        return view('' , compact('structures'));
     }
 
     /**
