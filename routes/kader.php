@@ -39,8 +39,6 @@ Route::post('create/team' , [TeamController::class , 'store'])->name('create.tea
 Route::put('update/team/{team}', [TeamController::class ,'update'])->name('update.team');
 Route::delete('delete/team/{team}' , [TeamController::class , 'destroy'])->name('delete.team');
 
-
-
 Route::get('data/product', [\App\Http\Controllers\HomeProductController::class, 'index'])->name('product');
 
 Route::get('detail/product', function () {
