@@ -44,6 +44,15 @@ Route::get('contact', function () {
 Route::get('message-approval', function () {
     return view('admin.pages.message-approval.index');
 });
+Route::get('/testimonial', function () {
+    return view('admin.pages.testimonial.index');
+});
+Route::get('category-news' , [CategoryNewsController::class , 'index']);
+Route::get('collab' , [CollabMitraController::class ,'index']);
+Route::get('category-collab' , [CollabCategoryController::class ,'index']);
+Route::resource('sale', SaleController::class);
+Route::resource('service', ServiceController::class);
+Route::resource('product', ProductController::class);
 Route::get('branch' , [BranchController::class ,'index']);
 Route::resource('force', ForceController::class);
 Route::get('social-media' , [SosialMediaController::class ,'index']);
@@ -97,7 +106,6 @@ Route::get('/setting/faq', function () {
 
 
 // category news berita
-Route::get('category-news' , [CategoryNewsController::class , 'index']);
 Route::post('create/category/news' , [CategoryNewsController::class , 'store'])->name('create.category.news');
 Route::delete('delete/category/news/{categoryNews}' ,[CategoryNewsController::class ,'destroy'])->name('delete.category.news');
 Route::put('update/category/news/{categoryNews}' ,[CategoryNewsController::class ,'update'])->name('update.category.news');
@@ -114,23 +122,17 @@ Route::delete('brach/delete/{branch}' , [BranchController::class ,'destroy']);
 
 //category mitra
 Route::post('create/category/mitra' , [CollabCategoryController::class , 'store'])->name('create.category.mitra');
-Route::get('category-collab' , [CollabCategoryController::class ,'index']);
 Route::put('update/category/mitra/{collabCategory}' ,[CollabCategoryController::class ,'update'])->name('update.category.mitra');
 Route::delete('delete/category/mitra/{collabCategory}' ,[CollabCategoryController::class ,'destroy'])->name('delete.category.mitra');
 // end category mitra
 
-Route::resource('sale', SaleController::class);
-Route::resource('service', ServiceController::class);
-Route::resource('sale', SaleController::class);
 
 //mitra
-Route::get('collab' , [CollabMitraController::class ,'index']);
 Route::delete('delete/collab/mitra/{collabMitra}' ,[CollabMitraController::class ,'destroy'])->name('delete.collab.mitra');
 Route::post('create/collab/mitra' , [CollabMitraController::class , 'store'])->name('create.collab.mitra');
 Route::put('update/collab/mitra/{collabMitra}' ,[CollabMitraController::class ,'update'])->name('update.collab.mitra');
 
 //product
-Route::resource('product', ProductController::class);
 Route::delete('product/feature/{ProductFeature}' ,[ProductController::class ,'feature'])->name('product.feature');
 
 Route::resource('sales-package', SalesPackageController::class);
