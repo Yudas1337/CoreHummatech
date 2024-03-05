@@ -47,13 +47,27 @@
             </div>
         </div>
     </div>
-
+    @error('name')
+        {{ $message }}
+    @enderror
+    @error('service_id')
+        {{ $message }}
+    @enderror
+    @error('image')
+        {{ $message }}
+    @enderror
+    @error('image*')
+        {{ $message }}
+    @enderror
+    @error('gallerie_id')
+        {{ $message }}
+    @enderror
     <!-- Add Modal -->
     <div class="modal fade modal-bookmark" id="tambah" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
-            <form method="POST" enctype="multipart/form-data" id="formAddData" action="{{ route('gallery.store') }}"
-                class="modal-content">
+            <form method="POST" id="formAddData" action="{{ route('gallery.store') }}"
+                class="modal-content" enctype="multipart/form-data">
                 @csrf
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Tambah Galeri</h5>
@@ -75,14 +89,7 @@
                             </select>
                         </div>
                     </div>
-                    <div class="dropzone" id="createUploadDropzone">
-                        <div class="dropzone-wrapper">
-                            <div class="dz-message needsclick"><i data-feather="upload-cloud"></i>
-                                <h4>Drop files here or click to upload.</h4><span class="note needsclick">Unggah data
-                                    berformat gambar (jpg, jpeg, png)</span>
-                            </div>
-                        </div>
-                    </div>
+                    <input id="image-uploadify" type="file" name="image[]" accept="image/*" multiple>
                     <div class="modal-footer">
                         <div class="d-flex justify-content-end">
                             <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">Cancel</button>
