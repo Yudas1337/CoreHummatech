@@ -33,4 +33,9 @@ class NewsRepository extends BaseRepository implements NewsInterface
     {
         return $this->model->query()->findOrFail($id)->delete($id);
     }
+
+    public function slug(string $slug): mixed
+    {
+        return $this->model->query()->where('slug', $slug)->firstOrFail();
+    }
 }
