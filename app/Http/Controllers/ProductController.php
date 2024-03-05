@@ -105,4 +105,15 @@ class ProductController extends Controller
         $this->productService->remove($product->image);
         return back()->with('success', 'Testimoni Berhasil Di Hapus');
     }
+
+    public function product()
+    {
+        $products = $this->product->get();
+        return view('landing.product', compact('products'));
+    }
+
+    public function showproduct(Product $product)
+    {
+        return view('landing.product.product-detail', compact('product'));
+    }
 }

@@ -22,7 +22,7 @@
     <div class="card card-body">
         <h2 style="width: fit-content" class="border-bottom pb-2 mb-3 border-primary text-primary">Fitur</h2>
         @foreach ($products->features as $item)
-        <p class="m-0">Fitur {{ $loop->iteration }}</p>
+        <p class="m-0">Fitur {{ $item->title }}</p>
         <p class="m-0">{{ $item->name }}</p>
         @endforeach
     </div>

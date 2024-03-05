@@ -95,97 +95,69 @@
             </div>
         </div>
     </div>
-
     <div class="thumb-services-area inc-thumbnail default-padding bottom-less">
-        <div class="right-shape">
-            <img src="assets-home/img/shape/9.png" alt="Shape">
-        </div>
-        <div class="container">
-            <div class="about-items">
-                <div class="row align-center">
-                    <div class="col-lg-5">
-                        <div class="thumb">
-                            <img src="{{ asset('assets_landing/produk/milink.png') }}" alt="Thumb" >
-                        </div>
-                    </div>
-                    <div class="col-lg-6 info">
-                        <h1>Milink.id</h1>
-                        <p>
-                            Lorem ipsum dolor sit amet consectetur. Tincidunt pellentesque
-                            pellentesque sed in. Sit nunc velit aliquam quis faucibus nibh
-                            nisl pellentesque. Massa natoque mattis quisque ut molestie turpis
-                            at fusce integer. Tincidunt lorem egestas sed ipsum proin. Ac
-                            vestibulum euismod amet dignissim et lobortis blandit bibendum.
-                            Nulla venenatis vitae dui sapien duis dolor sed ut dictum. Neque
-                            diam senectus suspendisse id. Pretium congue erat pharetra aliquet.
-                            Platea aliquet aliquam ac vitae senectus quis.
-                        </p>
-
-                        <a class="btn btn-stroke-gradient effect btn-md" href="{{ url('/detail/product') }}">Lihat Detail</a>
-                        <a class="btn btn-gradient effect btn-md" href="">Kunjungi website</a>
-                    </div>
-                </div>
+        @foreach ($products as $item)
+        <div class="right mb-5">
+            <div class="right-shape">
+                <img src="assets-home/img/shape/9.png" alt="Shape">
             </div>
-        </div>
-        <div class="right-shape">
-            <img src="assets-home/img/shape/9.png" alt="Shape">
-        </div>
-        <div class="container my-5 py-5">
-            <div class="about-items">
-                <div class="row align-center">
-                    <div class="col-lg-6 info">
-                        <h1>Mischool</h1>
-                        <p>
-                            Lorem ipsum dolor sit amet consectetur. Tincidunt pellentesque
-                            pellentesque sed in. Sit nunc velit aliquam quis faucibus nibh
-                            nisl pellentesque. Massa natoque mattis quisque ut molestie turpis
-                            at fusce integer. Tincidunt lorem egestas sed ipsum proin. Ac
-                            vestibulum euismod amet dignissim et lobortis blandit bibendum.
-                            Nulla venenatis vitae dui sapien duis dolor sed ut dictum. Neque
-                            diam senectus suspendisse id. Pretium congue erat pharetra aliquet.
-                            Platea aliquet aliquam ac vitae senectus quis.
-                        </p>
+            <div class="container">
+                <div class="about-items">
+                    <div class="row align-center">
+                        <div class="col-lg-5">
+                            <div class="thumb">
+                                <img src="{{ asset('storage/'. $item->image) }}" alt="Thumb">
+                            </div>
+                        </div>
+                        <div class="col-lg-6 info">
+                            <h1>{{ $item->name }}</h1>
+                            <p>
+                                {{ $item->description }}
+                            </p>
 
-                        <a class="btn btn-stroke-gradient effect btn-md" href="">Lihat Detail</a>
-                        <a class="btn btn-gradient effect btn-md" href="">Kunjungi website</a>
-                    </div>
-                    <div class="col-lg-5">
-                        <div class="thumb">
-                            <img src="{{ asset('assets_landing/produk/milink.png') }}" alt="Thumb" >
+                            <a class="btn btn-stroke-gradient effect btn-md" href="{{ route('detail.product', $item->slug) }}">Lihat
+                                Detail</a>
+                            <a class="btn btn-gradient effect btn-md" href="{{ $item->link }}">Kunjungi website</a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="right-shape">
-            <img src="assets-home/img/shape/9.png" alt="Shape">
-        </div>
-        <div class="container">
-            <div class="about-items">
-                <div class="row align-center">
-                    <div class="col-lg-5">
-                        <div class="thumb">
-                            <img src="{{ asset('assets_landing/produk/milink.png') }}" alt="Thumb" >
-                        </div>
-                    </div>
-                    <div class="col-lg-6 info">
-                        <h1>Jurnal Mengajar</h1>
-                        <p>
-                            Lorem ipsum dolor sit amet consectetur. Tincidunt pellentesque
-                            pellentesque sed in. Sit nunc velit aliquam quis faucibus nibh
-                            nisl pellentesque. Massa natoque mattis quisque ut molestie turpis
-                            at fusce integer. Tincidunt lorem egestas sed ipsum proin. Ac
-                            vestibulum euismod amet dignissim et lobortis blandit bibendum.
-                            Nulla venenatis vitae dui sapien duis dolor sed ut dictum. Neque
-                            diam senectus suspendisse id. Pretium congue erat pharetra aliquet.
-                            Platea aliquet aliquam ac vitae senectus quis.
-                        </p>
+        {{-- <div class="left">
+            <div class="right-shape">
+                <img src="assets-home/img/shape/9.png" alt="Shape">
+            </div>
+            <div class="container my-5 py-5">
+                <div class="about-items">
+                    <div class="row align-center">
+                        <div class="col-lg-6 info">
+                            <h1>Mischool</h1>
+                            <p>
+                                Lorem ipsum dolor sit amet consectetur. Tincidunt pellentesque
+                                pellentesque sed in. Sit nunc velit aliquam quis faucibus nibh
+                                nisl pellentesque. Massa natoque mattis quisque ut molestie turpis
+                                at fusce integer. Tincidunt lorem egestas sed ipsum proin. Ac
+                                vestibulum euismod amet dignissim et lobortis blandit bibendum.
+                                Nulla venenatis vitae dui sapien duis dolor sed ut dictum. Neque
+                                diam senectus suspendisse id. Pretium congue erat pharetra aliquet.
+                                Platea aliquet aliquam ac vitae senectus quis.
+                            </p>
 
-                        <a class="btn btn-stroke-gradient effect btn-md" href="">Lihat Detail</a>
-                        <a class="btn btn-gradient effect btn-md" href="">Kunjungi website</a>
+                            <a class="btn btn-stroke-gradient effect btn-md" href="">Lihat Detail</a>
+                            <a class="btn btn-gradient effect btn-md" href="">Kunjungi website</a>
+                        </div>
+                        <div class="col-lg-5">
+                            <div class="thumb">
+                                <img src="{{ asset('assets_landing/produk/milink.png') }}" alt="Thumb">
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+            <div class="right-shape">
+                <img src="assets-home/img/shape/9.png" alt="Shape">
+            </div>
+        </div> --}}
+        @endforeach
     </div>
 @endsection
