@@ -73,9 +73,10 @@
                     </li>
                     <li class="{{ request()->is('data/lowongan') ? 'active' : '' }}">
                         <a href="/data/lowongan">Lowongan</a>
+
                     </li>
                 </ul>
-            </div><!-- /.navbar-collapse -->
+            </div>
         </div>
 
         <!-- Start Side Menu -->
