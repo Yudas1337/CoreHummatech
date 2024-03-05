@@ -25,6 +25,7 @@ use Illuminate\Support\Facades\Route;
 */
 Auth::routes();
 
+Route::get('home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/', function () {
     return view('landing.index');
 });
@@ -78,7 +79,6 @@ Route::get('/message-approval', function () {
 // });
 
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 // category news berita
 Route::get('category-news' , [CategoryNewsController::class , 'index']);
