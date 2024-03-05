@@ -7,7 +7,6 @@ use App\Http\Controllers\VisionAndMisionController;
 //faq
 Route::resource('faq', 'App\Http\Controllers\FaqController');
 //terms
-Route::resource('terms_condition', 'App\Http\Controllers\TermsconditionController');
 // vision & mision
 Route::post('create/vision/mision/' , [VisionAndMisionController::class , 'store'])->name('create.vision.mision');
 Route::put('update/vision/mision/{visionAndMision}' ,[VisionAndMisionController::class ,'update'])->name('update.vision.mision');
