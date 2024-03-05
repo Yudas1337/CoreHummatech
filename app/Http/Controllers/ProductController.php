@@ -79,10 +79,18 @@ class ProductController extends Controller
      */
     public function update(UpdateProductRequest $request, Product $product)
     {
-        dd($request->all());
+        // dd($request->all());
         $data = $this->productService->update($product, $request);
         $this->product->update($product->id, $data);
+        $this->productService->updatefeature($request, $product);
         return to_route('product.index')->with('success', 'Produk Berhasil Di Update');
+    }
+
+    public function feature(ProductFeature $ProductFeature)
+    {
+        // dd($ProductFeature);
+        $ProductFeature->delete();
+        return back();
     }
 
     /**

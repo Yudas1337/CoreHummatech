@@ -24,17 +24,19 @@
                     <div class="form-group mb-3 mt-0 col-md-12">
                         <label for="feature">Fitur <small class="text-danger">* Masukan Judul Fitur Beserta
                                 Deskripsi</small></label>
-                        <input class="form-control" value="{{ $product->features->first()->name }}" type="text"
+                                <input type="hidden" name="id_feature[]" value="{{ $product->features->first()->id }}" id="">
+                        <input class="form-control" value="{{ $product->features->first()->name }}" data-id="{{ $product->features->first()->id }}" type="text"
                             name="feature[]" autocomplete="name" placeholder="Masukan Fitur" />
 
                         <div id="product-listing">
                             @foreach ($product->features->skip(1) as $feature)
                                 <div class="d-flex align-items-center mt-3 gap-2" id="input_{{ $feature->id }}">
+                                    <input type="hidden" name="id_feature[]" value="{{ $feature->id }}" id="">
                                     <input class="form-control mb-0" type="text" name="feature[]"
-                                        value="{{ $feature->name }}" data-id="{{ $feature->id }}" required=""
+                                        value="{{ $feature->name }}" required=""
                                         autocomplete="name" placeholder="Masukan Fitur" />
-                                    <button onclick="deleteElement('input_{{ $feature->id }}')" type="button"
-                                        class="btn delete-trigger px-3 mt-0 btn-danger"><i
+                                    <button onclick="deleteElement('input_{{ $feature->id }}')" data-id="{{ $feature->id }}" type="button"
+                                        class="btn btn-delete px-3 mt-0 btn-danger"><i
                                             class="fas fa-trash"></i></button>
                                 </div>
                             @endforeach
@@ -72,43 +74,17 @@
             </form>
         </div>
     </div>
+    @include('admin.components.delete-modal-component')
 @endsection
 
 @section('script')
     <script>
-        const getAllFeatureIds = () => {
-            const featureIds = [];
-            $('input[name="feature[]"]').each(function() {
-                featureIds.push($(this).data('id'));
-            });
-            return featureIds;
-        };
-
-        $('#product-listing').append(
-            '<input type="hidden" name="all_feature_ids" value=\'' + JSON.stringify(getAllFeatureIds()) + '\'>'
-        );
-
-        const deleteElement = (id) => {
-            const element = $('#' + id);
-            element.on('click', function() {
-                let isConfirm = false;
-                isConfirm = confirm('Apakah yakin ingin menghapus fitur ini?');
-                if (!isConfirm) {
-                    return false;
-                } else {
-                    const index = $('input[name="feature[]"]').index(element);
-                    const featureId = $('input[name="feature[]"]').eq(index).data('id');
-                    const removedFeature = {
-                        featureId: parseInt(featureId)
-                    };
-                    $('#product-listing').append(
-                        `<input type="hidden" name="removed_feature[]" value='${JSON.stringify(removedFeature)}'>`
-                        );
-                    element.remove();
-                }
-            });
-        };
-
+        const deleteElement = (id) => $('#' + id).remove();
+        $('.btn-delete').click(function() {
+            var id = $(this).data('id');
+            $('#form-delete').attr('action', '/product/feature/' + id);
+            $('#modal-delete').modal('show');
+        });
         (() => {
             $('.add-button-trigger').click((e) => {
                 let idInput = 'input_' + Math.random().toString(36).substr(2, 9); // Generate random id

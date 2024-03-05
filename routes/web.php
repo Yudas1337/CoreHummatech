@@ -110,7 +110,7 @@ Route::put('update/collab/mitra/{collabMitra}' ,[CollabMitraController::class ,'
 
 //product
 Route::resource('product', ProductController::class);
-Route::get('product/feature/{product}' ,[ProductController::class ,'feature'])->name('product.feature');
+Route::delete('product/feature/{ProductFeature}' ,[ProductController::class ,'feature'])->name('product.feature');
 
 Route::resource('sales-package', SalesPackageController::class);
 

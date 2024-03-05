@@ -41,7 +41,7 @@
 
                         <div class="gap-2 d-flex">
                             <div class="d-grid flex-grow-1">
-                                <a href="{{ url('/product/detail/' . $product->id) }}"
+                                <a href="{{ route('product.show', $product->id) }}"
                                     class="btn btn-light-primary btn-mini">Lihat
                                     Detail</a>
                             </div>

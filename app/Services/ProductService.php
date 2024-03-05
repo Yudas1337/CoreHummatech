@@ -68,6 +68,17 @@ class ProductService
             ProductFeature::create($data);
         }
     }
+    public function updatefeature(UpdateProductRequest $request, $product)
+    {
+        // dd($product_id->id);
+        foreach ($request->feature as $item) {
+            $data = [
+                'product_id' => $product->id,
+                'name' => $item,
+            ];
+            ProductFeature::create($data);
+        }
+    }
 
     /**
      * Handle update data event to models.
@@ -93,18 +104,12 @@ class ProductService
         } else {
             $data['image'] = $product->image;
         }
-        dd($request->feature);
-        if($request->removed_feature){
 
-            $fes = $request->removed_feature;
-
-            foreach($fes as $fe){
-                $feId = json_decode($fe, true)['featureId'];
-                // dd($feId);
-                ProductFeature::where('id', $feId)->delete();
-            }
-
+        foreach ($request->id_feature as $fitur)
+        {
+            ProductFeature::findOrfail($fitur)->delete();
         }
+
         return $data;
     }
 }
