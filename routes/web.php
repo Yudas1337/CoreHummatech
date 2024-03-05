@@ -27,9 +27,14 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('landing.index');
 });
+Route::get('contact', function () {
+    return view('landing.contact');
+})->name('contact');
 
+Route::get('berita', [NewsController::class, 'news']);
 Route::get('/about-us', [AboutUsController::class, 'index']);
 Route::get('{slugService}', [ServiceController::class, 'ShowService']);
+Route::get('{slugnews}', [NewsController::class, 'showNews'])->name('news.slug');
 
 Route::get('/gallery', function () {
     return view('admin.pages.gallery.index');
