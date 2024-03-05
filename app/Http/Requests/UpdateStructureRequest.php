@@ -11,7 +11,7 @@ class UpdateStructureRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,8 @@ class UpdateStructureRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'image' => 'mimes:png,jpg',
+            'type' => 'required'
         ];
     }
 }

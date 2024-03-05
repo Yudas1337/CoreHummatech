@@ -24,6 +24,6 @@ Route::get('layanan/pelatihan', function () {
 
 Route::get('/about-us', [AboutUsController::class, 'index']);
 
-Route::post('structure/create', [StructureController::class, 'store'])->name('structure.create');
+Route::post('setting/structure/create', [StructureController::class, 'store'])->name('structure.create');
 
 Route::get('setting/structure', [StructureController::class, 'index'])->name('structure.index');

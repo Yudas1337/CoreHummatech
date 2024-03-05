@@ -46,8 +46,6 @@
     <div class="modal fade modal-bookmark" id="tambah" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
-            <form class="form-bookmark needs-validation" action="{{ route('structure.create') }}" method="POST" id="bookmark-form" novalidate="" enctype="multipart/form-data">
-                @csrf
             <div class="modal-content">
                     <ul class="simple-wrapper nav nav-tabs modal-header" id="myTab" role="tablist">
                         <li class="nav-item"><a class="nav-link active txt-primary" id="profile-tabs" data-bs-toggle="tab" href="#organisasi" role="tab" aria-controls="profile" aria-selected="false">Struktur organisasi</a></li>
@@ -58,31 +56,40 @@
                 <div class="modal-body">
                     <div class="tab-content" id="myTabContent">
                         <div class="tab-pane fade show active" id="organisasi" role="tabpanel">
-                          <div class="pt-3 mb-0">
-                                <div class="mb-3 mt-0 col-md-12">
-                                    <label for="formFile">Foto struktur organisasi</label>
-                                    <input class="form-control" name="image" id="formFile" type="file" />
+                            <form class="form-bookmark needs-validation" action="{{ route('structure.create') }}" method="POST" id="bookmark-form" novalidate="" enctype="multipart/form-data">
+                                @csrf
+                                <div class="pt-3 mb-0">
+                                    <div class="mb-3 mt-0 col-md-12">
+                                        <input type="hidden" name="type" value="structure_organize">
+                                        <label for="formFile">Foto struktur organisasi</label>
+                                        <input class="form-control" name="image" id="formFile" type="file" />
+                                    </div>
                                 </div>
-                          </div>
+                                <div class="d-flex justify-content-end gap-2">
+                                    <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">Cancel</button>
+                                    <button class="btn btn-primary" type="submit">Tambah</button>
+                                </div>
+                            </form>
                         </div>
                         <div class="tab-pane fade" id="usaha" role="tabpanel" aria-labelledby="contact-tab">
-                          <div class="pt-3">
+                            <div class="pt-3">
+                            <form class="form-bookmark needs-validation" action="{{ route('structure.create') }}" method="POST" id="bookmark-form" novalidate="" enctype="multipart/form-data">
+                                @csrf
                                 <div class="mb-3 mt-0 col-md-12">
+                                    <input type="hidden" name="type" value="structure_business">
                                     <label for="formFile">Foto struktur usaha</label>
                                     <input class="form-control" name="image" id="formFile" type="file" />
                                 </div>
+                                <div class="d-flex justify-content-end gap-2">
+                                    <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">Cancel</button>
+                                    <button class="btn btn-primary" type="submit">Tambah</button>
+                                </div>
+                            </form>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="modal-footer">
-                    <div class="d-flex justify-content-end gap-2">
-                        <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">Cancel</button>
-                        <button class="btn btn-primary" type="submit">Tambah</button>
-                    </div>
-                </div>
             </div>
-        </form>
         </div>
     </div>
 @endsection

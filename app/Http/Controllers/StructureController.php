@@ -44,7 +44,7 @@ class StructureController extends Controller
     {
         $data = $this->service->store($request);
         $this->structure->store($data);
-        return back()->with('success' , 'Team berhasil di tambahkan');
+        return back()->with('success' , 'Struktur berhasil di tambahkan');
     }
 
     /**

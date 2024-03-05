@@ -50,7 +50,7 @@ class StructureService
         $data = $request->validated();
 
         if ($request->hasFile('image') && $request->file('image')->isValid()) {
-            $data['image'] = $request->file('image')->store(TypeEnum::TEAM->value, 'public');
+            $data['image'] = $request->file('image')->store($request->type, 'public');
             return $data;
         }
         return false;
@@ -70,7 +70,7 @@ class StructureService
 
         if ($request->hasFile('image') && $request->file('image')->isValid()) {
             $this->remove($structure->image);
-            $data['image'] = $request->file('image')->store(TypeEnum::STRUCTURE->value, 'public');
+            $data['image'] = $request->file('image')->store($request->type, 'public');
         } else {
             $data['image'] = $structure->image;
         }
