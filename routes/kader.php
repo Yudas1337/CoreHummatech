@@ -11,9 +11,6 @@ use Illuminate\Support\Facades\Route;
 
 
 // news
-
-
-
 Route::get('news/index' , [NewsController::class , 'index']);
 
 Route::post('create/service' , [ServiceController::class , 'store'])->name('create.service');
