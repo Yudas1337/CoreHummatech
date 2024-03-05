@@ -23,6 +23,7 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+Auth::routes();
 
 Route::get('/', function () {
     return view('landing.index');
@@ -76,7 +77,6 @@ Route::get('/message-approval', function () {
 //     return view('admin.pages.vision-mision.edit');
 // });
 
-Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
