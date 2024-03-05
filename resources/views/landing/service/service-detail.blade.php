@@ -151,6 +151,7 @@
                         <li class="active">Layanan</li>
                     </ul>
                 </div>
+
             </div>
         </div>
     </div>
@@ -158,9 +159,9 @@
     <div class="services-details-area default-padding">
         <div class="container">
             <div class="services-details-items">
-                <div class="row">`  
+                <div class="row">
 
-                    <div class="col-lg-8 services-single-content wow fadeInUp">
+                    <div class="col-lg-8 services-single-content">
                         <img src="{{ asset('storage/' . $slugs->image) }}" alt="Thumb">
                         <h2 class="wow fadeInLeft">{{ $slugs->name }}</h2>
                         <p class="wow fadeInLeft">
@@ -521,7 +522,7 @@
                                 <h4 class="m-0">Mitra Kami</h4>
                                 <div class="dash"></div>
                             </div>
-
+                            
                         </div>
                         <div class="py-2 mb-5">
                             <div class="title-service">
@@ -623,7 +624,6 @@
                             </div>
                         </div>
                     </div>
-
 
                     <div class="col-lg-4 services-sidebar">
                         <!-- Single Widget -->
