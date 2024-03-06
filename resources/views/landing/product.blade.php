@@ -103,7 +103,7 @@
                         <div class="row align-center">
                             <div class="col-lg-6 d-none d-md-none d-lg-inline-flex">
                                 <div class="thumb">
-                                    <img alt="{{ $product->name }}" src="{{ asset('storage/' . $product->image) }}" width="50%">
+                                    <img alt="{{ $product->name }}" src="{{ asset('storage/' . $product->image) }}" class="w-100" />
                                 </div>
                             </div>
                             <div class="col-lg-6 info">
@@ -147,7 +147,7 @@
                             </div>
                             <div class="col-lg-5 d-none d-md-none d-lg-inline-flex">
                                 <div class="thumb">
-                                    <img alt="{{ $product->name }}" src="{{ asset('storage/'.$product->image) }}" class="w-50" />
+                                    <img alt="{{ $product->name }}" src="{{ asset('storage/'.$product->image) }}" class="w-100" />
                                 </div>
                             </div>
                         </div>
