@@ -48,6 +48,7 @@ Route::get('message-approval', function () {
 Route::get('/testimonial', function () {
     return view('admin.pages.testimonial.index');
 });
+Route::get('{slugnews}', [NewsController::class, 'showNews'])->name('news.slug');
 Route::resource('gallery', GalleryController::class);
 Route::get('category-news' , [CategoryNewsController::class , 'index']);
 Route::get('collab' , [CollabMitraController::class ,'index']);
@@ -66,7 +67,6 @@ Route::get('hero-section', [SectionController::class , 'index'])->name('hero.sec
 Route::get('berita', [NewsController::class, 'news']);
 Route::get('/about-us', [AboutUsController::class, 'index']);
 Route::get('{slugService}', [ServiceController::class, 'ShowService']);
-Route::get('{slugnews}', [NewsController::class, 'showNews'])->name('news.slug');
 
 
 
