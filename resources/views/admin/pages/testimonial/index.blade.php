@@ -78,116 +78,122 @@
         aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
-                <div class="modal-header">
+                <div class="p-4">
                     <div class="d-flex justify-content-between w-100">
-                        <h5 class="modal-title fw-semibold" id="exampleModalLabel">Tambah Testimoni</h5>
+                        <div class="d-block">
+                            <h5 class="modal-title fw-semibold" id="exampleModalLabel">Tambah Testimoni</h5>
+                            <ul class="simple-wrapper nav nav-tabs mt-3" id="myTab" role="tablist">
+                                <li class="nav-item"><a class="nav-link active txt-primary" id="profile-tabs" data-bs-toggle="tab" href="#service" role="tab" aria-controls="profile" aria-selected="false">Testimoni layanan</a></li>
+                                <li class="nav-item"><a class="nav-link txt-primary" id="contact-tab" data-bs-toggle="tab" href="#product" role="tab" aria-controls="contact" aria-selected="false">Testimoni produk</a></li>
+                            </ul>
+                        </div>
                         <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                 </div>
-                    <ul class="simple-wrapper nav nav-tabs modal-header" id="myTab" role="tablist">
-                        <li class="nav-item"><a class="nav-link active txt-primary" id="profile-tabs" data-bs-toggle="tab" href="#organisasi" role="tab" aria-controls="profile" aria-selected="false">Struktur organisasi</a></li>
-                        <li class="nav-item"><a class="nav-link txt-primary" id="contact-tab" data-bs-toggle="tab" href="#usaha" role="tab" aria-controls="contact" aria-selected="false">Struktur usaha</a></li>
-                        <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </ul>
-
-                <div class="modal-body">
-                    <div class="tab-content" id="myTabContent">
-                        <div class="tab-pane fade show active" id="organisasi" role="tabpanel">
-                            <form class="form-bookmark needs-validation" action="{{ route('structure.create') }}" method="POST" id="bookmark-form" novalidate="" enctype="multipart/form-data">
+                <div class="modal-body p-0 m-0">
+                    <div class="tab-content px-4" id="myTabContent">
+                        <div class="tab-pane fade show active" id="service" role="tabpanel">
+                            <form class="form-bookmark needs-validation" action="{{ route('testimonial.store') }}" method="POST" id="bookmark-form"
+                                novalidate="" enctype="multipart/form-data">
                                 @csrf
-                                <div class="pt-3 mb-0">
+                                <div class="row g-2">
+                                    <input type="hidden" name="type" value="service">
                                     <div class="mb-3 mt-0 col-md-12">
-                                        <input type="hidden" name="type" value="structure_organize">
-                                        <label for="formFile">Foto struktur organisasi</label>
-                                        <input class="form-control" name="image" id="formFile" type="file" />
+                                        <label for="service_id">Pilih layanan</label>
+                                        <select class="tambah" aria-label=".form-select example" name="service_id">
+                                            @forelse ($services as $service)
+                                            <option value="{{ $service->id }}"
+                                                {{ $service->service_id == $service->id ? 'selected' : '' }}>
+                                                {{ $service->name }}</option>
+                                            @empty
+                                            <option value="">Belum ada layanan</option>
+                                            @endforelse
+                                        </select>
+                                    </div>
+                                    <div class="mb-3 mt-0 col-md-12">
+                                        <label for="image">Foto Testimoni</label>
+                                        <figure class="col-xl-3 col-md-4 col-6" itemprop="associatedMedia" itemscope="">
+                                            <img class="img-thumbnail" id="image-preview" itemprop="thumbnail">
+                                        </figure>
+                                        <input class="form-control" id="image" name="image" type="file" onchange="preview(event)">
+                                    </div>
+                                    <div class="mb-3 mt-0 col-md-12">
+                                        <label for="name">Nama Lengkap</label>
+                                        <input class="form-control @error('name') is-invalid @enderror" type="text" id="name" autocomplete="name" name="name"  placeholder="Masukkan nama">
+                                        @error('name')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                    <div class="mb-3 mt-0 col-md-12">
+                                        <label for="description">Deskripsi</label>
+                                        <textarea name="description @error('description') is-invalid @enderror" id="description" rows="4" class="form-control" placeholder="Masukkan deskripsi"></textarea>
+                                        @error('description')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="d-flex justify-content-end gap-2">
-                                    <button class="btn btn-light-danger" type="button" data-bs-dismiss="modal">Tutup</button>
-                                    <button class="btn btn-primary" type="submit">Tambah</button>
+                                    <button class="btn btn-secondary " type="button" data-bs-dismiss="modal">Batal</button>
+                                    <button class="btn btn-primary " type="submit">Simpan</button>
                                 </div>
                             </form>
                         </div>
-                        <div class="tab-pane fade" id="usaha" role="tabpanel" aria-labelledby="contact-tab">
-                            <div class="pt-3">
-                            <form class="form-bookmark needs-validation" action="{{ route('structure.create') }}" method="POST" id="bookmark-form" novalidate="" enctype="multipart/form-data">
+                        <div class="tab-pane fade show active" id="product" role="tabpanel">
+                            <form class="form-bookmark needs-validation" action="{{ route('testimonial.store') }}" method="POST" id="bookmark-form"
+                                novalidate="" enctype="multipart/form-data">
                                 @csrf
-                                <div class="mb-3 mt-0 col-md-12">
-                                    <input type="hidden" name="type" value="structure_business">
-                                    <label for="formFile">Foto struktur usaha</label>
-                                    <input class="form-control" name="image" id="formFile" type="file" />
+                                <div class="row g-2">
+                                    <input type="hidden" name="type" value="product">
+                                    <div class="mb-3 mt-0 col-md-12">
+                                        <label for="product_id">Pilih produk</label>
+                                        <select class="tambah" aria-label=".form-select example" name="product_id">
+                                            @forelse ($products as $product)
+                                            <option value="{{ $product->id }}"
+                                                {{ $product->product_id == $product->id ? 'selected' : '' }}>
+                                                {{ $product->name }}</option>
+                                            @empty
+                                            <option value="">Belum ada layanan</option>
+                                            @endforelse
+                                        </select>
+                                    </div>
+                                    <div class="mb-3 mt-0 col-md-12">
+                                        <label for="image">Foto Testimoni</label>
+                                        <figure class="col-xl-3 col-md-4 col-6" itemprop="associatedMedia" itemscope="">
+                                            <img class="img-thumbnail" id="image-preview" itemprop="thumbnail">
+                                        </figure>
+                                        <input class="form-control" id="image" name="image" type="file" onchange="preview(event)">
+                                    </div>
+                                    <div class="mb-3 mt-0 col-md-12">
+                                        <label for="name">Nama Lengkap</label>
+                                        <input class="form-control @error('name') is-invalid @enderror" type="text" id="name" autocomplete="name" name="name"  placeholder="Masukkan nama">
+                                        @error('name')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                    <div class="mb-3 mt-0 col-md-12">
+                                        <label for="description">Deskripsi</label>
+                                        <textarea name="description @error('description') is-invalid @enderror" id="description" rows="4" class="form-control" placeholder="Masukkan deskripsi"></textarea>
+                                        @error('description')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
+                                    </div>
                                 </div>
                                 <div class="d-flex justify-content-end gap-2">
-                                    <button class="btn btn-light-danger" type="button" data-bs-dismiss="modal">Tutup</button>
-                                    <button class="btn btn-primary" type="submit">Tambah</button>
+                                    <button class="btn btn-secondary " type="button" data-bs-dismiss="modal">Batal</button>
+                                    <button class="btn btn-primary " type="submit">Simpan</button>
                                 </div>
                             </form>
-                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
-
-
-    <div class="modal fade modal-bookmark"  tabindex="-1" role="dialog"
-        aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title fw-semibold" id="exampleModalLabel">Tambah Testimoni</h5>
-                    <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <form class="form-bookmark needs-validation" action="{{ route('testimonial.store') }}" method="POST" id="bookmark-form"
-                    novalidate="" enctype="multipart/form-data">
-                    @csrf
-                    <div class="modal-body">
-                        <div class="row g-2">
-                            <div class="mb-3 mt-0 col-md-12">
-                                <label for="image">Foto Testimoni</label>
-                                <figure class="col-xl-3 col-md-4 col-6" itemprop="associatedMedia" itemscope="">
-                                    <img class="img-thumbnail" id="image-preview" itemprop="thumbnail">
-                                </figure>
-                                <input class="form-control" id="image" name="image" type="file" onchange="preview(event)">
-                            </div>
-                            <div class="mb-3 mt-0 col-md-12">
-                                <label for="name">Nama Lengkap</label>
-                                <input class="form-control @error('name') is-invalid @enderror" type="text" id="name" autocomplete="name" name="name"  placeholder="Masukkan nama">
-                                @error('name')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-                        <div class="mb-3 mt-0 col-md-12">
-                            <label for="description">Deskripsi</label>
-                            <textarea name="description @error('description') is-invalid @enderror" id="description" rows="4" class="form-control" placeholder="Masukkan deskripsi"></textarea>
-                            @error('description')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div>
-
-                        <div class="mb-3 mt-0 col-md-12">
-                            <label for="service_id">Tampilkan di</label>
-                            <select class="tambah" aria-label=".form-select example" name="service_id">
-                                @foreach ($services as $service)
-                                <option value="{{ $service->id }}"
-                                    {{ $service->service_id == $service->id ? 'selected' : '' }}>
-                                    {{ $service->name }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-
-                        <div class="d-flex justify-content-end gap-2">
-                            <button class="btn btn-secondary " type="button" data-bs-dismiss="modal">Batal</button>
-                            <button class="btn btn-primary " type="submit">Simpan</button>
-                        </div>
-                    </div>
-                </form>
             </div>
         </div>
     </div>

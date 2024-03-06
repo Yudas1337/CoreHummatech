@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Enums\TypeEnum;
+use App\Http\Requests\StoreTestimonialProductRequest;
 use App\Http\Requests\StoreTestimonialRequest;
 use App\Http\Requests\UpdateTestimonialRequest;
 use App\Models\Testimonial;
@@ -28,6 +29,17 @@ class TestimonialService
     }
 
     public function store(StoreTestimonialRequest $request): array|bool
+    {
+        $data = $request->validated();
+
+        if ($request->hasFile('image') && $request->file('image')->isValid()) {
+            $data['image'] = $request->file('image')->store(TypeEnum::TESTIMONIAL->value, 'public');
+            return $data;
+        }
+        return false;
+    }
+
+    public function storeProduct(StoreTestimonialProductRequest $request): array|bool
     {
         $data = $request->validated();
 
