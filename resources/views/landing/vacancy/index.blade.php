@@ -91,6 +91,25 @@
             margin-top: 0;
         }
 
+        @media screen and (max-width: 992px) {
+            .timeline-item-content {
+                padding-right: .75rem;
+            }
+
+            .timeline-item-content h2 {
+                font-size: 1rem;
+                font-weight: bold;
+                margin-bottom: .25rem;
+            }
+
+            .timeline-item-content p,
+            .timeline-item-content .timeline-item-date {
+                font-size: .75rem;
+                line-height: 1.25;
+                margin-bottom: 0;
+            }
+        }
+
         .timeline-item-date {
             font-size: 14px;
             color: #6c757d;
@@ -114,12 +133,27 @@
             font-family: 'Poppins', Arial, Helvetica, sans-serif;
         }
 
+        @media screen and (max-width: 992px) {
+            .timeline-number {
+                width: 2rem;
+                height: 2rem;
+                font-size: .875rem;
+            }
+        }
+
         /* Alternate the position of the timeline items */
         .timeline .timeline-item:nth-child(even) .timeline-item-content {
             float: right;
             text-align: right;
             padding-left: 3rem;
             padding-right: 0;
+        }
+
+        @media screen and (max-width: 992px) {
+            .timeline .timeline-item:nth-child(even) .timeline-item-content {
+                padding-left: .75rem;
+                padding-right: 0;
+            }
         }
 
         .timeline .timeline-item:nth-child(even) .timeline-item-content::before {
@@ -181,28 +215,31 @@
         </div>
     </div>
 
-    @if($vacancyData->count() > 0)
-    <div class="about-us-area default-padding">
-        <div class="container">
-            <img src="{{ asset('assets-home/img/about-polygon.svg') }}" class="about-triangle" alt="Polygon" />
-            <div class="about-items">
-                <div class="row align-center">
-                    <div class="col-lg-6 info">
-                        <h4 class="subtitle">{{ $vacancyData[0]->subtitle }}</h4>
-                        <h2>{{ $vacancyData[0]->title }}</h2>
-                        <p>{!! Str::limit($vacancyData[0]->description, 200) !!}</p>
+    @if ($vacancyData->count() > 0)
+        <div class="about-us-area default-padding">
+            <div class="container">
+                <img src="{{ asset('assets-home/img/about-polygon.svg') }}" class="about-triangle" alt="Polygon" />
+                <div class="about-items">
+                    <div class="row align-center">
+                        <div class="col-lg-6 info text-center text-lg-start">
+                            <h4 class="subtitle text-break">{{ $vacancyData[0]->subtitle }}</h4>
+                            <h2>{{ $vacancyData[0]->title }}</h2>
+                            <img src="{{ Storage::url($vacancyData[0]->image) }}"
+                                class="w-75 mx-auto d-block d-lg-none mb-3" alt="Thumb" />
+                            <p>{!! Str::limit($vacancyData[0]->description, 200) !!}</p>
 
-                        <a class="btn btn-gradient effect btn-md" target="_blank" href="{{ $vacancyData[0]->link }}">Lihat Selengkapnya</a>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="thumb">
-                            <img src="{{ Storage::url($vacancyData[0]->image) }}" alt="Thumb" />
+                            <a class="btn btn-gradient effect btn-md" target="_blank"
+                                href="{{ $vacancyData[0]->link }}">Lihat Selengkapnya</a>
+                        </div>
+                        <div class="col-lg-6 d-none d-lg-block d-md-none">
+                            <div class="thumb">
+                                <img src="{{ Storage::url($vacancyData[0]->image) }}" class="w-100" alt="Thumb" />
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
     @endif
 
     <div class="work-process-area features-area default-padding-bottom py-5">
@@ -260,6 +297,4 @@
         </div>
 
     </div>
-
-
 @endsection

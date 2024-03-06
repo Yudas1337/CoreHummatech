@@ -90,6 +90,27 @@
             }
         }
     </style>
+<style>
+    @media (max-width: 767px) {
+        .thumb {
+            text-align: center;
+        }
+
+        .thumb img {
+            max-width: 50%;
+            height: auto;
+            margin: 0 auto; /* Center the image horizontally */
+        }
+    }
+</style>
+<style>
+    @media (max-width: 767px) {
+        .team-item img {
+            max-width: 60%; /* Set the maximum width as needed */
+            height: auto;
+        }
+    }
+</style>
 @endsection
 @section('content')
     <!-- Start Banner
@@ -148,8 +169,7 @@
     <!-- Start About Area -->
     <div class="about-us-area default-padding">
         <div class="container">
-            {{-- <div class="background-img" style="background-image: url('{{ asset('assets-home/img/about-polygon.svg') }}');"></div> --}}
-            <img src="{{ asset('assets-home/img/about-polygon.svg') }}" class="about-triangle" alt="Polygon" />
+            <img src="{{ asset('assets-home/img/about-polygon.svg') }}" class="about-triangle d-none d-md-block" alt="Polygon" />
             <div class="about-items">
                 <div class="row">
                     @if (!empty($profile))
