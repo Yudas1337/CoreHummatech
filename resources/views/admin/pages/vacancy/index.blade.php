@@ -12,7 +12,7 @@
                     <div class="row">
                         <div class="col-sm-4">
                             <div class="rounded-3 p-4 position-relative">
-                                <img src="{{ asset("storage/{$vacancy->image}") }}" style="object-fit: cover; width: 100%;" class="img-fluid" alt="Logo">
+                                <img alt="Logo" src="{{ asset("storage/{$vacancy->image}") }}" style="object-fit: cover; width: 100%;" class="img-fluid" />
                             </div>
                             <div class="my-1 mb-2">
                                 <label for="image">Foto</label>

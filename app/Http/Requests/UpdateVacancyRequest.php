@@ -23,7 +23,7 @@ class UpdateVacancyRequest extends FormRequest
     {
         return [
             'title' => 'required',
-            'image' => 'mimes:png,jpg|required',
+            'image' => 'mimes:png,jpg',
             'subtitle' => 'required',
             'description' => 'required',
             'link' => 'required'
