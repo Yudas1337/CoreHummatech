@@ -121,7 +121,7 @@
                             </p>
 
                             @if($profile->proposal)
-                            <a class="btn btn-gradient effect btn-md" href="{{ Storage::url($profile->proposal) }}">Unduh Portofolio</a>
+                            <a class="btn btn-gradient effect btn-md" href="{{ asset('storage/'.$profile->proposal) }}" download="{{ asset('storage/'.$profile->proposal) }}">Unduh Portofolio</a>
                             @endif
                     </div>
                     <div class="col-lg-6">
