@@ -13,7 +13,7 @@ class ProfileRepository extends BaseRepository implements ProfileInterface
 
     public function get(): mixed
     {
-        return $this->model->query()->first();
+        return $this->model->query()->get();
     }
 
     public function store(array $data): mixed

@@ -126,7 +126,6 @@
                     </form>
                 </div>
             </div>
-
             @endforelse
         </div>
 
