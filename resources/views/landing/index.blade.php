@@ -119,7 +119,7 @@
     </style>
     <style>
     .team-item {
-        margin-right: 15px; 
+        margin-right: 15px;
     }
 
     .team-item:last-child {
@@ -131,12 +131,21 @@
             margin-right: 0;
         }
     }
-</style>
+    </style>
+
+    <style>
+        @media (max-width: 767px) {
+            .thumb img {
+                max-width: 60% !important;
+            }
+        }
+    </style>
+    
+
 
 @endsection
 @section('content')
-    <!-- Start Banner
-                                    ============================================= -->
+    <!-- Start Banner-->
     <div class="banner-area text-center text-big top-pad-50">
         <div id="bootcarousel" class="carousel text-light slide animate_text" data-ride="carousel">
 
@@ -199,16 +208,20 @@
                                 {!! Str::limit($profile->description, 200) !!}
                             </p>
                             <a class="btn btn-gradient effect btn-md" href="/about-us">Selengkapnya</a>
-                            @empty
-                                <p>Belum ada profile perusahaan</p>
+                        @empty
+                            <p>Belum ada profile perusahaan</p>
                         @endforelse
                     </div>
                     <div class="col-md-6 order-first order-md-last text-center">
                         <div class="thumb">
                             <img src="{{ asset('storage/' . $profile->image) }}" alt="Thumb" style="max-width: 100%; max-height: 450px; display: inline-block;">
+
+                            <!-- Tambahkan gaya untuk perangkat mobile -->
+
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
     </div>
