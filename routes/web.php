@@ -239,3 +239,11 @@ Route::post('setting/structure/create', [StructureController::class, 'store'])->
 
 Route::get('setting/structure', [StructureController::class, 'index'])->name('structure.index');
 Route::get('berita', [NewsController::class, 'news']);
+
+
+
+require_once __DIR__ . '/kader.php';
+require_once __DIR__ . '/farah.php';
+require_once __DIR__ . '/nesa.php';
+require_once __DIR__ . '/adi.php';
+require_once __DIR__ . '/rendi.php';
