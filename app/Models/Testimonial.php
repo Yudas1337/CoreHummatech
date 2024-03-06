@@ -18,4 +18,9 @@ class Testimonial extends Model
     {
         return $this->belongsTo(Service::class);
     }
+
+    public function product(): BelongsTo
+    {
+        return $this->belongsTo(Product::class);
+    }
 }

@@ -16,7 +16,8 @@ return new class extends Migration
             $table->uuid('id');
             $table->string('name');
             $table->string('description');
-            $table->foreignId('service_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignId('service_id')->nullable()->constrained()->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignId('product_id')->nullable()->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->string('image');
             $table->enum('type', [TestimonialEnum::PRODUCT->value, TestimonialEnum::SERVICE->value]);
             $table->timestamps();
