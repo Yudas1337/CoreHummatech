@@ -93,13 +93,20 @@
 
         @media screen and (max-width: 992px) {
             .timeline-item-content {
-                padding-right: 1rem;
+                padding-right: .75rem;
             }
 
             .timeline-item-content h2 {
-                font-size: 1.125rem;
+                font-size: 1rem;
                 font-weight: bold;
                 margin-bottom: .25rem;
+            }
+
+            .timeline-item-content p,
+            .timeline-item-content .timeline-item-date {
+                font-size: .75rem;
+                line-height: 1.25;
+                margin-bottom: 0;
             }
         }
 
@@ -128,9 +135,9 @@
 
         @media screen and (max-width: 992px) {
             .timeline-number {
-                width: 3rem;
-                height: 3rem;
-                font-size: 1.125rem;
+                width: 2rem;
+                height: 2rem;
+                font-size: .875rem;
             }
         }
 
@@ -144,7 +151,8 @@
 
         @media screen and (max-width: 992px) {
             .timeline .timeline-item:nth-child(even) .timeline-item-content {
-                padding-left: 1rem;
+                padding-left: .75rem;
+                padding-right: 0;
             }
         }
 
