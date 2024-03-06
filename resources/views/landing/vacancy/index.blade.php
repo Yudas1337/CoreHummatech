@@ -175,7 +175,7 @@
 
         @media screen and (min-width: 992px) {
             .text-lg-start {
-                text-align: left;
+                text-align: left !important;
             }
         }
     </style>
