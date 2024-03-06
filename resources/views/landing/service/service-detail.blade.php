@@ -1,7 +1,6 @@
 @extends('landing.layouts.layouts.app')
 
 @section('style')
-
     <style>
         .subtitle {
             text-transform: uppercase;
@@ -49,95 +48,95 @@
             }
         }
     </style>
-        <style>
-            /* Custom styles for the timeline */
-            .timeline {
-                position: relative;
-                padding: 40px 0;
-            }
+    <style>
+        /* Custom styles for the timeline */
+        .timeline {
+            position: relative;
+            padding: 40px 0;
+        }
 
-            .timeline::before {
-                content: '';
-                position: absolute;
-                width: 4px;
-                height: 100%;
-                background: #ced4da;
-                left: 50%;
-                top: 0;
-                transform: translateX(-50%);
-            }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            width: 4px;
+            height: 100%;
+            background: #ced4da;
+            left: 50%;
+            top: 0;
+            transform: translateX(-50%);
+        }
 
-            .timeline-item {
-                margin-bottom: 50px;
-                position: relative;
-            }
+        .timeline-item {
+            margin-bottom: 50px;
+            position: relative;
+        }
 
-            .timeline-item::after {
-                content: '';
-                display: table;
-                clear: both;
-            }
+        .timeline-item::after {
+            content: '';
+            display: table;
+            clear: both;
+        }
 
-            .timeline-item-content {
-                position: relative;
-                width: 45%;
-                border-radius: 5px;
-                float: left;
-                padding-right: 3rem;
-            }
+        .timeline-item-content {
+            position: relative;
+            width: 45%;
+            border-radius: 5px;
+            float: left;
+            padding-right: 3rem;
+        }
 
-            .timeline-item-content h2 {
-                margin-top: 0;
-            }
+        .timeline-item-content h2 {
+            margin-top: 0;
+        }
 
-            .timeline-item-date {
-                font-size: 14px;
-                color: #6c757d;
-            }
+        .timeline-item-date {
+            font-size: 14px;
+            color: #6c757d;
+        }
 
-            .timeline-number {
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                width: 5rem;
-                height: 5rem;
-                background-color: #007bff;
-                color: #fff;
-                border-radius: 50%;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                font-weight: bold;
-                font-size: 1.5rem;
-                font-family: 'Poppins', Arial, Helvetica, sans-serif;
-            }
+        .timeline-number {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 5rem;
+            height: 5rem;
+            background-color: #007bff;
+            color: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.5rem;
+            font-family: 'Poppins', Arial, Helvetica, sans-serif;
+        }
 
-            /* Alternate the position of the timeline items */
-            .timeline .timeline-item:nth-child(even) .timeline-item-content {
-                float: right;
-                text-align: right;
-                padding-left: 3rem;
-                padding-right: 0;
-            }
+        /* Alternate the position of the timeline items */
+        .timeline .timeline-item:nth-child(even) .timeline-item-content {
+            float: right;
+            text-align: right;
+            padding-left: 3rem;
+            padding-right: 0;
+        }
 
-            .timeline .timeline-item:nth-child(even) .timeline-item-content::before {
-                right: 100%;
-                border-right: 8px solid #f8f9fa;
-                border-left: none;
-            }
+        .timeline .timeline-item:nth-child(even) .timeline-item-content::before {
+            right: 100%;
+            border-right: 8px solid #f8f9fa;
+            border-left: none;
+        }
 
-            .timeline .timeline-item:nth-child(odd) .timeline-item-content::before {
-                left: 100%;
-                border-left: 8px solid #f8f9fa;
-                border-right: none;
-            }
+        .timeline .timeline-item:nth-child(odd) .timeline-item-content::before {
+            left: 100%;
+            border-left: 8px solid #f8f9fa;
+            border-right: none;
+        }
 
-            .timeline .timeline-item:nth-child(even) .timeline-item-content::after,
-            .timeline .timeline-item:nth-child(odd) .timeline-item-content::after {
-                display: none;
-            }
-        </style>
+        .timeline .timeline-item:nth-child(even) .timeline-item-content::after,
+        .timeline .timeline-item:nth-child(odd) .timeline-item-content::after {
+            display: none;
+        }
+    </style>
 @endsection
 
 @section('seo')
@@ -207,32 +206,33 @@
                                 <div class="dash"></div>
                             </div>
                             @forelse ($products as $index => $product)
-                            <div class="about-content-area pb-5 mb-5">
-                                <div class="row @if($index % 2 === 1) flex-row-reverse @endif">
-                                    <div class="col-lg-5 thumb wow fadeInUp">
-                                        <div class="img-box">
-                                            <img src="{{ asset('storage/' . $product->image) }}" alt="Thumb">
-                                            <div class="shape" style="background-image: url(assets/img/shape/1.png);"></div>
+                                <div class="about-content-area pb-5 mb-5">
+                                    <div class="row @if ($index % 2 === 1) flex-row-reverse @endif">
+                                        <div class="col-lg-5 thumb wow fadeInUp">
+                                            <div class="img-box">
+                                                <img src="{{ asset('storage/' . $product->image) }}" alt="Thumb">
+                                                <div class="shape" style="background-image: url(assets/img/shape/1.png);">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-7 wow fadeInDown">
+                                            <h2>{{ $product->name }}</h2>
+                                            <p>{{ $product->description }}</p>
+                                            <a class="btn btn-stroke-gradient effect btn-md" href="#">Lihat detail</a>
+                                            <a class="btn btn-gradient effect btn-md" href="#">Kunjungi website</a>
                                         </div>
                                     </div>
-                                    <div class="col-lg-7 wow fadeInDown">
-                                        <h2>{{$product->name}}</h2>
-                                        <p>{{$product->description}}</p>
-                                        <a class="btn btn-stroke-gradient effect btn-md" href="#">Lihat detail</a>
-                                        <a class="btn btn-gradient effect btn-md" href="#">Kunjungi website</a>
-                                    </div>
                                 </div>
-                            </div>
-                        @empty
-                        <div class="col-12">
-                            <div class="d-flex justify-content-center">
-                                <img src="{{ asset('nodata-gif.gif') }}" alt="" width="800px">
-                            </div>
-                            <h4 class="text-center text-dark" style="font-weight:600">
-                                Belum ada produk
-                            </h4>
-                        </div>
-                        @endforelse
+                            @empty
+                                <div class="col-12">
+                                    <div class="d-flex justify-content-center">
+                                        <img src="{{ asset('nodata-gif.gif') }}" alt="" width="800px">
+                                    </div>
+                                    <h4 class="text-center text-dark" style="font-weight:600">
+                                        Belum ada produk
+                                    </h4>
+                                </div>
+                            @endforelse
                         </div>
 
                         <div class="my-5 py-3">
@@ -251,44 +251,31 @@
                                                         <div class="item">
                                                             <div class="info">
                                                                 <p>
-                                                                    Otherwise concealed favourite frankness on be at dashwoods
-                                                                    defective at. Sympathize interested
+                                                                    {{ $testimonial->description }}
                                                                 </p>
                                                                 <div class="provider">
                                                                     <div class="thumb">
-                                                                        <img src="{{ asset('assets-home/img/teams/5.jpg') }}"
+                                                                        <img src="{{ asset('storage/' . $testimonial->image) }}"
                                                                             alt="Author">
                                                                     </div>
                                                                     <div class="content">
-                                                                        <h4 class="text-primary">Ahel Natasha</h4>
+                                                                        <h4 class="text-primary">{{ $testimonial->name }}
+                                                                        </h4>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     @empty
-
-                                                    @endforelse
-                                                    <!-- Single Item -->
-                                                    <!-- End Single Item -->
-                                                    <!-- Single Item -->
-                                                    {{-- <div class="item">
-                                                        <div class="info">
-                                                            <p>
-                                                                Otherwise concealed favourite frankness on be at dashwoods
-                                                                defective at. Sympathize interested
-                                                            </p>
-                                                            <div class="provider">
-                                                                <div class="thumb">
-                                                                    <img src="{{ asset('assets-home/img/teams/6.jpg') }}"
-                                                                        alt="Author">
-                                                                </div>
-                                                                <div class="content">
-                                                                    <h4 class="text-primary">Ahel Natasha</h4>
-                                                                </div>
+                                                        <div class="col-12">
+                                                            <div class="d-flex justify-content-center">
+                                                                <img src="{{ asset('nodata-gif.gif') }}" alt=""
+                                                                    width="800px">
                                                             </div>
+                                                            <h4 class="text-center text-dark" style="font-weight:600">
+                                                                Belum ada Testimoni
+                                                            </h4>
                                                         </div>
-                                                    </div> --}}
-                                                    <!-- End Single Item -->
+                                                    @endforelse
                                                 </div>
                                             </div>
                                             <div class="col-lg-5 info">
@@ -315,111 +302,50 @@
                             <div class="faq-content-area">
                                 <div class="faq-items">
                                     <div class="row align-center">
-
                                         <div class="col-lg-12 ">
                                             <div class="faq-content wow fadeInUp">
                                                 <div class="accordion" id="accordionExample">
                                                     <div class="card">
-                                                        <div class="card-header" id="headingOne">
-                                                            <h4 class="mb-0" data-toggle="collapse"
-                                                                data-target="#collapseOne" aria-expanded="true"
-                                                                aria-controls="collapseOne">
-                                                                Why is collaborative learning so important?
-                                                            </h4>
-                                                        </div>
-
-                                                        <div id="collapseOne" class="collapse show"
-                                                            aria-labelledby="headingOne" data-parent="#accordionExample">
-                                                            <div class="card-body">
-                                                                <p>
-                                                                    Companions shy had solicitude favourable own. Which
-                                                                    could saw guest man now heard but. Lasted my coming
-                                                                    uneasy marked so should. Gravity letters i
-                                                                </p>
+                                                        @forelse ($faqs as $item)
+                                                            <div class="card-header" id="headingTwo">
+                                                                <h4 class="mb-0 collapsed" data-toggle="collapse"
+                                                                    data-target="#collapseTwo" aria-expanded="false"
+                                                                    aria-controls="collapseTwo">
+                                                                    Do you offer free trials?
+                                                                </h4>
                                                             </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="card">
-                                                        <div class="card-header" id="headingTwo">
-                                                            <h4 class="mb-0 collapsed" data-toggle="collapse"
-                                                                data-target="#collapseTwo" aria-expanded="false"
-                                                                aria-controls="collapseTwo">
-                                                                Do you offer free trials?
-                                                            </h4>
-                                                        </div>
-                                                        <div id="collapseTwo" class="collapse"
-                                                            aria-labelledby="headingTwo" data-parent="#accordionExample">
-                                                            <div class="card-body">
-                                                                <p>
-                                                                    Companions shy had solicitude favourable own. Which
-                                                                    could saw guest man now heard but. Lasted my coming
-                                                                    uneasy marked so should. Gravity letters it amongst
-                                                                    herself dearest an windows by. Wooded ladies she basket
-                                                                    season age her uneasy saw. Discourse unwilling am no
-                                                                    described dejection incommode no listening of. Before
-                                                                    nature his parish boy.
-                                                                </p>
-                                                                <div class="ask-question">
-                                                                    <span>Still no luck?</span> <a href="#">Ask a
-                                                                        question</a>
+                                                            <div id="collapseTwo" class="collapse"
+                                                                aria-labelledby="headingTwo"
+                                                                data-parent="#accordionExample">
+                                                                <div class="card-body">
+                                                                    <p>
+                                                                        Companions shy had solicitude favourable own. Which
+                                                                        could saw guest man now heard but. Lasted my coming
+                                                                        uneasy marked so should. Gravity letters it amongst
+                                                                        herself dearest an windows by. Wooded ladies she
+                                                                        basket
+                                                                        season age her uneasy saw. Discourse unwilling am no
+                                                                        described dejection incommode no listening of.
+                                                                        Before
+                                                                        nature his parish boy.
+                                                                    </p>
+                                                                    <div class="ask-question">
+                                                                        <span>Still no luck?</span> <a href="#">Ask a
+                                                                            question</a>
+                                                                    </div>
                                                                 </div>
                                                             </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="card">
-                                                        <div class="card-header" id="headingThree">
-                                                            <h4 class="mb-0 collapsed" data-toggle="collapse"
-                                                                data-target="#collapseThree" aria-expanded="false"
-                                                                aria-controls="collapseThree">
-                                                                What kind of support do you offer?
-                                                            </h4>
-                                                        </div>
-                                                        <div id="collapseThree" class="collapse"
-                                                            aria-labelledby="headingThree"
-                                                            data-parent="#accordionExample">
-                                                            <div class="card-body">
-                                                                <p>
-                                                                    Companions shy had solicitude favourable own. Which
-                                                                    could saw guest man now heard but. Lasted my coming
-                                                                    uneasy marked so should. Gravity letters it amongst
-                                                                    herself dearest an windows by. Wooded ladies she basket
-                                                                    season age her uneasy saw. Discourse unwilling am no
-                                                                    described dejection incommode no listening of. Before
-                                                                    nature his parish boy.
-                                                                </p>
-                                                                <div class="ask-question">
-                                                                    <span>Still no luck?</span> <a href="#">Ask a
-                                                                        question</a>
+                                                        @empty
+                                                            <div class="col-12">
+                                                                <div class="d-flex justify-content-center">
+                                                                    <img src="{{ asset('nodata-gif.gif') }}"
+                                                                        alt="" width="500px">
                                                                 </div>
+                                                                <h4 class="text-center text-dark" style="font-weight:600">
+                                                                    Belum ada FAQ
+                                                                </h4>
                                                             </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="card">
-                                                        <div class="card-header" id="headingFour">
-                                                            <h4 class="mb-0 collapsed" data-toggle="collapse"
-                                                                data-target="#collapseFour" aria-expanded="false"
-                                                                aria-controls="collapseFour">
-                                                                Can I share my courses with non-registered users?
-                                                            </h4>
-                                                        </div>
-                                                        <div id="collapseFour" class="collapse"
-                                                            aria-labelledby="headingFour" data-parent="#accordionExample">
-                                                            <div class="card-body">
-                                                                <p>
-                                                                    Companions shy had solicitude favourable own. Which
-                                                                    could saw guest man now heard but. Lasted my coming
-                                                                    uneasy marked so should. Gravity letters it amongst
-                                                                    herself dearest an windows by. Wooded ladies she basket
-                                                                    season age her uneasy saw. Discourse unwilling am no
-                                                                    described dejection incommode no listening of. Before
-                                                                    nature his parish boy.
-                                                                </p>
-                                                                <div class="ask-question">
-                                                                    <span>Still no luck?</span> <a href="#">Ask a
-                                                                        question</a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
+                                                        @endforelse
                                                     </div>
                                                 </div>
                                             </div>
@@ -430,180 +356,99 @@
                             </div>
                             <!-- End Faq -->
                         </div>
+                        @if ($sales->count() > 0)
+                            <div class="py-2 mb-5">
+                                <div class="title-service">
+                                    <h4 class="m-0">Daftar Pelatihan</h4>
+                                    <div class="dash"></div>
+                                </div>
+                                <div class="blog-area bottom-less">
+                                    <div class="container">
+                                        <div class="blog-items">
+                                            <div class="row">
+                                                @foreach ($sales as $sale)
+                                                    <div class="single-item col-lg-6 col-md-6 wow fadeInUp"
+                                                        data-wow-delay="300ms">
+                                                        <div class="item p-2">
+                                                            <div class="thumb">
+                                                                <img src="{{ asset('assets-home/img/blog/1.jpg') }}"
+                                                                    alt="Thumb">
+                                                            </div>
 
-                        <div class="work-process-area features-area default-padding-bottom py-5">
-                            <div class="container pt-5">
-                                <div class="row">
-                                    <div class="col-lg-8 offset-lg-2">
-                                        <div class="site-heading text-center">
-                                            <h4>Alur Kerja</h4>
-                                            <h3>"Kendalikan Alur Kerja Anda: Strategi Efektif untuk Produktivitas dan Efisiensi"</h3>
-                                            <div class="devider"></div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-lg-12">
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <div class="timeline">
-                                                    <div class="timeline-item">
-                                                        <div class="timeline-number">01</div>
-                                                        <div class="timeline-item-content">
-                                                            <h2>Event Title</h2>
-                                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                                                            <span class="timeline-item-date">March 1, 2024</span>
+                                                            <div class="px-3">
+                                                                <h5>
+                                                                    {{ $sale->name }}
+                                                                </h5>
+                                                                <p>
+                                                                    {{ $sale->description }}
+                                                                </p>
+                                                                <div class="mb-3">
+                                                                    <a class="btn btn-stroke-gradient effect btn-sm"
+                                                                        href="{{ url('layanan/pelatihan') }}">Lihat
+                                                                        Detail</a>
+                                                                    <a class="btn btn-gradient effect btn-sm"
+                                                                        href="">Ajukan Proposal</a>
+                                                                </div>
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                    <div class="timeline-item">
-                                                        <div class="timeline-number">02</div>
-                                                        <div class="timeline-item-content">
-                                                            <h2>Another Event Title</h2>
-                                                            <p>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                                                            <span class="timeline-item-date">March 5, 2024</span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="timeline-item">
-                                                        <div class="timeline-number">03</div>
-                                                        <div class="timeline-item-content">
-                                                            <h2>Another Event Title</h2>
-                                                            <p>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                                                            <span class="timeline-item-date">March 5, 2024</span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="timeline-item">
-                                                        <div class="timeline-number">04</div>
-                                                        <div class="timeline-item-content">
-                                                            <h2>Another Event Title</h2>
-                                                            <p>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                                                            <span class="timeline-item-date">March 5, 2024</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                                @endforeach
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-
-                        </div>
-
-                        <div class="py-2 mb-5">
-                            <div class="title-service">
-                                <h4 class="m-0">Daftar Pelatihan</h4>
-                                <div class="dash"></div>
-                            </div>
-                            <div class="blog-area bottom-less">
-                                <div class="container">
-                                    <div class="blog-items">
-                                        <div class="row">
-                                            <!-- Single Item -->
-                                            <div class="single-item col-lg-6 col-md-6 wow fadeInUp"
-                                                data-wow-delay="300ms">
-                                                <div class="item p-2">
-                                                    <div class="thumb">
-                                                        <img src="{{ asset('assets-home/img/blog/1.jpg') }}"
-                                                            alt="Thumb">
-                                                    </div>
-
-                                                    <div class="px-3">
-                                                        <h5>
-                                                            Financial Planning
-                                                        </h5>
-                                                        <p>
-                                                            Lorem ipsum dolor sit amet consectetur. Amet etiam at diam
-                                                            pharetra ipsum at. Cursus tempus nullam ultrices sollicitudin.
-                                                        </p>
-                                                        <div class="mb-3">
-                                                            <a class="btn btn-stroke-gradient effect btn-sm"
-                                                                href="{{ url('layanan/pelatihan') }}">Lihat
-                                                                Detail</a>
-                                                            <a class="btn btn-gradient effect btn-sm"
-                                                                href="">Ajukan Proposal</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- End Single Item -->
-                                            <!-- Single Item -->
-                                            <div class="single-item col-lg-6 col-md-6 wow fadeInUp"
-                                                data-wow-delay="300ms">
-                                                <div class="item p-2">
-                                                    <div class="thumb">
-                                                        <img src="{{ asset('assets-home/img/blog/1.jpg') }}"
-                                                            alt="Thumb">
-                                                    </div>
-
-                                                    <div class="px-3">
-                                                        <h5>
-                                                            Financial Planning
-                                                        </h5>
-                                                        <p>
-                                                            Lorem ipsum dolor sit amet consectetur. Amet etiam at diam
-                                                            pharetra ipsum at. Cursus tempus nullam ultrices sollicitudin.
-                                                        </p>
-                                                        <div class="mb-3">
-                                                            <a class="btn btn-stroke-gradient effect btn-sm"
-                                                                href="{{ url('layanan/pelatihan') }}">Lihat
-                                                                Detail</a>
-                                                            <a class="btn btn-gradient effect btn-sm"
-                                                                href="">Ajukan Proposal</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- End Single Item -->
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        @endif
 
                         <div class="py-2 mb-5">
                             <div class="title-service">
                                 <h4 class="m-0">Mitra Kami</h4>
                                 <div class="dash"></div>
+
                             </div>
 
                         </div>
-                        <div class="py-2 mb-5">
-                            <div class="title-service">
-                                <h4 class="m-0">Prosedur</h4>
-                                <div class="dash"></div>
 
-                                <div class="container">
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="timeline-container">
-                                                <div class="timeline">
-                                                    <div class="timeline-item">
-                                                        <div class="timeline-content">
-                                                            <h4 class="timeline-title">Event 1</h4>
-                                                            <p class="timeline-date">Date 1</p>
-                                                            <p class="timeline-description">Description 1</p>
-                                                        </div>
+                        @if ($procedures->count() > 0)
+                            <div class="py-2 mb-5">
+                                <div class="title-service">
+                                    <h4 class="m-0">Prosedur</h4>
+                                    <div class="dash"></div>
+
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="timeline-container">
+                                                    <div class="timeline">
+                                                        @foreach ($procedures as $procedure)
+                                                            <div class="timeline-item">
+                                                                <div class="timeline-number">
+                                                                    {{ str_pad($loop->iteration, 2, '0', STR_PAD_LEFT) }}
+                                                                </div>
+                                                                <div class="timeline-item-content">
+                                                                    <h2>{{ $procedure->title }} </h2>
+                                                                    <p>{{ $procedure->description }}</p>
+                                                                    <span
+                                                                        class="timeline-item-date">{{ \carbon\Carbon::parse(now())->locale('id_ID')->isoFormat('dddd, D MMMM YYYY') }}</span>
+                                                                </div>
+                                                            </div>
+                                                        @endforeach
+                                                        <!-- Tambahkan lebih banyak event di sini -->
                                                     </div>
-                                                    <div class="timeline-item">
-                                                        <div class="timeline-content">
-                                                            <h4 class="timeline-title">Event 2</h4>
-                                                            <p class="timeline-date">Date 2</p>
-                                                            <p class="timeline-description">Description 2</p>
-                                                        </div>
-                                                    </div>
-                                                    <!-- Tambahkan lebih banyak event di sini -->
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
+
+                                    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+                                    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+                                    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+
                                 </div>
 
-                                <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-                                <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-                                <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-
-
                             </div>
-
-                        </div>
+                        @endif
 
                         <div class="py-2 mb-5">
                             <div class="title-service">
@@ -673,7 +518,8 @@
                             <div class="content">
                                 <ul>
                                     @foreach ($services as $service)
-                                        <li class=""><a href="/layanan/{{ $service->slug }}">{{ $service->name }}</a></li>
+                                        <li class=""><a
+                                                href="/layanan/{{ $service->slug }}">{{ $service->name }}</a></li>
                                     @endforeach
                                 </ul>
                             </div>

@@ -30,4 +30,9 @@ class SaleRepository extends BaseRepository implements SaleInterface
     {
         return $this->model->query()->findOrFail($id)->delete($id);
     }
+
+    public function getByServiceId(mixed $id): mixed
+    {
+        return $this->model->query()->where('service_id', $id)->get();
+    }
 }

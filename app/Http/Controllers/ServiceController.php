@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Contracts\Interfaces\FaqInterface;
+use App\Contracts\Interfaces\ProcedureInterface;
 use App\Contracts\Interfaces\ProductInterface;
+use App\Contracts\Interfaces\SaleInterface;
 use App\Contracts\Interfaces\ServiceInterface;
 use App\Contracts\Interfaces\TestimonialInterface;
 use App\Contracts\Repositories\FaqRepository;
@@ -26,15 +28,19 @@ class ServiceController extends Controller
     private TestimonialRepository $testimoni;
     private ProductRepository $product;
     private FaqInterface $faq;
+    private ProcedureInterface $procedure;
+    private SaleInterface $sale;
 
-    public function __construct(ServiceInterface $service , ServiceService $serviceService, Termscondition $termscondition, TestimonialInterface $testimonial, FaqInterface $faq, ProductRepository $product)
+    public function __construct(ServiceInterface $service , ServiceService $serviceService, Termscondition $termscondition, TestimonialInterface $testimonial, FaqInterface $faq, ProductRepository $product, ProcedureInterface $procedure, SaleInterface $sale)
     {
+        $this->procedure = $procedure;
         $this->service = $service ;
         $this->termscondition = $termscondition;
         $this->serviceService = $serviceService;
         $this->testimonial = $testimonial;
         $this->faq = $faq;
         $this->product = $product;
+        $this->sale = $sale;
 
     }
     /**
@@ -92,10 +98,14 @@ class ServiceController extends Controller
     {
         $slugs = $this->service->slug($slug);
         $services = $this->service->get();
-        $products = $this->product->getByServiceId($service->id);
-        $testimonials = $this->testimonial->getByServiceId($service->id);
+        $products = $this->product->getByServiceId($slugs->id);
+        $testimonials = $this->testimonial->getByServiceId($slugs->id);
+        $faqs = $this->faq->ServiceProductShow('service_id',$slugs->id);
+        $procedures = $this->procedure->getByServiceId($slugs->id);
+        $sales = $this->sale->get();
+        // dd($procedures);
 
-        return view('landing.service.service-detail', compact('slugs' , 'services', 'products','testimonials'));
+        return view('landing.service.service-detail', compact('slugs' , 'services', 'products','testimonials', 'faqs','procedures', 'sales'));
     }
     /**
      * Update the specified resource in storage.

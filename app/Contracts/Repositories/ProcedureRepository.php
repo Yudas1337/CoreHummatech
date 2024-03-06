@@ -34,4 +34,9 @@ class ProcedureRepository extends BaseRepository implements ProcedureInterface
         return $this->model->query()->findOrFail($id);
     }
 
+    public function getByServiceId(mixed $id): mixed
+    {
+        return $this->model->query()->where('service_id', $id)->get();
+    }
+
 }
