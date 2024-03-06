@@ -7,6 +7,40 @@
 
 @section('style')
     <style>
+         .subtitle {
+            text-transform: uppercase;
+            font-weight: 600;
+            color: #1273eb;
+            margin-top: -5px;
+            display: inline-block;
+            background: linear-gradient(90deg, rgba(18, 115, 235, 1) 30%, rgba(4, 215, 242, 1) 100%);
+            -webkit-background-clip: text;
+            -moz-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .about-us-area .thumb {
+            padding-left: unset;
+            /* padding-right: 50px; */
+        }
+
+        .about-us-area .thumb::after {
+            right: 0;
+            top: 5rem !important;
+            left: unset !important;
+        }
+
+        .about-us-area .container {
+            position: relative;
+        }
+
+        .about-us-area .about-triangle {
+            position: absolute;
+            z-index: -1;
+            top: -7.5rem;
+            right: -7.5rem;
+        }
         #owl-carousel-mitra::before,
         #owl-carousel-mitra::after {
             position: absolute;
@@ -63,60 +97,36 @@
 
             <!-- Wrapper for slides -->
             <div class="carousel-inner carousel-zoom">
-                @forelse ($section as $section)
-                <div class="carousel-item active">
-                    <div class="slider-thumb bg-fixed" style="background-image: url({{ asset('storage/' . $section->image) }});"></div>
-                    <div class="box-table">
-                        <div class="box-cell shadow dark">
-                            <div class="container">
-                                <div class="row">
-                                    <div class="col-lg-10 offset-lg-1">
-                                        <div class="content">
-                                            <h2>{{$section->title}}</h2>
-                                            <p class="animated slideInRight">
-                                                {{$section->subtitle}}
-                                            </p>
-                                            @if (!empty($section->link))
-                                                <a data-animation="animated zoomInUp" class="btn btn-gradient effect btn-md" href="{{ $section->link }}">
-                                                    Lihat Selengkapnya
-                                                </a>
-                                            @endif
+                @forelse ($section as $key => $sectionItem)
+                    <div class="carousel-item {{ $key === 0 ? 'active' : '' }}">
+                        <div class="slider-thumb bg-fixed" style="background-image: url({{ asset('storage/' . $sectionItem->image) }});"></div>
+                        <div class="box-table">
+                            <div class="box-cell shadow dark">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-lg-10 offset-lg-1">
+                                            <div class="content">
+                                                <h2>{{ $sectionItem->title }}</h2>
+                                                <p class="animated slideInRight">
+                                                    {{ $sectionItem->subtitle }}
+                                                </p>
+                                                @if (!empty($sectionItem->link))
+                                                    <a data-animation="animated zoomInUp" class="btn btn-gradient effect btn-md" href="{{ $sectionItem->link }}">
+                                                        Lihat Selengkapnya
+                                                    </a>
+                                                @endif
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="carousel-item">
-                    <div class="slider-thumb bg-fixed" style="background-image: url({{ asset('storage/' . $section->image) }});"></div>
-                    <div class="box-table">
-                        <div class="box-cell shadow dark">
-                            <div class="container">
-                                <div class="row">
-                                    {{-- <span>Hummatech </span> --}}
-                                    <div class="col-lg-10 offset-lg-1">
-                                        <div class="content">
-                                            <h2 data-animation="animated slideInDown">{{$section->title}}</h2>
-                                            <p class="animated slideInRight">
-                                                {{$section->subtitle}}
-                                            </p>
-                                            @if (!empty($section->link))
-                                                <a data-animation="animated zoomInUp" class="btn btn-gradient effect btn-md" href="{{ $section->link }}">
-                                                    Lihat Selengkapnya
-                                                </a>
-                                            @endif
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
                 @empty
 
                 @endforelse
             </div>
+
             <!-- End Wrapper for slides -->
 
             <!-- Left and right controls -->
@@ -132,40 +142,31 @@
     <!-- End Banner -->
 
     <!-- Start About Area -->
-    <div class="about-us-area default-padding-bottom mt-5">
+    <div class="about-us-area default-padding">
         <div class="container">
+            <img src="{{ asset('assets-home/img/about-polygon.svg') }}" class="about-triangle" alt="Polygon" />
             <div class="about-items">
-
-                @forelse ($profile as $profil)
-
                 <div class="row align-center">
-                    <div class="col-lg-6">
-                        <div class="thumb wow fadeInUp">
-                            <img src="{{ asset('storage/' . $profil->image) }}" alt="Thumb">
+                    <div class="col-lg-6 info">
+                        <h4 class="subtitle">Profile Perusahaan</h4>
+                        @forelse ($profile as $profile)
+                            <h2>{{ $profile->subtitle }}</h2>
+                            <p>
+                                {!! Str::limit($profile->description, 200) !!}
+                            </p>
 
+                            <a class="btn btn-gradient effect btn-md" href="/about-us">Selengkapnya</a>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="thumb">
+                            <img src="{{ asset('storage/' . $profile->image) }}" alt="Thumb">
                         </div>
                     </div>
-                    <div class="col-lg-6 info wow fadeInRight">
-                        <h2>{{$profil->title}}</h2>
-                        <p>{{$profil->description}}
-                        </p>
-                        <a data-animation="animated zoomInUp" class="btn btn-gradient effect btn-md" href="{{url('/about-us')}}">Selengkapnya
-                        </a>
-                    </div>
-                </div>
 
                 @empty
-
-                <div class="col-12">
-                    <div class="d-flex justify-content-center">
-                        <img src="{{ asset('nodata-gif.gif') }}" alt="" width="800px">
-                    </div>
-                    <h4 class="text-center text-dark" style="font-weight:600">
-                        Belum ada Profil
-                    </h4>
+                    <p>Belum ada profile perusahaan</p>
+                    @endforelse
                 </div>
-
-                @endforelse
             </div>
         </div>
     </div>
@@ -201,7 +202,9 @@
                             <div class="info">
                                 <h4>{{$service->name}}</h4>
                                 <p>
-                                   {{$service->description}}
+                                    {{ Str::limit($service['description'], 100) }}
+
+                                   {{-- {{$service->description}} --}}
                                 </p>
                                 <div class="bottom">
                                     @if (!empty($service->link))
@@ -260,17 +263,14 @@
                                         <h4 class="text-center text-dark mt-3" style="font-weight:600">
                                             {{$produk->name}}
                                         </h4>
+
                                         <p class="text-dark">
-                                            {{$produk->description}}
+                                            {{ Str::limit($produk['description'], 30) }}
                                         </p>
                                         <div class="bottom">
-                                            @if (!empty($produk->link))
-                                                <a href="{{ $produk->link }}" class="text-primary">
-                                                    <i class="fas fa-arrow-right"></i> Lihat Selengkapnya
-                                                </a>
-                                            @endif
-                                            {{-- <a href="" class="text-primary"><i class="fas fa-arrow-right"></i>
-                                                Kunjungi website</a> --}}
+                                            <a href="" class="text-primary" target="_blank">
+                                                <i class="fas fa-arrow-right"></i> Lihat Selengkapnya
+                                            </a>
                                         </div>
                                     </div>
                                 </div>
@@ -330,7 +330,7 @@
             <div class="row">
                 <div class="col-lg-8 offset-lg-2">
                     <div class="site-heading text-center mt-4">
-                        <h4>BERITA TENTANG PERUSAHAAN KAMI</h4>
+                        <h4>BERITA</h4>
                         <h3>Melangkah Ke Depan: Kabar Terbaru Mengenai Perkembangan Perusahaan Kami</h3>
                         <div class="devider"></div>
                     </div>
@@ -392,12 +392,21 @@
                                                                         <h4>
                                                                             <a href="blog-single-with-sidebar.html">{{ $newsItem['title'] }}</a>
                                                                         </h4>
-                                                                        <p class="line-clamp">{!! Str::limit($newsItem['description'], 30) !!}
+                                                                        <p class="line-clamp">{!! Str::limit($newsItem['description'], 80) !!}
                                                                         </p>
-                                                                        <a href="/berita" class="btn btn-outline-primary rounded-pill py-2 px-4 text-dark">Baca Selengkapnya</a>
+                                                                        <a href="/berita/{{ $newsItem->slug }}" class="btn btn-outline-primary rounded-pill py-2 px-4 text-dark">Baca Selengkapnya</a>
                                                                     </div>
                                                                 </div>
                                                             </div>
+
+                                                                <div class="col-md-12 pagi-area text-center mb-5 mt-3">
+                                                                    <a class="text-primary" href="">
+                                                                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24">
+                                                                            <path fill="currentColor"
+                                                                                d="M16.15 13H5q-.425 0-.712-.288T4 12q0-.425.288-.712T5 11h11.15L13.3 8.15q-.3-.3-.288-.7t.288-.7q.3-.3.713-.312t.712.287L19.3 11.3q.15.15.213.325t.062.375q0 .2-.062.375t-.213.325l-4.575 4.575q-.3.3-.712.288t-.713-.313q-.275-.3-.288-.7t.288-.7z" />
+                                                                        </svg> Lihat Berita Lainnya
+                                                                    </a>
+                                                                </div>
                                                         @endif
                                                     @endforeach
                                                 </div>
@@ -412,21 +421,12 @@
                                 </div>
                                 <h4 class="text-center text-dark" style="font-weight:600">
                                     Belum ada Berita
-                                </h4>
+                                </h4><br>
                             </div>
                             @endif
 
                             <!-- Pagination -->
-                            <div class="row">
-                                <div class="col-md-12 pagi-area text-center mb-5 mt-3">
-                                    <a class="text-primary" href="">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24">
-                                            <path fill="currentColor"
-                                                d="M16.15 13H5q-.425 0-.712-.288T4 12q0-.425.288-.712T5 11h11.15L13.3 8.15q-.3-.3-.288-.7t.288-.7q.3-.3.713-.312t.712.287L19.3 11.3q.15.15.213.325t.062.375q0 .2-.062.375t-.213.325l-4.575 4.575q-.3.3-.712.288t-.713-.313q-.275-.3-.288-.7t.288-.7z" />
-                                        </svg> Lihat Berita Lainnya
-                                    </a>
-                                </div>
-                            </div>
+
                         </div>
                     </div>
                 </div>
