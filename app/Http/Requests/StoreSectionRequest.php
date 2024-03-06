@@ -24,7 +24,7 @@ class StoreSectionRequest extends FormRequest
         return [
             'image' => 'required',
             'title' => 'required',
-            'subtitle' => 'required',
+            'subtitle' => 'required|max:255',
             'link' => 'nullable'
         ];
     }

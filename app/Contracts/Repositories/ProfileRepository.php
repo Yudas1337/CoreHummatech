@@ -13,7 +13,7 @@ class ProfileRepository extends BaseRepository implements ProfileInterface
 
     public function get(): mixed
     {
-        return $this->model->query()->get();
+        return $this->model->query()->first();
     }
 
     public function store(array $data): mixed
@@ -30,7 +30,7 @@ class ProfileRepository extends BaseRepository implements ProfileInterface
     }
     public function show(mixed $id): mixed
     {
-        return $this->model->query()->findOrFail($id);
+        return $this->model->query()->firstget($id);
     }
 }
 
