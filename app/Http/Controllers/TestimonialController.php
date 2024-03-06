@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Contracts\Interfaces\ProductInterface;
 use App\Contracts\Interfaces\ServiceInterface;
 use App\Contracts\Interfaces\TestimonialInterface;
+use App\Http\Requests\StoreTestimonialProductRequest;
 use App\Http\Requests\StoreTestimonialRequest;
 use App\Http\Requests\UpdateTestimonialRequest;
 use App\Models\Testimonial;
@@ -15,12 +17,14 @@ class TestimonialController extends Controller
     private TestimonialInterface $testimonial;
     private TestimonialService $service;
     private ServiceInterface $serviceData;
+    private ProductInterface $productData;
 
-    public function __construct(TestimonialInterface $testimonial, TestimonialService $testimonialService, ServiceInterface $serviceData)
+    public function __construct(TestimonialInterface $testimonial, TestimonialService $testimonialService, ServiceInterface $serviceData, ProductInterface $productData)
     {
         $this->service = $testimonialService;
         $this->testimonial = $testimonial;
         $this->serviceData = $serviceData;
+        $this->productData = $productData;
         $this->middleware('auth');
     }
 
@@ -31,7 +35,8 @@ class TestimonialController extends Controller
     {
         $testimonials = $this->testimonial->customPaginate($request, 10);
         $services = $this->serviceData->get();
-        return view('admin.pages.testimonial.index', compact('testimonials','services'));
+        $products = $this->productData->get();
+        return view('admin.pages.testimonial.index', compact('testimonials','services','products'));
     }
 
     /**
@@ -48,6 +53,13 @@ class TestimonialController extends Controller
     public function store(StoreTestimonialRequest $request)
     {
         $data = $this->service->store($request);
+        $this->testimonial->store($data);
+        return back()->with('success', 'Testimoni berhasil ditambahkan');
+    }
+
+    public function storeProduct(StoreTestimonialProductRequest $request)
+    {
+        $data = $this->service->storeProduct($request);
         $this->testimonial->store($data);
         return back()->with('success', 'Testimoni berhasil ditambahkan');
     }

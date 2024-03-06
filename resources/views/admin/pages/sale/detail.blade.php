@@ -41,7 +41,7 @@
                                         <div class="pricingtable-header">
                                             <h3 class="title">{{ $salesPackage->name }}</h3>
                                         </div>
-                                        <div class="price-value"><span class="amount" style="font-size: 12px">Rp. {{ number_format($salesPackage->price, 0,',','.') }}</span><span class="duration">/mo</span></div>
+                                        <div class="price-value"><span class="amount" style="font-size: 12px">Rp. {{ number_format($salesPackage->price, 0,',','.') }}</span><span class="duration">/bulan</span></div>
                                         <div class="text-start p-4 mx-2">
                                             <p>{{ $salesPackage->description }}</p>
                                         </div>

@@ -10,7 +10,7 @@ use App\Contracts\Interfaces\Eloquent\ShowInterface;
 use App\Contracts\Interfaces\Eloquent\StoreInterface;
 use App\Contracts\Interfaces\Eloquent\UpdateInterface;
 
-interface TestimonialInterface extends GetInterface , StoreInterface, UpdateInterface, DeleteInterface, ServiceProductShowInterface, GetByServiceIdInterface
+interface TestimonialInterface extends GetInterface , StoreInterface, UpdateInterface, DeleteInterface, ServiceProductShowInterface, GetByServiceIdInterface, CustomPaginationInterface
 {
 
 }
