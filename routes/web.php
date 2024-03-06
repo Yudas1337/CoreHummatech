@@ -32,6 +32,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Auth::routes();
+Route::get('about-us', [AboutUsController::class, 'index']);
 Route::get('berita', [NewsController::class, 'news']);
 Route::get('home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/', function () {
@@ -66,7 +67,6 @@ Route::resource('faq', FaqController::class);
 Route::resource('terms_condition', TermsconditionController::class);
 Route::get('vision-mision' , [VisionAndMisionController::class ,'index'])->name('vision.mision');
 Route::get('hero-section', [SectionController::class , 'index'])->name('hero.section');
-Route::get('/about-us', [AboutUsController::class, 'index']);
 Route::get('{slugService}', [ServiceController::class, 'ShowService']);
 
 
