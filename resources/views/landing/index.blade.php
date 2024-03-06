@@ -88,6 +88,27 @@
             }
         }
     </style>
+<style>
+    @media (max-width: 767px) {
+        .thumb {
+            text-align: center;
+        }
+
+        .thumb img {
+            max-width: 50%;
+            height: auto;
+            margin: 0 auto; /* Center the image horizontally */
+        }
+    }
+</style>
+<style>
+    @media (max-width: 767px) {
+        .team-item img {
+            max-width: 60%; /* Set the maximum width as needed */
+            height: auto;
+        }
+    }
+</style>
 @endsection
 @section('content')
     <!-- Start Banner
@@ -144,27 +165,27 @@
     <!-- Start About Area -->
     <div class="about-us-area default-padding">
         <div class="container">
-            {{-- <div class="background-img" style="background-image: url('{{ asset('assets-home/img/about-polygon.svg') }}');"></div> --}}
-            <img src="{{ asset('assets-home/img/about-polygon.svg') }}" class="about-triangle" alt="Polygon" />
+            <img src="{{ asset('assets-home/img/about-polygon.svg') }}" class="about-triangle d-none d-md-block" alt="Polygon" />
             <div class="about-items">
                 <div class="row">
                     <div class="col-md-6 info">
-                        <h4 class="subtitle">Profile Perusahaan</h4>
                         @forelse ($profile as $profile)
-                            <h2 class="text-break">{{ $profile->subtitle }}</h2>
-                            <p>
+                            <h2 class="text-break pt-5">{{ $profile->subtitle }}</h2>
+                            <p class="text-break">
                                 {!! Str::limit($profile->description, 200) !!}
                             </p>
                             <a class="btn btn-gradient effect btn-md" href="/about-us">Selengkapnya</a>
                             @empty
                             <p>Belum ada profile perusahaan</p>
-                            @endforelse
+                        @endforelse
+                    </div>
+                    <div class="col-md-6 order-first order-md-last">
+                        <div class="thumb">
+                            <img src="{{ asset('storage/' . $profile->image) }}" alt="Thumb" style="max-width: 100%; max-height: 450px;">
                         </div>
-                        <div class="col-md-6">
-                            <div class="thumb">
-                                <img src="{{ asset('storage/' . $profile->image) }}" alt="Thumb">
-                            </div>
-                        </div>
+                    </div>
+
+
                 </div>
             </div>
         </div>
@@ -313,14 +334,14 @@
                                     <img src="{{ asset('storage/' . $mitra->image) }}" alt="Mitra Image" class="img-fluid">
                                 </div>
                             @empty
-                            <div class="col-12">
-                                <div class="d-flex justify-content-center">
-                                    <img src="{{ asset('nodata-gif.gif') }}" alt="" width="800px">
+                                <div class="col-12">
+                                    <div class="d-flex justify-content-center">
+                                        <img src="{{ asset('nodata-gif.gif') }}" alt="" width="800px">
+                                    </div>
+                                    <h4 class="text-center text-dark" style="font-weight:600">
+                                        Belum ada Mitra
+                                    </h4>
                                 </div>
-                                <h4 class="text-center text-dark" style="font-weight:600">
-                                    Belum ada Mitra
-                                </h4>
-                            </div>
                             @endforelse
                         </div>
                     </div>
