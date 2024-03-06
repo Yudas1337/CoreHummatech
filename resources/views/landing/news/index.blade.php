@@ -58,7 +58,7 @@ style="background-image: url({{ asset('assets-home/img/banner/10.jpg') }});">
       </div>
   </div>
 
-<div class="blog-area full-blog blog-standard full-blog grid-colum  mb-5" >
+<div class="blog-area full-blog blog-standard full-blog grid-colum  mb-5 mt-3" >
     <div class="container">
         <div class="blog-items content-less">
             <div class="blog-content">
