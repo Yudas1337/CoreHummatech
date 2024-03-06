@@ -66,7 +66,7 @@
                                     </div>
                                 </div>
                                 <div class="d-flex justify-content-end gap-2">
-                                    <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">Cancel</button>
+                                    <button class="btn btn-light-danger" type="button" data-bs-dismiss="modal">Tutup</button>
                                     <button class="btn btn-primary" type="submit">Tambah</button>
                                 </div>
                             </form>
@@ -81,7 +81,7 @@
                                     <input class="form-control" name="image" id="formFile" type="file" />
                                 </div>
                                 <div class="d-flex justify-content-end gap-2">
-                                    <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">Cancel</button>
+                                    <button class="btn btn-light-danger" type="button" data-bs-dismiss="modal">Tutup</button>
                                     <button class="btn btn-primary" type="submit">Tambah</button>
                                 </div>
                             </form>

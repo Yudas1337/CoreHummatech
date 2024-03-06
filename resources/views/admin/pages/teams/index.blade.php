@@ -79,7 +79,7 @@
                 </div>
                 <div class="modal-footer">
                     <div class="d-flex justify-content-end">
-                        <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">Cancel</button>
+                        <button class="btn btn-light-danger" type="button" data-bs-dismiss="modal">Tutup</button>
                         <button class="btn btn-primary" type="submit">Tambah</button>
                     </div>
                 </div>
@@ -167,7 +167,7 @@
                     </div>
                     <div class="modal-footer">
                         <div class="d-flex justify-content-end">
-                            <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">Cancel</button>
+                            <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">Tutup</button>
                             <button class="btn btn-primary" type="submit">Tambah</button>
                         </div>
                     </div>
