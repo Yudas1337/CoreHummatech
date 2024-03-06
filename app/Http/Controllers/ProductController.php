@@ -142,8 +142,9 @@ class ProductController extends Controller
 
     public function showproduct(Product $product)
     {
-        $testimonial = $this->testimonial->get()->where('product_id', $product->id);
-        $faqs = $this->faq->get();
+        $testimonial = $this->testimonial->get();
+        $id  = $product->id;
+        $faqs = $this->faq->ServiceProductShow('product_id', $id);
         return view('landing.product.product-detail', compact('product', 'testimonial', 'faqs'));
     }
 }

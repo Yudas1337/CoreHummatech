@@ -18,6 +18,11 @@ class FaqRepository extends BaseRepository implements FaqInterface
         return $this->model->query()->paginate($pagination);
     }
 
+    public function show(mixed $id): mixed
+    {
+        return $this->model->query()->where('product_id',$id)->get();
+    }
+
     public function get(): mixed
     {
         return $this->model->query()->get();
@@ -34,5 +39,10 @@ class FaqRepository extends BaseRepository implements FaqInterface
     public function delete(mixed $id): mixed
     {
         return $this->model->query()->findOrFail($id)->delete($id);
+    }
+
+    public function ServiceProductShow(mixed $relation, mixed $id): mixed
+    {
+        return $this->model->query()->where($relation, $id)->get();
     }
 }

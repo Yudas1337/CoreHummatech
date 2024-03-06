@@ -12,6 +12,11 @@ class TestimonialRepository extends BaseRepository implements TestimonialInterfa
         $this->model = $testimonial;
     }
 
+    public function get(): mixed
+    {
+        return $this->model->query()->get();
+    }
+
     public function customPaginate(Request $request, int $pagination = 10): mixed
     {
         return $this->model->query()->paginate($pagination);
@@ -30,5 +35,10 @@ class TestimonialRepository extends BaseRepository implements TestimonialInterfa
     public function delete(mixed $id): mixed
     {
         return $this->model->query()->findOrFail($id)->delete($id);
+    }
+
+    public function ServiceProductShow(mixed $relation, mixed $id): mixed
+    {
+        return $this->model->query()->where($relation, $id)->get();
     }
 }
