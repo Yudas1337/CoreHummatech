@@ -89,15 +89,15 @@
             </div>
         </div>
     </div>
-    <div class="thumb-services-area inc-thumbnail default-padding bottom-less">
+    <div class="thumb-services-area inc-thumbnail default-padding bottom-less ps-5">
         @forelse ($products as $key => $product)
             @if ($key % 2 === 1)
                 <div class="container">
                     <div class="about-items">
                         <div class="row align-center">
-                            <div class="col-lg-5">
+                            <div class="col-lg-6">
                                 <div class="thumb">
-                                    <img src="{{ asset('storage/' . $product->image) }}" alt="Thumb">
+                                    <img src="{{ asset('storage/' . $product->image) }}" width="50%">
                                 </div>
                             </div>
                             <div class="col-lg-6 info">
@@ -107,7 +107,7 @@
                                 </p>
                                 <a class="btn btn-stroke-gradient effect btn-md" href="{{ route('detail.product', $product->slug) }}">Lihat
                                     Detail</a>
-                                <a class="btn btn-gradient effect btn-md" href="{{ $product->link }}">Kunjungi
+                                <a class="btn btn-gradient effect btn-md" target="_blank" href="{{ $product->link }}">Kunjungi
                                     website</a>
                             </div>
                         </div>
@@ -128,12 +128,12 @@
 
                                 <a class="btn btn-stroke-gradient effect btn-md text-gradient" href="{{ route('detail.product', $product->slug) }}">Lihat
                                     Detail</a>
-                                <a class="btn btn-gradient effect btn-md" href="{{ $product->link }}">Kunjungi
+                                <a class="btn btn-gradient effect btn-md" target="_blank" href="{{ $product->link }}">Kunjungi
                                     website</a>
                             </div>
                             <div class="col-lg-5">
                                 <div class="thumb">
-                                    <img src="{{ asset('storage/'.$product->image) }}" alt="Thumb">
+                                    <img src="{{ asset('storage/'.$product->image) }}" class="w-50">
                                 </div>
                             </div>
                         </div>

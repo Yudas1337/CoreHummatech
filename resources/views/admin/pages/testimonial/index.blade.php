@@ -79,7 +79,7 @@
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <div class="d-flex justify-content-between">
+                    <div class="d-flex justify-content-between w-100">
                         <h5 class="modal-title fw-semibold" id="exampleModalLabel">Tambah Testimoni</h5>
                         <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
