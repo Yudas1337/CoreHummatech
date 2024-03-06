@@ -235,7 +235,7 @@
                             <p>{!! Str::limit($vacancyData[0]->description, 200) !!}</p>
 
                             <a class="btn btn-gradient effect btn-md" target="_blank"
-                                href="{{ $vacancyData[0]->link }}">Lihat Selengkapnya</a>
+                                href="{{ $vacancyData[0]->link }}">Kunjungi Website</a>
                         </div>
                         <div class="col-lg-6 d-none d-lg-block d-md-none">
                             <div class="thumb">
