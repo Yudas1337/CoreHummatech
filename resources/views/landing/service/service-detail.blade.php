@@ -651,7 +651,7 @@
                         </div>
                         <!-- Single Widget -->
                         <div class="single-widget brochure">
-                            <h4 class="widget-title">Brochure</h4>
+                            <h4 class="widget-title">Proposal</h4>
                             <ul>
                                 <li><a href="#"><i class="fas fa-file-pdf"></i> Download Brochure </a></li>
                                 <li><a href="#"><i class="fas fa-file-pdf"></i> Company Details </a></li>
