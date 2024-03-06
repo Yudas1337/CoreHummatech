@@ -82,9 +82,9 @@
         .timeline-item-content {
             position: relative;
             width: 45%;
-            padding: 20px;
             border-radius: 5px;
             float: left;
+            padding-right: 3rem;
         }
 
         .timeline-item-content h2 {
@@ -118,6 +118,8 @@
         .timeline .timeline-item:nth-child(even) .timeline-item-content {
             float: right;
             text-align: right;
+            padding-left: 3rem;
+            padding-right: 0;
         }
 
         .timeline .timeline-item:nth-child(even) .timeline-item-content::before {
@@ -179,32 +181,29 @@
         </div>
     </div>
 
+    @if($vacancyData->count() > 0)
     <div class="about-us-area default-padding">
         <div class="container">
             <img src="{{ asset('assets-home/img/about-polygon.svg') }}" class="about-triangle" alt="Polygon" />
             <div class="about-items">
-                @if ($profileData->count() > 0)
-                    <div class="row align-center">
-                        <div class="col-lg-6 info">
-                            <h4 class="subtitle">{{ $profileData[0]->title }}</h4>
-                            <h2>{{ $profileData[0]->subtitle }}</h2>
-                            <p>{!! Str::limit($profileData[0]->description, 200) !!}</p>
+                <div class="row align-center">
+                    <div class="col-lg-6 info">
+                        <h4 class="subtitle">{{ $vacancyData[0]->subtitle }}</h4>
+                        <h2>{{ $vacancyData[0]->title }}</h2>
+                        <p>{!! Str::limit($vacancyData[0]->description, 200) !!}</p>
 
-                            @if ($profileData[0]->proposal)
-                                <a class="btn btn-gradient effect btn-md"
-                                    href="{{ Storage::url($profileData[0]->proposal) }}">Unduh Portofolio</a>
-                            @endif
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="thumb">
-                                <img src="{{ Storage::url($profileData[0]->image) }}" alt="Thumb">
-                            </div>
+                        <a class="btn btn-gradient effect btn-md" target="_blank" href="{{ $vacancyData[0]->link }}">Lihat Selengkapnya</a>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="thumb">
+                            <img src="{{ Storage::url($vacancyData[0]->image) }}" alt="Thumb" />
                         </div>
                     </div>
-                @endif
+                </div>
             </div>
         </div>
     </div>
+    @endif
 
     <div class="work-process-area features-area default-padding-bottom py-5">
         <div class="container pt-5">

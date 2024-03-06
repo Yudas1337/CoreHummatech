@@ -25,6 +25,7 @@ use App\Http\Controllers\StructureController;
 use App\Http\Controllers\TeamController;
 use App\Http\Controllers\TermsconditionController;
 use App\Http\Controllers\TestimonialController;
+use App\Http\Controllers\VacancyController;
 use App\Http\Controllers\VisionAndMisionController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -226,13 +227,16 @@ Route::get('layanan/pelatihan', function () {
 });
 
 Route::get('/about-us', [AboutUsController::class, 'index']);
+Route::controller(VacancyController::class)->name('vacancy.')->prefix('/vacancy')->group(function() {
+    Route::get('/', 'index')->name('index');
+    Route::post('/store', 'store')->name('store');
+    Route::put('/{vacancy}/update', 'update')->name('update');
+});
 
 Route::post('setting/structure/create', [StructureController::class, 'store'])->name('structure.create');
 
 Route::get('setting/structure', [StructureController::class, 'index'])->name('structure.index');
 Route::get('berita', [NewsController::class, 'news']);
-
-
 
 require_once __DIR__ . '/kader.php';
 require_once __DIR__ . '/farah.php';

@@ -3,21 +3,22 @@
 namespace App\Http\Controllers;
 
 use App\Contracts\Interfaces\ProfileInterface;
+use App\Contracts\Interfaces\VacancyInterface;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 
 class HomeVacancyController extends Controller
 {
-    private ProfileInterface $profile;
+    private VacancyInterface $vacancyData;
 
     /**
      * Constructor for the class.
      *
-     * @param ProfileInterface $profiles the profile data from models.
+     * @param VacancyInterface $vacancyInterface the data vacancy from database.
      */
-    public function __construct(ProfileInterface $profiles)
+    public function __construct(VacancyInterface $vacancyInterface)
     {
-        $this->profile = $profiles;
+        $this->vacancyData = $vacancyInterface;
     }
 
     /**
@@ -27,8 +28,8 @@ class HomeVacancyController extends Controller
      */
     public function __invoke(): View
     {
-        $profileData = $this->profile->get();
+        $vacancyData = $this->vacancyData->get();
 
-        return view('landing.vacancy.index', compact('profileData'));
+        return view('landing.vacancy.index', compact('vacancyData'));
     }
 }
