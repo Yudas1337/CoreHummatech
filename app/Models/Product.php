@@ -14,4 +14,19 @@ class Product extends Model
     {
         return $this->hasMany(ProductFeature::class);
     }
+
+    public function service()
+    {
+        return $this->belongsTo(Service::class);
+    }
+
+    public function galery()
+    {
+        return $this->hasMany(Gallery::class);
+    }
+
+    public function faq()
+    {
+        return $this->hasMany(Faq::class);
+    }
 }

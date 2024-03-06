@@ -16,10 +16,16 @@ class Faq extends Model
         'question',
         'answer',
         'service_id',
+        'product_id',
     ];
 
     public function service()
     {
         return $this->belongsTo(Service::class);
+    }
+
+    public function product()
+    {
+        return $this->belongsTo(Product::class);
     }
 }

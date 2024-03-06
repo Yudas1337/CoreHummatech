@@ -18,6 +18,7 @@
                         <form class="form-bookmark needs-validation" action="{{ route('productCompany.store') }}" method="POST" id="bookmark-form"
                             novalidate="" enctype="multipart/form-data">
                             @csrf
+                            <input type="hidden" name="type" value="company">
                             <div class="row g-2">
                                 <div class="form-group mb-3 mt-0 col-md-12">
                                     <label for="name">Nama Produk</label>
@@ -73,6 +74,7 @@
                         <form class="form-bookmark needs-validation" action="{{ route('product.store') }}" method="POST" id="bookmark-form"
                             novalidate="" enctype="multipart/form-data">
                             @csrf
+                            <input type="hidden" name="type" value="service">
                             <div class="row g-2">
                                 <div class="form-group mb-3 mt-0 col-md-12">
                                     <label for="name">Nama Produk</label>

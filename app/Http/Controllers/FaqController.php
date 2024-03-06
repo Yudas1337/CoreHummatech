@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Contracts\Interfaces\FaqInterface;
+use App\Contracts\Interfaces\ProductInterface;
 use App\Contracts\Interfaces\ServiceInterface;
 use App\Models\Faq;
 use App\Http\Requests\StoreFaqRequest;
@@ -12,10 +13,12 @@ class FaqController extends Controller
 {
     private FaqInterface $faq;
     private ServiceInterface $service;
-    public function __construct(FaqInterface $faq, ServiceInterface $service)
+    private ProductInterface $product;
+    public function __construct(FaqInterface $faq, ServiceInterface $service, ProductInterface $product)
     {
         $this->faq = $faq;
         $this->service = $service;
+        $this->product = $product;
     }
     /**
      * Display a listing of the resource.
@@ -24,7 +27,9 @@ class FaqController extends Controller
     {
         $faqs = $this->faq->customPaginate(request(), 5);
         $services = $this->service->get();
-        return view('admin.pages.faq.index', compact('faqs', 'services'));
+        $products = $this->product->get();
+        // dd($products);
+        return view('admin.pages.faq.index', compact('faqs', 'services', 'products'));
     }
 
     /**

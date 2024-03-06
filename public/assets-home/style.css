@@ -9168,3 +9168,9 @@ nav.navbar.bootsnav {
     border-radius: 20px;
     margin: 4rem 0 !important;
 }
+
+.text-gradient {
+    background: linear-gradient(to right, #1273eb, #18ebeb, #1273eb);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
