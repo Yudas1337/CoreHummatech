@@ -144,6 +144,7 @@
     <!-- Start About Area -->
     <div class="about-us-area default-padding">
         <div class="container">
+            {{-- <div class="background-img" style="background-image: url('{{ asset('assets-home/img/about-polygon.svg') }}');"></div> --}}
             <img src="{{ asset('assets-home/img/about-polygon.svg') }}" class="about-triangle" alt="Polygon" />
             <div class="about-items">
                 <div class="row">
@@ -267,9 +268,14 @@
                                             {{ Str::limit($produk['description'], 30) }}
                                         </p>
                                         <div class="bottom">
-                                            <a href="" class="text-primary" target="_blank">
+                                            <a href="/product/{{ $produk->slug }}" class="text-primary">
                                                 <i class="fas fa-arrow-right"></i> Lihat Selengkapnya
                                             </a>
+
+                                            {{-- <a href="{{ url('produk/' . $slug) }}" target="_blank" class="text-primary">
+                                                <i class="fas fa-arrow-right"></i> Lihat Selengkapnya
+                                            </a> --}}
+
                                         </div>
                                     </div>
                                 </div>
@@ -435,7 +441,7 @@
 
     </div>
 
-    <div class="gallery-area overflow-hidden default-padding">
+    {{-- <div class="gallery-area overflow-hidden default-padding">
         <div class="container">
             <div class="row">
 
@@ -580,6 +586,186 @@
                         <!-- Single Item -->
 
                     </div>
+                </div>
+            </div>
+        </div>
+    </div> --}}
+
+    <div class="services-details-area default-padding">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-lg-8 offset-lg-2">
+                    <div class="site-heading text-center mt-4">
+                        <h4>portofolio</h4>
+                        <h3>Inspirasi dari Karya: Portfolio Hummatech Menggambarkan Keunggulan Produk</h3>
+                        <div class="devider"></div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="container">
+            <div class="services-details-items">
+                <div class="row">
+                    <div class="col-lg-4 services-sidebar">
+                        <!-- Single Widget -->
+                        <div class="single-widget services-list">
+                            <div class="content">
+                                <ul>
+                                    <li class="current-item"><a href="#">Social Media marketing</a></li>
+                                    <li><a href="#">Content Marketing</a></li>
+                                    <li><a href="#">Competitor Research</a></li>
+                                    <li><a href="#">Keyward Research</a></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- End Single Widget -->
+                    </div>
+                    <div class="col-lg-8 services-single-content">
+
+                        <div class="gallery-area overflow-hidden pt-3">
+                            <div class="container">
+                                <div class="case-items-area">
+                                    <div class="masonary">
+                                        <div id="portfolio-grid" class="gallery-items colums-3">
+                                            <!-- Single Item -->
+                                            <div class="pf-item">
+                                                <div class="item">
+                                                    <div class="thumb">
+                                                        <img src="assets/images/banner/3.jpg" alt="Thumb">
+                                                    </div>
+                                                    <div class="content">
+                                                        <div class="info">
+                                                            <h4><a href="project-single.html">Startup Funding</a></h4>
+                                                            <span>Finance, Assets</span>
+                                                        </div>
+                                                        <div class="button">
+                                                            <a href="assets/images/banner/3.jpg" class="item popup-gallery">
+                                                                <i class="fas fa-plus"></i>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- End Single Item -->
+
+                                            <!-- Single Item -->
+                                            <div class="pf-item wide">
+                                                <div class="item">
+                                                    <div class="thumb">
+                                                        <img src="assets/images/banner/3.jpg" alt="Thumb">
+                                                    </div>
+                                                    <div class="content">
+                                                        <div class="info">
+                                                            <h4><a href="project-single.html">Accounting Advisory</a></h4>
+                                                            <span>Creative, Minimal</span>
+                                                        </div>
+                                                        <div class="button">
+                                                            <a href="assets/images/banner/3.jpg" class="item popup-gallery">
+                                                                <i class="fas fa-plus"></i>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- End Single Item -->
+
+                                            <!-- Single Item -->
+                                            <div class="pf-item">
+                                                <div class="item">
+                                                    <div class="thumb">
+                                                        <img src="assets/images/big-lightgallry/01.jpg" alt="Thumb">
+                                                    </div>
+                                                    <div class="content">
+                                                        <div class="info">
+                                                            <h4><a href="project-single.html">Merger & Acquisition</a></h4>
+                                                            <span>Benifits, Business</span>
+                                                        </div>
+                                                        <div class="button">
+                                                            <a href="assets/images/big-lightgallry/01.jpg" class="item popup-gallery">
+                                                                <i class="fas fa-plus"></i>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- End Single Item -->
+
+                                            <!-- Single Item -->
+                                            <div class="pf-item">
+                                                <div class="item">
+                                                    <div class="thumb">
+                                                        <img src="assets/images/big-lightgallry/02.jpg" alt="Thumb">
+                                                    </div>
+                                                    <div class="content">
+                                                        <div class="info">
+                                                            <h4><a href="project-single.html">Assets For Technology</a></h4>
+                                                            <span>Invest, Earning</span>
+                                                        </div>
+                                                        <div class="button">
+                                                            <a href="assets/images/big-lightgallry/02.jpg" class="item popup-gallery">
+                                                                <i class="fas fa-plus"></i>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- Single Item -->
+
+                                            <!-- Single Item -->
+                                            <div class="pf-item">
+                                                <div class="item">
+                                                    <div class="thumb">
+                                                        <img src="assets/images/big-lightgallry/03.jpg" alt="Thumb">
+                                                    </div>
+                                                    <div class="content">
+                                                        <div class="info">
+                                                            <h4><a href="project-single.html">Business Matching</a></h4>
+                                                            <span>Finance, Assets</span>
+                                                        </div>
+                                                        <div class="button">
+                                                            <a href="assets/images/big-lightgallry/03.jpg" class="item popup-gallery">
+                                                                <i class="fas fa-plus"></i>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- Single Item -->
+
+                                            <!-- Single Item -->
+                                            <div class="pf-item">
+                                                <div class="item">
+                                                    <div class="thumb">
+                                                        <img src="assets/images/banner/2.jpg" alt="Thumb">
+                                                    </div>
+                                                    <div class="content">
+                                                        <div class="info">
+                                                            <h4><a href="project-single.html">Startup Funding</a></h4>
+                                                            <span>Finance, Assets</span>
+                                                        </div>
+                                                        <div class="button">
+                                                            <a href="assets/images/banner/2.jpg" class="item popup-gallery">
+                                                                <i class="fas fa-plus"></i>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- Single Item -->
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+
                 </div>
             </div>
         </div>
