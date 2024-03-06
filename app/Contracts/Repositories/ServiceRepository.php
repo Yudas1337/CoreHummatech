@@ -35,7 +35,7 @@ class ServiceRepository extends BaseRepository implements ServiceInterface
     {
         return $this->model->query()->findOrFail($id)->delete($id);
     }
-    public function slug(string $slug): mixed
+    public function slug(mixed $slug): mixed
     {
         return $this->model->query()->where('slug', $slug)->firstOrFail();
     }

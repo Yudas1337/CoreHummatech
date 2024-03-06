@@ -43,9 +43,9 @@ Auth::routes();
 
 
 Route::get('about-us', [AboutUsController::class, 'index']);
-Route::get('berita/{slugService}', [ServiceController::class, 'ShowService']);
+Route::get('berita/{slugnews}', [NewsController::class, 'showNews'])->name('news.slug');
+Route::get('layanan/{slugService}', [ServiceController::class, 'ShowService']);
 Route::get('home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('layanan/{slugnews}', [NewsController::class, 'showNews'])->name('news.slug');
 Route::get('contact', function () {
     return view('landing.contact');
 })->name('contact');
