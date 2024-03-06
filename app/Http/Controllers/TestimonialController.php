@@ -27,9 +27,9 @@ class TestimonialController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $testimonials = $this->testimonial->get();
+        $testimonials = $this->testimonial->customPaginate($request, 10);
         $services = $this->serviceData->get();
         return view('admin.pages.testimonial.index', compact('testimonials','services'));
     }

@@ -3,6 +3,7 @@ namespace App\Contracts\Repositories;
 
 use App\Contracts\Interfaces\TestimonialInterface;
 use App\Models\Testimonial;
+use Illuminate\Http\Request;
 
 class TestimonialRepository extends BaseRepository implements TestimonialInterface
 {
@@ -11,9 +12,9 @@ class TestimonialRepository extends BaseRepository implements TestimonialInterfa
         $this->model = $testimonial;
     }
 
-    public function get(): mixed
+    public function customPaginate(Request $request, int $pagination = 10): mixed
     {
-        return $this->model->query()->get();
+        return $this->model->query()->paginate($pagination);
     }
 
     public function store(array $data): mixed
