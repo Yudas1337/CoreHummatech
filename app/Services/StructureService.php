@@ -77,4 +77,9 @@ class StructureService
 
         return $data;
     }
+
+    public function delete(Structure $structure)
+    {
+        $this->remove($structure->image);
+    }
 }

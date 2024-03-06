@@ -140,7 +140,7 @@
             }
         }
     </style>
-    
+
 
 
 @endsection
@@ -214,7 +214,9 @@
                     </div>
                     <div class="col-md-6 order-first order-md-last text-center">
                         <div class="thumb">
+                            @foreach ( $profile as $profile )
                             <img src="{{ asset('storage/' . $profile->image) }}" alt="Thumb" style="max-width: 100%; max-height: 450px; display: inline-block;">
+                            @endforeach
 
                             <!-- Tambahkan gaya untuk perangkat mobile -->
 

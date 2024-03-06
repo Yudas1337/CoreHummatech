@@ -101,7 +101,7 @@
                 <div class="card-header" style="background: rgba(48, 126, 243, 0.05)">
                     <div class="card-header-right">
                         <ul class="list-unstyled" style="text-align:center">
-                            <li><i class="fa fa-edit text-primary mb-2 p-1 btn-edit" data-id="{{ $structure->id }}" data-name="{{ $structure->name }}" data-position_id="{{ $structure->position_id }}" data-image="{{ $structure->image }}" type="button"></i></li>
+                            <li><i class="fa fa-edit text-primary mb-2 p-1 btn-edit" data-id="{{ $structure->id }}" data-name="{{ $structure->name }}" data-position_id="{{ $structure->position_id }}" data-image="{{ $structure->image }}" data-type="{{ $structure->type }}" type="button"></i></li>
                             <li><i class="fa-solid fa-trash text-primary p-1 btn-delete" type="button"
                                     data-id="{{ $structure->id }}"></i></li>
                         </ul>
@@ -121,7 +121,7 @@
                 </div>
             </div>
         @empty
-
+            
         @endforelse
     </div>
 
@@ -138,6 +138,8 @@
                     novalidate="" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
+                    <input type="hidden" name="type" id="type">
+
                     <div class="modal-body">
                         <div class="social-img d-flex justify-content-center"><img src="" id="image-edit" width="100px"
                             height="100px" style="object-fit: cover ; height:100px" alt="profile">
@@ -145,7 +147,7 @@
 
                         <div class="row g-2">
                             <div class="mb-3 mt-0 col-md-12">
-                                <label for="bm-title">Foto / Logo Sosmed</label>
+                                <label for="bm-title">Foto</label>
                                 <input class="form-control" name="image" id="formFile" type="file" />
                             </div>
                         </div>
@@ -173,17 +175,19 @@
     <script>
         $('.btn-delete').on('click', function() {
             var id = $(this).data('id');
-            $('#form-delete').attr('action', '/delete/team/' + id);
+            $('#form-delete').attr('action', '/setting/structure/delete/' + id);
             $('#modal-delete').modal('show');
         });
 
         $('.btn-edit').click(function() {
             var id = $(this).data('id');
             var image = $(this).data('image');
+            var type = $(this).data('type');
 
             $('#image-edit').attr('src','{{ asset('storage') }}/'+ image);
-            $('#form-update').attr('action', '/update/team/' + id); // Mengubah nilai atribut action form
+            $('#form-update').attr('action', '/setting/structure/update/' + id); // Mengubah nilai atribut action form
             $('#name-edit').val(name);
+            $('#type').val(type);
             $('#modal-edit').modal('show');
         });
     </script>

@@ -68,7 +68,9 @@ class StructureController extends Controller
      */
     public function update(UpdateStructureRequest $request, Structure $structure)
     {
-        //
+        $data = $this->service->update($structure, $request);
+        $this->structure->update($structure->id, $data);
+        return back()->with('success', 'Berhasil Di Perbarui');
     }
 
     /**
@@ -76,6 +78,8 @@ class StructureController extends Controller
      */
     public function destroy(Structure $structure)
     {
-        //
+        $this->service->delete($structure);
+        $this->structure->delete($structure->id);
+        return redirect()->back();
     }
 }

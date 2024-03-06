@@ -134,8 +134,11 @@
                     </div>
                 @empty
                 <div class="d-flex justify-content-center">
-                    <h6>Belum ada produk yang di hasilkan, <a href="{{ route('product.index') }}" class="" type="button">tambah</a></h6>
+                    <img src="{{ asset('nodata.jpg') }}" alt="" width="400px">
                 </div>
+                <h5 class="text-center">
+                    Data Masih Kosong
+                </h5>
                 @endforelse
             </div>
         </div>
@@ -150,8 +153,11 @@
                 </div>
                 @empty
                 <div class="d-flex justify-content-center">
-                    <h6>Belum ada Misi, <a href="{{ route('vision.mision') }}" class="" type="button">tambah</a></h6>
+                    <img src="{{ asset('nodata.jpg') }}" alt="" width="400px">
                 </div>
+                <h5 class="text-center">
+                    Data Masih Kosong
+                </h5>
                 @endforelse
             </div>
             <div class="mb-4">
@@ -162,8 +168,11 @@
                 </div>
                 @empty
                 <div class="d-flex justify-content-center">
-                    <h6>Belum ada Syarat dan Ketentuan, <a href="{{ route('terms_condition.index') }}" class="" type="button">tambah</a></h6>
+                    <img src="{{ asset('nodata.jpg') }}" alt="" width="400px">
                 </div>
+                <h5 class="text-center">
+                    Data Masih Kosong
+                </h5>
                 @endforelse
             </div>
         </div>
@@ -191,8 +200,11 @@
                     </div>
                 @empty
                 <div class="d-flex justify-content-center">
-                    <h6>Belum ada Testimoni, <a href="{{ route('testimonial.index') }}" class="" type="button">tambah</a></h6>
+                    <img src="{{ asset('nodata.jpg') }}" alt="" width="400px">
                 </div>
+                <h5 class="text-center">
+                    Data Masih Kosong
+                </h5>
                 @endforelse
             </div>
         </div>
@@ -230,8 +242,11 @@
                     </div>
                     @empty
                     <div class="d-flex justify-content-center">
-                        <h6>Belum ada FAQ, <a href="{{ route('faq.index') }}" class="" type="button">tambah</a></h6>
+                        <img src="{{ asset('nodata.jpg') }}" alt="" width="400px">
                     </div>
+                    <h5 class="text-center">
+                        Data Masih Kosong
+                    </h5>
                 @endforelse
             </div>
         </div>
