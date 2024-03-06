@@ -31,7 +31,7 @@
                     <div class="form-group mb-3 mt-0 col-md-12">
                         <label for="feature">Fitur <small class="text-danger">* Masukan fitur produk</small></label>
                         <div class="d-flex align-items-center mt-3 gap-2">
-                            <input class="form-control m-0" type="text" name="feature[]" autocomplete="name" placeholder="Masukan Fitur" value="{{ old('feature[]', $productfeature->title) }}"/>
+                            <input class="form-control m-0" type="text" required name="feature[]" autocomplete="name" placeholder="Masukan Fitur" value="{{ old('feature[]') }}"/>
                         </div>
                         <div id="product-listing"></div>
                         @error('title.*')
@@ -42,13 +42,16 @@
                     <div class="form-group mb-3 mt-0 col-md-12">
                         <label for="link">Link</label>
                         <input class="form-control" id="link" type="url" name="link" required
-                            placeholder="Contoh: https://hummatech.com/linknya" />
+                            placeholder="Contoh: https://hummatech.com/linknya" value="{{ old('link', $product->link) }}"/>
                         @error('link')
                             <small class="text-danger">{{ $message }}</small>
                         @enderror
                     </div>
                     <div class="form-group mb-3 mt-0 col-md-12">
                         <label for="photo">Foto / Logo Produk</label>
+                        <figure class="col-xl-3 col-md-4 col-6" itemprop="associatedMedia" itemscope="">
+                            <img class="img-thumbnail" src="{{ asset('storage/'.$product->image) }}" itemprop="thumbnail">
+                        </figure>
                         <input class="form-control" id="photo" type="file" name="image" />
                         @error('image')
                             <small class="text-danger">{{ $message }}</small>

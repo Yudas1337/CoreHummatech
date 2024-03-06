@@ -11,4 +11,4 @@ use App\Http\Controllers\StructureController;
 
 Route::post('product-company/store', [ProductController::class, 'storeCompany'])->name('productCompany.store');
 Route::get('product-company/{product}/edit', [ProductController::class, 'editCompany'])->name('productCompany.edit');
-Route::post('product-company/update/{product-company}', [ProductController::class, 'updateCompany'])->name('productCompany.update');
+Route::put('product-company/{product}/update', [ProductController::class, 'updateCompany'])->name('productCompany.update');

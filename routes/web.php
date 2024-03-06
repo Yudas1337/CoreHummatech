@@ -159,7 +159,7 @@ Route::delete('delete/team/{team}' , [TeamController::class , 'destroy'])->name(
 
 
 
-Route::get('data/product',[ProductController::class ,'product']);
+Route::get('data/product',[HomeProductController::class ,'index']);
 
 Route::get('detail/{product:slug}',[ProductController::class ,'showproduct'])->name('detail.product');
 

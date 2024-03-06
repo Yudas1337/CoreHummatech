@@ -32,5 +32,10 @@ class ProductRepository extends BaseRepository implements ProductInterface
     {
         return $this->model->query()->findOrFail($id);
     }
+    public function getByType(mixed $type): mixed
+    {
+        return $this->model->query()->where('type', $type)->get();
+    }
+
 }
 

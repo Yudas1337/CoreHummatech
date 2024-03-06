@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Contracts\Interfaces\ProductInterface;
+use App\Enums\ProductEnum;
 use Illuminate\Http\Request;
 
 class HomeProductController extends Controller
@@ -16,7 +17,7 @@ class HomeProductController extends Controller
 
     public function index()
     {
-        $products = $this->product->get();
+        $products = $this->product->getByType('company');
         // dd($products);
         return view('landing.product', compact('products'));
     }
