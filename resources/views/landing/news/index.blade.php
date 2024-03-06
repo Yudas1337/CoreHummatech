@@ -80,7 +80,7 @@
                                             <div class="meta">
                                                 <ul>
                                                     <li>
-                                                        <img src="assets-home/img/team/1.jpg" alt="Author">
+                                                        <img src="{{ asset('mobilelogo.png') }}" alt="Author">
                                                         <span>By </span>
                                                         <a href="#">Hummatech</a>
                                                     </li>
