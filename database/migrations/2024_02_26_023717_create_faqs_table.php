@@ -16,7 +16,7 @@ return new class extends Migration
             $table->uuid('id');
             $table->string('question');
             $table->string('answer');
-            $table->status('status', [FaqEnum::PRODUCT, FaqEnum::SERVICE]);
+            $table->enum('status', [FaqEnum::PRODUCT->value, FaqEnum::SERVICE->value]);
             $table->foreignId('service_id')->nullable()->constrained('services')->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('product_id')->nullable()->constrained('products')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
