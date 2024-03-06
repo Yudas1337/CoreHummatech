@@ -24,7 +24,7 @@ class UpdateSectionRequest extends FormRequest
         return [
             'image' => 'nullable',
             'title' => 'required',
-            'subtitle' => 'required',
+            'subtitle' => 'required|max:255',
             'link' => 'nullable'
         ];
     }

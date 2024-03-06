@@ -1,5 +1,6 @@
 <?php
 
+use App\Enums\TestimonialEnum;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -17,6 +18,7 @@ return new class extends Migration
             $table->string('description');
             $table->foreignId('service_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->string('image');
+            $table->enum('type', [TestimonialEnum::PRODUCT->value, TestimonialEnum::SERVICE->value]);
             $table->timestamps();
         });
     }
