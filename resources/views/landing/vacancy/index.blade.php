@@ -67,8 +67,8 @@
         {
           "@type": "ListItem",
           "position": 2,
-          "name": "Tentang Kami",
-          "item": "{{ url('/about-us') }}"
+          "name": "Lowongan",
+          "item": "{{ url('/data/lowongan') }}"
         },
       ]
     }
@@ -95,28 +95,24 @@
         <div class="container">
             <img src="{{ asset('assets-home/img/about-polygon.svg') }}" class="about-triangle" alt="Polygon" />
             <div class="about-items">
+                @if($profileData->count() > 0)
                 <div class="row align-center">
                     <div class="col-lg-6 info">
-                        <h4 class="subtitle">Lorem ipsum dolor</h4>
-                        <h2>Lorem ipsum dolor sit amet consectetur. Consequat nulla massa amet at. Donec sed </h2>
-                        <p>
-                            Kini <a class="text-primary" href="{{ url('/') }}">Hummatech</a>
-                            bertransformasi menjadi perusahaan yang mampu menjawab
-                            tantangan di era revolusi industri 4.0 dengan menciptakan produk berbasis
-                            integrated system berupa perangkat lunak berbasis web dan mobile, Internet of Things
-                            (IoT), Artificial Intelligence (AI), Game, dan
-                            Augmented Reality.
-                        </p>
+                        <h4 class="subtitle">{{ $profileData[0]->title }}</h4>
+                        <h2>{{ $profileData[0]->subtitle }}</h2>
+                        <p>{!! Str::limit($profileData[0]->description, 200) !!}</p>
 
-                        <a class="btn btn-gradient effect btn-md" href="{{ url('/') }}">Unduh Portofolio</a>
+                        @if($profileData[0]->proposal)
+                        <a class="btn btn-gradient effect btn-md" href="{{ Storage::url($profileData[0]->proposal) }}">Unduh Portofolio</a>
+                        @endif
                     </div>
                     <div class="col-lg-6">
                         <div class="thumb">
-                            <img src="{{ asset('assets-home/img/about/5.jpg') }}" alt="Thumb">
-                            {{-- <h2><strong>28</strong> years of <br> working experience</h2> --}}
+                            <img src="{{ Storage::url($profileData[0]->image) }}" alt="Thumb">
                         </div>
                     </div>
                 </div>
+                @endif
             </div>
         </div>
     </div>

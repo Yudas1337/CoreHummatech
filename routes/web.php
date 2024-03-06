@@ -13,6 +13,7 @@ use App\Http\Controllers\FaqController;
 use App\Http\Controllers\ForceController;
 use App\Http\Controllers\HomePageController;
 use App\Http\Controllers\HomeProductController;
+use App\Http\Controllers\HomeVacancyController;
 use App\Http\Controllers\PositionController;
 use App\Http\Controllers\ProcedureController;
 use App\Http\Controllers\ProductController;
@@ -184,13 +185,7 @@ Route::get('alumni-detail', function (){
     return view('landing.service.alumni-detail');
 });
 
-Route::get('data/lowongan', function (){
-    return view('landing.vacancy.index');
-});
-
-// Route::get('/', function () {
-//     return view('landing.index');
-// });
+Route::get('data/lowongan', HomeVacancyController::class);
 
 //beranda
 Route::get('/', [HomePageController::class, 'index']);
@@ -217,13 +212,10 @@ Route::prefix('setting')->name('company.')->group(function() {
     Route::delete('company/{enterpriseStructure}', [\App\Http\Controllers\EnterpriseStructureController::class, 'destroy'])->name('destroy');
 });
 
-
-
 Route::resource('testimonial', TestimonialController::class);
 
 Route::prefix('/produk')->group(function() {
     Route::get('/', [HomeProductController::class, 'index'])->name('produk-home');
-    // Route::get('/{produk}', 'produk')->name('produk.detail');
 });
 
 Route::get('layanan', function () {
