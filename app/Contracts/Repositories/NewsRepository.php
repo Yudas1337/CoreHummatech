@@ -38,8 +38,6 @@ class NewsRepository extends BaseRepository implements NewsInterface
 
     public function slug(mixed $slug): mixed
     {
-        return $this->model->query()
-        ->where('slug', '!=', $slug)
-        ->get();
+        return $this->model->query()->where('slug', $slug)->firstOrFail();
     }
 }

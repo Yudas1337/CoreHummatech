@@ -10,6 +10,8 @@ use App\Http\Requests\UpdateProductRequest;
 use App\Contracts\Interfaces\ProductInterface;
 use App\Contracts\Interfaces\ServiceInterface;
 use App\Contracts\Interfaces\TestimonialInterface;
+use App\Http\Requests\StoreProductCompanyRequest;
+use App\Http\Requests\UpdateProductCompanyRequest;
 
 class ProductController extends Controller
 {
@@ -56,6 +58,14 @@ class ProductController extends Controller
         return to_route('product.index')->with('success', 'Produk berhasil di tambahkan');
     }
 
+    public function storeCompany(StoreProductCompanyRequest $request)
+    {
+        $data = $this->productService->storeCompany($request);
+        $product_id = $this->product->store($data);
+        $this->productService->storefeaturecompany($request, $product_id);
+        return to_route('product.index')->with('success', 'Produk berhasil di tambahkan');
+    }
+
     /**
      * Display the specified resource.
      */
@@ -86,6 +96,18 @@ class ProductController extends Controller
         $data = $this->productService->update($product, $request);
         $this->product->update($product->id, $data);
         $this->productService->updatefeature($request, $product);
+        return to_route('product.index')->with('success', 'Produk Berhasil Di Update');
+    }
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function updateCompany(UpdateProductCompanyRequest $request, Product $product)
+    {
+        // dd($request->all());
+        $data = $this->productService->updateCompany($product, $request);
+        $this->product->update($product->id, $data);
+        $this->productService->updatefeaturecompany($request, $product);
         return to_route('product.index')->with('success', 'Produk Berhasil Di Update');
     }
 
