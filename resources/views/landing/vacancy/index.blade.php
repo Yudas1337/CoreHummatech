@@ -172,6 +172,12 @@
         .timeline .timeline-item:nth-child(odd) .timeline-item-content::after {
             display: none;
         }
+
+        @media screen and (min-width: 992px) {
+            .text-lg-start {
+                text-align: left;
+            }
+        }
     </style>
 @endsection
 
