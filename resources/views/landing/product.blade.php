@@ -126,7 +126,7 @@
                                     {{ $product->description }}
                                 </p>
 
-                                <a class="btn btn-stroke-gradient effect btn-md" href="{{ route('detail.product', $product->slug) }}">Lihat
+                                <a class="btn btn-stroke-gradient effect btn-md text-gradient" href="{{ route('detail.product', $product->slug) }}">Lihat
                                     Detail</a>
                                 <a class="btn btn-gradient effect btn-md" href="{{ $product->link }}">Kunjungi
                                     website</a>

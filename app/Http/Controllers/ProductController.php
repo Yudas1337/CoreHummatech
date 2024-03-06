@@ -79,6 +79,14 @@ class ProductController extends Controller
      * Show the form for editing the specified resource.
      */
 
+    public function editCompany(Product $product)
+    {
+        $services = $this->service->get();
+        $productfeature = ProductFeature::where('product_id', $product->id)->get();
+        // dd($productfeature);
+        return view('admin.pages.products.editCompany', compact('product', 'services', 'productfeature'));
+    }
+
     public function edit(Product $product)
     {
         $services = $this->service->get();

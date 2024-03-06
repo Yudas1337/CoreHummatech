@@ -46,8 +46,9 @@
                                     Detail</a>
                             </div>
                             <div class="d-flex flex-shrink-0 gap-2">
-                                <button class="btn btn-light-warning px-3 m-0 btn-edit" type="button" onclick="window.location='{{ route('product.edit', $product->id) }}'"><i
-                                        class="fas fa-pencil"></i></button>
+                                <button class="btn btn-light-warning px-3 m-0 btn-edit" type="button" onclick="window.location.href='{{ $product->type == 'company' ? route('productCompany.edit', $product->id) : route('product.edit', $product->id) }}'">
+                                    <i class="fas fa-pencil"></i>
+                                </button>                                
                                 <button class="btn btn-light-danger px-3 m-0 btn-delete" type="button" data-id="{{ $product->id }}"><i
                                     class="fas fa-trash"></i></button>
                             </div>
