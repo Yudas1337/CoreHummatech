@@ -29,12 +29,12 @@
                             <div class="card-body">
                                 <div class="product-box">
                                     <div class="product-img">
-                                        <img class="img-fluid" src="../assets/images/masonry/1.jpg" alt="">
+                                        <img class="img-fluid" src="{{ 'storage/'. $galeri->image }}" alt="">
                                         <div class="product-hover">
                                             <ul>
-                                                <li><a type="button" data-bs-toggle="modal" data-bs-target="#edit"><i
-                                                            class="fa fa-edit"></i></a></li>
-                                                <li><a href=""><i class="fa fa-trash"></i></a></li>
+                                                <li><a type="button" data-id="{{ $galeri->id }}" class="btn-edit" data-image="{{ $galeri->image }}"><i
+                                                            class="fa fa-edit "></i></a></li>
+                                                <li><a type="button" data-id="{{ $galeri->id }}" class="btn-delete"><i class="fa fa-trash "></i></a></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -43,6 +43,12 @@
                         </div>
                     </div>
                 @empty
+                <div class="d-flex justify-content-center">
+                    <img src="{{ asset('nodata.jpg') }}" alt="" width="400px">
+                </div>
+                <h5 class="text-center">
+                    Data Masih Kosong
+                </h5>
                 @endforelse
             </div>
         </div>
@@ -102,7 +108,7 @@
     </div>
 
     <!-- Edit Modal -->
-    <div class="modal fade modal-bookmark" id="edit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    <div class="modal fade modal-bookmark" id="modal-edit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
@@ -110,14 +116,16 @@
                     <h5 class="modal-title" id="exampleModalLabel">Edit Galeri</h5>
                     <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form class="form-bookmark needs-validation" action="#" method="POST" id="bookmark-form"
+                <form class="form-bookmark needs-validation" action="#" method="POST" id="form-update"
                     novalidate="" enctype="multipart/form-data">
+                    @csrf
+                    @method('put')
                     <div class="modal-body">
 
                         <div class="row g-2">
                             <div class="mb-3 mt-0 col-md-12">
                                 <label for="bm-title">Foto</label>
-                                <input class="form-control" id="formFile" type="file">
+                                <input class="form-control" name="image" id="formFile" type="file">
                             </div>
                         </div>
                     </div>
@@ -131,6 +139,7 @@
             </div>
         </div>
     </div>
+    @include('admin.components.delete-modal-component')
 @endsection
 @section('script')
     <script>
@@ -162,5 +171,21 @@
         $('#formAddData').submit(function() {
             myDropzone.processQueue();
         })
+    </script>
+
+    <script>
+        $('.btn-delete').on('click', function() {
+            var id = $(this).data('id');
+            $('#form-delete').attr('action', '/galery/delete/' + id);
+            $('#modal-delete').modal('show');
+        });
+
+        $('.btn-edit').click(function() {
+            var id = $(this).data('id'); // Mengambil nilai id dari tombol yang diklik
+            var name = $(this).data('name'); // Mengambil nilai name dari tombol yang diklik
+            $('#form-update').attr('action', '/galery/update/' + id); // Mengubah nilai atribut action form
+            $('#name-edit').val(name);
+            $('#modal-edit').modal('show');
+        });
     </script>
 @endsection

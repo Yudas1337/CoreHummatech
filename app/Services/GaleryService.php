@@ -47,11 +47,13 @@ class GaleryService
     public function store(StoreGaleryRequest $request): array|bool
     {
         $data = $request->validated();
+        // dd($data);
         $images = [];
         foreach ($data['image'] as $image) {
             array_push($images, $image->store(UploadDiskEnum::NEWS->value, 'public'));
         }
         $data['image'] = $images;
+
         return $data;
     }
 
@@ -66,6 +68,8 @@ class GaleryService
     public function update(GaleryImage $galeryImage, UpdateGaleryImageRequest $request): array|bool
     {
         $data = $request->validated();
+        // dd($data);
+        // dd($galeryImage);
 
         if ($request->hasFile('image') && $request->file('image')->isValid()) {
             $this->remove($galeryImage->image);
@@ -79,5 +83,17 @@ class GaleryService
         $values = collect($array)->flatten()->unique()->values();
 
         return $data;
+    }
+
+    /**
+     * Handle delete data event to models.
+     *
+     * @param Sale $sale
+     *
+     * @return void
+     */
+    public function delete(GaleryImage $galeryImage)
+    {
+        $this->remove($galeryImage->image);
     }
 }

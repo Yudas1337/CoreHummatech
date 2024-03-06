@@ -9,16 +9,19 @@ use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
 use App\Contracts\Interfaces\ProductInterface;
 use App\Contracts\Interfaces\ServiceInterface;
+use App\Contracts\Interfaces\TestimonialInterface;
 
 class ProductController extends Controller
 {
     private ProductInterface $product;
     private ProductService $productService;
     private ServiceInterface $service;
+    private TestimonialInterface $testimonial;
 
-    public function __construct(ProductInterface $product, ProductService $productService, ServiceInterface $service)
+    public function __construct(ProductInterface $product, ProductService $productService, ServiceInterface $service, TestimonialInterface $testimonial)
     {
         $this->product = $product;
+        $this->testimonial = $testimonial;
         $this->productService = $productService;
         $this->service = $service;
     }
@@ -114,6 +117,7 @@ class ProductController extends Controller
 
     public function showproduct(Product $product)
     {
-        return view('landing.product.product-detail', compact('product'));
+        $testimonial = $this->testimonial->get()->where('product_id', $product->id);
+        return view('landing.product.product-detail', compact('product', 'testimonial'));
     }
 }

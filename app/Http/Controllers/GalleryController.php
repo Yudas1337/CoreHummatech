@@ -2,15 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Contracts\Interfaces\GaleryImageInterface;
-use App\Contracts\Interfaces\GalleryInterface;
-use App\Contracts\Interfaces\ServiceInterface;
+use App\Models\Gallery;
+use App\Models\GaleryImage;
+use Illuminate\Http\Request;
 use App\Helpers\ResponseHelper;
+use App\Services\GaleryService;
 use App\Http\Requests\StoreGaleryRequest;
 use App\Http\Requests\StoreGalleryRequest;
-use App\Models\Gallery;
-use App\Services\GaleryService;
-use Illuminate\Http\Request;
+use App\Contracts\Interfaces\GalleryInterface;
+use App\Contracts\Interfaces\ServiceInterface;
+use App\Contracts\Interfaces\GaleryImageInterface;
+use App\Http\Requests\UpdateGaleryImageRequest;
 
 class GalleryController extends Controller
 {
@@ -33,7 +35,8 @@ class GalleryController extends Controller
     public function index()
     {
         $serviceData = $this->serviceModel->get()->pluck('name', 'id');
-        $gallery = $this->model->get();
+        $gallery = $this->galleryimage->get();
+        // dd($gallery);
         return view('admin.pages.gallery.index', compact('gallery', 'serviceData'));
     }
 
@@ -50,14 +53,17 @@ class GalleryController extends Controller
     public function store(StoreGaleryRequest $request)
     {
         $data = $this->galeryService->store($request);
-        $gallerie_id = $this->model->store($data)->id;
+        $gallerie_id = $this->model->store([
+            'name' => $data['name'],
+            'service_id' => $data['service_id'],
+        ])->id;
         foreach ($data['image'] as $img) {
             $this->galleryimage->store([
-                'gallerie_id' => $gallerie_id,
+                'galleries_id' => $gallerie_id,
                 'image' => $img,
             ]);
         }
-        return ResponseHelper::success(null , trans('alert.add_success'));
+        return redirect()->back();
     }
 
     /**
@@ -79,16 +85,20 @@ class GalleryController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Gallery $gallery)
+    public function update(UpdateGaleryImageRequest $request, GaleryImage $galeryImage)
     {
-        //
+        $data = $this->galeryService->update($galeryImage, $request);
+        $this->galleryimage->update($galeryImage->id, $data);
+        return redirect()->back();
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Gallery $gallery)
+    public function destroy(GaleryImage $galeryImage)
     {
-        //
+        $this->galeryService->delete($galeryImage);
+        $this->galleryimage->delete($galeryImage->id);
+        return redirect()->back();
     }
 }
