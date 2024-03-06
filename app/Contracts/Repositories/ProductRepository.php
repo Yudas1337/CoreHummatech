@@ -36,6 +36,8 @@ class ProductRepository extends BaseRepository implements ProductInterface
     {
         return $this->model->query()->where('type', $type)->get();
     }
-
+    public function getByServiceId(mixed $service): mixed{
+        return $this->model->query()->where('service_id', $service)->get();
+    }
 }
 

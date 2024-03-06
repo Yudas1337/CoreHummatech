@@ -41,4 +41,7 @@ class TestimonialRepository extends BaseRepository implements TestimonialInterfa
     {
         return $this->model->query()->where($relation, $id)->get();
     }
+    public function getByServiceId(mixed $service): mixed{
+        return $this->model->query()->where('service_id', $service)->get();
+    }
 }

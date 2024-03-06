@@ -130,7 +130,7 @@
                             </button>
                         </span>
                     </div>
-                </form>
+            </form>
             </div>
             <div class="widget social">
                 <ul class="link">
