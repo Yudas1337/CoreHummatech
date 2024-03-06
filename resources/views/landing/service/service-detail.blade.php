@@ -522,7 +522,7 @@
                                 <h4 class="m-0">Mitra Kami</h4>
                                 <div class="dash"></div>
                             </div>
-                            
+
                         </div>
                         <div class="py-2 mb-5">
                             <div class="title-service">
@@ -632,7 +632,7 @@
                             <div class="content">
                                 <ul>
                                     @foreach ($services as $service)
-                                        <li class=""><a href="/{{ $service->slug }}">{{ $service->name }}</a></li>
+                                        <li class=""><a href="/layanan/{{ $service->slug }}">{{ $service->name }}</a></li>
                                     @endforeach
                                 </ul>
                             </div>
