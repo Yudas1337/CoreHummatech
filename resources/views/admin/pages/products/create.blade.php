@@ -15,7 +15,7 @@
                 </ul>
                 <div class="tab-content" id="myTabContent">
                     <div class="tab-pane fade show active py-5" id="organisasi" role="tabpanel">
-                        <form class="form-bookmark needs-validation" action="{{ route('product.store') }}" method="POST" id="bookmark-form"
+                        <form class="form-bookmark needs-validation" action="{{ route('productCompany.store') }}" method="POST" id="bookmark-form"
                             novalidate="" enctype="multipart/form-data">
                             @csrf
                             <div class="row g-2">
