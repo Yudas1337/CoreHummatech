@@ -1,65 +1,7 @@
 @extends('landing.layouts.layouts.app')
 
 @section('style')
-    <style>
-        .timeline-container {
-            position: relative;
-        }
 
-        .timeline::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            width: 2px;
-            background-color: #ccc;
-            left: 50%;
-            margin-left: -1px;
-        }
-
-        .timeline-item {
-            position: relative;
-            padding: 20px;
-            margin-bottom: 50px;
-        }
-
-        .timeline-item::after {
-            content: '';
-            position: absolute;
-            top: 11px;
-            width: 20px;
-            height: 20px;
-            background-color: #fff;
-            border: 2px solid #ccc;
-            border-radius: 50%;
-            left: 50%;
-            margin-left: -11px;
-        }
-
-        .timeline-item .timeline-content {
-            position: relative;
-            background-color: #f5f5f5;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            padding: 20px;
-        }
-
-        .timeline-item .timeline-title {
-            margin-top: 0;
-            color: inherit;
-            font-size: 18px;
-            font-weight: bold;
-        }
-
-        .timeline-item .timeline-date {
-            margin-bottom: 10px;
-            color: #999;
-        }
-
-        .timeline-item .timeline-description {
-            margin-bottom: 0;
-        }
-    </style>
     <style>
         .subtitle {
             text-transform: uppercase;
@@ -107,6 +49,95 @@
             }
         }
     </style>
+        <style>
+            /* Custom styles for the timeline */
+            .timeline {
+                position: relative;
+                padding: 40px 0;
+            }
+
+            .timeline::before {
+                content: '';
+                position: absolute;
+                width: 4px;
+                height: 100%;
+                background: #ced4da;
+                left: 50%;
+                top: 0;
+                transform: translateX(-50%);
+            }
+
+            .timeline-item {
+                margin-bottom: 50px;
+                position: relative;
+            }
+
+            .timeline-item::after {
+                content: '';
+                display: table;
+                clear: both;
+            }
+
+            .timeline-item-content {
+                position: relative;
+                width: 45%;
+                border-radius: 5px;
+                float: left;
+                padding-right: 3rem;
+            }
+
+            .timeline-item-content h2 {
+                margin-top: 0;
+            }
+
+            .timeline-item-date {
+                font-size: 14px;
+                color: #6c757d;
+            }
+
+            .timeline-number {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: 5rem;
+                height: 5rem;
+                background-color: #007bff;
+                color: #fff;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-weight: bold;
+                font-size: 1.5rem;
+                font-family: 'Poppins', Arial, Helvetica, sans-serif;
+            }
+
+            /* Alternate the position of the timeline items */
+            .timeline .timeline-item:nth-child(even) .timeline-item-content {
+                float: right;
+                text-align: right;
+                padding-left: 3rem;
+                padding-right: 0;
+            }
+
+            .timeline .timeline-item:nth-child(even) .timeline-item-content::before {
+                right: 100%;
+                border-right: 8px solid #f8f9fa;
+                border-left: none;
+            }
+
+            .timeline .timeline-item:nth-child(odd) .timeline-item-content::before {
+                left: 100%;
+                border-left: 8px solid #f8f9fa;
+                border-right: none;
+            }
+
+            .timeline .timeline-item:nth-child(even) .timeline-item-content::after,
+            .timeline .timeline-item:nth-child(odd) .timeline-item-content::after {
+                display: none;
+            }
+        </style>
 @endsection
 
 @section('seo')
@@ -175,53 +206,33 @@
                                 <h4 class="m-0">Produk Yang Dihasilkan</h4>
                                 <div class="dash"></div>
                             </div>
+                            @forelse ($products as $index => $product)
                             <div class="about-content-area pb-5 mb-5">
-                                <div class="row">
+                                <div class="row @if($index % 2 === 1) flex-row-reverse @endif">
                                     <div class="col-lg-5 thumb wow fadeInUp">
                                         <div class="img-box">
-                                            <img src="{{ asset('assets-home/img/about/2.jpg') }}" alt="Thumb">
-                                            <div class="shape" style="background-image: url(assets/img/shape/1.png);">
-                                            </div>
+                                            <img src="{{ asset('storage/' . $product->image) }}" alt="Thumb">
+                                            <div class="shape" style="background-image: url(assets/img/shape/1.png);"></div>
                                         </div>
                                     </div>
                                     <div class="col-lg-7 wow fadeInDown">
-                                        <h2>Milink.id</h2>
-                                        <p>
-                                            Lorem ipsum dolor sit amet consectetur.
-                                            Tincidunt pellentesque pellentesque sed in.
-                                            Sit nunc velit aliquam quis faucibus nibh nisl pellentesque.
-                                            Massa natoque mattis quisque ut molestie turpis at fusce integer.
-                                            Tincidunt lorem egestas
-                                        </p>
-                                        <a class="btn btn-gradient effect btn-md" href="">Lihat detail</a>
-                                        <a class="btn btn-gradient effect btn-md" href="">Kunjungi website</a>
+                                        <h2>{{$product->name}}</h2>
+                                        <p>{{$product->description}}</p>
+                                        <a class="btn btn-stroke-gradient effect btn-md" href="#">Lihat detail</a>
+                                        <a class="btn btn-gradient effect btn-md" href="#">Kunjungi website</a>
                                     </div>
                                 </div>
                             </div>
-
-                            <div class="about-content-area pb-5 mb-5">
-                                <div class="row product-service">
-                                    <div class="col-lg-5 thumb wow fadeInUp">
-                                        <div class="img-box">
-                                            <img src="{{ asset('assets-home/img/about/2.jpg') }}" alt="Thumb">
-                                            <div class="shape" style="background-image: url(assets/img/shape/1.png);">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-7 wow fadeInDown">
-                                        <h2>Mischool</h2>
-                                        <p>
-                                            Lorem ipsum dolor sit amet consectetur.
-                                            Tincidunt pellentesque pellentesque sed in.
-                                            Sit nunc velit aliquam quis faucibus nibh nisl pellentesque.
-                                            Massa natoque mattis quisque ut molestie turpis at fusce integer.
-                                            Tincidunt lorem egestas
-                                        </p>
-                                        <a class="btn btn-gradient effect btn-md" href="">Lihat detail</a>
-                                        <a class="btn btn-gradient effect btn-md" href="">Kunjungi website</a>
-                                    </div>
-                                </div>
+                        @empty
+                        <div class="col-12">
+                            <div class="d-flex justify-content-center">
+                                <img src="{{ asset('nodata-gif.gif') }}" alt="" width="800px">
                             </div>
+                            <h4 class="text-center text-dark" style="font-weight:600">
+                                Belum ada produk
+                            </h4>
+                        </div>
+                        @endforelse
                         </div>
 
                         <div class="my-5 py-3">
@@ -236,27 +247,31 @@
                                         <div class="row align-center bg-gradient-gray">
                                             <div class="col-lg-7 testimonials-content">
                                                 <div class="testimonials-carousel owl-carousel owl-theme">
-                                                    <!-- Single Item -->
-                                                    <div class="item">
-                                                        <div class="info">
-                                                            <p>
-                                                                Otherwise concealed favourite frankness on be at dashwoods
-                                                                defective at. Sympathize interested
-                                                            </p>
-                                                            <div class="provider">
-                                                                <div class="thumb">
-                                                                    <img src="{{ asset('assets-home/img/teams/5.jpg') }}"
-                                                                        alt="Author">
-                                                                </div>
-                                                                <div class="content">
-                                                                    <h4 class="text-primary">Ahel Natasha</h4>
+                                                    @forelse ($testimonials as $testimonial)
+                                                        <div class="item">
+                                                            <div class="info">
+                                                                <p>
+                                                                    Otherwise concealed favourite frankness on be at dashwoods
+                                                                    defective at. Sympathize interested
+                                                                </p>
+                                                                <div class="provider">
+                                                                    <div class="thumb">
+                                                                        <img src="{{ asset('assets-home/img/teams/5.jpg') }}"
+                                                                            alt="Author">
+                                                                    </div>
+                                                                    <div class="content">
+                                                                        <h4 class="text-primary">Ahel Natasha</h4>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </div>
+                                                    @empty
+
+                                                    @endforelse
+                                                    <!-- Single Item -->
                                                     <!-- End Single Item -->
                                                     <!-- Single Item -->
-                                                    <div class="item">
+                                                    {{-- <div class="item">
                                                         <div class="info">
                                                             <p>
                                                                 Otherwise concealed favourite frankness on be at dashwoods
@@ -272,7 +287,7 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </div>
+                                                    </div> --}}
                                                     <!-- End Single Item -->
                                                 </div>
                                             </div>
@@ -416,34 +431,60 @@
                             <!-- End Faq -->
                         </div>
 
-                        <div class="py-2 mb-5">
-                            <div class="title-service">
-                                <h4 class="m-0">Syarat & Ketentuan</h4>
-                                <div class="dash"></div>
-                            </div>
-                            <div class="terms-policy-area">
+                        <div class="work-process-area features-area default-padding-bottom py-5">
+                            <div class="container pt-5">
                                 <div class="row">
-                                    <div class="col-lg-12 m-0 p-0">
-                                        <ul>
-                                            <li>
-                                                <span>01</span>
-                                                <p>
-                                                    Condimentum vitae sapien pellentesque habitant. Lectus sit amet est
-                                                    placerat. Vitae proin sagittis nisl rhoncus mattis rhoncus urna
-                                                    neque. General Disclaimer
-                                                </p>
-                                            </li>
-                                            <li>
-                                                <span>02</span>
-                                                <p>
-                                                    Morbi non arcu risus quis varius. Odio morbi quis commodo odio.
-                                                    Consectetur a erat nam at lectus urna duis convallis convallis.
-                                                </p>
-                                            </li>
-                                        </ul>
+                                    <div class="col-lg-8 offset-lg-2">
+                                        <div class="site-heading text-center">
+                                            <h4>Alur Kerja</h4>
+                                            <h3>"Kendalikan Alur Kerja Anda: Strategi Efektif untuk Produktivitas dan Efisiensi"</h3>
+                                            <div class="devider"></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-12">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="timeline">
+                                                    <div class="timeline-item">
+                                                        <div class="timeline-number">01</div>
+                                                        <div class="timeline-item-content">
+                                                            <h2>Event Title</h2>
+                                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                                                            <span class="timeline-item-date">March 1, 2024</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="timeline-item">
+                                                        <div class="timeline-number">02</div>
+                                                        <div class="timeline-item-content">
+                                                            <h2>Another Event Title</h2>
+                                                            <p>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                                                            <span class="timeline-item-date">March 5, 2024</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="timeline-item">
+                                                        <div class="timeline-number">03</div>
+                                                        <div class="timeline-item-content">
+                                                            <h2>Another Event Title</h2>
+                                                            <p>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                                                            <span class="timeline-item-date">March 5, 2024</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="timeline-item">
+                                                        <div class="timeline-number">04</div>
+                                                        <div class="timeline-item-content">
+                                                            <h2>Another Event Title</h2>
+                                                            <p>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                                                            <span class="timeline-item-date">March 5, 2024</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
+
                         </div>
 
                         <div class="py-2 mb-5">

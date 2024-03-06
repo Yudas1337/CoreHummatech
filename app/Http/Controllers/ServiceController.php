@@ -6,6 +6,9 @@ use App\Contracts\Interfaces\FaqInterface;
 use App\Contracts\Interfaces\ProductInterface;
 use App\Contracts\Interfaces\ServiceInterface;
 use App\Contracts\Interfaces\TestimonialInterface;
+use App\Contracts\Repositories\FaqRepository;
+use App\Contracts\Repositories\ProductRepository;
+use App\Contracts\Repositories\TestimonialRepository;
 use App\Models\Service;
 use App\Http\Requests\StoreServiceRequest;
 use App\Http\Requests\UpdateServiceRequest;
@@ -20,15 +23,19 @@ class ServiceController extends Controller
     private ServiceService $serviceService;
     private Termscondition $termscondition;
     private TestimonialInterface $testimonial;
+    private TestimonialRepository $testimoni;
+    private ProductRepository $product;
     private FaqInterface $faq;
 
-    public function __construct(ServiceInterface $service , ServiceService $serviceService, Termscondition $termscondition, TestimonialInterface $testimonial, FaqInterface $faq)
+    public function __construct(ServiceInterface $service , ServiceService $serviceService, Termscondition $termscondition, TestimonialInterface $testimonial, FaqInterface $faq, ProductRepository $product)
     {
         $this->service = $service ;
         $this->termscondition = $termscondition;
         $this->serviceService = $serviceService;
         $this->testimonial = $testimonial;
         $this->faq = $faq;
+        $this->product = $product;
+
     }
     /**
      * Display a listing of the resource.
@@ -81,11 +88,14 @@ class ServiceController extends Controller
     {
         //
     }
-    public function ShowService($slug)
+    public function ShowService($slug, Service $service)
     {
         $slugs = $this->service->slug($slug);
         $services = $this->service->get();
-        return view('landing.service.service-detail', compact('slugs' , 'services'));
+        $products = $this->product->getByServiceId($service->id);
+        $testimonials = $this->testimonial->getByServiceId($service->id);
+
+        return view('landing.service.service-detail', compact('slugs' , 'services', 'products','testimonials'));
     }
     /**
      * Update the specified resource in storage.

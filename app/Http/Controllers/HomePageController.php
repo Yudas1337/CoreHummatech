@@ -21,7 +21,6 @@ class HomePageController extends Controller
     private ProductInterface $product;
 
 
-
     public function __construct( ProfileInterface $profile, ServiceInterface $service, NewsInterface $news, CollabMitraInterface $mitras, SectionInterface $section, ProductInterface $product)
     {
         $this->profile = $profile;
@@ -42,10 +41,7 @@ class HomePageController extends Controller
         $news = $this->news->get();
         $mitras = $this->mitras->get();
         $section = $this->section->get();
-        $product = $this->product->get();
-
-
-
+        $product = $this->product->getByType('company');
         return view('landing.index', compact('profile','service','news','mitras','section','product'));
     }
 
