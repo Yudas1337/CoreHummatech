@@ -15,7 +15,7 @@ class NewsRepository extends BaseRepository implements NewsInterface
     }
     public function get(): mixed
     {
-      return $this->model->query()->get();
+        return $this->model->query()->get();
     }
 
     public function customPaginate(Request $request, int $pagination = 10): mixed
@@ -36,8 +36,10 @@ class NewsRepository extends BaseRepository implements NewsInterface
         return $this->model->query()->findOrFail($id)->delete($id);
     }
 
-    public function slug(string $slug): mixed
+    public function slug(mixed $slug): mixed
     {
-        return $this->model->query()->where('slug', $slug)->firstOrFail();
+        return $this->model->query()
+        ->where('slug', '!=', $slug)
+        ->get();
     }
 }

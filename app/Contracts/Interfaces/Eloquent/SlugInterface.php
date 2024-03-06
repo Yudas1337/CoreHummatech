@@ -10,5 +10,5 @@ interface SlugInterface
      * @param  mixed $id
      * @return mixed
      */
-    public function slug(string $slug): mixed;
+    public function slug(mixed $slug): mixed;
 }
