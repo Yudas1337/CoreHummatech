@@ -111,31 +111,29 @@
         <div class="container">
             <img src="{{ asset('assets-home/img/about-polygon.svg') }}" class="about-triangle" alt="Polygon" />
             <div class="about-items">
-                <div class="row align-items-center">
-                    @if (!empty($profile))
-                    <div class="col-md-6 info">
+                <div class="row align-center">
+                    <div class="col-lg-6 info">
                         <h4 class="subtitle">Profile Perusahaan</h4>
-                        <h2 class="text-break">{{ $profile->subtitle }}</h2>
-                        <p>
-                            {!! Str::limit($profile->description, 200) !!}
-                        </p>
-                        <a class="btn btn-gradient effect btn-md" href="/about-us">Selengkapnya</a>
+                        @forelse ($profiles as $profile)
+                            <h2>{{ $profile->subtitle }}</h2>
+                            <img src="{{ asset('storage/' . $profile->image) }}" alt="Thumb" class="w-75 mb-3 d-block mx-auto d-lg-none" />
+                            <p>
+                                {!! Str::limit($profile->description, 200) !!}
+                            </p>
+
+                            @if($profile->proposal)
+                            <a class="btn btn-gradient effect btn-md" href="{{ asset('storage/'.$profile->proposal) }}" download="{{ asset('storage/'.$profile->proposal) }}">Unduh Portofolio</a>
+                            @endif
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-lg-6 d-none d-md-none d-lg-inline">
                         <div class="thumb">
-                            <img src="{{ asset('storage/' . $profile->image) }}" alt="Thumb">
+                            <img src="{{ asset('storage/' . $profile->image) }}" alt="Thumb" class="w-100" />
                         </div>
                     </div>
-                    @else
-                    <div class="col-12">
-                        <div class="d-flex justify-content-center">
-                            <img src="{{ asset('nodata-gif.gif') }}" alt="" width="800px">
-                        </div>
-                        <h4 class="text-center text-dark" style="font-weight:600">
-                            Belum ada Profile
-                        </h4>
-                    </div>
-                    @endif
+
+                @empty
+                    <p>Belum ada profile perusahaan</p>
+                    @endforelse
                 </div>
             </div>
         </div>
