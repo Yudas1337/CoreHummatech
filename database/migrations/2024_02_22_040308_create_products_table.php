@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('slug');
             $table->string('description');
             $table->string('link');
-            $table->foreignId('service_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate()->nullable();
+            $table->foreignId('service_id')->nullable()->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->string('image');
             $table->enum('type', [ProductEnum::COMPANY->value, ProductEnum::SERVICE->value]);
             $table->timestamps();

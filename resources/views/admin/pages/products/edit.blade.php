@@ -15,9 +15,10 @@
                 </ul>
                 <div class="tab-content" id="myTabContent">
                     <div class="tab-pane fade show active py-5" id="organisasi" role="tabpanel">
-                        <form class="form-bookmark needs-validation" action="{{ route('product.update') }}" method="POST" id="bookmark-form"
+                        <form class="form-bookmark needs-validation" action="{{ route('productCompany.update', $product->id) }}" method="POST" id="bookmark-form"
                             novalidate="" enctype="multipart/form-data">
                             @csrf
+                            <input type="hidden" name="type" value="company">
                             <div class="row g-2">
                                 <div class="form-group mb-3 mt-0 col-md-12">
                                     <label for="name">Nama Produk</label>
@@ -70,9 +71,10 @@
                         </form>
                     </div>
                     <div class="tab-pane fade py-5" id="usaha" role="tabpanel" aria-labelledby="contact-tab">
-                        <form class="form-bookmark needs-validation" action="{{ route('product.update') }}" method="POST" id="bookmark-form"
+                        <form class="form-bookmark needs-validation" action="{{ route('product.update', $product->id) }}" method="POST" id="bookmark-form"
                             novalidate="" enctype="multipart/form-data">
                             @csrf
+                            <input type="hidden" name="type" value="service">
                             <div class="row g-2">
                                 <div class="form-group mb-3 mt-0 col-md-12">
                                     <label for="name">Nama Produk</label>

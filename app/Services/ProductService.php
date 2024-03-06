@@ -46,9 +46,9 @@ class ProductService
         $data = $request->validated();
 
         $data = [
+            'name' => $request->name,
             'description' => $request->description,
             'slug' => Str::slug($request->description),
-            'description' => $request->description,
             'link' => $request->link,
             'service_id' => $request->service_id,
             'type' => $request->type,
@@ -67,7 +67,7 @@ class ProductService
         $data = $request->validated();
 
         $data = [
-            'description' => $request->description,
+            'name' => $request->name,
             'slug' => Str::slug($request->description),
             'description' => $request->description,
             'link' => $request->link,
@@ -88,7 +88,7 @@ class ProductService
         foreach ($request->feature as $index => $item) {
             $data = [
                 'product_id' => $product_id->id,
-                'title' => $request->title[$index]
+                'title' => $request->feature[$index]
             ];
             ProductFeature::create($data);
         }
@@ -144,7 +144,7 @@ class ProductService
     {
         $data = $request->validated();
         $data = [
-            'description' => $request->description,
+            'name' => $request->name,
             'slug' => Str::slug($request->description),
             'description' => $request->description,
             'link' => $request->link,
@@ -171,7 +171,7 @@ class ProductService
     {
         $data = $request->validated();
         $data = [
-            'description' => $request->description,
+            'name' => $request->name,
             'slug' => Str::slug($request->description),
             'description' => $request->description,
             'link' => $request->link,

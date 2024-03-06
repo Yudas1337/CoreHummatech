@@ -28,6 +28,7 @@ class StoreProductCompanyRequest extends FormRequest
             'link' => 'required|max:255',
             'feature' => 'required|max:255',
             'type' => 'required',
+            'service_id' => 'nullable'
         ];
     }
 }
