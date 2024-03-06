@@ -23,6 +23,7 @@ use App\Http\Controllers\SosialMediaController;
 use App\Http\Controllers\StructureController;
 use App\Http\Controllers\TeamController;
 use App\Http\Controllers\TermsconditionController;
+use App\Http\Controllers\TestimonialController;
 use App\Http\Controllers\VisionAndMisionController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -44,6 +45,7 @@ Auth::routes();
 Route::get('about-us', [AboutUsController::class, 'index']);
 Route::get('berita', [NewsController::class, 'news']);
 Route::get('home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('{slugnews}', [NewsController::class, 'showNews'])->name('news.slug');
 Route::get('{slugService}', [ServiceController::class, 'ShowService']);
 Route::get('contact', function () {
     return view('landing.contact');
@@ -56,7 +58,6 @@ Route::get('message-approval', function () {
 Route::get('/testimonial', function () {
     return view('admin.pages.testimonial.index');
 });
-Route::get('{slugnews}', [NewsController::class, 'showNews'])->name('news.slug');
 Route::resource('gallery', GalleryController::class);
 Route::put('galery/update/{galeryImage}' , [GalleryController::class ,'update']);
 Route::delete('galery/delete/{galeryImage}' , [GalleryController::class ,'destroy']);
