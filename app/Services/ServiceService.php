@@ -85,4 +85,8 @@ class ServiceService
         $data['slug'] = Str::slug($request->name);
         return $data;
     }
+    public function delete(Service $service)
+    {
+        $this->remove($service->image);
+    }
 }

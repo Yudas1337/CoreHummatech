@@ -63,7 +63,7 @@ class GalleryController extends Controller
                 'image' => $img,
             ]);
         }
-        return redirect()->back();
+        return redirect()->back()->with('success' , 'Data berhasil di tambahkan');
     }
 
     /**
@@ -89,7 +89,7 @@ class GalleryController extends Controller
     {
         $data = $this->galeryService->update($galeryImage, $request);
         $this->galleryimage->update($galeryImage->id, $data);
-        return redirect()->back();
+        return redirect()->back()->with('success' , 'Data berhasil di update');
     }
 
     /**
@@ -99,6 +99,6 @@ class GalleryController extends Controller
     {
         $this->galeryService->delete($galeryImage);
         $this->galleryimage->delete($galeryImage->id);
-        return redirect()->back();
+        return redirect()->back()->with('success' , 'Data berhasil di hapus');
     }
 }

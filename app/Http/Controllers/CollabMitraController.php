@@ -47,7 +47,7 @@ class CollabMitraController extends Controller
     {
         $data = $this->service->store($request);
         $this->collabMitra->store($data);
-        return back();
+        return back()->with('success', 'Berhasil Di Tambahkan');
     }
 
     /**

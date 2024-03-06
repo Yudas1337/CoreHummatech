@@ -192,4 +192,8 @@ class ProductService
 
         return $data;
     }
+    public function delete(Product $product)
+    {
+        $this->remove($product->image);
+    }
 }

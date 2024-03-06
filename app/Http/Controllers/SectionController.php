@@ -67,7 +67,7 @@ class SectionController extends Controller
     public function update(UpdateSectionRequest $request, Section $section)
     {
         $this->section->update($section->id, $this->service->update($section, $request));
-        return to_route('hero.section')->with('succes', 'Hero section berhasil diperbarui');
+        return to_route('hero.section')->with('success', 'Hero section berhasil diperbarui');
     }
 
     /**

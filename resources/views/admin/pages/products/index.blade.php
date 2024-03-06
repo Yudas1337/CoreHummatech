@@ -48,7 +48,7 @@
                             <div class="d-flex flex-shrink-0 gap-2">
                                 <button class="btn btn-light-warning px-3 m-0 btn-edit" type="button" onclick="window.location.href='{{ $product->type == 'company' ? route('productCompany.edit', $product->id) : route('product.edit', $product->id) }}'">
                                     <i class="fas fa-pencil"></i>
-                                </button>                                
+                                </button>
                                 <button class="btn btn-light-danger px-3 m-0 btn-delete" type="button" data-id="{{ $product->id }}"><i
                                     class="fas fa-trash"></i></button>
                             </div>
@@ -68,6 +68,19 @@
     @include('admin.components.delete-modal-component')
 @endsection
 @section('script')
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+@if(session('success'))
+<script>
+    Swal.fire({
+        title: 'Success',
+        text: '{{ session('success') }}',
+        icon: 'success',
+        confirmButtonText: 'OK',
+        timer: 2000, // Menutup SweetAlert setelah 3 detik
+        timerProgressBar: true // Menampilkan progress bar
+    });
+</script>
+@endif
     <script>
         $('.btn-delete').on('click', function() {
             var id = $(this).data('id');

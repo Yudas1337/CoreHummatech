@@ -37,7 +37,7 @@ class CollabCategoryController extends Controller
     public function store(StoreCollabCategoryRequest $request)
     {
         $this->collabCategory->store($request->validated());
-        return back();
+        return back()->with('success', 'Berhasil Di Tambahkan');
     }
 
     /**
@@ -62,7 +62,7 @@ class CollabCategoryController extends Controller
     public function update(UpdateCollabCategoryRequest $request, CollabCategory $collabCategory)
     {
         $this->collabCategory->update($collabCategory->id, $request->validated());
-        return back();
+        return back()->with('success', 'Berhasil Di Perbarui');
     }
 
     /**
@@ -71,7 +71,7 @@ class CollabCategoryController extends Controller
     public function destroy(CollabCategory $collabCategory)
     {
         $this->collabCategory->delete($collabCategory->id);
-        return back();
+        return back()->with('success', 'Berhasil Di Hapus');
 
     }
 }

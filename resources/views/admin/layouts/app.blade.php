@@ -212,6 +212,8 @@
     <!-- Theme js-->
     <script src="{{ asset('assets/js/script.js') }}"></script>
     <!-- Plugin used-->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
     @yield('script')
 </body>
 </html>

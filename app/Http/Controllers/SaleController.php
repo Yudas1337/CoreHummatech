@@ -91,11 +91,8 @@ class SaleController extends Controller
      */
     public function destroy(Sale $sale)
     {
-        if (!$this->sale->delete($sale->id)) {
-            return back()->with('error', 'Penjualan Gagal Di Hapus');
-        }
-
-        $this->service->remove($sale->image);
+        $this->service->delete($sale);
+        $this->sale->delete($sale->id);
         return back()->with('success' , 'Penjualan Berhasil Di Hapus');
     }
 

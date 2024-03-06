@@ -79,4 +79,8 @@ class SaleService
 
         return $data;
     }
+    public function delete(Sale $sale)
+    {
+        $this->remove($sale->image);
+    }
 }

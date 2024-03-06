@@ -123,11 +123,8 @@ class ServiceController extends Controller
      */
     public function destroy(Service $service)
     {
-        if (!$this->service->delete($service->id)) {
-            return back()->with('error', 'Penjualan Gagal Di Hapus');
-        }
-
-        $this->serviceService->remove($service->image);
+        $this->serviceService->delete($service);
+        $this->service->delete($service->id);
         return back()->with('success' , 'Penjualan Berhasil Di Hapus');
     }
 

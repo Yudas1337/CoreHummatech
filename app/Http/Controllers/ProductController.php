@@ -95,7 +95,7 @@ class ProductController extends Controller
         $services = $this->service->get();
         $productfeature = ProductFeature::where('product_id', $product->id)->get();
         // dd($productfeature);
-        return view('admin.pages.products.edit', compact('product', 'services', 'productfeature'));
+        return view('admin.pages.products.edit', compact('Produk', 'services', 'productfeature'));
     }
 
     /**
@@ -134,12 +134,9 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        if (!$this->product->delete($product->id)) {
-            return back()->with('error', 'Testimoni Gagal Di Hapus');
-        }
-
-        $this->productService->remove($product->image);
-        return back()->with('success', 'Testimoni Berhasil Di Hapus');
+        $this->productService->delete($product);
+        $this->product->delete($product->id);
+        return back()->with('success', 'Produk Berhasil Di Hapus');
     }
 
     public function product()

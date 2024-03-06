@@ -65,6 +65,7 @@
 @endsection
 
 @section('content')
+
     <div class="row">
         @forelse ($sections as $section)
         <div class="col-md-12 col-12 col-xl-6">
@@ -108,6 +109,22 @@
     @include('admin.components.delete-modal-component')
 @endsection
 @section('script')
+<!-- Masukkan kode ini di dalam tag <head> -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+    <!-- Masukkan kode ini sebelum akhir tag </body> -->
+    @if(session('success'))
+    <script>
+        Swal.fire({
+            title: 'Success',
+            text: '{{ session('success') }}',
+            icon: 'success',
+            confirmButtonText: 'OK',
+            timer: 3000, // Menutup SweetAlert setelah 3 detik
+            timerProgressBar: true // Menampilkan progress bar
+        });
+    </script>
+    @endif
     <script>
          $('.btn-delete').on('click', function() {
             var id = $(this).data('id');
