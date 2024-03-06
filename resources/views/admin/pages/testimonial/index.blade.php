@@ -74,7 +74,64 @@
     </div>
 
     <!-- Add Modal -->
-    <div class="modal fade modal-bookmark" id="tambah" tabindex="-1" role="dialog"
+    <div class="modal fade modal-bookmark" id="tambah" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="d-flex justify-content-between">
+                        <h5 class="modal-title fw-semibold" id="exampleModalLabel">Tambah Testimoni</h5>
+                        <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                </div>
+                    <ul class="simple-wrapper nav nav-tabs modal-header" id="myTab" role="tablist">
+                        <li class="nav-item"><a class="nav-link active txt-primary" id="profile-tabs" data-bs-toggle="tab" href="#organisasi" role="tab" aria-controls="profile" aria-selected="false">Struktur organisasi</a></li>
+                        <li class="nav-item"><a class="nav-link txt-primary" id="contact-tab" data-bs-toggle="tab" href="#usaha" role="tab" aria-controls="contact" aria-selected="false">Struktur usaha</a></li>
+                        <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </ul>
+
+                <div class="modal-body">
+                    <div class="tab-content" id="myTabContent">
+                        <div class="tab-pane fade show active" id="organisasi" role="tabpanel">
+                            <form class="form-bookmark needs-validation" action="{{ route('structure.create') }}" method="POST" id="bookmark-form" novalidate="" enctype="multipart/form-data">
+                                @csrf
+                                <div class="pt-3 mb-0">
+                                    <div class="mb-3 mt-0 col-md-12">
+                                        <input type="hidden" name="type" value="structure_organize">
+                                        <label for="formFile">Foto struktur organisasi</label>
+                                        <input class="form-control" name="image" id="formFile" type="file" />
+                                    </div>
+                                </div>
+                                <div class="d-flex justify-content-end gap-2">
+                                    <button class="btn btn-light-danger" type="button" data-bs-dismiss="modal">Tutup</button>
+                                    <button class="btn btn-primary" type="submit">Tambah</button>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="tab-pane fade" id="usaha" role="tabpanel" aria-labelledby="contact-tab">
+                            <div class="pt-3">
+                            <form class="form-bookmark needs-validation" action="{{ route('structure.create') }}" method="POST" id="bookmark-form" novalidate="" enctype="multipart/form-data">
+                                @csrf
+                                <div class="mb-3 mt-0 col-md-12">
+                                    <input type="hidden" name="type" value="structure_business">
+                                    <label for="formFile">Foto struktur usaha</label>
+                                    <input class="form-control" name="image" id="formFile" type="file" />
+                                </div>
+                                <div class="d-flex justify-content-end gap-2">
+                                    <button class="btn btn-light-danger" type="button" data-bs-dismiss="modal">Tutup</button>
+                                    <button class="btn btn-primary" type="submit">Tambah</button>
+                                </div>
+                            </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="modal fade modal-bookmark"  tabindex="-1" role="dialog"
         aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
