@@ -88,6 +88,51 @@
             }
         }
     </style>
+    <style>
+        @media (max-width: 767px) {
+            .about-triangle {
+                display: none;
+            }
+        }
+    </style>
+    <style>
+        @media (max-width: 767px) {
+            .team-item img {
+                max-width: 60%;
+            }
+        }
+    </style>
+    <style>
+        .team-item {
+            margin-right: 15px;
+        }
+
+        .team-item:last-child {
+            margin-right: 0;
+        }
+
+        @media (max-width: 767px) {
+            .team-item {
+                margin-right: 0;
+            }
+        }
+    </style>
+    <style>
+    .team-item {
+        margin-right: 15px; 
+    }
+
+    .team-item:last-child {
+        margin-right: 15px;
+    }
+
+    @media (max-width: 767px) {
+        .team-item {
+            margin-right: 0;
+        }
+    }
+</style>
+
 @endsection
 @section('content')
     <!-- Start Banner
@@ -142,29 +187,27 @@
     <!-- End Banner -->
 
     <!-- Start About Area -->
-    <div class="about-us-area default-padding">
+       <div class="about-us-area default-padding">
         <div class="container">
-            {{-- <div class="background-img" style="background-image: url('{{ asset('assets-home/img/about-polygon.svg') }}');"></div> --}}
             <img src="{{ asset('assets-home/img/about-polygon.svg') }}" class="about-triangle" alt="Polygon" />
             <div class="about-items">
-                <div class="row">
+                <div class="row d-flex align-items-center">
                     <div class="col-md-6 info">
-                        <h4 class="subtitle">Profile Perusahaan</h4>
                         @forelse ($profile as $profile)
                             <h2 class="text-break">{{ $profile->subtitle }}</h2>
-                            <p>
+                            <p class="text-break">
                                 {!! Str::limit($profile->description, 200) !!}
                             </p>
                             <a class="btn btn-gradient effect btn-md" href="/about-us">Selengkapnya</a>
                             @empty
-                            <p>Belum ada profile perusahaan</p>
-                            @endforelse
+                                <p>Belum ada profile perusahaan</p>
+                        @endforelse
+                    </div>
+                    <div class="col-md-6 order-first order-md-last text-center">
+                        <div class="thumb">
+                            <img src="{{ asset('storage/' . $profile->image) }}" alt="Thumb" style="max-width: 100%; max-height: 450px; display: inline-block;">
                         </div>
-                        <div class="col-md-6">
-                            <div class="thumb">
-                                <img src="{{ asset('storage/' . $profile->image) }}" alt="Thumb">
-                            </div>
-                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -175,11 +218,9 @@
     <!-- Star Services Area
                                     ============================================= -->
     <div class="thumb-services-area inc-thumbnail default-padding bottom-less">
-        <!-- Shape -->
         <div class="right-shape">
             <img src="assets-home/img/shape/9.png" alt="Shape">
         </div>
-        <!-- Shape -->
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 offset-lg-2">
@@ -313,14 +354,14 @@
                                     <img src="{{ asset('storage/' . $mitra->image) }}" alt="Mitra Image" class="img-fluid">
                                 </div>
                             @empty
-                            <div class="col-12">
-                                <div class="d-flex justify-content-center">
-                                    <img src="{{ asset('nodata-gif.gif') }}" alt="" width="800px">
+                                <div class="col-12">
+                                    <div class="d-flex justify-content-center">
+                                        <img src="{{ asset('nodata-gif.gif') }}" alt="" width="800px">
+                                    </div>
+                                    <h4 class="text-center text-dark" style="font-weight:600">
+                                        Belum ada Mitra
+                                    </h4>
                                 </div>
-                                <h4 class="text-center text-dark" style="font-weight:600">
-                                    Belum ada Mitra
-                                </h4>
-                            </div>
                             @endforelse
                         </div>
                     </div>
