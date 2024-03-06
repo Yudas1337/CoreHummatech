@@ -120,7 +120,9 @@
                                 {!! Str::limit($profile->description, 200) !!}
                             </p>
 
-                            <a class="btn btn-gradient effect btn-md" href="javascript:void(0)">Unduh Portofolio</a>
+                            @if($profile->proposal)
+                            <a class="btn btn-gradient effect btn-md" href="{{ Storage::url($profile->proposal) }}">Unduh Portofolio</a>
+                            @endif
                     </div>
                     <div class="col-lg-6">
                         <div class="thumb">
@@ -214,7 +216,16 @@
         <div class="container">
             <div class="work-process-items features-content">
                 <div class="text-center">
-                    <img src="{{ asset('assets_landing/stuktur.png') }}" alt="">
+                    @if($imageStructures->count() > 0 && isset($imageStructures[0]))
+                    <img src="{{ Storage::url($imageStructures[0]->image) }}" alt="Struktur Organisasi Hummatech" />
+                    @else
+                    <div class="d-flex justify-content-center">
+                        <img src="{{ asset('nodata-gif.gif') }}" alt="Not Found" width="800px" />
+                    </div>
+                    <h4 class="text-center text-dark" style="font-weight:600">
+                        Gambar struktur organisasi belum diunggah
+                    </h4>
+                    @endif
                 </div>
             </div>
         </div>
@@ -235,7 +246,16 @@
         <div class="container">
             <div class="work-process-items features-content">
                 <div class="text-center">
-                    <img src="{{ asset('assets_landing/struktur-usaha.png') }}" alt="">
+                    @if($imageStructures->count() > 0 && isset($imageStructures[1]))
+                    <img src="{{ Storage::url($imageStructures[1]->image) }}" alt="Struktur Usaha dari Hummatech" />
+                    @else
+                    <div class="d-flex justify-content-center">
+                        <img src="{{ asset('nodata-gif.gif') }}" alt="Not Found" width="800px" />
+                    </div>
+                    <h4 class="text-center text-dark" style="font-weight:600">
+                        Gambar struktur organisasi belum diunggah
+                    </h4>
+                    @endif
                 </div>
             </div>
         </div>
