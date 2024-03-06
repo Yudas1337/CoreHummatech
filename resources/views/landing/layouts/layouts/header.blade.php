@@ -56,7 +56,7 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" >Layanan</a>
                         <ul class="dropdown-menu">
                             @forelse ($services as $service)
-                                <li><a href="/{{ $service->slug }}">{{ $service->name }}</a></li>
+                                <li><a href="/layanan/{{ $service->slug }}">{{ $service->name }}</a></li>
                             @empty
                                 <li><a href="javascript:void(0)">Layanan Masih Kosong</a></li>
                             @endforelse

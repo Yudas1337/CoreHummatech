@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Contracts\Interfaces\FaqInterface;
 use App\Models\Product;
 use App\Models\ProductFeature;
 use App\Services\ProductService;
@@ -10,6 +11,8 @@ use App\Http\Requests\UpdateProductRequest;
 use App\Contracts\Interfaces\ProductInterface;
 use App\Contracts\Interfaces\ServiceInterface;
 use App\Contracts\Interfaces\TestimonialInterface;
+use App\Http\Requests\StoreProductCompanyRequest;
+use App\Http\Requests\UpdateProductCompanyRequest;
 
 class ProductController extends Controller
 {
@@ -17,13 +20,15 @@ class ProductController extends Controller
     private ProductService $productService;
     private ServiceInterface $service;
     private TestimonialInterface $testimonial;
+    private FaqInterface $faq;
 
-    public function __construct(ProductInterface $product, ProductService $productService, ServiceInterface $service, TestimonialInterface $testimonial)
+    public function __construct(ProductInterface $product, ProductService $productService, ServiceInterface $service, TestimonialInterface $testimonial, FaqInterface $faq)
     {
         $this->product = $product;
         $this->testimonial = $testimonial;
         $this->productService = $productService;
         $this->service = $service;
+        $this->faq = $faq;
     }
     /**
      * Display a listing of the resource.
@@ -53,6 +58,14 @@ class ProductController extends Controller
         $data = $this->productService->store($request);
         $product_id = $this->product->store($data);
         $this->productService->storefeature($request, $product_id);
+        return to_route('product.index')->with('success', 'Produk berhasil di tambahkan');
+    }
+
+    public function storeCompany(StoreProductCompanyRequest $request)
+    {
+        $data = $this->productService->storeCompany($request);
+        $product_id = $this->product->store($data);
+        $this->productService->storefeaturecompany($request, $product_id);
         return to_route('product.index')->with('success', 'Produk berhasil di tambahkan');
     }
 
@@ -89,6 +102,18 @@ class ProductController extends Controller
         return to_route('product.index')->with('success', 'Produk Berhasil Di Update');
     }
 
+    /**
+     * Update the specified resource in storage.
+     */
+    public function updateCompany(UpdateProductCompanyRequest $request, Product $product)
+    {
+        // dd($request->all());
+        $data = $this->productService->updateCompany($product, $request);
+        $this->product->update($product->id, $data);
+        $this->productService->updatefeaturecompany($request, $product);
+        return to_route('product.index')->with('success', 'Produk Berhasil Di Update');
+    }
+
     public function feature(ProductFeature $ProductFeature)
     {
         // dd($ProductFeature);
@@ -118,6 +143,7 @@ class ProductController extends Controller
     public function showproduct(Product $product)
     {
         $testimonial = $this->testimonial->get()->where('product_id', $product->id);
-        return view('landing.product.product-detail', compact('product', 'testimonial'));
+        $faqs = $this->faq->get();
+        return view('landing.product.product-detail', compact('product', 'testimonial', 'faqs'));
     }
 }

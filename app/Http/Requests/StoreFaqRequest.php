@@ -24,7 +24,8 @@ class StoreFaqRequest extends FormRequest
         return [
             'question' => 'required',
             'answer' => 'required',
-            'service_id' => 'required',
+            'service_id' => 'nullable',
+            'product_id' => 'nullable',
         ];
     }
 }

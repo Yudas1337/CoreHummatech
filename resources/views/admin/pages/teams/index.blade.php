@@ -50,7 +50,7 @@
                 <h5 class="modal-title fw-semibold" id="exampleModalLabel">Anggota tim baru</h5>
                 <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form class="form-bookmark needs-validation" id="form-create" action="" method="POST" id="bookmark-form"
+            <form class="form-bookmark needs-validation" id="form-create" action="/create/team" method="POST" id="bookmark-form"
                 novalidate="" enctype="multipart/form-data">
                 @csrf
                 <div class="modal-body">
@@ -79,7 +79,7 @@
                 </div>
                 <div class="modal-footer">
                     <div class="d-flex justify-content-end">
-                        <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">Cancel</button>
+                        <button class="btn btn-light-danger" type="button" data-bs-dismiss="modal">Tutup</button>
                         <button class="btn btn-primary" type="submit">Tambah</button>
                     </div>
                 </div>
@@ -133,7 +133,7 @@
                     <h5 class="modal-title fw-semibold" id="exampleModalLabel">Ubah Data</h5>
                     <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form class="form-bookmark needs-validation" id="form-update" action="" method="POST" id="bookmark-form"
+                <form class="form-bookmark needs-validation" id="form-update" method="POST" id="bookmark-form"
                     novalidate="" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
@@ -167,7 +167,7 @@
                     </div>
                     <div class="modal-footer">
                         <div class="d-flex justify-content-end">
-                            <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">Cancel</button>
+                            <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">Tutup</button>
                             <button class="btn btn-primary" type="submit">Tambah</button>
                         </div>
                     </div>

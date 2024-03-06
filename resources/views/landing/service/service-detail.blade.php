@@ -522,7 +522,7 @@
                                 <h4 class="m-0">Mitra Kami</h4>
                                 <div class="dash"></div>
                             </div>
-                            
+
                         </div>
                         <div class="py-2 mb-5">
                             <div class="title-service">
@@ -632,7 +632,7 @@
                             <div class="content">
                                 <ul>
                                     @foreach ($services as $service)
-                                        <li class=""><a href="/{{ $service->slug }}">{{ $service->name }}</a></li>
+                                        <li class=""><a href="/layanan/{{ $service->slug }}">{{ $service->name }}</a></li>
                                     @endforeach
                                 </ul>
                             </div>
@@ -651,7 +651,7 @@
                         </div>
                         <!-- Single Widget -->
                         <div class="single-widget brochure">
-                            <h4 class="widget-title">Brochure</h4>
+                            <h4 class="widget-title">Proposal</h4>
                             <ul>
                                 <li><a href="#"><i class="fas fa-file-pdf"></i> Download Brochure </a></li>
                                 <li><a href="#"><i class="fas fa-file-pdf"></i> Company Details </a></li>

@@ -1,5 +1,6 @@
 <?php
 
+use App\Enums\ProductEnum;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -17,8 +18,9 @@ return new class extends Migration
             $table->string('slug');
             $table->string('description');
             $table->string('link');
-            $table->foreignId('service_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignId('service_id')->nullable()->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->string('image');
+            $table->enum('type', [ProductEnum::COMPANY->value, ProductEnum::SERVICE->value]);
             $table->timestamps();
         });
     }

@@ -188,7 +188,14 @@
                             </div>
                         </div>
                     @empty
-                        <h1>Belum ada testimoni</h1>
+                        <div class="col-7">
+                            <div class="d-flex justify-content-center">
+                                <img src="{{ asset('nodata-gif.gif') }}" alt="" width="800px">
+                            </div>
+                            <h4 class="text-center text-dark" style="font-weight:600">
+                                Belum ada Testimonial
+                            </h4>
+                        </div>
                     @endforelse
                     <div class="col-lg-5 info">
                         <h4>Testimoni</h4>
@@ -223,99 +230,36 @@
                     <div class="col-lg-10 offset-lg-1">
                         <div class="faq-content wow fadeInUp">
                             <div class="accordion" id="accordionExample">
-                                <div class="card">
-                                    <div class="card-header" id="headingOne">
-                                        <h4 class="mb-0" data-toggle="collapse" data-target="#collapseOne"
-                                            aria-expanded="true" aria-controls="collapseOne">
-                                            Why is collaborative learning so important?
-                                        </h4>
-                                    </div>
-
-                                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
-                                        data-parent="#accordionExample">
-                                        <div class="card-body">
-                                            <p>
-                                                Companions shy had solicitude favourable own. Which could saw guest man now
-                                                heard but. Lasted my coming uneasy marked so should. Gravity letters it
-                                                amongst herself dearest an windows by. Wooded ladies she basket season age
-                                                her uneasy saw. Discourse unwilling am no described dejection incommode no
-                                                listening of. Before nature his parish boy.
-                                            </p>
-                                            <div class="ask-question">
-                                                <span>Still no luck?</span>
+                                @forelse ($faqs as $faq)
+                                    <div class="card">
+                                        <div class="card-header" id="headingFour{{ $loop->iteration }}">
+                                            <h4 class="mb-0 collapsed" data-toggle="collapse" data-target="#collapseFour"
+                                                aria-expanded="false" aria-controls="collapseFour">
+                                                {{ $faq->question }}
+                                            </h4>
+                                        </div>
+                                        <div id="collapseFour" class="collapse" aria-labelledby="headingFour{{ $loop->iteration }}"
+                                            data-parent="#accordionExample">
+                                            <div class="card-body">
+                                                <p>
+                                                    {{ $faq->answer }}
+                                                </p>
+                                                <div class="ask-question">
+                                                    <span>Still no luck?</span> <a href="#">Ask a question</a>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
+                                @empty
+                                <div class="col">
+                                    <div class="d-flex justify-content-center">
+                                        <img src="{{ asset('nodata-gif.gif') }}" alt="" width="400px">
+                                    </div>
+                                    <h4 class="text-center text-dark" style="font-weight:600">
+                                        Belum ada FAQ
+                                    </h4>
                                 </div>
-                                <div class="card">
-                                    <div class="card-header" id="headingTwo">
-                                        <h4 class="mb-0 collapsed" data-toggle="collapse" data-target="#collapseTwo"
-                                            aria-expanded="false" aria-controls="collapseTwo">
-                                            Do you offer free trials?
-                                        </h4>
-                                    </div>
-                                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
-                                        data-parent="#accordionExample">
-                                        <div class="card-body">
-                                            <p>
-                                                Companions shy had solicitude favourable own. Which could saw guest man now
-                                                heard but. Lasted my coming uneasy marked so should. Gravity letters it
-                                                amongst herself dearest an windows by. Wooded ladies she basket season age
-                                                her uneasy saw. Discourse unwilling am no described dejection incommode no
-                                                listening of. Before nature his parish boy.
-                                            </p>
-                                            <div class="ask-question">
-                                                <span>Still no luck?</span> <a href="#">Ask a question</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card">
-                                    <div class="card-header" id="headingThree">
-                                        <h4 class="mb-0 collapsed" data-toggle="collapse" data-target="#collapseThree"
-                                            aria-expanded="false" aria-controls="collapseThree">
-                                            What kind of support do you offer?
-                                        </h4>
-                                    </div>
-                                    <div id="collapseThree" class="collapse" aria-labelledby="headingThree"
-                                        data-parent="#accordionExample">
-                                        <div class="card-body">
-                                            <p>
-                                                Companions shy had solicitude favourable own. Which could saw guest man now
-                                                heard but. Lasted my coming uneasy marked so should. Gravity letters it
-                                                amongst herself dearest an windows by. Wooded ladies she basket season age
-                                                her uneasy saw. Discourse unwilling am no described dejection incommode no
-                                                listening of. Before nature his parish boy.
-                                            </p>
-                                            <div class="ask-question">
-                                                <span>Still no luck?</span> <a href="#">Ask a question</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card">
-                                    <div class="card-header" id="headingFour">
-                                        <h4 class="mb-0 collapsed" data-toggle="collapse" data-target="#collapseFour"
-                                            aria-expanded="false" aria-controls="collapseFour">
-                                            Can I share my courses with non-registered users?
-                                        </h4>
-                                    </div>
-                                    <div id="collapseFour" class="collapse" aria-labelledby="headingFour"
-                                        data-parent="#accordionExample">
-                                        <div class="card-body">
-                                            <p>
-                                                Companions shy had solicitude favourable own. Which could saw guest man now
-                                                heard but. Lasted my coming uneasy marked so should. Gravity letters it
-                                                amongst herself dearest an windows by. Wooded ladies she basket season age
-                                                her uneasy saw. Discourse unwilling am no described dejection incommode no
-                                                listening of. Before nature his parish boy.
-                                            </p>
-                                            <div class="ask-question">
-                                                <span>Still no luck?</span> <a href="#">Ask a question</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                @endforelse
                             </div>
                         </div>
                     </div>

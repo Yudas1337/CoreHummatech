@@ -48,12 +48,8 @@
                             <div class="d-flex flex-shrink-0 gap-2">
                                 <button class="btn btn-light-warning px-3 m-0 btn-edit" type="button" onclick="window.location='{{ route('product.edit', $product->id) }}'"><i
                                         class="fas fa-pencil"></i></button>
-                                <form action="{{ route('product.destroy', $product->id) }}" method="POST">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button class="btn px-3 btn-light-danger" type="submit"><i
-                                            class="fas fa-trash"></i></button>
-                                </form>
+                                <button class="btn btn-light-danger px-3 m-0 btn-delete" type="button" data-id="{{ $product->id }}"><i
+                                    class="fas fa-trash"></i></button>
                             </div>
                         </div>
                     </div>
@@ -71,7 +67,13 @@
     @include('admin.components.delete-modal-component')
 @endsection
 @section('script')
-    <script></script>
+    <script>
+        $('.btn-delete').on('click', function() {
+            var id = $(this).data('id');
+            $('#form-delete').attr('action', '/product/' + id);
+            $('#modal-delete').modal('show');
+        });
+    </script>
 
     <script>
         function previewImage(event) {
