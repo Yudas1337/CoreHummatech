@@ -103,15 +103,11 @@
         aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
-                <div class="dflex justify-content-between p-2 mx-3 mt-2">
-                    <h5 class="modal-title fw-semibold" id="exampleModalLabel">Tambah Visi Misi</h5>
-                </div>
                 <div class="advance-options">
-                    <ul class="nav border-tab" id="chat-options-tab" role="tablist">
-                        <li class="nav-item"><a class="nav-link active" id="chats-tab" data-bs-toggle="tab" href="#chats"
-                                role="tab" aria-controls="chats" aria-selected="true">Kantor</a></li>
-                        <li class="nav-item"><a class="nav-link" id="contacts-tab" data-bs-toggle="tab" href="#contacts"
-                                role="tab" aria-controls="contacts" aria-selected="false">Layanan</a></li>
+                    <ul class="simple-wrapper nav nav-tabs modal-header" id="myTab" role="tablist">
+                        <li class="nav-item"><a class="nav-link active txt-primary" id="profile-tabs" data-bs-toggle="tab" href="#chats" role="tab" aria-controls="profile" aria-selected="false">Kantor</a></li>
+                        <li class="nav-item"><a class="nav-link txt-primary" id="contact-tab" data-bs-toggle="tab" href="#contacts  " role="tab" aria-controls="contact" aria-selected="false">Layanan</a></li>
+                        <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
                     </ul>
                     <div class="tab-content" id="chat-options-tabContent">
                         <div class="tab-pane fade show active" id="chats" role="tabpanel" aria-labelledby="chats-tab">

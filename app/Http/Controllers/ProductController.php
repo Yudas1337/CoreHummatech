@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Contracts\Interfaces\FaqInterface;
 use App\Models\Product;
 use App\Models\ProductFeature;
 use App\Services\ProductService;
@@ -19,13 +20,15 @@ class ProductController extends Controller
     private ProductService $productService;
     private ServiceInterface $service;
     private TestimonialInterface $testimonial;
+    private FaqInterface $faq;
 
-    public function __construct(ProductInterface $product, ProductService $productService, ServiceInterface $service, TestimonialInterface $testimonial)
+    public function __construct(ProductInterface $product, ProductService $productService, ServiceInterface $service, TestimonialInterface $testimonial, FaqInterface $faq)
     {
         $this->product = $product;
         $this->testimonial = $testimonial;
         $this->productService = $productService;
         $this->service = $service;
+        $this->faq = $faq;
     }
     /**
      * Display a listing of the resource.
@@ -147,7 +150,9 @@ class ProductController extends Controller
 
     public function showproduct(Product $product)
     {
-        $testimonial = $this->testimonial->get()->where('product_id', $product->id);
-        return view('landing.product.product-detail', compact('product', 'testimonial'));
+        $testimonial = $this->testimonial->get();
+        $id  = $product->id;
+        $faqs = $this->faq->ServiceProductShow('product_id', $id);
+        return view('landing.product.product-detail', compact('product', 'testimonial', 'faqs'));
     }
 }

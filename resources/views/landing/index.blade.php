@@ -146,30 +146,29 @@
         <div class="container">
             <img src="{{ asset('assets-home/img/about-polygon.svg') }}" class="about-triangle" alt="Polygon" />
             <div class="about-items">
-                <div class="row align-center">
-                    <div class="col-lg-6 info">
+                <div class="row">
+                    <div class="col-md-6 info">
                         <h4 class="subtitle">Profile Perusahaan</h4>
                         @forelse ($profile as $profile)
-                            <h2>{{ $profile->subtitle }}</h2>
+                            <h2 class="text-break">{{ $profile->subtitle }}</h2>
                             <p>
                                 {!! Str::limit($profile->description, 200) !!}
                             </p>
-
                             <a class="btn btn-gradient effect btn-md" href="/about-us">Selengkapnya</a>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="thumb">
-                            <img src="{{ asset('storage/' . $profile->image) }}" alt="Thumb">
+                            @empty
+                            <p>Belum ada profile perusahaan</p>
+                            @endforelse
                         </div>
-                    </div>
-
-                @empty
-                    <p>Belum ada profile perusahaan</p>
-                    @endforelse
+                        <div class="col-md-6">
+                            <div class="thumb">
+                                <img src="{{ asset('storage/' . $profile->image) }}" alt="Thumb">
+                            </div>
+                        </div>
                 </div>
             </div>
         </div>
     </div>
+
     <!-- End About -->
 
     <!-- Star Services Area

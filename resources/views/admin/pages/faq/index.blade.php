@@ -40,13 +40,20 @@
                     <div class="card-header">
                         <div class="card-header-right">
                             <ul class="list-unstyled" style="text-align:center">
-                                <li><i class="fa fa-edit text-primary mb-2 p-1 btn-edit" data-id="{{ $item->id }}" data-question="{{ $item->question }}" data-answer="{{ $item->answer }}" data-service_id="{{ $item->service_id }}" type="button" data-bs-toggle="modal"
-                                        data-bs-target="#edit"></i></li>
+                                @if ($item->service_id )
+                                <li><i class="fa fa-edit text-primary mb-2 p-1 btn-edit" data-id="{{ $item->id }}"
+                                        data-question="{{ $item->question }}" data-answer="{{ $item->answer }}"
+                                        data-service_id="{{ $item->service_id }}" type="button"></i></li>
+                                @else
+                                <li><i class="fa fa-edit text-primary mb-2 p-1 btn-edits" data-id="{{ $item->id }}"
+                                        data-question="{{ $item->question }}" data-answer="{{ $item->answer }}"
+                                        data-service_id="{{ $item->product_id }}" type="button"></i></li>
+                                @endif
                                 <li><i class="fa-solid fa-trash text-primary p-1 btn-delete" type="button"
                                         data-id="{{ $item->id }}"></i></li>
                             </ul>
                         </div>
-                        <div class="ribbon mt-3 ribbon-primary ribbon-space-bottom">{{ $item->service->name }}</div>
+                        <div class="ribbon mt-3 ribbon-primary ribbon-space-bottom">{{ $item->service == null ? $item->product->name : $item->service->name }}</div>
 
                         <div class="pt-5">
                             <h3 class="mb-2">{{ $item->question }}?</h3>
@@ -56,7 +63,7 @@
                     </div>
                 </div>
             </div>
-            @empty
+        @empty
             <div class="d-flex justify-content-center">
                 <img src="{{ asset('nodata.jpg') }}" alt="" width="400px">
             </div>
@@ -67,72 +74,139 @@
     </div>
 
     <!-- Pagination -->
-        {{ $faqs->links('pagination::bootstrap-5') }}
+    {{ $faqs->links('pagination::bootstrap-5') }}
     <!-- Add Modal -->
     <div class="modal fade modal-bookmark" id="tambah" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title fw-semibold" id="exampleModalLabel">Tambah FAQ
-                    </h5>
-                    <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+                <div class="advance-options">
+                    <ul class="simple-wrapper nav nav-tabs modal-header" id="myTab" role="tablist">
+                        <li class="nav-item"><a class="nav-link active txt-primary" id="profile-tabs" data-bs-toggle="tab"
+                                href="#chats" role="tab" aria-controls="profile" aria-selected="false">Layanan</a></li>
+                        <li class="nav-item"><a class="nav-link txt-primary" id="contact-tab" data-bs-toggle="tab"
+                                href="#contacts  " role="tab" aria-controls="contact" aria-selected="false">Produk</a>
+                        </li>
+                        <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </ul>
+                    <div class="tab-content" id="chat-options-tabContent">
+                        <div class="tab-pane fade show active" id="chats" role="tabpanel" aria-labelledby="chats-tab">
+                            <form class="form-bookmark needs-validation" action="{{ route('faq.store') }}" method="POST"
+                                id="bookmark-form" novalidate="" enctype="multipart/form-data">
+                                @csrf
+                                <input type="hidden" name="status" value="service" id="">
+                                <div class="modal-body">
+                                    <div class="row g-2">
+                                        <div class="mb-3 mt-0 col-md-12">
+                                            <label for="bm-title">Pertanyaan</label>
+                                            <input class="form-control" type="text" required="" name="question"
+                                                value="{{ old('question') }}" autocomplete="name"
+                                                placeholder="Mis: Bagaimana cara&hellip;">
+                                            @error('question')
+                                                <div class="invalid-feedback">
+                                                    {{ $message }}
+                                                </div>
+                                            @enderror
+                                        </div>
+
+                                        <div class="mb-3 mt-0 col-md-12">
+                                            <label for="bm-title">Jawaban</label>
+                                            <textarea name="answer" id="answer" cols="10" rows="5" class="form-control"
+                                                placeholder="Mis: Caranya adalah sebagai berikut">{{ old('answer') }}</textarea>
+                                            @error('answer')
+                                                <div class="invalid-feedback">
+                                                    {{ $message }}
+                                                </div>
+                                            @enderror
+                                        </div>
+
+                                        <div class="mb-3 mt-0 col-md-12">
+                                            <label for="bm-title">Ditampilkan Di</label>
+                                            <select name="service_id" id="select" class="form-control">
+                                                <option disabled selected>Pilih Salah Satu</option>
+                                                @foreach ($services as $item)
+                                                    <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                                @endforeach
+                                            </select>
+                                            @error('service_id')
+                                                <div class="invalid-feedback">
+                                                    {{ $message }}
+                                                </div>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="modal-footer">
+                                    <div class="d-flex justify-content-end">
+                                        <button class="btn btn-secondary" type="button"
+                                            data-bs-dismiss="modal">Batalkan</button>
+                                        <button class="btn btn-primary" type="submit">Tambah</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="tab-pane fade" id="contacts" role="tabpanel" aria-labelledby="contacts-tab">
+                            <form class="form-bookmark needs-validation" action="{{ route('faq.store') }}" method="POST"
+                                id="bookmark-form" novalidate="" enctype="multipart/form-data">
+                                @csrf
+                                <input type="hidden" name="status" value="product" id="">
+                                <div class="modal-body">
+                                    <div class="row g-2">
+                                        <div class="mb-3 mt-0 col-md-12">
+                                            <label for="bm-title">Pertanyaan</label>
+                                            <input class="form-control" type="text" required="" name="question"
+                                                value="{{ old('question') }}" autocomplete="name"
+                                                placeholder="Mis: Bagaimana cara&hellip;">
+                                            @error('question')
+                                                <div class="invalid-feedback">
+                                                    {{ $message }}
+                                                </div>
+                                            @enderror
+                                        </div>
+
+                                        <div class="mb-3 mt-0 col-md-12">
+                                            <label for="bm-title">Jawaban</label>
+                                            <textarea name="answer" id="answer" cols="10" rows="5" class="form-control"
+                                                placeholder="Mis: Caranya adalah sebagai berikut">{{ old('answer') }}</textarea>
+                                            @error('answer')
+                                                <div class="invalid-feedback">
+                                                    {{ $message }}
+                                                </div>
+                                            @enderror
+                                        </div>
+
+                                        <div class="mb-3 mt-0 col-md-12">
+                                            <label for="bm-title">Ditampilkan Di</label>
+                                            <select name="product_id" id="select" class="form-control">
+                                                <option disabled selected>Pilih Salah Satu</option>
+                                                @foreach ($products as $item)
+                                                    <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                                @endforeach
+                                            </select>
+                                            @error('product_id')
+                                                <div class="invalid-feedback">
+                                                    {{ $message }}
+                                                </div>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="modal-footer">
+                                    <div class="d-flex justify-content-end">
+                                        <button class="btn btn-secondary" type="button"
+                                            data-bs-dismiss="modal">Batalkan</button>
+                                        <button class="btn btn-primary" type="submit">Tambah</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
                 </div>
-                <form class="form-bookmark needs-validation" action="{{ route('faq.store') }}" method="POST"
-                    id="bookmark-form" novalidate="" enctype="multipart/form-data">
-                    @csrf
-                    <div class="modal-body">
-                        <div class="row g-2">
-                            <div class="mb-3 mt-0 col-md-12">
-                                <label for="bm-title">Pertanyaan</label>
-                                <input class="form-control" type="text" required="" name="question"
-                                    value="{{ old('question') }}" autocomplete="name"
-                                    placeholder="Mis: Bagaimana cara&hellip;">
-                                @error('question')
-                                    <div class="invalid-feedback">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
-                            </div>
-
-                            <div class="mb-3 mt-0 col-md-12">
-                                <label for="bm-title">Jawaban</label>
-                                <textarea name="answer" id="answer" cols="10" rows="5" class="form-control"
-                                    placeholder="Mis: Caranya adalah sebagai berikut">{{ old('answer') }}</textarea>
-                                @error('answer')
-                                    <div class="invalid-feedback">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
-                            </div>
-
-                            <div class="mb-3 mt-0 col-md-12">
-                                <label for="bm-title">Ditampilkan Di</label>
-                                <select name="service_id" id="select" class="form-control">
-                                    <option disabled selected>Pilih Salah Satu</option>
-                                    @foreach ($services as $item)
-                                        <option value="{{ $item->id }}">{{ $item->name }}</option>
-                                    @endforeach
-                                </select>
-                                @error('service_id')
-                                    <div class="invalid-feedback">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <div class="d-flex justify-content-end">
-                            <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">Batalkan</button>
-                            <button class="btn btn-primary" type="submit">Tambah</button>
-                        </div>
-                    </div>
-                </form>
             </div>
         </div>
     </div>
-
     <!-- Edit Modal -->
     <div class="modal fade modal-bookmark" id="modal-edit" tabindex="-1" role="dialog"
         aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -151,8 +225,8 @@
                         <div class="row g-2">
                             <div class="mb-3 mt-0 col-md-12">
                                 <label for="bm-title">Pertanyaan</label>
-                                <input class="form-control" type="text" name="question" required="" id="question-edit" autocomplete="name"
-                                    placeholder="Mis: Bagaimana cara&hellip;">
+                                <input class="form-control" type="text" name="question" required=""
+                                    id="question-edit" autocomplete="name" placeholder="Mis: Bagaimana cara&hellip;">
                             </div>
 
                             <div class="mb-3 mt-0 col-md-12">
@@ -165,8 +239,59 @@
                                 <label for="bm-title">Ditampilkan Di</label>
                                 <select name="service_id" id="service-edit" class="form-control">
                                     @foreach ($services as $service)
-                                        <option value="{{ $service->id }}" {{ $service->service_id == $service->id ? 'selected' : '' }}>
+                                        <option value="{{ $service->id }}"
+                                            {{ $service->service_id == $service->id ? 'selected' : '' }}>
                                             {{ $service->name }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <div class="d-flex justify-content-end">
+                            <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">Batalkan</button>
+                            <button class="btn btn-primary" type="submit">Perbarui</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade modal-bookmark" id="modal-edit-faq" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title fw-semibold" id="exampleModalLabel">Edit FAQ
+                    </h5>
+                    <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form class="form-bookmark needs-validation" method="POST" id="form-updates" novalidate=""
+                    enctype="multipart/form-data">
+                    @csrf
+                    @method('PUT')
+                    <div class="modal-body">
+                        <div class="row g-2">
+                            <div class="mb-3 mt-0 col-md-12">
+                                <label for="bm-title">Pertanyaan</label>
+                                <input class="form-control" type="text" name="question" required=""
+                                    id="question-edits" autocomplete="name" placeholder="Mis: Bagaimana cara&hellip;">
+                            </div>
+
+                            <div class="mb-3 mt-0 col-md-12">
+                                <label for="bm-title">Jawaban</label>
+                                <textarea name="answer" cols="10"  rows="5" class="form-control"
+                                    placeholder="Mis: Caranya adalah sebagai berikut" id="answer-edits"></textarea>
+                            </div>
+
+                            <div class="mb-3 mt-0 col-md-12">
+                                <label for="bm-title">Ditampilkan Di</label>
+                                <select name="product_id" id="service-edits" class="form-control">
+                                    @foreach ($products as $product)
+                                        <option value="{{ $product->id }}">
+                                            {{ $product->name }}
                                         </option>
                                     @endforeach
                                 </select>
@@ -206,5 +331,20 @@
 
             console.log(id);
         });
+
+        $('.btn-edits').click(function() {
+            var id = $(this).data('id'); // Mengambil nilai id dari tombol yang diklik
+            var question = $(this).data('question'); // Mengambil nilai name dari tombol yang diklik
+            var answer = $(this).data('answer');
+            var service_id = $(this).data('service_id');
+            $('#form-updates').attr('action', '/faq/' + id); // Mengubah nilai atribut action form
+            $('#question-edits').val(question);
+            $('#answer-edits').text(answer);
+            $('#service-edits').val(service_id);
+            $('#modal-edit-faq').modal('show');
+
+            console.log(id);
+        });
+
     </script>
 @endsection
