@@ -24,7 +24,7 @@ class StoreProductCompanyRequest extends FormRequest
         return [
             'name' => 'required|max:255',
             'description' => 'required|max:255',
-            'image' => 'mimes:png,jpg',
+            'image' => 'required|mimes:png,jpg',
             'link' => 'required|max:255',
             'feature' => 'required|max:255',
             'type' => 'required',
