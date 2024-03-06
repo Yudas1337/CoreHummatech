@@ -27,7 +27,8 @@ class StoreProductRequest extends FormRequest
             'image' => 'mimes:png,jpg',
             'link' => 'required|max:255',
             'feature' => 'required|max:255',
-            'service_id' => 'required'
+            'service_id' => 'required',
+            'type' => 'required',
         ];
     }
 }
