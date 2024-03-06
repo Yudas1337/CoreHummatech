@@ -23,8 +23,8 @@ class VacancyController extends Controller
      */
     public function index()
     {
-        $vacancys = $this->vacancy->get();
-        return view('' , compact('vacancys'));
+        $vacancies = $this->vacancy->get();
+        return view('admin.pages.vacancy.index' , compact('vacancies'));
     }
 
     /**
@@ -42,7 +42,7 @@ class VacancyController extends Controller
     {
         $data = $this->service->store($request);
         $this->vacancy->store($data);
-        return back()->with('success' ,'Data berhasil di tambahkan');
+        return back()->with('success', 'Data berhasil di tambahkan');
     }
 
     /**

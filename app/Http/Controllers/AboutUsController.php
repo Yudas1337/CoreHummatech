@@ -32,8 +32,6 @@ class AboutUsController extends Controller
         $teams = $this->ourTeams->customPaginate($request, 9);
         $imageStructures = $this->imageStructure->get();
 
-        // dd($profiles);
-
         return view('landing.about' , compact('profiles', 'visionMisions', 'missions', 'teams', 'imageStructures'));
     }
 }
