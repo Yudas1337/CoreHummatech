@@ -47,6 +47,12 @@
                 padding-right: unset;
             }
         }
+
+        @media screen and (max-width: 992px) {
+            .about-items .btn {
+                padding: 1rem 1.5rem;
+            }
+        }
     </style>
 @endsection
 
@@ -95,20 +101,25 @@
                 <div class="container">
                     <div class="about-items">
                         <div class="row align-center">
-                            <div class="col-lg-6">
+                            <div class="col-lg-6 d-none d-md-none d-lg-inline-flex">
                                 <div class="thumb">
-                                    <img src="{{ asset('storage/' . $product->image) }}" width="50%">
+                                    <img alt="{{ $product->name }}" src="{{ asset('storage/' . $product->image) }}" width="50%">
                                 </div>
                             </div>
                             <div class="col-lg-6 info">
                                 <h1>{{ $product->name }}</h1>
+                                <img alt="{{ $product->name }}" src="{{ asset('storage/'.$product->image) }}" class="w-100 mb-3 d-lg-none" />
+
                                 <p>
                                     {{ $product->description }}
                                 </p>
-                                <a class="btn btn-stroke-gradient effect btn-md" href="{{ route('detail.product', $product->slug) }}">Lihat
-                                    Detail</a>
-                                <a class="btn btn-gradient effect btn-md" target="_blank" href="{{ $product->link }}">Kunjungi
-                                    website</a>
+
+                                <div class="d-flex gap-2">
+                                    <a class="btn btn-stroke-gradient effect btn-md" href="{{ route('detail.product', $product->slug) }}">Lihat
+                                        Detail</a>
+                                    <a class="btn btn-gradient effect btn-md" target="_blank" href="{{ $product->link }}">Kunjungi
+                                        website</a>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -122,18 +133,21 @@
                         <div class="row align-center">
                             <div class="col-lg-6 info">
                                 <h1>{{ $product->name }}</h1>
+                                <img alt="{{ $product->name }}" src="{{ asset('storage/'.$product->image) }}" class="w-100 mb-3 d-lg-none" />
                                 <p>
                                     {{ $product->description }}
                                 </p>
 
-                                <a class="btn btn-stroke-gradient effect btn-md text-gradient" href="{{ route('detail.product', $product->slug) }}">Lihat
-                                    Detail</a>
-                                <a class="btn btn-gradient effect btn-md" target="_blank" href="{{ $product->link }}">Kunjungi
-                                    website</a>
+                                <div class="d-flex gap-2">
+                                    <a class="btn btn-stroke-gradient effect btn-md text-gradient" href="{{ route('detail.product', $product->slug) }}">Lihat
+                                        Detail</a>
+                                    <a class="btn btn-gradient effect btn-md" target="_blank" href="{{ $product->link }}">Kunjungi
+                                        website</a>
+                                </div>
                             </div>
-                            <div class="col-lg-5">
+                            <div class="col-lg-5 d-none d-md-none d-lg-inline-flex">
                                 <div class="thumb">
-                                    <img src="{{ asset('storage/'.$product->image) }}" class="w-50">
+                                    <img alt="{{ $product->name }}" src="{{ asset('storage/'.$product->image) }}" class="w-50" />
                                 </div>
                             </div>
                         </div>
