@@ -87,7 +87,7 @@
                 <div class="row align-center">
                     <div class="col-lg-5">
                         <div class="thumb">
-                            <img src="{{ asset('storage/'. $product->image) }}" alt="Thumb">
+                            <img src="{{ asset('storage/' . $product->image) }}" alt="Thumb">
                         </div>
                     </div>
                     <div class="col-lg-6 info">
@@ -148,44 +148,48 @@
         <div class="container">
             <div class="testimonial-items bg-gradient-gray">
                 <div class="row align-center bg-gradient-gray">
-                    <div class="col-lg-7 testimonials-content">
-                        <div class="testimonials-carousel owl-carousel owl-theme">
-                            <div class="item">
-                                <div class="info">
-                                    <p>
-                                        Otherwise concealed favourite frankness on be at dashwoods defective at.
-                                        Sympathize interested simplicity at do projecting increasing terminated. As
-                                        edward settle limits at in. Chamber reached do he nothing be.
-                                    </p>
-                                    <div class="provider">
-                                        <div class="thumb">
-                                            <img src="{{ asset('assets-home/img/teams/5.jpg') }}" alt="Author">
-                                        </div>
-                                        <div class="content">
-                                            <h4 class="text-primary">Ahel Natasha</h4>
+                    @forelse ($testimonial as $item)
+                        <div class="col-lg-7 testimonials-content">
+                            <div class="testimonials-carousel owl-carousel owl-theme">
+                                <div class="item">
+                                    <div class="info">
+                                        <p>
+                                            Otherwise concealed favourite frankness on be at dashwoods defective at.
+                                            Sympathize interested simplicity at do projecting increasing terminated. As
+                                            edward settle limits at in. Chamber reached do he nothing be.
+                                        </p>
+                                        <div class="provider">
+                                            <div class="thumb">
+                                                <img src="{{ asset('assets-home/img/teams/5.jpg') }}" alt="Author">
+                                            </div>
+                                            <div class="content">
+                                                <h4 class="text-primary">Ahel Natasha</h4>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="item">
-                                <div class="info">
-                                    <p>
-                                        Otherwise concealed favourite frankness on be at dashwoods defective at.
-                                        Sympathize interested simplicity at do projecting increasing terminated. As
-                                        edward settle limits at in. Chamber reached do he nothing be.
-                                    </p>
-                                    <div class="provider">
-                                        <div class="thumb">
-                                            <img src="{{ asset('assets-home/img/teams/6.jpg') }}" alt="Author">
-                                        </div>
-                                        <div class="content">
-                                            <h4 class="text-primary">Ahel Natasha</h4>
+                                <div class="item">
+                                    <div class="info">
+                                        <p>
+                                            Otherwise concealed favourite frankness on be at dashwoods defective at.
+                                            Sympathize interested simplicity at do projecting increasing terminated. As
+                                            edward settle limits at in. Chamber reached do he nothing be.
+                                        </p>
+                                        <div class="provider">
+                                            <div class="thumb">
+                                                <img src="{{ asset('assets-home/img/teams/6.jpg') }}" alt="Author">
+                                            </div>
+                                            <div class="content">
+                                                <h4 class="text-primary">Ahel Natasha</h4>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    @empty
+                        <h1>Belum ada testimoni</h1>
+                    @endforelse
                     <div class="col-lg-5 info">
                         <h4>Testimoni</h4>
                         <h2>Testimoni Membuktikan Kualitas produk Kami</h2>

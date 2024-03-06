@@ -49,6 +49,8 @@ Route::get('/testimonial', function () {
     return view('admin.pages.testimonial.index');
 });
 Route::resource('gallery', GalleryController::class);
+Route::put('galery/update/{galeryImage}' , [GalleryController::class ,'update']);
+Route::delete('galery/delete/{galeryImage}' , [GalleryController::class ,'destroy']);
 Route::get('category-news' , [CategoryNewsController::class , 'index']);
 Route::get('collab' , [CollabMitraController::class ,'index']);
 Route::get('category-collab' , [CollabCategoryController::class ,'index']);

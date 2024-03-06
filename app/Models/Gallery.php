@@ -23,4 +23,14 @@ class Gallery extends Model implements HasService
     {
         return $this->belongsTo(Service::class, 'service_id');
     }
+
+    /**
+     * Relation to galery image
+     *
+     * @return BelongsTo
+     */
+    public function galeryImage(): BelongsTo
+    {
+        return $this->belongsTo(GaleryImage::class, 'id');
+    }
 }

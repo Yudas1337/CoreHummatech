@@ -91,7 +91,8 @@ class AppServiceProvider extends ServiceProvider
         ForceInterface::class => ForceRepository::class,
         GalleryInterface::class => GalleryRepository::class,
         VacancyInterface::class => VacancyRepository::class,
-        StructureInterface::class => StructureRepository::class
+        StructureInterface::class => StructureRepository::class,
+        GaleryImageInterface::class => GaleryImageRepository::class,
     ];
 
     /**
