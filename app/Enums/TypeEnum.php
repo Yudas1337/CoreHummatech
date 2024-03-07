@@ -24,4 +24,5 @@ enum TypeEnum: string
     case ORGANIZATION = 'organization';
     case VACANCY = 'vacancy';
     case STRUCTURE = 'structure';
+    case BACKGROUND = 'background';
 }
