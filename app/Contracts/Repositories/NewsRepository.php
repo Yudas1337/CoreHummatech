@@ -21,6 +21,10 @@ class NewsRepository extends BaseRepository implements NewsInterface
         }
         return $query->get();
     }
+    public function whereHas(string $relation, $query)
+    {
+        return $this->model->query()->whereHas($relation, $query);
+    }
     public function get(): mixed
     {
         return $this->model->query()->get();

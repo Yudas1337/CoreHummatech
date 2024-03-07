@@ -73,7 +73,10 @@
                                     @endforeach
                                 </ul>
                                 @else
+                                <div class="mx-auto d-flex flex-column justify-content-center text-center">
+                                    <img src="{{ asset('nodata-gif-post.gif') }}" alt="No Data" height="200" class="mx-auto" width="200" />
                                 <p class="text-muted">Belum ada berita</p>
+                                </div>
                                 @endif
                             </div>
                         </aside>

@@ -6,20 +6,24 @@ use App\Contracts\Interfaces\CategoryNewsInterface;
 use App\Models\CategoryNews;
 use App\Http\Requests\StoreCategoryNewsRequest;
 use App\Http\Requests\UpdateCategoryNewsRequest;
+use App\Services\CategoryNewsService;
 
 class CategoryNewsController extends Controller
 {
-    private CategoryNewsInterface $categoryNews ;
-    public function __construct(CategoryNewsInterface $categoryNews)
+    private CategoryNewsInterface $model;
+    private CategoryNewsService $service;
+
+    public function __construct(CategoryNewsInterface $model, CategoryNewsService $services)
     {
-        $this->categoryNews = $categoryNews;
+        $this->service = $services;
+        $this->model = $model;
     }
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $categoryNews = $this->categoryNews->get();
+        $categoryNews = $this->model->get();
         return view('admin.pages.news-category.index' , compact('categoryNews'));
     }
 
@@ -36,14 +40,15 @@ class CategoryNewsController extends Controller
      */
     public function store(StoreCategoryNewsRequest $request)
     {
-        $this->categoryNews->store($request->validated());
+        $data = $this->service->store($request);
+        $this->model->store($data);
         return back();
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(CategoryNews $categoryNews)
+    public function show(CategoryNews $model)
     {
         //
     }
@@ -51,7 +56,7 @@ class CategoryNewsController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(CategoryNews $categoryNews)
+    public function edit(CategoryNews $model)
     {
         //
     }
@@ -59,18 +64,19 @@ class CategoryNewsController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateCategoryNewsRequest $request, CategoryNews $categoryNews)
+    public function update(UpdateCategoryNewsRequest $request, CategoryNews $model)
     {
-        $this->categoryNews->update($categoryNews->id , $request->validated());
+        $data = $this->service->update($model, $request);
+        $this->model->update($model->id , $data);
         return back();
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(CategoryNews $categoryNews)
+    public function destroy(CategoryNews $model)
     {
-        $this->categoryNews->delete($categoryNews->id);
+        $this->model->delete($model->id);
         return back();
     }
 }
