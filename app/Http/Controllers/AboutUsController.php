@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Contracts\Interfaces\LogoInterface;
 use App\Contracts\Interfaces\ProfileInterface;
 use App\Contracts\Interfaces\StructureInterface;
 use App\Contracts\Interfaces\TeamInterface;
@@ -15,9 +16,11 @@ class AboutUsController extends Controller
     private VisionAndMisionInterface $visionMision;
     private TeamInterface $ourTeams;
     private StructureInterface $imageStructure;
+    private LogoInterface $logo;
 
-    public function __construct(ProfileInterface $profile, VisionAndMisionInterface $visionMision, StructureInterface $imageStructureOrganization, TeamInterface $teams)
+    public function __construct(ProfileInterface $profile, VisionAndMisionInterface $visionMision, StructureInterface $imageStructureOrganization, TeamInterface $teams, LogoInterface $logo)
     {
+        $this->logo = $logo;
         $this->profile = $profile;
         $this->visionMision = $visionMision;
         $this->ourTeams = $teams;
@@ -31,7 +34,8 @@ class AboutUsController extends Controller
         $missions = MisionItems::all();
         $teams = $this->ourTeams->customPaginate($request, 9);
         $imageStructures = $this->imageStructure->get();
+        $logos = $this->logo->get();
 
-        return view('landing.about' , compact('profiles', 'visionMisions', 'missions', 'teams', 'imageStructures'));
+        return view('landing.about' , compact('profiles', 'visionMisions', 'missions', 'teams', 'imageStructures', 'logos'));
     }
 }

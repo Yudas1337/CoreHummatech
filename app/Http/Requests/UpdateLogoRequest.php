@@ -23,7 +23,8 @@ class UpdateLogoRequest extends FormRequest
     {
         return [
             'image' => 'required|mimes:png,jpg',
-            'description' => 'required'
+            'description' => 'required',
+            'title' => 'required'
         ];
     }
 }
