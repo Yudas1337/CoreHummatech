@@ -97,10 +97,10 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 offset-lg-2">
-                    <h1>Tentang Kami</h1>
+                    <h1>Mitra Kami</h1>
                     <ul class="breadcrumb">
                         <li><a href="#"><i class="fas fa-home"></i> Beranda</a></li>
-                        <li class="active">Tentang Kami</li>
+                        <li class="active">Mitra Kami</li>
                     </ul>
                 </div>
             </div>
