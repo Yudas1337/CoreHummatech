@@ -282,8 +282,9 @@
                                                                 </p>
                                                                 <div class="provider">
                                                                     <div class="thumb">
-                                                                        <img src="{{ asset('storage/' . $testimonial->image) }}"
-                                                                            alt="Author">
+                                                                        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                                                                            style="background-image: url('{{ asset('storage/' . $testimonial->image) }}'); background-size: cover; background-position: center;"
+                                                                            alt="Author" class="object-fit-cover">
                                                                     </div>
                                                                     <div class="content">
                                                                         <h4 class="text-primary">{{ $testimonial->name }}
@@ -333,12 +334,12 @@
                                                 <div class="faq-content wow fadeInUp">
                                                     <div class="accordion" id="accordionExample">
                                                         <div class="card">
-                                                            @forelse ($faqs as $item)
+                                                            @forelse ($faqs as $faq)
                                                                 <div class="card-header" id="headingTwo">
                                                                     <h4 class="mb-0 collapsed" data-toggle="collapse"
                                                                         data-target="#collapseTwo" aria-expanded="false"
                                                                         aria-controls="collapseTwo">
-                                                                        Do you offer free trials?
+                                                                        {{ $faq->question }}
                                                                     </h4>
                                                                 </div>
                                                                 <div id="collapseTwo" class="collapse"
@@ -346,19 +347,7 @@
                                                                     data-parent="#accordionExample">
                                                                     <div class="card-body">
                                                                         <p>
-                                                                            Companions shy had solicitude favourable own.
-                                                                            Which
-                                                                            could saw guest man now heard but. Lasted my
-                                                                            coming
-                                                                            uneasy marked so should. Gravity letters it
-                                                                            amongst
-                                                                            herself dearest an windows by. Wooded ladies she
-                                                                            basket
-                                                                            season age her uneasy saw. Discourse unwilling
-                                                                            am no
-                                                                            described dejection incommode no listening of.
-                                                                            Before
-                                                                            nature his parish boy.
+                                                                            {{ $faq->answer }}
                                                                         </p>
                                                                         <div class="ask-question">
                                                                             <span>Still no luck?</span> <a
@@ -499,7 +488,7 @@
                                 </div>
                             </div>
                         </div> --}}
-                        @if ($galeries->count() > 0)
+                        @if ($galeries)
                             <div class="py-2 mb-5">
                                 <div class="title-service">
                                     <h4 class="m-0">Galeri</h4>

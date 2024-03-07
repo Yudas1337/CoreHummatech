@@ -22,7 +22,7 @@ class CategoryProductController extends Controller
     public function index()
     {
         $categoryProducts = $this->categoryProduct->get();
-        return view('' , compact('categoryProducts'));
+        return view('admin.pages.product-category.index' , compact('categoryProducts'));
     }
 
     /**
@@ -63,7 +63,7 @@ class CategoryProductController extends Controller
      */
     public function update(UpdateCategoryProductRequest $request, CategoryProduct $categoryProduct)
     {
-        $this->categoryProduct->update($request , $categoryProduct->id);
+        $this->categoryProduct->update($categoryProduct->id , $request->validated());
         return back()->with('success' , 'Berhasil Memperbarui Data');
     }
 

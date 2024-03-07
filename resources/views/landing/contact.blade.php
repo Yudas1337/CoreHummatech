@@ -71,7 +71,7 @@
                 </div>
                 <div class="col-lg-7 contact-form-box">
                     <div class="form-box">
-                        <form action="https://validthemes.net/site-template/earna/assets/mail/contact.php" method="POST" class="contact-form">
+                        <form action="" method="POST" class="contact-form">
                             <div class="row">
                                 <div class="col-lg-12">
                                     <div class="form-group">

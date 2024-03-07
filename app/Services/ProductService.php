@@ -60,6 +60,7 @@ class ProductService
             'link' => $request->link,
             'service_id' => $request->service_id,
             'type' => $request->type,
+            'category_product_id' => $request->category_product_id
         ];
         // dd($data);
 
@@ -76,10 +77,11 @@ class ProductService
 
         $data = [
             'name' => $request->name,
-            'slug' => Str::slug($request->description),
+            'slug' => Str::slug($request->name),
             'description' => $request->description,
             'link' => $request->link,
             'type' => $request->type,
+            'category_product_id' => $request->category_product_id
         ];
         // dd($data);
 
@@ -158,6 +160,7 @@ class ProductService
             'link' => $request->link,
             'service_id' => $request->service_id,
             'type' => $request->type,
+            'category_product_id' => $request->category_product_id
         ];
         // dd($data);
         if ($request->has('image')) {
@@ -184,6 +187,7 @@ class ProductService
             'description' => $request->description,
             'link' => $request->link,
             'type' => $request->type,
+            'category_product_id' => $request->category_product_id
         ];
         // dd($data);
         if ($request->has('image')) {

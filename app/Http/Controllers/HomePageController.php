@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Contracts\Interfaces\CollabCategoryInterface;
 use App\Contracts\Interfaces\CollabMitraInterface;
 use App\Contracts\Interfaces\HomePageInterface;
 use App\Contracts\Interfaces\NewsInterface;
@@ -19,12 +20,12 @@ class HomePageController extends Controller
     private ServiceInterface $service;
     private NewsInterface $news;
     private VisitorDetectionInterface $visitorDetection;
-    private CollabMitraInterface $mitras;
+    private CollabCategoryInterface $mitras;
     private SectionInterface $section;
     private ProductInterface $product;
 
 
-    public function __construct( ProfileInterface $profile,VisitorDetectionInterface $visitorDetection, ServiceInterface $service, NewsInterface $news, CollabMitraInterface $mitras, SectionInterface $section, ProductInterface $product)
+    public function __construct( ProfileInterface $profile,VisitorDetectionInterface $visitorDetection, ServiceInterface $service, NewsInterface $news, CollabCategoryInterface $mitras, SectionInterface $section, ProductInterface $product)
     {
         $this->profile = $profile;
         $this->service = $service;
@@ -96,5 +97,11 @@ class HomePageController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    public function mitra()
+    {
+        $mitras = $this->mitras->get();
+        return view('landing.mitra' , compact('mitras'));
     }
 }

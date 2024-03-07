@@ -61,13 +61,13 @@
                 <a href="{{ route('sale.index') }}">Penjualan</a>
             </li> --}}
             <li>
-                <a href="{{ route('gallery.index') }}">Galeri</a>
+                <a href="/gallery">Galeri</a>
             </li>
         </ul>
     </li>
     <li class="sidebar-list">
         <i class="fa fa-thumb-tack"></i>
-        <a class="sidebar-link sidebar-title link-nav" href="{{ route('product.index') }}">
+        <a class="sidebar-link sidebar-title" href="#">
             <svg class="stroke-icon">
                 <use href="{{ asset('assets/svg/icon-sprite.svg#stroke-ecommerce') }}"></use>
             </svg>
@@ -76,6 +76,14 @@
             </svg>
             <span>Produk</span>
         </a>
+        <ul class="sidebar-submenu">
+            <li>
+                <a href="{{ route('category-product.index') }}">Kategori</a>
+            </li>
+            <li>
+                <a href="{{ route('product.index') }}">Produk</a>
+            </li>
+        </ul>
     </li>
     <li class="sidebar-list">
         <i class="fa fa-thumb-tack"></i>
@@ -162,13 +170,13 @@
                 <a href="/setting/profile">Profile</a>
             </li>
             <li>
-                <a href="{{ route('philosophy') }}">Filosofi Logo</a>
+                <a href="/setting/philosophy">Filosofi Logo</a>
             </li>
             <li>
-                <a href="{{ route('vision.mision') }}">Visi & Misi</a>
+                <a href="/vision-mision">Visi & Misi</a>
             </li>
             <li>
-                <a href="{{ route('terms_condition.index') }}">Syarat & Ketentuan</a>
+                <a href="/terms_condition">Syarat & Ketentuan</a>
             </li>
             <li>
                 <a href="/setting/departement">Jabatan</a>
@@ -180,10 +188,10 @@
                 <a href="/setting/teams">Tim</a>
             </li>
             <li>
-                <a href="{{ route('faq.index') }}">FAQ</a>
+                <a href="/faq">FAQ</a>
             </li>
             <li>
-                <a href="{{ route('procedure.index') }}">Prosedur</a>
+                <a href="/procedure">Prosedur</a>
             </li>
         </ul>
     </li>
@@ -220,10 +228,10 @@
         </a>
         <ul class="sidebar-submenu">
             <li>
-                <a href="{{ url('/vacancy') }}">Profile</a>
+                <a href="/vacancy">Profile</a>
             </li>
             <li>
-                <a href="{{ url('/vacancy/workflow') }}">Alur Kerja</a>
+                <a href="/workflow">Alur Kerja</a>
             </li>
         </ul>
     </li>

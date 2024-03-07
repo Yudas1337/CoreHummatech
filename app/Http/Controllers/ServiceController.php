@@ -124,15 +124,6 @@ class ServiceController extends Controller
             $galeries[] = $this->galleryImage->ServiceProductShow('galleries_id', $galery->id)->get();
         }
 
-        // dd($galeries);
-
-        return view('landing.service.service-detail', compact('slugs', 'services', 'products', 'testimonials', 'faqs', 'procedures', 'sales', 'profile', 'mitras', 'galeries'));
-
-        // dd($galeries);
-        // dd($profile);
-
-        // dd($procedures);
-
         return view('landing.service.service-detail', compact('slugs', 'services', 'products', 'testimonials', 'faqs', 'procedures', 'sales', 'profile', 'mitras', 'galeries'));
     }
     /**

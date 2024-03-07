@@ -11,7 +11,6 @@
                         <li class="nav-item"><a class="nav-link active txt-primary" id="profile-tabs" data-bs-toggle="tab" href="#organisasi" role="tab" aria-controls="profile" aria-selected="false">Produk/Portofolio</a></li>
                         <li class="nav-item"><a class="nav-link txt-primary" id="contact-tab" data-bs-toggle="tab" href="#usaha" role="tab" aria-controls="contact" aria-selected="false">Produk layanan</a></li>
                     </div>
-                    <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
                 </ul>
                 <div class="tab-content" id="myTabContent">
                     <div class="tab-pane fade show active py-5" id="organisasi" role="tabpanel">
@@ -25,6 +24,20 @@
                                     <input class="form-control" name="name" id="name" type="text" required
                                         placeholder="Contoh: Produk Hummatech" autocomplete="name" />
                                     @error('name')
+                                        <small class="text-danger">{{ $message }}</small>
+                                    @enderror
+                                </div>
+                                <div class="form-group mb-3 mt-0 col-md-12">
+                                    <label for="category">Kategori Produk</label>
+                                    <select name="category_product_id" class="js-example-basic-single form-select" id="#edit">
+                                        <option value="" disabled selected>Pilih Kategori</option>
+                                        @forelse ($categories as $category)
+                                            <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                        @empty
+                                            <option value="" disabled selected>Kategori Masih Kosong</option>
+                                        @endforelse
+                                    </select>
+                                    @error('category_product_id')
                                         <small class="text-danger">{{ $message }}</small>
                                     @enderror
                                 </div>
@@ -81,6 +94,20 @@
                                     <input class="form-control" name="name" id="name" type="text" required
                                         placeholder="Contoh: Produk Hummatech" autocomplete="name" />
                                     @error('name')
+                                        <small class="text-danger">{{ $message }}</small>
+                                    @enderror
+                                </div>
+                                <div class="form-group mb-3 mt-0 col-md-12">
+                                    <label for="category">Kategori Produk</label>
+                                    <select name="category_product_id" class="js-example-basic-single form-select" id="#edit">
+                                        <option value="" disabled selected>Pilih Kategori</option>
+                                        @forelse ($categories as $category)
+                                            <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                        @empty
+                                            <option value="" disabled selected>Kategori Masih Kosong</option>
+                                        @endforelse
+                                    </select>
+                                    @error('category_product_id')
                                         <small class="text-danger">{{ $message }}</small>
                                     @enderror
                                 </div>
