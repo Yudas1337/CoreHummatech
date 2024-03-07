@@ -86,10 +86,10 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 offset-lg-2">
-                    <h1>Produk</h1>
+                    <h1>Portofolio</h1>
                     <ul class="breadcrumb">
                         <li><a href="/"><i class="fas fa-home"></i> Beranda</a></li>
-                        <li class="active">Produk</li>
+                        <li class="active">Portofolio</li>
                     </ul>
                 </div>
             </div>
