@@ -37,7 +37,7 @@
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
                     <i class="fa fa-bars"></i>
                 </button>
-                <a class="navbar-brand h-100" href="index.html">
+                <a class="navbar-brand h-100" href="/">
                     <img src="{{ asset('assets/images/LOGO-HUMMATECH_Hitam.png') }}" style="width: 200px;height: auto !important" class="logo logo-scrolled" alt="Logo">
                 </a>
             </div>
