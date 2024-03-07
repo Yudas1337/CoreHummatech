@@ -8,7 +8,7 @@
         <div class="card-body p-4 m-5">
                 <ul class="simple-wrapper nav nav-tabs modal-header justify-content-between" id="myTab" role="tablist">
                     <div class="d-flex">
-                        <li class="nav-item"><a class="nav-link active txt-primary" id="profile-tabs" data-bs-toggle="tab" href="#organisasi" role="tab" aria-controls="profile" aria-selected="false">Produk kantor</a></li>
+                        <li class="nav-item"><a class="nav-link active txt-primary" id="profile-tabs" data-bs-toggle="tab" href="#organisasi" role="tab" aria-controls="profile" aria-selected="false">Produk/Portofolio</a></li>
                         <li class="nav-item"><a class="nav-link txt-primary" id="contact-tab" data-bs-toggle="tab" href="#usaha" role="tab" aria-controls="contact" aria-selected="false">Produk layanan</a></li>
                     </div>
                     <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -118,9 +118,10 @@
                                         <small class="text-danger">{{ $message }}</small>
                                     @enderror
                                 </div>
+
                                 <div class="form-group mb-3 mt-0 col-md-12">
-                                    <label for="name">Tampilkan di</label>
-                                    <select name="service_id" class="js-example-basic-single form-select" id="">
+                                    <label for="">Tampilkan di</label>
+                                    <select name="service_id" class="js-example-basic-single form-select" id="#edit">
                                         <option value="" disabled selected>Pilih Layanan</option>
                                         @forelse ($services as $service)
                                             <option value="{{ $service->id }}">{{ $service->name }}</option>
@@ -189,4 +190,13 @@
             });
         })();
     </script>
+    <script>
+        $(document).ready(function() {
+            $(".js-example-basic-single").select2({
+                dropdownParent: $("#usaha")
+            });
+        });
+
+    </script>
+
 @endsection

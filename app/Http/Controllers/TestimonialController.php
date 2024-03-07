@@ -7,6 +7,7 @@ use App\Contracts\Interfaces\ServiceInterface;
 use App\Contracts\Interfaces\TestimonialInterface;
 use App\Http\Requests\StoreTestimonialProductRequest;
 use App\Http\Requests\StoreTestimonialRequest;
+use App\Http\Requests\UpdateTestimonialProductRequest;
 use App\Http\Requests\UpdateTestimonialRequest;
 use App\Models\Testimonial;
 use App\Services\TestimonialService;
@@ -91,16 +92,21 @@ class TestimonialController extends Controller
         return back()->with('success', 'Testimoni berhasil diperbarui');
     }
 
+    public function updateProduct(UpdateTestimonialProductRequest $request, Testimonial $testimonial)
+    {
+        $data = $this->service->updateProduct($testimonial, $request);
+        $this->testimonial->update($testimonial->id, $data);
+
+        return back()->with('success', 'Testimoni berhasil diperbarui');
+    }
+
     /**
      * Remove the specified resource from storage.
      */
     public function destroy(Testimonial $testimonial)
     {
-        if (!$this->testimonial->delete($testimonial->id)) {
-            return back()->with('error', 'Testimoni Gagal Di Hapus');
-        }
-
-        $this->service->remove($testimonial->image);
-        return back()->with('success' , 'Testimoni Berhasil Di Hapus');
+        $this->testimonial->delete($testimonial->id);
+        $this->service->delete($testimonial->image);
+        return redirect()->back()->with('success' , 'Data berhasil di hapus');
     }
 }

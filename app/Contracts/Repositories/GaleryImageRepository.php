@@ -31,4 +31,9 @@ class GaleryImageRepository extends BaseRepository implements GaleryImageInterfa
     {
         return $this->model->query()->findOrFail($id)->delete();
     }
+
+    public function ServiceProductShow(mixed $relation, mixed $id): mixed
+    {
+        return $this->model->query()->findOrFail($id);
+    }
 }

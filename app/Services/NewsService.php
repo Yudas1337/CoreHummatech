@@ -43,11 +43,8 @@ class NewsService
     {
         $data = $request->validated();
         $data['slug'] = Str::slug($request->title);
-        $images = [];
-        foreach ($data['image'] as $image) {
-            array_push($images, $image->store(UploadDiskEnum::NEWS->value, 'public'));
-        }
-        $data['image'] = $images;
+        $data['image'] = $request->file('image')->store(TypeEnum::NEWS->value, 'public');
+        // dd($data);
         return $data;
     }
 

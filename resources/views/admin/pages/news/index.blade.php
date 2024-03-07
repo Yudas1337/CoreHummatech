@@ -53,12 +53,13 @@
     <div class="product-grid">
         <div class="product-wrapper-grid">
             <div class="row">
+                {{-- @dd($news) --}}
                 @forelse ($news as $item)
                     <div class="col-xl-3 col-lg-4 col-sm-6">
                         <div class="card shadow-sm">
                             <div class="product-box">
                                 <div class="product-img">
-                                    <img class="img-fluid" src="{{ asset('storage/' . ($item->newsImages[0]->photo ?? '')) }}"
+                                    <img class="img-fluid" src="{{ asset('storage/' . ($item->image ?? '')) }}"
                                         alt="" style="object-fit:cover; width:242vw; height:20vh;">
                                 </div>
                                 <div class="product-details">
@@ -67,7 +68,7 @@
                                     <a href="/news">
                                         <h4 class="mb-1 mt-3">{{ $item->title }}</h4>
                                     </a>
-                                    <p class="mt-0 mb-2" style="font-size: 13px">{!! Str::words($item->description, 14, '...') !!}</p>
+                                    <p class="mt-0 mb-2" style="font-size: 13px">{!! Str::words(strip_tags($item->description), 14, '...') !!}</p>
                                     <div class="d-flex gap-1 mb-3">
                                         @foreach ($item->newsCategories as $category)
                                             {{ $category->name }}

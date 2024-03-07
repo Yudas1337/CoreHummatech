@@ -38,19 +38,19 @@
                     <div class="card">
                         <div class="card-header" style="width: 100%; background: none; margin-bottom: -20px">
                             <div class="position-absolute top-0 start-0">
-                                <p class="bg-primary px-3 py-1 text-light" style="border-radius: 5px 0 0 0; font-size: 12px">{{ $testimoni->service->name }}</p>
+                                <p class="bg-primary px-3 py-1 text-light" style="border-radius: 5px 0 0 0; font-size: 12px">{{ $testimoni->type == 'service' ? $testimoni->service->name : $testimoni->product->name }}</p>
                             </div>
                             <div class="card-header-right">
                                 <ul class="list-unstyled" style="text-align:center">
-                                    <li><i class="fa fa-edit text-primary mb-2 p-1 btn-edit" type="button" data-bs-toggle="modal"
-                                            data-bs-target="#edit" data-id="{{ $testimoni->id }}" data-name="{{ $testimoni->name }}" data-description="{{ $testimoni->description }}" data-service_id="{{ $testimoni->service_id }}" data-image="{{ $testimoni->image }}"></i></li>
+                                    <li><i class="fa fa-edit text-primary mb-2 p-1 {{ $testimoni->type == 'service' ? 'btn-edit-service' : 'btn-edit-product' }}" type="button" data-bs-toggle="modal"
+                                            data-bs-target="{{ $testimoni->type == 'service' ? 'editService' : 'editProduct' }}" data-id="{{ $testimoni->id }}" data-name="{{ $testimoni->name }}" data-description="{{ $testimoni->description }}" data-service_id="{{ $testimoni->service_id }}" data-type="{{ $testimoni->type }}" data-product_id="{{ $testimoni->product_id }}" data-image="{{ $testimoni->image }}"></i></li>
                                     <li><i class="fa-solid fa-trash text-primary p-1 btn-delete" data-id="{{ $testimoni->id }}" type="button"></i></li>
                                 </ul>
                             </div>
                         </div>
                         <div class="card-body">
                             <div class="d-flex" style="z-index: 1"><img class="align-self-center img-fluid img-80 rounded-3"
-                                    src="../assets/images/ecommerce/product-table-6.png" alt="#">
+                                    src="{{ asset('storage/'.$testimoni->image) }}" alt="{{ $testimoni->name }}">
                                 <div class="flex-grow-1 ms-3">
                                     <div class="product-name mb-1">
                                         <h4><a href="#">{{ $testimoni->name }}</a></h4>
@@ -97,7 +97,6 @@
                                 novalidate="" enctype="multipart/form-data">
                                 @csrf
                                 <div class="row g-2">
-                                    <input type="hidden" name="type" value="service">
                                     <div class="mb-3 mt-0 col-md-12">
                                         <label for="service_id">Pilih layanan</label>
                                         <select class="tambah" aria-label=".form-select example" name="service_id">
@@ -113,9 +112,14 @@
                                     <div class="mb-3 mt-0 col-md-12">
                                         <label for="image">Foto Testimoni</label>
                                         <figure class="col-xl-3 col-md-4 col-6" itemprop="associatedMedia" itemscope="">
-                                            <img class="img-thumbnail" id="image-preview" itemprop="thumbnail">
+                                            <img class="img-thumbnail image-preview" itemprop="thumbnail">
                                         </figure>
-                                        <input class="form-control" id="image" name="image" type="file" onchange="preview(event)">
+                                        <input class="form-control @error('name') is-invalid @enderror" id="image" name="image" type="file" onchange="preview(event)">
+                                        @error('image')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
                                     </div>
                                     <div class="mb-3 mt-0 col-md-12">
                                         <label for="name">Nama Lengkap</label>
@@ -128,7 +132,7 @@
                                     </div>
                                     <div class="mb-3 mt-0 col-md-12">
                                         <label for="description">Deskripsi</label>
-                                        <textarea name="description @error('description') is-invalid @enderror" id="description" rows="4" class="form-control" placeholder="Masukkan deskripsi"></textarea>
+                                        <textarea name="description" id="description" rows="4" class="form-control" placeholder="Masukkan deskripsi"></textarea>
                                         @error('description')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -136,18 +140,17 @@
                                         @enderror
                                     </div>
                                 </div>
-                                <div class="d-flex justify-content-end gap-2">
+                                <div class="d-flex justify-content-end gap-2 pb-4">
                                     <button class="btn btn-secondary " type="button" data-bs-dismiss="modal">Batal</button>
                                     <button class="btn btn-primary " type="submit">Simpan</button>
                                 </div>
                             </form>
                         </div>
-                        <div class="tab-pane fade show active" id="product" role="tabpanel">
-                            <form class="form-bookmark needs-validation" action="{{ route('testimonial.store') }}" method="POST" id="bookmark-form"
+                        <div class="tab-pane fade show" id="product" role="tabpanel">
+                            <form class="form-bookmark needs-validation" action="{{ route('testimonialProduct.store') }}" method="POST" id="bookmark-form"
                                 novalidate="" enctype="multipart/form-data">
                                 @csrf
                                 <div class="row g-2">
-                                    <input type="hidden" name="type" value="product">
                                     <div class="mb-3 mt-0 col-md-12">
                                         <label for="product_id">Pilih produk</label>
                                         <select class="tambah" aria-label=".form-select example" name="product_id">
@@ -156,16 +159,21 @@
                                                 {{ $product->product_id == $product->id ? 'selected' : '' }}>
                                                 {{ $product->name }}</option>
                                             @empty
-                                            <option value="">Belum ada layanan</option>
+                                                <option value="">Belum ada produk</option>
                                             @endforelse
                                         </select>
                                     </div>
                                     <div class="mb-3 mt-0 col-md-12">
                                         <label for="image">Foto Testimoni</label>
                                         <figure class="col-xl-3 col-md-4 col-6" itemprop="associatedMedia" itemscope="">
-                                            <img class="img-thumbnail" id="image-preview" itemprop="thumbnail">
+                                            <img class="img-thumbnail image-preview" itemprop="thumbnail">
                                         </figure>
-                                        <input class="form-control" id="image" name="image" type="file" onchange="preview(event)">
+                                        <input class="form-control @error('image') is-invalid @enderror" id="image" name="image" type="file" onchange="preview(event)">
+                                        @error('image')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
                                     </div>
                                     <div class="mb-3 mt-0 col-md-12">
                                         <label for="name">Nama Lengkap</label>
@@ -178,7 +186,7 @@
                                     </div>
                                     <div class="mb-3 mt-0 col-md-12">
                                         <label for="description">Deskripsi</label>
-                                        <textarea name="description @error('description') is-invalid @enderror" id="description" rows="4" class="form-control" placeholder="Masukkan deskripsi"></textarea>
+                                        <textarea name="description" id="description" rows="4" class="form-control" placeholder="Masukkan deskripsi"></textarea>
                                         @error('description')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -186,7 +194,7 @@
                                         @enderror
                                     </div>
                                 </div>
-                                <div class="d-flex justify-content-end gap-2">
+                                <div class="d-flex justify-content-end gap-2 pb-4">
                                     <button class="btn btn-secondary " type="button" data-bs-dismiss="modal">Batal</button>
                                     <button class="btn btn-primary " type="submit">Simpan</button>
                                 </div>
@@ -199,7 +207,7 @@
     </div>
 
     <!-- Edit Modal -->
-    <div class="modal fade modal-bookmark" id="edit" tabindex="-1" role="dialog"
+    <div class="modal fade modal-bookmark" id="editProduct" tabindex="-1" role="dialog"
         aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
@@ -207,42 +215,124 @@
                     <h5 class="modal-title" id="exampleModalLabel">Edit Testimoni</h5>
                     <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form class="form-bookmark needs-validation" method="POST" id="form-update"
+                <form class="form-bookmark needs-validation" method="POST" id="form-update-product"
+                    novalidate="" enctype="multipart/form-data">
+                    @csrf
+                    @method('PUT')
+                   <div class="modal-body">
+                    <div class="row g-2">
+                        <div class="mb-3 mt-0 col-md-12">
+                            <label for="product_id">Pilih produk</label>
+                            <select class="tambah js-example-basic-single-product" id="productSelect" aria-label=".form-select example" name="product_id">
+                                @forelse ($products as $product)
+                                <option value="{{ $product->id }}"
+                                    {{ $product->product_id == $product->id ? 'selected' : '' }}>
+                                    {{ $product->name }}</option>
+                                @empty
+                                <option value="">Belum ada produk</option>
+                                @endforelse
+                            </select>
+                        </div>
+                        <div class="mb-3 mt-0 col-md-12">
+                            <label for="image">Foto Testimoni</label>
+                            <figure class="col-xl-3 col-md-4 col-6" itemprop="associatedMedia" itemscope="">
+                                <img class="img-thumbnail image-preview" id="image-edit-product" itemprop="thumbnail">
+                            </figure>
+                            <input class="form-control @error('image') is-invalid @enderror" id="image" name="image" type="file" onchange="preview(event)">
+                            @error('image')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                        <div class="mb-3 mt-0 col-md-12">
+                            <label for="name">Nama Lengkap</label>
+                            <input class="form-control @error('name') is-invalid @enderror" type="text" id="name-edit-product" autocomplete="name" name="name"  placeholder="Masukkan nama">
+                            @error('name')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                        <div class="mb-3 mt-0 col-md-12">
+                            <label for="description">Deskripsi</label>
+                            <textarea name="description" id="description-edit-product" rows="4" class="form-control" placeholder="Masukkan deskripsi"></textarea>
+                            @error('description')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-end gap-2 pb-4">
+                        <button class="btn btn-secondary " type="button" data-bs-dismiss="modal">Batal</button>
+                        <button class="btn btn-primary " type="submit">Simpan</button>
+                    </div>
+                   </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Modal -->
+    <div class="modal fade modal-bookmark" id="editService" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Edit Testimoni</h5>
+                    <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form class="form-bookmark needs-validation" method="POST" id="form-update-service"
                     novalidate="" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
                     <div class="modal-body">
                         <div class="row g-2">
                             <div class="mb-3 mt-0 col-md-12">
+                                <label for="service_id">Pilih layanan</label>
+                                <select class="tambah js-example-basic-single" aria-label=".form-select example" name="service_id">
+                                    @forelse ($services as $service)
+                                    <option value="{{ $service->id }}"
+                                        {{ $service->service_id == $service->id ? 'selected' : '' }}>
+                                        {{ $service->name }}</option>
+                                    @empty
+                                    <option value="">Belum ada layanan</option>
+                                    @endforelse
+                                </select>
+                            </div>
+                            <div class="mb-3 mt-0 col-md-12">
+                                <label for="image">Foto Testimoni</label>
+                                <figure class="col-xl-3 col-md-4 col-6" itemprop="associatedMedia" itemscope="">
+                                    <img class="img-thumbnail image-preview" id="image-edit" itemprop="thumbnail">
+                                </figure>
+                                <input class="form-control @error('name') is-invalid @enderror" id="image" name="image" type="file" onchange="preview(event)">
+                                @error('image')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                            <div class="mb-3 mt-0 col-md-12">
                                 <label for="name">Nama Lengkap</label>
-                                <input class="form-control" type="text" id="name-edit" autocomplete="name" name="name">
+                                <input class="form-control @error('name') is-invalid @enderror" type="text" id="name-edit" autocomplete="name" name="name"  placeholder="Masukkan nama">
+                                @error('name')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                            <div class="mb-3 mt-0 col-md-12">
+                                <label for="description">Deskripsi</label>
+                                <textarea name="description" id="description-edit" rows="4" class="form-control" placeholder="Masukkan deskripsi"></textarea>
+                                @error('description')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
                             </div>
                         </div>
-                        <div class="mb-3 mt-0 col-md-12">
-                            <label for="description">Deskripsi</label>
-                            <textarea name="description" id="description-edit" rows="4" class="form-control"></textarea>
-                        </div>
-
-                        <div class="mb-3 mt-0 col-md-12">
-                            <label for="service_id">Tampilkan di</label>
-                            <select class="tambah" aria-label=".form-select example" id="service-edit" name="service_id">
-                                @foreach ($services as $service)
-                                <option value="{{ $service->id }}"
-                                    {{ $service->service_id == $service->id ? 'selected' : '' }}>
-                                    {{ $service->name }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-
-
-                        <div class="mb-3 mt-0 col-md-12">
-                            <label for="bm-title">Foto Testimoni</label><br>
-                            <figure class="col-xl-3 col-md-4 col-6" itemprop="associatedMedia" itemscope="">
-                                <img class="img-thumbnail" id="image-edit" itemprop="thumbnail">
-                            </figure>
-                            <input class="form-control" id="formFile" type="file" name="image" onchange="previewImage(event)">
-                        </div>
-                        <div class="d-flex justify-content-end gap-2">
+                        <div class="d-flex justify-content-end gap-2 pb-4">
                             <button class="btn btn-secondary " type="button" data-bs-dismiss="modal">Batal</button>
                             <button class="btn btn-primary " type="submit">Simpan</button>
                         </div>
@@ -271,18 +361,34 @@
             $('#modal-delete').modal('show');
         });
 
-        $('.btn-edit').on('click', function() {
+        $('.btn-edit-product').on('click', function() {
+            var id = $(this).data('id');
+            var image = $(this).data('image');
+            var name = $(this).data('name');
+            var description = $(this).data('description');
+            var product_id = $(this).data('product_id');
+
+            $('#form-update-product').attr('action', '/testimonial/product/' + id);
+            $('#name-edit-product').val(name);
+            $('#description-edit-product').val(description);
+            $('#product-edit-product').val(product_id);
+            $('#image-edit-product').attr('src', 'storage/' + image);
+            $('#editProduct').modal('show');
+        });
+
+        $('.btn-edit-service').on('click', function() {
             var id = $(this).data('id');
             var image = $(this).data('image');
             var name = $(this).data('name');
             var description = $(this).data('description');
             var service_id = $(this).data('service_id');
-            $('#form-update').attr('action', '/testimonial/' + id);
+
+            $('#form-update-service').attr('action', '/testimonial/' + id);
             $('#name-edit').val(name);
             $('#description-edit').val(description);
             $('#service-edit').val(service_id);
             $('#image-edit').attr('src', 'storage/' + image);
-            $('#edit').modal('show');
+            $('#editService').modal('show');
         });
     </script>
 
@@ -293,8 +399,13 @@
             });
         });
         $(document).ready(function() {
+            $(".js-example-basic-single-product").select2({
+                dropdownParent: $("#editProduct")
+            });
+        });
+        $(document).ready(function() {
             $(".js-example-basic-single").select2({
-                dropdownParent: $("#edit")
+                dropdownParent: $("#editService")
             });
         });
     </script>
@@ -319,14 +430,16 @@
     <script>
         function preview(event) {
             var input = event.target;
-            var previewImage = document.getElementById('image-preview');
+            var previewImages = document.getElementsByClassName('image-preview');
 
             if (input.files && input.files[0]) {
                 var reader = new FileReader();
 
                 reader.onload = function (e) {
-                    previewImage.src = e.target.result;
-                    previewImage.style.display = 'block';
+                    Array.from(previewImages).forEach(function(previewImage) {
+                        previewImage.src = e.target.result;
+                        previewImage.style.display = 'block';
+                    });
                 };
 
                 reader.readAsDataURL(input.files[0]);

@@ -21,13 +21,10 @@ class NewsController extends Controller
     private NewsInterface $news;
     private NewsService $newsService;
     private CategoryNewsInterface $category;
-
-    private NewsImageInterface $newsImage;
     private NewsCategoryInterface $newsCategory;
 
     public function __construct(NewsInterface $news, NewsService $newsService, CategoryNewsInterface $category, NewsCategoryInterface $newsCategoryInterface, NewsImageInterface $newsImageInterface)
     {
-        $this->newsImage = $newsImageInterface;
         $this->newsCategory = $newsCategoryInterface;
         $this->news = $news;
         $this->newsService = $newsService;
@@ -59,19 +56,14 @@ class NewsController extends Controller
     {
         $data = $this->newsService->store($request);
         $newsId = $this->news->store($data)->id;
-        foreach ($data['image'] as $img) {
-            $this->newsImage->store([
-                'news_id' => $newsId,
-                'photo' => $img,
-            ]);
-        }
+
         foreach ($data['category'] as $ctgr) {
             $this->newsCategory->store([
                 'news_id' => $newsId,
                 'category_id' => $ctgr,
             ]);
         }
-        return ResponseHelper::success(null , trans('alert.add_success'));
+        return redirect()->route('news.index');
     }
 
     /**
@@ -100,7 +92,16 @@ class NewsController extends Controller
     public function update(UpdateNewsRequest $request, News $news)
     {
         $data = $this->newsService->update($news, $request);
+        $newsId = $news->id;
+
         $this->news->update($news->id, $data);
+
+        foreach ($data['category'] as $ctgr) {
+            $this->newsCategory->store([
+                'news_id' => $newsId,
+                'category_id' => $ctgr,
+            ]);
+        }
         return redirect()->route('news.index');
     }
 
@@ -115,8 +116,8 @@ class NewsController extends Controller
 
     public function news ()
     {
-        $newss = $this->news->get();
-        return view('landing.news.index' , compact('newss'));
+        $newses = $this->news->get();
+        return view('landing.news.index' , compact('newses'));
     }
 
     public function showNews($slugnews)

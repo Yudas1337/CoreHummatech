@@ -26,6 +26,7 @@ class UpdateTestimonialRequest extends FormRequest
             'name' => 'required',
             'description' => 'required|max:115',
             'service_id' => 'required|exists:services,id',
+            'product_id' => 'nullable',
         ];
     }
 

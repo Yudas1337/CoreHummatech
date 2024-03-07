@@ -131,21 +131,12 @@
             margin-right: 0;
         }
     }
-    </style>
-
-    <style>
-        @media (max-width: 767px) {
-            .thumb img {
-                max-width: 60% !important;
-            }
-        }
-    </style>
-
-
+</style>
 
 @endsection
 @section('content')
-    <!-- Start Banner-->
+    <!-- Start Banner
+                                    ============================================= -->
     <div class="banner-area text-center text-big top-pad-50">
         <div id="bootcarousel" class="carousel text-light slide animate_text" data-ride="carousel">
 
@@ -208,22 +199,18 @@
                                 {!! Str::limit($profile->description, 200) !!}
                             </p>
                             <a class="btn btn-gradient effect btn-md" href="/about-us">Selengkapnya</a>
-                        @empty
-                            <p>Belum ada profile perusahaan</p>
+                            @empty
+                                <p>Belum ada profile perusahaan</p>
                         @endforelse
                     </div>
+                    @foreach ($profile as $profile )
                     <div class="col-md-6 order-first order-md-last text-center">
                         <div class="thumb">
-                            @foreach ( $profile as $profile )
                             <img src="{{ asset('storage/' . $profile->image) }}" alt="Thumb" style="max-width: 100%; max-height: 450px; display: inline-block;">
-                            @endforeach
-
-                            <!-- Tambahkan gaya untuk perangkat mobile -->
-
                         </div>
                     </div>
+                    @endforeach
                 </div>
-
             </div>
         </div>
     </div>
@@ -263,12 +250,8 @@
                                    {{-- {{$service->description}} --}}
                                 </p>
                                 <div class="bottom">
-                                    @if (!empty($service->link))
-
-                                    <a href="{{$service->link}}"><i class="fas fa-arrow-right"></i> Lihat
+                                    <a href="/layanan/{{ $service->slug }}"><i class="fas fa-arrow-right"></i> Lihat
                                         Selengkapnya</a>
-
-                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -451,7 +434,7 @@
                                                                             </ul>
                                                                         </div>
                                                                         <h4>
-                                                                            <a href="blog-single-with-sidebar.html">{{ $newsItem['title'] }}</a>
+                                                                            <a href="/berita/{{ $newsItem->slug }}">{{ $newsItem['title'] }}</a>
                                                                         </h4>
                                                                         <p class="line-clamp">{!! Str::limit($newsItem['description'], 80) !!}
                                                                         </p>
@@ -461,7 +444,7 @@
                                                             </div>
 
                                                                 <div class="col-md-12 pagi-area text-center mb-5 mt-3">
-                                                                    <a class="text-primary" href="">
+                                                                    <a class="text-primary" href="/berita">
                                                                         <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24">
                                                                             <path fill="currentColor"
                                                                                 d="M16.15 13H5q-.425 0-.712-.288T4 12q0-.425.288-.712T5 11h11.15L13.3 8.15q-.3-.3-.288-.7t.288-.7q.3-.3.713-.312t.712.287L19.3 11.3q.15.15.213.325t.062.375q0 .2-.062.375t-.213.325l-4.575 4.575q-.3.3-.712.288t-.713-.313q-.275-.3-.288-.7t.288-.7z" />
