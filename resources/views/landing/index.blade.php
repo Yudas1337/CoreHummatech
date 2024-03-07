@@ -203,11 +203,13 @@
                                 <p>Belum ada profile perusahaan</p>
                         @endforelse
                     </div>
+                    @foreach ($profile as $profile )
                     <div class="col-md-6 order-first order-md-last text-center">
                         <div class="thumb">
                             <img src="{{ asset('storage/' . $profile->image) }}" alt="Thumb" style="max-width: 100%; max-height: 450px; display: inline-block;">
                         </div>
                     </div>
+                    @endforeach
                 </div>
             </div>
         </div>
@@ -248,7 +250,7 @@
                                    {{-- {{$service->description}} --}}
                                 </p>
                                 <div class="bottom">
-                                    <a href="{{$service->link}}"><i class="fas fa-arrow-right"></i> Lihat
+                                    <a href="/layanan/{{ $service->slug }}"><i class="fas fa-arrow-right"></i> Lihat
                                         Selengkapnya</a>
                                 </div>
                             </div>
