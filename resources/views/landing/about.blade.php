@@ -135,7 +135,14 @@
                     </div>
 
                 @empty
-                    <p>Belum ada profile perusahaan</p>
+                <div class="col-12">
+                    <div class="d-flex justify-content-center">
+                        <img src="{{ asset('nodata-gif.gif') }}" alt="" width="800px">
+                    </div>
+                    <h4 class="text-center text-dark" style="font-weight:600">
+                        Belum ada profile perusahaan
+                    </h4>
+                </div>
                     @endforelse
                 </div>
             </div>
