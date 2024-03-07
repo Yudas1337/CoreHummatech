@@ -222,30 +222,37 @@
     </div>
 
     @if ($vacancyData->count() > 0)
-        <div class="about-us-area default-padding">
-            <div class="container">
-                <img src="{{ asset('assets-home/img/about-polygon.svg') }}" class="about-triangle" alt="Polygon" />
-                <div class="about-items">
-                    <div class="row align-center">
-                        <div class="col-lg-6 info text-center text-lg-start">
-                            <h4 class="subtitle text-break">{{ $vacancyData[0]->subtitle }}</h4>
-                            <h2>{{ $vacancyData[0]->title }}</h2>
-                            <img src="{{ Storage::url($vacancyData[0]->image) }}"
-                                class="w-75 mx-auto d-block d-lg-none mb-3" alt="Thumb" />
-                            <p>{!! Str::limit($vacancyData[0]->description, 200) !!}</p>
+    <div class="about-us-area default-padding">
+        <div class="container">
+            <img src="{{ asset('assets-home/img/about-polygon.svg') }}" class="about-triangle" alt="Polygon" />
+            <div class="about-items">
+                <div class="row align-center">
+                    <div class="col-lg-6 info text-center text-lg-start">
+                        <h4 class="subtitle text-break">{{ $vacancyData[0]->subtitle }}</h4>
+                        <h2>{{ $vacancyData[0]->title }}</h2>
+                        <img src="{{ asset('storage/' .$vacancyData[0]->image) }}"
+                            class="w-75 mx-auto d-block d-lg-none mb-3" alt="Thumb" />
+                        <p>{!! Str::limit($vacancyData[0]->description, 200) !!}</p>
 
-                            <a class="btn btn-gradient effect btn-md" target="_blank"
-                                href="{{ $vacancyData[0]->link }}">Kunjungi Website</a>
-                        </div>
-                        <div class="col-lg-6 d-none d-lg-block d-md-none">
-                            <div class="thumb">
-                                <img src="{{ Storage::url($vacancyData[0]->image) }}" class="w-100" alt="Thumb" />
-                            </div>
+                        <a class="btn btn-gradient effect btn-md" target="_blank"
+                            href="{{ $vacancyData[0]->link }}">Kunjungi Website</a>
+                    </div>
+                    <div class="col-lg-6 d-none d-lg-block d-md-none">
+                        <div class="thumb">
+                            <img src="{{ asset('storage/' .$vacancyData[0]->image) }}" class="w-100" alt="Thumb" />
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
+    @else
+    <div class="d-flex justify-content-center col-12 ">
+        <img src="{{ asset('nodata-gif.gif') }}" width="600px" alt="" srcset="">
+    </div>
+    <h4 class="fs-1 text-center text-dark col-12 " style="font-weight: 600">
+        Data Masih Kosong
+    </h4>
     @endif
 
     <div class="work-process-area features-area default-padding-bottom py-5">
@@ -263,38 +270,18 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="timeline">
+                                @forelse ($workflows as $index=>$workflow)
                                 <div class="timeline-item">
-                                    <div class="timeline-number">01</div>
+                                    <div class="timeline-number">{{ $index + 1 }}</div>
                                     <div class="timeline-item-content">
-                                        <h2>Event Title</h2>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                                        <span class="timeline-item-date">March 1, 2024</span>
+                                        <h2>{{ $workflow->name }}</h2>
+                                        <p>{{ $workflow->description }}</p>
+                                        {{-- <span class="timeline-item-date">{{ \Carbon\Carbon::parse($workflow->created_at)->locale('id_ID')->isoFormat('D MMMM Y') }}</span> --}}
                                     </div>
                                 </div>
-                                <div class="timeline-item">
-                                    <div class="timeline-number">02</div>
-                                    <div class="timeline-item-content">
-                                        <h2>Another Event Title</h2>
-                                        <p>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                                        <span class="timeline-item-date">March 5, 2024</span>
-                                    </div>
-                                </div>
-                                <div class="timeline-item">
-                                    <div class="timeline-number">03</div>
-                                    <div class="timeline-item-content">
-                                        <h2>Another Event Title</h2>
-                                        <p>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                                        <span class="timeline-item-date">March 5, 2024</span>
-                                    </div>
-                                </div>
-                                <div class="timeline-item">
-                                    <div class="timeline-number">04</div>
-                                    <div class="timeline-item-content">
-                                        <h2>Another Event Title</h2>
-                                        <p>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                                        <span class="timeline-item-date">March 5, 2024</span>
-                                    </div>
-                                </div>
+                                @empty
+
+                                @endforelse
                             </div>
                         </div>
                     </div>
