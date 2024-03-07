@@ -65,33 +65,32 @@
                 <div class="blog-content">
                     <div class="blog-item-box">
                         <div class="row">
-                            @forelse ($newss as $news)
+                            @forelse ($newses as $news)
                                 <div class="col-lg-4 col-md-6 single-item">
                                     <div class="item">
                                         <div class="thumb">
                                             <a href="/berita/{{ $news->slug }}"><img
-                                                    src="{{ asset('storage/' . $news->newsImages[0]->photo) }}"
+                                                    src="{{ asset('storage/' . $news->image) }}"
                                                     alt="Thumb"></a>
-                                            <div class="date">
-                                                {{ \Carbon\Carbon::parse($news->created_at)->locale('id_ID')->isoFormat('D MMMM Y') }}
-                                            </div>
+
+                                            <time class="date" datetime="{{ $news->created_at->format('Y-m-d') }}">{{ \Carbon\Carbon::parse($news->created_at)->locale('id_ID')->isoFormat('D MMMM Y') }}</time>
                                         </div>
                                         <div class="info">
                                             <div class="meta">
                                                 <ul>
                                                     <li>
-                                                        <img src="{{ asset('mobilelogo.png') }}" alt="Author">
+                                                        <img src="{{ asset('mobilelogo.png') }}" alt="Hummatech Logo" />
                                                         <span>By </span>
                                                         <a href="#">Hummatech</a>
                                                     </li>
                                                 </ul>
                                             </div>
+
                                             <h4>
                                                 <a href="/berita/{{ $news->slug }}">{{ $news->title }}</a>
                                             </h4>
-                                            <p>
-                                                {!! Str::limit($news->description, 200) !!}
-                                            </p>
+
+                                            <p>{!! Str::limit(strip_tags($news->description), 200) !!}</p>
                                         </div>
                                     </div>
                                 </div>
