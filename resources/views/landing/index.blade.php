@@ -81,6 +81,10 @@
         display: block;
         margin: 0 auto;
     }
+    .rounded-container {
+        border-radius: 15px; /* Adjust the radius as needed */
+        overflow: hidden;
+    }
 
         @media (max-width: 767px) {
             .owl-carousel {
@@ -168,7 +172,38 @@
                         </div>
                     </div>
                 @empty
+                <div class="box-table">
+                    <div class="">
+                        <div class="slider-thumb bg-fixed" style="background-image: url({{ asset('assets-home/img/banner/1.jpg') }});"></div>
+                    </div>
+                    <div class="box-cell shadow dark">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-10 offset-lg-1">
+                                    <div class="content">
+                                        <h2>Inovasi  <span>Menuju Perkembangan</span></h2>
+                                        <p class="animated slideInRight">
+                                            bertransformasi menjadi perusahaan yang mampu menjawab
+                                            tantangan di era revolusi industri 4.0
+                                        </p>
+                                            <a data-animation="animated zoomInUp" class="btn btn-gradient effect btn-md" href="">
+                                                Lihat Selengkapnya
+                                            </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
+                {{-- <div class="col-12">
+                    <div class="d-flex justify-content-center ">
+                        <img src="{{ asset('nodata-gif.gif') }}" alt="" width="500px" height="500px">
+                    </div>
+                    <h4 class="text-center text-dark" style="font-weight:600">
+                        Belum ada Profile
+                    </h4><br>
+                </div> --}}
                 @endforelse
             </div>
 
@@ -192,24 +227,29 @@
             <img src="{{ asset('assets-home/img/about-polygon.svg') }}" class="about-triangle" alt="Polygon" />
             <div class="about-items">
                 <div class="row d-flex align-items-center">
+                    @forelse ($profile as $profile)
+                    <div class="col-md-6 order-first order-md-last text-center">
+                        <div class="thumb">
+                            <img src="{{ asset('storage/' . $profile->image) }}" alt="Thumb" style="max-width: 100%; max-height: 450px; display: inline-block;">
+                        </div>
+                    </div>
                     <div class="col-md-6 info">
-                        @forelse ($profile as $profile)
                             <h2 class="text-break">{{ $profile->subtitle }}</h2>
                             <p class="text-break">
                                 {!! Str::limit($profile->description, 200) !!}
                             </p>
                             <a class="btn btn-gradient effect btn-md" href="/about-us">Selengkapnya</a>
                             @empty
-                                <p>Belum ada profile perusahaan</p>
-                        @endforelse
+                            <div class="col-12">
+                                <div class="d-flex justify-content-center ">
+                                    <img src="{{ asset('nodata-gif.gif') }}" alt="" width="800px">
+                                </div>
+                                <h4 class="text-center text-dark" style="font-weight:600">
+                                    Belum ada Profile
+                                </h4><br>
+                            </div>
                     </div>
-                    @foreach ($profile as $profile )
-                    <div class="col-md-6 order-first order-md-last text-center">
-                        <div class="thumb">
-                            <img src="{{ asset('storage/' . $profile->image) }}" alt="Thumb" style="max-width: 100%; max-height: 450px; display: inline-block;">
-                        </div>
-                    </div>
-                    @endforeach
+                    @endforelse
                 </div>
             </div>
         </div>
@@ -289,32 +329,26 @@
                     </div>
 
                     <div class="col-lg-8 col-md-12 clients">
-                        <div class="partner-carousel owl-carousel owl-theme text-center">
+                        <div class="partner-carousel owl-carousel owl-theme ">
                             @forelse ($product as $produk)
 
-                            <!-- Ulangi blok ini untuk setiap item partner -->
                             <div class="single-item">
-                                <div class="card">
+                                <div class="card rounded-container">
                                     <div class="card-body">
-                                        <div class="d-flex justify-content-center">
-                                            <img class="img-fluid" src="{{ asset('storage/' . $produk->image) }}" alt="" srcset="">
+                                        <div class="d-flex justify-content-center rounded-container" style="background-color: #E5F1FF;">
+                                            <img class="img-fluid pt-3 mb-3" style="margin-left: 10px; margin-right: 10px;" src="{{ asset('storage/' . $produk->image) }}" width="300" height="200" alt="">
                                         </div>
-                                        <h4 class="text-center text-dark mt-3" style="font-weight:600">
+                                        <h4 class="text-dark mt-3" style="font-weight:600">
                                             {{$produk->name}}
                                         </h4>
 
                                         <p class="text-dark">
-                                            {{ Str::limit($produk['description'], 30) }}
+                                            {{ Str::limit($produk['description'], 40) }}
                                         </p>
                                         <div class="bottom">
-                                            <a href="/product/{{ $produk->slug }}" class="text-primary">
-                                                <i class="fas fa-arrow-right"></i> Lihat Selengkapnya
+                                            <a href="/product/{{ $produk->slug }}" class="btn btn-primary rounded-pill py-2 px-4 ">
+                                                 Lihat Detail   <i class="fas fa-arrow-right"></i>
                                             </a>
-
-                                            {{-- <a href="{{ url('produk/' . $slug) }}" target="_blank" class="text-primary">
-                                                <i class="fas fa-arrow-right"></i> Lihat Selengkapnya
-                                            </a> --}}
-
                                         </div>
                                     </div>
                                 </div>
@@ -402,24 +436,8 @@
                                                                     <div class="thumb">
                                                                         <div id="carouselImages" class="carousel slide" data-ride="carousel">
                                                                             <div class="carousel-inner">
-
-                                                                                @php
-                                                                                    $newsImages = \App\Models\NewsImage::where('news_id', $newsItem['id'])->get();
-                                                                                @endphp
-                                                                                @foreach ($newsImages as $imageIndex => $image)
-                                                                                    <div class="carousel-item @if($imageIndex == 0) active @endif">
-                                                                                        <img src="{{ asset('storage/' . $image->photo) }}" alt="Thumb">
-                                                                                    </div>
-                                                                                @endforeach
+                                                                                <img src="{{ asset('storage/' . $newsItem->image) }}" alt="Thumb">
                                                                             </div>
-                                                                            <a class="carousel-control-prev" href="#carouselImages" role="button" data-slide="prev">
-                                                                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                                                                <span class="sr-only">Previous</span>
-                                                                            </a>
-                                                                            <a class="carousel-control-next" href="#carouselImages" role="button" data-slide="next">
-                                                                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                                                                <span class="sr-only">Next</span>
-                                                                            </a>
                                                                         </div>
                                                                         <div class="date text-uppercase">
                                                                             {{ \Carbon\Carbon::parse($newsItem['created_at'])->locale('id_ID')->isoFormat('dddd, D MMMM YYYY') }}
@@ -442,17 +460,16 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
-
-                                                                <div class="col-md-12 pagi-area text-center mb-5 mt-3">
-                                                                    <a class="text-primary" href="/berita">
-                                                                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24">
-                                                                            <path fill="currentColor"
-                                                                                d="M16.15 13H5q-.425 0-.712-.288T4 12q0-.425.288-.712T5 11h11.15L13.3 8.15q-.3-.3-.288-.7t.288-.7q.3-.3.713-.312t.712.287L19.3 11.3q.15.15.213.325t.062.375q0 .2-.062.375t-.213.325l-4.575 4.575q-.3.3-.712.288t-.713-.313q-.275-.3-.288-.7t.288-.7z" />
-                                                                        </svg> Lihat Berita Lainnya
-                                                                    </a>
-                                                                </div>
                                                         @endif
                                                     @endforeach
+                                                            <div class="col-md-12 pagi-area text-center mb-5 mt-3">
+                                                                <a class="text-primary" href="/berita">
+                                                                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24">
+                                                                        <path fill="currentColor"
+                                                                            d="M16.15 13H5q-.425 0-.712-.288T4 12q0-.425.288-.712T5 11h11.15L13.3 8.15q-.3-.3-.288-.7t.288-.7q.3-.3.713-.312t.712.287L19.3 11.3q.15.15.213.325t.062.375q0 .2-.062.375t-.213.325l-4.575 4.575q-.3.3-.712.288t-.713-.313q-.275-.3-.288-.7t.288-.7z" />
+                                                                    </svg> Lihat Berita Lainnya
+                                                                </a>
+                                                            </div>
                                                 </div>
                                             </div>
 

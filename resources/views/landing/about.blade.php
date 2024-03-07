@@ -116,13 +116,16 @@
                         <h4 class="subtitle">Profile Perusahaan</h4>
                         @forelse ($profiles as $profile)
                             <h2>{{ $profile->subtitle }}</h2>
-                            <img src="{{ asset('storage/' . $profile->image) }}" alt="Thumb" class="w-75 mb-3 d-block mx-auto d-lg-none" />
+                            <img src="{{ asset('storage/' . $profile->image) }}" alt="Thumb"
+                                class="w-75 mb-3 d-block mx-auto d-lg-none" />
                             <p>
                                 {!! Str::limit($profile->description, 200) !!}
                             </p>
 
-                            @if($profile->proposal)
-                            <a class="btn btn-gradient effect btn-md" href="{{ asset('storage/'.$profile->proposal) }}" download="{{ asset('storage/'.$profile->proposal) }}">Unduh Portofolio</a>
+                            @if ($profile->proposal)
+                                <a class="btn btn-gradient effect btn-md"
+                                    href="{{ asset('storage/' . $profile->proposal) }}"
+                                    download="{{ asset('storage/' . $profile->proposal) }}">Unduh Portofolio</a>
                             @endif
                     </div>
                     <div class="col-lg-6 d-none d-md-none d-lg-inline">
@@ -217,15 +220,15 @@
         <div class="container">
             <div class="work-process-items features-content">
                 <div class="text-center">
-                    @if($imageStructures->count() > 0 && isset($imageStructures[0]))
-                    <img src="{{ Storage::url($imageStructures[0]->image) }}" alt="Struktur Organisasi Hummatech" />
+                    @if ($imageStructures->count() > 0 && isset($imageStructures[0]))
+                        <img src="{{ Storage::url($imageStructures[0]->image) }}" alt="Struktur Organisasi Hummatech" />
                     @else
-                    <div class="d-flex justify-content-center">
-                        <img src="{{ asset('nodata-gif.gif') }}" alt="Not Found" width="800px" />
-                    </div>
-                    <h4 class="text-center text-dark" style="font-weight:600">
-                        Gambar struktur organisasi belum diunggah
-                    </h4>
+                        <div class="d-flex justify-content-center">
+                            <img src="{{ asset('nodata-gif.gif') }}" alt="Not Found" width="800px" />
+                        </div>
+                        <h4 class="text-center text-dark" style="font-weight:600">
+                            Gambar struktur organisasi belum diunggah
+                        </h4>
                     @endif
                 </div>
             </div>
@@ -247,16 +250,57 @@
         <div class="container">
             <div class="work-process-items features-content">
                 <div class="text-center">
-                    @if($imageStructures->count() > 0 && isset($imageStructures[1]))
-                    <img src="{{ Storage::url($imageStructures[1]->image) }}" alt="Struktur Usaha dari Hummatech" />
+                    @if ($imageStructures->count() > 0 && isset($imageStructures[1]))
+                        <img src="{{ Storage::url($imageStructures[1]->image) }}" alt="Struktur Usaha dari Hummatech" />
                     @else
-                    <div class="d-flex justify-content-center">
-                        <img src="{{ asset('nodata-gif.gif') }}" alt="Not Found" width="800px" />
-                    </div>
-                    <h4 class="text-center text-dark" style="font-weight:600">
-                        Gambar struktur organisasi belum diunggah
-                    </h4>
+                        <div class="d-flex justify-content-center">
+                            <img src="{{ asset('nodata-gif.gif') }}" alt="Not Found" width="800px" />
+                        </div>
+                        <h4 class="text-center text-dark" style="font-weight:600">
+                            Gambar struktur organisasi belum diunggah
+                        </h4>
                     @endif
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="team-area default-padding bottom-less">
+        <div class="container">
+            <div class="team-items">
+                <div class="row">
+                    <div class="col-lg-8 offset-lg-2">
+                        <div class="site-heading text-center">
+                            <h4>FILOSOFI LOGO</h4>
+                            <h2>Simbol Kuat Inovasi dan Keandalan: Filosofi di Balik Logo Kami</h2>
+                            <div class="devider"></div>
+                        </div>
+                    </div>
+                    @forelse ($logos as $logo)
+                        <div class="single-item col-lg-5 col-md-6 ">
+                            <div class="item">
+                                <div>
+                                    <img src="{{ asset('storage/' . $logo->image) }}" alt="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="single-item col-lg-7 col-md-6">
+                            <h2>{{ $logo->title }}</h2>
+                            <p>{{ Str::limit($logo->description, 250) }}</p>
+                            <button class="btn btn-gradient btn-lg">Selengkapnya</button>
+                        </div>
+                    @empty
+                        <div class="col-lg-8 offset-lg-2">
+                            <div class=" text-center">
+                                <div class="d-flex justify-content-center">
+                                    <img src="{{ asset('nodata-gif.gif') }}" alt="Not Found" width="800px" />
+                                </div>
+                                <h4 class="text-center text-dark" style="font-weight:600">
+                                    Logo belum diunggah
+                                </h4>
+                            </div>
+                        </div>
+                    @endforelse
                 </div>
             </div>
         </div>
