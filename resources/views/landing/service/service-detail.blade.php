@@ -221,8 +221,8 @@
                             {!! Str::limit($slugs->description, 800) !!}
                         </p>
                         @if ($slugs->link)
-                        <a href="{{ $slugs->link }}" target="_blank" class="btn btn-gradient effect btn-md"
-                            href="">Kunjungi website</a>
+                            <a href="{{ $slugs->link }}" target="_blank" class="btn btn-gradient effect btn-md"
+                                href="">Kunjungi website</a>
                         @endif
 
                         <div class="mt-5">
@@ -243,8 +243,10 @@
                                         <div class="col-lg-7 wow fadeInDown">
                                             <h2>{{ $product->name }}</h2>
                                             <p>{{ $product->description }}</p>
-                                            <a class="btn btn-stroke-gradient effect btn-md" href="/detail/{{ $product->slug }}">Lihat detail</a>
-                                            <a class="btn btn-gradient effect btn-md" href="{{ $product->link }}">Kunjungi website</a>
+                                            <a class="btn btn-stroke-gradient effect btn-md"
+                                                href="/detail/{{ $product->slug }}">Lihat detail</a>
+                                            <a class="btn btn-gradient effect btn-md" href="{{ $product->link }}">Kunjungi
+                                                website</a>
                                         </div>
                                     </div>
                                 </div>
@@ -316,71 +318,78 @@
                                 </div>
                             </div>
                         </div>
+                        @if ($faqs->count() > 0)
+                            <div class="py-3 mb-5">
+                                <div class="title-service">
+                                    <h4 class="m-0">FAQ</h4>
+                                    <div class="dash"></div>
+                                </div>
 
-                        <div class="py-3 mb-5">
-                            <div class="title-service">
-                                <h4 class="m-0">FAQ</h4>
-                                <div class="dash"></div>
-                            </div>
-
-                            <!-- Star Faq -->
-                            <div class="faq-content-area">
-                                <div class="faq-items">
-                                    <div class="row align-center">
-                                        <div class="col-lg-12 ">
-                                            <div class="faq-content wow fadeInUp">
-                                                <div class="accordion" id="accordionExample">
-                                                    <div class="card">
-                                                        @forelse ($faqs as $item)
-                                                            <div class="card-header" id="headingTwo">
-                                                                <h4 class="mb-0 collapsed" data-toggle="collapse"
-                                                                    data-target="#collapseTwo" aria-expanded="false"
-                                                                    aria-controls="collapseTwo">
-                                                                    Do you offer free trials?
-                                                                </h4>
-                                                            </div>
-                                                            <div id="collapseTwo" class="collapse"
-                                                                aria-labelledby="headingTwo"
-                                                                data-parent="#accordionExample">
-                                                                <div class="card-body">
-                                                                    <p>
-                                                                        Companions shy had solicitude favourable own. Which
-                                                                        could saw guest man now heard but. Lasted my coming
-                                                                        uneasy marked so should. Gravity letters it amongst
-                                                                        herself dearest an windows by. Wooded ladies she
-                                                                        basket
-                                                                        season age her uneasy saw. Discourse unwilling am no
-                                                                        described dejection incommode no listening of.
-                                                                        Before
-                                                                        nature his parish boy.
-                                                                    </p>
-                                                                    <div class="ask-question">
-                                                                        <span>Still no luck?</span> <a href="#">Ask a
-                                                                            question</a>
+                                <!-- Star Faq -->
+                                <div class="faq-content-area">
+                                    <div class="faq-items">
+                                        <div class="row align-center">
+                                            <div class="col-lg-12 ">
+                                                <div class="faq-content wow fadeInUp">
+                                                    <div class="accordion" id="accordionExample">
+                                                        <div class="card">
+                                                            @forelse ($faqs as $item)
+                                                                <div class="card-header" id="headingTwo">
+                                                                    <h4 class="mb-0 collapsed" data-toggle="collapse"
+                                                                        data-target="#collapseTwo" aria-expanded="false"
+                                                                        aria-controls="collapseTwo">
+                                                                        Do you offer free trials?
+                                                                    </h4>
+                                                                </div>
+                                                                <div id="collapseTwo" class="collapse"
+                                                                    aria-labelledby="headingTwo"
+                                                                    data-parent="#accordionExample">
+                                                                    <div class="card-body">
+                                                                        <p>
+                                                                            Companions shy had solicitude favourable own.
+                                                                            Which
+                                                                            could saw guest man now heard but. Lasted my
+                                                                            coming
+                                                                            uneasy marked so should. Gravity letters it
+                                                                            amongst
+                                                                            herself dearest an windows by. Wooded ladies she
+                                                                            basket
+                                                                            season age her uneasy saw. Discourse unwilling
+                                                                            am no
+                                                                            described dejection incommode no listening of.
+                                                                            Before
+                                                                            nature his parish boy.
+                                                                        </p>
+                                                                        <div class="ask-question">
+                                                                            <span>Still no luck?</span> <a
+                                                                                href="#">Ask a
+                                                                                question</a>
+                                                                        </div>
                                                                     </div>
                                                                 </div>
-                                                            </div>
-                                                        @empty
-                                                            <div class="col-12">
-                                                                <div class="d-flex justify-content-center">
-                                                                    <img src="{{ asset('nodata-gif.gif') }}"
-                                                                        alt="" width="500px">
+                                                            @empty
+                                                                <div class="col-12">
+                                                                    <div class="d-flex justify-content-center">
+                                                                        <img src="{{ asset('nodata-gif.gif') }}"
+                                                                            alt="" width="500px">
+                                                                    </div>
+                                                                    <h4 class="text-center text-dark"
+                                                                        style="font-weight:600">
+                                                                        Belum ada FAQ
+                                                                    </h4>
                                                                 </div>
-                                                                <h4 class="text-center text-dark" style="font-weight:600">
-                                                                    Belum ada FAQ
-                                                                </h4>
-                                                            </div>
-                                                        @endforelse
+                                                            @endforelse
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
 
+                                        </div>
                                     </div>
                                 </div>
+                                <!-- End Faq -->
                             </div>
-                            <!-- End Faq -->
-                        </div>
+                        @endif
                         @if ($mitras->count() > 0)
                             <div class="py-2 mb-5">
                                 <div class="title-service">
@@ -490,31 +499,32 @@
                                 </div>
                             </div>
                         </div> --}}
-
-                        <div class="py-2 mb-5">
-                            <div class="title-service">
-                                <h4 class="m-0">Galeri</h4>
-                                <div class="dash"></div>
-                            </div>
-                            <div class="galeri">
-                                <div class="d-flex flex-wrap col-12">
-                                    @forelse ($galeries as $galery)
-                                        <img src="{{ asset('storage/' . $galery->image) }}"
-                                            style="object-fit: cover; width: 18vw; height: 12vw" class="m-2">
-                                    @empty
-                                    <div class="col-12">
-                                        <div class="d-flex justify-content-center">
-                                            <img src="{{ asset('nodata-gif.gif') }}" alt=""
-                                                width="800px">
-                                        </div>
-                                        <h4 class="text-center text-dark" style="font-weight:600">
-                                            Belum ada Galeri
-                                        </h4>
+                        @if ($galeries->count() > 0)
+                            <div class="py-2 mb-5">
+                                <div class="title-service">
+                                    <h4 class="m-0">Galeri</h4>
+                                    <div class="dash"></div>
+                                </div>
+                                <div class="galeri">
+                                    <div class="d-flex flex-wrap col-12">
+                                        @forelse ($galeries as $galery)
+                                            <img src="{{ asset('storage/' . $galery->image) }}"
+                                                style="object-fit: cover; width: 18vw; height: 12vw" class="m-2">
+                                        @empty
+                                            <div class="col-12">
+                                                <div class="d-flex justify-content-center">
+                                                    <img src="{{ asset('nodata-gif.gif') }}" alt=""
+                                                        width="800px">
+                                                </div>
+                                                <h4 class="text-center text-dark" style="font-weight:600">
+                                                    Belum ada Galeri
+                                                </h4>
+                                            </div>
+                                        @endforelse
                                     </div>
-                                    @endforelse
                                 </div>
                             </div>
-                        </div>
+                        @endif
                     </div>
 
                     <div class="col-lg-4 services-sidebar">
@@ -540,9 +550,9 @@
                                 <p>
                                     Kami di sini untuk membantu pelanggan kapan saja. Anda dapat menghubungi kami 24/7 untuk
                                     menjawab pertanyaan Anda. </p>
-                                    @if ($profile)
+                                @if ($profile)
                                     <h2>{{ $profile->phone }}</h2>
-                                    @endif
+                                @endif
                             </div>
                         </div>
                         @foreach ($services->where('slug', $slugs->slug) as $service)
