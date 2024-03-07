@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Contracts\Interfaces\StructureInterface;
+use App\Enums\StructureEnum;
 use App\Models\Structure;
 use App\Http\Requests\StoreStructureRequest;
 use App\Http\Requests\UpdateStructureRequest;
@@ -26,7 +27,9 @@ class StructureController extends Controller
     public function index()
     {
         $structures = $this->structure->get();
-        return view('admin.pages.structure.index' , compact('structures'));
+        $organization = $this->structure->getByType(StructureEnum::STRUCTURE_ORGANIZAZE->value);
+        $business = $this->structure->getByType(StructureEnum::STRUCTURE_BUSINESS->value);
+        return view('admin.pages.structure.index' , compact('organization', 'business', 'structures'));
     }
 
     /**
