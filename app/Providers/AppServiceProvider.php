@@ -59,9 +59,11 @@ use App\Contracts\Interfaces\GalleryInterface;
 use App\Contracts\Interfaces\StructureInterface;
 use App\Contracts\Repositories\GalleryRepository;
 use App\Contracts\Interfaces\VacancyInterface;
+use App\Contracts\Interfaces\WorkFlowInterface;
 use App\Contracts\Repositories\EnterpriseStructureRepository;
 use App\Contracts\Repositories\StructureRepository;
 use App\Contracts\Repositories\VacancyRepository;
+use App\Contracts\Repositories\WorkFlowRepository;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -93,6 +95,7 @@ class AppServiceProvider extends ServiceProvider
         VacancyInterface::class => VacancyRepository::class,
         StructureInterface::class => StructureRepository::class,
         GaleryImageInterface::class => GaleryImageRepository::class,
+        WorkFlowInterface::class => WorkFlowRepository::class
     ];
 
     /**
