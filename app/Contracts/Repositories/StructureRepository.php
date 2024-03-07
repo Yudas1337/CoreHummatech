@@ -30,4 +30,9 @@ class StructureRepository extends BaseRepository implements StructureInterface
     {
         return $this->model->query()->findOrFail($id)->update($data);
     }
+
+    public function getByType(mixed $type): mixed
+    {
+        return $this->model->query()->where('type', $type)->first();
+    }
 }

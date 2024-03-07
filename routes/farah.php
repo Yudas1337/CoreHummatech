@@ -15,3 +15,6 @@ Route::put('product-company/{product}/update', [ProductController::class, 'updat
 
 Route::post('testimonial/store', [TestimonialController::class, 'storeProduct'])->name('testimonialProduct.store');
 Route::put('testimonial/product/{testimonial}', [TestimonialController::class, 'updateProduct'])->name('testimonialProduct.update');
+
+Route::delete('setting/structure/delete/{structure}', [StructureController::class, 'destroy']);
+Route::put('setting/structure/update/{structure}', [StructureController::class, 'update']);
