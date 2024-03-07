@@ -4,7 +4,6 @@ namespace App\Services;
 
 use App\Models\Sale;
 use App\Enums\TypeEnum;
-use App\Http\Requests\StoreProductCompanyRequest;
 use App\Models\Product;
 use App\Traits\UploadTrait;
 use Illuminate\Support\Str;
@@ -12,12 +11,21 @@ use App\Models\ProductFeature;
 use App\Http\Requests\StoreSaleRequest;
 use App\Http\Requests\UpdateSaleRequest;
 use App\Http\Requests\StoreProductRequest;
-use App\Http\Requests\UpdateProductCompanyRequest;
 use App\Http\Requests\UpdateProductRequest;
+use App\Http\Requests\StoreProductCompanyRequest;
+use App\Http\Requests\UpdateProductCompanyRequest;
+use App\Contracts\Interfaces\ProductFeatureInterface;
 
 class ProductService
 {
     use UploadTrait;
+
+    private ProductFeatureInterface $productFeature;
+
+    public function __construct(ProductFeatureInterface $productFeature)
+    {
+        $this->productFeature = $productFeature;
+    }
 
     /**
      * Handle custom upload validation.
@@ -48,7 +56,7 @@ class ProductService
         $data = [
             'name' => $request->name,
             'description' => $request->description,
-            'slug' => Str::slug($request->description),
+            'slug' => Str::slug($request->name),
             'link' => $request->link,
             'service_id' => $request->service_id,
             'type' => $request->type,
@@ -90,7 +98,7 @@ class ProductService
                 'product_id' => $product_id->id,
                 'title' => $request->feature[$index]
             ];
-            ProductFeature::create($data);
+            $this->productFeature->store($data);
         }
     }
 
@@ -103,7 +111,7 @@ class ProductService
                 'description' => $item,
                 'title' => $request->title[$index]
             ];
-            ProductFeature::create($data);
+            $this->productFeature->store($data);
         }
     }
 
@@ -116,7 +124,7 @@ class ProductService
                 'description' => $item,
                 'title' => $request->title[$index]
             ];
-            ProductFeature::create($data);
+            $this->productFeature->store($data);
         }
     }
 
@@ -126,9 +134,9 @@ class ProductService
         foreach ($request->feature as $index => $item) {
             $data = [
                 'product_id' => $product->id,
-                'title' => $request->title[$index]
+                'title' => $request->feature[$index]
             ];
-            ProductFeature::create($data);
+            $this->productFeature->store($data);
         }
     }
 
@@ -161,7 +169,7 @@ class ProductService
 
         foreach ($request->id_feature as $fitur)
         {
-            ProductFeature::findOrfail($fitur)->delete();
+            $this->productFeature->delete($fitur);
         }
 
         return $data;
@@ -187,7 +195,7 @@ class ProductService
 
         foreach ($request->id_feature as $fitur)
         {
-            ProductFeature::findOrfail($fitur)->delete();
+            $this->productFeature->delete($fitur);
         }
 
         return $data;

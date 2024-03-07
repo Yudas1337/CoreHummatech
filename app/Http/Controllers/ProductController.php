@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Contracts\Interfaces\FaqInterface;
+use App\Contracts\Interfaces\ProductFeatureInterface;
 use App\Models\Product;
 use App\Models\ProductFeature;
 use App\Services\ProductService;
@@ -21,14 +22,16 @@ class ProductController extends Controller
     private ServiceInterface $service;
     private TestimonialInterface $testimonial;
     private FaqInterface $faq;
+    private ProductFeatureInterface $productFeature;
 
-    public function __construct(ProductInterface $product, ProductService $productService, ServiceInterface $service, TestimonialInterface $testimonial, FaqInterface $faq)
+    public function __construct(ProductInterface $product, ProductFeatureInterface $productFeature, ProductService $productService, ServiceInterface $service, TestimonialInterface $testimonial, FaqInterface $faq)
     {
         $this->product = $product;
         $this->testimonial = $testimonial;
         $this->productService = $productService;
         $this->service = $service;
         $this->faq = $faq;
+        $this->productFeature = $productFeature;
     }
     /**
      * Display a listing of the resource.
@@ -85,17 +88,21 @@ class ProductController extends Controller
     public function editCompany(Product $product)
     {
         $services = $this->service->get();
-        $productfeature = ProductFeature::where('product_id', $product->id)->get();
-        // dd($productfeature);
-        return view('admin.pages.products.editCompany', compact('product', 'services', 'productfeature'));
+        $productfeatureFirst = $this->productFeature->getByServiceId($product->id)->First();
+        $productfeatures = $this->productFeature->getByServiceId($product->id);
+
+
+        return view('admin.pages.products.editCompany', compact( 'services', 'productfeatures', 'product', 'productfeatureFirst'));
     }
 
     public function edit(Product $product)
     {
         $services = $this->service->get();
-        $productfeature = ProductFeature::where('product_id', $product->id)->get();
+        $productfeatureFirst = $this->productFeature->getByServiceId($product->id)->First();
+        $productfeatures = $this->productFeature->getByServiceId($product->id);
         // dd($productfeature);
-        return view('admin.pages.products.edit', compact('Produk', 'services', 'productfeature'));
+
+        return view('admin.pages.products.edit', compact('services', 'productfeatures', 'product', 'productfeatureFirst'));
     }
 
     /**

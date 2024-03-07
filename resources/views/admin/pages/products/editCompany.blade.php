@@ -31,9 +31,21 @@
                     <div class="form-group mb-3 mt-0 col-md-12">
                         <label for="feature">Fitur <small class="text-danger">* Masukan fitur produk</small></label>
                         <div class="d-flex align-items-center mt-3 gap-2">
-                            <input class="form-control m-0" type="text" required name="feature[]" autocomplete="name" placeholder="Masukan Fitur" value="{{ old('feature[]') }}"/>
+                            <input type="hidden" name="id_feature[]" value="{{ $productfeatureFirst->id }}">
+                            <input class="form-control m-0" type="text" required name="feature[]" value="{{ old('title[]', $productfeatureFirst->title) }}" autocomplete="name" placeholder="Masukan Fitur" value="{{ old('feature[]') }}"/>
                         </div>
-                        <div id="product-listing"></div>
+                        <div id="product-listing">
+                            @foreach ($productfeatures->skip(1) as $productfeature)
+                            <input type="hidden" name="id_feature[]" value="{{ $productfeature->id }}">
+                            <div class="d-flex align-items-center mt-3 gap-2" id="${{ $productfeature->id }}">
+                                <input class="form-control mb-0" type="text" name="feature[]" value="{{ $productfeature->title }}"
+                                    required="" autocomplete="name"
+                                    placeholder="Masukan Fitur" />
+                                <button onclick="deleteElement('${{ $productfeature->id }}')" type="button" class="btn delete-trigger px-3 mt-0 btn-danger"><i
+                                        class="fas fa-trash"></i></button>
+                                </div>
+                            @endforeach
+                        </div>
                         @error('title.*')
                             <small class="text-danger">{{ $message }}</small>
                         @enderror
