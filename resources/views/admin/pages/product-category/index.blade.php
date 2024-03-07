@@ -59,7 +59,7 @@
         <div class="card border-0 shadow p-3 mt-3">
             <div class="row">
                 <div class="col-12 col-lg-6">
-                    <h4 class="m-2">Kategori Berita</h4>
+                    <h4 class="m-2">Kategori Produk</h4>
                 </div>
                 <div class="col-12 col-lg-6">
                     <div class="d-flex justify-content-lg-end justify-content-start">
@@ -67,7 +67,45 @@
                             <p class="m-0 me-2">Cari:</p>
                             <input class="form-control me-2" type="text" placeholder="Search" aria-label="Search">
                         </div>
-                        @include('admin.pages.news-category.create')
+                        <button class="btn btn-primary m-0" type="button" data-bs-toggle="modal" data-bs-target="#tambah">Tambah</button>
+
+                        <!-- Add Modal -->
+                        <div class="modal fade modal-bookmark" id="tambah" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                            aria-hidden="true">
+                            <div class="modal-dialog modal-lg" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title fw-semibold" id="exampleModalLabel">Tambah Kategori Produk</h5>
+                                        <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <form class="form-bookmark needs-validation" action="{{ route('category-product.store') }}" method="POST" id="bookmark-form" novalidate=""
+                                        enctype="multipart/form-data">
+                                        @csrf
+                                        @method('POST')
+                                        <div class="modal-body">
+                                            <div class="row g-2">
+                                                <div class="mb-3 mt-0 col-md-12">
+                                                    <label for="name">Kategori</label>
+                                                    <input class="form-control" type="text" required="" autocomplete="name" name="name"
+                                                        placeholder="Masukkan Nama Kategori">
+                                                        @error('name')
+                                                            <p class="text-danger">
+                                                                {{ $message }}
+                                                            </p>
+                                                        @enderror
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <div class="d-flex justify-content-end">
+                                                <button class="btn btn-light-danger" type="button" data-bs-dismiss="modal">Tutup</button>
+                                                <button class="btn btn-light-primary" type="submit">Tambah</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -81,7 +119,7 @@
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Edit Kategori Berita</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Edit Kategori Produk</h5>
                     <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <form class="form-bookmark needs-validation" method="POST" id="form-update" novalidate=""
@@ -91,7 +129,7 @@
                     <div class="modal-body">
                         <div class="row g-2">
                             <div class="mb-3 mt-0 col-md-12">
-                                <label for="bm-title">Kategori Berita</label>
+                                <label for="bm-title">Kategori Produk</label>
                                 <input class="form-control name"name="name" type="text" required="" autocomplete="name"
                                     placeholder="Masukkan Nama Kategori">
                             </div>
@@ -99,8 +137,8 @@
                     </div>
                     <div class="modal-footer">
                         <div class="d-flex justify-content-end">
-                            <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">Cancel</button>
-                            <button class="btn btn-primary" type="submit">Perbarui</button>
+                            <button class="btn btn-light-danger" type="button" data-bs-dismiss="modal">Tutup</button>
+                            <button class="btn btn-light-primary" type="submit">Perbarui</button>
                         </div>
                     </div>
                 </form>
@@ -118,18 +156,18 @@
                 </tr>
             </thead>
             <tbody>
-                @forelse ($categoryNews as $index=>$categoryNew)
+                @forelse ($categoryProducts as $index=>$categoryProduct)
                     <tr>
                         <td class="text-center">{{ $index + 1 }}</td>
-                        <td class="text-center">{{ $categoryNew->name }}</td>
+                        <td class="text-center">{{ $categoryProduct->name }}</td>
                         <td class="text-center">
                             <div class="d-flex justify-content-center gap-2">
-                                <button class="btn-edit btn btn-warning btn-edit" data-id="{{ $categoryNew->id }}" data-name="{{ $categoryNew->name }}"
-                                    id="{{ $categoryNew->id }}">
+                                <button class="btn-edit btn btn-warning btn-edit" data-id="{{ $categoryProduct->id }}" data-name="{{ $categoryProduct->name }}"
+                                    id="{{ $categoryProduct->id }}">
                                     Edit
                                 </button>
-                                <button class="btn-delete btn btn-danger btn-delete" data-id="{{ $categoryNew->id }}"
-                                    id="{{ $categoryNew->id }}">
+                                <button class="btn-delete btn btn-danger btn-delete" data-id="{{ $categoryProduct->id }}"
+                                    id="{{ $categoryProduct->id }}">
                                     Hapus
                                 </button>
                             </div>
@@ -144,6 +182,19 @@
 @endsection
 
 @section('script')
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+@if(session('success'))
+<script>
+    Swal.fire({
+        title: 'Success',
+        text: '{{ session('success') }}',
+        icon: 'success',
+        confirmButtonText: 'OK',
+        timer: 2000, // Menutup SweetAlert setelah 3 detik
+        timerProgressBar: true // Menampilkan progress bar
+    });
+</script>
+@endif
     <script>
         $('#datatable table').DataTable({
             searching: false,
@@ -155,13 +206,13 @@
         $('.btn-edit').click(function() {
             var id = $(this).data('id'); // Mengambil nilai id dari tombol yang diklik
             var name = $(this).data('name'); // Mengambil nilai name dari tombol yang diklik
-            $('#form-update').attr('action', '/update/category/news/' + id ); // Mengubah nilai atribut action form
+            $('#form-update').attr('action', '/category-product/update/' + id ); // Mengubah nilai atribut action form
             $('.name').val(name);
             $('#modal-edit').modal('show');
         });
         $('.btn-delete').on('click', function() {
             var id = $(this).data('id');
-            $('#form-delete').attr('action', '/delete/category/news/' + id);
+            $('#form-delete').attr('action', '/category-product/delete/' + id);
             $('#modal-delete').modal('show');
         });
     </script>
