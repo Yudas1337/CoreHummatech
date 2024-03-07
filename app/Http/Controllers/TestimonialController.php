@@ -106,7 +106,7 @@ class TestimonialController extends Controller
     public function destroy(Testimonial $testimonial)
     {
         $this->testimonial->delete($testimonial->id);
-        $this->service->delete($testimonial->image);
+        $this->service->delete($testimonial);
         return redirect()->back()->with('success' , 'Data berhasil di hapus');
     }
 }
