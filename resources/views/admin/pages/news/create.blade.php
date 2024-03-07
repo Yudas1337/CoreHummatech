@@ -37,7 +37,8 @@
                             <div class="col-sm-12">
                                 <div class="mb-3">
                                     <label for="thumbnail">Gambar Berita</label>
-                                    <input id="thumbnail" type="file" name="image" class="form-control" accept="image/*" />
+                                    <input id="thumbnail" type="file" name="image" class="form-control"
+                                        accept="image/*" />
                                     @error('image')
                                         <div class="text-danger">{{ $message }}
                                         </div>
@@ -56,7 +57,8 @@
                                     @enderror
                                 </div>
                                 <div class="mb-3">
-                                    <div class="col-form-label">Kategori Berita (atau <a href="/category-news">Tambah baru</a>)
+                                    <div class="col-form-label">Kategori Berita (atau <a href="/category-news">Tambah
+                                            baru</a>)
                                         <select class="js-example-basic-multiple col-sm-12" multiple="multiple"
                                             name="category[]">
                                             @forelse ($categories as $category)
@@ -72,7 +74,7 @@
                                 </div>
                                 <div class="mb-3">
                                     <label>Deskripsi Berita</label>
-                                    <div id="editor" style="height: 200px">{!! old('description') !!}</div>
+                                    <div id="editor" style="height: 500px">{!! old('description') !!}</div>
                                     <textarea name="description" class="d-none" id="description" cols="30" rows="10">{!! old('description') !!}</textarea>
                                     {{-- <input type="hidden" id="description" value="{!! old('description') !!}" name="description" /> --}}
 
@@ -95,15 +97,39 @@
 @endsection
 
 @section('script')
+    <!-- Modal -->
+    <div class="modal fade" id="uploadImageModal" tabindex="-1" aria-labelledby="uploadImageModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="uploadImageModalLabel">Unggah Gambar Baru</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="image-uploader-form" method="POST">
+                        @csrf
+                        <div class="mb-3">
+                            <label for="image" class="form-label">Unggah Gambar</label>
+                            <input class="form-control" type="file" name="image" id="image" />
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="alt" class="form-label">Deskripsi Gambar</label>
+                            <input class="form-control" type="text" name="alt" id="alt" />
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                    <button type="button" id="save-button-uploader" class="btn btn-primary">Unggah Gambar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="https://unpkg.com/filepond-plugin-file-validate-size/dist/filepond-plugin-file-validate-size.js"></script>
-    <script src="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.js"></script>
-    <script src="https://unpkg.com/filepond-plugin-image-edit/dist/filepond-plugin-image-edit.js"></script>
-    <script src="https://unpkg.com/filepond/dist/filepond.js"></script>
     <script src="../assets/js/select2/select2.full.min.js"></script>
     <script src="../assets/js/select2/select2-custom.js"></script>
-    <script src="../assets/js/editor/ckeditor/ckeditor.js"></script>
-    <script src="../assets/js/editor/ckeditor/adapters/jquery.js"></script>
     <script src="../assets/js/slick/slick.min.js"></script>
     <script src="../assets/js/slick/slick.js"></script>
     <script src="../assets/js/header-slick.js"></script>
@@ -121,27 +147,6 @@
     </script>
 
     <script>
-        FilePond.registerPlugin(
-            FilePondPluginImagePreview,
-            FilePondPluginImageExifOrientation,
-            FilePondPluginFileValidateSize,
-            FilePondPluginImageEdit
-        );
-
-        FilePond.create(
-            document.querySelector('#thumbnail'), {
-                labelIdle: 'Unggah foto, atau <span class="filepond--label-action">Cari</span>',
-                maxFiles: '5',
-                maxFileSize: '100MB',
-                autoProcessQueue: false,
-                uploadMultiple: true,
-                labelMaxFileSizeExceeded: 'Too big bro.',
-                labelMaxFileSize: 'max {filesize}',
-            }
-        );
-    </script>
-
-    <script>
         $('.js-example-basic-single').on('select2:select', (e) => {
             var $this = $(e.target);
             if ($this.val() === 'add-new') {
@@ -153,6 +158,8 @@
     <script>
         var customToolbar = [
             ['bold', 'italic', 'underline', 'strike', 'blockquote', 'image'],
+
+            ['link'],
 
             [{
                 'color': []
@@ -175,6 +182,45 @@
             modules: {
                 toolbar: {
                     container: customToolbar,
+                    handlers: {
+                        image: () => {
+                            $('#uploadImageModal').modal('show');
+
+                            let $image = $('#image-uploader-form #image'),
+                                formData = new FormData();
+
+                            $image.change((e) => {
+                                let filename = e.target.files[0].name;
+                                $('#image-uploader-form #alt').val(filename);
+                            });
+
+                            $('#save-button-uploader').click((e) => {
+                                e.preventDefault();
+
+                                formData.append('image', $image[0].files[0]);
+                                formData.append('_token', '{{ csrf_token() }}');
+
+                                $.ajax({
+                                    url: '{{ route('image-uploader') }}',
+                                    type: 'POST',
+                                    data: formData,
+                                    processData: false,
+                                    contentType: false,
+                                    success: ({
+                                        data
+                                    }) => {
+                                        let index = quill.getSelection() ? quill
+                                            .getSelection().index : 0;
+
+                                        quill.insertEmbed(index, 'image', `{{ url('/storage') }}/${data.image}`);
+
+                                        $('#image-uploader-form').trigger('reset');
+                                        $('#uploadImageModal').modal('hide');
+                                    }
+                                });
+                            });
+                        }
+                    }
                 }
             },
         });

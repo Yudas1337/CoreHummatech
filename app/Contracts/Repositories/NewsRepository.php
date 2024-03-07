@@ -13,6 +13,10 @@ class NewsRepository extends BaseRepository implements NewsInterface
     {
         $this->model = $news;
     }
+    public function latest(int $limit = 5): mixed
+    {
+        return $this->model->query()->latest()->limit($limit)->get();
+    }
     public function get(): mixed
     {
         return $this->model->query()->get();

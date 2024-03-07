@@ -14,6 +14,7 @@ enum TypeEnum: string
     case SECTION = 'section';
     case PROPOSAL = 'proposal';
     case NEWS = 'news';
+    case NEWSDESC = 'news-images';
     case TEAM = 'team';
     case SOSIALMEDIA = 'sosialmedia';
     case TESTIMONIAL = 'testimonial';
