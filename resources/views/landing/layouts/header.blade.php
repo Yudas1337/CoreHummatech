@@ -52,30 +52,31 @@
                     <li class="active">
                         <a href="{{ url('/') }}">Beranda</a>
                     </li>
-                    <li>
+                    <li class="{{ request()->is('/about-us') ? 'active' : '' }}">
                         <a href="{{ url('/about-us') }}">Tentang</a>
                     </li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Layanan</a>
                         <ul class="dropdown-menu">
                             @forelse ($services as $service)
-                                <li><a href="/layanan/{{ $service->slug }}">{{ $service->name }}</a>
-                                </li>
+                            <li class="{{ request()->is('/layanan/' . $service->slug) ? 'active' : '' }}">
+                                <a href="/layanan/{{ $service->slug }}">{{ $service->name }}</a>
+                            </li>
                             @empty
                                 <li><a href="javascript:void(0)">Layanan Masih Kosong</a></li>
                             @endforelse
                         </ul>
                     </li>
-                    <li>
-                        <a href="{{ url('/data/product') }}">Produk</a>
+                    <li class="{{ request()->is('/data/product') ? 'active' : '' }}">
+                        <a href="{{ url('/data/product') }}">Portofolio</a>
                     </li>
                     <li class="{{ request()->is('/berita') ? 'active' : '' }}">
                         <a href="/berita">Berita</a>
                     </li>
-                    <li>
+                    <li class="{{ request()->is('/contact') ? 'active' : '' }}">
                         <a href="/contact">Hubungi</a>
                     </li>
-                    <li>
+                    <li class="{{ request()->is('/data/lowongan') ? 'active' : '' }}">
                         <a href="/data/lowongan">Lowongan</a>
 
                     </li>

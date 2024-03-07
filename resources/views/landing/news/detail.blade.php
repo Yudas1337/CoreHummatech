@@ -51,11 +51,11 @@
                             </div>
                             <div class="sidebar-item recent-post">
                                 <div class="title">
-                                    <h4>Berita Terbaru</h4>
+                                    <h4>Berita Lainnya</h4>
                                 </div>
-                                @if($latestNews->count() > 0)
+                                @if($otherNews->count() > 0)
                                 <ul>
-                                    @foreach ($latestNews as $news)
+                                    @foreach ($otherNews as $news)
                                     <li>
                                         <div class="thumb">
                                             <a href="{{ url("berita/{$news->slug}") }}">
@@ -66,13 +66,17 @@
                                             <div class="meta-title">
                                                 <time datetime="{{ $news->created_at->format('Y-m-d') }}" class="post-date"><i class="fas fa-clock"></i> {{ \Carbon\Carbon::parse($news->created_at)->locale('id_ID')->isoFormat('D MMMM Y') }}</time>
                                             </div>
-                                            <a href="{{ url("berita/{$news->slug}") }}">{{ $news->title }}</a>
+                                            <a class="d-block mb-2" href="{{ url("berita/{$news->slug}") }}">{{ $news->title }}</a>
+                                            <p class="mb-0">{{ Str::limit(strip_tags($news->description), 20) }}</p>
                                         </div>
                                     </li>
                                     @endforeach
                                 </ul>
                                 @else
+                                <div class="mx-auto d-flex flex-column justify-content-center text-center">
+                                    <img src="{{ asset('nodata-gif-post.gif') }}" alt="No Data" height="200" class="mx-auto" width="200" />
                                 <p class="text-muted">Belum ada berita</p>
+                                </div>
                                 @endif
                             </div>
                         </aside>

@@ -162,6 +162,9 @@
                 <a href="/setting/profile">Profile</a>
             </li>
             <li>
+                <a href="{{ route('philosophy') }}">Filosofi Logo</a>
+            </li>
+            <li>
                 <a href="{{ route('vision.mision') }}">Visi & Misi</a>
             </li>
             <li>

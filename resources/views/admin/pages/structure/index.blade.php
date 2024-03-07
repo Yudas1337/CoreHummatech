@@ -31,11 +31,9 @@
                 </div>
                 <div class="col-12 col-lg-6">
                     <div class="d-flex justify-content-lg-end justify-content-start">
-                        <div class="d-flex align-teams-center gap-2">
-                            <p class="m-0 me-2">Cari:</p>
-                            <input class="form-control me-2" type="text" placeholder="Search" aria-label="Search">
-                        </div>
-                        <a class="btn btn-primary m-0" href="#tambah" data-bs-toggle="modal">Tambah</a>
+                        @if ($organization && $business == null)
+                            <a class="btn btn-primary m-0" href="#tambah" data-bs-toggle="modal">Tambah</a>
+                        @endif
                     </div>
                 </div>
             </div>
@@ -48,21 +46,28 @@
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                     <ul class="simple-wrapper nav nav-tabs modal-header" id="myTab" role="tablist">
-                        <li class="nav-item"><a class="nav-link active txt-primary" id="profile-tabs" data-bs-toggle="tab" href="#organisasi" role="tab" aria-controls="profile" aria-selected="false">Struktur organisasi</a></li>
-                        <li class="nav-item"><a class="nav-link txt-primary" id="contact-tab" data-bs-toggle="tab" href="#usaha" role="tab" aria-controls="contact" aria-selected="false">Struktur usaha</a></li>
+                        @if ($organization == null)
+                            <li class="nav-item"><a class="nav-link active txt-primary" id="profile-tabs" data-bs-toggle="tab" href="#organisasi" role="tab" aria-controls="profile" aria-selected="false">Struktur organisasi</a></li>  
+                        @endif
+                        @if ($business == null)
+                            <li class="nav-item"><a class="nav-link txt-primary" id="contact-tab" data-bs-toggle="tab" href="#usaha" role="tab" aria-controls="contact" aria-selected="false">Struktur usaha</a></li> 
+                        @endif
                         <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
                     </ul>
 
                 <div class="modal-body">
                     <div class="tab-content" id="myTabContent">
-                        <div class="tab-pane fade show active" id="organisasi" role="tabpanel">
+                        <div class="tab-pane fade show {{ $organization ? '' : 'active' }}" id="organisasi" role="tabpanel">
                             <form class="form-bookmark needs-validation" action="{{ route('structure.create') }}" method="POST" id="bookmark-form" novalidate="" enctype="multipart/form-data">
                                 @csrf
                                 <div class="pt-3 mb-0">
                                     <div class="mb-3 mt-0 col-md-12">
                                         <input type="hidden" name="type" value="structure_organize">
                                         <label for="formFile">Foto struktur organisasi</label>
-                                        <input class="form-control" name="image" id="formFile" type="file" />
+                                        <figure class="col-xl-3 col-md-4 col-6" itemprop="associatedMedia" itemscope="">
+                                            <img class="img-thumbnail image-preview" itemprop="thumbnail">
+                                        </figure>
+                                        <input class="form-control" name="image" id="formFile" type="file" onchange="preview(event)"/>
                                     </div>
                                 </div>
                                 <div class="d-flex justify-content-end gap-2">
@@ -71,14 +76,17 @@
                                 </div>
                             </form>
                         </div>
-                        <div class="tab-pane fade" id="usaha" role="tabpanel" aria-labelledby="contact-tab">
+                        <div class="tab-pane fade {{ $organization ? 'show active' : '' }}" id="usaha" role="tabpanel" aria-labelledby="contact-tab">
                             <div class="pt-3">
                             <form class="form-bookmark needs-validation" action="{{ route('structure.create') }}" method="POST" id="bookmark-form" novalidate="" enctype="multipart/form-data">
                                 @csrf
                                 <div class="mb-3 mt-0 col-md-12">
                                     <input type="hidden" name="type" value="structure_business">
                                     <label for="formFile">Foto struktur usaha</label>
-                                    <input class="form-control" name="image" id="formFile" type="file" />
+                                    <figure class="col-xl-3 col-md-4 col-6" itemprop="associatedMedia" itemscope="">
+                                        <img class="img-thumbnail image-preview" itemprop="thumbnail">
+                                    </figure>
+                                    <input class="form-control" name="image" id="formFile" type="file" onchange="preview(event)"/>
                                 </div>
                                 <div class="d-flex justify-content-end gap-2">
                                     <button class="btn btn-light-danger" type="button" data-bs-dismiss="modal">Tutup</button>
@@ -95,34 +103,49 @@
 @endsection
 
 @section('content')
-    <div class="grid-container mb-3">
-        @forelse ($structures as $structure)
-            <div class="card social-profile m-0">
-                <div class="card-header" style="background: rgba(48, 126, 243, 0.05)">
-                    <div class="card-header-right">
-                        <ul class="list-unstyled" style="text-align:center">
-                            <li><i class="fa fa-edit text-primary mb-2 p-1 btn-edit" data-id="{{ $structure->id }}" data-name="{{ $structure->name }}" data-position_id="{{ $structure->position_id }}" data-image="{{ $structure->image }}" data-type="{{ $structure->type }}" type="button"></i></li>
-                            <li><i class="fa-solid fa-trash text-primary p-1 btn-delete" type="button"
-                                    data-id="{{ $structure->id }}"></i></li>
-                        </ul>
-                    </div>
+    <div class="mb-3">
+        @if ($organization)
+            <div class=" border border-1 rounded-2 d-flex justify-content-end text-center pb-5">
+                <div class="position-absolute p-3">
+                    <button class="mb-2 py-2 px-4 btn-edit btn btn-primary" data-id="{{ $organization->id }}" data-name="{{ $organization->name }}" data-position_id="{{ $organization->position_id }}" data-image="{{ $organization->image }}" data-type="{{ $organization->type }}" type="button">Edit</button>
+                    <button class="mb-2 py-2 px-4 btn-delete btn btn-danger" data-id="{{ $organization->id }}" type="button">Hapus</button>
                 </div>
-                <div class="card-body">
-                    <div class="social-img-wrap">
-                        <div class="social-img"><img src="{{ asset('storage/' . $structure->image) }}" width="100px"
-                                height="200px" style="object-fit: cover ; height:100px" alt="profile">
-                        </div>
-                        <div class="edit-icon">
-                            <svg>
-                                <use href="{{ asset('assets/svg/icon-sprite.svg#profile-check') }}"></use>
-                            </svg>
-                        </div>
-                    </div>
+                <div class="col">
+                    <h3 class="py-4">Struktur Organisasi</h1>
+                    <img src="{{ asset('storage/'.$organization->image) }}" width="50%">
                 </div>
             </div>
-        @empty
-            
-        @endforelse
+        @else
+            <div class=" border border-1 rounded-2 text-center pb-5">
+                <div class="d-flex justify-content-center">
+                    <img src="{{ asset('nodata.jpg') }}" alt="" width="200px">
+                </div>
+                <h5 class="text-center">
+                    Struktur Organisasi Masih Kosong
+                </h5>
+            </div>
+        @endif
+        @if ($business)
+            <div class="mt-5 border border-1 rounded-2 d-flex justify-content-end text-center pb-5">
+                <div class="position-absolute p-3">
+                    <button class="mb-2 py-2 px-4 btn-edit btn btn-primary" data-id="{{ $business->id }}" data-name="{{ $business->name }}" data-position_id="{{ $business->position_id }}" data-image="{{ $business->image }}" data-type="{{ $business->type }}" type="button">Edit</button>
+                    <button class="mb-2 py-2 px-4 btn-delete btn btn-danger" data-id="{{ $business->id }}" type="button">Hapus</button>
+                </div>
+                <div class="col">
+                    <h3 class="py-4">Struktur Usaha</h1>
+                    <img src="{{ asset('storage/'.$business->image) }}" width="50%">
+                </div>
+            </div>
+        @else
+            <div class="mt-5 border border-1 rounded-2 text-center pb-5">
+                <div class="d-flex justify-content-center">
+                    <img src="{{ asset('nodata.jpg') }}" alt="" width="200px">
+                </div>
+                <h5 class="text-center">
+                    Struktur Usaha Masih Kosong
+                </h5>
+            </div>
+        @endif
     </div>
 
     <!-- Edit Modal -->
@@ -141,21 +164,20 @@
                     <input type="hidden" name="type" id="type">
 
                     <div class="modal-body">
-                        <div class="social-img d-flex justify-content-center"><img src="" id="image-edit" width="100px"
-                            height="100px" style="object-fit: cover ; height:100px" alt="profile">
+                        <div class=" d-flex justify-content-center"><img src="" id="image-edit" style="object-fit: cover; height:300px" alt="profile">
                         </div>
 
                         <div class="row g-2">
                             <div class="mb-3 mt-0 col-md-12">
                                 <label for="bm-title">Foto</label>
-                                <input class="form-control" name="image" id="formFile" type="file" />
+                                <input class="form-control" name="image" id="formFile" type="file" onchange="previewImage(event)"/>
                             </div>
                         </div>
                     </div>
                     <div class="modal-footer">
                         <div class="d-flex justify-content-end">
                             <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">Cancel</button>
-                            <button class="btn btn-primary" type="submit">Tambah</button>
+                            <button class="btn btn-primary" type="submit">Simpan</button>
                         </div>
                     </div>
                 </form>
@@ -172,6 +194,19 @@
     @include('admin.components.delete-modal-component')
 @endsection
 @section('script')
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+@if(session('success'))
+<script>
+    Swal.fire({
+        title: 'Success',
+        text: '{{ session('success') }}',
+        icon: 'success',
+        confirmButtonText: 'OK',
+        timer: 2000, // Menutup SweetAlert setelah 3 detik
+        timerProgressBar: true // Menampilkan progress bar
+    });
+</script>
+@endif
     <script>
         $('.btn-delete').on('click', function() {
             var id = $(this).data('id');
@@ -190,5 +225,41 @@
             $('#type').val(type);
             $('#modal-edit').modal('show');
         });
+    </script>
+
+    <script>
+        function preview(event) {
+            var input = event.target;
+            var previewImages = document.getElementsByClassName('image-preview');
+
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    Array.from(previewImages).forEach(function(previewImage) {
+                        previewImage.src = e.target.result;
+                        previewImage.style.display = 'block';
+                    });
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        function previewImage(event) {
+            var input = event.target;
+            var previewImage = document.getElementById('image-edit');
+
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    previewImage.src = e.target.result;
+                    previewImage.style.display = 'block';
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
     </script>
 @endsection

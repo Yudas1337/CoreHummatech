@@ -24,7 +24,7 @@ class LogoController extends Controller
     public function index()
     {
         $logos  = $this->logo->get();
-        return view('' , compact('logos'));
+        return view('admin.pages.setting.philosophy.index', compact('logos'));
     }
 
     /**

@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Models\Branch;
+use App\Models\CategoryNews;
 use App\Models\EnterpriseStructure;
 use App\Models\Faq;
 use App\Models\News;
@@ -14,6 +15,7 @@ use App\Observers\EnterpriseStructureObserver;
 use App\Models\SalesPackage;
 use App\Models\Service;
 use App\Models\Termscondition;
+use App\Observers\CategoryNewsObserver;
 use App\Observers\FaqObserver;
 use App\Observers\NewsImageObserver;
 use App\Observers\NewsObserver;
@@ -52,7 +54,6 @@ class EventServiceProvider extends ServiceProvider
         Faq::observe(FaqObserver::class);
         NewsImage::observe(NewsImageObserver::class);
         Termscondition::observe(TermsconditionObserve::class);
-        // NewsCategory::observe(NewsCategoryObserver::class);
 
         parent::boot();
 

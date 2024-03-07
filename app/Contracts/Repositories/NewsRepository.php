@@ -13,9 +13,17 @@ class NewsRepository extends BaseRepository implements NewsInterface
     {
         $this->model = $news;
     }
-    public function latest(int $limit = 5): mixed
+    public function latest(int $limit = 5, array $args = []): mixed
     {
-        return $this->model->query()->latest()->limit($limit)->get();
+        $query = $this->model->query()->latest()->limit($limit);
+        if (count($args)) {
+            $query = $query->where($args);
+        }
+        return $query->get();
+    }
+    public function whereHas(string $relation, $query)
+    {
+        return $this->model->query()->whereHas($relation, $query);
     }
     public function get(): mixed
     {

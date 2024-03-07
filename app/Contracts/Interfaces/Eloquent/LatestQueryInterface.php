@@ -12,5 +12,5 @@ interface LatestQueryInterface
     /**
      * @return mixed
      */
-    public function latest(int $limit = 10);
+    public function latest(int $limit = 10 , array $args = []);
 }
