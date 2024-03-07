@@ -9,12 +9,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\StructureController;
 
 
-Route::post('product-company/store', [ProductController::class, 'storeCompany'])->name('productCompany.store');
-Route::get('product-company/{product}/edit', [ProductController::class, 'editCompany'])->name('productCompany.edit');
-Route::put('product-company/{product}/update', [ProductController::class, 'updateCompany'])->name('productCompany.update');
 
-Route::post('testimonial/store', [TestimonialController::class, 'storeProduct'])->name('testimonialProduct.store');
-Route::put('testimonial/product/{testimonial}', [TestimonialController::class, 'updateProduct'])->name('testimonialProduct.update');
 
-Route::delete('setting/structure/delete/{structure}', [StructureController::class, 'destroy']);
-Route::put('setting/structure/update/{structure}', [StructureController::class, 'update']);
+
+

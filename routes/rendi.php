@@ -10,6 +10,4 @@ use App\Http\Controllers\VisionAndMisionController;
 //procedure
 //Force
 
-Route::get('/setting/philosophy', [LogoController::class, 'index'])->name('philosophy');
-Route::post('/setting/philosophy/store', [LogoController::class, 'store'])->name('philosophy.store');
-Route::put('/setting/philosophy/update/{logo}', [LogoController::class, 'update'])->name('philosophy.update');
+
