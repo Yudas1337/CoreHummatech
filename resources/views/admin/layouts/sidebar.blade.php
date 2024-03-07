@@ -67,7 +67,7 @@
     </li>
     <li class="sidebar-list">
         <i class="fa fa-thumb-tack"></i>
-        <a class="sidebar-link sidebar-title link-nav" href="/product">
+        <a class="sidebar-link sidebar-title" href="#">
             <svg class="stroke-icon">
                 <use href="{{ asset('assets/svg/icon-sprite.svg#stroke-ecommerce') }}"></use>
             </svg>
@@ -76,6 +76,14 @@
             </svg>
             <span>Produk</span>
         </a>
+        <ul class="sidebar-submenu">
+            <li>
+                <a href="{{ route('category-product.index') }}">Kategori</a>
+            </li>
+            <li>
+                <a href="{{ route('product.index') }}">Produk</a>
+            </li>
+        </ul>
     </li>
     <li class="sidebar-list">
         <i class="fa fa-thumb-tack"></i>

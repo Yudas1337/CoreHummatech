@@ -22,7 +22,7 @@ class CategoryProductController extends Controller
     public function index()
     {
         $categoryProducts = $this->categoryProduct->get();
-        return view('' , compact('categoryProducts'));
+        return view('admin.pages.product-category.index' , compact('categoryProducts'));
     }
 
     /**
