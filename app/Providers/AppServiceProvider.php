@@ -34,6 +34,7 @@ use App\Contracts\Interfaces\SosialMediaInterface;
 use App\Contracts\Interfaces\TestimonialInterface;
 use App\Contracts\Repositories\PositionRepository;
 use App\Contracts\Interfaces\CategoryNewsInterface;
+use App\Contracts\Interfaces\CategoryProductInterface;
 use App\Contracts\Interfaces\NewsCategoryInterface;
 use App\Contracts\Interfaces\SalesPackageInterface;
 use App\Contracts\Repositories\NewsImageRepository;
@@ -63,6 +64,7 @@ use App\Contracts\Repositories\GalleryRepository;
 use App\Contracts\Interfaces\VacancyInterface;
 use App\Contracts\Interfaces\VisitorDetectionInterface;
 use App\Contracts\Interfaces\WorkFlowInterface;
+use App\Contracts\Repositories\CategoryProductRepository;
 use App\Contracts\Repositories\EnterpriseStructureRepository;
 use App\Contracts\Repositories\LogoRepository;
 use App\Contracts\Repositories\ProductFeatureRepository;
@@ -104,7 +106,8 @@ class AppServiceProvider extends ServiceProvider
         WorkFlowInterface::class => WorkFlowRepository::class,
         VisitorDetectionInterface::class => VisitorDetectionRepository::class,
         ProductFeatureInterface::class => ProductFeatureRepository::class,
-        LogoInterface::class => LogoRepository::class
+        LogoInterface::class => LogoRepository::class,
+        CategoryProductInterface::class => CategoryProductRepository::class
     ];
 
     /**

@@ -540,7 +540,9 @@
                                 <p>
                                     Kami di sini untuk membantu pelanggan kapan saja. Anda dapat menghubungi kami 24/7 untuk
                                     menjawab pertanyaan Anda. </p>
-                                <h2>{{ $profile->phone }}</h2>
+                                    @if ($profile)
+                                    <h2>{{ $profile->phone }}</h2>
+                                    @endif
                             </div>
                         </div>
                         @foreach ($services->where('slug', $slugs->slug) as $service)
