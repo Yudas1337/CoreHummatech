@@ -206,6 +206,7 @@ Route::get('detail/{product:slug}', [ProductController::class, 'showproduct'])->
 Route::get('contact', function () {
     return view('landing.contact');
 })->name('contact');
+Route::get('mitra',  [HomePageController::class , 'mitra']);
 //alumni-detail
 Route::get('alumni-detail', function () {
     return view('landing.service.alumni-detail');

@@ -97,4 +97,10 @@ class HomePageController extends Controller
     {
         //
     }
+
+    public function mitra()
+    {
+        $mitras = $this->mitras->get();
+        return view('landing.mitra' , compact('mitras'));
+    }
 }
