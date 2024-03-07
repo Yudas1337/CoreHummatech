@@ -90,7 +90,7 @@
                                                 <a href="/berita/{{ $news->slug }}">{{ $news->title }}</a>
                                             </h4>
 
-                                            <p>{!! Str::limit(strip_tags($news->description), 200) !!}</p>
+                                            <p class="text-break">{!! Str::limit(strip_tags($news->description), 200) !!}</p>
                                         </div>
                                     </div>
                                 </div>

@@ -11,11 +11,11 @@
                             <div class="single-item">
                                 <div class="item">
                                     <div class="thumb">
-                                        <a href=""><img src="{{ asset('storage/' . $newss->image) }}"
-                                                alt="{{ $newss->title }}"></a>
-                                        <div class="date">
-                                            {{ \Carbon\Carbon::parse($newss->created_at)->locale('id_ID')->isoFormat('D MMMM Y') }}
-                                        </div>
+                                        <a href=""><img src="{{ asset('storage/' . $news->image) }}"
+                                                alt="{{ $news->title }}"></a>
+                                        <time datetime="{{ $news->created_at->format('Y-m-d') }}" class="date">
+                                            {{ \Carbon\Carbon::parse($news->created_at)->locale('id_ID')->isoFormat('D MMMM Y') }}
+                                        </time>
                                     </div>
                                     <div class="info">
                                         <div class="meta">
@@ -28,10 +28,10 @@
                                             </ul>
                                         </div>
                                         <h3>
-                                            <a href="javascript:void(0)">{{ $newss->title }}</a>
+                                            <a href="javascript:void(0)">{{ $news->title }}</a>
                                         </h3>
                                         <p>
-                                            {!! $newss->description !!}
+                                            {!! $news->description !!}
                                         </p>
                                     </div>
                                 </div>
@@ -51,49 +51,29 @@
                             </div>
                             <div class="sidebar-item recent-post">
                                 <div class="title">
-                                    <h4>Recent Post</h4>
+                                    <h4>Berita Terbaru</h4>
                                 </div>
+                                @if($latestNews->count() > 0)
                                 <ul>
+                                    @foreach ($latestNews as $news)
                                     <li>
                                         <div class="thumb">
-                                            <a href="#">
-                                                <img src="assets-home/img/gallery/1.jpg" alt="Thumb">
+                                            <a href="{{ url("berita/{$news->slug}") }}">
+                                                <img alt="{{ $news->title }}" src="{{ asset("storage/{$news->image}") }}" />
                                             </a>
                                         </div>
                                         <div class="info">
                                             <div class="meta-title">
-                                                <span class="post-date"><i class="fas fa-clock"></i> 12 Feb, 2020</span>
+                                                <time datetime="{{ $news->created_at->format('Y-m-d') }}" class="post-date"><i class="fas fa-clock"></i> {{ \Carbon\Carbon::parse($news->created_at)->locale('id_ID')->isoFormat('D MMMM Y') }}</time>
                                             </div>
-                                            <a href="#">Commanded household smallness delivered.</a>
+                                            <a href="{{ url("berita/{$news->slug}") }}">{{ $news->title }}</a>
                                         </div>
                                     </li>
-                                    <li>
-                                        <div class="thumb">
-                                            <a href="#">
-                                                <img src="assets-home/img/gallery/2.jpg" alt="Thumb">
-                                            </a>
-                                        </div>
-                                        <div class="info">
-                                            <div class="meta-title">
-                                                <span class="post-date"><i class="fas fa-clock"></i> 05 Jul, 2021</span>
-                                            </div>
-                                            <a href="#">Future Plan & Strategy for Consutruction </a>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="thumb">
-                                            <a href="#">
-                                                <img src="assets-home/img/gallery/3.jpg" alt="Thumb">
-                                            </a>
-                                        </div>
-                                        <div class="info">
-                                            <div class="meta-title">
-                                                <span class="post-date"><i class="fas fa-clock"></i> 29 Aug, 2020</span>
-                                            </div>
-                                            <a href="#">Melancholy particular devonshire alteration</a>
-                                        </div>
-                                    </li>
+                                    @endforeach
                                 </ul>
+                                @else
+                                <p class="text-muted">Belum ada berita</p>
+                                @endif
                             </div>
                         </aside>
                     </div>
