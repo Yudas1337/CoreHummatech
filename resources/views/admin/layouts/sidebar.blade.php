@@ -220,7 +220,7 @@
                 <a href="{{ url('/vacancy') }}">Profile</a>
             </li>
             <li>
-                <a href="{{ url('/vacancy') }}">Alur Kerja</a>
+                <a href="{{ url('/vacancy/workflow') }}">Alur Kerja</a>
             </li>
         </ul>
     </li>

@@ -22,7 +22,7 @@ class WorkflowController extends Controller
     public function index()
     {
         $workflows = $this->workflow->get();
-        return view('' , compact('workflows'));
+        return view('admin.pages.vacancy.work-flow' , compact('workflows'));
     }
 
     /**
@@ -63,7 +63,7 @@ class WorkflowController extends Controller
      */
     public function update(UpdateWorkflowRequest $request, Workflow $workflow)
     {
-        $this->workflow->update($request , $workflow->id);
+        $this->workflow->update( $workflow->id , $request->validated());
         return back()->with('success' , 'Data Berhasil Di perbarui');
 
     }

@@ -79,7 +79,6 @@ class ServiceController extends Controller
     public function store(StoreServiceRequest $request)
     {
         $data = $this->serviceService->store($request);
-        // dd($data);
         $this->service->store($data);
         return back()->with('success', 'Layanan berhasil di tambahkan');
     }

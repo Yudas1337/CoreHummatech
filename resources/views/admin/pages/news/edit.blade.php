@@ -6,7 +6,6 @@
     <link href="https://unpkg.com/filepond-plugin-image-edit/dist/filepond-plugin-image-edit.css" rel="stylesheet" />
 
     <link href="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.css" rel="stylesheet" type="text/css" />
-
     <link href="{{ asset('assets_landing/dist/imageuploadify.min.css') }}" rel="stylesheet" />
 
     <style>
@@ -21,94 +20,78 @@
     <div class="page-title">
         <div class="d-flex justify-content-between">
             <h3>Berita baru</h3>
-            <a href="/news/index" class="btn btn-light">Kembali</a>
+            <a href="/news" class="btn btn-light">Kembali</a>
         </div>
     </div>
 @endsection
 
 @section('content')
-    <div class="row">
-        <div class="col-sm-12">
-            <div class="card">
-                <div class="card-body">
-                    <form enctype="multipart/form-data" action="{{ route('news.update', $news->id) }}"
-                        class="form theme-form" method="POST">
-                        @csrf
-                        @method('PUT')
-                        <div class="row">
-                            <div class="col">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card">
+                    <div class="card-body add-post">
+                        <form enctype="multipart/form-data" action="{{ route('news.update', $news->id) }}" class="form theme-form"
+                            method="POST">
+                            @csrf
+                            @method('PUT')
+                            <div class="col-sm-12">
+                                <div class="mb-3">
+                                    <img src="{{ asset('storage/' . $news->image) }}" alt="{{ $news->title }}" class="mb-3 d-flex w-50 rounded-3" />
+                                    <label for="thumbnail">Gambar Berita</label>
+                                    <input id="thumbnail" type="file" name="image" class="form-control" accept="image/*" />
+                                    @error('image')
+                                        <div class="text-danger">{{ $message }}
+                                        </div>
+                                    @enderror
+                                    @error('image.*')
+                                        <div class="text-danger">{{ $message }}
+                                        </div>
+                                    @enderror
+                                </div>
                                 <div class="mb-3">
                                     <label>Judul Berita</label>
-                                    <input class="form-control" value="{{ old('title', $news->title) }}" type="text"
-                                        name="title" placeholder="Mis: Peluncuran Humma Academy" />
-
+                                    <input class="form-control" value="{{ old('title', $news->title) }}" type="text" name="title"
+                                        placeholder="Mis: Peluncuran Humma Academy" />
                                     @error('title')
                                         <div class="text-danger">{{ $message }}</div>
                                     @enderror
                                 </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col">
                                 <div class="mb-3">
-                                    <label>Kategori</label>
-                                    <select name="category_news_id" class="js-example-basic-single form-control">
-                                        @forelse ($categories as $category)
-                                            <option
-                                                {{ $news->category_news_id === $category->id || old('category_news_id') === $category->id ? 'selected' : '' }}
-                                                value="{{ $category->id }}">{{ $category->name }}</option>
-                                        @empty
-                                            <option value="add-new">Tambahkan Kategori Baru</option>
-                                        @endforelse
-                                    </select>
-
-                                    @error('category_news_id')
-                                        <div class="text-danger">{{ $message }}</div>
-                                    @enderror
-                                </div>
-                            </div>
-
-                            <div class="row">
-                                <div class="col">
-                                    <div class="mb-3">
-                                        <label>Deskripsi Berita</label>
-                                        <div id="editor" style="height: 250px">{!! old('description', $news->description) !!}</div>
-                                        <input type="hidden" id="description"
-                                            value="{{ old('description', $news->description) }}" name="description" />
-
-                                        @error('description')
+                                    <div class="col-form-label">Kategori Berita (atau <a href="/category-news">Tambah baru</a>)
+                                        @php
+                                            $currentCategory = $news->newsCategories->pluck('id')->toArray();
+                                        @endphp
+                                        <select class="js-example-basic-multiple col-sm-12" multiple="multiple"
+                                            name="category[]">
+                                            @forelse ($categories as $category)
+                                                <option {{ in_array($category->id, $currentCategory) ? 'selected' : '' }} value="{{ $category->id }}">{{ $category->name }}</option>
+                                            @empty
+                                                <option disabled>Belum ada kategori berita</option>
+                                            @endforelse
+                                        </select>
+                                        @error('category')
                                             <div class="text-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
                                 </div>
-                            </div>
+                                <div class="mb-3">
+                                    <label>Deskripsi Berita</label>
+                                    <div id="editor" style="height: 200px">{!! old('description', $news->description) !!}</div>
+                                    <textarea name="description" class="d-none" id="description" cols="30" rows="10">{!! old('description', $news->description) !!}</textarea>
 
-                            <div class="row">
-                                <div class="col">
-                                    <div class="mb-3">
-                                        <label for="dropzone">Gambar Berita</label>
-                                        <input id="image-uploadify" type="file" name="image[]" accept="image/*" multiple>
-                                        @error('image')
-                                            <div class="text-danger">{{ $message }}
-                                            </div>
-                                        @enderror
-                                        @error('image.*')
-                                            <div class="text-danger">{{ $message }}
-                                            </div>
-                                        @enderror
-                                    </div>
+                                    @error('description')
+                                        <div class="text-danger">{{ $message }}</div>
+                                    @enderror
+                                </div>
+
+                                <div class="justify-content-end d-flex align-items-center">
+                                    <a class="btn btn-light-danger me-3" href="/news">Tutup</a>
+                                    <button type="submit" class="btn btn-send btn-primary">Simpan</button>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col-12">
-                                    <div class="text-end">
-                                        <a class="btn btn-danger" href="{{ route('news.index') }}">Batalkan</a>
-                                        <button type="submit" class="btn btn-success me-3">Simpan</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
@@ -116,20 +99,18 @@
 @endsection
 
 @section('script')
-    <script src="{{ asset('assets_landing/dist/imageuploadify.min.js') }}"></script>
-    <script>
-        $(document).ready(function() {
-            $('#image-uploadify').imageuploadify();
-        })
-    </script>
-    <!-- Load FilePond library -->
-    <script src="https://unpkg.com/filepond-plugin-image-exif-orientation/dist/filepond-plugin-image-exif-orientation.js">
-    </script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://unpkg.com/filepond-plugin-file-validate-size/dist/filepond-plugin-file-validate-size.js"></script>
     <script src="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.js"></script>
     <script src="https://unpkg.com/filepond-plugin-image-edit/dist/filepond-plugin-image-edit.js"></script>
     <script src="https://unpkg.com/filepond/dist/filepond.js"></script>
-
+    <script src="{{ asset('assets/js/select2/select2.full.min.js') }}"></script>
+    <script src="{{ asset('assets/js/select2/select2-custom.js') }}"></script>
+    <script src="{{ asset('assets/js/editor/ckeditor/ckeditor.js') }}"></script>
+    <script src="{{ asset('assets/js/editor/ckeditor/adapters/jquery.js') }}"></script>
+    <script src="{{ asset('assets/js/slick/slick.min.js') }}"></script>
+    <script src="{{ asset('assets/js/slick/slick.js') }}"></script>
+    <script src="{{ asset('assets/js/header-slick.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify"></script>
     <script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.polyfills.min.js"></script>
 
@@ -154,8 +135,10 @@
         FilePond.create(
             document.querySelector('#thumbnail'), {
                 labelIdle: 'Unggah foto, atau <span class="filepond--label-action">Cari</span>',
-                maxFiles: '1',
-                maxFileSize: '5MB',
+                maxFiles: '5',
+                maxFileSize: '100MB',
+                autoProcessQueue: false,
+                uploadMultiple: true,
                 labelMaxFileSizeExceeded: 'Too big bro.',
                 labelMaxFileSize: 'max {filesize}',
             }
@@ -173,7 +156,7 @@
 
     <script>
         var customToolbar = [
-            ['bold', 'italic', 'underline', 'strike', 'blockquote'],
+            ['bold', 'italic', 'underline', 'strike', 'blockquote', 'image'],
 
             [{
                 'color': []
@@ -184,7 +167,7 @@
                 'font': []
             }],
             [{
-                'align': []
+                'align': [],
             }],
 
             ['clean'],
@@ -200,8 +183,11 @@
             },
         });
 
-        quill.on('editor-change', (eventName, ...args) => {
+        quill.on('text-change', (eventName, ...args) => {
             $('#description').val(quill.root.innerHTML);
         });
     </script>
+
+    <script src="../assets/js/dropzone/dropzone.js"></script>
+    <script src="../assets/js/dropzone/dropzone-script.js"></script>
 @endsection
