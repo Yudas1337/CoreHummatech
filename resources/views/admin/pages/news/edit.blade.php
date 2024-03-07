@@ -60,7 +60,7 @@
                                 <div class="mb-3">
                                     <div class="col-form-label">Kategori Berita (atau <a href="/category-news">Tambah baru</a>)
                                         @php
-                                            $currentCategory = $news->newsCategories->pluck('category_id')->toArray();
+                                            $currentCategory = $news->newsCategories->pluck('id')->toArray();
                                         @endphp
                                         <select class="js-example-basic-multiple col-sm-12" multiple="multiple"
                                             name="category[]">
@@ -77,7 +77,7 @@
                                 </div>
                                 <div class="mb-3">
                                     <label>Deskripsi Berita</label>
-                                    <div id="editor" style="height: 200px">{!! old('description', $news->description) !!}</div>
+                                    <div id="editor" style="height: 500px">{!! old('description', $news->description) !!}</div>
                                     <textarea name="description" class="d-none" id="description" cols="30" rows="10">{!! old('description', $news->description) !!}</textarea>
 
                                     @error('description')
@@ -96,38 +96,6 @@
             </div>
         </div>
     </div>
-@endsection
-
-@section('script')
-<!-- Modal -->
-<div class="modal fade" id="uploadImageModal" tabindex="-1" aria-labelledby="uploadImageModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h1 class="modal-title fs-5" id="uploadImageModalLabel">Unggah Gambar Baru</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <form id="image-uploader-form" method="POST">
-                    @csrf
-                    <div class="mb-3">
-                        <label for="image" class="form-label">Unggah Gambar</label>
-                        <input class="form-control" type="file" name="image" id="image" />
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="alt" class="form-label">Deskripsi Gambar</label>
-                        <input class="form-control" type="text" name="alt" id="alt" />
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                <button type="button" id="save-button-uploader" class="btn btn-primary">Unggah Gambar</button>
-            </div>
-        </div>
-    </div>
-</div>
 @endsection
 
 @section('script')
@@ -164,8 +132,6 @@
     <script>
         var customToolbar = [
             ['bold', 'italic', 'underline', 'strike', 'blockquote', 'image'],
-
-            ['link'],
 
             [{
                 'color': []

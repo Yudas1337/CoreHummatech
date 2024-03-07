@@ -81,7 +81,7 @@
                                                     <li>
                                                         <img src="{{ asset('mobilelogo.png') }}" alt="Hummatech Logo" />
                                                         <span>By </span>
-                                                        <a href="#">Hummatech</a>
+                                                        <a href="javascript:void(0)">Hummatech</a>
                                                     </li>
                                                 </ul>
                                             </div>

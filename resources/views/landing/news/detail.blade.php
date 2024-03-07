@@ -28,7 +28,7 @@
                                             </ul>
                                         </div>
                                         <h3>
-                                            <a href="javascript:void(0)">{{ $news->title }}</a>
+                                            <a href="{{ url("berita/{$news->slug}") }}">{{ $news->title }}</a>
                                         </h3>
                                         <p>
                                             {!! $news->description !!}
