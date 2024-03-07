@@ -107,6 +107,7 @@ html,
 body,
 .wrapper {
     height: 100%;
+    overflow-x: hidden;
 }
 
 h1,
@@ -9049,7 +9050,7 @@ nav.navbar.bootsnav {
         display: none;
     }
 }
-  
+
 .btn-stroke-gradient {
     background: none;
     border: 3px solid;

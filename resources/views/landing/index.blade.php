@@ -7,6 +7,9 @@
 
 @section('style')
     <style>
+        body{
+
+        }
          .subtitle {
             text-transform: uppercase;
             font-weight: 600;
@@ -65,7 +68,6 @@
         }
 
         .team-area {
-            overflow: hidden;
             width: 100%;
         }
 
@@ -138,6 +140,7 @@
 </style>
 
 @endsection
+
 @section('content')
     <!-- Start Banner
                                     ============================================= -->
@@ -174,7 +177,7 @@
                 @empty
                 <div class="box-table">
                     <div class="">
-                        <div class="slider-thumb bg-fixed" style="background-image: url({{ asset('assets-home/img/banner/1.jpg') }});"></div>
+                        <div class="slider-thumb bg-fixed" style="background-image: url({{ asset('assets-home/img/banner/mischool.jpg') }});"></div>
                     </div>
                     <div class="box-cell shadow dark">
                         <div class="container">
