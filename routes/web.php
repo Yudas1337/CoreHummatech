@@ -143,8 +143,8 @@ Route::middleware('auth')->group(function () {
         Route::put('company/{enterpriseStructure}', [\App\Http\Controllers\EnterpriseStructureController::class, 'update'])->name('update');
         Route::delete('company/{enterpriseStructure}', [\App\Http\Controllers\EnterpriseStructureController::class, 'destroy'])->name('destroy');
         Route::get('structure', [StructureController::class, 'index'])->name('structure.index');
-        Route::post('structure/create', [StructureController::class, 'store'])->name('structure.create');
     });
+    Route::post('structure/create', [StructureController::class, 'store'])->name('structure.create');
     Route::delete('setting/structure/delete/{structure}', [StructureController::class, 'destroy']);
     Route::put('setting/structure/update/{structure}', [StructureController::class, 'update']);
     //vacancy
@@ -165,7 +165,7 @@ Route::middleware('auth')->group(function () {
 
 
     //workflow
-    Route::get('vacancy/workflow', [WorkflowController::class, 'index']);
+    Route::get('workflow', [WorkflowController::class, 'index']);
     Route::put('vacancy/workflow/update/{workflow}', [WorkflowController::class, 'update'])->name('update.workflow');
     Route::post('store/workflow', [WorkflowController::class, 'store'])->name('store.workflow');
     Route::delete('vacancy/workflow/delete/{workflow}', [WorkflowController::class, 'destroy'])->name('delete.vacancy.workflow');
