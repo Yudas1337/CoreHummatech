@@ -28,4 +28,8 @@ class CollabMitraRepository extends BaseRepository implements CollabMitraInterfa
     {
         return $this->model->query()->findOrFail($id)->delete($id);
     }
+    public function GetCount(): mixed
+    {
+        return $this->model->query()->count();
+    }
 }

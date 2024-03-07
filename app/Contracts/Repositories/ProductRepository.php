@@ -39,5 +39,10 @@ class ProductRepository extends BaseRepository implements ProductInterface
     public function getByServiceId(mixed $id): mixed{
         return $this->model->query()->where('service_id', $id)->get();
     }
+
+    public function GetCount(): mixed
+    {
+        return $this->model->query()->count();
+    }
 }
 

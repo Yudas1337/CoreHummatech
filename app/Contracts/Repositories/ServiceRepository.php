@@ -39,4 +39,9 @@ class ServiceRepository extends BaseRepository implements ServiceInterface
     {
         return $this->model->query()->where('slug', $slug)->firstOrFail();
     }
+
+    public function GetCount(): mixed
+    {
+        return $this->model->query()->count();
+    }
 }
