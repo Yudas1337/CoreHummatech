@@ -107,7 +107,7 @@
         </div>
     </div>
 
-    <div class="about-us-area default-padding">
+    <div class="about-us-area">
         <div class="container">
             <img src="{{ asset('assets-home/img/about-polygon.svg') }}" class="about-triangle" alt="Polygon" />
             <div class="about-items">
@@ -284,18 +284,21 @@
                         </div>
                     </div>
                     @forelse ($logos as $logo)
-                        <div class="single-item col-lg-5 col-md-6 ">
-                            <div class="item">
-                                <div>
-                                    <img src="{{ asset('storage/' . $logo->image) }}" alt="">
-                                </div>
+                    <div class="single-item col-lg-5 col-md-6 mx-auto">
+                        <div class="item text-center">
+                            <div class="logo-container">
+                                <img class="logo-image" src="{{ asset('storage/' . $logo->image) }}" alt="{{ $logo->title }}" style="max-width: 60%; height: auto; display: block; margin: 0 auto;">
+                            </div>
+                            <div class="item-details pt-5">
+                                <h3 style="font-size: 37px;"><b>{{ $logo->title }}</b></h3>
+                                <p>{{ Str::limit($logo->description, 250) }}</p>
+                                <a href="/detail-logo" class="btn btn-gradient btn-lg">Selengkapnya</a>
+                                {{-- <button class="btn btn-gradient btn-lg">Selengkapnya</button> --}}
                             </div>
                         </div>
-                        <div class="single-item col-lg-7 col-md-6">
-                            <h2>{{ $logo->title }}</h2>
-                            <p>{{ Str::limit($logo->description, 250) }}</p>
-                            <button class="btn btn-gradient btn-lg">Selengkapnya</button>
-                        </div>
+                    </div>
+
+
                     @empty
                         <div class="col-lg-8 offset-lg-2">
                             <div class=" text-center">

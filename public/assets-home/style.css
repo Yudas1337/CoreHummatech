@@ -98,7 +98,8 @@ body {
     font-size: 15px;
     font-weight: 400;
     line-height: 28px;
-    overflow-x: hidden;
+    overflow-x: hidden !important;
+    max-width: 100%;
     background-color: #ffffff;
     color: #666666;
 }
@@ -107,7 +108,7 @@ html,
 body,
 .wrapper {
     height: 100%;
-    overflow-x: hidden;
+    overflow-x: hidden !important;
 }
 
 h1,
