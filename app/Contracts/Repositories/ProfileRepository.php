@@ -30,7 +30,12 @@ class ProfileRepository extends BaseRepository implements ProfileInterface
     }
     public function show(mixed $id): mixed
     {
-        return $this->model->query()->firstget($id);
+        return $this->model->query()->findOrFail($id);
+    }
+
+    public function First(): mixed
+    {
+        return $this->model->query()->first();
     }
 }
 

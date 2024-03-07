@@ -215,9 +215,6 @@ Route::prefix('setting')->name('company.')->group(function() {
 
 Route::resource('testimonial', TestimonialController::class);
 
-Route::prefix('/produk')->group(function() {
-    Route::get('/', [HomeProductController::class, 'index'])->name('produk-home');
-});
 
 Route::get('layanan', function () {
     return view('landing.service.service-detail');
