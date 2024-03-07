@@ -19,7 +19,7 @@
 @section('subcontent')
     <div class="page-title">
         <div class="d-flex justify-content-between">
-            <h3>Berita baru</h3>
+            <h3>Ubah Data Berita</h3>
             <a href="/news" class="btn btn-light">Kembali</a>
         </div>
     </div>
@@ -77,7 +77,7 @@
                                 </div>
                                 <div class="mb-3">
                                     <label>Deskripsi Berita</label>
-                                    <div id="editor" style="height: 200px">{!! old('description', $news->description) !!}</div>
+                                    <div id="editor" style="height: 500px">{!! old('description', $news->description) !!}</div>
                                     <textarea name="description" class="d-none" id="description" cols="30" rows="10">{!! old('description', $news->description) !!}</textarea>
 
                                     @error('description')
@@ -100,17 +100,17 @@
 
 @section('script')
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="https://unpkg.com/filepond-plugin-file-validate-size/dist/filepond-plugin-file-validate-size.js"></script>
+    {{-- <script src="https://unpkg.com/filepond-plugin-file-validate-size/dist/filepond-plugin-file-validate-size.js"></script>
     <script src="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.js"></script>
     <script src="https://unpkg.com/filepond-plugin-image-edit/dist/filepond-plugin-image-edit.js"></script>
-    <script src="https://unpkg.com/filepond/dist/filepond.js"></script>
+    <script src="https://unpkg.com/filepond/dist/filepond.js"></script> --}}
     <script src="{{ asset('assets/js/select2/select2.full.min.js') }}"></script>
     <script src="{{ asset('assets/js/select2/select2-custom.js') }}"></script>
-    <script src="{{ asset('assets/js/editor/ckeditor/ckeditor.js') }}"></script>
+    {{-- <script src="{{ asset('assets/js/editor/ckeditor/ckeditor.js') }}"></script>
     <script src="{{ asset('assets/js/editor/ckeditor/adapters/jquery.js') }}"></script>
     <script src="{{ asset('assets/js/slick/slick.min.js') }}"></script>
     <script src="{{ asset('assets/js/slick/slick.js') }}"></script>
-    <script src="{{ asset('assets/js/header-slick.js') }}"></script>
+    <script src="{{ asset('assets/js/header-slick.js') }}"></script> --}}
     <script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify"></script>
     <script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.polyfills.min.js"></script>
 
@@ -118,31 +118,6 @@
         $(document).ready(function() {
             $('.js-example-basic-single').select2();
         });
-    </script>
-
-    <script>
-        var targetTags = new Tagify(document.getElementById('tags'));
-    </script>
-
-    <script>
-        FilePond.registerPlugin(
-            FilePondPluginImagePreview,
-            FilePondPluginImageExifOrientation,
-            FilePondPluginFileValidateSize,
-            FilePondPluginImageEdit
-        );
-
-        FilePond.create(
-            document.querySelector('#thumbnail'), {
-                labelIdle: 'Unggah foto, atau <span class="filepond--label-action">Cari</span>',
-                maxFiles: '5',
-                maxFileSize: '100MB',
-                autoProcessQueue: false,
-                uploadMultiple: true,
-                labelMaxFileSizeExceeded: 'Too big bro.',
-                labelMaxFileSize: 'max {filesize}',
-            }
-        );
     </script>
 
     <script>
@@ -176,9 +151,49 @@
         const quill = new Quill('#editor', {
             theme: 'snow',
             placeholder: "Silahkan masukkan deskripsi artikel.",
+
             modules: {
                 toolbar: {
                     container: customToolbar,
+                    handlers: {
+                        image: () => {
+                            $('#uploadImageModal').modal('show');
+
+                            let $image = $('#image-uploader-form #image'),
+                                formData = new FormData();
+
+                            $image.change((e) => {
+                                let filename = e.target.files[0].name;
+                                $('#image-uploader-form #alt').val(filename);
+                            });
+
+                            $('#save-button-uploader').click((e) => {
+                                e.preventDefault();
+
+                                formData.append('image', $image[0].files[0]);
+                                formData.append('_token', '{{ csrf_token() }}');
+
+                                $.ajax({
+                                    url: '{{ route('image-uploader') }}',
+                                    type: 'POST',
+                                    data: formData,
+                                    processData: false,
+                                    contentType: false,
+                                    success: ({
+                                        data
+                                    }) => {
+                                        let index = quill.getSelection() ? quill
+                                            .getSelection().index : 0;
+
+                                        quill.insertEmbed(index, 'image', `{{ url('/storage') }}/${data.image}`);
+
+                                        $('#image-uploader-form').trigger('reset');
+                                        $('#uploadImageModal').modal('hide');
+                                    }
+                                });
+                            });
+                        }
+                    }
                 }
             },
         });

@@ -122,7 +122,9 @@ class NewsController extends Controller
 
     public function showNews($slugnews)
     {
-        $newss = $this->news->slug($slugnews);
-        return view('landing.news.detail' , compact('newss'));
+        $latestNews = $this->news->latest(5);
+        $news = $this->news->slug($slugnews);
+
+        return view('landing.news.detail' , compact('news', 'latestNews'));
     }
 }
