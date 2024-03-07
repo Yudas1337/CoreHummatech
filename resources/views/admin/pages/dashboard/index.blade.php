@@ -38,4 +38,7 @@
     </div>
   </div>
 </div>
+<h1>
+    {{ $visitorDetections }}
+</h1>
 @endsection
