@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Contracts\Interfaces\BackgroundInterface;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\ServiceProvider;
 use App\Contracts\Interfaces\FaqInterface;
@@ -64,6 +65,7 @@ use App\Contracts\Repositories\GalleryRepository;
 use App\Contracts\Interfaces\VacancyInterface;
 use App\Contracts\Interfaces\VisitorDetectionInterface;
 use App\Contracts\Interfaces\WorkFlowInterface;
+use App\Contracts\Repositories\BackgroundRepository;
 use App\Contracts\Repositories\CategoryProductRepository;
 use App\Contracts\Repositories\EnterpriseStructureRepository;
 use App\Contracts\Repositories\LogoRepository;
@@ -107,7 +109,8 @@ class AppServiceProvider extends ServiceProvider
         VisitorDetectionInterface::class => VisitorDetectionRepository::class,
         ProductFeatureInterface::class => ProductFeatureRepository::class,
         LogoInterface::class => LogoRepository::class,
-        CategoryProductInterface::class => CategoryProductRepository::class
+        CategoryProductInterface::class => CategoryProductRepository::class,
+        BackgroundInterface::class => BackgroundRepository::class,
     ];
 
     /**
