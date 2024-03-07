@@ -14,6 +14,7 @@ use App\Http\Controllers\ForceController;
 use App\Http\Controllers\HomePageController;
 use App\Http\Controllers\HomeProductController;
 use App\Http\Controllers\HomeVacancyController;
+use App\Http\Controllers\ImageUploader;
 use App\Http\Controllers\PositionController;
 use App\Http\Controllers\ProcedureController;
 use App\Http\Controllers\ProductController;
@@ -197,7 +198,7 @@ Route::put('update/mision/mision/{misionItems}' ,[VisionAndMisionController::cla
 Route::delete('delete/vision/mision/{visionAndMision}', [VisionAndMisionController::class, 'destroy'])->name('destroy.vision.mision');
 Route::delete('delete/mision/mision/{misionItems}', [VisionAndMisionController::class, 'destroymision'])->name('destroy.mision.mision');
 
-Route::post('image-uploader', \App\Http\Controllers\ImageUploader::class)->name('image-uploader');
+Route::post('image-uploader', ImageUploader::class)->name('image-uploader');
 
 // News
 Route::resource('news' , NewsController::class);

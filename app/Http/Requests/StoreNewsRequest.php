@@ -18,8 +18,7 @@ class StoreNewsRequest extends FormRequest
             'description' => 'min:8|required',
             'category' => 'array|required',
             'category.*' => 'required',
-            'image' => 'array|required',
-            'image.*' => 'required',
+            'image' => 'required',
         ];
     }
 
