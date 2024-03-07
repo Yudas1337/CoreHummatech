@@ -38,7 +38,7 @@
                 <div class="col-lg-8 offset-lg-2">
                     <h1>Berita</h1>
                     <ul class="breadcrumb">
-                        <li><a href="#"><i class="fas fa-home"></i> Beranda</a></li>
+                        <li><a href="{{ url('/') }}"><i class="fas fa-home"></i> Beranda</a></li>
                         <li class="active">Berita</li>
                     </ul>
                 </div>
@@ -46,15 +46,13 @@
         </div>
     </div>
 
-    <div class="about-us-area ">
+    <div class="about-us-area">
         <div class="container">
             <ul class="nav custom-tabs">
-                <li class="active"><a href="#">Terbaru</a></li>
-                <li><a href="#">It technology</a></li>
-                <li><a href="#">Berita perusahaan</a></li>
-                <li><a href="#">Teknologi</a></li>
-                <li><a href="#">tutorial</a></li>
-                <li><a href="#">Businnes</a></li>
+                <li @if(!request()->category) class="active"@endif><a href="{{ url('/berita') }}">Terbaru</a></li>
+                @foreach ($newsCategories as $category)
+                <li @if(Str::slug($category->name) === request()->category) class="active" @endif><a href="{{ url("/berita?category=" . Str::slug($category->name)) }}">{{ $category->name }}</a></li>
+                @endforeach
             </ul>
         </div>
     </div>
@@ -108,15 +106,7 @@
                         <div class="row">
                             <div class="col-md-12 pagi-area text-center">
                                 <nav aria-label="navigation">
-                                    <ul class="pagination">
-                                        <li class="page-item"><a class="page-link" href="#"><i
-                                                    class="fas fa-angle-double-left"></i></a></li>
-                                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                        <li class="page-item"><a class="page-link" href="#"><i
-                                                    class="fas fa-angle-double-right"></i></a></li>
-                                    </ul>
+                                    {{ $newses->links('vendor.pagination.pagination-home') }}
                                 </nav>
                             </div>
                         </div>

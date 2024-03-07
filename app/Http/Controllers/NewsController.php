@@ -83,7 +83,6 @@ class NewsController extends Controller
      */
     public function edit(News $news)
     {
-
         $categories = $this->category->get();
         return view('admin.pages.news.edit', compact('news', 'categories'));
     }
@@ -119,10 +118,21 @@ class NewsController extends Controller
         return back();
     }
 
-    public function news ()
+    public function news (Request $request)
     {
-        $newses = $this->news->get();
-        return view('landing.news.index' , compact('newses'));
+        $newsCategories = $this->category->get();
+
+        if ($request->category) {
+            $newses = $this->news->whereHas('newsCategories', function($q) use ($request) {
+                $q->whereHas('category', function($q) use($request) {
+                    $q->where('slug', $request->category);
+                });
+            })->paginate(12);
+        } else {
+            $newses = $this->news->customPaginate($request, 12);
+        }
+
+        return view('landing.news.index' , compact('newses', 'newsCategories'));
     }
 
     public function showNews($slugnews)
