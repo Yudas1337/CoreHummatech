@@ -49,6 +49,29 @@
         }
     </style>
     <style>
+        #owl-carousel-mitra::before,
+        #owl-carousel-mitra::after {
+            position: absolute;
+            height: 100%;
+            z-index: 2;
+            content: '';
+            width: 150px;
+        }
+
+        #owl-carousel-mitra::before {
+            left: 0;
+            top: 0;
+            bottom: 0;
+            background: linear-gradient(to right, rgba(var(--bs-white-rgb), 1), 65%, transparent);
+        }
+
+        #owl-carousel-mitra::after {
+            right: 0;
+            top: 0;
+            bottom: 0;
+            background: linear-gradient(to left, rgba(var(--bs-white-rgb), 1), 65%, transparent);
+        }
+
         /* Custom styles for the timeline */
         .timeline {
             position: relative;
@@ -356,58 +379,33 @@
                             </div>
                             <!-- End Faq -->
                         </div>
-                        @if ($sales->count() > 0)
+                        @if ($mitras->count() > 0)
                             <div class="py-2 mb-5">
                                 <div class="title-service">
-                                    <h4 class="m-0">Daftar Pelatihan</h4>
+                                    <h4 class="m-0">Mitra Kami</h4>
                                     <div class="dash"></div>
-                                </div>
-                                <div class="blog-area bottom-less">
-                                    <div class="container">
-                                        <div class="blog-items">
-                                            <div class="row">
-                                                @foreach ($sales as $sale)
-                                                    <div class="single-item col-lg-6 col-md-6 wow fadeInUp"
-                                                        data-wow-delay="300ms">
-                                                        <div class="item p-2">
-                                                            <div class="thumb">
-                                                                <img src="{{ asset('assets-home/img/blog/1.jpg') }}"
-                                                                    alt="Thumb">
-                                                            </div>
-
-                                                            <div class="px-3">
-                                                                <h5>
-                                                                    {{ $sale->name }}
-                                                                </h5>
-                                                                <p>
-                                                                    {{ $sale->description }}
-                                                                </p>
-                                                                <div class="mb-3">
-                                                                    <a class="btn btn-stroke-gradient effect btn-sm"
-                                                                        href="{{ url('layanan/pelatihan') }}">Lihat
-                                                                        Detail</a>
-                                                                    <a class="btn btn-gradient effect btn-sm"
-                                                                        href="">Ajukan Proposal</a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                @endforeach
+                                    <div class="devider"></div>
+                                    <div class="team-slider owl-carousel">
+                                        @forelse ($mitras as $mitra)
+                                            <div class="team-item">
+                                                <img src="{{ asset('storage/' . $mitra->image) }}" alt="Mitra Image"
+                                                    class="img-fluid">
                                             </div>
-                                        </div>
+                                        @empty
+                                            <div class="col-12">
+                                                <div class="d-flex justify-content-center">
+                                                    <img src="{{ asset('nodata-gif.gif') }}" alt=""
+                                                        width="800px">
+                                                </div>
+                                                <h4 class="text-center text-dark" style="font-weight:600">
+                                                    Belum ada Mitra
+                                                </h4>
+                                            </div>
+                                        @endforelse
                                     </div>
                                 </div>
                             </div>
                         @endif
-
-                        {{-- <div class="py-2 mb-5">
-                            <div class="title-service">
-                                <h4 class="m-0">Mitra Kami</h4>
-                                <div class="dash"></div>
-
-                            </div>
-
-                        </div> --}}
 
                         @if ($procedures->count() > 0)
                             <div class="py-2 mb-5">
@@ -450,7 +448,7 @@
                             </div>
                         @endif
 
-                        <div class="py-2 mb-5">
+                        {{-- <div class="py-2 mb-5">
                             <div class="title-service">
                                 <h4 class="m-0">Galeri Alumni</h4>
                                 <div class="dash"></div>
@@ -489,7 +487,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
 
                         <div class="py-2 mb-5">
                             <div class="title-service">
@@ -498,14 +496,20 @@
                             </div>
                             <div class="galeri">
                                 <div class="d-flex flex-wrap col-12">
-                                    <img src="{{ asset('assets-home/img/projects/1.jpg') }}"
-                                        style="object-fit: cover; width: 18vw; height: 12vw" class="m-2">
-                                    <img src="{{ asset('assets-home/img/projects/1.jpg') }}"
-                                        style="object-fit: cover; width: 18vw; height: 12vw" class="m-2">
-                                    <img src="{{ asset('assets-home/img/projects/1.jpg') }}"
-                                        style="object-fit: cover; width: 18vw; height: 12vw" class="m-2">
-                                    <img src="{{ asset('assets-home/img/projects/1.jpg') }}"
-                                        style="object-fit: cover; width: 18vw; height: 12vw" class="m-2">
+                                    @forelse ($galeries as $galery)
+                                        <img src="{{ asset('storage/' . $galery->image) }}"
+                                            style="object-fit: cover; width: 18vw; height: 12vw" class="m-2">
+                                    @empty
+                                    <div class="col-12">
+                                        <div class="d-flex justify-content-center">
+                                            <img src="{{ asset('nodata-gif.gif') }}" alt=""
+                                                width="800px">
+                                        </div>
+                                        <h4 class="text-center text-dark" style="font-weight:600">
+                                            Belum ada Galeri
+                                        </h4>
+                                    </div>
+                                    @endforelse
                                 </div>
                             </div>
                         </div>
@@ -519,7 +523,8 @@
                                 <ul>
                                     @foreach ($services as $service)
                                         <li class=""><a
-                                                href="/layanan/{{ $service->slug }}">{{ $service->name }}</a></li>
+                                                class="{{ $service->slug == $slugs->slug ? 'active bg-primary text-light' : '' }}"href="/layanan/{{ $service->slug }}">{{ $service->name }}</a>
+                                        </li>
                                     @endforeach
                                 </ul>
                             </div>
@@ -529,26 +534,54 @@
                             style="background-image: url({{ $service->image }});">
                             <div class="content">
                                 <i class="fas fa-phone"></i>
-                                <h4>Need any help?</h4>
+                                <h4>Perlu bantuan?</h4>
                                 <p>
-                                    We are here to help our customer any time. You can call on 24/7 To Answer Your Question.
-                                </p>
-                                <h2>(012) 6679545</h2>
+                                    Kami di sini untuk membantu pelanggan kapan saja. Anda dapat menghubungi kami 24/7 untuk
+                                    menjawab pertanyaan Anda. </p>
+                                <h2>{{ $profile->phone }}</h2>
                             </div>
                         </div>
-                        <!-- Single Widget -->
-                        <div class="single-widget brochure">
-                            <h4 class="widget-title">Proposal</h4>
-                            <ul>
-                                <li><a href="#"><i class="fas fa-file-pdf"></i> Download Brochure </a></li>
-                                <li><a href="#"><i class="fas fa-file-pdf"></i> Company Details </a></li>
-                            </ul>
-                        </div>
-                        <!-- End Single Widget -->
+                        @foreach ($services->where('slug', $slugs->slug) as $service)
+                            @if ($service->proposal)
+                                <div class="single-widget brochure">
+                                    <h4 class="widget-title">Proposal</h4>
+                                    <ul>
+                                        <li><a href="{{ asset('storage/' . $service->proposal) }}"
+                                                download="{{ asset('storage/' . $service->proposal) }}"><i
+                                                    class="fas fa-file-pdf"></i>Unduh Proposal</a></li>
+                                    </ul>
+                                </div>
+                            @endif
+                        @endforeach
+
                     </div>
 
                 </div>
             </div>
         </div>
     </div>
+@endsection
+
+@section('script')
+    <script>
+        $(document).ready(function() {
+            $(".team-slider").owlCarousel({
+                items: 5,
+                loop: true,
+                autoplay: true,
+                autoplayTimeout: 3000,
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    768: {
+                        items: 3
+                    },
+                    992: {
+                        items: 5
+                    }
+                }
+            });
+        });
+    </script>
 @endsection
