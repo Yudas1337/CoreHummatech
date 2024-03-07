@@ -139,12 +139,6 @@ class ProductController extends Controller
         return back()->with('success', 'Produk Berhasil Di Hapus');
     }
 
-    public function product()
-    {
-        $products = $this->product->get();
-        return view('landing.product', compact('products'));
-    }
-
     public function showproduct(Product $product)
     {
         $testimonial = $this->testimonial->get();
