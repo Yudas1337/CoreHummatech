@@ -21,6 +21,20 @@
                         @enderror
                     </div>
                     <div class="form-group mb-3 mt-0 col-md-12">
+                        <label for="category">Kategori Produk</label>
+                        <select name="category_product_id" class="js-example-basic-single form-select" id="#edit">
+                            <option value="" disabled selected>Pilih Kategori</option>
+                            @forelse ($categories as $category)
+                                <option value="{{ $category->id }}"{{ old('category_product_id', $product->category_product_id) == $category->id ? 'selected' : '' }}>{{ $category->name }}</option>
+                            @empty
+                                <option value="" disabled selected>Kategori Masih Kosong</option>
+                            @endforelse
+                        </select>
+                        @error('category_product_id')
+                            <small class="text-danger">{{ $message }}</small>
+                        @enderror
+                    </div>
+                    <div class="form-group mb-3 mt-0 col-md-12">
                         <label for="description">Deskripsi</label>
                         <textarea rows="5" class="form-control" name="description" id="description" name="description"
                             placeholder="Jelaskan deskripsi produknya">{{ old('name', $product->description) }}</textarea>

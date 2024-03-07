@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Contracts\Interfaces\CategoryProductInterface;
 use App\Contracts\Interfaces\FaqInterface;
 use App\Contracts\Interfaces\ProductFeatureInterface;
 use App\Models\Product;
@@ -23,8 +24,9 @@ class ProductController extends Controller
     private TestimonialInterface $testimonial;
     private FaqInterface $faq;
     private ProductFeatureInterface $productFeature;
+    private CategoryProductInterface $categoryProduct;
 
-    public function __construct(ProductInterface $product, ProductFeatureInterface $productFeature, ProductService $productService, ServiceInterface $service, TestimonialInterface $testimonial, FaqInterface $faq)
+    public function __construct(ProductInterface $product, CategoryProductInterface $categoryProduct, ProductFeatureInterface $productFeature, ProductService $productService, ServiceInterface $service, TestimonialInterface $testimonial, FaqInterface $faq)
     {
         $this->product = $product;
         $this->testimonial = $testimonial;
@@ -32,6 +34,7 @@ class ProductController extends Controller
         $this->service = $service;
         $this->faq = $faq;
         $this->productFeature = $productFeature;
+        $this->categoryProduct = $categoryProduct;
     }
     /**
      * Display a listing of the resource.
@@ -49,8 +52,9 @@ class ProductController extends Controller
     public function create()
     {
         $services = $this->service->get();
+        $categories = $this->categoryProduct->get();
         // dd($services);
-        return view('admin.pages.products.create', compact('services'));
+        return view('admin.pages.products.create', compact('services', 'categories'));
     }
 
     /**
@@ -58,6 +62,7 @@ class ProductController extends Controller
      */
     public function store(StoreProductRequest $request)
     {
+        // dd($request->all());
         $data = $this->productService->store($request);
         $product_id = $this->product->store($data);
         $this->productService->storefeature($request, $product_id);
@@ -66,6 +71,7 @@ class ProductController extends Controller
 
     public function storeCompany(StoreProductCompanyRequest $request)
     {
+        // dd($request->all());
         $data = $this->productService->storeCompany($request);
         $product_id = $this->product->store($data);
         $this->productService->storefeaturecompany($request, $product_id);
@@ -87,22 +93,24 @@ class ProductController extends Controller
 
     public function editCompany(Product $product)
     {
+        $categories = $this->categoryProduct->get();
         $services = $this->service->get();
         $productfeatureFirst = $this->productFeature->getByServiceId($product->id)->First();
         $productfeatures = $this->productFeature->getByServiceId($product->id);
 
 
-        return view('admin.pages.products.editCompany', compact( 'services', 'productfeatures', 'product', 'productfeatureFirst'));
+        return view('admin.pages.products.editCompany', compact( 'services', 'productfeatures', 'product', 'productfeatureFirst', 'categories'));
     }
 
     public function edit(Product $product)
     {
+        $categories = $this->categoryProduct->get();
         $services = $this->service->get();
         $productfeatureFirst = $this->productFeature->getByServiceId($product->id)->First();
         $productfeatures = $this->productFeature->getByServiceId($product->id);
         // dd($productfeature);
 
-        return view('admin.pages.products.edit', compact('services', 'productfeatures', 'product', 'productfeatureFirst'));
+        return view('admin.pages.products.edit', compact('services', 'productfeatures', 'product', 'productfeatureFirst', 'categories'));
     }
 
     /**

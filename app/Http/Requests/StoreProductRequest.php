@@ -29,6 +29,7 @@ class StoreProductRequest extends FormRequest
             'feature' => 'required|max:255',
             'service_id' => 'required',
             'type' => 'required',
+            'category_product_id' => 'required',
         ];
     }
 }
