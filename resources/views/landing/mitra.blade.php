@@ -106,42 +106,28 @@
             </div>
         </div>
     </div>
-
-
-    <div class="work-process-area features-area default-padding-bottom py-5">
-        <div class="container pt-5">
-            <div class="row">
-                <div class="col-lg-8 offset-lg-2">
-                    <div class="site-heading text-center">
-                        <h4>Kategori</h4>
+    @foreach ($mitras as $mitra)
+        <div class="work-process-area features-area default-padding-bottom py-5">
+            <div class="container pt-5">
+                <div class="row">
+                    <div class="col-lg-8 offset-lg-2">
+                        <div class="site-heading text-center">
+                            <h4>Mitra kami</h4>
+                            <h2>{{ $mitra->name }}</h2>
+                            <div class="devider"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 col-xxl-3 col-xl-2 mt-2">
+                        @foreach ($mitra->collab as $collab)
+                            <img src="{{ asset('storage/' . $collab->image) }}" alt="" width="200px">
+                        @endforeach
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-12 col-xxl-3 col-xl-2 mt-2">
-                    <img src="{{ asset('smkn.png') }}" alt="" width="200px">
-                </div>
-                <div class="col-12 col-xxl-3 col-xl-2 mt-2">
-                    <img src="{{ asset('smkn.png') }}" alt="" width="200px">
-                </div>
-                <div class="col-12 col-xxl-3 col-xl-2 mt-2">
-                    <img src="{{ asset('smkn.png') }}" alt="" width="200px">
-                </div>
-                <div class="col-12 col-xxl-3 col-xl-2 mt-2">
-                    <img src="{{ asset('smkn.png') }}" alt="" width="200px">
-                </div>
-                <div class="col-12 col-xxl-3 col-xl-2 mt-2">
-                    <img src="{{ asset('smkn.png') }}" alt="" width="200px">
-                </div>
-                <div class="col-12 col-xxl-3 col-xl-2 mt-2">
-                    <img src="{{ asset('smkn.png') }}" alt="" width="200px">
-                </div>
-                <div class="col-12 col-xxl-3 col-xl-2 mt-2">
-                    <img src="{{ asset('smkn.png') }}" alt="" width="200px">
-                </div>
-            </div>
         </div>
-    </div>
+    @endforeach
 @endsection
 @section('script')
     <script>
