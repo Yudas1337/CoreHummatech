@@ -17,7 +17,7 @@ class NewsRepository extends BaseRepository implements NewsInterface
     {
         $query = $this->model->query()->latest()->limit($limit);
         if (count($args)) {
-            $query = $query->where([$args]);
+            $query = $query->where($args);
         }
         return $query->get();
     }
