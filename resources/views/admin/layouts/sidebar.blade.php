@@ -39,7 +39,7 @@
             <svg class="fill-icon">
                 <use href="{{ asset('assets/svg/icon-sprite.svg#fill-job-search') }}"></use>
             </svg>
-            <span>Hero Section</span>
+            <span>Gambar Slider</span>
         </a>
     </li>
     <li class="sidebar-list">
@@ -57,9 +57,9 @@
             <li>
                 <a href="/service">Layanan</a>
             </li>
-            <li>
+            {{-- <li>
                 <a href="{{ route('sale.index') }}">Penjualan</a>
-            </li>
+            </li> --}}
             <li>
                 <a href="{{ route('gallery.index') }}">Galeri</a>
             </li>
@@ -196,15 +196,15 @@
             <span>Kontak</span>
         </a>
         <ul class="sidebar-submenu">
-            <li>
+            {{-- <li>
                 <a href="/message-approval">Approval Pesan </a>
-            </li>
+            </li> --}}
             <li>
                 <a href="/social-media">Sosial Media</a>
             </li>
         </ul>
     </li>
-    <li class="sidebar-list">
+    {{-- <li class="sidebar-list">
         <i class="fa fa-thumb-tack"></i>
         <a class="sidebar-link sidebar-title" href="#">
             <svg xmlns="http://www.w3.org/2000/svg" width="28" height="32" class="text-white"
@@ -222,7 +222,7 @@
                 <a href="/social-media">Galeri Alumni</a>
             </li>
         </ul>
-    </li>
+    </li> --}}
     <li class="sidebar-list">
         <i class="fa fa-thumb-tack"></i>
         <a class="sidebar-link sidebar-title link-nav" href="{{ url('/vacancy') }}">
