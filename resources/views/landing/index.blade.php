@@ -152,7 +152,7 @@
             <!-- Wrapper for slides -->
             <div class="carousel-inner carousel-zoom">
                 @forelse ($section as $key => $sectionItem)
-                    <div class="carousel-item {{ $key === 0 ? 'active' : '' }}">
+                    <div class="carousel-item ">
                         <div class="slider-thumb bg-fixed" style="background-image: url({{ asset('storage/' . $sectionItem->image) }});"></div>
                         <div class="box-table">
                             <div class="box-cell shadow dark">
@@ -177,7 +177,9 @@
                         </div>
                     </div>
                 @empty
-
+                <div class="carousel-item">
+                    <p>No sections available at the moment.</p>
+                </div>
                 @endforelse
             </div>
 
@@ -201,28 +203,23 @@
             <img src="{{ asset('assets-home/img/about-polygon.svg') }}" class="about-triangle" alt="Polygon" />
             <div class="about-items">
                 <div class="row d-flex align-items-center">
+                    @forelse ($profile as $profile)
                     <div class="col-md-6 info">
-                        @forelse ($profile as $profile)
                             <h2 class="text-break">{{ $profile->subtitle }}</h2>
                             <p class="text-break">
                                 {!! Str::limit($profile->description, 200) !!}
                             </p>
                             <a class="btn btn-gradient effect btn-md" href="/about-us">Selengkapnya</a>
-                        @empty
-                            <p>Belum ada profile perusahaan</p>
-                        @endforelse
-                    </div>
-                    <div class="col-md-6 order-first order-md-last text-center">
-                        <div class="thumb">
-                            @foreach ( $profile as $profile )
-                            <img src="{{ asset('storage/' . $profile->image) }}" alt="Thumb" style="max-width: 100%; max-height: 450px; display: inline-block;">
-                            @endforeach
-
-                            <!-- Tambahkan gaya untuk perangkat mobile -->
-
+                        </div>
+                        <div class="col-md-6 order-first order-md-last text-center">
+                            <div class="thumb">
+                                <img src="{{ asset('storage/' . $profile->image) }}" alt="Thumb" style="max-width: 100%; max-height: 450px; display: inline-block;">
+                            </div>
                         </div>
                     </div>
-                </div>
+                    @empty
+                        <p>Belum ada profile perusahaan</p>
+                    @endforelse
 
             </div>
         </div>
