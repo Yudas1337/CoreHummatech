@@ -9,6 +9,8 @@ use App\Contracts\Interfaces\ProductInterface;
 use App\Contracts\Interfaces\ProfileInterface;
 use App\Contracts\Interfaces\SectionInterface;
 use App\Contracts\Interfaces\ServiceInterface;
+use App\Contracts\Interfaces\VisitorDetectionInterface;
+use App\Http\Requests\StoreVisitorDetectionRequest;
 use Illuminate\Http\Request;
 
 class HomePageController extends Controller
@@ -16,16 +18,18 @@ class HomePageController extends Controller
     private ProfileInterface $profile;
     private ServiceInterface $service;
     private NewsInterface $news;
+    private VisitorDetectionInterface $visitorDetection;
     private CollabMitraInterface $mitras;
     private SectionInterface $section;
     private ProductInterface $product;
 
 
-    public function __construct( ProfileInterface $profile, ServiceInterface $service, NewsInterface $news, CollabMitraInterface $mitras, SectionInterface $section, ProductInterface $product)
+    public function __construct( ProfileInterface $profile,VisitorDetectionInterface $visitorDetection, ServiceInterface $service, NewsInterface $news, CollabMitraInterface $mitras, SectionInterface $section, ProductInterface $product)
     {
         $this->profile = $profile;
         $this->service = $service;
         $this->news = $news;
+        $this->visitorDetection = $visitorDetection;
         $this->mitras = $mitras;
         $this->section = $section;
         $this->product = $product;
@@ -36,13 +40,14 @@ class HomePageController extends Controller
      */
     public function index()
     {
+        $visitorDetections = $this->visitorDetection->GetCount();
         $profile = $this->profile->get();
         $service = $this->service->get();
         $news = $this->news->get();
         $mitras = $this->mitras->get();
         $section = $this->section->get();
         $product = $this->product->getByType('company');
-        return view('landing.index', compact('profile','service','news','mitras','section','product'));
+        return view('landing.index', compact('profile','service','news','mitras','section','product' ,'visitorDetections'));
     }
 
     /**

@@ -2,18 +2,22 @@
 
 namespace App\Http\Controllers;
 
+use App\Contracts\Interfaces\VisitorDetectionInterface;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
+    private VisitorDetectionInterface $visitorDetection;
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(VisitorDetectionInterface $visitorDetection)
     {
         $this->middleware('auth');
+        $this->visitorDetection = $visitorDetection;
+
     }
 
     /**
@@ -23,6 +27,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('admin.pages.dashboard.index');
+        $visitorDetections = $this->visitorDetection->GetCount();
+        return view('admin.pages.dashboard.index' , compact('visitorDetections'));
     }
 }
