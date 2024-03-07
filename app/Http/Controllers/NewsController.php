@@ -6,7 +6,6 @@ use App\Contracts\Interfaces\CategoryNewsInterface;
 use App\Contracts\Interfaces\NewsCategoryInterface;
 use App\Contracts\Interfaces\NewsImageInterface;
 use App\Contracts\Interfaces\NewsInterface;
-use App\Helpers\ResponseHelper;
 use App\Http\Requests\StoreNewsRequest;
 use App\Http\Requests\UpdateNewsRequest;
 use App\Models\News;
@@ -23,7 +22,7 @@ class NewsController extends Controller
     private CategoryNewsInterface $category;
     private NewsCategoryInterface $newsCategory;
 
-    public function __construct(NewsInterface $news, NewsService $newsService, CategoryNewsInterface $category, NewsCategoryInterface $newsCategoryInterface, NewsImageInterface $newsImageInterface)
+    public function __construct(NewsInterface $news, NewsService $newsService, CategoryNewsInterface $category, NewsCategoryInterface $newsCategoryInterface)
     {
         $this->newsCategory = $newsCategoryInterface;
         $this->news = $news;
@@ -51,18 +50,21 @@ class NewsController extends Controller
 
     /**
      * Store a newly created resource in storage.
+     *
+     * @see https://laravel.com/docs/10.x/collections
      */
     public function store(StoreNewsRequest $request)
     {
         $data = $this->newsService->store($request);
         $newsId = $this->news->store($data)->id;
 
-        foreach ($data['category'] as $ctgr) {
-            $this->newsCategory->store([
+        collect($data['category'])->map(function ($ctgr) use ($newsId) {
+            return $this->newsCategory->store([
                 'news_id' => $newsId,
                 'category_id' => $ctgr,
             ]);
-        }
+        });
+
         return redirect()->route('news.index');
     }
 
@@ -88,6 +90,8 @@ class NewsController extends Controller
 
     /**
      * Update the specified resource in storage.
+     *
+     * @see https://laravel.com/docs/10.x/collections
      */
     public function update(UpdateNewsRequest $request, News $news)
     {
@@ -96,12 +100,13 @@ class NewsController extends Controller
 
         $this->news->update($news->id, $data);
 
-        foreach ($data['category'] as $ctgr) {
-            $this->newsCategory->store([
+        collect($data['category'])->map(function ($ctgr) use ($newsId) {
+            return $this->newsCategory->store([
                 'news_id' => $newsId,
                 'category_id' => $ctgr,
             ]);
-        }
+        });
+
         return redirect()->route('news.index');
     }
 
@@ -122,9 +127,9 @@ class NewsController extends Controller
 
     public function showNews($slugnews)
     {
-        $latestNews = $this->news->latest(5);
+        $otherNews = $this->news->latest(5, [['news.slug' , '!=', $slugnews]]);
         $news = $this->news->slug($slugnews);
 
-        return view('landing.news.detail' , compact('news', 'latestNews'));
+        return view('landing.news.detail' , compact('news', 'otherNews'));
     }
 }
