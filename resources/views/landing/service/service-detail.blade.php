@@ -499,7 +499,7 @@
                                 </div>
                             </div>
                         </div> --}}
-                        @if ($galeries->count() > 0)
+                        @if ($galeries)
                             <div class="py-2 mb-5">
                                 <div class="title-service">
                                     <h4 class="m-0">Galeri</h4>

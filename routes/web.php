@@ -157,6 +157,12 @@ Route::middleware('auth')->group(function () {
     Route::get('/setting/philosophy', [LogoController::class, 'index'])->name('philosophy');
     Route::post('/setting/philosophy/store', [LogoController::class, 'store'])->name('philosophy.store');
     Route::put('/setting/philosophy/update/{logo}', [LogoController::class, 'update'])->name('philosophy.update');
+    //collab
+    Route::get('collab', [CollabMitraController::class, 'index']);
+    Route::post('create/collab/mitra', [CollabMitraController::class, 'store']);
+    Route::put('update/collab/mitra/{collabMitra}', [CollabMitraController::class, 'update']);
+    Route::delete('delete/collab/mitra/{collabMitra}', [CollabMitraController::class, 'destroy']);
+
 
     //workflow
     Route::get('vacancy/workflow', [WorkflowController::class, 'index']);
