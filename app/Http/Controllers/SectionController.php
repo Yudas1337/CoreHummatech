@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Contracts\Interfaces\BackgroundInterface;
 use App\Contracts\Interfaces\SectionInterface;
+use App\Contracts\Interfaces\ServiceInterface;
 use App\Models\Section;
 use App\Http\Requests\StoreSectionRequest;
 use App\Http\Requests\UpdateSectionRequest;
@@ -11,11 +13,15 @@ use App\Services\SectionService;
 class SectionController extends Controller
 {
     private SectionInterface $section;
+    private BackgroundInterface $background;
+    private ServiceInterface $serviceData;
     private SectionService $service ;
 
-    public function __construct(SectionInterface $section , SectionService $service)
+    public function __construct(SectionInterface $section, SectionService $service, BackgroundInterface $background, ServiceInterface $serviceData)
     {
         $this->section = $section;
+        $this->background = $background;
+        $this->serviceData = $serviceData;
         $this->service = $service;
     }
     /**
@@ -24,7 +30,9 @@ class SectionController extends Controller
     public function index()
     {
         $sections = $this->section->get();
-        return view('admin.pages.hero-section.index' , compact('sections'));
+        $backgrounds = $this->background->get();
+        $services = $this->serviceData->get();
+        return view('admin.pages.hero-section.index' , compact('sections', 'backgrounds', 'services'));
     }
 
     /**

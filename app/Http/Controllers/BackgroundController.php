@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Contracts\Interfaces\BackgroundInterface;
+use App\Http\Requests\UpdateBackgroundRequest;
 use App\Models\Background;
 use App\Services\BackgroundService;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Request;
 
 class BackgroundController extends Controller
 {
@@ -23,8 +24,7 @@ class BackgroundController extends Controller
      */
     public function index()
     {
-        $backgrounds = $this->background->get();
-        return view('admin.pages.hero-section.background.index', compact('backgrounds'));
+        //
     }
 
     /**
@@ -64,7 +64,7 @@ class BackgroundController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Background $background)
+    public function update(UpdateBackgroundRequest $request, Background $background)
     {
         $data = $this->service->update($background, $request);
         $this->background->update($background->id, $data);

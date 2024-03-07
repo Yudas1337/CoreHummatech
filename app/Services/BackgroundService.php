@@ -11,6 +11,7 @@ use App\Http\Requests\UpdateSaleRequest;
 use App\Http\Requests\StoreBackgroundRequest;
 use App\Http\Requests\UpdateBackgroundRequest;
 use App\Models\Background;
+use Illuminate\Support\Facades\Request;
 
 class BackgroundService
 {
@@ -38,9 +39,10 @@ class BackgroundService
      *
      * @return array|bool
      */
-    public function store(StoreBackgroundRequest $request): array|bool
+    public function store(Request $request): array|bool
     {
-        $data = $request->validated();
+        // dd($request);
+        $data = $request->all();
 
         if ($request->hasFile('image') && $request->file('image')->isValid()) {
             $data['image'] = $request->file('image')->store(TypeEnum::BACKGROUND->value, 'public');
