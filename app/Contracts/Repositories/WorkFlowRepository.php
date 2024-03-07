@@ -18,7 +18,7 @@ class WorkFlowRepository extends BaseRepository implements WorkFlowInterface
 
     public function store(array $data): mixed
     {
-        return $this->model->query()->store($data);
+        return $this->model->query()->create($data);
     }
 
     public function delete(mixed $id): mixed
