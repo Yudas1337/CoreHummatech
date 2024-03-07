@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateTestimonialRequest extends FormRequest
+class UpdateTestimonialProductRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,8 +25,8 @@ class UpdateTestimonialRequest extends FormRequest
             'image' => 'nullable|mimes:png,jpg,jpeg',
             'name' => 'required',
             'description' => 'required|max:115',
-            'service_id' => 'required|exists:services,id',
-            'product_id' => 'nullable',
+            'product_id' => 'required|exists:products,id',
+            'service_id' => 'nullable|exists:services,id',
         ];
     }
 
@@ -37,8 +37,8 @@ class UpdateTestimonialRequest extends FormRequest
             'name.required' => 'Nama harus diisi',
             'description.required' => 'Deskripsi harus diisi',
             'description.max' => 'Deskripsi maksimal :max karakter',
-            'services_id.required' => 'Tampilkan di layanan apa?',
-            'services_id.exists' => 'Layanan tidak ditemukan',
+            'product_id.required' => 'Tampilkan di produk apa?',
+            'product_id.exists' => 'Produk tidak ditemukan',
         ];
     }
 }

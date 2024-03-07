@@ -234,8 +234,6 @@ Route::controller(VacancyController::class)->name('vacancy.')->prefix('/vacancy'
 Route::post('setting/structure/create', [StructureController::class, 'store'])->name('structure.create');
 
 Route::get('setting/structure', [StructureController::class, 'index'])->name('structure.index');
-Route::put('setting/structure/update/{structure}', [StructureController::class, 'update'])->name('structure.update');
-Route::delete('setting/structure/delete/{structure}', [StructureController::class, 'destroy'])->name('structure.delete');
 Route::get('berita', [NewsController::class, 'news']);
 
 require_once __DIR__ . '/kader.php';

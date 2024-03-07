@@ -220,8 +220,10 @@
                         <p class="wow fadeInLeft">
                             {!! Str::limit($slugs->description, 800) !!}
                         </p>
+                        @if ($slugs->link)
                         <a href="{{ $slugs->link }}" target="_blank" class="btn btn-gradient effect btn-md"
                             href="">Kunjungi website</a>
+                        @endif
 
                         <div class="mt-5">
                             <div class="title-service">
