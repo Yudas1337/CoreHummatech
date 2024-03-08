@@ -107,12 +107,12 @@
         </div>
     </div>
 
-    <div class="about-us-area">
+    <div class="about-us-area pt-5">
         <div class="container">
             <img src="{{ asset('assets-home/img/about-polygon.svg') }}" class="about-triangle" alt="Polygon" />
             <div class="about-items">
-                <div class="row align-center">
-                    <div class="col-lg-6 info">
+                <div class="row align-center justify-content-center">
+                    <div class="col-lg-6 info text-center">
                         <h4 class="subtitle">Profile Perusahaan</h4>
                         @forelse ($profiles as $profile)
                             <h2>{{ $profile->subtitle }}</h2>
