@@ -111,7 +111,7 @@
 
 @section('content')
     <div class="breadcrumb-area text-center shadow dark text-light bg-cover"
-        style="background-image: url({{ asset('assets-home/img/banner/10.jpg') }});">
+        style="background-image: url({{ $background == null ? asset('assets-home/img/default-bg.png') : asset('storage/'. $background->image) }});">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 offset-lg-2">
@@ -158,7 +158,7 @@
                                 </p>
 
                                 <div class="d-flex gap-2">
-                                    <a class="btn btn-stroke-gradient effect btn-md" href="{{ route('detail.product', $product->slug) }}">Lihat
+                                    <a class="btn btn-stroke-gradient text-gradient effect btn-md" href="{{ route('detail.product', $product->slug) }}">Lihat
                                         Detail</a>
                                     <a class="btn btn-gradient effect btn-md" target="_blank" href="{{ $product->link }}">Kunjungi
                                         website</a>

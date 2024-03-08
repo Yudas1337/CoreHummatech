@@ -32,6 +32,7 @@ use App\Http\Controllers\CategoryNewsController;
 use App\Http\Controllers\SalesPackageController;
 use App\Http\Controllers\CollabCategoryController;
 use App\Http\Controllers\ContactUsController;
+use App\Http\Controllers\HomeContactController;
 use App\Http\Controllers\TermsconditionController;
 use App\Http\Controllers\VisionAndMisionController;
 

@@ -9057,7 +9057,6 @@ nav.navbar.bootsnav {
     border: 3px solid;
     border-image: linear-gradient(to right, #1273eb, #18ebeb, #1273eb);
     border-image-slice: 1;
-    border-radius: 100%;
     color: black;
     -webkit-background-clip: text;
     background-clip: text;

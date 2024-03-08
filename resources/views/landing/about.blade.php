@@ -93,7 +93,7 @@
 
 @section('content')
     <div class="breadcrumb-area text-center shadow dark text-light bg-cover"
-        style="background-image: url({{ asset('assets-home/img/banner/10.jpg') }});">
+        style="background-image: url({{ $background == null ? asset('assets-home/img/default-bg.png') : asset('storage/'. $background->image) }});">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 offset-lg-2">
@@ -107,12 +107,12 @@
         </div>
     </div>
 
-    <div class="about-us-area">
+    <div class="about-us-area pt-5">
         <div class="container">
             <img src="{{ asset('assets-home/img/about-polygon.svg') }}" class="about-triangle" alt="Polygon" />
             <div class="about-items">
-                <div class="row align-center">
-                    <div class="col-lg-6 info">
+                <div class="row align-center justify-content-center">
+                    <div class="col-lg-6 info text-center">
                         <h4 class="subtitle">Profile Perusahaan</h4>
                         @forelse ($profiles as $profile)
                             <h2>{{ $profile->subtitle }}</h2>
@@ -201,7 +201,7 @@
                             <h4 class="text-center text-dark" style="font-weight:600">
                                 Belum ada misi perusahaan
                             </h4>
-                        </div>    
+                        </div>
                     @endforelse
                 @empty
                     <div class="col-12">
@@ -374,7 +374,7 @@
 
                     <div class="col-12" id="pagination">
                         <div class="d-flex justify-content-center">
-                            {{ $teams->links('vendor.pagination.pagination-home') }}
+                            {{ $teams->links() }}
                         </div>
                     </div>
                 </div>

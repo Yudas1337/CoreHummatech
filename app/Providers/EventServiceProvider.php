@@ -10,6 +10,7 @@ use App\Models\News;
 use App\Models\NewsCategory;
 use App\Models\NewsImage;
 use App\Models\Profile;
+use App\Models\Product;
 use App\Models\Sale;
 use App\Models\Testimonial;
 use App\Observers\EnterpriseStructureObserver;
@@ -57,15 +58,20 @@ class EventServiceProvider extends ServiceProvider
         NewsImage::observe(NewsImageObserver::class);
         Termscondition::observe(TermsconditionObserve::class);
 
+
         parent::boot();
 
         $services = Service::all();
         $profiles = Profile::first();
         $social = SosialMedia::all();
         $branches = Branch::all();
+        $news = News::all();
+        $products = Product::all();
 
         View::share('profiles', $profiles);
+        View::share('news', $news);
         View::share('socmed', $social);
+        View::share('products', $products);
         View::share('services', $services);
         View::share('branches', $branches);
     }

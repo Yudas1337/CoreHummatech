@@ -7,6 +7,7 @@ use App\Contracts\Interfaces\NewsInterface;
 use App\Contracts\Interfaces\ProductInterface;
 use App\Contracts\Interfaces\ServiceInterface;
 use App\Contracts\Interfaces\VisitorDetectionInterface;
+use App\Services\HomeService;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -16,20 +17,21 @@ class HomeController extends Controller
     private CollabMitraInterface $mitra;
     private NewsInterface $news;
     private ServiceInterface $service;
+    private HomeService $homeService;
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct(VisitorDetectionInterface $visitorDetection , ServiceInterface $service , ProductInterface $product , NewsInterface $news ,CollabMitraInterface $mitra)
+    public function __construct(HomeService $homeService, VisitorDetectionInterface $visitorDetection, ServiceInterface $service, ProductInterface $product, NewsInterface $news, CollabMitraInterface $mitra)
     {
         $this->middleware('auth');
         $this->visitorDetection = $visitorDetection;
         $this->service = $service;
         $this->news = $news;
+        $this->homeService = $homeService;
         $this->mitra = $mitra;
         $this->product = $product;
-
     }
 
     /**
@@ -39,11 +41,12 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $visitorDetections = $this->visitorDetection->GetCount();
+        $visitorDetections = $this->visitorDetection;
+        $chart = $this->homeService->Chart($visitorDetections);
         $services = $this->service->GetCount();
         $products = $this->product->GetCount();
         $newss = $this->news->GetCount();
         $mitras = $this->mitra->GetCount();
-        return view('admin.pages.dashboard.index' , compact('visitorDetections' ,'services' , 'products' , 'newss' ,'mitras'));
+        return view('admin.pages.dashboard.index', compact('chart', 'services', 'products', 'newss', 'mitras'));
     }
 }

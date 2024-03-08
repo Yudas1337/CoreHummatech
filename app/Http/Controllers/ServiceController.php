@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Contracts\Interfaces\BackgroundInterface;
 use App\Contracts\Interfaces\CollabMitraInterface;
 use App\Contracts\Interfaces\FaqInterface;
 use App\Contracts\Interfaces\GaleryImageInterface;
@@ -39,9 +40,10 @@ class ServiceController extends Controller
     private CollabMitraInterface $mitras;
     private GaleryImageInterface $galleryImage;
     private GalleryInterface $galery;
+    private BackgroundInterface $background;
 
 
-    public function __construct(GaleryImageInterface $galleryImage, GalleryInterface $galery, ServiceInterface $service, ServiceService $serviceService, Termscondition $termscondition, TestimonialInterface $testimonial, FaqInterface $faq, ProductRepository $product, ProcedureInterface $procedure, SaleInterface $sale, ProfileInterface $profile, CollabMitraInterface $mitras)
+    public function __construct(GaleryImageInterface $galleryImage, GalleryInterface $galery, ServiceInterface $service, ServiceService $serviceService, Termscondition $termscondition, TestimonialInterface $testimonial, FaqInterface $faq, ProductRepository $product, ProcedureInterface $procedure, SaleInterface $sale, ProfileInterface $profile, CollabMitraInterface $mitras, BackgroundInterface $background)
     {
         $this->mitras = $mitras;
         $this->galleryImage = $galleryImage;
@@ -55,6 +57,7 @@ class ServiceController extends Controller
         $this->product = $product;
         $this->sale = $sale;
         $this->profile = $profile;
+        $this->background = $background;
     }
     /**
      * Display a listing of the resource.
@@ -94,8 +97,7 @@ class ServiceController extends Controller
         $testimonials = $this->testimonial->get()->where('service_id', $service->id);
         $mision = MisionItems::where('service_id', $service->id)->get();
         $faqs = $this->faq->get()->where('service_id', $service->id);
-
-
+        
         return view('admin.pages.service.detail', compact('services', 'products', 'termsconditions', 'testimonials', 'mision', 'faqs'));
     }
 
@@ -119,12 +121,13 @@ class ServiceController extends Controller
         $mitras = $this->mitras->get();
         $galerys = $this->galery->ServiceProductShow('service_id', $slugs->id)->get();
         $galeries = [];
+        $background = $this->background->getByServiceId($service->id);
 
         foreach ($galerys as $galery) {
             $galeries[] = $this->galleryImage->ServiceProductShow('galleries_id', $galery->id)->get();
         }
 
-        return view('landing.service.service-detail', compact('slugs', 'services', 'products', 'testimonials', 'faqs', 'procedures', 'sales', 'profile', 'mitras', 'galeries'));
+        return view('landing.service.service-detail', compact('slugs', 'services', 'products', 'testimonials', 'faqs', 'procedures', 'sales', 'profile', 'mitras', 'galeries', 'background'));
     }
     /**
      * Update the specified resource in storage.

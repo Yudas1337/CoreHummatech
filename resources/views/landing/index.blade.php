@@ -309,8 +309,8 @@
                 <div class="row align-items-center">
 
                     <div class="col-lg-4 col-md-12 info">
-                        <h2 class="ml-5"> Menghadirkan produk dengan kualitas dan inovasi terbaik</h2>
-                        <p class="ml-5">
+                        <h2 class="mx-5"> Menghadirkan produk dengan kualitas dan inovasi terbaik</h2>
+                        <p class="mx-5">
                             Lorem ipsum dolor sit amet consectetur. Blandit donec pulvinar eget senectus posuere amet
                             ultricies justo enim tempus pellentesque.
                         </p>
