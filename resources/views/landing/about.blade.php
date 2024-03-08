@@ -161,26 +161,58 @@
                 </div>
             </div>
         </div>
+
         <div class="container">
-            <div class="work-process-items features-content">
-                <div class="row">
-                    <div class="single-item col-lg-4 col-md-6 mb-4 text-light fadeInRight" data-wow-delay="300ms"
-                        style="visibility: visible; animation-delay: 300ms; animation-name: fadeInRight;">
-                        <div class=" bg-primary py-3 px-3 ">
-                            <div class=" d-flex justify-content-center ">
-                                <p class="text-light" style="font-weight: 900">___________</p>
+            <div class="row">
+                @forelse ($visionMisions as $visionMission)
+                    <div class="single-item  col-lg-4 col-md-6 mb-4 text-light fadeInRight "  data-wow-delay="300ms"
+                    style="visibility: visible; animation-delay: 300ms; animation-name: fadeInRight;">
+                        <div class=" bg-primary py-5 px-5 rounded">
+                            <div class=" d-flex justify-content-center align-items-center">
+                                <p class="text-light" style="font-weight: 900">______________</p>
                                 <h3 class="mt-2 px-3 text-light " style="font-weight: 900">Visi</h3>
-                                <p class="text-light" style="font-weight: 900">___________</p>
+                                <p class="text-light" style="font-weight: 900">______________</p>
                             </div>
                             <p class="fw-semibold">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda doloremque rem voluptatem
-                                sapiente modi esse laborum, eveniet incidunt voluptate officia sint nostrum ut soluta veniam
-                                odit sequi porro ipsam debitis commodi dolores sunt consequuntur dolore accusamus animi?
-                                Suscipit, asperiores? Laudantium corporis voluptatum cum.
+                                {{ $visionMission->vision }}
                             </p>
                         </div>
                     </div>
-                </div>
+
+                    @forelse ($missions as $mission)
+                        <div class="single-item col-lg-4 col-md-6 mb-4 text-dark fadeInRight shadow"  data-wow-delay="300ms"
+                        style="visibility: visible; animation-delay: 300ms; animation-name: fadeInRight;">
+                            <div class="py-5 px-5" style="border-radius: 8px; box-shadow: 0px 0px 15px .3px #00000012">
+                                <div class=" d-flex justify-content-center align-items-center">
+                                    <p class="text-primary" style="font-weight: 900">______________</p>
+                                    <h3 class="mt-2 px-3 text-primary " style="font-weight: 900">Misi</h3>
+                                    <p class="text-primary" style="font-weight: 900">______________</p>
+                                </div>
+                                <p class="fw-semibold">
+                                    {{ $mission->mission }}
+                                </p>
+                            </div>
+                        </div>
+                    @empty
+                        <div class="col-12">
+                            <div class="d-flex justify-content-center">
+                                <img src="{{ asset('nodata-gif.gif') }}" alt="" width="800px">
+                            </div>
+                            <h4 class="text-center text-dark" style="font-weight:600">
+                                Belum ada misi perusahaan
+                            </h4>
+                        </div>    
+                    @endforelse
+                @empty
+                    <div class="col-12">
+                        <div class="d-flex justify-content-center">
+                            <img src="{{ asset('nodata-gif.gif') }}" alt="" width="800px">
+                        </div>
+                        <h4 class="text-center text-dark" style="font-weight:600">
+                            Belum ada visi-misi perusahaan
+                        </h4>
+                    </div>
+                @endforelse
             </div>
         </div>
     </div>
