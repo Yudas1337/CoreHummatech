@@ -69,7 +69,7 @@ class BackgroundController extends Controller
     {
         $data = $this->service->update($background, $request);
         $this->background->update($background->id, $data);
-        return back()->with('success', 'Berhasil Di Perbarui');
+        return redirect()->back()->with('success', 'Background berhasil Di Perbarui');
     }
 
     /**
@@ -79,6 +79,6 @@ class BackgroundController extends Controller
     {
         $this->service->delete($background);
         $this->background->delete($background->id);
-        return back()->with('success', 'Produk Berhasil Di Hapus');
+        return redirect()->back()->with('success', 'Background Berhasil Di Hapus');
     }
 }
