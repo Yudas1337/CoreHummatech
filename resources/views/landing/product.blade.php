@@ -158,7 +158,7 @@
                                 </p>
 
                                 <div class="d-flex gap-2">
-                                    <a class="btn btn-stroke-gradient effect btn-md" href="{{ route('detail.product', $product->slug) }}">Lihat
+                                    <a class="btn btn-stroke-gradient text-gradient effect btn-md" href="{{ route('detail.product', $product->slug) }}">Lihat
                                         Detail</a>
                                     <a class="btn btn-gradient effect btn-md" target="_blank" href="{{ $product->link }}">Kunjungi
                                         website</a>
