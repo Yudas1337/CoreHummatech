@@ -1,11 +1,18 @@
-
 @extends('landing.layouts.app')
-{{-- @extends('landing.layouts.layouts.app') --}}
+
+@section('title', 'Software House Terbaik di Malang')
 
 @section('seo')
-<meta name="description" content="{{ config('app.name', 'Laravel') }}" />
 <meta name="title" content="Hummatech - Perusahaan Software Terbaik di Malang" />
 <meta name="description" content="Hummatech adalah perusahaan software development terbaik di Malang. Kami menyediakan solusi perangkat lunak yang inovatif dan berkualitas tinggi." />
+<meta name="og:description" content="Hummatech adalah perusahaan software development terbaik di Malang. Kami menyediakan solusi perangkat lunak yang inovatif dan berkualitas tinggi." />
+<meta name="og:image" content="{{ asset('mobilelogo.png') }}" />
+<meta name="twitter:image" content="{{ asset('mobilelogo.png') }}" />
+<meta name="twitter:title" content="Hummatech - Perusahaan Software Terbaik di Malang" />
+<meta name="twitter:description" content="Hummatech adalah per businesses software development terbaik di Malang. Kami menyediakan solusi perangkat lunak yang inovatif dan berkualitas tinggi." />
+<meta property="og:url" content="{{ url('/') }}" />
+<meta property="og:type" content="website" />
+<link rel="canonical" href="{{ url('/') }}" />
 @endsection
 
 @section('style')

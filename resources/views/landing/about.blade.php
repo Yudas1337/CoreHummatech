@@ -66,6 +66,12 @@
             border-radius: 8px;
             margin: 0;
         }
+
+        @media screen and (min-width: 992px) {
+            .text-lg-start {
+                text-align: left !important;
+            }
+        }
     </style>
 @endsection
 
@@ -117,7 +123,7 @@
             <img src="{{ asset('assets-home/img/about-polygon.svg') }}" class="about-triangle" alt="Polygon" />
             <div class="about-items">
                 <div class="row align-center justify-content-center">
-                    <div class="col-lg-6 info text-center">
+                    <div class="col-lg-6 info text-center text-lg-start">
                         <h4 class="subtitle">Profile Perusahaan</h4>
                         @forelse ($profiles as $profile)
                         <h2>{{ $profile->subtitle }}</h2>

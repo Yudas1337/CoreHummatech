@@ -126,8 +126,8 @@
                             <img src="{{ asset('assets/images/LOGO-HUMMATECH_Putih.png') }}"
                                 style="height: 48px;width: auto;" alt="Logo">
 
-                            @isset($profiles)
-                                <p>{{ Str::limit($profiles->description, 200) }}</p>
+                            @isset($profile)
+                                <p>{{ Str::limit($profile->description, 200) }}</p>
                                 <a href="{{ url('/about-us') }}">Lihat Selengkapnya</a>
                             @else
                                 <p>
@@ -186,8 +186,8 @@
                                             <div class="content">
                                                 <strong>Alamat:</strong>
 
-                                                @isset($profiles)
-                                                    {{ $profiles->address }}
+                                                @isset($profile)
+                                                    {{ $profile->address }}
                                                 @else
                                                     Perum Permata Regency 1 Blok 10/28, Perun Gpa, Ngijo, Kec. Karang
                                                     Ploso, Kabupaten Malang, Jawa Timur 65152.
@@ -200,8 +200,8 @@
                                                 </div>
                                                 <div class="content">
                                                     <strong>Email:</strong>
-                                                    @isset($profiles)
-                                                        <a href="mailto:{{ $profiles->email }}">{{ $profiles->email }}</a>
+                                                    @isset($profile)
+                                                        <a href="mailto:{{ $profile->email }}">{{ $profile->email }}</a>
                                                     @else
                                                         <a href="mailto:info@hummatech.com">info@hummatech.com</a>
                                                     @endisset
@@ -213,12 +213,12 @@
                                                 </div>
                                                 <div class="content">
                                                     <strong>Phone:</strong>
-                                                    @isset($profiles)
+                                                    @isset($profile)
                                                         @php
                                                             $cleanPhone = str_replace(
                                                                 ['+', '-', ' '],
                                                                 '',
-                                                                $profiles->phone,
+                                                                $profile->phone,
                                                             );
                                                             if (substr($cleanPhone, 0, 2) === '62') {
                                                                 $cleanPhone = '0' . substr($cleanPhone, 2);

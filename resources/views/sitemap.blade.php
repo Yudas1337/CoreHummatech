@@ -15,4 +15,13 @@
             <priority>0.6</priority>
         </url>
     @endforeach
+
+    @foreach ($serviceData as $service)
+        <url>
+            <loc>{{ url("/layanan/{$news->slug}") }}</loc>
+            <lastmod>{{ $news->updated_at->tz('UTC')->toAtomString() }}</lastmod>
+            <changefreq>monthly</changefreq>
+            <priority>0.6</priority>
+        </url>
+    @endforeach
 </urlset>
