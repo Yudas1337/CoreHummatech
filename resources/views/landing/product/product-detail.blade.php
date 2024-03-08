@@ -111,7 +111,7 @@
                 <div class="col-lg-8 offset-lg-2">
                     <div class="site-heading text-center">
                         <h4>FITUR-FITUR</h4>
-                        <h2>Fitur - Fitur Milink.id yang mungkin dapat membantu anda</h2>
+                        <h2>Fitur - Fitur {{ $product->name }} yang mungkin dapat membantu anda</h2>
                         <div class="devider"></div>
                     </div>
                 </div>
@@ -148,39 +148,20 @@
         <div class="container">
             <div class="testimonial-items bg-gradient-gray">
                 <div class="row align-center bg-gradient-gray">
-                    @forelse ($testimonial as $item)
+                    @forelse ($testimonial as $testi)
                         <div class="col-lg-7 testimonials-content">
                             <div class="testimonials-carousel owl-carousel owl-theme">
                                 <div class="item">
                                     <div class="info">
                                         <p>
-                                            Otherwise concealed favourite frankness on be at dashwoods defective at.
-                                            Sympathize interested simplicity at do projecting increasing terminated. As
-                                            edward settle limits at in. Chamber reached do he nothing be.
+                                            {{ $testi->description }}
                                         </p>
                                         <div class="provider">
                                             <div class="thumb">
-                                                <img src="{{ asset('assets-home/img/teams/5.jpg') }}" alt="Author">
+                                                <img src="{{ asset('storage/' . $testi->image) }}" alt="Author">
                                             </div>
                                             <div class="content">
-                                                <h4 class="text-primary">Ahel Natasha</h4>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <div class="info">
-                                        <p>
-                                            Otherwise concealed favourite frankness on be at dashwoods defective at.
-                                            Sympathize interested simplicity at do projecting increasing terminated. As
-                                            edward settle limits at in. Chamber reached do he nothing be.
-                                        </p>
-                                        <div class="provider">
-                                            <div class="thumb">
-                                                <img src="{{ asset('assets-home/img/teams/6.jpg') }}" alt="Author">
-                                            </div>
-                                            <div class="content">
-                                                <h4 class="text-primary">Ahel Natasha</h4>
+                                                <h4 class="text-primary">{{ $testi->name }}</h4>
                                             </div>
                                         </div>
                                     </div>
