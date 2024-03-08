@@ -32,7 +32,7 @@
 
     <div class="col-lg-12">
         <div class="row">
-            @forelse ($branchs as $branch)
+            @forelse ($branches as $branch)
                 <div class="col-xl-3">
                     <div class="card b-t-warning">
                         <div class="card-header pb-0 text-center">
@@ -63,7 +63,7 @@
                 </h5>
             @endforelse
         </div>
-        @if ($branchs == null || count($branchs) == 0)
+        @if ($branches == null || count($branches) == 0)
             <!-- Tidak ada branch yang tersedia -->
         @else
             <h4 class="mb-2">
@@ -98,7 +98,7 @@
                                 <select name="type" class="form-select form-select-sm"
                                     aria-label=".form-select-sm example">
                                     <option selected="" disabled>Pilih Jenis Cabang </option>
-                                    @if ($branchs->where('type', 'center')->count() > 0)
+                                    @if ($branches->where('type', 'center')->count() > 0)
                                         <option value="branch">Cabang</option>
                                     @else
                                         <option value="center">Pusat</option>
@@ -186,7 +186,7 @@
     <script>
         $('#edit-type').on('change', function() {
             var isConfirm = false;
-            @if ($branchs->where('type', 'center')->count() > 0)
+            @if ($branches->where('type', 'center')->count() > 0)
             if ($(this).val() == 'center') {
                 isConfirm = confirm('Apakah yakin ingin mengganti jenis cabang menjadi pusat?');
                 if (!isConfirm) {
@@ -231,7 +231,7 @@
         var markers = [];
         var bounds = L.latLngBounds();
 
-        @foreach ($branchs as $branch)
+        @foreach ($branches as $branch)
             var marker = L.marker([{{ $branch->latitude }}, {{ $branch->lotitude }}]).addTo(map);
             marker.bindPopup("<b>{{ $branch->name }}</b><br>{{ $branch->address }}");
             marker.on('click', function(e) {

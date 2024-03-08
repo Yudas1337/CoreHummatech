@@ -1,9 +1,9 @@
 /* ===================================================================
-    
+
     Author          : Valid Theme
     Template Name   : Earna - Consulting Business Template
     Version         : 1.0
-    
+
 * ================================================================= */
 
 (function($) {
@@ -23,13 +23,13 @@
             live: true // act on asynchronously loaded content (default is true)
         });
         wow.init();
-        
+
 
         /* ==================================================
             # Tooltip Init
         ===============================================*/
-        $('[data-toggle="tooltip"]').tooltip(); 
-        
+        $('[data-toggle="tooltip"]').tooltip();
+
 
 
         /* ==================================================
@@ -216,8 +216,8 @@
             ]
         });
 
-        
-        
+
+
         /* ==================================================
             # Projects Carousel
          ===============================================*/
@@ -395,10 +395,11 @@
                         .attr('disabled', 'disabled');
 
                     $.post(action, {
+                            _token: $('input[name=_token]').val(),
                             name: $('#name').val(),
                             email: $('#email').val(),
                             phone: $('#phone').val(),
-                            comments: $('#comments').val()
+                            comments: $('#comments').val(),
                         },
                         function(data) {
                             document.getElementById('message').innerHTML = data;

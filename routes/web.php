@@ -31,6 +31,7 @@ use App\Http\Controllers\TestimonialController;
 use App\Http\Controllers\CategoryNewsController;
 use App\Http\Controllers\SalesPackageController;
 use App\Http\Controllers\CollabCategoryController;
+use App\Http\Controllers\ContactUsController;
 use App\Http\Controllers\TermsconditionController;
 use App\Http\Controllers\VisionAndMisionController;
 
@@ -221,13 +222,14 @@ Route::get('layanan/{slugService}', [ServiceController::class, 'ShowService']);
 Route::get('data/product', [HomeProductController::class, 'index']);
 Route::get('data/product/kategori/{category:slug}',[HomeProductController::class,'productCategory']);
 
-//detail-product
+// Detail Product
 Route::get('detail/{product:slug}', [ProductController::class, 'showproduct'])->name('detail.product');
 
-//contact-us
-Route::get('contact', function () {
-    return view('landing.contact');
-})->name('contact');
+// Contact Us With Controller
+Route::controller(ContactUsController::class)->name('contact.')->group(function() {
+    Route::get('contact', 'index')->name('index');
+    Route::post('contact/store', 'store')->name('store');
+});
 
 Route::get('mitra',  [HomePageController::class , 'mitra']);
 

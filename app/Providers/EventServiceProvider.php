@@ -62,12 +62,12 @@ class EventServiceProvider extends ServiceProvider
         $services = Service::all();
         $profiles = Profile::first();
         $social = SosialMedia::all();
-        $branchs = Branch::all();
+        $branches = Branch::all();
 
         View::share('profiles', $profiles);
         View::share('socmed', $social);
         View::share('services', $services);
-        View::share('branchs', $branchs);
+        View::share('branches', $branches);
     }
 
     /**

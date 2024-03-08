@@ -24,9 +24,9 @@ class BranchController extends Controller
     public function index()
     {
 
-        $branchs = $this->branch->get();
+        $branches = $this->branch->get();
 
-        return view('admin.pages.branch.index' , compact('branchs'));
+        return view('admin.pages.branch.index' , compact('branches'));
     }
 
     /**
