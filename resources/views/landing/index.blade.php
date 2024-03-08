@@ -523,6 +523,7 @@
 
                         <!-- End Single Widget -->
                     </div>
+                    
                     <div class="col-lg-8 services-single-content">
                         <div class="gallery-area overflow-hidden pt-3">
                             <div class="container">
