@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <!-- ========== Meta Tags ========== -->
     <meta charset="utf-8" />
@@ -125,10 +126,10 @@
                             <img src="{{ asset('assets/images/LOGO-HUMMATECH_Putih.png') }}"
                                 style="height: 48px;width: auto;" alt="Logo">
 
-                                @isset($profiles)
+                            @isset($profiles)
                                 <p>{{ Str::limit($profiles->description, 200) }}</p>
                                 <a href="{{ url('/about-us') }}">Lihat Selengkapnya</a>
-                                @else
+                            @else
                                 <p>
                                     Bertransformasi menjadi perusahaan yang mampu menjawab tantangan di era revolusi
                                     industri 4.0
@@ -142,9 +143,11 @@
                                 <ul>
                                     @forelse ($socmed as $socmed)
                                         <li>
-                                            <a href="{{ $socmed->link }}" style="display: flex;gap: .5rem;align-items: center">
+                                            <a href="{{ $socmed->link }}"
+                                                style="display: flex;gap: .5rem;align-items: center">
                                                 <i class="fas fa-angle-right"></i>
-                                                <img alt="Facebook Logo" src="{{ asset("storage/{$socmed->image}") }}" height="16px" class="mb-0" width="16px" />
+                                                <img alt="Facebook Logo" src="{{ asset("storage/{$socmed->image}") }}"
+                                                    height="16px" class="mb-0" width="16px" />
                                                 {{ $socmed->platform }}
                                             </a>
                                         </li>
@@ -163,7 +166,7 @@
                                     @forelse ($services as $service)
                                         <li>
                                             <a href="{{ url("/layanan/{$service->slug}") }}"><i
-                                                class="fas fa-angle-right"></i> {{ $service->name }}</a>
+                                                    class="fas fa-angle-right"></i> {{ $service->name }}</a>
                                         </li>
                                     @empty
                                         <li>Belum ada data layanan</li>
@@ -253,7 +256,7 @@
             <!-- End Footer -->
 
             <!-- jQuery Frameworks
-                    ============================================= -->
+                            ============================================= -->
             <script src="{{ asset('assets-home/js/jquery-3.6.0.min.js') }}"></script>
             <script src="{{ asset('assets-home/js/popper.min.js') }}"></script>
             <script src="{{ asset('assets-home/js/bootstrap.min.js') }}"></script>

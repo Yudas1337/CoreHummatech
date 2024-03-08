@@ -123,135 +123,136 @@
                 <div class="row">
                     <div class="col-lg-4 col-md-6 item">
                         <div class="f-item about">
-                            <img alt="Logo Hummatech" src="{{ asset('assets/images/LOGO-HUMMATECH_Putih.png') }}"
-                                style="height: 48px;width: auto;" />
+                            <img src="{{ asset('assets/images/LOGO-HUMMATECH_Putih.png') }}"
+                                style="height: 48px;width: auto;" alt="Logo">
 
-                            @forelse ($profiles as $profile)
-                                <p>{{ Str::limit($profile->description, 200) }}</p>
+                            @isset($profiles)
+                                <p>{{ Str::limit($profiles->description, 200) }}</p>
                                 <a href="{{ url('/about-us') }}">Lihat Selengkapnya</a>
-                            @empty
+                            @else
                                 <p>
                                     Bertransformasi menjadi perusahaan yang mampu menjawab tantangan di era revolusi
                                     industri 4.0
                                 </p>
-                            @endforelse
+                                @endif
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-lg-2 col-md-6 item">
-                        <div class="f-item link">
-                            <h4 class="widget-title">Sosial Media</h4>
-                            <ul>
-                                @forelse ($socmed as $socmed)
-                                    <li>
-                                        <a href="{{ $socmed->link }}"
-                                            style="display: flex;gap: .5rem;align-items: center">
-                                            <i class="fas fa-angle-right"></i>
-                                            <img alt="Facebook Logo" src="{{ asset("storage/{$socmed->image}") }}"
-                                                height="16px" class="mb-0" width="16px" />
-                                            {{ $socmed->platform }}
-                                        </a>
-                                    </li>
-                                @empty
-                                    <li>
-                                        Tidak ada data
-                                    </li>
-                                @endforelse
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 item">
-                        <div class="f-item link">
-                            <h4 class="widget-title">Layanan Kami</h4>
-                            <ul>
-                                @forelse ($services as $service)
-                                    <li>
-                                        <a href="{{ url("/layanan/{$service->slug}") }}"><i
-                                                class="fas fa-angle-right"></i> {{ $service->name }}</a>
-                                    </li>
-                                @empty
-                                    <li>Belum ada data layanan</li>
-                                @endforelse
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 item">
-                        <div class="f-item contact-widget">
-                            <h4 class="widget-title">Hubungi Kami</h4>
-                            <div class="address">
+                        <div class="col-lg-2 col-md-6 item">
+                            <div class="f-item link">
+                                <h4 class="widget-title">Sosial Media</h4>
                                 <ul>
-                                    <li>
-                                        <div class="icon">
-                                            <i class="fas fa-home"></i>
-                                        </div>
-                                        <div class="content">
-                                            <strong>Alamat:</strong>
+                                    @forelse ($socmed as $socmed)
+                                        <li>
+                                            <a href="{{ $socmed->link }}"
+                                                style="display: flex;gap: .5rem;align-items: center">
+                                                <i class="fas fa-angle-right"></i>
+                                                <img alt="Facebook Logo" src="{{ asset("storage/{$socmed->image}") }}"
+                                                    height="16px" class="mb-0" width="16px" />
+                                                {{ $socmed->platform }}
+                                            </a>
+                                        </li>
+                                    @empty
+                                        <li>
+                                            Tidak ada data
+                                        </li>
+                                    @endforelse
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6 item">
+                            <div class="f-item link">
+                                <h4 class="widget-title">Layanan Kami</h4>
+                                <ul>
+                                    @forelse ($services as $service)
+                                        <li>
+                                            <a href="{{ url("/layanan/{$service->slug}") }}"><i
+                                                    class="fas fa-angle-right"></i> {{ $service->name }}</a>
+                                        </li>
+                                    @empty
+                                        <li>Belum ada data layanan</li>
+                                    @endforelse
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6 item">
+                            <div class="f-item contact-widget">
+                                <h4 class="widget-title">Hubungi Kami</h4>
+                                <div class="address">
+                                    <ul>
+                                        <li>
+                                            <div class="icon">
+                                                <i class="fas fa-home"></i>
+                                            </div>
+                                            <div class="content">
+                                                <strong>Alamat:</strong>
 
-                                            @forelse ($profiles as $profile)
-                                                {{ $profile->address }}
-                                            @empty
-                                                <p>
+                                                @isset($profiles)
+                                                    {{ $profiles->address }}
+                                                @else
                                                     Perum Permata Regency 1 Blok 10/28, Perun Gpa, Ngijo, Kec. Karang
                                                     Ploso, Kabupaten Malang, Jawa Timur 65152.
-                                                </p>
-                                            @endforelse
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="icon">
-                                            <i class="fas fa-envelope"></i>
-                                        </div>
-                                        <div class="content">
-                                            <strong>Email:</strong>
+                                                    @endif
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="icon">
+                                                    <i class="fas fa-envelope"></i>
+                                                </div>
+                                                <div class="content">
+                                                    <strong>Email:</strong>
+                                                    @isset($profiles)
+                                                        <a href="mailto:{{ $profiles->email }}">{{ $profiles->email }}</a>
+                                                    @else
+                                                        <a href="mailto:info@hummatech.com">info@hummatech.com</a>
+                                                    @endisset
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="icon">
+                                                    <i class="fas fa-phone"></i>
+                                                </div>
+                                                <div class="content">
+                                                    <strong>Phone:</strong>
+                                                    @isset($profiles)
+                                                        @php
+                                                            $cleanPhone = str_replace(
+                                                                ['+', '-', ' '],
+                                                                '',
+                                                                $profiles->phone,
+                                                            );
+                                                            if (substr($cleanPhone, 0, 2) === '62') {
+                                                                $cleanPhone = '0' . substr($cleanPhone, 2);
+                                                            }
+                                                        @endphp
 
-                                            @forelse ($profiles as $profile)
-                                                <a href="mailto:{{ $profile->email }}">{{ $profile->email }}</a>
-                                            @empty
-                                                <a href="mailto:info@hummatech.com">info@hummatech.com</a>
-                                            @endforelse
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="icon">
-                                            <i class="fas fa-phone"></i>
-                                        </div>
-                                        <div class="content">
-                                            <strong>Phone:</strong>
-                                            @forelse ($profiles as $profile)
-                                                @php
-                                                    $cleanPhone = str_replace(['+', '-', ' '], '', $profile->phone);
-                                                    if (substr($cleanPhone, 0, 2) === '62') {
-                                                        $cleanPhone = '0' . substr($cleanPhone, 2);
-                                                    }
-                                                @endphp
-
-                                                <a href="https://wa.me/{{ $cleanPhone }}">{{ $cleanPhone }}</a>
-                                            @empty
-                                                <a href="https://wa.me/6285176777785">085176777785</a>
-                                            @endforelse
+                                                        <a href="https://wa.me/{{ $cleanPhone }}">{{ $cleanPhone }}</a>
+                                                    @else
+                                                        <a href="https://wa.me/6285176777785">085176777785</a>
+                                                    @endisset
+                                                </div>
+                                            </li>
+                                        </ul>
                                     </div>
-                                </li>
-                            </ul>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
-    <!-- Start Footer Bottom -->
-    <div class="footer-bottom">
-        <div class="container">
-            <div class="footer-bottom-box mt-0 p-4">
-                <div class="row">
-                    <div class="col-lg-8">
-                        <p>&copy; Copyright 2024. All Rights Reserved by <a href="{{ url('/') }}">PT. Humma
-                                Teknologi Indonesia</a></p>
+                <!-- Start Footer Bottom -->
+                <div class="footer-bottom">
+                    <div class="container">
+                        <div class="footer-bottom-box mt-0 p-4">
+                            <div class="row">
+                                <div class="col-lg-8">
+                                    <p>&copy; Copyright 2024. All Rights Reserved by <a href="{{ url('/') }}">PT. Humma
+                                            Teknologi Indonesia</a></p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
-    <!-- End Footer Bottom -->
-</footer>
+                <!-- End Footer Bottom -->
+            </footer>
 <!-- End Footer -->
 
 <!-- jQuery Frameworks
