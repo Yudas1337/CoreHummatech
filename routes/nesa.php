@@ -13,4 +13,4 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('detail-logo', [HomeDetailLogoController::class, 'index']);
-
+// Route::get('/', [HeaderController::class, 'index']);
