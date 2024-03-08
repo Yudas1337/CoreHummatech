@@ -179,7 +179,7 @@
                     </ul>
                 </div>
                 <div class="d-flex justify-content-center pt-4">
-                    @if(count($news) > 0)
+                    @if($news->count() > 0)
                     <a class="text-primary" href="/data/product">
                         <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24">
                             <path fill="currentColor"

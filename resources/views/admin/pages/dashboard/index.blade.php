@@ -137,11 +137,11 @@
         <div class="card">
           <div class="card-header">
             <div class="header-top">
-              <h3>Sales Overview</h3>
+              <h3>Data Pengunjung</h3>
               <div class="card-header-right-icon">
                 <div class="dropdown">
-                  <button class="btn dropdown-toggle" id="dropdownMenuButton" type="button" data-bs-toggle="dropdown">Today</button>
-                  <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton"><a class="dropdown-item" href="#">Today</a><a class="dropdown-item" href="#">Tomorrow</a><a class="dropdown-item" href="#">Yesterday</a></div>
+                  <button class="btn dropdown-toggle" id="dropdownMenuButton" type="button" data-bs-toggle="dropdown">{{ Carbon\Carbon::now()->format('Y') }}</button>
+                  <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton"><a class="dropdown-item" href="#">Yesterday</a></div>
                 </div>
               </div>
             </div>
