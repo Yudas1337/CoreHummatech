@@ -58,6 +58,7 @@ class EventServiceProvider extends ServiceProvider
         NewsImage::observe(NewsImageObserver::class);
         Termscondition::observe(TermsconditionObserve::class);
 
+        
         parent::boot();
 
         $services = Service::all();

@@ -125,28 +125,34 @@
                         <div class="f-item about">
                             <img src="{{ asset('assets/images/LOGO-HUMMATECH_Putih.png') }}"
                                 style="height: 48px;width: auto;" alt="Logo">
+                            @isset($profiles)
+                            <p>{{ Str::limit($profiles->description, 200) }}</p>
+                            <a href="{{ url('/about-us') }}">Lihat Selengkapnya</a>
+                            @else
                             <p>
-                                bertransformasi menjadi perusahaan yang mampu menjawab tantangan di era revolusi industri 4.0
+                                Bertransformasi menjadi perusahaan yang mampu menjawab tantangan di era revolusi
+                                industri 4.0
                             </p>
+                            @endif
                         </div>
                     </div>
                     <div class="col-lg-2 col-md-6 item">
                         <div class="f-item link">
                             <h4 class="widget-title">Sosial Media</h4>
                             <ul>
-                                <li>
-                                    <a href="#"><i class="fas fa-angle-right"></i> Youtube</a>
-                                </li>
-                                <li>
-                                    <a href="#"><i class="fas fa-angle-right"></i> Instagram</a>
-                                </li>
-                                <li>
-                                    <a href="#"><i class="fas fa-angle-right"></i> Facebook</a>
-                                </li>
-                                <li>
-                                    <a href="#"><i class="fas fa-angle-right"></i>  Linkedin</a>
-                                </li>
-                                <li>
+                                @forelse ($socmed as $socmed)
+                                    <li>
+                                        <a href="{{ $socmed->link }}" style="display: flex;gap: .5rem;align-items: center">
+                                            <i class="fas fa-angle-right"></i>
+                                            <img alt="Facebook Logo" src="{{ asset("storage/{$socmed->image}") }}" height="16px" class="mb-0" width="16px" />
+                                            {{ $socmed->platform }}
+                                        </a>
+                                    </li>
+                                @empty
+                                    <li>
+                                        Tidak ada data
+                                    </li>
+                                @endforelse
                             </ul>
                         </div>
                     </div>
@@ -154,30 +160,14 @@
                         <div class="f-item link">
                             <h4 class="widget-title">Layanan Kami</h4>
                             <ul>
-                                <li>
-                                    <a href="about-us.html"><i class="fas fa-angle-right"></i> Software Development</a>
-                                </li>
-                                <li>
-                                    <a href="about-us.html"><i class="fas fa-angle-right"></i>  IT Consultan</a>
-                                </li>
-                                <li>
-                                    <a href="about-us.html"><i class="fas fa-angle-right"></i> Magang/Pkl</a>
-                                </li>
-                                <li>
-                                    <a href="services.html"><i class="fas fa-angle-right"></i> Kelas Industri</a>
-                                </li>
-                                <li>
-                                    <a href="about-us.html"><i class="fas fa-angle-right"></i> Pengadaan Hardware</a>
-                                </li>
-                                <li>
-                                    <a href="about-us.html"><i class="fas fa-angle-right"></i> Pelatihan Programing & Digital Marketing</a>
-                                </li>
-                                <li>
-                                    <a href="about-us.html"><i class="fas fa-angle-right"></i> Guru Tamu</a>
-                                </li>
-                                <li>
-                                    <a href="about-us.html"><i class="fas fa-angle-right"></i> Guru Magang</a>
-                                </li>
+                                @forelse ($services as $service)
+                                    <li>
+                                        <a href="{{ url("/layanan/{$service->slug}") }}"><i
+                                            class="fas fa-angle-right"></i> {{ $service->name }}</a>
+                                    </li>
+                                @empty
+                                    <li>Belum ada data layanan</li>
+                                @endforelse
                             </ul>
                         </div>
                     </div>
@@ -192,30 +182,55 @@
                                         </div>
                                         <div class="content">
                                             <strong>Alamat:</strong>
-                                            Perum. Permata Regency 1 Blok 10 No. 28 Kec. Karang Ploso, Kab. Malang, Jawa Timur, Indonesia
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="icon">
-                                            <i class="fas fa-envelope"></i>
-                                        </div>
-                                        <div class="content">
-                                            <strong>Email:</strong>
-                                            <a href="mailto:hummatech.id@gmail.com">hummatech.id@gmail.com</a>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="icon">
-                                            <i class="fas fa-phone"></i>
-                                        </div>
-                                        <div class="content">
-                                            <strong>Phone:</strong>
-                                            <a href="https://wa.me/6285176777785">085176777785</a>
-                                        </div>
-                                    </li>
-                                </ul>
+
+                                            @isset($profiles)
+                                                {{ $profiles->address }}
+                                            @else
+                                                Perum Permata Regency 1 Blok 10/28, Perun Gpa, Ngijo, Kec. Karang
+                                                Ploso, Kabupaten Malang, Jawa Timur 65152.
+                                                @endif
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="icon">
+                                                <i class="fas fa-envelope"></i>
+                                            </div>
+                                            <div class="content">
+                                                <strong>Email:</strong>
+                                                @isset($profiles)
+                                                    <a href="mailto:{{ $profiles->email }}">{{ $profiles->email }}</a>
+                                                @else
+                                                    <a href="mailto:info@hummatech.com">info@hummatech.com</a>
+                                                @endisset
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="icon">
+                                                <i class="fas fa-phone"></i>
+                                            </div>
+                                            <div class="content">
+                                                <strong>Phone:</strong>
+                                                @isset($profiles)
+                                                    @php
+                                                        $cleanPhone = str_replace(
+                                                            ['+', '-', ' '],
+                                                            '',
+                                                            $profiles->phone,
+                                                        );
+                                                        if (substr($cleanPhone, 0, 2) === '62') {
+                                                            $cleanPhone = '0' . substr($cleanPhone, 2);
+                                                        }
+                                                    @endphp
+
+                                                    <a href="https://wa.me/{{ $cleanPhone }}">{{ $cleanPhone }}</a>
+                                                @else
+                                                    <a href="https://wa.me/6285176777785">085176777785</a>
+                                                @endisset
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
                             </div>
-                        </div>
                     </div>
                 </div>
             </div>
