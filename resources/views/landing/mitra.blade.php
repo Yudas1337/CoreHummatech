@@ -106,7 +106,7 @@
             </div>
         </div>
     </div>
-    @foreach ($mitras as $mitra)
+    @forelse ($mitras as $mitra)
         <div class="work-process-area features-area default-padding-bottom py-5">
             <div class="container pt-5">
                 <div class="row">
@@ -120,14 +120,32 @@
                 </div>
                 <div class="row">
                     <div class="col-12 col-xxl-3 col-xl-2 mt-2">
-                        @foreach ($mitra->collab as $collab)
+                        @forelse ($mitra->collab as $collab)
                             <img src="{{ asset('storage/' . $collab->image) }}" alt="" width="200px">
-                        @endforeach
+                            @empty
+                            <div class="col-12">
+                                <div class="d-flex justify-content-center">
+                                    <img src="{{ asset('nodata-gif.gif') }}" alt="" width="800px">
+                                </div>
+                                <h4 class="text-center text-dark" style="font-weight:600">
+                                    Belum ada Mitra
+                                </h4>
+                            </div>
+                        @endforelse
                     </div>
                 </div>
             </div>
         </div>
-    @endforeach
+        @empty
+        <div class="col-12">
+            <div class="d-flex justify-content-center">
+                <img src="{{ asset('nodata-gif.gif') }}" alt="" width="800px">
+            </div>
+            <h4 class="text-center text-dark" style="font-weight:600">
+                Belum ada Mitra
+            </h4>
+        </div>
+    @endforelse
 @endsection
 @section('script')
     <script>
