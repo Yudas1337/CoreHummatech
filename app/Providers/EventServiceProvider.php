@@ -9,11 +9,13 @@ use App\Models\Faq;
 use App\Models\News;
 use App\Models\NewsCategory;
 use App\Models\NewsImage;
+use App\Models\Profile;
 use App\Models\Sale;
 use App\Models\Testimonial;
 use App\Observers\EnterpriseStructureObserver;
 use App\Models\SalesPackage;
 use App\Models\Service;
+use App\Models\SosialMedia;
 use App\Models\Termscondition;
 use App\Observers\CategoryNewsObserver;
 use App\Observers\FaqObserver;
@@ -58,7 +60,12 @@ class EventServiceProvider extends ServiceProvider
         parent::boot();
 
         $services = Service::all();
+        $profiles = Profile::first();
+        $social = SosialMedia::all();
         $branchs = Branch::all();
+
+        View::share('profiles', $profiles);
+        View::share('socmed', $social);
         View::share('services', $services);
         View::share('branchs', $branchs);
     }
