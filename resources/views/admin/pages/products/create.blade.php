@@ -78,7 +78,7 @@
                                 </div>
                             </div>
                             <div class="d-flex justify-content-end gap-2">
-                                <a href="{{ route('product.index') }}" class="btn btn-light-danger mt-2" type="button">Kembali</a>
+                                <a href="{{ route('product.index') }}" class="btn btn-light-danger mt-2 text-danger" style="padding: 10px 20px;" type="button">Kembali</a>
                                 <button class="btn btn-primary" type="submit">Tambah</button>
                             </div>
                         </form>
@@ -169,7 +169,7 @@
                                 </div>
                             </div>
                             <div class="d-flex justify-content-end gap-2">
-                                <a href="{{ route('product.index') }}" class="btn btn-light-danger mt-2" type="button">Kembali</a>
+                                <a href="{{ route('product.index') }}" class="btn btn-light-danger mt-2 text-danger" style="padding: 10px 20px;" type="button">Kembali</a>
                                 <button class="btn btn-primary" type="submit">Tambah</button>
                             </div>
                         </form>

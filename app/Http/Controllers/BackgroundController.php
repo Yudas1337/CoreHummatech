@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Contracts\Interfaces\BackgroundInterface;
+use App\Http\Requests\StoreBackgroundRequest;
 use App\Http\Requests\UpdateBackgroundRequest;
 use App\Models\Background;
 use App\Services\BackgroundService;
@@ -38,7 +39,7 @@ class BackgroundController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreBackgroundRequest $request)
     {
         $data = $this->service->store($request);
         $this->background->store($data);

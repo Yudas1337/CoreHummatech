@@ -2,28 +2,13 @@
 
 namespace App\Services;
 
-use App\Enums\TypeEnum;
 use App\Http\Requests\StoreBackgroundRequest;
-use App\Http\Requests\StoreLogoRequest;
 use App\Traits\UploadTrait;
 use App\Http\Requests\StoreSaleRequest;
-use App\Http\Requests\StoreServiceRequest;
-use App\Http\Requests\StoreStructureRequest;
-use App\Http\Requests\StoreTeamRequest;
-use App\Http\Requests\UpdateLogoRequest;
-use App\Http\Requests\UpdateProductRequest;
+use App\Http\Requests\UpdateBackgroundRequest;
 use App\Http\Requests\UpdateSaleRequest;
-use App\Http\Requests\UpdateServiceRequest;
-use App\Http\Requests\UpdateStructureRequest;
-use App\Http\Requests\UpdateTeamRequest;
 use App\Models\Background;
-use App\Models\Logo;
-use App\Models\Product;
 use App\Models\Sale;
-use App\Models\Service;
-use App\Models\Structure;
-use App\Models\Team;
-use Illuminate\Support\Facades\Log;
 
 class BackgroundService
 {
@@ -70,22 +55,25 @@ class BackgroundService
      *
      * @return array|bool
      */
-    public function update(Background $background, UpdateLogoRequest $request): array|bool
+    public function update(Background $background, UpdateBackgroundRequest $request): array|bool
     {
         $data = $request->validated();
+        if($request->show_in != 'Layanan') {
+            $data['service_id'] = null;
+        }
 
         if ($request->hasFile('image') && $request->file('image')->isValid()) {
-            $this->remove($logo->image);
+            $this->remove($background->image);
             $data['image'] = $request->file('image')->store($request->type, 'public');
         } else {
-            $data['image'] = $logo->image;
+            $data['image'] = $background->image;
         }
 
         return $data;
     }
 
-    public function delete(Logo $logo)
+    public function delete(Background $background)
     {
-        $this->remove($logo->image);
+        $this->remove($background->image);
     }
 }

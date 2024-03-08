@@ -5,8 +5,8 @@
     <div class="p-4 m-5">
             <ul class="simple-wrapper nav nav-tabs justify-content-between" id="myTab" role="tablist">
                 <div class="d-flex">
-                    <li class="nav-item"><a class="nav-link active txt-primary" id="profile-tabs" data-bs-toggle="tab" href="#section" role="tab" aria-controls="profile" aria-selected="false">Produk/Portofolio</a></li>
-                    <li class="nav-item"><a class="nav-link txt-primary" id="contact-tab" data-bs-toggle="tab" href="#background" role="tab" aria-controls="contact" aria-selected="false">Produk layanan</a></li>
+                    <li class="nav-item"><a class="nav-link active txt-primary" id="profile-tabs" data-bs-toggle="tab" href="#section" role="tab" aria-controls="profile" aria-selected="false">Slider</a></li>
+                    <li class="nav-item"><a class="nav-link txt-primary" id="contact-tab" data-bs-toggle="tab" href="#background" role="tab" aria-controls="contact" aria-selected="false">Background</a></li>
                 </div>
                 <div class="col-12 col-lg-6 me-5">
                     <div class="d-flex justify-content-lg-end justify-content-start me-5">
@@ -65,7 +65,7 @@
                     <div class="row">
                         @forelse ($backgrounds as $background)
                         <div class="col-md-12 col-12 col-xl-6">
-                            <div class="card rounded-4" style="height: 150px">
+                            <div class="card rounded-4" style="height: 200px">
                                 <div class="product-box rounded-4">
                                     <div class="product-img">
                                         <img class="img-fluid"
@@ -73,16 +73,20 @@
                                             alt="" />
 
                                         <div class="content-center">
-                                            <h3 class="title">{{ $background->title }}</h3>
+                                            <h3 class="title">{{ $background->service_id == null ? $background->show_in : $background->service->name }}</h3>
                                         </div>
 
                                         <div class="product-hover">
                                             <ul>
                                                 <li>
-                                                    <button class="btn-edit" type="button" data-id="{{ $background->id }}" data-showIn="{{ $background->show_in }}" data-image="{{ $bcakground->image }}" data-service="{{ $background->service_id }}"><i class="fas fa-pencil"></i></button>
+                                                    <button class="btn-edit" type="button" 
+                                                    data-id="{{ $background->id }}" 
+                                                    data-showIn="{{ $background->show_in }}" 
+                                                    data-image="{{ $background->image }}" 
+                                                    data-service="{{ $background->service_id }}" style="border: none; background: none;"><i class="fas fa-pencil" style="margin-left: -5px"></i></button>
                                                 </li>
                                                 <li>
-                                                    <a class="btn-delete-background" data-id="{{ $background->id }}"><i class="fas fa-trash"></i></a>
+                                                    <a class="btn-delete-background" data-id="{{ $background->id }}"><i class="fas fa-trash" style="mergin-left: 3px"></i></a>
                                                 </li>
                                             </ul>
                                         </div>
@@ -181,7 +185,7 @@
                                 <small class="text-danger">{{ $message }}</small>
                             @enderror
                         </div>
-                        <div class="form-group mb-3 mt-0 col-md-12" id="service" style="display: none;">
+                        <div class="form-group mb-3 mt-0 col-md-12 service" style="display: none;">
                             <label for="service_id">Tampilkan Pada Layanan</label>
                             <select name="service_id" class="js-example-basic-single form-select">
                                 <option value="" disabled selected>Pilih Layanan</option>
@@ -247,7 +251,7 @@
                                 <small class="text-danger">{{ $message }}</small>
                             @enderror
                         </div>
-                        <div class="form-group mb-3 mt-0 col-md-12" id="service" style="display: none;">
+                        <div class="form-group mb-3 mt-0 col-md-12 service" style="display: none;">
                             <label for="service_id">Tampilkan Pada Layanan</label>
                             <select name="service_id" class="js-example-basic-single form-select" id="service-edit">
                                 <option value="" disabled selected>Pilih Layanan</option>
@@ -262,9 +266,9 @@
                             @enderror
                         </div>
                          <div class="mb-3 mt-0 col-md-12">
-                             <label for="image">Foto Background</label>
+                             <label for="image">Foto Background</label><br>
                              <img id="image-edit" style="width: 200px; height: auto; border: 1px solid #ccc;">
-                            <input class="form-control" type="file" name="image" required onchange="previewImage()">
+                            <input class="form-control mt-2" type="file" name="image" required onchange="previewImage()">
                                  @error('image')
                                      <p class="text-danger">
                                          {{ $message }}
@@ -276,7 +280,7 @@
                  <div class="modal-footer">
                      <div class="d-flex justify-content-end">
                          <button class="btn btn-light-danger" type="button" data-bs-dismiss="modal">Tutup</button>
-                         <button class="btn btn-light-primary" type="submit">Tambah</button>
+                         <button class="btn btn-light-primary" type="submit">Simpan</button>
                      </div>
                  </div>
              </form>
@@ -312,7 +316,7 @@
 
          $('.btn-delete-background').on('click', function() {
             var id = $(this).data('id');
-            $('#form-delete').attr('action', '/delete/section/' + id);
+            $('#form-delete').attr('action', 'background/delete/' + id);
             $('#modal-delete').modal('show');
         });
 
@@ -338,7 +342,7 @@
         $('.showIn').change(function(){
             var selectedOption = $(this).val();
 
-            if(selectedOption == "layanan") {
+            if(selectedOption == "Layanan") {
                 $('.service').show();
             } else {
                 $('.service').hide();
