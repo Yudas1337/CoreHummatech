@@ -226,8 +226,8 @@
                 <div class="footer-bottom-box mt-0 p-4">
                     <div class="row">
                         <div class="col-lg-8">
-                            <p>&copy; Copyright 2021. All Rights Reserved by <a
-                                    href="{{ url('/') }}">PT. Humma Teknologi DIgital Indonesia</a></p>
+                            <p>&copy; Copyright 2024. All Rights Reserved by <a
+                                    href="{{ url('/') }}">PT. Humma Teknologi Indonesia</a></p>
                         </div>
                     </div>
                 </div>
