@@ -54,6 +54,35 @@
             }
         }
     </style>
+    <style>
+        .custom-tabs {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            overflow: hidden;
+            overflow-x: auto;
+            padding-top: 2rem;
+            flex-wrap: nowrap;
+        }
+
+        .custom-tabs li a {
+            margin-right: 1rem;
+            text-transform: uppercase;
+            display: flex;
+            justify-content: center;
+            flex-wrap: nowrap;
+            white-space: nowrap;
+        }
+
+        .custom-tabs li:last-child a {
+            margin-right: 0;
+        }
+
+        .custom-tabs li.active a {
+            border-bottom: 4px solid #1273eb;
+            color: #1273eb;
+        }
+    </style>
 @endsection
 
 @section('seo')
@@ -82,7 +111,7 @@
 
 @section('content')
     <div class="breadcrumb-area text-center shadow dark text-light bg-cover"
-        style="background-image: url({{ asset('assets-home/img/banner/10.jpg') }});">
+        style="background-image: url({{ $background == null ? asset('assets-home/img/default-bg.png') : asset('storage/'. $background->image) }});">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 offset-lg-2">
@@ -95,6 +124,20 @@
             </div>
         </div>
     </div>
+
+    <div class="about-us-area">
+        <div class="container">
+            <ul class="nav custom-tabs">
+                <li @if (!request()->category) class="active" @endif><a href="{{ url('/data/product') }}">Semua</a></li>
+                @foreach ($categories as $category)
+                    <li class="{{ request()->is("data/product/kategori/{$category->slug}") ? 'active' : '' }}">
+                        <a href="{{ url("data/product/kategori/{$category->slug}") }}">{{ $category->name }}</a>
+                    </li>
+                @endforeach
+            </ul>
+        </div>
+    </div>
+
     <div class="thumb-services-area inc-thumbnail default-padding bottom-less ps-5">
         @forelse ($products as $key => $product)
             @if ($key % 2 === 1)
@@ -115,7 +158,7 @@
                                 </p>
 
                                 <div class="d-flex gap-2">
-                                    <a class="btn btn-stroke-gradient effect btn-md" href="{{ route('detail.product', $product->slug) }}">Lihat
+                                    <a class="btn btn-stroke-gradient text-gradient effect btn-md" href="{{ route('detail.product', $product->slug) }}">Lihat
                                         Detail</a>
                                     <a class="btn btn-gradient effect btn-md" target="_blank" href="{{ $product->link }}">Kunjungi
                                         website</a>

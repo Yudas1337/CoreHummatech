@@ -31,6 +31,7 @@ use App\Http\Controllers\TestimonialController;
 use App\Http\Controllers\CategoryNewsController;
 use App\Http\Controllers\SalesPackageController;
 use App\Http\Controllers\CollabCategoryController;
+use App\Http\Controllers\HomeContactController;
 use App\Http\Controllers\TermsconditionController;
 use App\Http\Controllers\VisionAndMisionController;
 
@@ -217,16 +218,15 @@ Route::get('berita/{slugnews}', [NewsController::class, 'showNews'])->name('news
 //showService
 Route::get('layanan/{slugService}', [ServiceController::class, 'ShowService']);
 
-//all-product
+//product
 Route::get('data/product', [HomeProductController::class, 'index']);
+Route::get('data/product/kategori/{category:slug}',[HomeProductController::class,'productCategory']);
 
 //detail-product
 Route::get('detail/{product:slug}', [ProductController::class, 'showproduct'])->name('detail.product');
 
 //contact-us
-Route::get('contact', function () {
-    return view('landing.contact');
-})->name('contact');
+Route::get('contact', [HomeContactController::class, 'index'])->name('contact');
 
 Route::get('mitra',  [HomePageController::class , 'mitra']);
 

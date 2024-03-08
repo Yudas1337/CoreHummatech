@@ -194,7 +194,7 @@
 
 @section('content')
     <div class="breadcrumb-area text-center shadow dark text-light bg-cover"
-        style="background-image: url({{ asset('assets-home/img/banner/10.jpg') }});">
+        style="background-image: url({{ $background == null ? asset('assets-home/img/default-bg.png') : asset('storage/'. $background->image) }});">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 offset-lg-2">
@@ -243,7 +243,7 @@
                                         <div class="col-lg-7 wow fadeInDown">
                                             <h2>{{ $product->name }}</h2>
                                             <p>{{ $product->description }}</p>
-                                            <a class="btn btn-stroke-gradient effect btn-md"
+                                            <a class="btn btn-stroke-gradient text-gradient effect btn-md"
                                                 href="/detail/{{ $product->slug }}">Lihat detail</a>
                                             <a class="btn btn-gradient effect btn-md" href="{{ $product->link }}">Kunjungi
                                                 website</a>

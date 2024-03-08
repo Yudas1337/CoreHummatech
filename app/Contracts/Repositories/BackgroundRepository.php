@@ -30,4 +30,14 @@ class BackgroundRepository extends BaseRepository implements BackgroundInterface
     {
         return $this->model->query()->findOrFail($id)->update($data);
     }
+
+    public function getByType(mixed $type): mixed
+    {
+        return $this->model->query()->where('show_in', $type)->first();
+    }
+
+    public function getByServiceId(mixed $type): mixed
+    {
+        return $this->model->query()->where('service_id', $type)->first();
+    }
 }

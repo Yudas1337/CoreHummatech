@@ -137,39 +137,33 @@
     <h1>
         {{ $visitorDetections }}
     </h1>
-    {{-- <div class="row">
-        <div class="col-xxl-12 col-xl-100 box-col-12 proorder-xl-8">
-            <div class="card sales overview">
-                <div class="card-header card-no-border pb-0">
-                    <div class="header-top">
-                        <h4>Sales Overview</h4>
-                        <div class="dropdown icon-dropdown">
-                            <button class="btn dropdown-toggle" id="userdropdown5" type="button" data-bs-toggle="dropdown"
-                                aria-expanded="false"><i class="icon-more-alt"></i></button>
-                            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="userdropdown5"><a
-                                    class="dropdown-item" href="#">Weekly</a><a class="dropdown-item"
-                                    href="#">Monthly</a><a class="dropdown-item" href="#">Yearly</a></div>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12 box-col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="header-top">
+                            <h3>Sales Overview</h3>
+                            <div class="card-header-right-icon">
+                                <div class="dropdown">
+                                    <button class="btn dropdown-toggle" id="dropdownMenuButton" type="button" data-bs-toggle="dropdown">Today</button>
+                                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">
+                                        <a class="dropdown-item" href="#">Today</a>
+                                        <a class="dropdown-item" href="#">Tomorrow</a>
+                                        <a class="dropdown-item" href="#">Yesterday</a>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="card-body p-0">
-                    <div class="sales-chart">
-                        <div class="shap-2">
-                            <div class="rounded-shap animate-bg-secondary"><i></i><i></i></div>
+                    <div class="card-body">
+                        <div class="chart-container progress-chart">
+                            <canvas id="sales-overview-2"></canvas>
                         </div>
-                        <div class="shap-2">
-                            <div class="rounded-shap animate-bg-secondary"><i></i><i></i></div>
-                        </div>
-                        <div class="shap-2">
-                            <div class="rounded-shap animate-bg-secondary"><i></i><i></i></div>
-                        </div>
-                        <div class="shap-2">
-                            <div class="rounded-shap animate-bg-secondary"><i></i><i></i></div>
-                        </div>
-                        <div id="sales-overview"></div>
                     </div>
                 </div>
             </div>
         </div>
-    </div> --}}
+    </div>
 @endsection

@@ -93,7 +93,7 @@
 
 @section('content')
     <div class="breadcrumb-area text-center shadow dark text-light bg-cover"
-        style="background-image: url({{ asset('assets-home/img/banner/10.jpg') }});">
+        style="background-image: url({{ $background == null ? asset('assets-home/img/default-bg.png') : asset('storage/'. $background->image) }});">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 offset-lg-2">
@@ -107,12 +107,12 @@
         </div>
     </div>
 
-    <div class="about-us-area">
+    <div class="about-us-area pt-5">
         <div class="container">
             <img src="{{ asset('assets-home/img/about-polygon.svg') }}" class="about-triangle" alt="Polygon" />
             <div class="about-items">
-                <div class="row align-center">
-                    <div class="col-lg-6 info">
+                <div class="row align-center justify-content-center">
+                    <div class="col-lg-6 info text-center">
                         <h4 class="subtitle">Profile Perusahaan</h4>
                         @forelse ($profiles as $profile)
                             <h2>{{ $profile->subtitle }}</h2>
@@ -161,53 +161,58 @@
                 </div>
             </div>
         </div>
+
         <div class="container">
-            <div class="work-process-items features-content">
-                <div class="row">
-                    @forelse ($visionMisions as $key=>$visionMision)
-                        <div class="single-item col-lg-4 col-md-6 mb-4 wow fadeInRight" data-wow-delay="300ms"
-                            style="visibility: visible; animation-delay: 300ms; animation-name: fadeInRight;">
-                            <div class="item">
-                                <i class="flaticon-speech-bubble"></i>
-                                <div class="top">
-                                    <span>{{ sprintf('%02d', ++$key) }}</span>
-                                    <h4>Visi</h4>
+            <div class="row">
+                @forelse ($visionMisions as $visionMission)
+                    <div class="single-item  col-lg-4 col-md-6 mb-4 text-light fadeInRight "  data-wow-delay="300ms"
+                    style="visibility: visible; animation-delay: 300ms; animation-name: fadeInRight;">
+                        <div class=" bg-primary py-5 px-5 rounded">
+                            <div class=" d-flex justify-content-center align-items-center">
+                                <p class="text-light" style="font-weight: 900">______________</p>
+                                <h3 class="mt-2 px-3 text-light " style="font-weight: 900">Visi</h3>
+                                <p class="text-light" style="font-weight: 900">______________</p>
+                            </div>
+                            <p class="fw-semibold">
+                                {{ $visionMission->vision }}
+                            </p>
+                        </div>
+                    </div>
+
+                    @forelse ($missions as $mission)
+                        <div class="single-item col-lg-4 col-md-6 mb-4 text-dark fadeInRight shadow"  data-wow-delay="300ms"
+                        style="visibility: visible; animation-delay: 300ms; animation-name: fadeInRight;">
+                            <div class="py-5 px-5" style="border-radius: 8px; box-shadow: 0px 0px 15px .3px #00000012">
+                                <div class=" d-flex justify-content-center align-items-center">
+                                    <p class="text-primary" style="font-weight: 900">______________</p>
+                                    <h3 class="mt-2 px-3 text-primary " style="font-weight: 900">Misi</h3>
+                                    <p class="text-primary" style="font-weight: 900">______________</p>
                                 </div>
-                                <p>
-                                    {{ $visionMision->vision }}
+                                <p class="fw-semibold">
+                                    {{ $mission->mission }}
                                 </p>
-                                <a href="about-us.html"><i class="arrow_right"></i></a>
                             </div>
                         </div>
-
-                        @foreach ($missions as $mission)
-                            <div class="single-item col-lg-4 col-md-6 mb-4 wow fadeInRight" data-wow-delay="500ms"
-                                style="visibility: visible; animation-delay: 500ms; animation-name: fadeInRight;">
-                                <div class="item">
-                                    <i class="flaticon-label"></i>
-                                    <div class="top">
-                                        <span>{{ sprintf('%02d', ++$key) }}</span>
-                                        <h4>Misi</h4>
-                                    </div>
-                                    <p>
-                                        {{ $mission->mission }}
-                                    </p>
-                                    <a href="about-us.html"><i class="arrow_right"></i></a>
-                                </div>
-                            </div>
-                        @endforeach
-
                     @empty
                         <div class="col-12">
                             <div class="d-flex justify-content-center">
                                 <img src="{{ asset('nodata-gif.gif') }}" alt="" width="800px">
                             </div>
                             <h4 class="text-center text-dark" style="font-weight:600">
-                                Belum ada visi-misi
+                                Belum ada misi perusahaan
                             </h4>
-                        </div>
+                        </div>    
                     @endforelse
-                </div>
+                @empty
+                    <div class="col-12">
+                        <div class="d-flex justify-content-center">
+                            <img src="{{ asset('nodata-gif.gif') }}" alt="" width="800px">
+                        </div>
+                        <h4 class="text-center text-dark" style="font-weight:600">
+                            Belum ada visi-misi perusahaan
+                        </h4>
+                    </div>
+                @endforelse
             </div>
         </div>
     </div>

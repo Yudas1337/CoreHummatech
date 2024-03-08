@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Contracts\Interfaces\BackgroundInterface;
 use App\Contracts\Interfaces\CategoryNewsInterface;
 use App\Contracts\Interfaces\NewsCategoryInterface;
 use App\Contracts\Interfaces\NewsInterface;
@@ -20,13 +21,15 @@ class NewsController extends Controller
     private NewsService $newsService;
     private CategoryNewsInterface $category;
     private NewsCategoryInterface $newsCategory;
+    private BackgroundInterface $background;
 
-    public function __construct(NewsInterface $news, NewsService $newsService, CategoryNewsInterface $category, NewsCategoryInterface $newsCategoryInterface)
+    public function __construct(NewsInterface $news, NewsService $newsService, CategoryNewsInterface $category, NewsCategoryInterface $newsCategoryInterface, BackgroundInterface $background)
     {
         $this->newsCategory = $newsCategoryInterface;
         $this->news = $news;
         $this->newsService = $newsService;
         $this->category = $category;
+        $this->background = $background;
     }
 
     /**
@@ -127,7 +130,8 @@ class NewsController extends Controller
     {
         $newsCategories = $this->category->get();
         $newses = $this->news->customPaginate($request, 12);
-        return view('landing.news.index', compact('newses', 'newsCategories'));
+        $background = $this->background->getByType('Berita');
+        return view('landing.news.index', compact('newses', 'newsCategories', 'background'));
     }
 
     /**
