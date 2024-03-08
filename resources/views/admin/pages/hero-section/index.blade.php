@@ -29,13 +29,13 @@
                                         <img class="img-fluid"
                                             src="{{ asset('storage/' .$section->image) }}"
                                             alt="" />
-                
+
                                         <div class="content-center">
                                             <h3 class="title">{{ $section->title }}</h3>
                                             <p class="subtitle fs-6">{{ $section->subtitle }}</p>
                                             <div class="btn btn-lg btn-primary">Lihat Selengkapnya</div>
                                         </div>
-                
+
                                         <div class="product-hover">
                                             <ul>
                                                 <li>
@@ -71,11 +71,11 @@
                                         <img class="img-fluid"
                                             src="{{ asset('storage/' .$background->image) }}"
                                             alt="" />
-                
+
                                         <div class="content-center">
                                             <h3 class="title">{{ $background->title }}</h3>
                                         </div>
-                
+
                                         <div class="product-hover">
                                             <ul>
                                                 <li>
@@ -103,7 +103,7 @@
             </div>
     </div>
 </div>
-@endsection 
+@endsection
 @section('header-style')
     <style>
         .product-box {
@@ -160,25 +160,22 @@
                  <h5 class="modal-title fw-semibold" id="exampleModalLabel">Tambah Background</h5>
                  <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
              </div>
-             <form class="form-bookmark needs-validation" action="{{ route('category-product.store') }}" method="POST" id="bookmark-form" novalidate=""
+             <form class="form-bookmark needs-validation" action="/background/store" method="POST" id="bookmark-form" novalidate=""
                  enctype="multipart/form-data">
                  @csrf
                  @method('POST')
                  <div class="modal-body">
                      <div class="row g-2">
                         <div class="form-group mb-3 mt-0 col-md-12 show_in">
-                            @php
-                                use App\Enums\PageEnum;
-                            @endphp
                             <label for="category">Tampilkan di Halaman</label>
                             <select name="show_in" class="showIn js-example-basic-single form-select" id="#edit">
                                 <option value="" disabled selected>Pilih Halaman</option>
-                                <option value="{{ PageEnum::TENTANG->value }}">{{ PageEnum::TENTANG->value }}</option>
-                                <option value="{{ PageEnum::LAYANAN->value }}">{{ PageEnum::LAYANAN->value }}</option>
-                                <option value="{{ PageEnum::PORTOFOLIO->value }}">{{ PageEnum::PORTOFOLIO->value }}</option>
-                                <option value="{{ PageEnum::BERITA->value }}">{{ PageEnum::BERITA->value }}</option>
-                                <option value="{{ PageEnum::HUBUNGI->value }}">{{ PageEnum::HUBUNGI->value }}</option>
-                                <option value="{{ PageEnum::LOWONGAN->value }}">{{ PageEnum::LOWONGAN->value }}</option>
+                                <option value="Tentang Kami">Tentang Kami</option>
+                                <option value="Layanan">Layanan</option>
+                                <option value="Portofolio">Portofolio</option>
+                                <option value="Berita">Berita</option>
+                                <option value="Hubungi Kami">Hubungi Kami</option>
+                                <option value="Lowongan">Lowongan</option>
                             </select>
                             @error('show_in')
                                 <small class="text-danger">{{ $message }}</small>
@@ -237,14 +234,14 @@
                      <div class="row g-2">
                         <div class="form-group mb-3 mt-0 col-md-12 show_in">
                             <label for="category">Tampilkan di Halaman</label>
-                            <select name="show_in" class="showIn js-example-basic-single form-select" id="showIn-edit">
+                            <select name="show_in" class="showIn js-example-basic-single form-select" id="#edit">
                                 <option value="" disabled selected>Pilih Halaman</option>
-                                <option value="{{ PageEnum::TENTANG->value }}">{{ PageEnum::TENTANG->value }}</option>
-                                <option value="{{ PageEnum::LAYANAN->value }}">{{ PageEnum::LAYANAN->value }}</option>
-                                <option value="{{ PageEnum::PORTOFOLIO->value }}">{{ PageEnum::PORTOFOLIO->value }}</option>
-                                <option value="{{ PageEnum::BERITA->value }}">{{ PageEnum::BERITA->value }}</option>
-                                <option value="{{ PageEnum::HUBUNGI->value }}">{{ PageEnum::HUBUNGI->value }}</option>
-                                <option value="{{ PageEnum::LOWONGAN->value }}">{{ PageEnum::LOWONGAN->value }}</option>
+                                <option value="Tentang Kami">Tentang Kami</option>
+                                <option value="Layanan">Layanan</option>
+                                <option value="Portofolio">Portofolio</option>
+                                <option value="Berita">Berita</option>
+                                <option value="Hubungi Kami">Hubungi Kami</option>
+                                <option value="Lowongan">Lowongan</option>
                             </select>
                             @error('show_in')
                                 <small class="text-danger">{{ $message }}</small>
@@ -267,7 +264,7 @@
                          <div class="mb-3 mt-0 col-md-12">
                              <label for="image">Foto Background</label>
                              <img id="image-edit" style="width: 200px; height: auto; border: 1px solid #ccc;">
-                            <input class="form-control" type="file" name="image" required onchange="previewImage()"> 
+                            <input class="form-control" type="file" name="image" required onchange="previewImage()">
                                  @error('image')
                                      <p class="text-danger">
                                          {{ $message }}
@@ -311,20 +308,20 @@
             var id = $(this).data('id');
             $('#form-delete').attr('action', '/delete/section/' + id);
             $('#modal-delete').modal('show');
-        }); 
-        
+        });
+
          $('.btn-delete-background').on('click', function() {
             var id = $(this).data('id');
             $('#form-delete').attr('action', '/delete/section/' + id);
             $('#modal-delete').modal('show');
-        }); 
-        
+        });
+
         $('.btn-edit').click(function() {
-            var id = $(this).data('id'); 
+            var id = $(this).data('id');
             var serviceId = $(this).data('service');
             var showIn = $(this).data('showIn');
             var image = $(this).data('image');
-            $('#form-update').attr('action', 'background/update/' + id); 
+            $('#form-update').attr('action', 'background/update/' + id);
             $('#service-edit').val(serviceId);
             $('.showIn-edit').val(showIn);
             $('#image-edit').attr('src', 'storage/'+image);
@@ -340,8 +337,8 @@
 
         $('.showIn').change(function(){
             var selectedOption = $(this).val();
-            
-            if(selectedOption == "{{ PageEnum::LAYANAN->value }}") {
+
+            if(selectedOption == "layanan") {
                 $('.service').show();
             } else {
                 $('.service').hide();
@@ -352,14 +349,14 @@
         function previewImage() {
             var input = document.querySelector('input[type="file"]');
             var image = document.getElementById('image-edit');
-    
+
             if (input.files && input.files[0]) {
                 var reader = new FileReader();
-    
+
                 reader.onload = function (e) {
                     image.setAttribute('src', e.target.result);
                 }
-    
+
                 reader.readAsDataURL(input.files[0]);
             }
         }
