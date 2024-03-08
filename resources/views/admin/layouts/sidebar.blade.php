@@ -219,10 +219,10 @@
         <i class="fa fa-thumb-tack"></i>
         <a class="sidebar-link sidebar-title" href="#">
             <svg class="stroke-icon">
-                <use href="{{ asset('assets/svg/icon-sprite.svg#stroke-contact') }}"></use>
+                <use href="{{ asset('assets/svg/icon-sprite.svg#stroke-builders') }}"></use>
             </svg>
             <svg class="fill-icon">
-                <use href="{{ asset('assets/svg/icon-sprite.svg#fill-contact') }}"></use>
+                <use href="{{ asset('assets/svg/icon-sprite.svg#fill-builders') }}"></use>
             </svg>
             <span>Lowongan</span>
         </a>
