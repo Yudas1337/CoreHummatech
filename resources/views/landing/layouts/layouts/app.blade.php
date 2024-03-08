@@ -154,30 +154,14 @@
                         <div class="f-item link">
                             <h4 class="widget-title">Layanan Kami</h4>
                             <ul>
-                                <li>
-                                    <a href="about-us.html"><i class="fas fa-angle-right"></i> Software Development</a>
-                                </li>
-                                <li>
-                                    <a href="about-us.html"><i class="fas fa-angle-right"></i>  IT Consultan</a>
-                                </li>
-                                <li>
-                                    <a href="about-us.html"><i class="fas fa-angle-right"></i> Magang/Pkl</a>
-                                </li>
-                                <li>
-                                    <a href="services.html"><i class="fas fa-angle-right"></i> Kelas Industri</a>
-                                </li>
-                                <li>
-                                    <a href="about-us.html"><i class="fas fa-angle-right"></i> Pengadaan Hardware</a>
-                                </li>
-                                <li>
-                                    <a href="about-us.html"><i class="fas fa-angle-right"></i> Pelatihan Programing & Digital Marketing</a>
-                                </li>
-                                <li>
-                                    <a href="about-us.html"><i class="fas fa-angle-right"></i> Guru Tamu</a>
-                                </li>
-                                <li>
-                                    <a href="about-us.html"><i class="fas fa-angle-right"></i> Guru Magang</a>
-                                </li>
+                                @forelse ($services as $service)
+                                    <li>
+                                        <a href="{{ url("/layanan/{$service->slug}") }}"><i
+                                            class="fas fa-angle-right"></i> {{ $service->name }}</a>
+                                    </li>
+                                @empty
+                                    <li>Belum ada data layanan</li>
+                                @endforelse
                             </ul>
                         </div>
                     </div>
