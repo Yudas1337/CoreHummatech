@@ -54,6 +54,35 @@
             }
         }
     </style>
+    <style>
+        .custom-tabs {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            overflow: hidden;
+            overflow-x: auto;
+            padding-top: 2rem;
+            flex-wrap: nowrap;
+        }
+
+        .custom-tabs li a {
+            margin-right: 1rem;
+            text-transform: uppercase;
+            display: flex;
+            justify-content: center;
+            flex-wrap: nowrap;
+            white-space: nowrap;
+        }
+
+        .custom-tabs li:last-child a {
+            margin-right: 0;
+        }
+
+        .custom-tabs li.active a {
+            border-bottom: 4px solid #1273eb;
+            color: #1273eb;
+        }
+    </style>
 @endsection
 
 @section('seo')
@@ -95,6 +124,20 @@
             </div>
         </div>
     </div>
+
+    <div class="about-us-area">
+        <div class="container">
+            <ul class="nav custom-tabs">
+                <li @if (!request()->category) class="active" @endif><a href="{{ url('/data/product') }}">Semua</a></li>
+                @foreach ($categories as $category)
+                    <li class="{{ request()->is("data/product/kategori/{$category->slug}") ? 'active' : '' }}">
+                        <a href="{{ url("data/product/kategori/{$category->slug}") }}">{{ $category->name }}</a>
+                    </li>
+                @endforeach
+            </ul>
+        </div>
+    </div>
+
     <div class="thumb-services-area inc-thumbnail default-padding bottom-less ps-5">
         @forelse ($products as $key => $product)
             @if ($key % 2 === 1)

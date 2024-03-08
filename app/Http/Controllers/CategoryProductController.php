@@ -6,15 +6,18 @@ use App\Contracts\Interfaces\CategoryProductInterface;
 use App\Models\CategoryProduct;
 use App\Http\Requests\StoreCategoryProductRequest;
 use App\Http\Requests\UpdateCategoryProductRequest;
+use App\Services\CategoryProductService;
 
 class CategoryProductController extends Controller
 {
 
     private CategoryProductInterface $categoryProduct;
+    private CategoryProductService $service;
 
-    public function __construct(CategoryProductInterface $categoryProduct)
+    public function __construct(CategoryProductInterface $categoryProduct, CategoryProductService $service)
     {
         $this->categoryProduct = $categoryProduct;
+        $this->service = $service;
     }
     /**
      * Display a listing of the resource.
@@ -38,7 +41,8 @@ class CategoryProductController extends Controller
      */
     public function store(StoreCategoryProductRequest $request)
     {
-        $this->categoryProduct->store($request->validated());
+       $data = $this->service->store($request);
+        $this->categoryProduct->store($data);
         return back()->with('success' , 'Berhasil Menambahkan data');
     }
 
@@ -63,7 +67,8 @@ class CategoryProductController extends Controller
      */
     public function update(UpdateCategoryProductRequest $request, CategoryProduct $categoryProduct)
     {
-        $this->categoryProduct->update($categoryProduct->id , $request->validated());
+        $data = $this->service->update( $categoryProduct,$request);
+        $this->categoryProduct->update($categoryProduct->id , $data);
         return back()->with('success' , 'Berhasil Memperbarui Data');
     }
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Contracts\Interfaces\CategoryProductInterface;
 use App\Contracts\Interfaces\CollabCategoryInterface;
 use App\Contracts\Interfaces\CollabMitraInterface;
 use App\Contracts\Interfaces\HomePageInterface;
@@ -25,7 +26,7 @@ class HomePageController extends Controller
     private ProductInterface $product;
 
 
-    public function __construct( ProfileInterface $profile,VisitorDetectionInterface $visitorDetection, ServiceInterface $service, NewsInterface $news, CollabMitraInterface $mitras, SectionInterface $section, ProductInterface $product)
+    public function __construct( ProfileInterface $profile,VisitorDetectionInterface $visitorDetection, ServiceInterface $service, NewsInterface $news, CollabMitraInterface $mitras, SectionInterface $section, ProductInterface $product, )
     {
         $this->profile = $profile;
         $this->service = $service;
@@ -48,6 +49,7 @@ class HomePageController extends Controller
         $mitras = $this->mitras->get();
         $section = $this->section->get();
         $product = $this->product->getByType('company');
+
         return view('landing.index', compact('profile','service','news','mitras','section','product' ,'visitorDetections'));
     }
 
