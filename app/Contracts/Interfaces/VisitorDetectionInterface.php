@@ -1,11 +1,11 @@
 <?php
 namespace App\Contracts\Interfaces;
 
+use App\Contracts\Interfaces\Eloquent\ChartInterface;
 use App\Contracts\Interfaces\Eloquent\GetCountInterface;
 use App\Contracts\Interfaces\Eloquent\GetInterface;
-use App\Contracts\Interfaces\Eloquent\StoreInterface;
 
-interface VisitorDetectionInterface extends GetCountInterface
+interface VisitorDetectionInterface extends GetCountInterface, GetInterface, ChartInterface
 {
 
 }

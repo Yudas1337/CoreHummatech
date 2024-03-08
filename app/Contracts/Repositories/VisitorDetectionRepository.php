@@ -17,4 +17,14 @@ class VisitorDetectionRepository extends BaseRepository implements VisitorDetect
         return $this->model->query()->count();
     }
 
+    public function get(): mixed
+    {
+        return $this->model->query()->get();
+    }
+
+    public function Chart(mixed $year, mixed $month): mixed
+    {
+        return $this->model->whereYear('created_at', '=', $year)->whereMonth('created_at', '=', $month)->count();
+    }
+
 }
