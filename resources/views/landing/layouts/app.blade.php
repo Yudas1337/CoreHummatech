@@ -161,8 +161,8 @@
                                 <ul>
                                     @forelse ($services as $service)
                                         <li>
-                                            <a href="{{ route('service', $service->slug) }}"><i
-                                                    class="fas fa-angle-right"></i> {{ $service->name }}</a>
+                                            <a href="{{ url("/layanan/{$service->slug}") }}"><i
+                                                class="fas fa-angle-right"></i> {{ $service->name }}</a>
                                         </li>
                                     @empty
                                         <li>Belum ada data layanan</li>
