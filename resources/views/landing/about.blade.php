@@ -115,18 +115,18 @@
                     <div class="col-lg-6 info text-center">
                         <h4 class="subtitle">Profile Perusahaan</h4>
                         @forelse ($profiles as $profile)
-                            <h2>{{ $profile->subtitle }}</h2>
-                            <img src="{{ asset('storage/' . $profile->image) }}" alt="Thumb"
-                                class="w-75 mb-3 d-block mx-auto d-lg-none" />
-                            <p>
-                                {!! Str::limit($profile->description, 200) !!}
-                            </p>
+                        <h2>{{ $profile->subtitle }}</h2>
+                        <img src="{{ asset('storage/' . $profile->image) }}" alt="Thumb"
+                            class="w-75 mb-3 d-block mx-auto d-lg-none" />
+                        <p>
+                            {!! Str::limit($profile->description, 200) !!}
+                        </p>
 
-                            @if ($profile->proposal)
-                                <a class="btn btn-gradient effect btn-md"
-                                    href="{{ asset('storage/' . $profile->proposal) }}"
-                                    download="{{ asset('storage/' . $profile->proposal) }}">Unduh Portofolio</a>
-                            @endif
+                        @if ($profile->proposal)
+                            <a class="btn btn-gradient effect btn-md"
+                                href="{{ asset('storage/' . $profile->proposal) }}"
+                                download="{{ asset('storage/' . $profile->proposal) }}">Unduh Portofolio</a>
+                        @endif
                     </div>
                     <div class="col-lg-6 d-none d-md-none d-lg-inline">
                         <div class="thumb">
