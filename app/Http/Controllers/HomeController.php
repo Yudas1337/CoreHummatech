@@ -8,7 +8,6 @@ use App\Contracts\Interfaces\ProductInterface;
 use App\Contracts\Interfaces\ServiceInterface;
 use App\Contracts\Interfaces\VisitorDetectionInterface;
 use App\Services\HomeService;
-use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
@@ -18,6 +17,7 @@ class HomeController extends Controller
     private NewsInterface $news;
     private ServiceInterface $service;
     private HomeService $homeService;
+
     /**
      * Create a new controller instance.
      *

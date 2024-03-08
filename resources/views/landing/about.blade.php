@@ -1,5 +1,7 @@
 @extends('landing.layouts.layouts.app')
 
+@section('title', 'Tentang Kami')
+
 @section('style')
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet" />
 
@@ -89,6 +91,9 @@
       ]
     }
 </script>
+
+<meta name="description" content="Perusahaan Software House terbaik se-Jawa Timur" />
+<meta name="og:description" content="Perusahaan Software House terbaik se-Jawa Timur" />
 @endsection
 
 @section('content')

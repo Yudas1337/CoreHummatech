@@ -153,7 +153,6 @@
                         <h4>Berita Lainnya</h4>
                     </div>
                     <ul>
-                        @forelse ($news as $news)
                         <li>
                             <div class="thumb">
                                 <a href="{{ url("berita/{$news->slug}") }}">
@@ -168,14 +167,13 @@
                                 <p class="mb-0">{{ Str::limit(strip_tags($news->description), 20) }}</p>
                             </div>
                         </li>
-                        @empty
+                        {{-- @empty
 
                         <div class="mx-auto d-flex flex-column justify-content-center text-center">
                             <img src="{{ asset('nodata-gif-post.gif') }}" alt="No Data" height="200" class="mx-auto" width="200" />
                         <p class="text-muted">Belum ada berita</p>
-                        </div>
+                        </div> --}}
 
-                        @endforelse
                     </ul>
                 </div>
                 <div class="d-flex justify-content-center pt-4">
