@@ -163,8 +163,6 @@ Route::middleware('auth')->group(function () {
     Route::post('create/collab/mitra', [CollabMitraController::class, 'store']);
     Route::put('update/collab/mitra/{collabMitra}', [CollabMitraController::class, 'update']);
     Route::delete('delete/collab/mitra/{collabMitra}', [CollabMitraController::class, 'destroy']);
-
-
     //workflow
     Route::get('workflow', [WorkflowController::class, 'index']);
     Route::put('vacancy/workflow/update/{workflow}', [WorkflowController::class, 'update'])->name('update.workflow');
