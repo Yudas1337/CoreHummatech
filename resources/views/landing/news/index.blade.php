@@ -20,9 +20,11 @@
             flex-wrap: nowrap;
             white-space: nowrap;
         }
+
         .custom-tabs li:last-child a {
             margin-right: 0;
         }
+
         .custom-tabs li.active a {
             border-bottom: 4px solid #1273eb;
             color: #1273eb;
@@ -49,49 +51,85 @@
     <div class="about-us-area">
         <div class="container">
             <ul class="nav custom-tabs">
-                <li @if(!request()->category) class="active"@endif><a href="{{ url('/berita') }}">Terbaru</a></li>
+                <li @if (!request()->category) class="active" @endif><a href="{{ url('/berita') }}">Terbaru</a></li>
                 @foreach ($newsCategories as $category)
-                <li @if(Str::slug($category->name) === request()->category) class="active" @endif><a href="{{ url("/berita?category=" . Str::slug($category->name)) }}">{{ $category->name }}</a></li>
+                    <li class="{{ request()->is("berita/kategori/{$category->slug}") ? 'active' : '' }}">
+                        <a href="{{ url("berita/kategori/{$category->slug}") }}">{{ $category->name }}</a>
+                    </li>
                 @endforeach
             </ul>
         </div>
     </div>
 
-    <div class="blog-area full-blog blog-standard full-blog grid-colum mt-3 mb-5">
+    <div class="blog-area full-blog blog-standard full-blog grid-colum mt-5 mb-5">
         <div class="container">
             <div class="blog-items content-less">
                 <div class="blog-content">
                     <div class="blog-item-box">
                         <div class="row">
                             @forelse ($newses as $news)
-                                <div class="col-lg-4 col-md-6 single-item">
-                                    <div class="item">
-                                        <div class="thumb">
-                                            <a href="/berita/{{ $news->slug }}"><img
-                                                    src="{{ asset('storage/' . $news->image) }}"
-                                                    alt="Thumb"></a>
+                                @if ($news->news)
+                                    <div class="col-lg-4 col-md-6 single-item">
+                                        <div class="item">
+                                            <div class="thumb">
+                                                <a href="/berita/{{ $news->news->slug }}"><img
+                                                        src="{{ asset('storage/' . $news->news->image) }}"
+                                                        alt="{{ $news->news->title }}"></a>
 
-                                            <time class="date" datetime="{{ $news->created_at->format('Y-m-d') }}">{{ \Carbon\Carbon::parse($news->created_at)->locale('id_ID')->isoFormat('D MMMM Y') }}</time>
-                                        </div>
-                                        <div class="info">
-                                            <div class="meta">
-                                                <ul>
-                                                    <li>
-                                                        <img src="{{ asset('mobilelogo.png') }}" alt="Hummatech Logo" />
-                                                        <span>By </span>
-                                                        <a href="javascript:void(0)">Hummatech</a>
-                                                    </li>
-                                                </ul>
+                                                <time class="date"
+                                                    datetime="{{ $news->news->created_at->format('Y-m-d') }}">{{ \Carbon\Carbon::parse($news->news->created_at)->locale('id_ID')->isoFormat('D MMMM Y') }}</time>
                                             </div>
+                                            <div class="info">
+                                                <div class="meta">
+                                                    <ul>
+                                                        <li>
+                                                            <img src="{{ asset('mobilelogo.png') }}"
+                                                                alt="Hummatech Logo" />
+                                                            <span>By </span>
+                                                            <a href="javascript:void(0)">Hummatech</a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
 
-                                            <h4>
-                                                <a href="/berita/{{ $news->slug }}">{{ $news->title }}</a>
-                                            </h4>
+                                                <h4>
+                                                    <a href="/berita/{{ $news->news->slug }}">{{ $news->news->title }}</a>
+                                                </h4>
 
-                                            <p class="text-break">{!! Str::limit(strip_tags($news->description), 200) !!}</p>
+                                                <p class="text-break">{!! Str::limit(strip_tags($news->news->description), 200) !!}</p>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
+                                @else<div class="col-lg-4 col-md-6 single-item">
+                                        <div class="item">
+                                            <div class="thumb">
+                                                <a href="/berita/{{ $news->slug }}"><img
+                                                        src="{{ asset('storage/' . $news->image) }}"
+                                                        alt="{{ $news->title }}"></a>
+
+                                                <time class="date"
+                                                    datetime="{{ $news->created_at->format('Y-m-d') }}">{{ \Carbon\Carbon::parse($news->created_at)->locale('id_ID')->isoFormat('D MMMM Y') }}</time>
+                                            </div>
+                                            <div class="info">
+                                                <div class="meta">
+                                                    <ul>
+                                                        <li>
+                                                            <img src="{{ asset('mobilelogo.png') }}"
+                                                                alt="Hummatech Logo" />
+                                                            <span>By </span>
+                                                            <a href="javascript:void(0)">Hummatech</a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+
+                                                <h4>
+                                                    <a href="/berita/{{ $news->slug }}">{{ $news->title }}</a>
+                                                </h4>
+
+                                                <p class="text-break">{!! Str::limit(strip_tags($news->description), 200) !!}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endif
                             @empty
                                 <div class="d-flex justify-content-center col-12 ">
                                     <img src="{{ asset('nodata-gif.gif') }}" width="600px" alt="" srcset="">
@@ -106,7 +144,6 @@
                         <div class="row">
                             <div class="col-md-12 pagi-area text-center">
                                 <nav aria-label="navigation">
-                                    {{ $newses->links('vendor.pagination.pagination-home') }}
                                 </nav>
                             </div>
                         </div>
