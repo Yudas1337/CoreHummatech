@@ -124,6 +124,7 @@
                         <div class="f-item about">
                             <img src="{{ asset('assets/images/LOGO-HUMMATECH_Putih.png') }}"
                                 style="height: 48px;width: auto;" alt="Logo">
+
                                 @isset($profiles)
                                 <p>{{ Str::limit($profiles->description, 200) }}</p>
                                 <a href="{{ url('/about-us') }}">Lihat Selengkapnya</a>

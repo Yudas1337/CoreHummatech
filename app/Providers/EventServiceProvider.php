@@ -18,7 +18,6 @@ use App\Models\SalesPackage;
 use App\Models\Service;
 use App\Models\SosialMedia;
 use App\Models\Termscondition;
-use App\Observers\CategoryNewsObserver;
 use App\Observers\FaqObserver;
 use App\Observers\NewsImageObserver;
 use App\Observers\NewsObserver;
