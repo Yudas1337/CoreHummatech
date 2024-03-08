@@ -31,6 +31,7 @@ use App\Http\Controllers\TestimonialController;
 use App\Http\Controllers\CategoryNewsController;
 use App\Http\Controllers\SalesPackageController;
 use App\Http\Controllers\CollabCategoryController;
+use App\Http\Controllers\HomeContactController;
 use App\Http\Controllers\TermsconditionController;
 use App\Http\Controllers\VisionAndMisionController;
 
@@ -225,9 +226,7 @@ Route::get('data/product/kategori/{category:slug}',[HomeProductController::class
 Route::get('detail/{product:slug}', [ProductController::class, 'showproduct'])->name('detail.product');
 
 //contact-us
-Route::get('contact', function () {
-    return view('landing.contact');
-})->name('contact');
+Route::get('contact', [HomeContactController::class, 'index'])->name('contact');
 
 Route::get('mitra',  [HomePageController::class , 'mitra']);
 
