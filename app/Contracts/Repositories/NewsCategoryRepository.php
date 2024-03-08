@@ -5,10 +5,21 @@ namespace App\Contracts\Repositories;
 use App\Contracts\Interfaces\NewsCategoryInterface;
 use App\Models\NewsCategory;
 
-class NewsCategoryRepository extends BaseRepository implements NewsCategoryInterface {
+class NewsCategoryRepository extends BaseRepository implements NewsCategoryInterface
+{
     public function __construct(NewsCategory $newsCategory)
     {
         $this->model = $newsCategory;
+    }
+
+    public function where(mixed $slug)
+    {
+        return $this->model->query()->where('category_id' , $slug)->get();
+    }
+
+    public function findOrFail($id)
+    {
+        return $this->model->query()->findOrFail($id);
     }
 
     /**

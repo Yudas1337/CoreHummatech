@@ -11,8 +11,9 @@ use App\Contracts\Interfaces\Eloquent\LatestQueryInterface;
 use App\Contracts\Interfaces\Eloquent\SlugInterface;
 use App\Contracts\Interfaces\Eloquent\StoreInterface;
 use App\Contracts\Interfaces\Eloquent\UpdateInterface;
+use App\Contracts\Interfaces\Eloquent\WhereClauseInterface;
 
-interface NewsInterface extends CustomPaginationInterface, HasRelationInterface, UpdateInterface, StoreInterface, DeleteInterface, GetInterface, SlugInterface, LatestQueryInterface,GetCountInterface
+interface NewsInterface extends CustomPaginationInterface, HasRelationInterface, UpdateInterface, StoreInterface, DeleteInterface, GetInterface, SlugInterface, LatestQueryInterface,GetCountInterface ,WhereClauseInterface
 {}
 
 

@@ -4,16 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Contracts\Interfaces\CategoryNewsInterface;
 use App\Contracts\Interfaces\NewsCategoryInterface;
-use App\Contracts\Interfaces\NewsImageInterface;
 use App\Contracts\Interfaces\NewsInterface;
 use App\Http\Requests\StoreNewsRequest;
 use App\Http\Requests\UpdateNewsRequest;
+use App\Models\CategoryNews;
 use App\Models\News;
 use App\Models\NewsCategory;
 use App\Models\NewsImage;
 use App\Services\NewsService;
 use Illuminate\Http\Request;
-use Illuminate\Pagination\Paginator;
 
 class NewsController extends Controller
 {
@@ -51,7 +50,7 @@ class NewsController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @see https://laravel.com/docs/10.x/collections
+     * @see https://laravel.com/docs/10.x/collections#method-map
      */
     public function store(StoreNewsRequest $request)
     {
@@ -73,9 +72,9 @@ class NewsController extends Controller
      */
     public function show(News $news)
     {
-        $categories = NewsCategory::where('news_id' , $news->id)->get();
-        $newsImages = NewsImage::where('news_id'  , $news->id)->get();
-        return view('admin.pages.news.show', compact('news' ,'newsImages' ,'categories'));
+        $categories = NewsCategory::where('news_id', $news->id)->get();
+        $newsImages = NewsImage::where('news_id', $news->id)->get();
+        return view('admin.pages.news.show', compact('news', 'newsImages', 'categories'));
     }
 
     /**
@@ -90,7 +89,7 @@ class NewsController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @see https://laravel.com/docs/10.x/collections
+     * @see https://laravel.com/docs/10.x/collections#method-map
      */
     public function update(UpdateNewsRequest $request, News $news)
     {
@@ -118,28 +117,45 @@ class NewsController extends Controller
         return back();
     }
 
-    public function news (Request $request)
+    /**
+     * News Data List homepage
+     *
+     * @package hummatech.com
+     * @author @Kader2637
+     */
+    public function news(Request $request)
     {
         $newsCategories = $this->category->get();
-
-        if ($request->category) {
-            $newses = $this->news->whereHas('newsCategories', function($q) use ($request) {
-                $q->whereHas('category', function($q) use($request) {
-                    $q->where('slug', $request->category);
-                });
-            })->paginate(12);
-        } else {
-            $newses = $this->news->customPaginate($request, 12);
-        }
-
-        return view('landing.news.index' , compact('newses', 'newsCategories'));
+        $newses = $this->news->customPaginate($request, 12);
+        return view('landing.news.index', compact('newses', 'newsCategories'));
     }
 
+    /**
+     * News Data by Category List on Homepage
+     *
+     * @package hummatech.com
+     * @author @cakadi190
+     */
+    public function newsCategory(Request $request, CategoryNews $category)
+    {
+        $newses = $this->newsCategory->where($category->id);
+        $newsCategories = $this->category->get();
+
+
+        return view('landing.news.index', compact('newses' ,'newsCategories'));
+    }
+
+    /**
+     * Show the News Data
+     *
+     * @package hummatech.com
+     * @author @13Farahamalia
+     */
     public function showNews($slugnews)
     {
-        $otherNews = $this->news->latest(5, [['news.slug' , '!=', $slugnews]]);
+        $otherNews = $this->news->latest(5, [['news.slug', '!=', $slugnews]]);
         $news = $this->news->slug($slugnews);
 
-        return view('landing.news.detail' , compact('news', 'otherNews'));
+        return view('landing.news.detail', compact('news', 'otherNews'));
     }
 }
