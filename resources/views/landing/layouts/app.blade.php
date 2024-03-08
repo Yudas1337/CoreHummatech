@@ -143,7 +143,7 @@
                                         <li>
                                             <a href="{{ $socmed->link }}" style="display: flex;gap: .5rem;align-items: center">
                                                 <i class="fas fa-angle-right"></i>
-                                                <img src="{{ asset("storage/{$socmed->image}") }}" height="16px" class="mb-0" width="16px" alt="Facebook Logo" />
+                                                <img alt="Facebook Logo" src="{{ asset("storage/{$socmed->image}") }}" height="16px" class="mb-0" width="16px" />
                                                 {{ $socmed->platform }}
                                             </a>
                                         </li>
