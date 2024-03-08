@@ -2,16 +2,28 @@
 
 namespace App\Services;
 
-use App\Models\Sale;
 use App\Enums\TypeEnum;
-use App\Models\Product;
+use App\Http\Requests\StoreBackgroundRequest;
+use App\Http\Requests\StoreLogoRequest;
 use App\Traits\UploadTrait;
 use App\Http\Requests\StoreSaleRequest;
+use App\Http\Requests\StoreServiceRequest;
+use App\Http\Requests\StoreStructureRequest;
+use App\Http\Requests\StoreTeamRequest;
+use App\Http\Requests\UpdateLogoRequest;
+use App\Http\Requests\UpdateProductRequest;
 use App\Http\Requests\UpdateSaleRequest;
-use App\Http\Requests\StoreBackgroundRequest;
-use App\Http\Requests\UpdateBackgroundRequest;
+use App\Http\Requests\UpdateServiceRequest;
+use App\Http\Requests\UpdateStructureRequest;
+use App\Http\Requests\UpdateTeamRequest;
 use App\Models\Background;
-use Illuminate\Support\Facades\Request;
+use App\Models\Logo;
+use App\Models\Product;
+use App\Models\Sale;
+use App\Models\Service;
+use App\Models\Structure;
+use App\Models\Team;
+use Illuminate\Support\Facades\Log;
 
 class BackgroundService
 {
@@ -39,16 +51,15 @@ class BackgroundService
      *
      * @return array|bool
      */
-    public function store(Request $request): array|bool
+    public function store(StoreBackgroundRequest $request): array|bool
     {
-        // dd($request);
-        $data = $request->all();
+        $data = $request->validated();
 
         if ($request->hasFile('image') && $request->file('image')->isValid()) {
-            $data['image'] = $request->file('image')->store(TypeEnum::BACKGROUND->value, 'public');
+            $data['image'] = $request->file('image')->store($request->type, 'public');
             return $data;
         }
-        return $data;
+        return false;
     }
 
     /**
@@ -59,21 +70,22 @@ class BackgroundService
      *
      * @return array|bool
      */
-    public function update(Background $background, UpdateBackgroundRequest $request): array|bool
+    public function update(Background $background, UpdateLogoRequest $request): array|bool
     {
         $data = $request->validated();
-        if ($request->has('image')) {
-            $this->remove($background->image);
-            $data['image'] = $request->file('image')->store(TypeEnum::BACKGROUND->value, 'public');
+
+        if ($request->hasFile('image') && $request->file('image')->isValid()) {
+            $this->remove($logo->image);
+            $data['image'] = $request->file('image')->store($request->type, 'public');
         } else {
-            $data['image'] = $background->image;
+            $data['image'] = $logo->image;
         }
 
         return $data;
     }
 
-    public function delete(Background $background)
+    public function delete(Logo $logo)
     {
-        $this->remove($background->image);
+        $this->remove($logo->image);
     }
 }

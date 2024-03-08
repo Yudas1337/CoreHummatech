@@ -11,6 +11,7 @@ use App\Http\Controllers\TeamController;
 use App\Http\Controllers\ForceController;
 use App\Http\Controllers\BranchController;
 use App\Http\Controllers\AboutUsController;
+use App\Http\Controllers\BackgroundController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
@@ -218,7 +219,7 @@ Route::post('image-uploader', ImageUploader::class)->name('image-uploader');
 //news
 Route::get('berita', [NewsController::class, 'news']);
 
-
+Route::post('background/store' , [BackgroundController::class , 'store']);
 
 require_once __DIR__ . '/kader.php';
 require_once __DIR__ . '/farah.php';
