@@ -10,7 +10,10 @@ class CategoryNewsRepository extends BaseRepository implements CategoryNewsInter
     {
         $this->model = $categoryNews;
     }
-
+    public function where($column, $operator = null, $value = null, $boolean = 'and')
+    {
+        return $this->model->query()->where($column, $operator, $value, $boolean);
+    }
     public function get(): mixed
     {
         return $this->model->query()->get();

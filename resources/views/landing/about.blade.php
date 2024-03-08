@@ -107,7 +107,7 @@
         </div>
     </div>
 
-    <div class="about-us-area mt-5">
+    <div class="about-us-area">
         <div class="container">
             <img src="{{ asset('assets-home/img/about-polygon.svg') }}" class="about-triangle" alt="Polygon" />
             <div class="about-items">
@@ -130,19 +130,19 @@
                     </div>
                     <div class="col-lg-6 d-none d-md-none d-lg-inline">
                         <div class="thumb">
-                            <img src="{{ asset('storage/' . $profile->image) }}" alt="Thumb" style="width: 90%;" />
+                            <img src="{{ asset('storage/' . $profile->image) }}" alt="Thumb" class="w-100" />
                         </div>
                     </div>
 
                 @empty
-                    <div class="col-12">
-                        <div class="d-flex justify-content-center">
-                            <img src="{{ asset('nodata-gif.gif') }}" alt="" width="800px">
-                        </div>
-                        <h4 class="text-center text-dark" style="font-weight:600">
-                            Belum ada profile perusahaan
-                        </h4>
+                <div class="col-12">
+                    <div class="d-flex justify-content-center">
+                        <img src="{{ asset('nodata-gif.gif') }}" alt="" width="800px">
                     </div>
+                    <h4 class="text-center text-dark" style="font-weight:600">
+                        Belum ada profile perusahaan
+                    </h4>
+                </div>
                     @endforelse
                 </div>
             </div>
@@ -289,21 +289,19 @@
                         </div>
                     </div>
                     @forelse ($logos as $logo)
-                        <div class="single-item col-lg-5 col-md-6 mx-auto">
-                            <div class="item text-center">
-                                <div class="logo-container">
-                                    <img class="logo-image" src="{{ asset('storage/' . $logo->image) }}"
-                                        alt="{{ $logo->title }}"
-                                        style="max-width: 60%; height: auto; display: block; margin: 0 auto;">
-                                </div>
-                                <div class="item-details pt-5">
-                                    <h3 style="font-size: 37px;"><b>{{ $logo->title }}</b></h3>
-                                    <p>{{ Str::limit($logo->description, 250) }}</p>
-                                    <a href="/detail-logo" class="btn btn-gradient btn-lg">Selengkapnya</a>
-                                    {{-- <button class="btn btn-gradient btn-lg">Selengkapnya</button> --}}
-                                </div>
+                    <div class="single-item col-lg-5 col-md-6 mx-auto">
+                        <div class="item text-center">
+                            <div class="logo-container">
+                                <img class="logo-image" src="{{ asset('storage/' . $logo->image) }}" alt="{{ $logo->title }}" style="max-width: 60%; height: auto; display: block; margin: 0 auto;">
+                            </div>
+                            <div class="item-details pt-5">
+                                <h3 style="font-size: 37px;"><b>{{ $logo->title }}</b></h3>
+                                <p>{{ Str::limit($logo->description, 250) }}</p>
+                                <a href="/detail-logo" class="btn btn-gradient btn-lg">Selengkapnya</a>
+                                {{-- <button class="btn btn-gradient btn-lg">Selengkapnya</button> --}}
                             </div>
                         </div>
+                    </div>
 
 
                     @empty

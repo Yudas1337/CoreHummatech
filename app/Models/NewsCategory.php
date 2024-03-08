@@ -11,16 +11,13 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class NewsCategory extends Model implements HasCategory, HasNews
 {
     use HasFactory;
-    protected $table = 'news_categories';
-    // protected $primaryKey = 'id';
-    // public $incremeting = false;
-    // public $keyType = 'char';
 
+    protected $table = 'news_categories';
     protected $fillable = ['news_id', 'category_id'];
     protected $guarded = [];
 
     /**
-     * news
+     * This relation to News Data
      *
      * @return BelongsTo
      */
@@ -30,13 +27,13 @@ class NewsCategory extends Model implements HasCategory, HasNews
     }
 
     /**
-     * category
+     * This relation to Category Data
      *
      * @return BelongsTo
      */
     public function category(): BelongsTo
     {
-        return $this->belongsTo(NewsCategory::class, 'category_id');
+        return $this->belongsTo(CategoryNews::class, 'category_id');
     }
 
 

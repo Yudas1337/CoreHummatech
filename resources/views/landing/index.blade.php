@@ -1,5 +1,6 @@
-{{-- @extends('landing.layouts.app') --}}
-@extends('landing.layouts.layouts.app')
+
+@extends('landing.layouts.app')
+{{-- @extends('landing.layouts.layouts.app') --}}
 
 @section('seo')
 <meta name="description" content="{{ config('app.name', 'Laravel') }}" />
@@ -86,7 +87,7 @@
         margin: 0 auto;
     }
     .rounded-container {
-        border-radius: 15px; /* Adjust the radius as needed */
+        border-radius: 15px;
         overflow: hidden;
     }
 
@@ -103,15 +104,11 @@
                 display: none;
             }
         }
-    </style>
-    <style>
         @media (max-width: 992px) {
             .team-item img {
-                max-width: 60%;
+                max-width: 40%;
             }
         }
-    </style>
-    <style>
         .team-item {
             margin-right: 15px;
         }
@@ -126,21 +123,6 @@
             }
         }
 
-    </style>
-    <style>
-    .team-item {
-        margin-right: 15px;
-    }
-
-    .team-item:last-child {
-        margin-right: 15px;
-    }
-
-    @media (max-width: 992px) {
-        .team-item {
-            margin-right: 0;
-        }
-    }
 </style>
 
 @endsection
@@ -229,7 +211,8 @@
     <!-- End Banner -->
 
     <!-- Start About Area -->
-       <div class="about-us-area">
+
+       <div class="about-us-area pt-5">
         <div class="container">
             <img src="{{ asset('assets-home/img/about-polygon.svg') }}" class="about-triangle" alt="Polygon" />
             <div class="about-items">
@@ -237,7 +220,7 @@
                     @forelse ($profile as $profile)
                     <div class="col-md-6 order-first order-md-last text-center">
                         <div class="thumb">
-                            <img src="{{ asset('storage/' . $profile->image) }}" alt="Thumb" style="max-width: 100%; max-height: 450px; display: inline-block;">
+                            <img src="{{ asset('storage/' . $profile->image) }}" alt="Thumb" style="max-width: 70%; max-height: auto; display: inline-block;">
                         </div>
                     </div>
                     <div class="col-md-6 info">
@@ -266,7 +249,7 @@
 
     <!-- Star Services Area
                                     ============================================= -->
-    <div class="thumb-services-area inc-thumbnail default-padding bottom-less">
+    <div class="thumb-services-area inc-thumbnail default-padding bottom-less mt-5">
         <div class="right-shape">
             <img src="assets-home/img/shape/9.png" alt="Shape">
         </div>
@@ -326,8 +309,8 @@
                 <div class="row align-items-center">
 
                     <div class="col-lg-4 col-md-12 info">
-                        <h2> Menghadirkan produk dengan kualitas dan inovasi terbaik</h2>
-                        <p>
+                        <h2 class="ml-5"> Menghadirkan produk dengan kualitas dan inovasi terbaik</h2>
+                        <p class="ml-5">
                             Lorem ipsum dolor sit amet consectetur. Blandit donec pulvinar eget senectus posuere amet
                             ultricies justo enim tempus pellentesque.
                         </p>
@@ -385,27 +368,39 @@
                         <h3>Tumbuh bersama: Kolaborasi menuju kesuksesan</h3>
                         <div class="devider"></div>
 
-                        <div class="team-slider owl-carousel">
+                        <div class="team-slider owl-carousel mt-3">
                             @forelse ($mitras as $mitra)
                                 <div class="team-item">
-                                    <img src="{{ asset('storage/' . $mitra->image) }}" alt="Mitra Image" class="img-fluid">
+                                    <img src="{{ asset('storage/'. $mitra->image) }}" alt="{{ $mitra->name }}" class="img-fluid">
                                 </div>
                             @empty
-                                <div class="col-12">
-                                    <div class="d-flex justify-content-center">
-                                        <img src="{{ asset('nodata-gif.gif') }}" alt="" width="800px">
-                                    </div>
-                                    <h4 class="text-center text-dark" style="font-weight:600">
-                                        Belum ada Mitra
-                                    </h4>
+                            <div class="col-12">
+                                <div class="d-flex justify-content-center">
+                                    <img src="{{ asset('nodata-gif.gif') }}" alt="" width="800px">
                                 </div>
+                                <h4 class="text-center text-dark" style="font-weight:600">
+                                    Belum ada Portofolio
+                                </h4><br>
+                            </div>
                             @endforelse
                         </div>
+
+                        @if(count($mitras) > 0)
+                            <div class="col-md-12 pagi-area text-center mb-5 mt-3">
+                                <a class="text-primary" href="/mitra">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24">
+                                        <path fill="currentColor"
+                                            d="M16.15 13H5q-.425 0-.712-.288T4 12q0-.425.288-.712T5 11h11.15L13.3 8.15q-.3-.3-.288-.7t.288-.7q.3-.3.713-.312t.712.287L19.3 11.3q.15.15.213.325t.062.375q0 .2-.062.375t-.213.325l-4.575 4.575q-.3.3-.712.288t-.713-.313q-.275-.3-.288-.7t.288-.7z" />
+                                    </svg> Lihat Selengkapnya
+                                </a>
+                            </div>
+                        @endif
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
     <!-- End collab  Area -->
 
     <div class="bg-gray">
@@ -432,52 +427,51 @@
                             @if(count($news) > 0)
                                 <div id="newsCarousel" class="carousel slide" data-ride="carousel">
                                     <div class="carousel-inner">
-                                            <div class="">
-                                                <div class="row">
-                                                    @foreach ($news as $index => $newsItem)
-                                                        @if ($index < 3)
-                                                            <div class="col-lg-4 col-md-6 single-item">
-                                                                <div class="item">
-                                                                    <div class="thumb">
-                                                                        <div id="carouselImages" class="carousel slide" data-ride="carousel">
-                                                                            <div class="carousel-inner">
-                                                                                <img src="{{ asset('storage/' . $newsItem->image) }}" alt="Thumb">
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="date text-uppercase">
-                                                                            {{ \Carbon\Carbon::parse($newsItem['created_at'])->locale('id_ID')->isoFormat('dddd, D MMMM YYYY') }}
+                                        <div class="">
+                                            <div class="row">
+                                                @foreach ($news as $index => $newsItem)
+                                                    @if ($index < 3)
+                                                        <div class="col-lg-4 col-md-6 single-item">
+                                                            <div class="item">
+                                                                <div class="thumb">
+                                                                    <div id="carouselImages" class="carousel slide" data-ride="carousel">
+                                                                        <div class="carousel-inner">
+                                                                            <img src="{{ asset('storage/' . $newsItem->image) }}" alt="Thumb">
                                                                         </div>
                                                                     </div>
-                                                                    <div class="info">
-                                                                        <div class="meta">
-                                                                            <ul>
-                                                                                <li>
-                                                                                    <a href="#">MAGANG</a>
-                                                                                </li>
-                                                                            </ul>
-                                                                        </div>
-                                                                        <h4>
-                                                                            <a href="/berita/{{ $newsItem->slug }}">{{ $newsItem['title'] }}</a>
-                                                                        </h4>
-                                                                        <p class="line-clamp">{!! Str::limit($newsItem['description'], 80) !!}
-                                                                        </p>
-                                                                        <a href="/berita/{{ $newsItem->slug }}" class="btn btn-outline-primary rounded-pill py-2 px-4 text-dark">Baca Selengkapnya</a>
+                                                                    <div class="date text-uppercase">
+                                                                        {{ \Carbon\Carbon::parse($newsItem['created_at'])->locale('id_ID')->isoFormat('dddd, D MMMM YYYY') }}
                                                                     </div>
                                                                 </div>
+                                                                <div class="info">
+                                                                    <div class="meta">
+                                                                        <ul>
+                                                                            <li>
+                                                                                <a href="#">MAGANG</a>
+                                                                            </li>
+                                                                        </ul>
+                                                                    </div>
+                                                                    <h4>
+                                                                        <a href="/berita/{{ $newsItem->slug }}">{{ $newsItem['title'] }}</a>
+                                                                    </h4>
+                                                                    <p class="line-clamp">{!! Str::limit($newsItem['description'], 80) !!}
+                                                                    </p>
+                                                                    <a href="/berita/{{ $newsItem->slug }}" class="btn btn-outline-primary rounded-pill py-2 px-4 text-dark">Baca Selengkapnya</a>
+                                                                </div>
                                                             </div>
-                                                        @endif
-                                                    @endforeach
-                                                            <div class="col-md-12 pagi-area text-center mb-5 mt-3">
-                                                                <a class="text-primary" href="/berita">
-                                                                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24">
-                                                                        <path fill="currentColor"
-                                                                            d="M16.15 13H5q-.425 0-.712-.288T4 12q0-.425.288-.712T5 11h11.15L13.3 8.15q-.3-.3-.288-.7t.288-.7q.3-.3.713-.312t.712.287L19.3 11.3q.15.15.213.325t.062.375q0 .2-.062.375t-.213.325l-4.575 4.575q-.3.3-.712.288t-.713-.313q-.275-.3-.288-.7t.288-.7z" />
-                                                                    </svg> Lihat Berita Lainnya
-                                                                </a>
-                                                            </div>
+                                                        </div>
+                                                    @endif
+                                                @endforeach
+                                                <div class="col-md-12 pagi-area text-center mb-5 mt-3">
+                                                    <a class="text-primary" href="/berita">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24">
+                                                            <path fill="currentColor"
+                                                                d="M16.15 13H5q-.425 0-.712-.288T4 12q0-.425.288-.712T5 11h11.15L13.3 8.15q-.3-.3-.288-.7t.288-.7q.3-.3.713-.312t.712.287L19.3 11.3q.15.15.213.325t.062.375q0 .2-.062.375t-.213.325l-4.575 4.575q-.3.3-.712.288t-.713-.313q-.275-.3-.288-.7t.288-.7z" />
+                                                        </svg> Lihat Berita Lainnya
+                                                    </a>
                                                 </div>
                                             </div>
-
+                                        </div>
                                     </div>
                                 </div>
                             @else
@@ -490,8 +484,6 @@
                                 </h4><br>
                             </div>
                             @endif
-
-
                         </div>
                     </div>
                 </div>
@@ -531,6 +523,7 @@
 
                         <!-- End Single Widget -->
                     </div>
+                    
                     <div class="col-lg-8 services-single-content">
                         <div class="gallery-area overflow-hidden pt-3">
                             <div class="container">
@@ -572,10 +565,6 @@
                             </div>
                         </div>
                     </div>
-
-
-
-
                 </div>
             </div>
         </div>
