@@ -108,7 +108,7 @@ html,
 body,
 .wrapper {
     height: 100%;
-    overflow-x: hidden !important;
+    /* overflow-x: hidden !important; */
 }
 
 h1,

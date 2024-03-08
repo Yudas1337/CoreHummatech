@@ -20,12 +20,12 @@ class HomePageController extends Controller
     private ServiceInterface $service;
     private NewsInterface $news;
     private VisitorDetectionInterface $visitorDetection;
-    private CollabCategoryInterface $mitras;
+    private CollabMitraInterface $mitras;
     private SectionInterface $section;
     private ProductInterface $product;
 
 
-    public function __construct( ProfileInterface $profile,VisitorDetectionInterface $visitorDetection, ServiceInterface $service, NewsInterface $news, CollabCategoryInterface $mitras, SectionInterface $section, ProductInterface $product)
+    public function __construct( ProfileInterface $profile,VisitorDetectionInterface $visitorDetection, ServiceInterface $service, NewsInterface $news, CollabMitraInterface $mitras, SectionInterface $section, ProductInterface $product)
     {
         $this->profile = $profile;
         $this->service = $service;
