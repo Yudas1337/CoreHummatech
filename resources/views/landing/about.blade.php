@@ -201,7 +201,7 @@
                             <h4 class="text-center text-dark" style="font-weight:600">
                                 Belum ada misi perusahaan
                             </h4>
-                        </div>    
+                        </div>
                     @endforelse
                 @empty
                     <div class="col-12">
@@ -374,7 +374,7 @@
 
                     <div class="col-12" id="pagination">
                         <div class="d-flex justify-content-center">
-                            {{ $teams->links('vendor.pagination.pagination-home') }}
+                            {{ $teams->links() }}
                         </div>
                     </div>
                 </div>
