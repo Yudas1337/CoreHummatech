@@ -125,7 +125,7 @@
                         <div class="f-item about">
                             <img alt="Logo Hummatech" src="{{ asset('assets/images/LOGO-HUMMATECH_Putih.png') }}"
                                 style="height: 48px;width: auto;" />
-                            @if($profiles->count() > 0)
+                            @if(isset($profiles) && $profiles->count() > 0)
                             <p>{{ Str::limit($profiles->description, 200) }}</p>
                             <a href="{{ url('/about-us') }}">Lihat Selengkapnya</a>
                             @else
@@ -183,7 +183,7 @@
                                         <div class="content">
                                             <strong>Alamat:</strong>
 
-                                            @if($profiles->count() > 0)
+                                            @if(isset($profiles) && $profiles->count() > 0)
                                                 {{ $profiles->address }}
                                             @else
                                                 Perum Permata Regency 1 Blok 10/28, Perun Gpa, Ngijo, Kec. Karang
@@ -197,7 +197,7 @@
                                             </div>
                                             <div class="content">
                                                 <strong>Email:</strong>
-                                                @if($profiles->count() > 0)
+                                                @if(isset($profiles) && $profiles->count() > 0)
                                                     <a href="mailto:{{ $profiles->email }}">{{ $profiles->email }}</a>
                                                 @else
                                                     <a href="mailto:info@hummatech.com">info@hummatech.com</a>
@@ -210,7 +210,7 @@
                                             </div>
                                             <div class="content">
                                                 <strong>Phone:</strong>
-                                                @if($profiles->count() > 0)
+                                                @if(isset($profiles) && $profiles->count() > 0)
                                                     @php
                                                         $cleanPhone = str_replace(
                                                             ['+', '-', ' '],

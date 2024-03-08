@@ -51,7 +51,7 @@
                                 <div class="content">
                                     <h5>Address</h5>
                                     <p>
-                                        @if($profiles->count() > 0)
+                                        @isset($profiles)
                                             {{ $profiles->address }}
                                         @else
                                             Perum Permata Regency 1 Blok 10/28, Perun Gpa, Ngijo, Kec. Karang
@@ -67,7 +67,7 @@
                                 <div class="content">
                                     <h5>Contact</h5>
                                     <p>
-                                        @if($profiles->count() > 0)
+                                        @isset($profiles)
                                             @php
                                                 $cleanPhone = str_replace(
                                                     ['+', '-', ' '],
@@ -93,7 +93,7 @@
                                 <div class="content">
                                     <h5>Email</h5>
                                     <p>
-                                        @if($profiles->count() > 0)
+                                        @isset($profiles)
                                             <a href="mailto:{{ $profiles->email }}">{{ $profiles->email }}</a>
                                         @else
                                             <a href="mailto:info@hummatech.com">info@hummatech.com</a>
