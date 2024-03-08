@@ -52,6 +52,12 @@ Auth::routes();
 Route::middleware('auth')->group(function () {
     // Dashboard
     Route::get('home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    //Collab Category
+    Route::get('category-collab', [CollabCategoryController::class, 'index']);
+    Route::post('create/category/mitra', [CollabCategoryController::class, 'store'])->name('create.category.mitra');
+    Route::put('update/category/mitra/{collabCategory}', [CollabCategoryController::class, 'update'])->name('update.category.mitra');
+    Route::delete('delete/category/mitra/{collabCategory}', [CollabCategoryController::class, 'destroy'])->name('delete.category.mitra');
+    //Galery
 
     // Galery
     Route::resource('gallery', GalleryController::class);
@@ -63,6 +69,7 @@ Route::middleware('auth')->group(function () {
     Route::post('create/category/news', [CategoryNewsController::class, 'store'])->name('create.category.news');
     Route::delete('delete/category/news/{categoryNews}', [CategoryNewsController::class, 'destroy'])->name('delete.category.news');
     Route::put('update/category/news/{categoryNews}', [CategoryNewsController::class, 'update'])->name('update.category.news');
+
 
     //Collab Category
     Route::get('category-collab', [CollabCategoryController::class, 'index']);
@@ -167,8 +174,8 @@ Route::middleware('auth')->group(function () {
         Route::put('company/{enterpriseStructure}', [\App\Http\Controllers\EnterpriseStructureController::class, 'update'])->name('update');
         Route::delete('company/{enterpriseStructure}', [\App\Http\Controllers\EnterpriseStructureController::class, 'destroy'])->name('destroy');
         Route::get('structure', [StructureController::class, 'index'])->name('structure.index');
+        Route::post('structure/create', [StructureController::class, 'store'])->name('structure.create');
     });
-    Route::post('structure/create', [StructureController::class, 'store'])->name('structure.create');
     Route::delete('setting/structure/delete/{structure}', [StructureController::class, 'destroy']);
     Route::put('setting/structure/update/{structure}', [StructureController::class, 'update']);
 
@@ -183,7 +190,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/setting/philosophy', [LogoController::class, 'index'])->name('philosophy');
     Route::post('/setting/philosophy/store', [LogoController::class, 'store'])->name('philosophy.store');
     Route::put('/setting/philosophy/update/{logo}', [LogoController::class, 'update'])->name('philosophy.update');
-
     // Mitra
     Route::get('collab', [CollabMitraController::class, 'index']);
     Route::post('create/collab/mitra', [CollabMitraController::class, 'store']);
@@ -191,7 +197,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('delete/collab/mitra/{collabMitra}', [CollabMitraController::class, 'destroy']);
 
     //workflow
-    Route::get('workflow', [WorkflowController::class, 'index']);
+    Route::get('vacancy/workflow', [WorkflowController::class, 'index']);
     Route::put('vacancy/workflow/update/{workflow}', [WorkflowController::class, 'update'])->name('update.workflow');
     Route::post('store/workflow', [WorkflowController::class, 'store'])->name('store.workflow');
     Route::delete('vacancy/workflow/delete/{workflow}', [WorkflowController::class, 'destroy'])->name('delete.vacancy.workflow');
@@ -221,6 +227,7 @@ Route::get('detail/{product:slug}', [ProductController::class, 'showproduct'])->
 Route::get('contact', function () {
     return view('landing.contact');
 })->name('contact');
+
 Route::get('mitra',  [HomePageController::class , 'mitra']);
 
 //alumni-detail
