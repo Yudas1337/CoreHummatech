@@ -508,38 +508,22 @@
         <div class="container">
             <div class="services-details-items">
                 <div class="row">
-                    <div class="col-lg-4 services-sidebar">
-                        <!-- Single Widget -->
-                        <div class="single-widget services-list">
-                            <div class="content">
-                                <ul>
-                                    <li class="current-item"><a href="#">Social Media marketing</a></li>
-                                    <li><a href="#">Content Marketing</a></li>
-                                    <li><a href="#">Competitor Research</a></li>
-                                    <li><a href="#">Keyward Research</a></li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <!-- End Single Widget -->
-                    </div>
-                    
-                    <div class="col-lg-8 services-single-content">
+                    <div class="col-lg-12 services-single-content">
                         <div class="gallery-area overflow-hidden pt-3">
                             <div class="container">
                                 <div class="case-items-area">
                                     <div class="masonary">
-                                        <div id="portfolio-grid" class="gallery-items colums-3">
+                                        <div id="portfolio-grid" class="gallery-items colums-3 gap-2">
                                             @forelse ($product as $product)
-                                                <div class="pf-item">
-                                                    <div class="item">
-                                                        <div class="thumb">
-                                                            <img src="{{ asset('storage/' . $product->image) }}" alt="Thumb">
+                                                <div class="pf-item mx-2" style="width: 300px" >
+                                                    <div class="item" style="width: 300px">
+                                                        <div class="" >
+                                                            <img src="{{ asset('storage/' . $product->image) }}" width="300px" height="300px" class="object-fit-cover" alt="Thumb">
                                                         </div>
                                                         <div class="content">
                                                             <div class="info">
                                                                 <h4><a href="{{ route('detail.product', $product->slug) }}">{{ $product->name }}</a></h4>
-                                                                <span>{{ $product->type }}</span>
+                                                                <span>{{ Str::limit($product->description, 50, '...') }}</span>
                                                             </div>
                                                             <div class="button">
                                                                 <a href="{{ asset('storage/' . $product->image) }}" class="item popup-gallery">
@@ -566,6 +550,14 @@
                         </div>
                     </div>
                 </div>
+            </div>
+            <div class="d-flex justify-content-center">
+                <a class="text-primary" href="/data/product">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24">
+                        <path fill="currentColor"
+                            d="M16.15 13H5q-.425 0-.712-.288T4 12q0-.425.288-.712T5 11h11.15L13.3 8.15q-.3-.3-.288-.7t.288-.7q.3-.3.713-.312t.712.287L19.3 11.3q.15.15.213.325t.062.375q0 .2-.062.375t-.213.325l-4.575 4.575q-.3.3-.712.288t-.713-.313q-.275-.3-.288-.7t.288-.7z" />
+                    </svg> Lihat Semua
+                </a>
             </div>
         </div>
     </div>

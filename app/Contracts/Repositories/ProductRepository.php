@@ -44,5 +44,10 @@ class ProductRepository extends BaseRepository implements ProductInterface
     {
         return $this->model->query()->count();
     }
+
+    public function where(mixed $slug)
+    {
+        return $this->model->query()->where('category_product_id', $slug)->where('type', 'company')->get();
+    }
 }
 

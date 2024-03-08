@@ -30,10 +30,15 @@ class Product extends Model
     {
         return $this->hasMany(Faq::class);
     }
-    
+
     public function testimonials(): HasMany
     {
         return $this->hasMany(Testimonial::class);
     }
-    
+
+    public function CategoryProduct()
+    {
+        return $this->belongsTo(Testimonial::class);
+    }
+
 }

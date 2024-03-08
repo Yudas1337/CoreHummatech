@@ -217,8 +217,9 @@ Route::get('berita/{slugnews}', [NewsController::class, 'showNews'])->name('news
 //showService
 Route::get('layanan/{slugService}', [ServiceController::class, 'ShowService']);
 
-//all-product
+//product
 Route::get('data/product', [HomeProductController::class, 'index']);
+Route::get('data/product/kategori/{category:slug}',[HomeProductController::class,'productCategory']);
 
 //detail-product
 Route::get('detail/{product:slug}', [ProductController::class, 'showproduct'])->name('detail.product');
