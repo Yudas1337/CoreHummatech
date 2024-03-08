@@ -107,7 +107,7 @@
         </div>
     </div>
 
-    <div class="about-us-area">
+    <div class="about-us-area mt-5">
         <div class="container">
             <img src="{{ asset('assets-home/img/about-polygon.svg') }}" class="about-triangle" alt="Polygon" />
             <div class="about-items">
@@ -130,19 +130,19 @@
                     </div>
                     <div class="col-lg-6 d-none d-md-none d-lg-inline">
                         <div class="thumb">
-                            <img src="{{ asset('storage/' . $profile->image) }}" alt="Thumb" class="w-100" />
+                            <img src="{{ asset('storage/' . $profile->image) }}" alt="Thumb" style="width: 90%;" />
                         </div>
                     </div>
 
                 @empty
-                <div class="col-12">
-                    <div class="d-flex justify-content-center">
-                        <img src="{{ asset('nodata-gif.gif') }}" alt="" width="800px">
+                    <div class="col-12">
+                        <div class="d-flex justify-content-center">
+                            <img src="{{ asset('nodata-gif.gif') }}" alt="" width="800px">
+                        </div>
+                        <h4 class="text-center text-dark" style="font-weight:600">
+                            Belum ada profile perusahaan
+                        </h4>
                     </div>
-                    <h4 class="text-center text-dark" style="font-weight:600">
-                        Belum ada profile perusahaan
-                    </h4>
-                </div>
                     @endforelse
                 </div>
             </div>
@@ -164,49 +164,22 @@
         <div class="container">
             <div class="work-process-items features-content">
                 <div class="row">
-                    @forelse ($visionMisions as $key=>$visionMision)
-                        <div class="single-item col-lg-4 col-md-6 mb-4 wow fadeInRight" data-wow-delay="300ms"
-                            style="visibility: visible; animation-delay: 300ms; animation-name: fadeInRight;">
-                            <div class="item">
-                                <i class="flaticon-speech-bubble"></i>
-                                <div class="top">
-                                    <span>{{ sprintf('%02d', ++$key) }}</span>
-                                    <h4>Visi</h4>
-                                </div>
-                                <p>
-                                    {{ $visionMision->vision }}
-                                </p>
-                                <a href="about-us.html"><i class="arrow_right"></i></a>
+                    <div class="single-item col-lg-4 col-md-6 mb-4 text-light fadeInRight" data-wow-delay="300ms"
+                        style="visibility: visible; animation-delay: 300ms; animation-name: fadeInRight;">
+                        <div class=" bg-primary py-3 px-3 ">
+                            <div class=" d-flex justify-content-center ">
+                                <p class="text-light" style="font-weight: 900">___________</p>
+                                <h3 class="mt-2 px-3 text-light " style="font-weight: 900">Visi</h3>
+                                <p class="text-light" style="font-weight: 900">___________</p>
                             </div>
+                            <p class="fw-semibold">
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda doloremque rem voluptatem
+                                sapiente modi esse laborum, eveniet incidunt voluptate officia sint nostrum ut soluta veniam
+                                odit sequi porro ipsam debitis commodi dolores sunt consequuntur dolore accusamus animi?
+                                Suscipit, asperiores? Laudantium corporis voluptatum cum.
+                            </p>
                         </div>
-
-                        @foreach ($missions as $mission)
-                            <div class="single-item col-lg-4 col-md-6 mb-4 wow fadeInRight" data-wow-delay="500ms"
-                                style="visibility: visible; animation-delay: 500ms; animation-name: fadeInRight;">
-                                <div class="item">
-                                    <i class="flaticon-label"></i>
-                                    <div class="top">
-                                        <span>{{ sprintf('%02d', ++$key) }}</span>
-                                        <h4>Misi</h4>
-                                    </div>
-                                    <p>
-                                        {{ $mission->mission }}
-                                    </p>
-                                    <a href="about-us.html"><i class="arrow_right"></i></a>
-                                </div>
-                            </div>
-                        @endforeach
-
-                    @empty
-                        <div class="col-12">
-                            <div class="d-flex justify-content-center">
-                                <img src="{{ asset('nodata-gif.gif') }}" alt="" width="800px">
-                            </div>
-                            <h4 class="text-center text-dark" style="font-weight:600">
-                                Belum ada visi-misi
-                            </h4>
-                        </div>
-                    @endforelse
+                    </div>
                 </div>
             </div>
         </div>
@@ -284,19 +257,21 @@
                         </div>
                     </div>
                     @forelse ($logos as $logo)
-                    <div class="single-item col-lg-5 col-md-6 mx-auto">
-                        <div class="item text-center">
-                            <div class="logo-container">
-                                <img class="logo-image" src="{{ asset('storage/' . $logo->image) }}" alt="{{ $logo->title }}" style="max-width: 60%; height: auto; display: block; margin: 0 auto;">
-                            </div>
-                            <div class="item-details pt-5">
-                                <h3 style="font-size: 37px;"><b>{{ $logo->title }}</b></h3>
-                                <p>{{ Str::limit($logo->description, 250) }}</p>
-                                <a href="/detail-logo" class="btn btn-gradient btn-lg">Selengkapnya</a>
-                                {{-- <button class="btn btn-gradient btn-lg">Selengkapnya</button> --}}
+                        <div class="single-item col-lg-5 col-md-6 mx-auto">
+                            <div class="item text-center">
+                                <div class="logo-container">
+                                    <img class="logo-image" src="{{ asset('storage/' . $logo->image) }}"
+                                        alt="{{ $logo->title }}"
+                                        style="max-width: 60%; height: auto; display: block; margin: 0 auto;">
+                                </div>
+                                <div class="item-details pt-5">
+                                    <h3 style="font-size: 37px;"><b>{{ $logo->title }}</b></h3>
+                                    <p>{{ Str::limit($logo->description, 250) }}</p>
+                                    <a href="/detail-logo" class="btn btn-gradient btn-lg">Selengkapnya</a>
+                                    {{-- <button class="btn btn-gradient btn-lg">Selengkapnya</button> --}}
+                                </div>
                             </div>
                         </div>
-                    </div>
 
 
                     @empty

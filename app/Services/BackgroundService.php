@@ -2,16 +2,13 @@
 
 namespace App\Services;
 
-use App\Models\Sale;
-use App\Enums\TypeEnum;
-use App\Models\Product;
+use App\Http\Requests\StoreBackgroundRequest;
 use App\Traits\UploadTrait;
 use App\Http\Requests\StoreSaleRequest;
-use App\Http\Requests\UpdateSaleRequest;
-use App\Http\Requests\StoreBackgroundRequest;
 use App\Http\Requests\UpdateBackgroundRequest;
+use App\Http\Requests\UpdateSaleRequest;
 use App\Models\Background;
-use Illuminate\Support\Facades\Request;
+use App\Models\Sale;
 
 class BackgroundService
 {
@@ -39,16 +36,15 @@ class BackgroundService
      *
      * @return array|bool
      */
-    public function store(Request $request): array|bool
+    public function store(StoreBackgroundRequest $request): array|bool
     {
-        // dd($request);
-        $data = $request->all();
+        $data = $request->validated();
 
         if ($request->hasFile('image') && $request->file('image')->isValid()) {
-            $data['image'] = $request->file('image')->store(TypeEnum::BACKGROUND->value, 'public');
+            $data['image'] = $request->file('image')->store($request->type, 'public');
             return $data;
         }
-        return $data;
+        return false;
     }
 
     /**
@@ -62,9 +58,13 @@ class BackgroundService
     public function update(Background $background, UpdateBackgroundRequest $request): array|bool
     {
         $data = $request->validated();
-        if ($request->has('image')) {
+        if($request->show_in != 'Layanan') {
+            $data['service_id'] = null;
+        }
+
+        if ($request->hasFile('image') && $request->file('image')->isValid()) {
             $this->remove($background->image);
-            $data['image'] = $request->file('image')->store(TypeEnum::BACKGROUND->value, 'public');
+            $data['image'] = $request->file('image')->store($request->type, 'public');
         } else {
             $data['image'] = $background->image;
         }

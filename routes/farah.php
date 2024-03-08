@@ -21,3 +21,4 @@ Route::get('background', [BackgroundController::class, 'index'])->name('backgrou
 Route::post('background/store', [BackgroundController::class, 'store'])->name('background.store');
 Route::put('background/update/{background}', [BackgroundController::class, 'update'])->name('background.update');
 Route::delete('background/delete/{background}', [BackgroundController::class, 'destroy'])->name('background.destroy');
+

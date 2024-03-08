@@ -78,10 +78,10 @@
         </a>
         <ul class="sidebar-submenu">
             <li>
-                <a href="{{ route('category-product.index') }}">Kategori</a>
+                <a href="/category-product">Kategori</a>
             </li>
-            <li>
-                <a href="{{ route('product.index') }}">Produk</a>
+            <li >
+                <a href="/product">Produk</a>
             </li>
         </ul>
     </li>

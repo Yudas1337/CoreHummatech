@@ -116,7 +116,7 @@
                 </div>
                 <div class="d-flex justify-content-end gap-2">
                     <a href="{{ route('product.index') }}" class="btn btn-light-danger mt-2" type="button">Kembali</a>
-                    <button class="btn btn-primary" type="submit">Tambah</button>
+                    <button class="btn btn-primary" type="submit">Simpan</button>
                 </div>
             </form>
         </div>
