@@ -58,7 +58,7 @@ class EventServiceProvider extends ServiceProvider
         NewsImage::observe(NewsImageObserver::class);
         Termscondition::observe(TermsconditionObserve::class);
 
-        
+
         parent::boot();
 
         $services = Service::all();
@@ -66,13 +66,11 @@ class EventServiceProvider extends ServiceProvider
         $social = SosialMedia::all();
         $branchs = Branch::all();
         $news = News::all();
-
+        $products = Product::all();
 
         View::share('profiles', $profiles);
         View::share('news', $news);
         View::share('socmed', $social);
-
-        $products = Product::all();
         View::share('products', $products);
         View::share('services', $services);
         View::share('branchs', $branchs);

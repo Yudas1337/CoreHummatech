@@ -125,17 +125,15 @@
                         <div class="f-item about">
                             <img src="{{ asset('assets/images/LOGO-HUMMATECH_Putih.png') }}"
                                 style="height: 48px;width: auto;" alt="Logo">
-                                @foreach ($profiles as $profiles)
-                                @isset($profiles)
-                                <p>{{ Str::limit($profiles->description, 200) }}</p>
-                                <a href="{{ url('/about-us') }}">Lihat Selengkapnya</a>
-                                @else
-                                <p>
-                                    Bertransformasi menjadi perusahaan yang mampu menjawab tantangan di era revolusi
-                                    industri 4.0
-                                </p>
-                                @endif
-                                @endforeach
+                            @isset($profiles)
+                            <p>{{ Str::limit($profiles->description, 200) }}</p>
+                            <a href="{{ url('/about-us') }}">Lihat Selengkapnya</a>
+                            @else
+                            <p>
+                                Bertransformasi menjadi perusahaan yang mampu menjawab tantangan di era revolusi
+                                industri 4.0
+                            </p>
+                            @endif
                         </div>
                     </div>
                     <div class="col-lg-2 col-md-6 item">
@@ -184,14 +182,13 @@
                                         </div>
                                         <div class="content">
                                             <strong>Alamat:</strong>
-                                            @foreach ($profiles as $profiles)
+
                                             @isset($profiles)
                                                 {{ $profiles->address }}
                                             @else
                                                 Perum Permata Regency 1 Blok 10/28, Perun Gpa, Ngijo, Kec. Karang
                                                 Ploso, Kabupaten Malang, Jawa Timur 65152.
-                                            @endif
-                                            @endforeach
+                                                @endif
                                             </div>
                                         </li>
                                         <li>
@@ -200,13 +197,11 @@
                                             </div>
                                             <div class="content">
                                                 <strong>Email:</strong>
-                                                @foreach ($profiles as $profiles)
                                                 @isset($profiles)
                                                     <a href="mailto:{{ $profiles->email }}">{{ $profiles->email }}</a>
                                                 @else
                                                     <a href="mailto:info@hummatech.com">info@hummatech.com</a>
                                                 @endisset
-                                                @endforeach
                                             </div>
                                         </li>
                                         <li>
@@ -215,7 +210,6 @@
                                             </div>
                                             <div class="content">
                                                 <strong>Phone:</strong>
-                                                @foreach ($profiles as $profiles)
                                                 @isset($profiles)
                                                     @php
                                                         $cleanPhone = str_replace(
@@ -232,7 +226,6 @@
                                                 @else
                                                     <a href="https://wa.me/6285176777785">085176777785</a>
                                                 @endisset
-                                                @endforeach
                                             </div>
                                         </li>
                                     </ul>
