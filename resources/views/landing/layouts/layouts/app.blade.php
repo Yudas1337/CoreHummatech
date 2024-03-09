@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<!-- Mirrored from validthemes.net/site-template/earna/index-4.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 26 Feb 2024 03:10:25 GMT -->
-
 <head>
     <!-- ========== Meta Tags ========== -->
     <meta charset="utf-8" />
@@ -10,7 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content="{{ config('app.name', 'Laravel') }}" />
     <meta name="title" content="Hummatech - Perusahaan Software Terbaik di Malang" />
-    <meta name="description" content="Hummatech , Hummatech adalah perusahaan software development terbaik di Malang. Kami menyediakan solusi perangkat lunak yang inovatif dan berkualitas tinggi." />
+    <meta name="description"
+        content="Hummatech , Hummatech adalah perusahaan software development terbaik di Malang. Kami menyediakan solusi perangkat lunak yang inovatif dan berkualitas tinggi." />
 
     <!-- ========== Page Title ========== -->
     @hasSection('title')
@@ -50,6 +49,7 @@
     </style>
 
 </head>
+
 <body>
 
     <!-- Start Preloader
@@ -123,160 +123,163 @@
                 <div class="row">
                     <div class="col-lg-4 col-md-6 item">
                         <div class="f-item about">
-                            <img alt="Logo Hummatech" src="{{ asset('assets/images/LOGO-HUMMATECH_Putih.png') }}"
-                                style="height: 48px;width: auto;" />
-                            @if(isset($profiles) && $profiles->count() > 0)
-                            <p>{{ Str::limit($profiles->description, 200) }}</p>
-                            <a href="{{ url('/about-us') }}">Lihat Selengkapnya</a>
+                            <img src="{{ asset('assets/images/LOGO-HUMMATECH_Putih.png') }}"
+                                style="height: 48px;width: auto;" alt="Logo">
+
+                            @isset($profile)
+                                <p>{{ Str::limit($profile->description, 200) }}</p>
+                                <a href="{{ url('/about-us') }}">Lihat Selengkapnya</a>
                             @else
-                            <p>
-                                Bertransformasi menjadi perusahaan yang mampu menjawab tantangan di era revolusi
-                                industri 4.0
-                            </p>
-                            @endif
+                                <p>
+                                    Bertransformasi menjadi perusahaan yang mampu menjawab tantangan di era revolusi
+                                    industri 4.0
+                                </p>
+                                @endif
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-lg-2 col-md-6 item">
-                        <div class="f-item link">
-                            <h4 class="widget-title">Sosial Media</h4>
-                            <ul>
-                                @forelse ($socmed as $socmed)
-                                    <li>
-                                        <a href="{{ $socmed->link }}" style="display: flex;gap: .5rem;align-items: center">
-                                            <i class="fas fa-angle-right"></i>
-                                            <img alt="Facebook Logo" src="{{ asset("storage/{$socmed->image}") }}" height="16px" class="mb-0" width="16px" />
-                                            {{ $socmed->platform }}
-                                        </a>
-                                    </li>
-                                @empty
-                                    <li>
-                                        Tidak ada data
-                                    </li>
-                                @endforelse
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 item">
-                        <div class="f-item link">
-                            <h4 class="widget-title">Layanan Kami</h4>
-                            <ul>
-                                @forelse ($services as $service)
-                                    <li>
-                                        <a href="{{ url("/layanan/{$service->slug}") }}"><i
-                                            class="fas fa-angle-right"></i> {{ $service->name }}</a>
-                                    </li>
-                                @empty
-                                    <li>Belum ada data layanan</li>
-                                @endforelse
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 item">
-                        <div class="f-item contact-widget">
-                            <h4 class="widget-title">Hubungi Kami</h4>
-                            <div class="address">
+                        <div class="col-lg-2 col-md-6 item">
+                            <div class="f-item link">
+                                <h4 class="widget-title">Sosial Media</h4>
                                 <ul>
-                                    <li>
-                                        <div class="icon">
-                                            <i class="fas fa-home"></i>
-                                        </div>
-                                        <div class="content">
-                                            <strong>Alamat:</strong>
-
-                                            @if(isset($profiles) && $profiles->count() > 0)
-                                                {{ $profiles->address }}
-                                            @else
-                                                Perum Permata Regency 1 Blok 10/28, Perun Gpa, Ngijo, Kec. Karang
-                                                Ploso, Kabupaten Malang, Jawa Timur 65152.
-                                                @endif
-                                            </div>
+                                    @forelse ($socmed as $socmed)
+                                        <li>
+                                            <a href="{{ $socmed->link }}"
+                                                style="display: flex;gap: .5rem;align-items: center">
+                                                <i class="fas fa-angle-right"></i>
+                                                <img alt="Facebook Logo" src="{{ asset("storage/{$socmed->image}") }}"
+                                                    height="16px" class="mb-0" width="16px" />
+                                                {{ $socmed->platform }}
+                                            </a>
                                         </li>
+                                    @empty
+                                        <li>
+                                            Tidak ada data
+                                        </li>
+                                    @endforelse
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6 item">
+                            <div class="f-item link">
+                                <h4 class="widget-title">Layanan Kami</h4>
+                                <ul>
+                                    @forelse ($services as $service)
+                                        <li>
+                                            <a href="{{ url("/layanan/{$service->slug}") }}"><i
+                                                    class="fas fa-angle-right"></i> {{ $service->name }}</a>
+                                        </li>
+                                    @empty
+                                        <li>Belum ada data layanan</li>
+                                    @endforelse
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6 item">
+                            <div class="f-item contact-widget">
+                                <h4 class="widget-title">Hubungi Kami</h4>
+                                <div class="address">
+                                    <ul>
                                         <li>
                                             <div class="icon">
-                                                <i class="fas fa-envelope"></i>
+                                                <i class="fas fa-home"></i>
                                             </div>
                                             <div class="content">
-                                                <strong>Email:</strong>
-                                                @if(isset($profiles) && $profiles->count() > 0)
-                                                    <a href="mailto:{{ $profiles->email }}">{{ $profiles->email }}</a>
-                                                @else
-                                                    <a href="mailto:info@hummatech.com">info@hummatech.com</a>
-                                                @endisset
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="icon">
-                                                <i class="fas fa-phone"></i>
-                                            </div>
-                                            <div class="content">
-                                                <strong>Phone:</strong>
-                                                @if(isset($profiles) && $profiles->count() > 0)
-                                                    @php
-                                                        $cleanPhone = str_replace(
-                                                            ['+', '-', ' '],
-                                                            '',
-                                                            $profiles->phone,
-                                                        );
-                                                        if (substr($cleanPhone, 0, 2) === '62') {
-                                                            $cleanPhone = '0' . substr($cleanPhone, 2);
-                                                        }
-                                                    @endphp
+                                                <strong>Alamat:</strong>
 
-                                                    <a href="https://wa.me/{{ $cleanPhone }}">{{ $cleanPhone }}</a>
+                                                @isset($profile)
+                                                    {{ $profile->address }}
                                                 @else
-                                                    <a href="https://wa.me/6285176777785">085176777785</a>
-                                                @endisset
-                                            </div>
-                                        </li>
-                                    </ul>
+                                                    Perum Permata Regency 1 Blok 10/28, Perun Gpa, Ngijo, Kec. Karang
+                                                    Ploso, Kabupaten Malang, Jawa Timur 65152.
+                                                    @endif
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="icon">
+                                                    <i class="fas fa-envelope"></i>
+                                                </div>
+                                                <div class="content">
+                                                    <strong>Email:</strong>
+                                                    @isset($profile)
+                                                        <a href="mailto:{{ $profile->email }}">{{ $profile->email }}</a>
+                                                    @else
+                                                        <a href="mailto:info@hummatech.com">info@hummatech.com</a>
+                                                    @endisset
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="icon">
+                                                    <i class="fas fa-phone"></i>
+                                                </div>
+                                                <div class="content">
+                                                    <strong>Phone:</strong>
+                                                    @isset($profile)
+                                                        @php
+                                                            $cleanPhone = str_replace(
+                                                                ['+', '-', ' '],
+                                                                '',
+                                                                $profile->phone,
+                                                            );
+                                                            if (substr($cleanPhone, 0, 2) === '62') {
+                                                                $cleanPhone = '0' . substr($cleanPhone, 2);
+                                                            }
+                                                        @endphp
+
+                                                        <a href="https://wa.me/{{ $cleanPhone }}">{{ $cleanPhone }}</a>
+                                                    @else
+                                                        <a href="https://wa.me/6285176777785">085176777785</a>
+                                                    @endisset
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Start Footer Bottom -->
-        <div class="footer-bottom">
-            <div class="container">
-                <div class="footer-bottom-box mt-0 p-4">
-                    <div class="row">
-                        <div class="col-lg-8">
-                            <p>&copy; Copyright 2024. All Rights Reserved by <a
-                                    href="{{ url('/') }}">PT. Humma Teknologi Indonesia</a></p>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-        <!-- End Footer Bottom -->
-    </footer>
-    <!-- End Footer -->
+                <!-- Start Footer Bottom -->
+                <div class="footer-bottom">
+                    <div class="container">
+                        <div class="footer-bottom-box mt-0 p-4">
+                            <div class="row">
+                                <div class="col-lg-8">
+                                    <p>&copy; Copyright 2024. All Rights Reserved by <a href="{{ url('/') }}">PT. Humma
+                                            Teknologi Indonesia</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Footer Bottom -->
+            </footer>
+<!-- End Footer -->
 
-    <!-- jQuery Frameworks
-    ============================================= -->
-    @yield('script')
-    <script src="{{ asset('assets-home/js/jquery-3.6.0.min.js') }}"></script>
-    <script src="{{ asset('assets-home/js/popper.min.js') }}"></script>
-    <script src="{{ asset('assets-home/js/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('assets-home/js/jquery.appear.js') }}"></script>
-    <script src="{{ asset('assets-home/js/jquery.easing.min.js') }}"></script>
-    <script src="{{ asset('assets-home/js/jquery.magnific-popup.min.js') }}"></script>
-    <script src="{{ asset('assets-home/js/modernizr.custom.13711.js') }}"></script>
-    <script src="{{ asset('assets-home/js/owl.carousel.min.js') }}"></script>
-    <script src="{{ asset('assets-home/js/wow.min.js') }}"></script>
-    <script src="{{ asset('assets-home/js/progress-bar.min.js') }}"></script>
-    <script src="{{ asset('assets-home/js/circle-progress.js') }}"></script>
-    <script src="{{ asset('assets-home/js/isotope.pkgd.min.js') }}"></script>
-    <script src="{{ asset('assets-home/js/imagesloaded.pkgd.min.js') }}"></script>
-    <script src="{{ asset('assets-home/js/count-to.js') }}"></script>
-    <script src="{{ asset('assets-home/js/YTPlayer.min.js') }}"></script>
-    <script src="{{ asset('assets-home/js/bootsnav.js') }}"></script>
-    <script src="{{ asset('assets-home/js/Chart.min.js') }}"></script>
-    <script src="{{ asset('assets-home/js/custom-chart.js') }}"></script>
-    <script src="{{ asset('assets-home/js/main.js') }}"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="jquery.min.js"></script>
-    <script src="owlcarousel/owl.carousel.min.js"></script>
+<!-- jQuery Frameworks
+============================================= -->
+@yield('script')
+<script src="{{ asset('assets-home/js/jquery-3.6.0.min.js') }}"></script>
+<script src="{{ asset('assets-home/js/popper.min.js') }}"></script>
+<script src="{{ asset('assets-home/js/bootstrap.min.js') }}"></script>
+<script src="{{ asset('assets-home/js/jquery.appear.js') }}"></script>
+<script src="{{ asset('assets-home/js/jquery.easing.min.js') }}"></script>
+<script src="{{ asset('assets-home/js/jquery.magnific-popup.min.js') }}"></script>
+<script src="{{ asset('assets-home/js/modernizr.custom.13711.js') }}"></script>
+<script src="{{ asset('assets-home/js/owl.carousel.min.js') }}"></script>
+<script src="{{ asset('assets-home/js/wow.min.js') }}"></script>
+<script src="{{ asset('assets-home/js/progress-bar.min.js') }}"></script>
+<script src="{{ asset('assets-home/js/circle-progress.js') }}"></script>
+<script src="{{ asset('assets-home/js/isotope.pkgd.min.js') }}"></script>
+<script src="{{ asset('assets-home/js/imagesloaded.pkgd.min.js') }}"></script>
+<script src="{{ asset('assets-home/js/count-to.js') }}"></script>
+<script src="{{ asset('assets-home/js/YTPlayer.min.js') }}"></script>
+<script src="{{ asset('assets-home/js/bootsnav.js') }}"></script>
+<script src="{{ asset('assets-home/js/Chart.min.js') }}"></script>
+<script src="{{ asset('assets-home/js/custom-chart.js') }}"></script>
+<script src="{{ asset('assets-home/js/main.js') }}"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="jquery.min.js"></script>
+<script src="owlcarousel/owl.carousel.min.js"></script>
 
 </body>
 

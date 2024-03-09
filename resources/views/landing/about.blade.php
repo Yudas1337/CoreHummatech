@@ -1,5 +1,7 @@
 @extends('landing.layouts.layouts.app')
 
+@section('title', 'Tentang Kami')
+
 @section('style')
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet" />
 
@@ -64,6 +66,12 @@
             border-radius: 8px;
             margin: 0;
         }
+
+        @media screen and (min-width: 992px) {
+            .text-lg-start {
+                text-align: left !important;
+            }
+        }
     </style>
 @endsection
 
@@ -89,6 +97,9 @@
       ]
     }
 </script>
+
+<meta name="description" content="Perusahaan Software House terbaik se-Jawa Timur" />
+<meta name="og:description" content="Perusahaan Software House terbaik se-Jawa Timur" />
 @endsection
 
 @section('content')
@@ -112,21 +123,21 @@
             <img src="{{ asset('assets-home/img/about-polygon.svg') }}" class="about-triangle" alt="Polygon" />
             <div class="about-items">
                 <div class="row align-center justify-content-center">
-                    <div class="col-lg-6 info text-center">
+                    <div class="col-lg-6 info text-center text-lg-start">
                         <h4 class="subtitle">Profile Perusahaan</h4>
                         @forelse ($profiles as $profile)
-                            <h2>{{ $profile->subtitle }}</h2>
-                            <img src="{{ asset('storage/' . $profile->image) }}" alt="Thumb"
-                                class="w-75 mb-3 d-block mx-auto d-lg-none" />
-                            <p>
-                                {!! Str::limit($profile->description, 200) !!}
-                            </p>
+                        <h2>{{ $profile->subtitle }}</h2>
+                        <img src="{{ asset('storage/' . $profile->image) }}" alt="Thumb"
+                            class="w-75 mb-3 d-block mx-auto d-lg-none" />
+                        <p>
+                            {!! Str::limit($profile->description, 200) !!}
+                        </p>
 
-                            @if ($profile->proposal)
-                                <a class="btn btn-gradient effect btn-md"
-                                    href="{{ asset('storage/' . $profile->proposal) }}"
-                                    download="{{ asset('storage/' . $profile->proposal) }}">Unduh Portofolio</a>
-                            @endif
+                        @if ($profile->proposal)
+                            <a class="btn btn-gradient effect btn-md"
+                                href="{{ asset('storage/' . $profile->proposal) }}"
+                                download="{{ asset('storage/' . $profile->proposal) }}">Unduh Portofolio</a>
+                        @endif
                     </div>
                     <div class="col-lg-6 d-none d-md-none d-lg-inline">
                         <div class="thumb">

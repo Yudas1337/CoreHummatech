@@ -64,7 +64,7 @@
                             @endforelse
                         </ul>
                     </li>
-                    <li>
+                    <li class="{{ request()->is('data/product') ? 'active' : '' }}">
                         <a href="{{ url('/data/product') }}">Portofolio</a>
                     </li>
                     <li class="{{ request()->is('berita*', 'detail/news') ? 'active' : '' }}">
