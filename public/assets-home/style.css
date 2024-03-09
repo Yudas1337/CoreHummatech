@@ -3326,7 +3326,7 @@ body,
 .thumb-services-area .services-items .item {
     background-size: cover;
     background-position: center;
-    padding: 60px 37px;
+    padding: 90px 37px;
     position: relative;
     z-index: 1;
 }
@@ -3385,7 +3385,7 @@ body,
 .thumb-services-area .services-items .single-item .item::before {
     opacity: 0.6;
     transition: all 0.35s ease-in-out;
-    background: #000000;
+    background: #0041A2;
     position: absolute;
     left: 0;
     top: 0;
@@ -3397,17 +3397,22 @@ body,
     transition: all 0.35s ease-in-out;
 }
 
+.thumb-services-area .services-items .single-item .item:hover::before {
+    background: #000000;
+    transition: all .2s ease-in-out;
+}
+
 .thumb-services-area .services-items .single-item .item:hover::after,
-.thumb-services-area .services-items .single-item:first-child .item::after {
+.thumb-services-area .services-items .single-item .item::after {
     opacity: 0;
 }
 
 .thumb-services-area .services-items .single-item .item:hover::before,
-.thumb-services-area .services-items .single-item:first-child .item::before {
+.thumb-services-area .services-items .single-item .item::before {
     height: 100%;
 }
 
-.thumb-services-area .services-items .single-item:first-child .item .info > i,
+.thumb-services-area .services-items .single-item .item .info > i,
 .thumb-services-area .services-items .single-item .item:hover .info > i {
     background: #ffffff;
     color: #1273eb;
@@ -3420,9 +3425,9 @@ body,
     transition: all 0.35s ease-in-out;
 }
 
-.thumb-services-area .services-items .single-item:first-child .item h4,
-.thumb-services-area .services-items .single-item:first-child .item p,
-.thumb-services-area .services-items .single-item:first-child .item a,
+.thumb-services-area .services-items .single-item .item h4,
+.thumb-services-area .services-items .single-item .item p,
+.thumb-services-area .services-items .single-item .item a,
 .thumb-services-area .services-items .single-item .item:hover h4,
 .thumb-services-area .services-items .single-item .item:hover p,
 .thumb-services-area .services-items .single-item .item:hover a {
@@ -3431,7 +3436,7 @@ body,
 
 .thumb-services-area .services-items .item .bottom a {
     margin-top: 5px;
-    color: #232323;
+    color: #fff;
     display: inline-block;
     text-transform: uppercase;
     font-size: 14px;
