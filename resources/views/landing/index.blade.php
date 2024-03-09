@@ -1,6 +1,5 @@
 @extends('landing.layouts.app')
 
-@section('title', 'Software House Terbaik di Malang')
 
 @section('seo')
 <meta name="title" content="Hummatech - Perusahaan Software Terbaik di Malang" />
