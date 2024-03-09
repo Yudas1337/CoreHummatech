@@ -131,7 +131,7 @@ class NewsController extends Controller
         $newsCategories = $this->category->get();
         $newses = $this->news->customPaginate($request, 12);
         $background = $this->background->getByType('Berita');
-        
+
         return view('landing.news.index', compact('newses', 'newsCategories', 'background'));
     }
 
@@ -145,9 +145,9 @@ class NewsController extends Controller
     {
         $newses = $this->newsCategory->where($category->id);
         $newsCategories = $this->category->get();
-
-
-        return view('landing.news.index', compact('newses' ,'newsCategories'));
+        $background = $this->background->getByType('Berita');
+        
+        return view('landing.news.index', compact('newses' ,'newsCategories', 'background'));
     }
 
     /**
@@ -160,7 +160,8 @@ class NewsController extends Controller
     {
         $otherNews = $this->news->latest(5, [['news.slug', '!=', $slugnews]]);
         $news = $this->news->slug($slugnews);
+        $background = $this->background->getByType('Berita');
 
-        return view('landing.news.detail', compact('news', 'otherNews'));
+        return view('landing.news.detail', compact('news', 'otherNews', 'background'));
     }
 }
