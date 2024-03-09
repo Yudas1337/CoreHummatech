@@ -231,7 +231,7 @@
                 <a href="/vacancy">Profile</a>
             </li>
             <li>
-                <a href="/vacancy/workflow">Alur Kerja</a>
+                <a href="/workflow">Alur Kerja</a>
             </li>
         </ul>
     </li>

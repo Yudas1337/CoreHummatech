@@ -200,7 +200,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('delete/collab/mitra/{collabMitra}', [CollabMitraController::class, 'destroy']);
 
     //workflow
-    Route::get('vacancy/workflow', [WorkflowController::class, 'index']);
+    Route::get('workflow', [WorkflowController::class, 'index']);
     Route::put('vacancy/workflow/update/{workflow}', [WorkflowController::class, 'update'])->name('update.workflow');
     Route::post('store/workflow', [WorkflowController::class, 'store'])->name('store.workflow');
     Route::delete('vacancy/workflow/delete/{workflow}', [WorkflowController::class, 'destroy'])->name('delete.vacancy.workflow');
