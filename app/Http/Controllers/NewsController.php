@@ -131,6 +131,7 @@ class NewsController extends Controller
         $newsCategories = $this->category->get();
         $newses = $this->news->customPaginate($request, 12);
         $background = $this->background->getByType('Berita');
+        
         return view('landing.news.index', compact('newses', 'newsCategories', 'background'));
     }
 
