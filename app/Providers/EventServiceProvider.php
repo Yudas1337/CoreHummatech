@@ -57,18 +57,17 @@ class EventServiceProvider extends ServiceProvider
         NewsImage::observe(NewsImageObserver::class);
         Termscondition::observe(TermsconditionObserve::class);
 
-
         parent::boot();
 
         $services = Service::all();
-        $profiles = Profile::first();
+        $profile = Profile::first();
         $social = SosialMedia::all();
         $branches = Branch::all();
         $news = News::all();
         $products = Product::all();
 
-        View::share('profiles', $profiles);
-        View::share('news', $news);
+        View::share('profile', $profile);
+        View::share('navbarNewsData', $news);
         View::share('socmed', $social);
         View::share('products', $products);
         View::share('services', $services);

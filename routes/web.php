@@ -33,6 +33,7 @@ use App\Http\Controllers\SalesPackageController;
 use App\Http\Controllers\CollabCategoryController;
 use App\Http\Controllers\ContactUsController;
 use App\Http\Controllers\HomeContactController;
+use App\Http\Controllers\SitemapController;
 use App\Http\Controllers\TermsconditionController;
 use App\Http\Controllers\VisionAndMisionController;
 
@@ -244,6 +245,8 @@ Route::get('data/lowongan', HomeVacancyController::class);
 Route::post('image-uploader', ImageUploader::class)->name('image-uploader');
 
 Route::post('background/store' , [BackgroundController::class , 'store']);
+
+Route::get('/sitemap.xml', SitemapController::class);
 
 require_once __DIR__ . '/kader.php';
 require_once __DIR__ . '/farah.php';
