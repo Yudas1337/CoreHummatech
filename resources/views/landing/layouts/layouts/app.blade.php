@@ -257,7 +257,6 @@
 
 <!-- jQuery Frameworks
 ============================================= -->
-@yield('script')
 <script src="{{ asset('assets-home/js/jquery-3.6.0.min.js') }}"></script>
 <script src="{{ asset('assets-home/js/popper.min.js') }}"></script>
 <script src="{{ asset('assets-home/js/bootstrap.min.js') }}"></script>
@@ -280,6 +279,7 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="jquery.min.js"></script>
 <script src="owlcarousel/owl.carousel.min.js"></script>
+@yield('script')
 
 </body>
 
