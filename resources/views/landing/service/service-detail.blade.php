@@ -194,7 +194,7 @@
 
 @section('content')
     <div class="breadcrumb-area text-center shadow dark text-light bg-cover"
-        style="background-image: url({{ $background == null ? asset('assets-home/img/default-bg.png') : asset('storage/'. $background->image) }});">
+        style="background-image: url({{ $background == null ? asset('assets-home/img/default-bg.png') : asset('storage/' . $background->image) }});">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 offset-lg-2">
@@ -267,7 +267,6 @@
                                 <h4 class="m-0">Testimoni Layanan</h4>
                                 <div class="dash"></div>
                             </div>
-
                             <div class="testimonials-area">
                                 <div class="container">
                                     <div class="testimonial-items bg-gradient-gray">
@@ -385,7 +384,7 @@
                                     <h4 class="m-0">Mitra Kami</h4>
                                     <div class="dash"></div>
                                     <div class="devider"></div>
-                                    <div class="team-slider owl-carousel">
+                                    <div class="team-slider owl-carousel d-flex">
                                         @forelse ($mitras as $mitra)
                                             <div class="team-item">
                                                 <img src="{{ asset('storage/' . $mitra->image) }}" alt="Mitra Image"
@@ -569,8 +568,8 @@
     <script>
         $(document).ready(function() {
             $(".team-slider").owlCarousel({
-                items: 5,
-                loop: true,
+                items: 1,
+                loop: $(".team-slider .owl-item").length > 1,
                 autoplay: true,
                 autoplayTimeout: 3000,
                 responsive: {
