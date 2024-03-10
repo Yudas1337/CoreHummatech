@@ -442,7 +442,7 @@
                                                                     <h4>
                                                                         <a href="/berita/{{ $newsItem->slug }}">{{ $newsItem['title'] }}</a>
                                                                     </h4>
-                                                                    <p class="line-clamp">{!! Str::limit($newsItem['description'], 80) !!}
+                                                                    <p class="line-clamp">{!! Str::limit($newsItem['description'], 200) !!}
                                                                     </p>
                                                                     <a href="/berita/{{ $newsItem->slug }}" class="btn btn-outline-primary rounded-pill py-2 px-4 text-dark">Baca Selengkapnya</a>
                                                                 </div>
