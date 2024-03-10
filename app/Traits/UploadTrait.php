@@ -4,6 +4,7 @@ namespace App\Traits;
 
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
+use Intervention\Image\Laravel\Facades\Image;
 
 trait UploadTrait
 {
@@ -82,5 +83,14 @@ trait UploadTrait
             mkdir(public_path('storage/' . $destinationPath), 0777, true);
         }
         return $destinationPath;
+    }
+
+    public function compressImage($imagePath, $destinationPath, $width = 150, $height = 150)
+    {
+        $image = Image::make(storage_path('app/public/') . $imagePath);
+
+        $image->resize($width, $height);
+        
+        $image->save(storage_path('app/public/') . $destinationPath);
     }
 }
