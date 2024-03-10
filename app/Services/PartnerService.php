@@ -22,6 +22,10 @@ class PartnerService
     public function store(StoreCollabMitraRequest $request): array|bool
     {
         $data = $request->validated();
+        $data = [
+            'name' => $data['name'],
+            'collab_category_id' => $data['collab_category_id'],
+        ];
 
         if ($request->hasFile('image') && $request->file('image')->isValid()) {
             $data['image'] = $request->file('image')->store(TypeEnum::PARTNER->value, 'public');
@@ -33,7 +37,10 @@ class PartnerService
     public function update(CollabMitra $partner, UpdateCollabMitraRequest $request): array|bool
     {
         $data = $request->validated();
-
+        $data = [
+            'name' => $data['name'],
+            'collab_category_id' => $data['collab_category_id'],
+        ];
         if ($request->hasFile('image') && $request->file('image')->isValid()) {
             $this->remove($partner->image);
             $data['image'] = $request->file('image')->store(TypeEnum::PARTNER->value, 'public');

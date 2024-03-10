@@ -2,24 +2,31 @@
 
 namespace App\Http\Controllers;
 
+use App\Contracts\Interfaces\CollabCategoryInterface;
 use App\Contracts\Interfaces\CollabMitraInterface;
 use App\Contracts\Interfaces\ServiceInterface;
+use App\Contracts\Interfaces\ServiceMitraInterface;
 use App\Models\CollabMitra;
 use App\Http\Requests\StoreCollabMitraRequest;
 use App\Http\Requests\UpdateCollabMitraRequest;
 use App\Models\CollabCategory;
 use App\Services\PartnerService;
+use App\Services\ServiceMitraService;
+
 class CollabMitraController extends Controller
 {
     private CollabMitraInterface $collabMitra;
     private PartnerService $service;
     private ServiceInterface $serviceintervace;
-    public function __construct(CollabMitraInterface $collabMitra, PartnerService $partnerService, ServiceInterface $serviceintervace)
+    private CollabCategoryInterface $collabCategory;
+    private ServiceMitraService $serviceMitraService;
+    public function __construct(CollabMitraInterface $collabMitra, PartnerService $partnerService, ServiceInterface $serviceintervace, CollabCategoryInterface $collabCategory, ServiceMitraService $serviceMitraService)
     {
         $this->collabMitra = $collabMitra;
         $this->service = $partnerService;
         $this->serviceintervace = $serviceintervace;
-        $this->middleware('auth');
+        $this->collabCategory = $collabCategory;
+        $this->serviceMitraService = $serviceMitraService;
     }
     /**
      * Display a listing of the resource.
@@ -27,7 +34,7 @@ class CollabMitraController extends Controller
     public function index()
     {
         $collabMitras = $this->collabMitra->get();
-        $categories = CollabCategory::all();
+        $categories = $this->collabCategory->get();
         $services = $this->serviceintervace->get();
         return view('admin.pages.collab.index', compact('collabMitras', 'categories', 'services'));
     }
@@ -46,7 +53,9 @@ class CollabMitraController extends Controller
     public function store(StoreCollabMitraRequest $request)
     {
         $data = $this->service->store($request);
-        $this->collabMitra->store($data);
+        $collabId = $this->collabMitra->store($data);
+        $this->serviceMitraService->store($request,$collabId);
+
         return back()->with('success', 'Berhasil Di Tambahkan');
     }
 
@@ -71,8 +80,10 @@ class CollabMitraController extends Controller
      */
     public function update(UpdateCollabMitraRequest $request, CollabMitra $collabMitra)
     {
+        // dd($request->all());
         $data = $this->service->update($collabMitra, $request);
         $this->collabMitra->update($collabMitra->id, $data);
+        $this->serviceMitraService->update($request, $collabMitra);
         return back()->with('success', 'Berhasil Di Perbarui');
     }
   /**
