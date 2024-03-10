@@ -16,11 +16,15 @@ class ServiceMitraService
     public function store(StoreCollabMitraRequest $request, $collabId)
     {
         $data = $request->validated();
-        foreach ($data['service_id'] as $serviceId) {
-            $this->serviceMitra->store([
-                'mitra_id' => $collabId->id,
-                'service_id' => $serviceId,
-            ]);
+        if ($request->service_id) {
+            foreach ($data['service_id'] as $serviceId) {
+                $this->serviceMitra->store([
+                    'mitra_id' => $collabId->id,
+                    'service_id' => $serviceId,
+                ]);
+            }
+        } else{
+           return false;
         }
     }
 
@@ -28,11 +32,15 @@ class ServiceMitraService
     {
         $data = $request->validated();
         $this->serviceMitra->delete($collabMitra->id);
-        foreach ($data['service_id'] as $serviceId) {
-            $this->serviceMitra->store([
-                'mitra_id' => $collabMitra->id,
-                'service_id' => $serviceId,
-            ]);
+        if ($request->service_id) {
+            foreach ($data['service_id'] as $serviceId) {
+                $this->serviceMitra->store([
+                    'mitra_id' => $collabMitra->id,
+                    'service_id' => $serviceId,
+                ]);
+            }
+        } else{
+           return false;
         }
     }
 }

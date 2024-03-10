@@ -25,7 +25,7 @@ class StoreCollabMitraRequest extends FormRequest
             'name' => 'required|max:50',
             'collab_category_id' => 'required',
             'image' => 'required',
-            'service_id' => 'required|array',
+            'service_id' => 'nullable|array',
         ];
     }
 
