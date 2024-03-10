@@ -49,7 +49,7 @@
                     <li class="{{ request()->is('/') ? 'active' : '' }}">
                         <a href="{{ url('/') }}">Beranda</a>
                     </li>
-                    <li class="{{ request()->is('/about-us') ? 'active' : '' }}">
+                    <li class="{{ request()->is('about-us') ? 'active' : '' }}">
                         <a href="{{ url('/about-us') }}">Tentang</a>
                     </li>
                     <li class="dropdown">
