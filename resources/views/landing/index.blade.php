@@ -53,50 +53,22 @@
             top: -7.5rem;
             right: -7.5rem;
         }
-        #owl-carousel-mitra::before,
-        #owl-carousel-mitra::after {
-            position: absolute;
-            height: 100%;
-            z-index: 2;
-            content: '';
-            width: 150px;
-        }
+        .thumbs-services-area .item::after {
+    position: absolute;
+    left: -15px;
+    top: 80px;
+    right: -15px;
+    background: none;
+    content: "";
+    bottom: 0;
+    z-index: -1;
+    border-radius: 7px;
+}
 
-        #owl-carousel-mitra::before {
-            left: 0;
-            top: 0;
-            bottom: 0;
-            background: linear-gradient(to right, rgba(var(--bs-white-rgb), 1), 65%, transparent);
-        }
-
-        #owl-carousel-mitra::after {
-            right: 0;
-            top: 0;
-            bottom: 0;
-            background: linear-gradient(to left, rgba(var(--bs-white-rgb), 1), 65%, transparent);
-        }
-
-        .team-area {
-            width: 100%;
-        }
-
-        .team-slider {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .team-item img {
-        max-width: 100%;
-        height: auto;
-        display: block;
-        margin: 0 auto;
-    }
     .rounded-container {
         border-radius: 15px;
         overflow: hidden;
     }
-
 
         @media (max-width: 992px) {
             .owl-carousel {
@@ -315,7 +287,7 @@
                 <div class="row align-items-center">
 
                     <div class="col-lg-4 col-md-12 info">
-                        <h2 class="mx-5"> Menghadirkan produk dengan kualitas dan inovasi terbaik</h2>
+                        <h2 class="mx-5 text-break"> Menghadirkan produk dengan kualitas dan inovasi terbaik</h2>
                         <p class="mx-5">
                             Lorem ipsum dolor sit amet consectetur. Blandit donec pulvinar eget senectus posuere amet
                             ultricies justo enim tempus pellentesque.
@@ -365,16 +337,20 @@
     </div>
     <!-- End Product Area -->
 
-    <div class="team-area mt-5 bottom-less mx-3">
+
+
+    <div class="thumbs-services-area default-padding">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 offset-lg-2">
-                    <div class="site-heading text-center mt-3">
+                    <div class="site-heading text-center">
                         <h4>MITRA KAMI</h4>
                         <h3>Tumbuh bersama: Kolaborasi menuju kesuksesan</h3>
                         <div class="devider"></div>
+<<<<<<< Updated upstream
+=======
 
-                        <div class="team-slider owl-carousel mt-3">
+                        <div class="team-slider owl-carousel mt-3" data-loop="{{ count($mitras) > 1 ? 'true' : 'false' }}">
                             @forelse ($mitras as $mitra)
                                 <div class="team-item">
                                     <img src="{{ asset('storage/'. $mitra->image) }}" alt="{{ $mitra->name }}" class="img-fluid">
@@ -385,7 +361,7 @@
                                     <img src="{{ asset('nodata-gif.gif') }}" alt="" width="800px">
                                 </div>
                                 <h4 class="text-center text-dark" style="font-weight:600">
-                                    Belum ada Portofolio
+                                    Belum ada mitra
                                 </h4><br>
                             </div>
                             @endforelse
@@ -401,11 +377,50 @@
                                 </a>
                             </div>
                         @endif
+>>>>>>> Stashed changes
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+        <div class="container">
+            <!-- Start Services Items -->
+            <div class="services-content ">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="thumb-services-carousel owl-carousel owl-theme">
+                            @forelse ($mitras->take(5) as $mitra)
+                                <div class="item" style="display: flex; align-items: center; justify-content: center; height: 100%;">
+                                    <img src="{{ asset('storage/'. $mitra->image) }}" alt="{{ $mitra->name }}" class="img-fluid" style="max-width: 800px; height: auto;">
+                                </div>
+                            @empty
+
+                            @endforelse
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+            @if (count($mitras)<1)
+            <div class="col-12 text-center ">
+                <img src="{{ asset('nodata-gif.gif') }}" alt="" width="800px">
+                <h4 class="text-dark" style="font-weight: 600; margin-top: 20px;">
+                    Belum ada mitra
+                </h4>
+            </div>
+            @endif
+
+            @if(count($mitras) > 0)
+                <div class="col-md-12 pagi-area text-center mt-5 mb-5">
+                    <a class="text-primary" href="/mitra">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24">
+                            <path fill="currentColor"
+                                d="M16.15 13H5q-.425 0-.712-.288T4 12q0-.425.288-.712T5 11h11.15L13.3 8.15q-.3-.3-.288-.7t.288-.7q.3-.3.713-.312t.712.287L19.3 11.3q.15.15.213.325t.062.375q0 .2-.062.375t-.213.325l-4.575 4.575q-.3.3-.712.288t-.713-.313q-.275-.3-.288-.7t.288-.7z" />
+                        </svg> Lihat Selengkapnya
+                    </a>
+                </div>
+            @endif
+        </div>
 
     <!-- End collab  Area -->
 
@@ -574,24 +589,36 @@
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
 <script>
-    $(document).ready(function(){
-        $(".team-slider").owlCarousel({
-            items: 5,
-            loop: true,
-            autoplay: true,
-            autoplayTimeout: 3000,
-            responsive: {
-                0: {
-                    items: 1
-                },
-                768: {
-                    items: 3
-                },
-                992: {
-                    items: 5
-                }
+$(document).ready(function(){
+    var itemCount = $('.thumb-services-carousel .item').length;
+    $('.thumb-services-carousel').owlCarousel({
+        loop: itemCount > 4 ? true : false,
+        center: itemCount === 1 ? true : false,
+        margin: 10,
+        nav: true,
+        autoplay: true,
+        autoplayTimeout: 3000,
+        responsive: {
+            0: {
+                items: 1,
+            },
+            600: {
+                items: 3,
+                center: false
+            },
+            1000: {
+                items: 5,
+                center: false
             }
-        });
+        }
     });
+<<<<<<< Updated upstream
+});
+=======
+
+    
+>>>>>>> Stashed changes
 </script>
+@endsection
+@section('style')
 @endsection
