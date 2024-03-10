@@ -347,37 +347,6 @@
                         <h4>MITRA KAMI</h4>
                         <h3>Tumbuh bersama: Kolaborasi menuju kesuksesan</h3>
                         <div class="devider"></div>
-<<<<<<< Updated upstream
-=======
-
-                        <div class="team-slider owl-carousel mt-3" data-loop="{{ count($mitras) > 1 ? 'true' : 'false' }}">
-                            @forelse ($mitras as $mitra)
-                                <div class="team-item">
-                                    <img src="{{ asset('storage/'. $mitra->image) }}" alt="{{ $mitra->name }}" class="img-fluid">
-                                </div>
-                            @empty
-                            <div class="col-12">
-                                <div class="d-flex justify-content-center">
-                                    <img src="{{ asset('nodata-gif.gif') }}" alt="" width="800px">
-                                </div>
-                                <h4 class="text-center text-dark" style="font-weight:600">
-                                    Belum ada mitra
-                                </h4><br>
-                            </div>
-                            @endforelse
-                        </div>
-
-                        @if(count($mitras) > 0)
-                            <div class="col-md-12 pagi-area text-center mb-5 mt-3">
-                                <a class="text-primary" href="/mitra">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24">
-                                        <path fill="currentColor"
-                                            d="M16.15 13H5q-.425 0-.712-.288T4 12q0-.425.288-.712T5 11h11.15L13.3 8.15q-.3-.3-.288-.7t.288-.7q.3-.3.713-.312t.712.287L19.3 11.3q.15.15.213.325t.062.375q0 .2-.062.375t-.213.325l-4.575 4.575q-.3.3-.712.288t-.713-.313q-.275-.3-.288-.7t.288-.7z" />
-                                    </svg> Lihat Selengkapnya
-                                </a>
-                            </div>
-                        @endif
->>>>>>> Stashed changes
                     </div>
                 </div>
             </div>
@@ -612,12 +581,7 @@ $(document).ready(function(){
             }
         }
     });
-<<<<<<< Updated upstream
 });
-=======
-
-    
->>>>>>> Stashed changes
 </script>
 @endsection
 @section('style')
