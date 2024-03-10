@@ -337,8 +337,6 @@
     </div>
     <!-- End Product Area -->
 
-
-
     <div class="thumbs-services-area default-padding">
         <div class="container">
             <div class="row">
