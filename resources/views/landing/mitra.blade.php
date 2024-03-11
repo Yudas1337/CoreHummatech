@@ -106,34 +106,39 @@
             </div>
         </div>
     </div>
-    @forelse ($mitras as $mitra)
+    @forelse ($mitraCategories as $mitraCategory)
         <div class="work-process-area features-area default-padding-bottom py-5">
             <div class="container pt-5">
                 <div class="row">
                     <div class="col-lg-8 offset-lg-2">
                         <div class="site-heading text-center">
                             <h4>Mitra kami</h4>
-                            <h2>{{ $mitra->name }}</h2>
+                            <h2>{{ $mitraCategory->name }}</h2>
                             <div class="devider"></div>
                         </div>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-12 col-xxl-3 col-xl-2 mt-2">
-                        @forelse ($mitra->collab as $collab)
-                            <img src="{{ asset('storage/' . $collab->image) }}" alt="" width="200px">
-                            @empty
-                            <div class="col-12">
-                                <div class="d-flex justify-content-center">
-                                    <img src="{{ asset('nodata-gif.gif') }}" alt="" width="800px">
+                    <div class="col-12 mt-2">
+                        <div class="row">
+                            @forelse ($mitraCategory->collab as $collab)
+                                <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 mb-5 d-flex justify-content-center">
+                                    <img src="{{ asset('storage/' . $collab->image) }}" alt="" style="width: 90%;">
                                 </div>
-                                <h4 class="text-center text-dark" style="font-weight:600">
-                                    Belum ada Mitra
-                                </h4>
-                            </div>
-                        @endforelse
+                            @empty
+                                <div class="col-12">
+                                    <div class="d-flex justify-content-center">
+                                        <img src="{{ asset('nodata-gif.gif') }}" alt="" width="800px">
+                                    </div>
+                                    <h4 class="text-center text-dark" style="font-weight:600">
+                                        Belum ada Mitra
+                                    </h4>
+                                </div>
+                            @endforelse
+                        </div>
                     </div>
                 </div>
+
             </div>
         </div>
         @empty
@@ -146,6 +151,7 @@
             </h4>
         </div>
     @endforelse
+
 @endsection
 @section('script')
     <script>

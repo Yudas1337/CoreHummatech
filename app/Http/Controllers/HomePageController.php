@@ -22,11 +22,12 @@ class HomePageController extends Controller
     private NewsInterface $news;
     private VisitorDetectionInterface $visitorDetection;
     private CollabMitraInterface $mitras;
+    private CollabCategoryInterface $mitraCategory;
     private SectionInterface $section;
     private ProductInterface $product;
 
 
-    public function __construct( ProfileInterface $profile,VisitorDetectionInterface $visitorDetection, ServiceInterface $service, NewsInterface $news, CollabMitraInterface $mitras, SectionInterface $section, ProductInterface $product, )
+    public function __construct( ProfileInterface $profile,VisitorDetectionInterface $visitorDetection, ServiceInterface $service, NewsInterface $news, CollabMitraInterface $mitras, SectionInterface $section, ProductInterface $product, CollabCategoryInterface $mitraCategory)
     {
         $this->profile = $profile;
         $this->service = $service;
@@ -35,7 +36,7 @@ class HomePageController extends Controller
         $this->mitras = $mitras;
         $this->section = $section;
         $this->product = $product;
-
+        $this->mitraCategory = $mitraCategory;
     }
     /**
      * Display a listing of the resource.
@@ -104,6 +105,7 @@ class HomePageController extends Controller
     public function mitra()
     {
         $mitras = $this->mitras->get();
-        return view('landing.mitra' , compact('mitras'));
+        $mitraCategories = $this->mitraCategory->get();
+        return view('landing.mitra' , compact('mitras', 'mitraCategories'));
     }
 }
