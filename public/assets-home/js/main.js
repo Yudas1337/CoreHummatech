@@ -377,6 +377,16 @@
 		animateElements();
 		$(window).scroll(animateElements);
 
+        function displayMessage(status, message) {
+            var messageHtml = '<div class="alert mt-3 alert-' + status + ' alert-dismissible" role="alert">' + message + '</div>';
+            $('#message').html(messageHtml);
+            $('#message').fadeIn('slow');
+
+            setTimeout(function() {
+                $('#message').fadeOut('slow');
+            }, 5000);
+        }
+
 
         /* ==================================================
             Contact Form Validations
@@ -385,31 +395,33 @@
             var formInstance = $(this);
             formInstance.submit(function() {
 
-                var action = $(this).attr('action');
+                var action = $(this).attr('action'),
+                    formData = $(this).serializeArray();
+
+                console.log(formData)
 
                 $("#message").slideUp(750, function() {
                     $('#message').hide();
 
                     $('#submit')
-                        .after('<img src="assets/img/ajax-loader.gif" class="loader" />')
                         .attr('disabled', 'disabled');
 
-                    $.post(action, {
-                            _token: $('input[name=_token]').val(),
-                            name: $('#name').val(),
-                            email: $('#email').val(),
-                            phone: $('#phone').val(),
-                            comments: $('#comments').val(),
+                    $.ajax({
+                        type: "POST",
+                        url: action,
+                        data: formData,
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                         },
-                        function(data) {
-                            document.getElementById('message').innerHTML = data;
-                            $('#message').slideDown('slow');
-                            $('.contact-form img.loader').fadeOut('slow', function() {
-                                $(this).remove()
-                            });
-                            $('#submit').removeAttr('disabled');
+                        success: function({ code, status, message }) {
+                            displayMessage(status, message);
+                            document.getElementById('submit').removeAttribute('disabled');
+                        },
+                        error: function(data) {
+                            console.log(data)
+                            document.getElementById('submit').removeAttribute('disabled');
                         }
-                    );
+                    });
                 });
                 return false;
             });
@@ -425,10 +437,8 @@
         $(window).on('load', function () {
             $('#earna-preloader').addClass('loaded');
             $("#loading").fadeOut(500);
-            // Una vez haya terminado el preloader aparezca el scroll
 
             if ($('#earna-preloader').hasClass('loaded')) {
-                // Es para que una vez que se haya ido el preloader se elimine toda la seccion preloader
                 $('#preloader').delay(900).queue(function () {
                     $(this).remove();
                 });

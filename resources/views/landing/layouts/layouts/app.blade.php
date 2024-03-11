@@ -36,8 +36,8 @@
     <link href="{{ asset('assets-home/css/bootsnav.css') }}" rel="stylesheet" />
     <link href="{{ asset('assets-home/style.css') }}" rel="stylesheet">
     <link href="{{ asset('assets-home/css/responsive.css') }}" rel="stylesheet" />
-    <link rel="stylesheet" href="owlcarousel/owl.carousel.min.css">
-    <link rel="stylesheet" href="owlcarousel/owl.theme.default.min.css">
+    <link rel="stylesheet" href="owlcarousel/owl.carousel.min.css" />
+    <link rel="stylesheet" href="owlcarousel/owl.theme.default.min.css" />
     <!-- ========== End Stylesheet ========== -->
 
     @yield('style')

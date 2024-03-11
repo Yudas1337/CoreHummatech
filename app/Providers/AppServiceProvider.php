@@ -76,6 +76,7 @@ use App\Contracts\Repositories\VisionAndMisionRepository;
 use App\Contracts\Interfaces\EnterpriseStructureInterface;
 use App\Contracts\Repositories\VisitorDetectionRepository;
 use App\Contracts\Repositories\EnterpriseStructureRepository;
+use Illuminate\Support\Facades\Validator;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -126,9 +127,15 @@ class AppServiceProvider extends ServiceProvider
 
     /**
      * Bootstrap any application services.
+     *
+     * @see https://stackoverflow.com/questions/36777840/how-to-validate-phone-number-in-laravel-5-2 To validate phone number
      */
     public function boot(): void
     {
         Paginator::useBootstrapFive();
+
+        Validator::extend('phone_number', function ($attribute, $value, $parameters) {
+            return preg_match('/^(?:\+?62|0)(?:\d{3,4})?(?:\d{6,7})$/', $value);
+        });
     }
 }

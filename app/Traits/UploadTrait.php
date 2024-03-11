@@ -4,7 +4,8 @@ namespace App\Traits;
 
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
-use Intervention\Image\Laravel\Facades\Image;
+use Intervention\Image\ImageManager;
+use Intervention\Image\Drivers\Gd\Driver;
 
 trait UploadTrait
 {
@@ -85,12 +86,11 @@ trait UploadTrait
         return $destinationPath;
     }
 
-    public function compressImage($imagePath, $destinationPath, $width = 150, $height = 150)
+    public function compressImage($imagePath,)
     {
-        $image = Image::make(storage_path('app/public/') . $imagePath);
-
-        $image->resize($width, $height);
-        
-        $image->save(storage_path('app/public/') . $destinationPath);
+        $manager = new ImageManager(new Driver());
+        $image = $manager->read($imagePath);
+        $image = $image->resize(370,246);
+        $image->toPng()->save('images/foo.png');
     }
 }

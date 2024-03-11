@@ -48,7 +48,7 @@ class SectionService
 
         if ($request->hasFile('image') && $request->file('image')->isValid()) {
             $data['image'] = $request->file('image')->store(TypeEnum::SALE->value, 'public');
-            $this->compressImage($data['image'],'compressed_' . $data['image']);
+            $this->compressImage($data['image']);
             return $data;
         }
         return false;
