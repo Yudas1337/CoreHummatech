@@ -252,9 +252,12 @@
                 @forelse ($mitras as $mitra)
                     <div class="item"><img src="{{ asset('storage/'. $mitra->image) }}" alt="{{ $mitra->name }}" style="object-fit: cover; height: 200px; width: 200px"></div>
                 @empty
+                <div class="d-flex flex-column  align-items-center">
+                    <img src="{{ asset('nodata.jpg') }}" alt="" width="400px">
                     <h5 class="text-center">
                         Data Masih Kosong
                     </h5>
+                </div>
                 @endforelse
             </div>
         </div>
@@ -267,9 +270,12 @@
                     @forelse ($galeries as $galery)
                         <div class="item"><img src="{{ asset('storage/'. $galery->image) }}" alt="{{ $galery->name }}" style="object-fit: cover; height: 200px; width: 200px"></div>
                     @empty
+                    <div class="d-flex flex-column  align-items-center">
+                        <img src="{{ asset('nodata.jpg') }}" alt="" width="400px">
                         <h5 class="text-center">
                             Data Masih Kosong
                         </h5>
+                    </div>
                     @endforelse
                 </div>
             </div>
