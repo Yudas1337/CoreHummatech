@@ -12,6 +12,7 @@ use App\Contracts\Interfaces\ProductInterface;
 use App\Contracts\Interfaces\ProfileInterface;
 use App\Contracts\Interfaces\SaleInterface;
 use App\Contracts\Interfaces\ServiceInterface;
+use App\Contracts\Interfaces\ServiceMitraInterface;
 use App\Contracts\Interfaces\TestimonialInterface;
 use App\Contracts\Repositories\FaqRepository;
 use App\Contracts\Repositories\ProductRepository;
@@ -41,9 +42,10 @@ class ServiceController extends Controller
     private GaleryImageInterface $galleryImage;
     private GalleryInterface $galery;
     private BackgroundInterface $background;
+    private ServiceMitraInterface $serviceMitra;
 
 
-    public function __construct(GaleryImageInterface $galleryImage, GalleryInterface $galery, ServiceInterface $service, ServiceService $serviceService, Termscondition $termscondition, TestimonialInterface $testimonial, FaqInterface $faq, ProductRepository $product, ProcedureInterface $procedure, SaleInterface $sale, ProfileInterface $profile, CollabMitraInterface $mitras, BackgroundInterface $background)
+    public function __construct(GaleryImageInterface $galleryImage, GalleryInterface $galery, ServiceInterface $service, ServiceService $serviceService, Termscondition $termscondition, TestimonialInterface $testimonial, FaqInterface $faq, ProductRepository $product, ProcedureInterface $procedure, SaleInterface $sale, ProfileInterface $profile, CollabMitraInterface $mitras, BackgroundInterface $background, ServiceMitraInterface $serviceMitra)
     {
         $this->mitras = $mitras;
         $this->galleryImage = $galleryImage;
@@ -58,6 +60,7 @@ class ServiceController extends Controller
         $this->sale = $sale;
         $this->profile = $profile;
         $this->background = $background;
+        $this->serviceMitra = $serviceMitra;
     }
     /**
      * Display a listing of the resource.
@@ -97,10 +100,18 @@ class ServiceController extends Controller
         $testimonials = $this->testimonial->get()->where('service_id', $service->id);
         $mision = MisionItems::where('service_id', $service->id)->get();
         $faqs = $this->faq->get()->where('service_id', $service->id);
-        $mitras = $this->mitras->getByServiceId($service->id);
-        $galeries = $this->galery->getByServiceId($service->id);
+        $serviceMitras = $this->serviceMitra->getByServiceId($service->id);
+
         
-        return view('admin.pages.service.detail', compact('services', 'products', 'termsconditions', 'testimonials', 'mision', 'faqs', 'mitras', 'galeries'));
+        $galerys = $this->galery->ServiceProductShow('service_id', $service->id)->get();
+        $galeries = [];
+        foreach ($galerys as $galery) {
+            $galeries[] = $this->galleryImage->ServiceProductShow('galleries_id', $galery->id)->get();
+        }
+
+        // dd($galeries);
+        
+        return view('admin.pages.service.detail', compact('services', 'products', 'termsconditions', 'testimonials', 'mision', 'faqs', 'serviceMitras'));
     }
 
     /**

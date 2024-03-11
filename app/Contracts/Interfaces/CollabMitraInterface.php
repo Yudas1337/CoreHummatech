@@ -8,7 +8,7 @@ use App\Contracts\Interfaces\Eloquent\GetCountInterface;
 use App\Contracts\Interfaces\Eloquent\StoreInterface;
 use App\Contracts\Interfaces\Eloquent\UpdateInterface;
 
-interface CollabMitraInterface extends GetInterface , StoreInterface ,UpdateInterface, DeleteInterface ,GetCountInterface, GetByServiceIdInterface
+interface CollabMitraInterface extends GetInterface , StoreInterface ,UpdateInterface, DeleteInterface ,GetCountInterface
 {
 
 }

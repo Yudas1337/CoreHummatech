@@ -38,9 +38,5 @@ class GalleryRepository extends BaseRepository implements GalleryInterface
     {
         return $this->model->query()->where($relation,$id);
     }
-    public function getByServiceId(mixed $type): mixed
-    {
-        return $this->model->query()->where('service_id', $type)->get();
-    }
 
 }

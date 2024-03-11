@@ -30,4 +30,9 @@ class ServiceMitraRepository extends BaseRepository implements ServiceMitraInter
     {
         return $this->model->query()->where('mitra_id', $id)->delete();
     }
+
+    public function getByServiceId(mixed $type): mixed
+    {
+        return $this->model->query()->where('service_id', $type)->get();
+    }
 }

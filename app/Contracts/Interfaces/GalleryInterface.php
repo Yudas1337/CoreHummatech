@@ -9,5 +9,5 @@ use App\Contracts\Interfaces\Eloquent\ServiceProductShowInterface;
 use App\Contracts\Interfaces\Eloquent\StoreInterface;
 use App\Contracts\Interfaces\Eloquent\UpdateInterface;
 
-interface GalleryInterface extends GetInterface, StoreInterface, DeleteInterface, UpdateInterface, ServiceProductShowInterface, GetByServiceIdInterface
+interface GalleryInterface extends GetInterface, StoreInterface, DeleteInterface, UpdateInterface, ServiceProductShowInterface
 {}

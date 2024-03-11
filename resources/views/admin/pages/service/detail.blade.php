@@ -249,8 +249,8 @@
             <h1 class="title">Mitra</h1>
 
             <div class="owl-carousel owl-item owl-theme" id="owl-carousel-mitra">
-                @forelse ($mitras as $mitra)
-                    <div class="item"><img src="{{ asset('storage/'. $mitra->image) }}" alt="{{ $mitra->name }}" style="object-fit: cover; height: 200px; width: 200px"></div>
+                @forelse ($serviceMitras as $serviceMitra)
+                    <div class="item"><img src="{{ asset('storage/'. $serviceMitra->mitra->image) }}" alt="{{ $serviceMitra->mitra->name }}" style="object-fit: cover; height: 200px; width: 200px"></div>
                 @empty
                 <div class="d-flex flex-column  align-items-center">
                     <img src="{{ asset('nodata.jpg') }}" alt="" width="400px">
@@ -262,12 +262,13 @@
             </div>
         </div>
         
-        <div class="need-space">
+        {{-- <div class="need-space">
+        @forelse ($galeries as $gallery)
             <div class="need-space" id="gallery-kelas-industri">
-                <h1 class="title">Galeri {{ $services->name }}</h1>
+                <h1 class="title">Galeri {{ $gallery->name }}</h1>
     
                 <div class="owl-carousel owl-item owl-theme" id="owl-carousel-galery">
-                    @forelse ($galeries as $galery)
+                    @forelse ($galeries->galeryImages as $galery)
                         <div class="item"><img src="{{ asset('storage/'. $galery->image) }}" alt="{{ $galery->name }}" style="object-fit: cover; height: 200px; width: 200px"></div>
                     @empty
                     <div class="d-flex flex-column  align-items-center">
@@ -279,7 +280,15 @@
                     @endforelse
                 </div>
             </div>
-        </div>
+        @empty
+            <div class="d-flex flex-column  align-items-center">
+                <img src="{{ asset('nodata.jpg') }}" alt="" width="400px">
+                <h5 class="text-center">
+                    Data Masih Kosong
+                </h5>
+            </div>
+        @endforelse
+        </div> --}}
         </div>
     </div>
 @endsection
