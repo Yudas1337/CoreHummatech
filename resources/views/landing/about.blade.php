@@ -129,7 +129,7 @@
                         <img src="{{ asset('storage/' . $profile->image) }}" alt="Thumb"
                             class="w-75 mb-3 d-block mx-auto d-lg-none" />
                         <p>
-                            {!! Str::limit($profile->description, 200) !!}
+                            {{$profile->description}}
                         </p>
 
                         @if ($profile->proposal)
@@ -140,7 +140,7 @@
                     </div>
                     <div class="col-lg-6 d-none d-md-none d-lg-inline">
                         <div class="thumb">
-                            <img src="{{ asset('storage/' . $profile->image) }}" alt="Thumb" class="w-100" />
+                            <img src="{{ asset('storage/' . $profile->image) }}" alt="Thumb" style="max-width: 80%; max-height: auto; display: inline-block;">
                         </div>
                     </div>
 
