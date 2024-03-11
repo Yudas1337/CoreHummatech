@@ -262,13 +262,13 @@
             </div>
         </div>
         
-        {{-- <div class="need-space">
-        @forelse ($galeries as $gallery)
+        <div class="need-space">
+        @forelse ($galleries as $gallery)
             <div class="need-space" id="gallery-kelas-industri">
                 <h1 class="title">Galeri {{ $gallery->name }}</h1>
     
                 <div class="owl-carousel owl-item owl-theme" id="owl-carousel-galery">
-                    @forelse ($galeries->galeryImages as $galery)
+                    @forelse ($gallery->galeryImages as $galery)
                         <div class="item"><img src="{{ asset('storage/'. $galery->image) }}" alt="{{ $galery->name }}" style="object-fit: cover; height: 200px; width: 200px"></div>
                     @empty
                     <div class="d-flex flex-column  align-items-center">
@@ -288,7 +288,7 @@
                 </h5>
             </div>
         @endforelse
-        </div> --}}
+        </div>
         </div>
     </div>
 @endsection

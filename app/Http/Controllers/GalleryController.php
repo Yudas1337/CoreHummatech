@@ -59,7 +59,7 @@ class GalleryController extends Controller
         ])->id;
         foreach ($data['image'] as $img) {
             $this->galleryimage->store([
-                'galleries_id' => $gallerie_id,
+                'gallery_id' => $gallerie_id,
                 'image' => $img,
             ]);
         }

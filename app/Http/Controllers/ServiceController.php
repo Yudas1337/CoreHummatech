@@ -101,17 +101,18 @@ class ServiceController extends Controller
         $mision = MisionItems::where('service_id', $service->id)->get();
         $faqs = $this->faq->get()->where('service_id', $service->id);
         $serviceMitras = $this->serviceMitra->getByServiceId($service->id);
-
+        $galleries = $this->galery->ServiceProductShow('service_id', $service->id)->get();
         
-        $galerys = $this->galery->ServiceProductShow('service_id', $service->id)->get();
-        $galeries = [];
-        foreach ($galerys as $galery) {
-            $galeries[] = $this->galleryImage->ServiceProductShow('galleries_id', $galery->id)->get();
-        }
+        
+        // $galerys = $this->galery->ServiceProductShow('service_id', $service->id)->get();
+        // $galeries = [];
+        // foreach ($galerys as $galery) {
+        //     $galeries[] = $this->galleryImage->ServiceProductShow('galleries_id', $galery->id)->get();
+        // }
 
         // dd($galeries);
         
-        return view('admin.pages.service.detail', compact('services', 'products', 'termsconditions', 'testimonials', 'mision', 'faqs', 'serviceMitras'));
+        return view('admin.pages.service.detail', compact('services', 'products', 'termsconditions', 'testimonials', 'mision', 'faqs', 'serviceMitras', 'galleries'));
     }
 
     /**
