@@ -359,8 +359,8 @@
                             <div class="col-lg-12">
                                 <div class="thumb-services-carousel owl-carousel owl-theme">
                                     @forelse ($mitras->take(5) as $mitra)
-                                        <div class="item" style="display: flex; align-items: center; justify-content: center; height: 100%;">
-                                            <img src="{{ asset('storage/'. $mitra->image) }}" alt="{{ $mitra->name }}" class="img-fluid" style="max-width: 800px; height: auto;">
+                                        <div class="item" style="display: flex; align-items: center; justify-content: center; ">
+                                            <img src="{{ asset('storage/'. $mitra->image) }}" alt="{{ $mitra->name }}" class="img-fluid" style="max-width: 80%; max-height: auto; display: inline-block;">
                                         </div>
                                     @empty
 
@@ -433,7 +433,7 @@
                                                                         </div>
                                                                     </div>
                                                                     <div class="date text-uppercase">
-                                                                        {{ \Carbon\Carbon::parse($newsItem['created_at'])->locale('id_ID')->isoFormat('dddd, D MMMM YYYY') }}
+                                                                        {{ \Carbon\Carbon::parse($newsItem['date'])->locale('id_ID')->isoFormat('dddd, D MMMM YYYY') }}
                                                                     </div>
                                                                 </div>
                                                                 <div class="info">
@@ -556,7 +556,7 @@
             </div>
         </div>
     </div>
-    
+
 
 
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>

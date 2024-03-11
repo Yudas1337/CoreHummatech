@@ -64,7 +64,7 @@
                                 </div>
                                 <div class="product-details">
                                     <small style="font-size: 13px"><span
-                                            class="text-primary mb-3 fw-bold"></span>{{ $item->updated_at->format('l, j F Y') }}</small>
+                                            class="text-primary mb-3 fw-bold"></span>{{ \Carbon\Carbon::parse($news['date'])->locale('id_ID')->isoFormat('dddd, D MMMM YYYY') }}</small>
                                     <a href="/news">
                                         <h4 class="mb-1 mt-3">{{ $item->title }}</h4>
                                     </a>
