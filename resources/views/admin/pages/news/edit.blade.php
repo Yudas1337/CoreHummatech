@@ -76,6 +76,15 @@
                                     </div>
                                 </div>
                                 <div class="mb-3">
+                                    <label >Tanggal</label>
+                                    <div class="col-sm-12">
+                                        <input class="form-control digits" type="date" value="{{ old('date', $news->date) }}" name="date">
+                                        @error('date')
+                                            <div class="text-danger">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="mb-3">
                                     <label>Deskripsi Berita</label>
                                     <div id="editor" style="height: 500px">{!! old('description', $news->description) !!}</div>
                                     <textarea name="description" class="d-none" id="description" cols="30" rows="10">{!! old('description', $news->description) !!}</textarea>

@@ -44,9 +44,11 @@ class NewsService
         $data = $request->validated();
         $data['slug'] = Str::slug($request->title);
         $data['image'] = $request->file('image')->store(TypeEnum::NEWS->value, 'public');
-        // dd($data);
+        $this->compressImage($data['image'], 'compressed_' . $data['image']);
+
         return $data;
     }
+
 
     /**
      * Handle update data event to models.
@@ -72,7 +74,7 @@ class NewsService
         $values = collect($array)->flatten()->unique()->values();
 
         $data['slug'] = Str::slug($request->title);
-        $data['tags'] = $values->each(fn($value) => "$value")->join(',');
+        $data['tags'] = $values->each(fn ($value) => "$value")->join(',');
 
         return $data;
     }

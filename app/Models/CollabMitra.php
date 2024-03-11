@@ -13,5 +13,15 @@ class CollabMitra extends Model
     {
         return $this->belongsTo(CollabCategory::class);
     }
+
+    public function service()
+    {
+        return $this->hasMany(ServiceMitra::class);
+    }
+
+    public function ServiceMitra()
+    {
+        return $this->hasMany(ServiceMitra::class, 'mitra_id');
+    }
 }
 

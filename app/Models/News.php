@@ -16,6 +16,7 @@ class News extends Model implements HasNewsImages, HasNewsCategories
     protected $fillable = [
         'title',
         'slug',
+        'date',
         'description',
         'image',
     ];

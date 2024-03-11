@@ -11,24 +11,19 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('news', function (Blueprint $table) {
-            $table->uuid('id')->primary();
-            $table->string('title');
-            $table->string('image');
-            $table->string('slug')->unique();
-            $table->date('date')->nullable();
-            $table->longText('description');
-
+        Schema::create('service_mitras', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('mitra_id')->constrained('collab_mitras')->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignId('service_id')->nullable()->constrained('services')->cascadeOnDelete()->cascadeOnUpdate();
             $table->timestamps();
         });
     }
-
 
     /**
      * Reverse the migrations.
      */
     public function down(): void
     {
-        Schema::dropIfExists('news');
+        Schema::dropIfExists('service_mitras');
     }
 };

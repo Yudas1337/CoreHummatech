@@ -2,10 +2,10 @@
 
 namespace App\Providers;
 
-use App\Contracts\Interfaces\BackgroundInterface;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\ServiceProvider;
 use App\Contracts\Interfaces\FaqInterface;
+use App\Contracts\Interfaces\LogoInterface;
 use App\Contracts\Interfaces\NewsInterface;
 use App\Contracts\Interfaces\SaleInterface;
 use App\Contracts\Interfaces\TeamInterface;
@@ -13,67 +13,69 @@ use App\Contracts\Interfaces\ForceInterface;
 use App\Contracts\Interfaces\BranchInterface;
 use App\Contracts\Repositories\FaqRepository;
 
+use App\Contracts\Interfaces\GalleryInterface;
 use App\Contracts\Interfaces\ProductInterface;
 use App\Contracts\Interfaces\ProfileInterface;
 use App\Contracts\Interfaces\SectionInterface;
 use App\Contracts\Interfaces\ServiceInterface;
+use App\Contracts\Interfaces\VacancyInterface;
+use App\Contracts\Repositories\LogoRepository;
 use App\Contracts\Repositories\NewsRepository;
 use App\Contracts\Repositories\SaleRepository;
 use App\Contracts\Repositories\TeamRepository;
 use App\Contracts\Interfaces\PositionInterface;
+use App\Contracts\Interfaces\WorkFlowInterface;
 use App\Contracts\Repositories\ForceRepository;
+
 use App\Contracts\Interfaces\NewsImageInterface;
 use App\Contracts\Interfaces\ProcedureInterface;
+use App\Contracts\Interfaces\StructureInterface;
 use App\Contracts\Repositories\BranchRepository;
+use App\Contracts\Interfaces\BackgroundInterface;
+use App\Contracts\Repositories\GalleryRepository;
 use App\Contracts\Repositories\ProductRepository;
-
 use App\Contracts\Repositories\ProfileRepository;
 use App\Contracts\Repositories\SectionRepository;
 use App\Contracts\Repositories\ServiceRepository;
+use App\Contracts\Repositories\VacancyRepository;
 use App\Contracts\Interfaces\CollabMitraInterface;
+use App\Contracts\Interfaces\GaleryImageInterface;
 use App\Contracts\Interfaces\SosialMediaInterface;
 use App\Contracts\Interfaces\TestimonialInterface;
 use App\Contracts\Repositories\PositionRepository;
+use App\Contracts\Repositories\WorkFlowRepository;
 use App\Contracts\Interfaces\CategoryNewsInterface;
-use App\Contracts\Interfaces\CategoryProductInterface;
 use App\Contracts\Interfaces\NewsCategoryInterface;
+use App\Contracts\Interfaces\OrganizationInterface;
 use App\Contracts\Interfaces\SalesPackageInterface;
+use App\Contracts\Interfaces\ServiceMitraInterface;
 use App\Contracts\Repositories\NewsImageRepository;
 use App\Contracts\Repositories\ProcedureRepository;
+use App\Contracts\Repositories\StructureRepository;
+use App\Contracts\Repositories\BackgroundRepository;
 use App\Contracts\Interfaces\CollabCategoryInterface;
+use App\Contracts\Interfaces\ProductFeatureInterface;
 use App\Contracts\Interfaces\TermsconditionInterface;
 use App\Contracts\Repositories\CollabMitraRepository;
+use App\Contracts\Repositories\GaleryImageRepository;
 use App\Contracts\Repositories\SosialMediaRepository;
 use App\Contracts\Repositories\TestimonialRepository;
+use App\Contracts\Interfaces\CategoryProductInterface;
 use App\Contracts\Interfaces\VisionAndMisionInterface;
 use App\Contracts\Repositories\CategoryNewsRepository;
 use App\Contracts\Repositories\NewsCategoryRepository;
+use App\Contracts\Repositories\OrganizationRepository;
 use App\Contracts\Repositories\SalesPackageRepository;
+use App\Contracts\Repositories\ServiceMitraRepository;
+use App\Contracts\Interfaces\VisitorDetectionInterface;
 use App\Contracts\Repositories\CollabCategoryRepository;
+use App\Contracts\Repositories\ProductFeatureRepository;
 use App\Contracts\Repositories\TermsconditionRepository;
-use App\Contracts\Repositories\GaleryImageRepository;
+use App\Contracts\Repositories\CategoryProductRepository;
 use App\Contracts\Repositories\VisionAndMisionRepository;
 use App\Contracts\Interfaces\EnterpriseStructureInterface;
-use App\Contracts\Interfaces\GaleryImageInterface;
-use App\Contracts\Interfaces\OrganizationInterface;
-use App\Contracts\Repositories\OrganizationRepository;
-use App\Contracts\Interfaces\GalleryInterface;
-use App\Contracts\Interfaces\LogoInterface;
-use App\Contracts\Interfaces\ProductFeatureInterface;
-use App\Contracts\Interfaces\StructureInterface;
-use App\Contracts\Repositories\GalleryRepository;
-use App\Contracts\Interfaces\VacancyInterface;
-use App\Contracts\Interfaces\VisitorDetectionInterface;
-use App\Contracts\Interfaces\WorkFlowInterface;
-use App\Contracts\Repositories\BackgroundRepository;
-use App\Contracts\Repositories\CategoryProductRepository;
-use App\Contracts\Repositories\EnterpriseStructureRepository;
-use App\Contracts\Repositories\LogoRepository;
-use App\Contracts\Repositories\ProductFeatureRepository;
-use App\Contracts\Repositories\StructureRepository;
-use App\Contracts\Repositories\VacancyRepository;
 use App\Contracts\Repositories\VisitorDetectionRepository;
-use App\Contracts\Repositories\WorkFlowRepository;
+use App\Contracts\Repositories\EnterpriseStructureRepository;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -111,6 +113,7 @@ class AppServiceProvider extends ServiceProvider
         LogoInterface::class => LogoRepository::class,
         CategoryProductInterface::class => CategoryProductRepository::class,
         BackgroundInterface::class => BackgroundRepository::class,
+        ServiceMitraInterface::class => ServiceMitraRepository::class
     ];
 
     /**

@@ -71,6 +71,15 @@
                                             <div class="text-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
+                                    <div class="mb-3">
+                                        <label >Tanggal</label>
+                                        <div class="col-sm-12">
+                                          <input class="form-control digits" type="date" value="" name="date">
+                                          @error('date')
+                                          <div class="text-danger">{{ $message }}</div>
+                                          @enderror
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="mb-3">
                                     <label>Deskripsi Berita</label>

@@ -23,6 +23,7 @@ class UpdateNewsRequest extends FormRequest
     {
         return [
             'title' => 'required',
+            'date' => 'nullable|date|before_or_equal:today',
             'description' => 'min:8|required',
             'category' => 'array|required',
             'category.*' => 'required',
@@ -32,6 +33,7 @@ class UpdateNewsRequest extends FormRequest
     public function messages()
     {
         return [
+            'date.before_or_equal' => 'Tanggal harus kurang atau sama dengan hari ini.',
             'title.min' => 'Masukkan minimal 5 karakter pada kolom "Judul"',
             'title.required' => 'Harap masukkan judul dahulu',
             'description.min' => 'Masukkan minimal 8 karakter pada kolom "Deskripsi"',
