@@ -252,15 +252,14 @@
                 @forelse ($mitras as $mitra)
                     <div class="item"><img src="{{ asset('storage/'. $mitra->image) }}" alt="{{ $mitra->name }}" style="object-fit: cover; height: 200px; width: 200px"></div>
                 @empty
-                    <div class="d-flex justify-content-center">
-                        <img src="{{ asset('nodata.jpg') }}" alt="" width="60px">
-                    </div>
                     <h5 class="text-center">
                         Data Masih Kosong
                     </h5>
                 @endforelse
             </div>
         </div>
+        
+        <div class="need-space">
             <div class="need-space" id="gallery-kelas-industri">
                 <h1 class="title">Galeri {{ $services->name }}</h1>
     
@@ -274,6 +273,7 @@
                     @endforelse
                 </div>
             </div>
+        </div>
         </div>
     </div>
 @endsection
