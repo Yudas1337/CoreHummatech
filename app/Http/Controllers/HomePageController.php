@@ -100,6 +100,7 @@ class HomePageController extends Controller
     public function destroy(string $id)
     {
         //
+        
     }
 
     public function mitra()
