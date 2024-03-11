@@ -248,7 +248,7 @@
         <div class="need-space" id="mitra">
             <h1 class="title">Mitra</h1>
 
-            <div class="owl-carousel owl-theme" id="owl-carousel-mitra">
+            <div class="owl-carousel owl-item owl-theme" id="owl-carousel-mitra">
                 @forelse ($mitras as $mitra)
                     <div class="item"><img src="{{ asset('storage/'. $mitra->image) }}" alt="{{ $mitra->name }}" style="object-fit: cover; height: 200px; width: 200px"></div>
                 @empty
@@ -263,7 +263,7 @@
             <div class="need-space" id="gallery-kelas-industri">
                 <h1 class="title">Galeri {{ $services->name }}</h1>
     
-                <div class="owl-carousel owl-theme" id="owl-carousel-galery">
+                <div class="owl-carousel owl-item owl-theme" id="owl-carousel-galery">
                     @forelse ($galeries as $galery)
                         <div class="item"><img src="{{ asset('storage/'. $galery->image) }}" alt="{{ $galery->name }}" style="object-fit: cover; height: 200px; width: 200px"></div>
                     @empty
@@ -282,25 +282,26 @@
     <script src="{{ asset('assets/js/owlcarousel/owl.carousel.js') }}"></script>
 
     <script>
+        var itemCount = $('.owl-item .item').length;
         $('#owl-carousel-mitra, #owl-carousel-galery').owlCarousel({
-            items: 5,
-            loop: true,
-            margin: 10,
+            center: true,
+            loop: itemCount > 5 ? true : false,
+            margin: 1,
             autoplay: true,
             autoplayTimeout: 2500,
             autoplayHoverPause: true,
             nav: false,
             dots: false,
             responsive: {
-                320: {
+                0: {
                     items: 1,
                     mergeFit: true,
                 },
-                768: {
+                600: {
                     items: 2,
                     mergeFit: true,
                 },
-                992: {
+                1000: {
                     items: 3,
                     mergeFit: true,
                 },
