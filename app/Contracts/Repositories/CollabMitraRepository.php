@@ -32,4 +32,9 @@ class CollabMitraRepository extends BaseRepository implements CollabMitraInterfa
     {
         return $this->model->query()->count();
     }
+
+    public function getByServiceId(mixed $type): mixed
+    {
+        return $this->model->query()->where('service_id', $type)->get();
+    }
 }

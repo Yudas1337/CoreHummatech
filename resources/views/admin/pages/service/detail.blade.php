@@ -181,20 +181,14 @@
             <h1 class="title">Testimoni</h1>
 
             <div class="row">
-                @forelse ($testimonials as $item)
+                @forelse ($testimonials as $testimonial)
                     <div class="col-md-6">
                         <div class="card card-body rounded-4 shadow d-flex flex-row gap-3">
-                            <img src="https://fakeimg.pl/1080x1080?text=Test" class="rounded-3" height="120px"
-                                alt="Lorem Ipsum" />
+                            <img src="{{ asset('storage/'. $testimonial->image) }}" class="rounded-3" height="120px"
+                                alt="{{ $testimonial->name }}" />
                             <div class="d-flex flex-column gap-2">
-                                <strong class="h5">Lorem ipsum dolor sit</strong>
-                                <p class="mb-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis
-                                    labore odio iure cupiditate quasi</p>
-                                <div class="d-flex gap-2">
-                                    @foreach (range(0, 4) as $item)
-                                        <i class="fas fa-star text-warning"></i>
-                                    @endforeach
-                                </div>
+                                <strong class="h5">{{ $testimonial->name }}</strong>
+                                <p class="mb-2">{{ $testimonial->description }}</p>
                             </div>
                         </div>
                     </div>
@@ -255,92 +249,30 @@
             <h1 class="title">Mitra</h1>
 
             <div class="owl-carousel owl-theme" id="owl-carousel-mitra">
-                <div class="item"><img src="{{ asset('assets/images/slider/1.jpg') }}" alt="Drawing-room"></div>
-                <div class="item"><img src="{{ asset('assets/images/slider/2.jpg') }}" alt="Drawing-room"></div>
-                <div class="item"><img src="{{ asset('assets/images/slider/3.jpg') }}" alt="Drawing-room"></div>
-                <div class="item"><img src="{{ asset('assets/images/slider/4.jpg') }}" alt="Drawing-room"></div>
-                <div class="item"><img src="{{ asset('assets/images/slider/5.jpg') }}" alt="Drawing-room"></div>
-                <div class="item"><img src="{{ asset('assets/images/slider/6.jpg') }}" alt="Drawing-room"></div>
-                <div class="item"><img src="{{ asset('assets/images/slider/7.jpg') }}" alt="Drawing-room"></div>
-                <div class="item"><img src="{{ asset('assets/images/slider/8.jpg') }}" alt="Drawing-room"></div>
-                <div class="item"><img src="{{ asset('assets/images/slider/9.jpg') }}" alt="Drawing-room"></div>
-                <div class="item"><img src="{{ asset('assets/images/slider/10.jpg') }}" alt="Drawing-room"></div>
-                <div class="item"><img src="{{ asset('assets/images/slider/11.jpg') }}" alt="Drawing-room"></div>
-            </div>
-
-            <div class="text-center pt-4"><a href="#">Lihat Semua Mitra <i class="fas fa-chevron-right"></i></a>
+                @forelse ($mitras as $mitra)
+                    <div class="item"><img src="{{ asset('storage/'. $mitra->image) }}" alt="{{ $mitra->name }}" style="object-fit: cover; height: 200px; width: 200px"></div>
+                @empty
+                    <div class="d-flex justify-content-center">
+                        <img src="{{ asset('nodata.jpg') }}" alt="" width="60px">
+                    </div>
+                    <h5 class="text-center">
+                        Data Masih Kosong
+                    </h5>
+                @endforelse
             </div>
         </div>
-
-        <div class="need-space" id="gallery-kelas-industri">
-            <h1 class="title">Galeri Kelas Industri</h1>
-
-            <div class="owl-carousel owl-theme" id="owl-carousel-kelas-industri">
-                <div class="item"><img src="{{ asset('assets/images/slider/1.jpg') }}" alt="Drawing-room"></div>
-                <div class="item"><img src="{{ asset('assets/images/slider/2.jpg') }}" alt="Drawing-room"></div>
-                <div class="item"><img src="{{ asset('assets/images/slider/3.jpg') }}" alt="Drawing-room"></div>
-                <div class="item"><img src="{{ asset('assets/images/slider/4.jpg') }}" alt="Drawing-room"></div>
-                <div class="item"><img src="{{ asset('assets/images/slider/5.jpg') }}" alt="Drawing-room"></div>
-                <div class="item"><img src="{{ asset('assets/images/slider/6.jpg') }}" alt="Drawing-room"></div>
-                <div class="item"><img src="{{ asset('assets/images/slider/7.jpg') }}" alt="Drawing-room"></div>
-                <div class="item"><img src="{{ asset('assets/images/slider/8.jpg') }}" alt="Drawing-room"></div>
-                <div class="item"><img src="{{ asset('assets/images/slider/9.jpg') }}" alt="Drawing-room"></div>
-                <div class="item"><img src="{{ asset('assets/images/slider/10.jpg') }}" alt="Drawing-room"></div>
-                <div class="item"><img src="{{ asset('assets/images/slider/11.jpg') }}" alt="Drawing-room"></div>
-            </div>
-        </div>
-
-        <div class="need-space" id="pengadaan-hardware">
-            <h1 class="title">Pengadaan Hardware</h1>
-
-            <div class="owl-carousel owl-theme" id="owl-carousel-hardware">
-                <div class="item"><img src="{{ asset('assets/images/slider/1.jpg') }}" alt="Drawing-room"></div>
-                <div class="item"><img src="{{ asset('assets/images/slider/2.jpg') }}" alt="Drawing-room"></div>
-                <div class="item"><img src="{{ asset('assets/images/slider/3.jpg') }}" alt="Drawing-room"></div>
-                <div class="item"><img src="{{ asset('assets/images/slider/4.jpg') }}" alt="Drawing-room"></div>
-                <div class="item"><img src="{{ asset('assets/images/slider/5.jpg') }}" alt="Drawing-room"></div>
-                <div class="item"><img src="{{ asset('assets/images/slider/6.jpg') }}" alt="Drawing-room"></div>
-                <div class="item"><img src="{{ asset('assets/images/slider/7.jpg') }}" alt="Drawing-room"></div>
-                <div class="item"><img src="{{ asset('assets/images/slider/8.jpg') }}" alt="Drawing-room"></div>
-                <div class="item"><img src="{{ asset('assets/images/slider/9.jpg') }}" alt="Drawing-room"></div>
-                <div class="item"><img src="{{ asset('assets/images/slider/10.jpg') }}" alt="Drawing-room"></div>
-                <div class="item"><img src="{{ asset('assets/images/slider/11.jpg') }}" alt="Drawing-room"></div>
-            </div>
-        </div>
-
-        <div class="need-space" id="guru-magang">
-            <h1 class="title">Galeri Guru Magang</h1>
-
-            <div class="owl-carousel owl-theme" id="owl-carousel-gurumagang">
-                <div class="item"><img src="{{ asset('assets/images/slider/1.jpg') }}" alt="Drawing-room"></div>
-                <div class="item"><img src="{{ asset('assets/images/slider/2.jpg') }}" alt="Drawing-room"></div>
-                <div class="item"><img src="{{ asset('assets/images/slider/3.jpg') }}" alt="Drawing-room"></div>
-                <div class="item"><img src="{{ asset('assets/images/slider/4.jpg') }}" alt="Drawing-room"></div>
-                <div class="item"><img src="{{ asset('assets/images/slider/5.jpg') }}" alt="Drawing-room"></div>
-                <div class="item"><img src="{{ asset('assets/images/slider/6.jpg') }}" alt="Drawing-room"></div>
-                <div class="item"><img src="{{ asset('assets/images/slider/7.jpg') }}" alt="Drawing-room"></div>
-                <div class="item"><img src="{{ asset('assets/images/slider/8.jpg') }}" alt="Drawing-room"></div>
-                <div class="item"><img src="{{ asset('assets/images/slider/9.jpg') }}" alt="Drawing-room"></div>
-                <div class="item"><img src="{{ asset('assets/images/slider/10.jpg') }}" alt="Drawing-room"></div>
-                <div class="item"><img src="{{ asset('assets/images/slider/11.jpg') }}" alt="Drawing-room"></div>
-            </div>
-        </div>
-
-        <div class="need-space" id="guru-magang">
-            <h1 class="title">Galeri Guru Tamu</h1>
-
-            <div class="owl-carousel owl-theme" id="owl-carousel-gurutamu">
-                <div class="item"><img src="{{ asset('assets/images/slider/1.jpg') }}" alt="Drawing-room"></div>
-                <div class="item"><img src="{{ asset('assets/images/slider/2.jpg') }}" alt="Drawing-room"></div>
-                <div class="item"><img src="{{ asset('assets/images/slider/3.jpg') }}" alt="Drawing-room"></div>
-                <div class="item"><img src="{{ asset('assets/images/slider/4.jpg') }}" alt="Drawing-room"></div>
-                <div class="item"><img src="{{ asset('assets/images/slider/5.jpg') }}" alt="Drawing-room"></div>
-                <div class="item"><img src="{{ asset('assets/images/slider/6.jpg') }}" alt="Drawing-room"></div>
-                <div class="item"><img src="{{ asset('assets/images/slider/7.jpg') }}" alt="Drawing-room"></div>
-                <div class="item"><img src="{{ asset('assets/images/slider/8.jpg') }}" alt="Drawing-room"></div>
-                <div class="item"><img src="{{ asset('assets/images/slider/9.jpg') }}" alt="Drawing-room"></div>
-                <div class="item"><img src="{{ asset('assets/images/slider/10.jpg') }}" alt="Drawing-room"></div>
-                <div class="item"><img src="{{ asset('assets/images/slider/11.jpg') }}" alt="Drawing-room"></div>
+            <div class="need-space" id="gallery-kelas-industri">
+                <h1 class="title">Galeri {{ $services->name }}</h1>
+    
+                <div class="owl-carousel owl-theme" id="owl-carousel-galery">
+                    @forelse ($galeries as $galery)
+                        <div class="item"><img src="{{ asset('storage/'. $galery->image) }}" alt="{{ $galery->name }}" style="object-fit: cover; height: 200px; width: 200px"></div>
+                    @empty
+                        <h5 class="text-center">
+                            Data Masih Kosong
+                        </h5>
+                    @endforelse
+                </div>
             </div>
         </div>
     </div>
@@ -350,7 +282,7 @@
     <script src="{{ asset('assets/js/owlcarousel/owl.carousel.js') }}"></script>
 
     <script>
-        $('#owl-carousel-mitra, #owl-carousel-kelas-industri').owlCarousel({
+        $('#owl-carousel-mitra, #owl-carousel-galery').owlCarousel({
             items: 5,
             loop: true,
             margin: 10,
@@ -359,29 +291,6 @@
             autoplayHoverPause: true,
             nav: false,
             dots: false,
-            responsive: {
-                320: {
-                    items: 1,
-                    mergeFit: true,
-                },
-                768: {
-                    items: 2,
-                    mergeFit: true,
-                },
-                992: {
-                    items: 3,
-                    mergeFit: true,
-                },
-            },
-        });
-        $('#owl-carousel-hardware,#owl-carousel-gurumagang,#owl-carousel-gurutamu').owlCarousel({
-            items: 5,
-            loop: true,
-            margin: 10,
-            autoplay: true,
-            autoplayTimeout: 2500,
-            autoplayHoverPause: true,
-            nav: false,
             responsive: {
                 320: {
                     items: 1,

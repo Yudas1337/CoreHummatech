@@ -7609,8 +7609,8 @@ footer .footer-bottom-box::after {
 }
 
 .earna-preloader .animation-preloader .txt-loading .letters-loading:before {
-    -webkit-animation: letters-loading 4s infinite;
-    animation: letters-loading 4s infinite;
+    -webkit-animation: letters-loading 2s infinite;
+    animation: letters-loading 2s infinite;
     color: #000000;
     content: attr(data-text-preloader);
     left: 0;
