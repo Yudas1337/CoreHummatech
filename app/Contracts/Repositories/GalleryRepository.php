@@ -38,5 +38,9 @@ class GalleryRepository extends BaseRepository implements GalleryInterface
     {
         return $this->model->query()->where($relation,$id);
     }
+    public function CountByRelation(mixed $relation, $id): mixed
+    {
+        return $this->model->query()->where($relation, $id)->count();
+    }
 
 }

@@ -12,134 +12,41 @@
                         <p class="m-0 me-2">Cari:</p>
                         <input class="form-control me-2" type="text" placeholder="Search" aria-label="Search">
                     </div>
-                    <button class="btn btn-primary m-0" type="button" data-bs-toggle="modal"
-                        data-bs-target="#tambah">Tambah</button>
                 </div>
             </div>
         </div>
     </div>
 
     <div class="row">
-        <div class="col-sm-12 box-col-12">
-
+        <div class="col-sm-12 box-col-12 col-12">
             <div class="row">
-                @forelse ($gallery as $galeri)
-                    <div class="col-md-4 col-xl-3">
+                @forelse ($serviceData as $id => $name)
+                    <a href="{{ route('gallery.showFolder', $id) }}" class="col-md-2 col-xl-2">
                         <div class="card">
                             <div class="card-body">
                                 <div class="product-box">
                                     <div class="product-img">
-                                        <img class="img-fluid" src="{{ 'storage/'. $galeri->image }}" alt="">
-                                        <div class="product-hover">
-                                            <ul>
-                                                <li><a type="button" data-id="{{ $galeri->id }}" class="btn-edit" data-image="{{ $galeri->image }}"><i
-                                                            class="fa fa-edit "></i></a></li>
-                                                <li><a type="button" data-id="{{ $galeri->id }}" class="btn-delete"><i class="fa fa-trash "></i></a></li>
-                                            </ul>
-                                        </div>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="70px" height="60px" viewBox="0 0 51 43" fill="none">
+                                            <path d="M17.85 8.56011e-09C18.4105 -4.57125e-05 18.9554 0.183081 19.4004 0.521059L19.6554 0.741118L26.5557 7.58824H43.35C45.3013 7.58813 47.1789 8.32765 48.5986 9.65548C50.0183 10.9833 50.8728 12.7991 50.9873 14.7313L51 15.1765V35.4118C51.0001 37.3473 50.2546 39.2097 48.9159 40.618C47.5773 42.0262 45.7467 42.8738 43.7988 42.9874L43.35 43H7.65C5.69871 43.0001 3.82114 42.2606 2.40143 40.9328C0.981732 39.6049 0.127226 37.7891 0.0127503 35.8569L1.18841e-08 35.4118V7.58824C-0.000108685 5.6527 0.745429 3.79029 2.08407 2.38205C3.42272 0.973806 5.25327 0.126199 7.2012 0.0126474L7.65 8.56011e-09H17.85Z" fill="#FFAA05"/>
+                                        </svg>
                                     </div>
+                                    <h3>{{ $name }}</h3>
+                                    <p class="text-secondary">0 Foto</p>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </a>
                 @empty
-                <div class="d-flex justify-content-center">
-                    <img src="{{ asset('nodata.jpg') }}" alt="" width="400px">
-                </div>
-                <h5 class="text-center">
-                    Data Masih Kosong
-                </h5>
+                    <div class="d-flex justify-content-center">
+                        <img src="{{ asset('nodata.jpg') }}" alt="" width="400px">
+                    </div>
+                    <h5 class="text-center">
+                        Data Masih Kosong
+                    </h5>
                 @endforelse
             </div>
         </div>
     </div>
-    @error('name')
-        {{ $message }}
-    @enderror
-    @error('service_id')
-        {{ $message }}
-    @enderror
-    @error('image')
-        {{ $message }}
-    @enderror
-    @error('image*')
-        {{ $message }}
-    @enderror
-    @error('gallerie_id')
-        {{ $message }}
-    @enderror
-    <!-- Add Modal -->
-    <div class="modal fade modal-bookmark" id="tambah" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog modal-lg" role="document">
-            <form method="POST" id="formAddData" action="{{ route('gallery.store') }}"
-                class="modal-content" enctype="multipart/form-data">
-                @csrf
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Tambah Galeri</h5>
-                    <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="row g-2">
-                        <div class="mb-3 mt-0 col-md-12">
-                            <label for="bm-title">Judul Galeri</label>
-                            <input class="form-control" id="formFile" name="name" type="text">
-                        </div>
-                        <div class="mb-3 mt-0 col-md-12">
-                            <label for="bm-title">Tampilkan Pada</label>
-                            <select name="service_id" id="showdata" class="form-select">
-                                <option selected disabled>Pilih Salah Satu Layanan</option>
-                                @foreach ($services as $item)
-                                    <option value="{{ $item->id }}">{{ $item->name }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                    </div>
-                    <input id="image-uploadify" type="file" name="image[]" accept="image/*" multiple>
-                    <div class="modal-footer">
-                        <div class="d-flex justify-content-end">
-                            <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">Cancel</button>
-                            <button class="btn btn-primary" type="submit">Tambah</button>
-                        </div>
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>
-
-    <!-- Edit Modal -->
-    <div class="modal fade modal-bookmark" id="modal-edit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Edit Galeri</h5>
-                    <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <form class="form-bookmark needs-validation" action="#" method="POST" id="form-update"
-                    novalidate="" enctype="multipart/form-data">
-                    @csrf
-                    @method('put')
-                    <div class="modal-body">
-
-                        <div class="row g-2">
-                            <div class="mb-3 mt-0 col-md-12">
-                                <label for="bm-title">Foto</label>
-                                <input class="form-control" name="image" id="formFile" type="file">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <div class="d-flex justify-content-end">
-                            <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">Cancel</button>
-                            <button class="btn btn-primary" id="buttonSubmitAdd" type="submit">Perbarui</button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-    @include('admin.components.delete-modal-component')
 @endsection
 @section('script')
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
@@ -184,21 +91,5 @@
         $('#formAddData').submit(function() {
             myDropzone.processQueue();
         })
-    </script>
-
-    <script>
-        $('.btn-delete').on('click', function() {
-            var id = $(this).data('id');
-            $('#form-delete').attr('action', '/galery/delete/' + id);
-            $('#modal-delete').modal('show');
-        });
-
-        $('.btn-edit').click(function() {
-            var id = $(this).data('id'); // Mengambil nilai id dari tombol yang diklik
-            var name = $(this).data('name'); // Mengambil nilai name dari tombol yang diklik
-            $('#form-update').attr('action', '/galery/update/' + id); // Mengubah nilai atribut action form
-            $('#name-edit').val(name);
-            $('#modal-edit').modal('show');
-        });
     </script>
 @endsection

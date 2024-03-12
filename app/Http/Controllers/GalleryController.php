@@ -13,6 +13,7 @@ use App\Contracts\Interfaces\GalleryInterface;
 use App\Contracts\Interfaces\ServiceInterface;
 use App\Contracts\Interfaces\GaleryImageInterface;
 use App\Http\Requests\UpdateGaleryImageRequest;
+use App\Models\Service;
 
 class GalleryController extends Controller
 {
@@ -36,7 +37,6 @@ class GalleryController extends Controller
     {
         $serviceData = $this->serviceModel->get()->pluck('name', 'id');
         $gallery = $this->galleryimage->get();
-        // dd($gallery);
         return view('admin.pages.gallery.index', compact('gallery', 'serviceData'));
     }
 
@@ -71,7 +71,7 @@ class GalleryController extends Controller
      */
     public function show(Gallery $gallery)
     {
-        //
+        
     }
 
     /**
@@ -100,5 +100,12 @@ class GalleryController extends Controller
         $this->galeryService->delete($galeryImage);
         $this->galleryimage->delete($galeryImage->id);
         return redirect()->back()->with('success' , 'Data berhasil di hapus');
+    }
+
+    public function showFolder(Service $service){
+        $galleries = $this->model->ServiceProductShow('service_id', $service->id)->get();
+        $galleryImages = $this->galleryimage->get();
+
+        return view('admin.pages.gallery.detail', compact('galleries', 'galleryImages'));
     }
 }

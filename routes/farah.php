@@ -3,6 +3,7 @@
 use App\Http\Controllers\AboutUsController;
 use App\Http\Controllers\BackgroundController;
 use App\Http\Controllers\CategoryProductController;
+use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\TestimonialController;
 use Illuminate\Support\Facades\Route;
@@ -22,3 +23,4 @@ Route::post('background/store', [BackgroundController::class, 'store'])->name('b
 Route::put('background/update/{background}', [BackgroundController::class, 'update'])->name('background.update');
 Route::delete('background/delete/{background}', [BackgroundController::class, 'destroy'])->name('background.destroy');
 
+Route::get('gallery/service/{service}', [GalleryController::class, 'showFolder'])->name('gallery.showFolder');
