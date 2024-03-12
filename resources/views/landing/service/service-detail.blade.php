@@ -384,9 +384,9 @@
                                     <h4 class="m-0">Mitra Kami</h4>
                                     <div class="dash"></div>
                                     <div class="devider"></div>
-                                    <div class="team-slider owl-carousel d-flex">
+                                    <div class="team-slider owl-carousel d-flex justify-content-center">
                                         @forelse ($servicemitras as $mitra)
-                                            <div class="team-item mx-1">
+                                            <div class="team-item mx-1 ">
                                                 <img src="{{ asset('storage/' . $mitra->mitra->image) }}" alt="Mitra Image"
                                                     class="img-fluid">
                                             </div>
