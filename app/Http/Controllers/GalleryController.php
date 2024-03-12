@@ -37,6 +37,7 @@ class GalleryController extends Controller
     {
         $serviceData = $this->serviceModel->get()->pluck('name', 'id');
         $gallery = $this->galleryimage->get();
+        // dd($gallery);
         return view('admin.pages.gallery.index', compact('gallery', 'serviceData'));
     }
 
@@ -106,6 +107,6 @@ class GalleryController extends Controller
         $galleries = $this->model->ServiceProductShow('service_id', $service->id)->get();
         $galleryImages = $this->galleryimage->get();
 
-        return view('admin.pages.gallery.detail', compact('galleries', 'galleryImages'));
+        return view('admin.pages.gallery.detail', compact('galleries', 'galleryImages', 'service'));
     }
 }
