@@ -24,3 +24,4 @@ Route::put('background/update/{background}', [BackgroundController::class, 'upda
 Route::delete('background/delete/{background}', [BackgroundController::class, 'destroy'])->name('background.destroy');
 
 Route::get('gallery/service/{service}', [GalleryController::class, 'showFolder'])->name('gallery.showFolder');
+Route::delete('galery/delete/{galery}/{galeryImage}', [GalleryController::class, 'destroy']);

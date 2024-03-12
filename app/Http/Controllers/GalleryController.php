@@ -107,6 +107,6 @@ class GalleryController extends Controller
         $galleries = $this->model->ServiceProductShow('service_id', $service->id)->get();
         $galleryImages = $this->galleryimage->get();
 
-        return view('admin.pages.gallery.detail', compact('galleries', 'galleryImages'));
+        return view('admin.pages.gallery.detail', compact('galleries', 'galleryImages', 'service'));
     }
 }

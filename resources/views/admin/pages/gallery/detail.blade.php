@@ -27,15 +27,20 @@
                     <div class="col-md-4 col-xl-3">
                         @forelse ($galeri->galeryImages as $galery)
                             <div class="card">
+                                <div class="card-header" style="width: 100%; background: none; margin-bottom: -20px">
+                                    <div class="position-absolute top-0 start-0">
+                                        <p class="bg-primary px-3 py-1 text-light" style="border-radius: 5px 0 0 0; font-size: 12px">{{ $galeri->name }}</p>
+                                    </div>
+                                </div>
                                 <div class="card-body">
                                     <div class="product-box">
                                         <div class="product-img">
-                                            <img class="img-fluid" src="{{ 'storage/'. $galeri->image }}" alt="">
+                                            <img class="img-fluid" src="{{ asset('storage/'. $galery->image) }}" alt="">
                                             <div class="product-hover">
                                                 <ul>
-                                                    <li><a type="button" data-id="{{ $galeri->id }}" class="btn-edit" data-image="{{ $galeri->image }}"><i
-                                                                class="fa fa-edit "></i></a></li>
-                                                    <li><a type="button" data-id="{{ $galeri->id }}" class="btn-delete"><i class="fa fa-trash "></i></a></li>
+                                                    <li><a type="button" data-id="{{ $galery->id }}" class="btn-edit" data-image="{{ $galery->image }}"><i
+                                                                class="fa fa-edit "></i></a></li>   
+                                                    <li><a type="button" data-id="{{ $galery->id }}" class="btn-delete"><i class="fa fa-trash "></i></a></li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -90,11 +95,12 @@
                 </div>
                 <div class="modal-body">
                     <div class="row g-2">
+                        <input type="hidden" name="service_id" value="{{ $service->id }}">
                         <div class="mb-3 mt-0 col-md-12">
                             <label for="bm-title">Judul Galeri</label>
                             <input class="form-control" id="formFile" name="name" type="text">
                         </div>
-                        <div class="mb-3 mt-0 col-md-12">
+                        {{-- <div class="mb-3 mt-0 col-md-12">
                             <label for="bm-title">Tampilkan Pada</label>
                             <select name="service_id" id="showdata" class="form-select">
                                 <option selected disabled>Pilih Salah Satu Layanan</option>
@@ -102,7 +108,7 @@
                                     <option value="{{ $item->id }}">{{ $item->name }}</option>
                                 @endforeach
                             </select>
-                        </div>
+                        </div> --}}
                     </div>
                     <input id="image-uploadify" type="file" name="image[]" accept="image/*" multiple>
                     <div class="modal-footer">
