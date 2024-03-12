@@ -41,4 +41,9 @@ class GaleryImageRepository extends BaseRepository implements GaleryImageInterfa
     {
         return $this->model->query()->where('gallery_id', '<>', null)->count();
     }
+
+    public function show(mixed $id): mixed
+    {
+        return $this->model->query()->findOrFail($id);
+    }
 }

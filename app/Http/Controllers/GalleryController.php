@@ -103,10 +103,10 @@ class GalleryController extends Controller
         return redirect()->back()->with('success' , 'Data berhasil di hapus');
     }
 
-    public function showFolder(Service $service){
+    public function showFolder(Service $service)
+    {
         $galleries = $this->model->ServiceProductShow('service_id', $service->id)->get();
-        $galleryImages = $this->galleryimage->get();
-
+        $galleryImages = GaleryImage::whereIn('gallery_id', $galleries->pluck('id'))->get();
         return view('admin.pages.gallery.detail', compact('galleries', 'galleryImages', 'service'));
     }
 }

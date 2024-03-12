@@ -18,54 +18,43 @@
             </div>
         </div>
     </div>
-
     <div class="row">
-        <div class="col-sm-12 box-col-12 col-12">
-            <div class="row">
-
-                @forelse ($galleries as $galeri)
-                    <div class="col-md-4 col-xl-3">
-                        @forelse ($galeri->galeryImages as $galery)
-                            <div class="card">
-                                <div class="card-header" style="width: 100%; background: none; margin-bottom: -20px">
-                                    <div class="position-absolute top-0 start-0">
-                                        <p class="bg-primary px-3 py-1 text-light" style="border-radius: 5px 0 0 0; font-size: 12px">{{ $galeri->name }}</p>
-                                    </div>
-                                </div>
-                                <div class="card-body">
-                                    <div class="product-box">
-                                        <div class="product-img">
-                                            <img class="img-fluid" src="{{ asset('storage/'. $galery->image) }}" alt="">
-                                            <div class="product-hover">
-                                                <ul>
-                                                    <li><a type="button" data-id="{{ $galery->id }}" class="btn-edit" data-image="{{ $galery->image }}"><i
-                                                                class="fa fa-edit "></i></a></li>   
-                                                    <li><a type="button" data-id="{{ $galery->id }}" class="btn-delete"><i class="fa fa-trash "></i></a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
+        @forelse ($galleries as $gallery)
+            @foreach ($galleryImages->where('gallery_id', $gallery->id) as $image)
+                <div class="col-md-4 col-xl-3">
+                    <div class="card">
+                        <div class="card-header" style="width: 100%; background: none; margin-bottom: -20px">
+                            <div class="position-absolute top-0 start-0">
+                                <p class="bg-primary px-3 py-1 text-light"
+                                    style="border-radius: 5px 0 0 0; font-size: 12px">{{ $gallery->name }}</p>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="product-box">
+                                <div class="product-img">
+                                    <img class="img-fluid" src="{{ asset('storage/' . $image->image) }}" alt="">
+                                    <div class="product-hover">
+                                        <ul>
+                                            <li><a type="button" data-id="{{ $image->id }}" class="btn-edit"
+                                                    data-image="{{ $image->image }}"><i class="fa fa-edit "></i></a></li>
+                                            <li><a type="button" data-id="{{ $image->id }}" class="btn-delete"><i
+                                                        class="fa fa-trash "></i></a></li>
+                                        </ul>
                                     </div>
                                 </div>
                             </div>
-                        @empty
-                            <div class="d-flex flex-column  align-items-center">
-                                <img src="{{ asset('nodata.jpg') }}" alt="" width="400px">
-                                <h5 class="text-center">
-                                    Data Masih Kosong
-                                </h5>
-                            </div>
-                        @endforelse
+                        </div>
                     </div>
-                @empty
-                    <div class="d-flex justify-content-center">
-                        <img src="{{ asset('nodata.jpg') }}" alt="" width="400px">
-                    </div>
-                    <h5 class="text-center">
-                        Data Masih Kosong
-                    </h5>
-                @endforelse
+                </div>
+            @endforeach
+        @empty
+            <div class="d-flex justify-content-center">
+                <img src="{{ asset('nodata.jpg') }}" alt="" width="400px">
             </div>
-        </div>
+            <h5 class="text-center">
+                Data Masih Kosong
+            </h5>
+        @endforelse
     </div>
     @error('name')
         {{ $message }}
@@ -86,8 +75,8 @@
     <div class="modal fade modal-bookmark" id="tambah" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
-            <form method="POST" id="formAddData" action="{{ route('gallery.store') }}"
-                class="modal-content" enctype="multipart/form-data">
+            <form method="POST" id="formAddData" action="{{ route('gallery.store') }}" class="modal-content"
+                enctype="multipart/form-data">
                 @csrf
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Tambah Galeri</h5>
@@ -157,19 +146,19 @@
     @include('admin.components.delete-modal-component')
 @endsection
 @section('script')
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-@if(session('success'))
-<script>
-    Swal.fire({
-        title: 'Success',
-        text: '{{ session('success') }}',
-        icon: 'success',
-        confirmButtonText: 'OK',
-        timer: 2000, // Menutup SweetAlert setelah 3 detik
-        timerProgressBar: true // Menampilkan progress bar
-    });
-</script>
-@endif
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    @if (session('success'))
+        <script>
+            Swal.fire({
+                title: 'Success',
+                text: '{{ session('success') }}',
+                icon: 'success',
+                confirmButtonText: 'OK',
+                timer: 2000, // Menutup SweetAlert setelah 3 detik
+                timerProgressBar: true // Menampilkan progress bar
+            });
+        </script>
+    @endif
     <script>
         feather.replace();
     </script>
