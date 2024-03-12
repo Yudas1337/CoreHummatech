@@ -46,4 +46,8 @@ class GaleryImageRepository extends BaseRepository implements GaleryImageInterfa
     {
         return $this->model->query()->findOrFail($id);
     }
+    public function whereIn(string $relation, $id)
+    {
+        return $this->model->query()->whereIn($relation, $id)->get();
+    }
 }

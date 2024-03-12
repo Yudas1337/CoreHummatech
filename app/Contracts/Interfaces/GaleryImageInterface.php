@@ -8,8 +8,9 @@ use App\Contracts\Interfaces\Eloquent\ServiceProductShowInterface;
 use App\Contracts\Interfaces\Eloquent\ShowInterface;
 use App\Contracts\Interfaces\Eloquent\StoreInterface;
 use App\Contracts\Interfaces\Eloquent\UpdateInterface;
+use App\Contracts\Interfaces\Eloquent\WhereInRelationInterface;
 
-interface GaleryImageInterface extends StoreInterface,  GetInterface, UpdateInterface, DeleteInterface, ServiceProductShowInterface , GetCountInterface , ShowInterface
+interface GaleryImageInterface extends StoreInterface,  GetInterface, UpdateInterface, DeleteInterface, ServiceProductShowInterface , GetCountInterface , ShowInterface, WhereInRelationInterface
 {
 
 }

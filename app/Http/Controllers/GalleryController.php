@@ -73,7 +73,7 @@ class GalleryController extends Controller
     public function show(Gallery $gallery)
     {
 
-    }
+        }
 
     /**
      * Show the form for editing the specified resource.
@@ -106,7 +106,8 @@ class GalleryController extends Controller
     public function showFolder(Service $service)
     {
         $galleries = $this->model->ServiceProductShow('service_id', $service->id)->get();
-        $galleryImages = GaleryImage::whereIn('gallery_id', $galleries->pluck('id'))->get();
+        $galleryImages = $this->galleryimage->whereIn('gallery_id', $galleries->pluck('id'));
+        // $galleryImages = GaleryImage::whereIn('gallery_id', $galleries->pluck('id'))->get();
         return view('admin.pages.gallery.detail', compact('galleries', 'galleryImages', 'service'));
     }
 }
