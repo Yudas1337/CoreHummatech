@@ -102,8 +102,8 @@ class ServiceController extends Controller
         $faqs = $this->faq->get()->where('service_id', $service->id);
         $serviceMitras = $this->serviceMitra->getByServiceId($service->id);
         $galleries = $this->galery->ServiceProductShow('service_id', $service->id)->get();
-        
-        
+
+
         // $galerys = $this->galery->ServiceProductShow('service_id', $service->id)->get();
         // $galeries = [];
         // foreach ($galerys as $galery) {
@@ -111,7 +111,7 @@ class ServiceController extends Controller
         // }
 
         // dd($galeries);
-        
+
         return view('admin.pages.service.detail', compact('services', 'products', 'termsconditions', 'testimonials', 'mision', 'faqs', 'serviceMitras', 'galleries'));
     }
 
@@ -134,13 +134,8 @@ class ServiceController extends Controller
         $profile = $this->profile->First();
         $mitras = $this->mitras->get();
         $galerys = $this->galery->ServiceProductShow('service_id', $slugs->id)->get();
-        $galeries = [];
         $background = $this->background->getByServiceId($service->id);
-
-        foreach ($galerys as $galery) {
-            $galeries[] = $this->galleryImage->ServiceProductShow('galleries_id', $galery->id)->get();
-        }
-
+        $galeries = $this->galleryImage->whereIn('gallery_id',$galerys->pluck('id'))->get();
         return view('landing.service.service-detail', compact('slugs', 'services', 'products', 'testimonials', 'faqs', 'procedures', 'sales', 'profile', 'mitras', 'galeries', 'background'));
     }
     /**

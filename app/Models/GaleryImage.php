@@ -16,7 +16,7 @@ class GaleryImage extends Model
      * @return BelongsTo
      */
     public function galery()
-    {
+    {   
         return $this->belongsTo(Gallery::class);
     }
 }

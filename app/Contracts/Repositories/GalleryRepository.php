@@ -36,7 +36,7 @@ class GalleryRepository extends BaseRepository implements GalleryInterface
 
     public function ServiceProductShow(mixed $relation, mixed $id): mixed
     {
-        return $this->model->query()->where($relation,$id);
+        return $this->model->query()->where($relation, $id);
     }
     public function CountByRelation(mixed $relation, $id): mixed
     {

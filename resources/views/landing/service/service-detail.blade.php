@@ -496,7 +496,7 @@
                                 <div class="galeri">
                                     <div class="d-flex flex-wrap col-12">
                                         @forelse ($galeries as $galery)
-                                            <img src="{{ asset('storage/' . $galery->image) }}"
+                                            <img src="{{ asset('storage/'.$galery->image) }}"
                                                 style="object-fit: cover; width: 18vw; height: 12vw" class="m-2">
                                         @empty
                                             <div class="col-12">
