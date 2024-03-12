@@ -36,10 +36,11 @@ class GalleryController extends Controller
     public function index()
     {
         $serviceData = $this->serviceModel->get()->pluck('name', 'id');
-        $gallery = $this->galleryimage->get();
-        return view('admin.pages.gallery.index', compact('gallery', 'serviceData'));
-    }
+        $galleries = $this->model->GetCount();
+        $galeryImages = $this->galleryimage->get();
 
+        return view('admin.pages.gallery.index', compact('serviceData', 'galeryImages' ,'galleries'));
+    }
     /**
      * Show the form for creating a new resource.
      */
@@ -71,7 +72,7 @@ class GalleryController extends Controller
      */
     public function show(Gallery $gallery)
     {
-        
+
     }
 
     /**
