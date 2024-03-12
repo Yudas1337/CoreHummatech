@@ -133,10 +133,11 @@ class ServiceController extends Controller
         $sales = $this->sale->get();
         $profile = $this->profile->First();
         $mitras = $this->mitras->get();
+        $servicemitras = $this->serviceMitra->where($slugs->id)->whereIn('mitra_id',$mitras->pluck('id'))->get();
         $galerys = $this->galery->ServiceProductShow('service_id', $slugs->id)->get();
         $background = $this->background->getByServiceId($service->id);
         $galeries = $this->galleryImage->whereIn('gallery_id',$galerys->pluck('id'))->get();
-        return view('landing.service.service-detail', compact('slugs', 'services', 'products', 'testimonials', 'faqs', 'procedures', 'sales', 'profile', 'mitras', 'galeries', 'background'));
+        return view('landing.service.service-detail', compact('servicemitras','slugs', 'services', 'products', 'testimonials', 'faqs', 'procedures', 'sales', 'profile', 'galeries', 'background'));
     }
     /**
      * Update the specified resource in storage.

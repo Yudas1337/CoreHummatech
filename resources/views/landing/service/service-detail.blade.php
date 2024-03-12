@@ -378,16 +378,16 @@
                                 <!-- End Faq -->
                             </div>
                         @endif
-                        @if ($mitras->count() > 0)
+                        @if ($servicemitras->count() > 0)
                             <div class="py-2 mb-5">
                                 <div class="title-service">
                                     <h4 class="m-0">Mitra Kami</h4>
                                     <div class="dash"></div>
                                     <div class="devider"></div>
                                     <div class="team-slider owl-carousel d-flex">
-                                        @forelse ($mitras as $mitra)
-                                            <div class="team-item">
-                                                <img src="{{ asset('storage/' . $mitra->image) }}" alt="Mitra Image"
+                                        @forelse ($servicemitras as $mitra)
+                                            <div class="team-item mx-1">
+                                                <img src="{{ asset('storage/' . $mitra->mitra->image) }}" alt="Mitra Image"
                                                     class="img-fluid">
                                             </div>
                                         @empty

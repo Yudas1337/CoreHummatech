@@ -35,4 +35,14 @@ class ServiceMitraRepository extends BaseRepository implements ServiceMitraInter
     {
         return $this->model->query()->where('service_id', $type)->get();
     }
+
+    public function whereIn(string $relation, $id) :mixed
+    {
+        return $this->model->query()->whereIn($relation, $id);
+    }
+
+    public function where($slug) :mixed
+    {
+        return $this->model->query()->where('service_id', $slug);
+    }
 }
