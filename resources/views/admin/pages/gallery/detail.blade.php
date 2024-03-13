@@ -125,8 +125,8 @@
                     @csrf
                     @method('put')
                     <div class="modal-body">
-
                         <div class="row g-2">
+                            <img src="" id="image-edit" class="img-fluid mb-3" alt="">
                             <div class="mb-3 mt-0 col-md-12">
                                 <label for="bm-title">Foto</label>
                                 <input class="form-control" name="image" id="formFile" type="file">
@@ -199,9 +199,11 @@
 
         $('.btn-edit').click(function() {
             var id = $(this).data('id'); // Mengambil nilai id dari tombol yang diklik
-            var name = $(this).data('name'); // Mengambil nilai name dari tombol yang diklik
+            var name = $(this).data('name');
+            let image = $(this).data('image'); // Mengambil nilai name dari tombol yang diklik
             $('#form-update').attr('action', '/galery/update/' + id); // Mengubah nilai atribut action form
             $('#name-edit').val(name);
+            $('#image-edit').attr('src', '{{ asset("storage") }}/' + image);
             $('#modal-edit').modal('show');
         });
     </script>
