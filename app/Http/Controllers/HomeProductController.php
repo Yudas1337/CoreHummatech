@@ -36,7 +36,8 @@ class HomeProductController extends Controller
     {
         $products = $this->product->where($category->id);
         // dd($products);
+        $background = $this->background->getByType('Portofolio');
         $categories = $this->categoryProduct->get();
-        return view('landing.product', compact('products', 'categories'));
+        return view('landing.product', compact('products', 'categories', 'background'));
     }
 }

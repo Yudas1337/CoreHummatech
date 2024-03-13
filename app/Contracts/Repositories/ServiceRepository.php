@@ -1,8 +1,10 @@
 <?php
+
 namespace App\Contracts\Repositories;
 
-use App\Contracts\Interfaces\ServiceInterface;
 use App\Models\Service;
+use Illuminate\Http\Request;
+use App\Contracts\Interfaces\ServiceInterface;
 
 class ServiceRepository extends BaseRepository implements ServiceInterface
 {
@@ -43,5 +45,13 @@ class ServiceRepository extends BaseRepository implements ServiceInterface
     public function GetCount(): mixed
     {
         return $this->model->query()->count();
+    }
+
+    public function search(Request $request): mixed
+    {
+        return $this->model->query()
+            ->when($request->name, function ($query) use ($request) {
+                $query->where('name', 'LIKE', '%' . $request->name . '%');
+            });
     }
 }
