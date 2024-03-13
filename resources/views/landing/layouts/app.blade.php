@@ -139,7 +139,7 @@
                                 <ul>
                                     @forelse ($socmed as $socmed)
                                         <li>
-                                            <a href="{{ $socmed->link }}"
+                                            <a href="{{ $socmed->link }}" target="_blank"
                                                 style="display: flex;gap: .5rem;align-items: center">
                                                 <i class="fas fa-angle-right"></i>
                                                 <img alt="Facebook Logo" src="{{ asset("storage/{$socmed->image}") }}"
