@@ -7,6 +7,7 @@ use App\Contracts\Interfaces\ServiceInterface;
 use App\Models\Procedure;
 use App\Http\Requests\StoreProcedureRequest;
 use App\Http\Requests\UpdateProcedureRequest;
+use Illuminate\Http\Request;
 
 class ProcedureController extends Controller
 {
@@ -21,9 +22,11 @@ class ProcedureController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
         $procedures = $this->procedure->get();
+        $procedures = $this->procedure->search($request);
+
         $services = $this->service->get();
         return view('admin.pages.procedure.index', compact('procedures', 'services'));
     }

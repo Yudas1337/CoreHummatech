@@ -7,16 +7,18 @@
                 <div class="col-12 col-lg-6">
                     <h4 class="m-2">Sosial Media</h4>
                 </div>
-                <div class="col-12 col-lg-6">
-                    <div class="d-flex justify-content-lg-end justify-content-start">
-                        <div class="d-flex align-items-center gap-2">
-                            <p class="m-0 me-2">Cari:</p>
-                            <input class="form-control me-2" type="text" placeholder="Search" aria-label="Search">
+                <form action="/social-media">
+                    <div class="col-12 col-lg-12 d-flex justify-content-end">
+                        <div class="d-flex justify-content-lg-end justify-content-start">
+                            <div class="d-flex align-items-center gap-2 mx-2">
+                                <p class="m-0 me-2">Cari:</p>
+                                <input type="text" name="platform" value="{{ request()->platform }}" class="form-control" placeholder="Cari Produk" aria-label="Username"
+                                aria-describedby="basic-addon1">                            </div>
+                            <button class="btn btn-primary m-0" type="button" data-bs-toggle="modal"
+                                data-bs-target="#tambah">Tambah</button>
                         </div>
-                        <button class="btn btn-primary m-0" type="button" data-bs-toggle="modal"
-                            data-bs-target="#tambah">Tambah</button>
                     </div>
-                </div>
+                </form>
             </div>
         </div>
     </div>
