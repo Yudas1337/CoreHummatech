@@ -29,6 +29,6 @@ class ImageUploader extends Controller
     {
         $dataImage = $this->imageUpload->process($request);
 
-        return ResponseHelper::success(['image' => $dataImage]);
+        return ResponseHelper::success(['image' => $dataImage['files']]);
     }
 }

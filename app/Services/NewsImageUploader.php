@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Enums\TypeEnum;
+use App\Helpers\ImageCompressing;
 use Illuminate\Http\Request;
 
 class NewsImageUploader
@@ -15,6 +16,8 @@ class NewsImageUploader
      */
     public function process(Request $request)
     {
-        return $request->file('image')->store(TypeEnum::NEWSDESC->value, 'public');
+        return ImageCompressing::process($request->image, TypeEnum::NEWSDESC->value, [
+            'quality' => 75,
+        ]);
     }
 }
