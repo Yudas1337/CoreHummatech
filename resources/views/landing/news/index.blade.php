@@ -105,7 +105,7 @@
                                         <div class="item">
                                             <div class="thumb">
                                                 <a href="/berita/{{ $news->slug }}"><img
-                                                        src="{{ asset('storage/' . $news->image) }}"
+                                                        src="{{ asset('storage/' . $news->thumbnail) }}"
                                                         alt="{{ $news->title }}"></a>
 
                                                 <time class="date"
