@@ -50,8 +50,8 @@
     </div>
 </div>
 <div class="container mt-5 mb-5">
-    <div class="container">
-        <div class="container">
+    <div class="container px-5">
+        <div class="container px-5">
             <main role="main">
                 <div id="carousel" class="carousel" data-ride="carousel">
                     <div class="carousel-inner">
