@@ -43,7 +43,7 @@ class SosialMediaController extends Controller
     {
         $data = $this->service->store($request);
         $this->sosialMedia->store($data);
-        return back();
+        return back()->with('success','Data Berhasil Ditambahkan');
     }
 
     /**
@@ -78,6 +78,6 @@ class SosialMediaController extends Controller
     public function destroy(SosialMedia $sosialMedia)
     {
       $this->sosialMedia->delete($sosialMedia->id);
-      return back();
+      return back()->with('Data Berhasil Dihapus');
     }
 }

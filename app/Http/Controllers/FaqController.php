@@ -46,7 +46,7 @@ class FaqController extends Controller
     public function store(StoreFaqRequest $request)
     {
         $this->faq->store($request->validated());
-        return redirect()->route('faq.index');
+        return redirect()->route('faq.index')->with('success','Data Berhasil di Tambahkan');
     }
 
     /**
@@ -71,7 +71,7 @@ class FaqController extends Controller
     public function update(UpdateFaqRequest $request, Faq $faq)
     {
         $this->faq->update($faq->id, $request->validated());
-        return redirect()->route('faq.index');
+        return redirect()->route('faq.index')->with('success','Data Berhasil di Perbarui');
     }
 
     /**
@@ -80,6 +80,6 @@ class FaqController extends Controller
     public function destroy(Faq $faq)
     {
         $this->faq->delete($faq->id);
-        return redirect()->route('faq.index');
+        return redirect()->route('faq.index')->with('success','Data Berhasil di Hapus');
     }
 }

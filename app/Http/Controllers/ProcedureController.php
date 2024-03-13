@@ -43,7 +43,7 @@ class ProcedureController extends Controller
     {
         $data = $request->all();
         $this->procedure->store($data);
-        return redirect()->route('procedure.index');
+        return redirect()->route('procedure.index')->with('success','Data BErhasil Ditambahkan');
     }
 
     /**
@@ -69,7 +69,7 @@ class ProcedureController extends Controller
     {
         $data = $request->all();
         $this->procedure->update($procedure->id, $data);
-        return redirect()->route('procedure.index');
+        return redirect()->route('procedure.index')->with('success','Data Berhasil Diperbarui');
     }
 
     /**
@@ -78,6 +78,6 @@ class ProcedureController extends Controller
     public function destroy(Procedure $procedure)
     {
         $procedure->delete();
-        return redirect()->route('procedure.index');
+        return redirect()->route('procedure.index')->with('Data Berhasil Dihapus');
     }
 }

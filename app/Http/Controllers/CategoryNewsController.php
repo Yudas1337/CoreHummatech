@@ -42,7 +42,7 @@ class CategoryNewsController extends Controller
     {
         $data = $this->service->store($request);
         $this->model->store($data);
-        return back();
+        return back()->with('success','Data Berhasil Ditambahkan');
     }
 
     /**
@@ -68,7 +68,7 @@ class CategoryNewsController extends Controller
     {
         $data = $this->service->update($model, $request);
         $this->model->update($model->id , $data);
-        return back();
+        return back()->with('success','Data Berhasil Diperbarui');
     }
 
     /**
@@ -77,6 +77,6 @@ class CategoryNewsController extends Controller
     public function destroy(CategoryNews $model)
     {
         $this->model->delete($model->id);
-        return back();
+        return back()->with('success','Data berhasil dihapus');
     }
 }

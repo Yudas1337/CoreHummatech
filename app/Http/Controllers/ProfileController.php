@@ -44,7 +44,7 @@ class ProfileController extends Controller
     {
         $data = $this->service->store($request);
         $this->profile->store($data);
-        return back();
+        return back()->with('success','Data Berhasil Ditambahkan');
     }
 
     /**
@@ -79,6 +79,6 @@ class ProfileController extends Controller
     public function destroy(Profile $profile)
     {
         $this->profile->delete($profile->id);
-        return back();
-    } 
+        return back()->with('success','Data Berhasil Dihapus');
+    }
 }
