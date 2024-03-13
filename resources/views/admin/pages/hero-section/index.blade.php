@@ -18,7 +18,7 @@
             <div class="tab-content" id="myTabContent">
                 <div class="tab-pane fade show active py-3" id="section" role="tabpanel">
                     <div class="d-flex justify-content-lg-end justify-content-start  gap-2">
-                        <a href="/" target="_blank" class="btn btn-primary m-0">Detail Slider</a>
+                        <a href="/" target="_blank" class="btn btn-primary m-0">Lihat Slider</a>
                         <a class="btn btn-primary m-0" href="{{ url('/hero-section/create') }}"
                             >Tambah</a>
                     </div>
@@ -65,7 +65,7 @@
                 </div>
                 <div class="tab-pane fade py-3" id="background" role="tabpanel" aria-labelledby="contact-tab">
                     <div class="d-flex justify-content-lg-end justify-content-start  gap-2">
-                        <a href="/about-us" target="_blank" class="btn btn-primary m-0">Detail Background</a>
+                        <a href="/about-us" target="_blank" class="btn btn-primary m-0">Lihat Background</a>
                         <button class="btn btn-primary m-0" type="button" data-bs-toggle="modal" data-bs-target="#tambah"
                             >Tambah</button>
                     </div>
