@@ -292,11 +292,13 @@
                 <div class="row align-items-center">
 
                     <div class="col-lg-4 col-md-12 info">
-                        <h2 class="mx-5 text-break"> Menghadirkan produk dengan kualitas dan inovasi terbaik</h2>
-                        <p class="mx-5">
-                            Lorem ipsum dolor sit amet consectetur. Blandit donec pulvinar eget senectus posuere amet
-                            ultricies justo enim tempus pellentesque.
-                        </p>
+                        @if ($home)
+                            <h2 class="mx-5 text-break">{{ $home->title }}</h2>
+                            <p class="mx-5">{{ $home->description }}</p>
+                        @else
+                            <h2 class="mx-5 text-break"> Menghadirkan produk dengan kualitas dan inovasi terbaik</h2>
+                            <p class="mx-5"> Kami berkomitmen untuk menghadirkan produk-produk berkualitas tinggi yang dipadukan dengan inovasi terdepan, memenuhi kebutuhan dan harapan konsumen dengan sempurna.</p>
+                        @endif
                     </div>
 
                     <div class="col-lg-8 col-md-12 clients">
