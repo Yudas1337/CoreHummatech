@@ -32,19 +32,19 @@ class FaqController extends Controller
         return ResponseHelper::success(FaqResource::collection($faqs, $services, $products));
     }
 
-    public function store(StoreFaqRequest $request)
+    public function store(StoreFaqRequest $request): JsonResponse
     {
         $this->faq->store($request->validated());
         return ResponseHelper::success(null, "FAQ berhasil ditambahkan");
     }
 
-    public function update(UpdateFaqRequest $request, Faq $faq)
+    public function update(UpdateFaqRequest $request, Faq $faq): JsonResponse
     {
         $this->faq->update($faq->id, $request->validated());
         return ResponseHelper::success(null, "FAQ berhasil diperbarui");
     }
 
-    public function destroy(Faq $faq)
+    public function destroy(Faq $faq): JsonResponse
     {
         $this->faq->delete($faq->id);
         return ResponseHelper::success(null, "FAQ berhasil dihapus");
