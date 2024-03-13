@@ -211,6 +211,7 @@ Route::get('/', [HomePageController::class, 'index']);
 
 // Tentang Kami
 Route::get('about-us', [AboutUsController::class, 'index']);
+Route::get('detail/profile', [AboutUsController::class, 'showPdf']);
 
 // Berita
 Route::get('berita', [NewsController::class, 'news']);

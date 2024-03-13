@@ -134,8 +134,8 @@
 
                         @if ($profile->proposal)
                             <a class="btn btn-gradient effect btn-md"
-                                href="{{ asset('storage/' . $profile->proposal) }}"
-                                download="{{ asset('storage/' . $profile->proposal) }}">Unduh Portofolio</a>
+                                href="detail/profile"
+                               >Lihat Profil Lengkap</a>
                         @endif
                     </div>
                     <div class="col-lg-6 d-none d-md-none d-lg-inline">
