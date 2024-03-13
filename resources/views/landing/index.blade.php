@@ -360,7 +360,7 @@
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="thumb-services-carousel owl-carousel owl-theme">
-                                    @forelse ($mitras->take(5) as $mitra)
+                                    @forelse ($mitras as $mitra)
                                         <div class="item" style="display: flex; align-items: center; justify-content: center; ">
                                             <img src="{{ asset('storage/'. $mitra->image) }}" alt="{{ $mitra->name }}" class="img-fluid" style="max-width: 80%; max-height: auto; display: inline-block;">
                                         </div>
