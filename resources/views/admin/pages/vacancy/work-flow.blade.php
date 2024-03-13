@@ -8,12 +8,21 @@
                 <div class="col-sm-7 p-0">
                     <h3>Alur Kerja</h3>
                 </div>
+
                 <div class="col-sm-5">
                     <div class="d-flex align-items-center">
-                        <label for="search">Cari:</label>
-                        <input type="text" id="search" class="form-control mx-3">
-                        <button class="btn btn-primary" type="button" data-bs-toggle="modal"
-                            data-bs-target="#create-modal">Tambah</button>
+                        <form action="">
+                            <div class="col-12 col-lg-12 d-flex justify-content-end">
+                                <div class="d-flex justify-content-lg-end justify-content-start">
+                                    <div class="d-flex align-items-center gap-2 mx-2">
+                                        <label for="search">Cari:</label>
+                                        <input type="text" name="name" value="{{ request()->name }}" id="search" class="form-control mx-3">
+                                        <button class="btn btn-primary" type="button" data-bs-toggle="modal"
+                                            data-bs-target="#create-modal">Tambah</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
 
                         <div class="modal fade" id="add" tabindex="-1" aria-labelledby="exampleModalLabel"
                             aria-hidden="true">

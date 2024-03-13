@@ -7,6 +7,7 @@ use App\Models\SosialMedia;
 use App\Http\Requests\StoreSosialMediaRequest;
 use App\Http\Requests\UpdateSosialMediaRequest;
 use App\Services\SosialMediaService;
+use Illuminate\Http\Request;
 
 class SosialMediaController extends Controller
 {
@@ -21,9 +22,11 @@ class SosialMediaController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
         $socialMedia = $this->sosialMedia->get();
+        $socialMedia = $this->sosialMedia->search($request);
+
         return view('admin.pages.social-media.index', compact('socialMedia'));
 
     }

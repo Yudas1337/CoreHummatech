@@ -6,6 +6,7 @@ use App\Contracts\Interfaces\WorkFlowInterface;
 use App\Models\Workflow;
 use App\Http\Requests\StoreWorkflowRequest;
 use App\Http\Requests\UpdateWorkflowRequest;
+use Illuminate\Http\Request;
 
 class WorkflowController extends Controller
 {
@@ -19,9 +20,10 @@ class WorkflowController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
         $workflows = $this->workflow->get();
+        $workflows = $this->workflow->search($request);
         return view('admin.pages.vacancy.work-flow' , compact('workflows'));
     }
 

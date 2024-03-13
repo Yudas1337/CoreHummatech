@@ -3,6 +3,7 @@ namespace App\Contracts\Repositories;
 
 use App\Contracts\Interfaces\SosialMediaInterface;
 use App\Models\SosialMedia;
+use Illuminate\Http\Request;
 
 class SosialMediaRepository extends BaseRepository implements SosialMediaInterface
 {
@@ -26,5 +27,12 @@ class SosialMediaRepository extends BaseRepository implements SosialMediaInterfa
     public function delete(mixed $id): mixed
     {
         return $this->model->query()->findOrFail($id)->delete($id);
+    }
+    public function search(Request $request): mixed
+    {
+        return $this->model->query()
+        ->when($request->platform, function ($query) use ($request) {
+            $query->where('platform', 'LIKE', '%' . $request->platform . '%');
+        })->get();
     }
 }
