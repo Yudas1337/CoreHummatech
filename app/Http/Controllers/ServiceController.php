@@ -7,6 +7,7 @@ use App\Contracts\Interfaces\CollabMitraInterface;
 use App\Contracts\Interfaces\FaqInterface;
 use App\Contracts\Interfaces\GaleryImageInterface;
 use App\Contracts\Interfaces\GalleryInterface;
+use App\Contracts\Interfaces\MisionItemsInterface;
 use App\Contracts\Interfaces\ProcedureInterface;
 use App\Contracts\Interfaces\ProductInterface;
 use App\Contracts\Interfaces\ProfileInterface;
@@ -34,7 +35,7 @@ class ServiceController extends Controller
     private Termscondition $termscondition;
     private TestimonialInterface $testimonial;
     private TestimonialRepository $testimoni;
-    private ProductRepository $product;
+    private ProductInterface $product;
     private FaqInterface $faq;
     private ProcedureInterface $procedure;
     private SaleInterface $sale;
@@ -44,9 +45,10 @@ class ServiceController extends Controller
     private GalleryInterface $galery;
     private BackgroundInterface $background;
     private ServiceMitraInterface $serviceMitra;
+    private  MisionItemsInterface $misionItems;
 
 
-    public function __construct(GaleryImageInterface $galleryImage, GalleryInterface $galery, ServiceInterface $service, ServiceService $serviceService, Termscondition $termscondition, TestimonialInterface $testimonial, FaqInterface $faq, ProductRepository $product, ProcedureInterface $procedure, SaleInterface $sale, ProfileInterface $profile, CollabMitraInterface $mitras, BackgroundInterface $background, ServiceMitraInterface $serviceMitra)
+    public function __construct(GaleryImageInterface $galleryImage, GalleryInterface $galery, ServiceInterface $service, ServiceService $serviceService, Termscondition $termscondition, TestimonialInterface $testimonial, FaqInterface $faq, ProductInterface $product, ProcedureInterface $procedure, SaleInterface $sale, ProfileInterface $profile, CollabMitraInterface $mitras, BackgroundInterface $background, ServiceMitraInterface $serviceMitra, MisionItemsInterface $misionItems)
     {
         $this->mitras = $mitras;
         $this->galleryImage = $galleryImage;
@@ -62,6 +64,7 @@ class ServiceController extends Controller
         $this->profile = $profile;
         $this->background = $background;
         $this->serviceMitra = $serviceMitra;
+        $this->misionItems = $misionItems;
     }
     /**
      * Display a listing of the resource.
@@ -97,15 +100,16 @@ class ServiceController extends Controller
     public function show(Service $service)
     {
         $services = $this->service->show($service->id);
-        $products = Product::where('service_id', $service->id)->get();
+        $products = $this->product->getByServiceId($service->id);
         $termsconditions = $this->termscondition->where('service_id', $service->id)->get();
         $testimonials = $this->testimonial->get()->where('service_id', $service->id);
-        $mision = MisionItems::where('service_id', $service->id)->get();
+        $mision = $this->misionItems->where($service->id)->get();
         $faqs = $this->faq->get()->where('service_id', $service->id);
-        $serviceMitras = $this->serviceMitra->getByServiceId($service->id);
+        $servicemitras = $this->serviceMitra->getByServiceId($service->id);
         $galleries = $this->galery->ServiceProductShow('service_id', $service->id)->get();
 
-        return view('admin.pages.service.detail', compact('services', 'products', 'termsconditions', 'testimonials', 'mision', 'faqs', 'serviceMitras', 'galleries'));
+
+        return view('admin.pages.service.detail', compact('services', 'products', 'termsconditions', 'testimonials', 'mision', 'faqs', 'servicemitras', 'galleries'));
     }
 
     /**

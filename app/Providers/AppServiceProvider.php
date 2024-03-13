@@ -4,29 +4,32 @@ namespace App\Providers;
 
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Validator;
 use App\Contracts\Interfaces\FaqInterface;
+use App\Contracts\Interfaces\HomeInterface;
 use App\Contracts\Interfaces\LogoInterface;
 use App\Contracts\Interfaces\NewsInterface;
 use App\Contracts\Interfaces\SaleInterface;
 use App\Contracts\Interfaces\TeamInterface;
 use App\Contracts\Interfaces\ForceInterface;
+
 use App\Contracts\Interfaces\BranchInterface;
 use App\Contracts\Repositories\FaqRepository;
-
 use App\Contracts\Interfaces\GalleryInterface;
 use App\Contracts\Interfaces\ProductInterface;
 use App\Contracts\Interfaces\ProfileInterface;
 use App\Contracts\Interfaces\SectionInterface;
 use App\Contracts\Interfaces\ServiceInterface;
 use App\Contracts\Interfaces\VacancyInterface;
+use App\Contracts\Repositories\HomeRepository;
 use App\Contracts\Repositories\LogoRepository;
 use App\Contracts\Repositories\NewsRepository;
 use App\Contracts\Repositories\SaleRepository;
 use App\Contracts\Repositories\TeamRepository;
+
 use App\Contracts\Interfaces\PositionInterface;
 use App\Contracts\Interfaces\WorkFlowInterface;
 use App\Contracts\Repositories\ForceRepository;
-
 use App\Contracts\Interfaces\NewsImageInterface;
 use App\Contracts\Interfaces\ProcedureInterface;
 use App\Contracts\Interfaces\StructureInterface;
@@ -40,6 +43,7 @@ use App\Contracts\Repositories\ServiceRepository;
 use App\Contracts\Repositories\VacancyRepository;
 use App\Contracts\Interfaces\CollabMitraInterface;
 use App\Contracts\Interfaces\GaleryImageInterface;
+use App\Contracts\Interfaces\MisionItemsInterface;
 use App\Contracts\Interfaces\SosialMediaInterface;
 use App\Contracts\Interfaces\TestimonialInterface;
 use App\Contracts\Repositories\PositionRepository;
@@ -57,6 +61,7 @@ use App\Contracts\Interfaces\ProductFeatureInterface;
 use App\Contracts\Interfaces\TermsconditionInterface;
 use App\Contracts\Repositories\CollabMitraRepository;
 use App\Contracts\Repositories\GaleryImageRepository;
+use App\Contracts\Repositories\MisionItemsRepository;
 use App\Contracts\Repositories\SosialMediaRepository;
 use App\Contracts\Repositories\TestimonialRepository;
 use App\Contracts\Interfaces\CategoryProductInterface;
@@ -72,11 +77,8 @@ use App\Contracts\Repositories\TermsconditionRepository;
 use App\Contracts\Repositories\CategoryProductRepository;
 use App\Contracts\Repositories\VisionAndMisionRepository;
 use App\Contracts\Interfaces\EnterpriseStructureInterface;
-use App\Contracts\Interfaces\HomeInterface;
 use App\Contracts\Repositories\VisitorDetectionRepository;
 use App\Contracts\Repositories\EnterpriseStructureRepository;
-use App\Contracts\Repositories\HomeRepository;
-use Illuminate\Support\Facades\Validator;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -116,6 +118,7 @@ class AppServiceProvider extends ServiceProvider
         BackgroundInterface::class => BackgroundRepository::class,
         ServiceMitraInterface::class => ServiceMitraRepository::class,
         HomeInterface::class => HomeRepository::class,
+        MisionItemsInterface::class => MisionItemsRepository::class,
     ];
 
     /**
