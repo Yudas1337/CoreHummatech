@@ -54,7 +54,8 @@
                                 </div>
                                 <div class="my-1">
                                     <label for="deskripsi">Deskripsi <span style="font-size: 11px" class="text-danger">*Wajib diisi</span></label>
-                                    <textarea name="description" id="deskripsi" class="form-control" rows="5" placeholder="Mis: Hummatech adalah perusahaan IT solution terbaik se Jawa Timur">{{ $profil->description }}</textarea>
+                                    <div id="editor" style="height: 200px">{!! $profil->description !!}</div>
+                                    <textarea name="description" class="d-none"  id=" deskripsi" cols="30" rows="10">{!! old('description') !!}</textarea>
                                 </div>
                                 <div class="my-1">
                                     <label for="address">Alamat <span style="font-size: 11px" class="text-danger">*Wajib diisi</span></label>
@@ -113,7 +114,8 @@
                                 </div>
                                 <div class="my-1">
                                     <label for="deskripsi">Deskripsi <span style="font-size: 11px" class="text-danger">*Wajib diisi</span></label>
-                                    <textarea name="description" id="deskripsi" class="form-control" rows="5" placeholder="Mis: Hummatech adalah perusahaan IT solution terbaik se Jawa Timur"></textarea>
+                                    <div id="editor" style="height: 200px">{!! old('description') !!}</div>
+                                    <textarea name="description" class="d-none" id="description" cols="30" rows="10">{!! old('description') !!}</textarea>
                                 </div>
                                 <div class="my-1">
                                     <label for="address">Alamat <span style="font-size: 11px" class="text-danger">*Wajib diisi</span></label>
@@ -129,6 +131,35 @@
             @endforelse
         </div>
 
+    </div>
+
+    <div class="modal fade" id="uploadImageModal" tabindex="-1" aria-labelledby="uploadImageModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="uploadImageModalLabel">Unggah Gambar Baru</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="image-uploader-form" method="POST">
+                        @csrf
+                        <div class="mb-3">
+                            <label for="image" class="form-label">Unggah Gambar</label>
+                            <input class="form-control" type="file" name="image" id="image" />
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="alt" class="form-label">Deskripsi Gambar</label>
+                            <input class="form-control" type="text" name="alt" id="alt" />
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                    <button type="button" id="save-button-uploader" class="btn btn-primary">Unggah Gambar</button>
+                </div>
+            </div>
+        </div>
     </div>
 @endsection
 
@@ -159,6 +190,101 @@
             imageContainer.style.display = 'none';
         }
     }
+</script>
+
+<script src="../assets/js/slick/slick.min.js"></script>
+<script src="../assets/js/slick/slick.js"></script>
+<script src="../assets/js/header-slick.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify"></script>
+<script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.polyfills.min.js"></script>
+
+<script>
+    $(document).ready(function() {
+        $('.js-example-basic-single').select2();
+    });
+</script>
+
+<script>
+    var targetTags = new Tagify(document.getElementById('tags'));
+</script>
+
+<script>
+    var customToolbar = [
+        ['bold', 'italic', 'underline', 'strike', 'blockquote', 'image'],
+
+        ['link'],
+
+        [{
+            'color': []
+        }, {
+            'background': []
+        }],
+        [{
+            'font': []
+        }],
+        [{
+            'align': [],
+        }],
+
+        ['clean'],
+    ];
+
+    const quill = new Quill('#editor', {
+        theme: 'snow',
+        placeholder: "Silahkan masukkan deskripsi perusahaan.",
+        modules: {
+            toolbar: {
+                container: customToolbar,
+                handlers: {
+                    image: () => {
+                        $('#uploadImageModal').modal('show');
+
+                        let $image = $('#image-uploader-form #image'),
+                            formData = new FormData();
+
+                        $image.change((e) => {
+                            let filename = e.target.files[0].name;
+                            $('#image-uploader-form #alt').val(filename);
+                        });
+
+                        $('#save-button-uploader').click((e) => {
+                            e.preventDefault();
+
+                            formData.append('image', $image[0].files[0]);
+                            formData.append('_token', '{{ csrf_token() }}');
+
+                            $.ajax({
+                                url: '{{ route('image-uploader') }}',
+                                type: 'POST',
+                                data: formData,
+                                processData: false,
+                                contentType: false,
+                                success: ({
+                                    data
+                                }) => {
+                                    let index = quill.getSelection() ? quill
+                                        .getSelection().index : 0;
+
+                                    quill.insertEmbed(index, 'image', `{{ url('/storage') }}/${data.image}`);
+
+                                    $('#image-uploader-form').trigger('reset');
+                                    $('#uploadImageModal').modal('hide');
+                                }
+                            });
+                        });
+                    }
+                }
+            }
+        },
+    });
+
+    quill.on('text-change', (eventName, ...args) => {
+        $('#description').val(quill.root.innerHTML);
+    });
+
+    quill.on('text-change', (eventName, ...args) => {
+        $('#deskripsi').val(quill.root.innerHTML);
+    });
 </script>
 @endsection
 
