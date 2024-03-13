@@ -255,7 +255,7 @@
                     <!-- Single Item -->
                     <div class="col-lg-4 col-md-6 single-item wow fadeInRight" data-wow-delay="700ms">
                         <div class="item" style="background-image: url({{ asset('storage/' . $service->image) }}); min-height: 20rem; max-height: 20rem;">
-                            <div class="info">
+                            <div class="d-flex flex-column align-items-center">
                                 <h4>{{$service->name}}</h4>
                                 <p style="min-height: 80px; max-height: 80px">
                                     {{ Str::limit($service['description'], 100) }}
