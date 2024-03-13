@@ -3,6 +3,7 @@ namespace App\Contracts\Repositories;
 
 use App\Contracts\Interfaces\ProductInterface;
 use App\Models\Product;
+use Illuminate\Http\Request;
 
 class ProductRepository extends BaseRepository implements ProductInterface
 {
@@ -48,6 +49,14 @@ class ProductRepository extends BaseRepository implements ProductInterface
     public function where(mixed $slug)
     {
         return $this->model->query()->where('category_product_id', $slug)->where('type', 'company')->get();
+    }
+    public function search(Request $request): mixed
+    {
+        return $this->model->query()
+            ->when($request->name, function ($query) use ($request) {
+                $query->where('name', 'LIKE', '%' . $request->name . '%');
+            })
+            ->get();
     }
 }
 

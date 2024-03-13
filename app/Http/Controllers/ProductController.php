@@ -15,6 +15,7 @@ use App\Contracts\Interfaces\ServiceInterface;
 use App\Contracts\Interfaces\TestimonialInterface;
 use App\Http\Requests\StoreProductCompanyRequest;
 use App\Http\Requests\UpdateProductCompanyRequest;
+use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
@@ -39,9 +40,9 @@ class ProductController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $products = $this->product->get();
+        $products = $this->product->search($request);
         $services = $this->service->get();
         return view('admin.pages.products.index', compact('products', 'services'));
     }
@@ -159,7 +160,7 @@ class ProductController extends Controller
         $testimonial = $this->testimonial->get();
         $id  = $product->id;
         $faqs = $this->faq->ServiceProductShow('product_id', $id);
-        
+
         return view('landing.product.product-detail', compact('product', 'testimonial', 'faqs'));
     }
 }
