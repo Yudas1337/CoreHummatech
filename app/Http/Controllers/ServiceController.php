@@ -105,11 +105,11 @@ class ServiceController extends Controller
         $testimonials = $this->testimonial->get()->where('service_id', $service->id);
         $mision = $this->misionItems->where($service->id)->get();
         $faqs = $this->faq->get()->where('service_id', $service->id);
-        $servicemitras = $this->serviceMitra->getByServiceId($service->id);
+        $serviceMitras = $this->serviceMitra->getByServiceId($service->id);
         $galleries = $this->galery->ServiceProductShow('service_id', $service->id)->get();
 
 
-        return view('admin.pages.service.detail', compact('services', 'products', 'termsconditions', 'testimonials', 'mision', 'faqs', 'servicemitras', 'galleries'));
+        return view('admin.pages.service.detail', compact('services', 'products', 'termsconditions', 'testimonials', 'mision', 'faqs', 'serviceMitras', 'galleries'));
     }
 
     /**
