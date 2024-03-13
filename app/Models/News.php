@@ -19,6 +19,7 @@ class News extends Model implements HasNewsImages, HasNewsCategories
         'date',
         'description',
         'image',
+        'thumbnail',
     ];
 
     protected $table = 'news';

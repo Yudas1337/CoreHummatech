@@ -68,15 +68,24 @@ class ImageCompressing
 
         $filename = "{$options['targetPath']}/{$options['name']}.webp";
         $filePath = public_path("storage/{$filename}");
-        $response = imagewebp($imageLayer, $filePath, $options['quality'] ?? 50);
+        imagewebp($imageLayer, $filePath, $options['quality'] ?? 50);
 
         if (!isset($options['duplicate']) || !$options['duplicate']) {
             unlink($options['original_uploaded_file']);
+            $files = $filename;
+        } else {
+            $filenameOriginal = "{$options['targetPath']}/{$options['name']}.jpg";
+            $filePathOriginal = public_path("storage/{$filenameOriginal}");
+            imagejpeg($imageLayer, $filePathOriginal, $options['quality'] ?? 50);
+
+            $files = [
+                $filename,
+                $filenameOriginal,
+            ];
         }
 
         return [
-            'filename' => $filename,
-            'response' => $response,
+            'files' => $files,
         ];
     }
 

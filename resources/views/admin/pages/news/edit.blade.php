@@ -108,18 +108,40 @@
 @endsection
 
 @section('script')
+
+    <!-- Modal -->
+    <div class="modal fade" id="uploadImageModal" tabindex="-1" aria-labelledby="uploadImageModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="uploadImageModalLabel">Unggah Gambar Baru</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="image-uploader-form" method="POST">
+                        @csrf
+                        <div class="mb-3">
+                            <label for="image" class="form-label">Unggah Gambar</label>
+                            <input class="form-control" type="file" name="image" id="image" />
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="alt" class="form-label">Deskripsi Gambar</label>
+                            <input class="form-control" type="text" name="alt" id="alt" />
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                    <button type="button" id="save-button-uploader" class="btn btn-primary">Unggah Gambar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    {{-- <script src="https://unpkg.com/filepond-plugin-file-validate-size/dist/filepond-plugin-file-validate-size.js"></script>
-    <script src="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.js"></script>
-    <script src="https://unpkg.com/filepond-plugin-image-edit/dist/filepond-plugin-image-edit.js"></script>
-    <script src="https://unpkg.com/filepond/dist/filepond.js"></script> --}}
     <script src="{{ asset('assets/js/select2/select2.full.min.js') }}"></script>
     <script src="{{ asset('assets/js/select2/select2-custom.js') }}"></script>
-    {{-- <script src="{{ asset('assets/js/editor/ckeditor/ckeditor.js') }}"></script>
-    <script src="{{ asset('assets/js/editor/ckeditor/adapters/jquery.js') }}"></script>
-    <script src="{{ asset('assets/js/slick/slick.min.js') }}"></script>
-    <script src="{{ asset('assets/js/slick/slick.js') }}"></script>
-    <script src="{{ asset('assets/js/header-slick.js') }}"></script> --}}
     <script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify"></script>
     <script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.polyfills.min.js"></script>
 
