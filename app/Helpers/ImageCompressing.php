@@ -29,9 +29,8 @@ class ImageCompressing
         $fileName = $options['name'] ?? Str::random(64);
         $originalFileExt = $request->getClientOriginalExtension();
 
-        $uploadImage = $request->storeAs("public/{$targetPath}", "{$fileName}.{$originalFileExt}");
-        $uploadedImagePath = str_replace("public/", "", $uploadImage);
-        $compressTargetImage = public_path("storage/{$uploadedImagePath}");
+        $uploadImage = $request->storeAs("{$targetPath}", "{$fileName}.{$originalFileExt}", 'public');
+        $compressTargetImage = "storage/{$uploadImage}";
 
         $options['targetPath'] = $targetPath;
         $options['name'] = $fileName;
