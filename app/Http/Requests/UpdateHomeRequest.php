@@ -11,7 +11,7 @@ class UpdateHomeRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,7 +23,7 @@ class UpdateHomeRequest extends FormRequest
     {
         return [
             'title' => 'required|max:225',
-            'description' => 'required',
+            'description' => 'required'
         ];
     }
 }

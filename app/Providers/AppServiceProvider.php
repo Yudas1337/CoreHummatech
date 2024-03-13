@@ -46,7 +46,6 @@ use App\Contracts\Repositories\PositionRepository;
 use App\Contracts\Repositories\WorkFlowRepository;
 use App\Contracts\Interfaces\CategoryNewsInterface;
 use App\Contracts\Interfaces\NewsCategoryInterface;
-use App\Contracts\Interfaces\OrganizationInterface;
 use App\Contracts\Interfaces\SalesPackageInterface;
 use App\Contracts\Interfaces\ServiceMitraInterface;
 use App\Contracts\Repositories\NewsImageRepository;
@@ -64,7 +63,6 @@ use App\Contracts\Interfaces\CategoryProductInterface;
 use App\Contracts\Interfaces\VisionAndMisionInterface;
 use App\Contracts\Repositories\CategoryNewsRepository;
 use App\Contracts\Repositories\NewsCategoryRepository;
-use App\Contracts\Repositories\OrganizationRepository;
 use App\Contracts\Repositories\SalesPackageRepository;
 use App\Contracts\Repositories\ServiceMitraRepository;
 use App\Contracts\Interfaces\VisitorDetectionInterface;
@@ -74,8 +72,10 @@ use App\Contracts\Repositories\TermsconditionRepository;
 use App\Contracts\Repositories\CategoryProductRepository;
 use App\Contracts\Repositories\VisionAndMisionRepository;
 use App\Contracts\Interfaces\EnterpriseStructureInterface;
+use App\Contracts\Interfaces\HomeInterface;
 use App\Contracts\Repositories\VisitorDetectionRepository;
 use App\Contracts\Repositories\EnterpriseStructureRepository;
+use App\Contracts\Repositories\HomeRepository;
 use Illuminate\Support\Facades\Validator;
 
 class AppServiceProvider extends ServiceProvider
@@ -114,7 +114,8 @@ class AppServiceProvider extends ServiceProvider
         LogoInterface::class => LogoRepository::class,
         CategoryProductInterface::class => CategoryProductRepository::class,
         BackgroundInterface::class => BackgroundRepository::class,
-        ServiceMitraInterface::class => ServiceMitraRepository::class
+        ServiceMitraInterface::class => ServiceMitraRepository::class,
+        HomeInterface::class => HomeRepository::class,
     ];
 
     /**
