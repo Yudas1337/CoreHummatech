@@ -30,7 +30,6 @@ class TestimonialController extends Controller
         $this->testimonial = $testimonial;
         $this->serviceData = $serviceData;
         $this->productData = $productData;
-        $this->middleware('auth');
     }
 
     public function index(Request $request): JsonResponse

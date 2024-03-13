@@ -25,6 +25,7 @@ use App\Models\MisionItems;
 use App\Models\Product;
 use App\Models\Termscondition;
 use App\Services\ServiceService;
+use Illuminate\Http\Request;
 
 class ServiceController extends Controller
 {
@@ -65,10 +66,11 @@ class ServiceController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $services = $this->service->get();
-        return view('admin.pages.service.index', compact('services'));
+        $search = $request->name;
+        $services = $this->service->search($request)->get();
+        return view('admin.pages.service.index', compact('services' , 'search'));
     }
 
     /**
@@ -102,15 +104,6 @@ class ServiceController extends Controller
         $faqs = $this->faq->get()->where('service_id', $service->id);
         $serviceMitras = $this->serviceMitra->getByServiceId($service->id);
         $galleries = $this->galery->ServiceProductShow('service_id', $service->id)->get();
-
-
-        // $galerys = $this->galery->ServiceProductShow('service_id', $service->id)->get();
-        // $galeries = [];
-        // foreach ($galerys as $galery) {
-        //     $galeries[] = $this->galleryImage->ServiceProductShow('galleries_id', $galery->id)->get();
-        // }
-
-        // dd($galeries);
 
         return view('admin.pages.service.detail', compact('services', 'products', 'termsconditions', 'testimonials', 'mision', 'faqs', 'serviceMitras', 'galleries'));
     }
@@ -159,4 +152,6 @@ class ServiceController extends Controller
         $this->service->delete($service->id);
         return back()->with('success', 'Penjualan Berhasil Di Hapus');
     }
+
+
 }

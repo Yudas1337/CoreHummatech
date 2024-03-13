@@ -7,7 +7,9 @@
             <div class="d-flex align-items-center gap-2">
                 <div class="input-group mb-3">
                     <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-magnifying-glass"></i></span>
-                    <input type="text" class="form-control" placeholder="Cari Layanan" aria-label="Username" aria-describedby="basic-addon1">
+                    <form action="{{ route('service.index') }}" method="GET">
+                        <input type="text" class="form-control" name="name" placeholder="Cari Layanan" aria-label="Username" value="{{ $search }}" aria-describedby="basic-addon1">
+                    </form>
                 </div>
             </div>
         </div>
