@@ -6,6 +6,7 @@ use App\Contracts\Interfaces\PositionInterface;
 use App\Models\Position;
 use App\Http\Requests\StorePositionRequest;
 use App\Http\Requests\UpdatePositionRequest;
+use Illuminate\Http\Request;
 
 class PositionController extends Controller
 {
@@ -19,9 +20,10 @@ class PositionController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
         $positions = $this->position->get();
+        $positions = $this->position->search($request);
         return view('admin.pages.departement.index' , compact('positions'));
     }
 

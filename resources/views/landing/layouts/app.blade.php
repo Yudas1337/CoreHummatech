@@ -123,7 +123,7 @@
                                 style="height: 48px;width: auto;" alt="Logo">
 
                             @isset($profiles)
-                                <p>{{ Str::limit($profiles->description, 200) }}</p>
+                                <p>{{ Str::limit($profiles->description, 300) }}</p>
                                 <a href="{{ url('/about-us') }}">Lihat Selengkapnya</a>
                             @else
                                 <p>
