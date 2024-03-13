@@ -10,7 +10,7 @@ use App\Http\Requests\UpdateSaleRequest;
 use App\Http\Requests\UpdateSectionRequest;
 use App\Models\Sale;
 use App\Models\Section;
-use Intervention\Image\Laravel\Facades\Image;
+use Illuminate\Support\Str;
 
 class SectionService
 {
@@ -42,11 +42,12 @@ class SectionService
     {
         $data = $request->validated();
 
-        if ($request->hasFile('image') && $request->file('image')->isValid()) {
-            $data['image'] = $this->compressImage($request->image, TypeEnum::SALE->value);
-            return $data;
-        }
-        return false;
+        $data['image'] = $this->compressImage($request->image, TypeEnum::SECTION->value, [
+            'duplicate' => false,
+            'name' => Str::slug($data['title']),
+            'quality' => 50,
+        ]);
+        return $data;
     }
 
     /**
@@ -63,7 +64,11 @@ class SectionService
 
         if ($request->hasFile('image') && $request->file('image')->isValid()) {
             $this->remove($section->image);
-            $data['image'] = $request->file('image')->store(TypeEnum::SECTION->value, 'public');
+            $data['image'] = $this->compressImage($request->image, TypeEnum::SECTION->value, [
+                'duplicate' => false,
+                'name' => Str::slug($data['title']),
+                'quality' => 50,
+            ]);
         } else {
             $data['image'] = $section->image;
         }

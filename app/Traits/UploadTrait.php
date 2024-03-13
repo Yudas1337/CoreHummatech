@@ -2,6 +2,7 @@
 
 namespace App\Traits;
 
+use App\Helpers\ImageCompressing;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\ImageManager;
@@ -64,7 +65,7 @@ trait UploadTrait
 
     /**
      * Handle get original extension
-     * 
+     *
      * @param UploadedFile $file
      * @return string
      */
@@ -91,21 +92,15 @@ trait UploadTrait
     /**
      * Image uploader with resize image
      *
+     * $imagePath The image path
+     * @param string $storePath the store path
+     * @param array{name:string, duplicate:bool, quality:int} $options The compress option
      * @see https://image.intervention.io/v3/introduction/index
      * @see https://image.intervention.io/v3/modifying/resizing
      */
-    public function compressImage($imagePath, $storePath): string
+    public function compressImage($imagePath, $storePath, array $options = []): string
     {
-        $imageName = Str::random(128);
-        $imageExtension = "jpg";
-        $fullStorePath = "{$storePath}/{$imageName}.{$imageExtension}";
-        $imagePathResized = public_path("storage/{$fullStorePath}");
-
-        $manager = new ImageManager(new Driver());
-        $manager->read($imagePath)
-            ->coverDown(800, 400)
-            ->save($imagePathResized);
-
-        return $fullStorePath;
+        $storedImage = ImageCompressing::process($imagePath, $storePath, $options)->toArray();
+        return $storedImage['filename'];
     }
 }
