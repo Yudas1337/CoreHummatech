@@ -102,9 +102,9 @@ trait UploadTrait
      * @see https://image.intervention.io/v3/introduction/index
      * @see https://image.intervention.io/v3/modifying/resizing
      */
-    public function compressImage($imagePath, $storePath, array $options = []): string
+    public function compressImage($imagePath, $storePath, array $options = []): mixed
     {
         $storedImage = ImageCompressing::process($imagePath, $storePath, $options)->toArray();
-        return $storedImage['filename'];
+        return $storedImage['files'];
     }
 }

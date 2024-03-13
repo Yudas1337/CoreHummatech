@@ -42,9 +42,16 @@ class NewsService
     public function store(StoreNewsRequest $request): array|bool
     {
         $data = $request->validated();
+
         $data['slug'] = Str::slug($request->title);
-        $imageName = Str::slug($request->title) . '.' . $request->file('image')->getClientOriginalExtension();
-        $data['image'] = $request->file('image')->storeAs(TypeEnum::NEWS->value, $imageName, 'public');
+        $files = $this->compressImage($request->image, TypeEnum::NEWS->value, [
+            'duplicate' => true,
+            'name' => $data['slug'],
+            'quality' => 50,
+        ]);
+
+        $data['thumbnail'] = $files[0];
+        $data['image'] = $files[1];
 
         return $data;
     }
@@ -60,11 +67,22 @@ class NewsService
     public function update(News $service, UpdateNewsRequest $request): array|bool
     {
         $data = $request->validated();
+        $data['slug'] = Str::slug($request->title);
 
-        if ($request->hasFile('image') && $request->file('image')->isValid()) {
+        if ($request->hasFile('image')) {
             $this->remove($service->image);
-            $data['image'] = $request->file('image')->store(TypeEnum::NEWS->value, 'public');
+            $this->remove($service->thumbnail);
+
+            $files = $this->compressImage($request->image, TypeEnum::NEWS->value, [
+                'duplicate' => true,
+                'name' => $data['slug'],
+                'quality' => 50,
+            ]);
+
+            $data['thumbnail'] = $files[0];
+            $data['image'] = $files[1];
         } else {
+            $data['thumbnail'] = $service->thumbnail;
             $data['image'] = $service->image;
         }
 

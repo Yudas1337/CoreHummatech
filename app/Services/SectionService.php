@@ -64,7 +64,7 @@ class SectionService
     {
         $data = $request->validated();
 
-        if ($request->hasFile('image') && $request->file('image')->isValid()) {
+        if ($request->hasFile('image')) {
             $this->remove($section->image);
             $data['image'] = $this->compressImage($request->image, TypeEnum::SECTION->value, [
                 'duplicate' => false,
