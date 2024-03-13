@@ -61,7 +61,7 @@
                         </div>
                         <div class="mb-3 mt-0 col-md-12">
                             <label for="bm-title">Nama Lengkap</label>
-                            <input class="form-control" type="text" id="name-edit" name="name" required="" autocomplete="name"
+                            <input class="form-control" type="text" id="name" name="name" required="" autocomplete="name"
                                 placeholder="Mis: Agus Prasetya">
                         </div>
                         <div class="mb-3 mt-0 col-md-12">
@@ -133,7 +133,7 @@
                     <h5 class="modal-title fw-semibold" id="exampleModalLabel">Ubah Data</h5>
                     <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form class="form-bookmark needs-validation" id="form-update" method="POST" id="bookmark-form"
+                <form class="form-bookmark needs-validation" id="form-update" method="POST"
                     novalidate="" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
@@ -160,7 +160,7 @@
                                 </select>
                             </div>
                             <div class="mb-3 mt-0 col-md-12">
-                                <label for="bm-title">Foto / Logo Sosmed</label>
+                                <label for="bm-title">Foto</label>
                                 <input class="form-control" name="image" id="formFile" type="file" />
                             </div>
                         </div>
@@ -168,7 +168,7 @@
                     <div class="modal-footer">
                         <div class="d-flex justify-content-end">
                             <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">Tutup</button>
-                            <button class="btn btn-primary" type="submit">Tambah</button>
+                            <button class="btn btn-primary" type="submit">Simpan</button>
                         </div>
                     </div>
                 </form>

@@ -74,4 +74,16 @@ class TeamService
 
         return $data;
     }
+    
+    /**
+     * Handle delete data event to models.
+     *
+     * @param Sale $sale
+     *
+     * @return void
+     */
+    public function delete(Team $team)
+    {
+        $this->remove($team->image);
+    }
 }
