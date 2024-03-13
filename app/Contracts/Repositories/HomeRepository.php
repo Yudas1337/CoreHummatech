@@ -1,10 +1,10 @@
 <?php
 namespace App\Contracts\Repositories;
 
-use App\Contracts\Interfaces\HomeInteface;
+use App\Contracts\Interfaces\HomeInterface;
 use App\Models\Home;
 
-class HomeRepository extends BaseRepository implements HomeInteface
+class HomeRepository extends BaseRepository implements HomeInterface
 {
     public function __construct(Home $home)
     {

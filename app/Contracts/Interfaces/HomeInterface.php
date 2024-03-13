@@ -6,7 +6,7 @@ use App\Contracts\Interfaces\Eloquent\StoreInterface;
 use App\Contracts\Interfaces\Eloquent\DeleteInterface;
 use App\Contracts\Interfaces\Eloquent\UpdateInterface;
 
-interface HomeInteface extends GetInterface , StoreInterface, UpdateInterface ,DeleteInterface
+interface HomeInterface extends GetInterface , StoreInterface, UpdateInterface ,DeleteInterface
 {
 
 }
