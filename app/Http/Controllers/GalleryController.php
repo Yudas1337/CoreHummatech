@@ -106,8 +106,14 @@ class GalleryController extends Controller
     public function showFolder(Service $service)
     {
         $galleries = $this->model->ServiceProductShow('service_id', $service->id)->get();
+        // dd($galleries);
         $galleryImages = $this->galleryimage->whereIn('gallery_id', $galleries->pluck('id'))->get();
-        // dd($galleryImages);
+        if($galleryImages->count() === 0){
+            $this->model->ServiceProductShow('service_id', $service->id)->delete();
+            $galleries = [];
+        } else{
+
+        }
         // $galleryImages = GaleryImage::whereIn('gallery_id', $galleries->pluck('id'))->get();
         return view('admin.pages.gallery.detail', compact('galleries', 'galleryImages', 'service'));
     }
