@@ -249,7 +249,7 @@
             <div class="owl-carousel owl-item owl-theme" id="owl-carousel-mitra">
                 @forelse ($servicemitras as $mitra)
                     <div class="team-item mx-1 ">
-                        <img src="{{ asset('storage/' . $mitra->mitra->image) }}" alt="{{ $mitra->mitra->name }}" class="img-fluid">
+                        <img src="{{ $mitra == null ? '' : asset('storage/' . $mitra->mitra->image) }}" alt="{{ $mitra->mitra->name }}" class="img-fluid">
                     </div>
                 @empty
                     <div class="col-12">
