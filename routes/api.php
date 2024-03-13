@@ -14,14 +14,19 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "api" middleware group. Make something great!
 |
 */
+Route::get('testimonial', [TestimonialController::class, 'index']);
+Route::post('testimonial', [TestimonialController::class, 'store']);
+Route::post('testimonial-product', [TestimonialController::class, 'storeProduct']);
+Route::put('testimonial/{testimonial}', [TestimonialController::class, 'update']);
+Route::put('testimonial-product/{testimonial}', [TestimonialController::class, 'updateProduct']);
+Route::delete('testimonial', [TestimonialController::class, 'destroy']);
+
+Route::get('faq', [TestimonialController::class, 'index']);
+Route::post('faq', [TestimonialController::class, 'store']);
+Route::put('faq/{testimonial}', [TestimonialController::class, 'update']);
+Route::delete('faq', [TestimonialController::class, 'destroy']);
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 
-    Route::get('testimonial', [TestimonialController::class, 'index']);
-    Route::post('testimonial', [TestimonialController::class, 'store']);
-    Route::post('testimonial-product', [TestimonialController::class, 'storeProduct']);
-    Route::put('testimonial/{testimonial}', [TestimonialController::class, 'update']);
-    Route::put('testimonial-product/{testimonial}', [TestimonialController::class, 'updateProduct']);
-    Route::delete('testimonial', [TestimonialController::class, 'destroy']);
 });
