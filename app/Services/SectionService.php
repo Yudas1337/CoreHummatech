@@ -6,15 +6,11 @@ use App\Enums\TypeEnum;
 use App\Traits\UploadTrait;
 use App\Http\Requests\StoreSaleRequest;
 use App\Http\Requests\StoreSectionRequest;
-use App\Http\Requests\StoreServiceRequest;
-use App\Http\Requests\UpdateProductRequest;
 use App\Http\Requests\UpdateSaleRequest;
 use App\Http\Requests\UpdateSectionRequest;
-use App\Http\Requests\UpdateServiceRequest;
-use App\Models\Product;
 use App\Models\Sale;
 use App\Models\Section;
-use App\Models\Service;
+use Illuminate\Support\Str;
 
 class SectionService
 {
@@ -30,7 +26,9 @@ class SectionService
      */
     public function validateAndUpload(string $disk, object $file, string $old_file = null): string
     {
-        if ($old_file) $this->remove($old_file);
+        if ($old_file) {
+            $this->remove($old_file);
+        }
 
         return $this->upload($disk, $file);
     }
@@ -46,12 +44,12 @@ class SectionService
     {
         $data = $request->validated();
 
-        if ($request->hasFile('image') && $request->file('image')->isValid()) {
-            $data['image'] = $request->file('image')->store(TypeEnum::SALE->value, 'public');
-            $this->compressImage($data['image']);
-            return $data;
-        }
-        return false;
+        $data['image'] = $this->compressImage($request->image, TypeEnum::SECTION->value, [
+            'duplicate' => false,
+            'name' => Str::slug($data['title']),
+            'quality' => 50,
+        ]);
+        return $data;
     }
 
     /**
@@ -68,7 +66,11 @@ class SectionService
 
         if ($request->hasFile('image') && $request->file('image')->isValid()) {
             $this->remove($section->image);
-            $data['image'] = $request->file('image')->store(TypeEnum::SECTION->value, 'public');
+            $data['image'] = $this->compressImage($request->image, TypeEnum::SECTION->value, [
+                'duplicate' => false,
+                'name' => Str::slug($data['title']),
+                'quality' => 50,
+            ]);
         } else {
             $data['image'] = $section->image;
         }
