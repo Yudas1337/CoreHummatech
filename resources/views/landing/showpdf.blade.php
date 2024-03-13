@@ -42,32 +42,39 @@
 
 @section('content')
 <div class="container mt-5">
-    <h4 class="text-dark fs-5 mb-2" style="font-weight:600">
-        Profile
-    </h4>
+    <div class="d-flex justify-content-between">
+        <h4 class="text-dark fs-5 mb-2" style="font-weight:600">
+            Detail Profile
+        </h4>
+        <a href="/about-us" class="btn btn-secondary">Kembali</a>
+    </div>
 </div>
 <div class="container mt-5 mb-5">
-    <main role="main">
-        <div id="carousel" class="carousel" data-ride="carousel">
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    @foreach ($profiles as $profiles)
+    <div class="container">
+        <div class="container">
+            <main role="main">
+                <div id="carousel" class="carousel" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            @foreach ($profiles as $profiles)
 
-                    <canvas id="pdf-canvas" class="d-block w-100" data-file="{{ asset('storage/' . $profiles->proposal) }}"></canvas>
-                    @endforeach
-                    <div class="carousel-caption d-none d-md-block">
-                        <span>Page: <span id="page-num"></span> / <span id="page-count"></span></span>
+                            <canvas id="pdf-canvas" class="d-block w-100" data-file="{{ asset('storage/' . $profiles->proposal) }}"></canvas>
+                            @endforeach
+                            <div class="carousel-caption d-none d-md-block">
+                                <span>Page: <span id="page-num"></span> / <span id="page-count"></span></span>
+                            </div>
+                        </div>
                     </div>
+                    <a class="carousel-control-prev" href="#" role="button" data-slide="prev">
+                        <i class="fas fa-chevron-left"></i>
+                    </a>
+                    <a class="carousel-control-next" href="#" role="button" data-slide="next">
+                        <i class="fas fa-chevron-right"></i>
+                    </a>
                 </div>
-            </div>
-            <a class="carousel-control-prev" href="#" role="button" data-slide="prev">
-                <i class="fas fa-chevron-left"></i>
-            </a>
-            <a class="carousel-control-next" href="#" role="button" data-slide="next">
-                <i class="fas fa-chevron-right"></i>
-            </a>
+            </main>
         </div>
-    </main>
+    </div>
 </div>
 @endsection
 
