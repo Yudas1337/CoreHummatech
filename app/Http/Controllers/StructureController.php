@@ -83,6 +83,6 @@ class StructureController extends Controller
     {
         $this->service->delete($structure);
         $this->structure->delete($structure->id);
-        return redirect()->back();
+        return redirect()->back()->with('success','Data Berhasil Dihapus');
     }
 }
