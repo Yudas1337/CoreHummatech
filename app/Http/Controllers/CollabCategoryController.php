@@ -6,6 +6,7 @@ use App\Contracts\Interfaces\CollabCategoryInterface;
 use App\Models\CollabCategory;
 use App\Http\Requests\StoreCollabCategoryRequest;
 use App\Http\Requests\UpdateCollabCategoryRequest;
+use Illuminate\Http\Request;
 
 class CollabCategoryController extends Controller
 {
@@ -17,9 +18,10 @@ class CollabCategoryController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
         $collabCategorys = $this->collabCategory->get();
+        $collabCategorys = $this->collabCategory->search($request);
         return view('admin.pages.collab-category.index', compact('collabCategorys'));
     }
 
