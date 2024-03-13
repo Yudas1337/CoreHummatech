@@ -21,8 +21,10 @@
                             <p class="m-0 me-2">Cari:</p>
                             <input class="form-control me-2" type="text" placeholder="Search" aria-label="Search">
                         </div>
+                        <a href="/contact" class="btn btn-secondary w75 col-3" target="_blank">Lihat Cabang</a> &nbsp;
                         <button class="btn btn-primary m-0" type="button" data-bs-toggle="modal"
                             data-bs-target="#tambah">Tambah</button>
+
                     </div>
                 </div>
             </div>

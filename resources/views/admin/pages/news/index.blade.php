@@ -16,6 +16,7 @@
                     <div class="d-flex align-items-center">
                         <label for="search">Cari:</label>
                         <input type="text" id="search" class="form-control mx-3">
+                        <a href="/berita" class="btn btn-secondary w75 col-3" target="_blank">Lihat Berita</a> &nbsp;
                         <a href="/news/create" class="btn btn-primary">Tambah</a>
 
                         <div class="modal fade" id="add" tabindex="-1" aria-labelledby="exampleModalLabel"

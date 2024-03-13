@@ -21,6 +21,8 @@
                         <input type="text" name="name" value="{{ request()->name }}" class="form-control" placeholder="Cari Produk" aria-label="Username"
                             aria-describedby="basic-addon1">
                     </div>
+                    <a href="/mitra" class="btn btn-secondary w75 col-4" target="_blank">Lihat Mitra</a>
+
                     <button class="btn btn-primary" type="button" data-bs-toggle="modal"
                         data-bs-target="#tambah">Tambah</button>
                 </div>

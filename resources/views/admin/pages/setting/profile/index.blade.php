@@ -4,8 +4,9 @@
     <div class="container-fluid">
         <div class="page-title">
             <div class="row">
-                <div class="col-sm-6 ps-0">
+                <div class="d-flex justify-content-between">
                     <h3>profile perusahaan</h3>
+                    <a href="/about-us" class="btn btn-secondary w75" target="_blank">Lihat Profile</a>
                 </div>
             </div>
         </div>

@@ -19,8 +19,9 @@
                     <div class="input-group">
                         <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-magnifying-glass"></i></span>
                         <input type="text" name="name" value="{{ request()->name }}" class="form-control"
-                            placeholder="Cari Produk" aria-label="Username" aria-describedby="basic-addon1">
+                        placeholder="Cari Produk" aria-label="Username" aria-describedby="basic-addon1">
                     </div>
+                    <a href="/data/product" class="btn btn-secondary w75 col-4" target="_blank">Lihat Produk</a>
                     <a href="{{ route('product.create') }}" class="btn btn-primary w-75">Tambah Produk</a>
                 </div>
             </div>
