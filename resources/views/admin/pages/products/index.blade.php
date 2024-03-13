@@ -13,16 +13,18 @@
                 @endforelse
             </select>
         </div>
-        <div class="col-12 col-lg-9 d-flex justify-content-end">
-            <div class="d-flex gap-2 col-sm-7">
-                <div class="input-group">
-                    <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-magnifying-glass"></i></span>
-                    <input type="text" class="form-control" placeholder="Cari Produk" aria-label="Username"
-                        aria-describedby="basic-addon1">
+        <form action="/product">
+            <div class="col-12 col-lg-12 d-flex justify-content-end">
+                <div class="d-flex gap-2 col-sm-12">
+                    <div class="input-group">
+                        <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-magnifying-glass"></i></span>
+                        <input type="text" name="name" value="{{ request()->name }}" class="form-control"
+                            placeholder="Cari Produk" aria-label="Username" aria-describedby="basic-addon1">
+                    </div>
+                    <a href="{{ route('product.create') }}" class="btn btn-primary w-75">Tambah Produk</a>
                 </div>
-                <a href="{{ route('product.create') }}" class="btn btn-primary w-75">Tambah Produk</a>
             </div>
-        </div>
+        </form>
     </div>
 @endsection
 
@@ -46,11 +48,12 @@
                                     Detail</a>
                             </div>
                             <div class="d-flex flex-shrink-0 gap-2">
-                                <button class="btn btn-light-warning px-3 m-0 btn-edit" type="button" onclick="window.location.href='{{ $product->type == 'company' ? route('productCompany.edit', $product->id) : route('product.edit', $product->id) }}'">
+                                <button class="btn btn-light-warning px-3 m-0 btn-edit" type="button"
+                                    onclick="window.location.href='{{ $product->type == 'company' ? route('productCompany.edit', $product->id) : route('product.edit', $product->id) }}'">
                                     <i class="fas fa-pencil"></i>
                                 </button>
-                                <button class="btn btn-light-danger px-3 m-0 btn-delete" type="button" data-id="{{ $product->id }}"><i
-                                    class="fas fa-trash"></i></button>
+                                <button class="btn btn-light-danger px-3 m-0 btn-delete" type="button"
+                                    data-id="{{ $product->id }}"><i class="fas fa-trash"></i></button>
                             </div>
                         </div>
                     </div>
@@ -68,19 +71,19 @@
     @include('admin.components.delete-modal-component')
 @endsection
 @section('script')
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-@if(session('success'))
-<script>
-    Swal.fire({
-        title: 'Success',
-        text: '{{ session('success') }}',
-        icon: 'success',
-        confirmButtonText: 'OK',
-        timer: 2000, // Menutup SweetAlert setelah 3 detik
-        timerProgressBar: true // Menampilkan progress bar
-    });
-</script>
-@endif
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    @if (session('success'))
+        <script>
+            Swal.fire({
+                title: 'Success',
+                text: '{{ session('success') }}',
+                icon: 'success',
+                confirmButtonText: 'OK',
+                timer: 2000, // Menutup SweetAlert setelah 3 detik
+                timerProgressBar: true // Menampilkan progress bar
+            });
+        </script>
+    @endif
     <script>
         $('.btn-delete').on('click', function() {
             var id = $(this).data('id');
