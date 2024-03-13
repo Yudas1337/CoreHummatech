@@ -571,7 +571,7 @@
     $('.thumb-services-carousel').owlCarousel({
         center: true,
         dots: false,
-        nav: false, // Menghilangkan navigasi bawaan
+        nav: false, 
 
         items: 5,
         loop: itemCount > 4 ? true : false,
