@@ -210,7 +210,13 @@ Route::middleware('auth')->group(function () {
 Route::get('/', [HomePageController::class, 'index']);
 
 // Tentang Kami
-Route::get('about-us', [AboutUsController::class, 'index']);
+// Route::get('about-us', [AboutUsController::class, 'index']);
+Route::get('about-us/profile', [AboutUsController::class, 'profile']);
+Route::get('about-us/vision-mision', [AboutUsController::class, 'vision_mision']);
+Route::get('about-us/structure-organisation', [AboutUsController::class, 'structure_organisation']);
+Route::get('about-us/structure-office', [AboutUsController::class, 'structure_office']);
+Route::get('about-us/logo', [AboutUsController::class,'logo']);
+Route::get('about-us/team', [AboutUsController::class,'team']);
 Route::get('detail/profile', [AboutUsController::class, 'showPdf']);
 
 // Berita
