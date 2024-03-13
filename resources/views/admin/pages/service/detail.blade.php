@@ -247,7 +247,7 @@
             <h1 class="title">Mitra</h1>
 
             <div class="owl-carousel owl-item owl-theme" id="owl-carousel-mitra">
-                @forelse ($serviceMitras as $serviceMitra)
+                {{-- @forelse ($serviceMitras as $serviceMitra)
                     <div class="item"><img src="{{ asset('storage/'. $serviceMitra->mitra->image) }}" alt="{{ $serviceMitra->mitra->name }}" style="object-fit: cover; height: 200px; width: 200px"></div>
                 @empty
                 <div class="d-flex flex-column  align-items-center">
@@ -256,7 +256,7 @@
                         Data Masih Kosong
                     </h5>
                 </div>
-                @endforelse
+                @endforelse --}}
             </div>
         </div>
 
