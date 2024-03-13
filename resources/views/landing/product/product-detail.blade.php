@@ -95,7 +95,7 @@
                         <p>
                             {{ $product->description }}
                         </p>
-                        <a class="btn btn-gradient effect btn-md" href="{{ $product->link }}">Kunjungi website</a>
+                        <a class="btn btn-gradient effect btn-md" target="_blank" href="{{ $product->link }}">Kunjungi website</a>
                     </div>
                 </div>
             </div>
