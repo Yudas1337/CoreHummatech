@@ -431,7 +431,7 @@
                                                                 <div class="thumb">
                                                                     <div id="carouselImages" class="carousel slide" data-ride="carousel">
                                                                         <div class="carousel-inner">
-                                                                            <img src="{{ asset('storage/' . $newsItem->image) }}" alt="Thumb">
+                                                                            <img src="{{ asset('storage/' . $newsItem->thumbnail) }}" alt="Thumb">
                                                                         </div>
                                                                     </div>
                                                                     <div class="date text-uppercase">
