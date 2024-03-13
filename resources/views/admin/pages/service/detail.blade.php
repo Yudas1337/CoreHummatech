@@ -108,8 +108,7 @@
             <div class="col-md-7">
                 <h1 class="title">{{ $services->name }}</h1>
                 <p class="subtitle">{{ $services->description }}</p>
-                <a href="{{ url("/layanan/{$services->slug}") }}" target="_blank" class="btn btn-lg btn-primary">Detail
-                    Layanan</a>
+                <a href="{{ url("/layanan/{$services->slug}") }}" target="_blank"  class="btn btn-lg btn-primary">Detail Layanan</a>
             </div>
         </div>
 
@@ -132,12 +131,12 @@
                         </div>
                     </div>
                 @empty
-                    <div class="d-flex justify-content-center">
-                        <img src="{{ asset('nodata.jpg') }}" alt="" width="400px">
-                    </div>
-                    <h5 class="text-center">
-                        Data Masih Kosong
-                    </h5>
+                <div class="d-flex justify-content-center">
+                    <img src="{{ asset('nodata.jpg') }}" alt="" width="400px">
+                </div>
+                <h5 class="text-center">
+                    Data Masih Kosong
+                </h5>
                 @endforelse
             </div>
         </div>
@@ -146,31 +145,32 @@
             <div class="mb-4">
                 <h1 class="title">Misi</h1>
                 @forelse ($mision as $item)
-                    <div class="card card-info card-body">
-                        <p class="mb-0">{{ $item->mission }}</p>
-                    </div>
+
+                <div class="card card-info card-body">
+                    <p class="mb-0">{{ $item->mission }}</p>
+                </div>
                 @empty
-                    <div class="d-flex justify-content-center">
-                        <img src="{{ asset('nodata.jpg') }}" alt="" width="400px">
-                    </div>
-                    <h5 class="text-center">
-                        Data Masih Kosong
-                    </h5>
+                <div class="d-flex justify-content-center">
+                    <img src="{{ asset('nodata.jpg') }}" alt="" width="400px">
+                </div>
+                <h5 class="text-center">
+                    Data Masih Kosong
+                </h5>
                 @endforelse
             </div>
             <div class="mb-4">
                 <h1 class="title">Syarat dan Ketentuan</h1>
                 @forelse ($termsconditions as $item)
-                    <div class="card card-info card-body">
-                        <p class="mb-0">{{ $item->termcondition }}</p>
-                    </div>
+                <div class="card card-info card-body">
+                    <p class="mb-0">{{ $item->termcondition }}</p>
+                </div>
                 @empty
-                    <div class="d-flex justify-content-center">
-                        <img src="{{ asset('nodata.jpg') }}" alt="" width="400px">
-                    </div>
-                    <h5 class="text-center">
-                        Data Masih Kosong
-                    </h5>
+                <div class="d-flex justify-content-center">
+                    <img src="{{ asset('nodata.jpg') }}" alt="" width="400px">
+                </div>
+                <h5 class="text-center">
+                    Data Masih Kosong
+                </h5>
                 @endforelse
             </div>
         </div>
@@ -182,7 +182,7 @@
                 @forelse ($testimonials as $testimonial)
                     <div class="col-md-6">
                         <div class="card card-body rounded-4 shadow d-flex flex-row gap-3">
-                            <img src="{{ asset('storage/' . $testimonial->image) }}" class="rounded-3" height="120px"
+                            <img src="{{ asset('storage/'. $testimonial->image) }}" class="rounded-3" height="120px"
                                 alt="{{ $testimonial->name }}" />
                             <div class="d-flex flex-column gap-2">
                                 <strong class="h5">{{ $testimonial->name }}</strong>
@@ -191,12 +191,12 @@
                         </div>
                     </div>
                 @empty
-                    <div class="d-flex justify-content-center">
-                        <img src="{{ asset('nodata.jpg') }}" alt="" width="400px">
-                    </div>
-                    <h5 class="text-center">
-                        Data Masih Kosong
-                    </h5>
+                <div class="d-flex justify-content-center">
+                    <img src="{{ asset('nodata.jpg') }}" alt="" width="400px">
+                </div>
+                <h5 class="text-center">
+                    Data Masih Kosong
+                </h5>
                 @endforelse
             </div>
         </div>
@@ -232,7 +232,7 @@
                             </div>
                         </div>
                     </div>
-                @empty
+                    @empty
                     <div class="d-flex justify-content-center">
                         <img src="{{ asset('nodata.jpg') }}" alt="" width="400px">
                     </div>
@@ -247,53 +247,47 @@
             <h1 class="title">Mitra</h1>
 
             <div class="owl-carousel owl-item owl-theme" id="owl-carousel-mitra">
-                @forelse ($servicemitras as $mitra)
-                    <div class="team-item mx-1 ">
-                        <img src="{{ $mitra == null ? '' : asset('storage/' . $mitra->mitra->image) }}" alt="{{ $mitra->mitra->name }}" class="img-fluid">
-                    </div>
+                @forelse ($serviceMitras as $serviceMitra)
+                    <div class="item"><img src="{{ asset('storage/'. $serviceMitra->mitra->image) }}" alt="{{ $serviceMitra->mitra->name }}" style="object-fit: cover; height: 200px; width: 200px"></div>
                 @empty
-                    <div class="col-12">
-                        <div class="d-flex justify-content-center">
-                            <img src="{{ asset('nodata-gif.gif') }}" alt="" width="800px">
-                        </div>
-                        <h4 class="text-center text-dark" style="font-weight:600">
-                            Belum ada Mitra
-                        </h4>
-                    </div>
-                @endforelse
-            </div>
-        </div>
-
-        <div class="need-space">
-            @forelse ($galleries as $gallery)
-                <div class="need-space" id="gallery-kelas-industri">
-                    <h1 class="title">Galeri {{ $gallery->name }}</h1>
-
-                    <div class="owl-carousel owl-item owl-theme" id="owl-carousel-galery">
-                        @forelse ($gallery->galeryImages as $galery)
-                            <div class="item"><img src="{{ asset('storage/' . $galery->image) }}"
-                                    alt="{{ $galery->name }}" style="object-fit: cover; height: 200px; width: 200px">
-                            </div>
-                        @empty
-                            <div class="d-flex flex-column  align-items-center">
-                                <img src="{{ asset('nodata.jpg') }}" alt="" width="400px">
-                                <h5 class="text-center">
-                                    Data Masih Kosong
-                                </h5>
-                            </div>
-                        @endforelse
-                    </div>
-                </div>
-            @empty
                 <div class="d-flex flex-column  align-items-center">
                     <img src="{{ asset('nodata.jpg') }}" alt="" width="400px">
                     <h5 class="text-center">
                         Data Masih Kosong
                     </h5>
                 </div>
-            @endforelse
+                @endforelse
+            </div>
         </div>
-    </div>
+
+        <div class="need-space">
+        @forelse ($galleries as $gallery)
+            <div class="need-space" id="gallery-kelas-industri">
+                <h1 class="title">Galeri {{ $gallery->name }}</h1>
+
+                <div class="owl-carousel owl-item owl-theme" id="owl-carousel-galery">
+                    @forelse ($gallery->galeryImages as $galery)
+                        <div class="item"><img src="{{ asset('storage/'. $galery->image) }}" alt="{{ $galery->name }}" style="object-fit: cover; height: 200px; width: 200px"></div>
+                    @empty
+                    <div class="d-flex flex-column  align-items-center">
+                        <img src="{{ asset('nodata.jpg') }}" alt="" width="400px">
+                        <h5 class="text-center">
+                            Data Masih Kosong
+                        </h5>
+                    </div>
+                    @endforelse
+                </div>
+            </div>
+        @empty
+            <div class="d-flex flex-column  align-items-center">
+                <img src="{{ asset('nodata.jpg') }}" alt="" width="400px">
+                <h5 class="text-center">
+                    Data Masih Kosong
+                </h5>
+            </div>
+        @endforelse
+        </div>
+        </div>
     </div>
 @endsection
 
