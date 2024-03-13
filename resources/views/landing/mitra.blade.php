@@ -121,10 +121,9 @@
                 <div class="row">
                     <div class="col-12 mt-2">
                         <div class="row">
-                            
                             @forelse ($mitraCategory->collab as $collab)
                                 <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 mb-5 d-flex justify-content-center">
-                                    <img src="{{ asset('storage/' . $collab->image) }}" alt="" style="width: 90%;">
+                                    <img src="{{ asset('storage/' . $collab->image) }}" alt="" style="width: 90%; object-fit:contain">
                                 </div>
                             @empty
                                 <div class="col-12">
