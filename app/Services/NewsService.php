@@ -43,12 +43,11 @@ class NewsService
     {
         $data = $request->validated();
         $data['slug'] = Str::slug($request->title);
-        $data['image'] = $request->file('image')->store(TypeEnum::NEWS->value, 'public');
-        $this->compressImage($data['image'], 'compressed_' . $data['image']);
+        $imageName = Str::slug($request->title) . '.' . $request->file('image')->getClientOriginalExtension();
+        $data['image'] = $request->file('image')->storeAs(TypeEnum::NEWS->value, $imageName, 'public');
 
         return $data;
     }
-
 
     /**
      * Handle update data event to models.
