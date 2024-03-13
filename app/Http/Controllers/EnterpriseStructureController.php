@@ -43,7 +43,7 @@ class EnterpriseStructureController extends Controller
     {
         $data = $this->enterpriseService->store($request);
         $this->enterprise->store($data);
-        return redirect()->back();
+        return redirect()->back()->with('success','Data Berhasil di Tambahkan');
     }
 
     /**
@@ -65,7 +65,7 @@ class EnterpriseStructureController extends Controller
     {
         $data = $this->enterpriseService->update($enterpriseStructure, $request);
         $this->enterprise->update($enterpriseStructure->id, $data);
-        return redirect()->route('company.index');
+        return redirect()->route('company.index')->with('success', 'Data Berhasil di Perbarui');
     }
 
     /**
@@ -74,6 +74,6 @@ class EnterpriseStructureController extends Controller
     public function destroy(EnterpriseStructure $enterpriseStructure)
     {
         $this->enterprise->delete($enterpriseStructure->id);
-        return back();
+        return back()->with('success','Data Berhasil di Hapus');
     }
 }

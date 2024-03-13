@@ -67,7 +67,7 @@ class NewsController extends Controller
             ]);
         });
 
-        return redirect()->route('news.index');
+        return redirect()->route('news.index')->with('success','Data Berhasil di Tambahkan');
     }
 
     /**
@@ -108,7 +108,7 @@ class NewsController extends Controller
             ]);
         });
 
-        return redirect()->route('news.index');
+        return redirect()->route('news.index')->with('success','Data Berhasil di Update');
     }
 
     /**
@@ -117,7 +117,7 @@ class NewsController extends Controller
     public function destroy(News $news)
     {
         $this->news->delete($news->id);
-        return back();
+        return back()->with('success','Data Berhasil di Hapus');
     }
 
     /**
@@ -146,7 +146,7 @@ class NewsController extends Controller
         $newses = $this->newsCategory->where($category->id);
         $newsCategories = $this->category->get();
         $background = $this->background->getByType('Berita');
-        
+
         return view('landing.news.index', compact('newses' ,'newsCategories', 'background'));
     }
 

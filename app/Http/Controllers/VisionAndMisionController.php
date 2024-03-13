@@ -63,7 +63,7 @@ class VisionAndMisionController extends Controller
             $useId = $visionAndMisions;
         }
         $this->vismisionservices->storemision($request, $useId);
-        return redirect()->back();
+        return redirect()->back()->with('success','Data Berhasil Ditambahkan');
     }
 
     /**
@@ -97,7 +97,7 @@ class VisionAndMisionController extends Controller
     {
         $this->vismisionservices->updatemision($request, $misionItems);
 
-        return redirect()->back();
+        return redirect()->back()->with('success','Data Berhasil Diperbarui');
     }
 
     /**
@@ -107,13 +107,13 @@ class VisionAndMisionController extends Controller
     {
         $this->visionAndMision->delete($visionAndMision->id);
 
-        return redirect()->back();
+        return redirect()->back()->with('success','Data Berhasil Di hapus');
     }
 
     public function destroymision(MisionItems $misionItems)
     {
         $this->vismisionservices->destroy($misionItems);
 
-        return redirect()->back();
+        return redirect()->back()->with('success','Data Berhasil Di Hapus');
     }
 }
