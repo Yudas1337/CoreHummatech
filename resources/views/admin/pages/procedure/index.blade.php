@@ -9,10 +9,17 @@
                 </div>
                 <div class="col-sm-5">
                     <div class="d-flex align-items-center">
-                        <label for="search">Cari:</label>
-                        <input type="text" id="search" class="form-control mx-3">
-                        <button class="btn btn-primary" type="button" data-bs-toggle="modal"
-                            data-bs-target="#create-modal">Tambah</button>
+                        <form action="/procedure">
+                            <div class="col-12 col-lg-12 d-flex justify-content-end">
+                                <div class="d-flex gap-2 col-sm-12">
+                                    <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-magnifying-glass"></i></span>
+                                    <input type="text" name="title" value="{{ request()->title }}" class="form-control" placeholder="Cari Produk" aria-label="Username"
+                                    aria-describedby="basic-addon1">
+                                <button class="btn btn-primary" type="button" data-bs-toggle="modal"
+                                    data-bs-target="#create-modal">Tambah</button>
+                                </div>
+                            </div>
+                        </form>
 
                         <div class="modal fade" id="add" tabindex="-1" aria-labelledby="exampleModalLabel"
                             aria-hidden="true">

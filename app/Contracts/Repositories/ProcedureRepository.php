@@ -4,6 +4,7 @@ namespace App\Contracts\Repositories;
 
 use App\Contracts\Interfaces\ProcedureInterface;
 use App\Models\Procedure;
+use Illuminate\Http\Request;
 
 class ProcedureRepository extends BaseRepository implements ProcedureInterface
 {
@@ -37,6 +38,14 @@ class ProcedureRepository extends BaseRepository implements ProcedureInterface
     public function getByServiceId(mixed $id): mixed
     {
         return $this->model->query()->where('service_id', $id)->get();
+    }
+    public function search(Request $request): mixed
+    {
+        return $this->model->query()
+            ->when($request->title, function ($query) use ($request) {
+                $query->where('title', 'LIKE', '%' . $request->title . '%');
+            })
+            ->get();
     }
 
 }
