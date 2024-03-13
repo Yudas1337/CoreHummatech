@@ -62,9 +62,9 @@ class ImageCompressing
             $imageLayer = imagecreatefrompng($imagePath);
         }
 
-        $filename = "{$options['targetPath']}/{$options['name']}_compressed.jpg";
+        $filename = "{$options['targetPath']}/{$options['name']}_compressed.webp";
         $filePath = public_path("storage/{$filename}");
-        $response = imagejpeg($imageLayer, $filePath, $options['quality'] ?? 50);
+        $response = imagewebp($imageLayer, $filePath, $options['quality'] ?? 50);
 
         if (!isset($options['duplicate']) || !$options['duplicate']) {
             unlink($options['original_uploaded_file']);
