@@ -7,6 +7,7 @@ use App\Models\CategoryProduct;
 use App\Http\Requests\StoreCategoryProductRequest;
 use App\Http\Requests\UpdateCategoryProductRequest;
 use App\Services\CategoryProductService;
+use Illuminate\Http\Request;
 
 class CategoryProductController extends Controller
 {
@@ -22,9 +23,10 @@ class CategoryProductController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
         $categoryProducts = $this->categoryProduct->get();
+        $categoryProducts = $this->categoryProduct->search($request);
         return view('admin.pages.product-category.index' , compact('categoryProducts'));
     }
 

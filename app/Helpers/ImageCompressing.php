@@ -29,9 +29,8 @@ class ImageCompressing
         $fileName = $options['name'] ?? Str::random(64);
         $originalFileExt = $request->getClientOriginalExtension();
 
-        $uploadImage = $request->storeAs("public/{$targetPath}", "{$fileName}.{$originalFileExt}");
-        $uploadedImagePath = str_replace("public/", "", $uploadImage);
-        $compressTargetImage = public_path("storage/{$uploadedImagePath}");
+        $uploadImage = $request->storeAs("{$targetPath}", "{$fileName}.{$originalFileExt}", 'public');
+        $compressTargetImage = "storage/{$uploadImage}";
 
         $options['targetPath'] = $targetPath;
         $options['name'] = $fileName;
@@ -63,9 +62,9 @@ class ImageCompressing
             $imageLayer = imagecreatefrompng($imagePath);
         }
 
-        $filename = "{$options['targetPath']}/{$options['name']}_compressed.jpg";
+        $filename = "{$options['targetPath']}/{$options['name']}_compressed.webp";
         $filePath = public_path("storage/{$filename}");
-        $response = imagejpeg($imageLayer, $filePath, $options['quality'] ?? 50);
+        $response = imagewebp($imageLayer, $filePath, $options['quality'] ?? 50);
 
         if (!isset($options['duplicate']) || !$options['duplicate']) {
             unlink($options['original_uploaded_file']);

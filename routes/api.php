@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\NewsController;
 use App\Http\Controllers\Api\TermsconditionController;
 use App\Http\Controllers\Api\TestimonialController;
 use App\Http\Controllers\FaqController;
@@ -32,6 +33,8 @@ Route::get('terms-condition', [TermsconditionController::class, 'index']);
 Route::post('terms-condition', [TermsconditionController::class, 'store']);
 Route::put('terms-condition/{terms_condition}', [TermsconditionController::class, 'update']);
 Route::delete('terms-condition', [TermsconditionController::class, 'destroy']);
+
+Route::get('news', [NewsController::class, 'index']);
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();

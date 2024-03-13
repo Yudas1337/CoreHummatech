@@ -4,6 +4,7 @@ namespace App\Contracts\Repositories;
 
 use App\Contracts\Interfaces\CollabMitraInterface;
 use App\Models\CollabMitra;
+use Illuminate\Http\Request;
 
 class CollabMitraRepository extends BaseRepository implements CollabMitraInterface
 {
@@ -31,5 +32,12 @@ class CollabMitraRepository extends BaseRepository implements CollabMitraInterfa
     public function GetCount(): mixed
     {
         return $this->model->query()->count();
+    }
+    public function search(Request $request): mixed
+    {
+        return $this->model->query()
+        ->when($request->name, function ($query) use ($request){
+            $query->where('name', 'LIKE', '%' . $request->name . '%');
+        })->get();
     }
 }

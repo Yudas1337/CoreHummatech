@@ -63,11 +63,14 @@
                 </div>
                 <div class="col-12 col-lg-6">
                     <div class="d-flex justify-content-lg-end justify-content-start">
-                        <div class="d-flex align-items-center gap-2">
-                            <p class="m-0 me-2">Cari:</p>
-                            <input class="form-control me-2" type="text" placeholder="Search" aria-label="Search">
-                        </div>
-                        <button class="btn btn-primary m-0" type="button" data-bs-toggle="modal" data-bs-target="#tambah">Tambah</button>
+                        <form action="/category-product" class="d-flex align-items-center gap-2">
+                            <div class="input-group">
+                                <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-magnifying-glass"></i></span>
+                                <input type="text" name="name" value="{{ request()->name }}" class="form-control" placeholder="Cari Produk" aria-label="Cari Produk" aria-describedby="basic-addon1">
+                            </div>
+
+                            <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#tambah">Tambah</button>
+                        </form>
 
                         <!-- Add Modal -->
                         <div class="modal fade modal-bookmark" id="tambah" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
