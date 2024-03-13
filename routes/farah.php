@@ -1,16 +1,10 @@
 <?php
 
-use App\Http\Controllers\AboutUsController;
 use App\Http\Controllers\BackgroundController;
 use App\Http\Controllers\CategoryProductController;
 use App\Http\Controllers\GalleryController;
-use App\Http\Controllers\ServiceController;
-use App\Http\Controllers\TestimonialController;
+use App\Http\Controllers\HomeDescriptionController;
 use Illuminate\Support\Facades\Route;
-use \App\Http\Controllers\HomeProductController;
-use App\Http\Controllers\ProductController;
-use App\Http\Controllers\StructureController;
-use App\Models\CategoryProduct;
 
 Route::get('/category-product', [CategoryProductController::class, 'index'])->name('category-product.index');
 Route::post('/category-product/store', [CategoryProductController::class, 'store'])->name('category-product.store');
@@ -25,3 +19,8 @@ Route::delete('background/delete/{background}', [BackgroundController::class, 'd
 
 Route::get('gallery/service/{service}', [GalleryController::class, 'showFolder'])->name('gallery.showFolder');
 Route::delete('galery/delete/{galery}/{galeryImage}', [GalleryController::class, 'destroy']);
+
+Route::get('home-description', [HomeDescriptionController::class, 'index'])->name('home-description.index');
+Route::post('home-description/store', [HomeDescriptionController::class, 'store'])->name('home-description.store');
+Route::put('home-description/{home}', [HomeDescriptionController::class, 'update'])->name('home-description.update');
+Route::delete('home-description/{home}', [HomeDescriptionController::class, 'destroy'])->name('home-description.destroy');

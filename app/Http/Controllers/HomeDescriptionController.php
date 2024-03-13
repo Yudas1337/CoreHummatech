@@ -2,21 +2,23 @@
 
 namespace App\Http\Controllers;
 
-use App\Contracts\Interfaces\HomeInteface;
+use App\Contracts\Interfaces\HomeInterface;
 use App\Contracts\Repositories\HomeRepository;
+use App\Http\Requests\StoreHomeRequest;
+use App\Http\Requests\UpdateHomeRequest;
 use App\Models\Home;
 use Illuminate\Http\Request;
 
 class HomeDescriptionController extends Controller
 {
-    private HomeInteface $home;
+    private HomeInterface $home;
 
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct(HomeInteface $home)
+    public function __construct(HomeInterface $home)
     {
         $this->middleware('auth');
         $this->home = $home;
@@ -25,18 +27,18 @@ class HomeDescriptionController extends Controller
     public function index()
     {
         $home = $this->home->get();
-        return view('', compact('home'));
+        return view('admin.pages.home.index', compact('home'));
     }
 
-    public function store(Request $request)
+    public function store(StoreHomeRequest $request)
     {
         $this->home->store($request->validated());
         return redirect()->back()->with('success', 'Berhasil ditambahkan');
     }
 
-    public function update(Request $request, Home $home)
+    public function update(UpdateHomeRequest $request, Home $home)
     {
-        $this->home->update($home->id, $request->validated());
+        $this->home->update($home->id , $request->all());
         return redirect()->back()->with('success', 'Berhasil diperbarui');
     }
 

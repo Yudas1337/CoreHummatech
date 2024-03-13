@@ -42,4 +42,10 @@ class AboutUsController extends Controller
 
         return view('landing.about' , compact('profiles', 'visionMisions', 'missions', 'teams', 'imageStructures', 'logos', 'background'));
     }
+
+    public function showPdf()
+    {
+        $profiles = $this->profile->get();
+        return view('landing.showpdf' , compact('profiles'));
+    }
 }

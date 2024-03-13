@@ -4,6 +4,7 @@ namespace App\Contracts\Repositories;
 use App\Contracts\Interfaces\CollabCategoryInterface;
 use App\Models\CategoryNews;
 use App\Models\CollabCategory;
+use Illuminate\Http\Request;
 
 class CollabCategoryRepository extends BaseRepository implements CollabCategoryInterface
 {
@@ -27,5 +28,12 @@ class CollabCategoryRepository extends BaseRepository implements CollabCategoryI
     public function delete(mixed $id): mixed
     {
         return $this->model->query()->findOrFail($id)->delete($id);
+    }
+    public function search(Request $request): mixed
+    {
+        return $this->model->query()
+        ->when($request->name, function ($query) use ($request) {
+            $query->where('name', 'LIKE', '%' . $request->name . '%');
+        })->get();
     }
 }

@@ -12,6 +12,7 @@ use App\Http\Requests\UpdateCollabMitraRequest;
 use App\Models\CollabCategory;
 use App\Services\PartnerService;
 use App\Services\ServiceMitraService;
+use Illuminate\Http\Request;
 
 class CollabMitraController extends Controller
 {
@@ -31,9 +32,10 @@ class CollabMitraController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
         $collabMitras = $this->collabMitra->get();
+        $collabMitras = $this->collabMitra->search($request);
         $categories = $this->collabCategory->get();
         $services = $this->serviceintervace->get();
         return view('admin.pages.collab.index', compact('collabMitras', 'categories', 'services'));

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Contracts\Interfaces\CategoryProductInterface;
 use App\Contracts\Interfaces\CollabCategoryInterface;
 use App\Contracts\Interfaces\CollabMitraInterface;
+use App\Contracts\Interfaces\HomeInterface;
 use App\Contracts\Interfaces\HomePageInterface;
 use App\Contracts\Interfaces\NewsInterface;
 use App\Contracts\Interfaces\ProductInterface;
@@ -25,9 +26,10 @@ class HomePageController extends Controller
     private CollabCategoryInterface $mitraCategory;
     private SectionInterface $section;
     private ProductInterface $product;
+    private HomeInterface $home;
 
 
-    public function __construct( ProfileInterface $profile,VisitorDetectionInterface $visitorDetection, ServiceInterface $service, NewsInterface $news, CollabMitraInterface $mitras, SectionInterface $section, ProductInterface $product, CollabCategoryInterface $mitraCategory)
+    public function __construct(HomeInterface $home, ProfileInterface $profile,VisitorDetectionInterface $visitorDetection, ServiceInterface $service, NewsInterface $news, CollabMitraInterface $mitras, SectionInterface $section, ProductInterface $product, CollabCategoryInterface $mitraCategory)
     {
         $this->profile = $profile;
         $this->service = $service;
@@ -37,6 +39,7 @@ class HomePageController extends Controller
         $this->section = $section;
         $this->product = $product;
         $this->mitraCategory = $mitraCategory;
+        $this->home = $home;
     }
     /**
      * Display a listing of the resource.
@@ -50,8 +53,9 @@ class HomePageController extends Controller
         $mitras = $this->mitras->get();
         $section = $this->section->get();
         $product = $this->product->getByType('company');
+        $home = $this->home->get();
 
-        return view('landing.index', compact('profile','service','news','mitras','section','product' ,'visitorDetections'));
+        return view('landing.index', compact('profile','service','news','mitras','section','product' ,'visitorDetections', 'home'));
     }
 
     /**

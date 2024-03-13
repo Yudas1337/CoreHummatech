@@ -193,6 +193,9 @@
             <li>
                 <a href="/procedure">Prosedur</a>
             </li>
+            <li>
+                <a href="/home-description">Produk beranda</a>
+            </li>
         </ul>
     </li>
     <li class="sidebar-list">
