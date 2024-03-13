@@ -6,15 +6,11 @@ use App\Enums\TypeEnum;
 use App\Traits\UploadTrait;
 use App\Http\Requests\StoreSaleRequest;
 use App\Http\Requests\StoreSectionRequest;
-use App\Http\Requests\StoreServiceRequest;
-use App\Http\Requests\UpdateProductRequest;
 use App\Http\Requests\UpdateSaleRequest;
 use App\Http\Requests\UpdateSectionRequest;
-use App\Http\Requests\UpdateServiceRequest;
-use App\Models\Product;
 use App\Models\Sale;
 use App\Models\Section;
-use App\Models\Service;
+use Intervention\Image\Laravel\Facades\Image;
 
 class SectionService
 {
@@ -47,8 +43,7 @@ class SectionService
         $data = $request->validated();
 
         if ($request->hasFile('image') && $request->file('image')->isValid()) {
-            $data['image'] = $request->file('image')->store(TypeEnum::SALE->value, 'public');
-            $this->compressImage($data['image']);
+            $data['image'] = $this->compressImage($request->image, TypeEnum::SALE->value);
             return $data;
         }
         return false;
