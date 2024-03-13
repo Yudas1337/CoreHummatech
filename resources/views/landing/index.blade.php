@@ -104,6 +104,7 @@
         .responsive-text {
             font-size: 16px; /* Ubah sesuai kebutuhan */
         }
+
     }
 
 </style>
@@ -359,7 +360,7 @@
                     <div class="services-content ">
                         <div class="row">
                             <div class="col-lg-12">
-                                <div class="thumb-services-carousel owl-carousel owl-theme">
+                                <div class="thumb-services-carousel owl-carousel owl-theme owl-loaded owl-drag">
                                     @forelse ($mitras as $mitra)
                                         <div class="item" style="display: flex; align-items: center; justify-content: center; ">
                                             <img src="{{ asset('storage/'. $mitra->image) }}" alt="{{ $mitra->name }}" class="img-fluid" style="max-width: 80%; max-height: auto; display: inline-block;">
@@ -566,28 +567,32 @@
 
 <script>
     $(document).ready(function(){
-        var itemCount = $('.thumb-services-carousel .item').length;
-        $('.thumb-services-carousel').owlCarousel({
-            center: true,
-            items:5,
-            loop: itemCount > 4 ? true : false,
-            margin:10,
-            nav: true,
-            autoplay: true,
-            autoplayTimeout: 3000,
-            responsive:{
-                0:{
-                    items:1
-                },
-                600:{
-                    items:3
-                },
-                1000:{
-                    items:5
-                }
+    var itemCount = $('.thumb-services-carousel .item').length;
+    $('.thumb-services-carousel').owlCarousel({
+        center: true,
+        dots: false,
+        nav: false, // Menghilangkan navigasi bawaan
+
+        items: 5,
+        loop: itemCount > 4 ? true : false,
+        margin: 10,
+        autoplay: true,
+        autoplayTimeout: 3000,
+        responsive:{
+            0:{
+                items: 1
+            },
+            600:{
+                items: 3
+            },
+            1000:{
+                items: 5
             }
-        });
+        }
     });
+});
+
 </script>
+
 @endsection
 
