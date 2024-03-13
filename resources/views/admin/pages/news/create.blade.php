@@ -72,20 +72,19 @@
                                         @enderror
                                     </div>
                                     <div class="mb-3">
-                                        <label >Tanggal</label>
+                                        <label for="bm-title">Tanggal</label>
                                         <div class="col-sm-12">
-                                          <input class="form-control digits" type="date" value="" name="date">
-                                          @error('date')
-                                          <div class="text-danger">{{ $message }}</div>
-                                          @enderror
+                                            <input class="form-control digits" type="date" value="" name="date">
+                                            @error('date')
+                                                <div class="text-danger">{{ $message }}</div>
+                                            @enderror
                                         </div>
                                     </div>
                                 </div>
                                 <div class="mb-3">
-                                    <label>Deskripsi Berita</label>
+                                    <label for="bm-title">Deskripsi Berita</label>
                                     <div id="editor" style="height: 500px">{!! old('description') !!}</div>
                                     <textarea name="description" class="d-none" id="description" cols="30" rows="10">{!! old('description') !!}</textarea>
-                                    {{-- <input type="hidden" id="description" value="{!! old('description') !!}" name="description" /> --}}
 
                                     @error('description')
                                         <div class="text-danger">{{ $message }}</div>
@@ -137,11 +136,11 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="../assets/js/select2/select2.full.min.js"></script>
-    <script src="../assets/js/select2/select2-custom.js"></script>
-    <script src="../assets/js/slick/slick.min.js"></script>
-    <script src="../assets/js/slick/slick.js"></script>
-    <script src="../assets/js/header-slick.js"></script>
+    <script src="{{ asset('assets/js/select2/select2.full.min.js') }}"></script>
+    <script src="{{ asset('assets/js/select2/select2-custom.js') }}"></script>
+    <script src="{{ asset('assets/js/slick/slick.min.js') }}"></script>
+    <script src="{{ asset('assets/js/slick/slick.js') }}"></script>
+    <script src="{{ asset('assets/js/header-slick.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify"></script>
     <script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.polyfills.min.js"></script>
 
@@ -221,7 +220,8 @@
                                         let index = quill.getSelection() ? quill
                                             .getSelection().index : 0;
 
-                                        quill.insertEmbed(index, 'image', `{{ url('/storage') }}/${data.image}`);
+                                        quill.insertEmbed(index, 'image',
+                                            `{{ url('/storage') }}/${data.image}`);
 
                                         $('#image-uploader-form').trigger('reset');
                                         $('#uploadImageModal').modal('hide');

@@ -59,7 +59,7 @@
                         <div class="card shadow-sm">
                             <div class="product-box">
                                 <div class="product-img">
-                                    <img class="img-fluid" src="{{ asset('storage/' . ($item->image ?? '')) }}"
+                                    <img class="img-fluid" src="{{ asset('storage/' . ($item->thumbnail ?? '')) }}"
                                         alt="" style="object-fit:cover; width:242vw; height:20vh;">
                                 </div>
                                 <div class="product-details">

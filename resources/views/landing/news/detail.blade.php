@@ -11,7 +11,7 @@
                             <div class="single-item">
                                 <div class="item">
                                     <div class="thumb">
-                                        <a href=""><img src="{{ asset('storage/' . $news->image) }}"
+                                        <a href=""><img src="{{ asset('storage/' . $news->thumbnail) }}"
                                                 alt="{{ $news->title }}"></a>
                                         <time datetime="{{ $news->created_at->format('Y-m-d') }}" class="date">
                                             {{ \Carbon\Carbon::parse($news->created_at)->locale('id_ID')->isoFormat('D MMMM Y') }}
@@ -59,7 +59,7 @@
                                     <li>
                                         <div class="thumb">
                                             <a href="{{ url("berita/{$news->slug}") }}">
-                                                <img alt="{{ $news->title }}" src="{{ asset("storage/{$news->image}") }}" />
+                                                <img alt="{{ $news->title }}" src="{{ asset("storage/{$news->thumbnail}") }}" />
                                             </a>
                                         </div>
                                         <div class="info">

@@ -72,9 +72,11 @@
                                     <div class="col-lg-4 col-md-6 single-item">
                                         <div class="item">
                                             <div class="thumb">
-                                                <a href="/berita/{{ $news->news->slug }}"><img
-                                                        src="{{ asset('storage/' . $news->news->image) }}"
-                                                        alt="{{ $news->news->title }}"></a>
+                                                <a href="/berita/{{ $news->news->slug }}">
+                                                    <img
+                                                        src="{{ asset('storage/' . $news->news->thumbnail) }}"
+                                                        alt="{{ $news->news->title }}">
+                                                </a>
 
                                                 <time class="date"
                                                     datetime="{{ $news->news->created_at->format('Y-m-d') }}">{{ \Carbon\Carbon::parse($news->news->created_at)->locale('id_ID')->isoFormat('D MMMM Y') }}</time>
