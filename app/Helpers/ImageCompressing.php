@@ -9,6 +9,10 @@ use Illuminate\Support\Str;
  * Extending Class Helper for Image compressing system purpose with GD extension on PHP.
  *
  * @see https://www.php.net/manual/en/book.image.php
+ * @see https://www.php.net/manual/en/function.imagewebp.php
+ * @see https://www.php.net/manual/en/function.imagepng.php
+ * @see https://www.php.net/manual/en/function.imagejpeg.php
+ * @see https://www.php.net/manual/en/function.imagepng.php
  * @see https://www.abstractapi.com/guides/how-to-compress-images-in-php
  * @see https://phppot.com/php/php-compress-image/
  * @package hummatech
@@ -62,17 +66,26 @@ class ImageCompressing
             $imageLayer = imagecreatefrompng($imagePath);
         }
 
-        $filename = "{$options['targetPath']}/{$options['name']}_compressed.webp";
+        $filename = "{$options['targetPath']}/{$options['name']}.webp";
         $filePath = public_path("storage/{$filename}");
-        $response = imagewebp($imageLayer, $filePath, $options['quality'] ?? 50);
+        imagewebp($imageLayer, $filePath, $options['quality'] ?? 50);
 
         if (!isset($options['duplicate']) || !$options['duplicate']) {
             unlink($options['original_uploaded_file']);
+            $files = $filename;
+        } else {
+            $filenameOriginal = "{$options['targetPath']}/{$options['name']}.jpg";
+            $filePathOriginal = public_path("storage/{$filenameOriginal}");
+            imagejpeg($imageLayer, $filePathOriginal, $options['quality'] ?? 50);
+
+            $files = [
+                $filename,
+                $filenameOriginal,
+            ];
         }
 
         return [
-            'filename' => $filename,
-            'response' => $response,
+            'files' => $files,
         ];
     }
 
