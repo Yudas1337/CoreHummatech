@@ -57,16 +57,6 @@
         @endforelse
     </div>
 
-    <nav class="mt-5" aria-label="Page navigation example">
-        <ul class="pagination justify-content-center pagin-border-primary pagination-primary">
-            <li class="page-item"><a class="page-link" href="javascript:void(0)">Previous</a></li>
-            <li class="page-item"><a class="page-link" href="javascript:void(0)">1</a></li>
-            <li class="page-item"><a class="page-link" href="javascript:void(0)">2</a></li>
-            <li class="page-item"><a class="page-link" href="javascript:void(0)">3</a></li>
-            <li class="page-item"><a class="page-link" href="javascript:void(0)">Next</a></li>
-        </ul>
-    </nav>
-
 
     <div class="modal fade modal-bookmark edit" id="edit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
     aria-hidden="true">

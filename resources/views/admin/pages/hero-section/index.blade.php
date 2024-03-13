@@ -12,18 +12,16 @@
                     </li>
                 </div>
                 <div class="col-12 col-lg-6 me-5">
-                    <div class="d-flex justify-content-lg-end justify-content-start me-5 gap-2">
-                        <div class="d-flex align-items-center gap-2 me-5">
-                            <p class="m-0 me-2">Cari:</p>
-                            <input class="form-control me-2" type="text" placeholder="Search" aria-label="Search">
-                        </div>
-                    </div>
+
                 </div>
             </ul>
             <div class="tab-content" id="myTabContent">
-                <a class="btn btn-primary m-0" href="{{ url('/hero-section/create') }}"
-                    style="position: absolute; left: 72vw; top: 54px">Tambah</a>
-                <div class="tab-pane fade show active py-5" id="section" role="tabpanel">
+                <div class="tab-pane fade show active py-3" id="section" role="tabpanel">
+                    <div class="d-flex justify-content-lg-end justify-content-start  gap-2">
+                        <a href="/" target="_blank" class="btn btn-primary m-0">Detail Slider</a>
+                        <a class="btn btn-primary m-0" href="{{ url('/hero-section/create') }}"
+                            >Tambah</a>
+                    </div>
                     <div class="row">
                         @forelse ($sections as $section)
                             <div class="col-md-12 col-12 col-xl-6">
@@ -65,9 +63,12 @@
                         @endforelse
                     </div>
                 </div>
-                <div class="tab-pane fade py-5" id="background" role="tabpanel" aria-labelledby="contact-tab">
-                    <button class="btn btn-primary m-0" type="button" data-bs-toggle="modal" data-bs-target="#tambah"
-                        style="position: absolute; left: 72vw; top: 54px">Tambah</button>
+                <div class="tab-pane fade py-3" id="background" role="tabpanel" aria-labelledby="contact-tab">
+                    <div class="d-flex justify-content-lg-end justify-content-start  gap-2">
+                        <a href="/about-us" target="_blank" class="btn btn-primary m-0">Detail Background</a>
+                        <button class="btn btn-primary m-0" type="button" data-bs-toggle="modal" data-bs-target="#tambah"
+                            >Tambah</button>
+                    </div>
                     <div class="row">
                         @forelse ($backgrounds as $background)
                             <div class="col-md-12 col-12 col-xl-6">

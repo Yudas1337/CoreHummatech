@@ -108,9 +108,7 @@
             <div class="col-md-7">
                 <h1 class="title">{{ $services->name }}</h1>
                 <p class="subtitle">{{ $services->description }}</p>
-
-                <a href="{{ asset('storage/' . $services->file) }}" class="btn btn-lg btn-primary"
-                    download="{{ asset('storage/' . $services->file) }}">Proposal</a>
+                <a href="{{ url("/layanan/{$services->slug}") }}" target="_blank"  class="btn btn-lg btn-primary">Detail Layanan</a>
             </div>
         </div>
 
@@ -261,12 +259,12 @@
                 @endforelse
             </div>
         </div>
-        
+
         <div class="need-space">
         @forelse ($galleries as $gallery)
             <div class="need-space" id="gallery-kelas-industri">
                 <h1 class="title">Galeri {{ $gallery->name }}</h1>
-    
+
                 <div class="owl-carousel owl-item owl-theme" id="owl-carousel-galery">
                     @forelse ($gallery->galeryImages as $galery)
                         <div class="item"><img src="{{ asset('storage/'. $galery->image) }}" alt="{{ $galery->name }}" style="object-fit: cover; height: 200px; width: 200px"></div>
