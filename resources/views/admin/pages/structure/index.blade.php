@@ -48,10 +48,10 @@
             <div class="modal-content">
                     <ul class="simple-wrapper nav nav-tabs modal-header" id="myTab" role="tablist">
                         @if ($organization == null)
-                            <li class="nav-item"><a class="nav-link active txt-primary" id="profile-tabs" data-bs-toggle="tab" href="#organisasi" role="tab" aria-controls="profile" aria-selected="false">Struktur organisasi</a></li>  
+                            <li class="nav-item"><a class="nav-link active txt-primary" id="profile-tabs" data-bs-toggle="tab" href="#organisasi" role="tab" aria-controls="profile" aria-selected="false">Struktur organisasi</a></li>
                         @endif
                         @if ($business == null)
-                            <li class="nav-item"><a class="nav-link txt-primary" id="contact-tab" data-bs-toggle="tab" href="#usaha" role="tab" aria-controls="contact" aria-selected="false">Struktur usaha</a></li> 
+                            <li class="nav-item"><a class="nav-link txt-primary" id="contact-tab" data-bs-toggle="tab" href="#usaha" role="tab" aria-controls="contact" aria-selected="false">Struktur usaha</a></li>
                         @endif
                         <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
                     </ul>
@@ -59,7 +59,7 @@
                 <div class="modal-body">
                     <div class="tab-content" id="myTabContent">
                         <div class="tab-pane fade show {{ $organization ? '' : 'active' }}" id="organisasi" role="tabpanel">
-                            <form class="form-bookmark needs-validation" action="{{ route('structure.create') }}" method="POST" id="bookmark-form" novalidate="" enctype="multipart/form-data">
+                            <form class="form-bookmark needs-validation" action="{{ route('company.structure.create') }}" method="POST" id="bookmark-form" novalidate="" enctype="multipart/form-data">
                                 @csrf
                                 <div class="pt-3 mb-0">
                                     <div class="mb-3 mt-0 col-md-12">
@@ -79,7 +79,7 @@
                         </div>
                         <div class="tab-pane fade {{ $organization ? 'show active' : '' }}" id="usaha" role="tabpanel" aria-labelledby="contact-tab">
                             <div class="pt-3">
-                            <form class="form-bookmark needs-validation" action="{{ route('structure.create') }}" method="POST" id="bookmark-form" novalidate="" enctype="multipart/form-data">
+                            <form class="form-bookmark needs-validation" action="{{ route('company.structure.create') }}" method="POST" id="bookmark-form" novalidate="" enctype="multipart/form-data">
                                 @csrf
                                 <div class="mb-3 mt-0 col-md-12">
                                     <input type="hidden" name="type" value="structure_business">
