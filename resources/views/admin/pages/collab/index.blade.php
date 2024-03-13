@@ -13,17 +13,19 @@
                 @endforelse
             </select>
         </div>
-        <div class="col-12 col-lg-7 d-flex justify-content-end">
-            <div class="d-flex gap-2 col-sm-7">
-                <div class="input-group">
-                    <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-magnifying-glass"></i></span>
-                    <input type="text" class="form-control" placeholder="Cari Produk" aria-label="Username"
-                        aria-describedby="basic-addon1">
+        <form action="/collab">
+            <div class="col-12 col-lg-12 d-flex justify-content-end">
+                <div class="d-flex gap-2 col-sm-12">
+                    <div class="input-group">
+                        <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-magnifying-glass"></i></span>
+                        <input type="text" name="name" value="{{ request()->name }}" class="form-control" placeholder="Cari Produk" aria-label="Username"
+                            aria-describedby="basic-addon1">
+                    </div>
+                    <button class="btn btn-primary" type="button" data-bs-toggle="modal"
+                        data-bs-target="#tambah">Tambah</button>
                 </div>
-                <button class="btn btn-primary" type="button" data-bs-toggle="modal"
-                    data-bs-target="#tambah">Tambah</button>
             </div>
-        </div>
+        </form>
     </div>
 @endsection
 
