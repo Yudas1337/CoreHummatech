@@ -305,12 +305,11 @@
                     <div class="col-lg-8 col-md-12 clients">
                         <div class="partner-carousel owl-carousel owl-theme ">
                             @forelse ($product as $produk)
-
                             <div class="single-item">
-                                <div class="card rounded-container">
-                                    <div class="card-body">
+                                <div class="card rounded-container" style="min-height: 500px">
+                                    <div class="card-body" >
                                         <div class="d-flex justify-content-center rounded-container" style="background-color: #E5F1FF;">
-                                            <img class="img-fluid pt-3 mb-3" style="margin-left: 10px; margin-right: 10px;" src="{{ asset('storage/' . $produk->image) }}" width="300" height="200" alt="">
+                                            <img class="img-fluid pt-3 mb-3" style="margin-left: 10px; margin-right: 10px; min-height: 400px;object-fit:contain" src="{{ asset('storage/' . $produk->image) }}" width="300" height="200" alt="">
                                         </div>
                                         <h4 class="text-dark mt-3" style="font-weight:600">
                                             {{$produk->name}}
@@ -571,7 +570,7 @@
     $('.thumb-services-carousel').owlCarousel({
         center: true,
         dots: false,
-        nav: false, 
+        nav: false,
 
         items: 5,
         loop: itemCount > 4 ? true : false,
