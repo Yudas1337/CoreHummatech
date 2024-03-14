@@ -2575,17 +2575,6 @@ body,
     color: #1273eb;
 }
 
-.about-us-area .about-items .thumb::after {
-    position: absolute;
-    left: 0;
-    top: 0;
-    content: "";
-    height: 50%;
-    width: 25px;
-    background: #1273eb;
-    z-index: -1;
-    border-radius: 8px;
-}
 
 .about-us-area .about-items .thumb img {
     border-radius: 8px;

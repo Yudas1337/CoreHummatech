@@ -103,7 +103,7 @@
 
 @section('content')
     <div class="breadcrumb-area text-center shadow dark text-light bg-cover"
-        style="background-image: url({{ $background == null ? asset('assets-home/img/default-bg.png') : asset('storage/'. $background->image) }});">
+        style="background-image: url({{ $background->about_in == 'Profile' ? asset('storage/'. $background->image) : asset('assets-home/img/default-bg.png') }});">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 offset-lg-2">
@@ -117,7 +117,7 @@
         </div>
     </div>
 
-    <div class="about-us-area pt-5">
+    <div class="about-us-area pt-5 mb-5">
         <div class="container">
             <img src="{{ asset('assets-home/img/about-polygon.svg') }}" class="about-triangle" alt="Polygon" />
             <div class="about-items">
@@ -134,7 +134,7 @@
 
                         @if ($profile->proposal)
                             <a class="btn btn-gradient effect btn-md"
-                                href="detail/profile"
+                                href="/detail/profile"
                                >Lihat Profil Lengkap</a>
                         @endif
                     </div>
