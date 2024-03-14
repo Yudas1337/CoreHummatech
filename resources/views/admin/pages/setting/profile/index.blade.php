@@ -16,7 +16,7 @@
 @section('content')
     <div class="py-3">
         <div class="row">
-            @if($errors->all())
+            @if ($errors->all())
                 @foreach ($errors->all() as $error)
                     <div class="alert alert-danger" role="alert">
                         {{ $error }}
@@ -48,7 +48,7 @@
                                     <div class="my-1">
                                         <label for="call">No. Telp</label>
                                         <input type="text" class="form-control" name="phone" placeholder="No telp"
-                                            value="{{ $profil->phone }}">
+                                            value="{{ $profil->phone }}" onkeyup="formatPhone(event)" />
                                     </div>
                                     <div class="my-1">
                                         <label for="call">Email</label>
@@ -58,7 +58,8 @@
                                 </div>
                                 <div class="col-sm-8">
                                     <div class="mt-1">
-                                        <label for="headline">Judul <span style="font-size: .6875rem" class="text-danger">*Wajib
+                                        <label for="headline">Judul <span style="font-size: .6875rem"
+                                                class="text-danger">*Wajib
                                                 diisi</span></label>
                                         <input type="text" class="form-control" id="headline" name="title"
                                             value="{{ $profil->title }}">
@@ -116,7 +117,7 @@
                                     <div class="my-1">
                                         <label for="call">No. Telp</label>
                                         <input type="text" class="form-control" name="phone" placeholder="No telp"
-                                            value="">
+                                            value="" onkeyup="formatPhone(event)" />
                                     </div>
                                     <div class="my-1">
                                         <label for="call">Email</label>
@@ -235,6 +236,26 @@
     <script>
         var targetTags = new Tagify(document.getElementById('tags'));
     </script>
+
+    <script>
+        function formatPhone(event) {
+            const phoneInput = event.target;
+            const inputText = phoneInput.value.trim();
+
+            // Menghapus karakter selain angka
+            const phoneNumber = inputText.replace(/\D/g, '');
+
+            // Mengatur awalan menjadi "+62"
+            let formattedPhone = "+62";
+
+            // Menghapus angka 0 setelah "+62"
+            formattedPhone += phoneNumber.substr(2).replace(/^0+/, '');
+
+            // Memperbarui nilai input dengan nomor telepon yang diformat
+            phoneInput.value = formattedPhone;
+        }
+    </script>
+
 
     <script>
         var customToolbar = [
