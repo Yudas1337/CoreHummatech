@@ -22,6 +22,14 @@ return new class extends Migration
                 PageEnum::HUBUNGI->value, 
                 PageEnum::LOWONGAN->value]);
             $table->string('image');
+            $table->enum('about_in', [
+                PageEnum::PROFILE->value,
+                PageEnum::VISIMISI->value,
+                PageEnum::ORGANISASI->value,
+                PageEnum::USAHA->value,
+                PageEnum::LOGO->value,
+                PageEnum::TIM->value,
+            ])->nullable();
             $table->foreignId('service_id')->nullable()->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->timestamps();
         });
