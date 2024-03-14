@@ -200,28 +200,22 @@
     <script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.polyfills.min.js"></script>
 
     <script>
-        // Fungsi untuk menampilkan gambar yang dipilih
         function displayImage(event) {
             const input = event.target;
             const imageContainer = document.getElementById('imageContainer');
             const selectedImage = document.getElementById('selectedImage');
 
-            // Memastikan ada file yang dipilih
             if (input.files && input.files[0]) {
                 const reader = new FileReader();
 
-                // Membaca file gambar yang dipilih
                 reader.onload = function(e) {
                     selectedImage.src = e.target.result;
                 };
 
-                // Membaca file sebagai URL data
                 reader.readAsDataURL(input.files[0]);
 
-                // Menampilkan kontainer gambar
                 imageContainer.style.display = 'block';
             } else {
-                // Jika tidak ada file yang dipilih, sembunyikan kontainer gambar
                 imageContainer.style.display = 'none';
             }
         }
