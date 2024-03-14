@@ -69,7 +69,7 @@
                         <button class="btn btn-primary m-0" type="button" data-bs-toggle="modal" data-bs-target="#tambah"
                             >Tambah</button>
                     </div>
-                    <div class="row">
+                    <div class="row mt-3">
                         @forelse ($backgrounds as $background)
                             <div class="col-md-12 col-12 col-xl-6">
                                 <div class="card rounded-4" style="height: 200px">
@@ -79,7 +79,9 @@
                                                 alt="" />
                                             <div class="content-center">
                                                 <h3 class="title">
-                                                    {{ $background->service_id == null ? $background->show_in : $background->service->name }}
+                                                    {{ ($background->show_in == 'Tentang Kami' ? $background->about_in 
+                                                    : ($background->service_id == null ? $background->show_in 
+                                                    : $background->service->name)) }}
                                                 </h3>
                                             </div>
 
@@ -91,6 +93,7 @@
                                                             data-show-in="{{ $background->show_in }}"
                                                             data-image="{{ $background->image }}"
                                                             data-service="{{ $background->service_id }}"
+                                                            data-about-in="{{ $background->about_in }}"
                                                             style="border: none; background: none;"><i class="fas fa-pencil"
                                                                 style="margin-left: -5px"></i></button>
                                                     </li>
@@ -194,7 +197,7 @@
                                     <small class="text-danger">{{ $message }}</small>
                                 @enderror
                             </div>
-                            <div class="form-group mb-3 mt-0 col-md-12 service" style="display: none;">
+                            <div class="form-group mb-1 mt-0 col-md-12 service" style="display: none;">
                                 <label for="service_id">Tampilkan Pada Layanan</label>
                                 <select name="service_id" class="js-example-basic-single form-select">
                                     <option value="" disabled selected>Pilih Layanan</option>
@@ -205,6 +208,20 @@
                                     @endforelse
                                 </select>
                                 @error('service_id')
+                                    <small class="text-danger">{{ $message }}</small>
+                                @enderror
+                            </div>
+                            <div class="form-group mb-1 mt-0 col-md-12 about" style="display: none;">
+                                <label for="about_in">Tampilkan Pada Bagian</label>
+                                <select name="about_in" class="js-example-basic-single form-select">
+                                    <option value="Profile">Profile</option>
+                                    <option value="Visi & Misi">Visi & Misi</option>
+                                    <option value="Struktur Organisasi">Struktur Organisasi</option>
+                                    <option value="Struktur Usaha">Struktur Usaha</option>
+                                    <option value="Logo">Logo</option>
+                                    <option value="Tim">Tim</option>
+                                </select>
+                                @error('about_in')
                                     <small class="text-danger">{{ $message }}</small>
                                 @enderror
                             </div>
@@ -260,7 +277,7 @@
                                     <small class="text-danger">{{ $message }}</small>
                                 @enderror
                             </div>
-                            <div class="form-group mb-3 mt-0 col-md-12 service" style="display: none;">
+                            <div class="form-group mb-1 mt-0 col-md-12 service" style="display: none;">
                                 <label for="service_id">Tampilkan Pada Layanan</label>
                                 <select name="service_id" class="js-example-basic-single form-select" id="service-edit">
                                     <option value="" disabled selected>Pilih Layanan</option>
@@ -271,6 +288,20 @@
                                     @endforelse
                                 </select>
                                 @error('service_id')
+                                    <small class="text-danger">{{ $message }}</small>
+                                @enderror
+                            </div>
+                            <div class="form-group mb-1 mt-0 col-md-12 about" style="display: none;">
+                                <label for="about_in">Tampilkan Pada Bagian</label>
+                                <select name="about_in" id="aboutIn-edit" class="js-example-basic-single form-select">
+                                    <option value="Profile">Profile</option>
+                                    <option value="Visi & Misi">Visi & Misi</option>
+                                    <option value="Struktur Organisasi">Struktur Organisasi</option>
+                                    <option value="Struktur Usaha">Struktur Usaha</option>
+                                    <option value="Logo">Logo</option>
+                                    <option value="Tim">Tim</option>
+                                </select>
+                                @error('about_in')
                                     <small class="text-danger">{{ $message }}</small>
                                 @enderror
                             </div>
@@ -334,10 +365,12 @@
             var id = $(this).data('id');
             var serviceId = $(this).data('service');
             var showIn = $(this).data('show-in');
+            var aboutIn = $(this).data('about-in');
             var image = $(this).data('image');
             $('#form-update').attr('action', 'background/update/' + id);
             $('#service-edit').val(serviceId).trigger('change');
             $('.showIn-edit').val(showIn).trigger('change');
+            $('#aboutIn-edit').val(aboutIn).trigger('change');
             $('#image-edit').attr('src', 'storage/' + image);
             $('#modal-edit').modal('show');
         });
@@ -356,6 +389,16 @@
                 $('.service').show();
             } else {
                 $('.service').hide();
+            }
+        });
+
+        $('.showIn').change(function() {
+            var selectedOption = $(this).val();
+
+            if (selectedOption == "Tentang Kami") {
+                $('.about').show();
+            } else {
+                $('.about').hide();
             }
         });
     </script>

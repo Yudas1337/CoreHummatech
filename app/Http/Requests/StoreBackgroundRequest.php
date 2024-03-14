@@ -24,6 +24,7 @@ class StoreBackgroundRequest extends FormRequest
         return [
             'image' => 'required|mimes:png,jpg,jpeg',
             'show_in' => 'required',
+            'about_in' => 'nullable',
             'service_id' => 'nullable',
         ];
     }
