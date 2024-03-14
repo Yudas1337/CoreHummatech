@@ -30,7 +30,8 @@
                             </div>
                             <div class="my-1">
                                 <label for="deskripsi">Deskripsi <span style="font-size: 11px" class="text-danger">*Wajib diisi</span></label>
-                                <textarea name="description" id="deskripsi" class="form-control" rows="5" placeholder="Mis: Hummatech adalah perusahaan IT solution terbaik se Jawa Timur">{{ $vacancy->description }}</textarea>
+                                <div class="editor" style="height: 300px">{!! old('description', $vacancy->description) !!}</div>
+                                <textarea type="text" class="form-control description d-none" name="description" placeholder="Deskripsi" rows="5">{!! old('description', $vacancy->description) !!}</textarea>
                             </div>
                             <div class="my-1">
                                 <label for="link">Tautan <span style="font-size: 11px" class="text-danger">*Wajib diisi</span></label>
@@ -75,7 +76,8 @@
                             </div>
                             <div class="my-1">
                                 <label for="deskripsi">Deskripsi <span style="font-size: 11px" class="text-danger">*Wajib diisi</span></label>
-                                <textarea name="description" id="deskripsi" class="form-control" rows="5" placeholder="Mis: Hummatech adalah perusahaan IT solution terbaik se Jawa Timur"></textarea>
+                                <div class="editor" style="height: 300px">{!! old('description') !!}</div>
+                                <textarea type="text" class="form-control description d-none" name="description" placeholder="Deskripsi" rows="5"></textarea>
                             </div>
                             <div class="my-1">
                                 <label for="link">Tautan <span style="font-size: 11px" class="text-danger">*Wajib diisi</span></label>
@@ -93,4 +95,17 @@
     </div>
 
 </div>
+@endsection
+
+@section('script')
+<script>
+    const quill = new Quill('.editor', {
+        theme: 'snow',
+        placeholder: "Silahkan masukkan deskripsi artikel.",
+    });
+
+    quill.on('text-change', (eventName, ...args) => {
+        $('.description').val(quill.root.innerHTML);
+    });
+</script>
 @endsection
