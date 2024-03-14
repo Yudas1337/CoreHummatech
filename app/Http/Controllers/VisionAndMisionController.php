@@ -15,6 +15,7 @@ class VisionAndMisionController extends Controller
     private VisionAndMisionInterface $visionAndMision;
     private VisionAndMisionService $vismisionservices;
     private ServiceInterface $service;
+
     public function __construct(VisionAndMisionInterface $visionAndMision, VisionAndMisionService $vismisionservices, ServiceInterface $service)
     {
         $this->visionAndMision = $visionAndMision;
@@ -22,6 +23,7 @@ class VisionAndMisionController extends Controller
         $this->service = $service;
         $this->middleware('auth');
     }
+
     /**
      * Display a listing of the resource.
      */
@@ -31,6 +33,7 @@ class VisionAndMisionController extends Controller
         $mision = MisionItems::where('vision_and_mission_id', $visionAndMisions ? $visionAndMisions->id : '')->get();
         $services = $this->service->get();
         $misionservice = MisionItems::where('vision_and_mission_id', null)->get();
+
         return view('admin.pages.vision-mision.index', compact('visionAndMisions', 'mision', 'services', 'misionservice'));
     }
 
@@ -49,12 +52,12 @@ class VisionAndMisionController extends Controller
     {
         $visionAndMisions = $this->visionAndMision->get()->first();
         $data = $this->vismisionservices->store($request);
-        if($request->status == 'office'){
+        if ($request->status == 'office') {
             foreach ($data as $item) {
                 if ($visionAndMisions) {
-                     $this->visionAndMision->update($visionAndMisions->id, $item);
+                    $this->visionAndMision->update($visionAndMisions->id, $item);
                     $useId = $visionAndMisions;
-                } else{
+                } else {
                     $useId = $this->visionAndMision->store($item);
                 }
             }
@@ -63,7 +66,7 @@ class VisionAndMisionController extends Controller
             $useId = $visionAndMisions;
         }
         $this->vismisionservices->storemision($request, $useId);
-        return redirect()->back()->with('success','Data Berhasil Ditambahkan');
+        return redirect()->back()->with('success', 'Data Berhasil Ditambahkan');
     }
 
     /**
@@ -97,7 +100,7 @@ class VisionAndMisionController extends Controller
     {
         $this->vismisionservices->updatemision($request, $misionItems);
 
-        return redirect()->back()->with('success','Data Berhasil Diperbarui');
+        return redirect()->back()->with('success', 'Data Berhasil Diperbarui');
     }
 
     /**
@@ -107,13 +110,13 @@ class VisionAndMisionController extends Controller
     {
         $this->visionAndMision->delete($visionAndMision->id);
 
-        return redirect()->back()->with('success','Data Berhasil Di hapus');
+        return redirect()->back()->with('success', 'Data Berhasil Di hapus');
     }
 
     public function destroymision(MisionItems $misionItems)
     {
         $this->vismisionservices->destroy($misionItems);
 
-        return redirect()->back()->with('success','Data Berhasil Di Hapus');
+        return redirect()->back()->with('success', 'Data Berhasil Di Hapus');
     }
 }
