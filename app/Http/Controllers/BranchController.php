@@ -7,6 +7,7 @@ use App\Models\Branch;
 use App\Http\Requests\StoreBranchRequest;
 use App\Http\Requests\UpdateBranchRequest;
 use App\Services\BranchService;
+use Illuminate\Http\Request;
 
 class BranchController extends Controller
 {
@@ -21,10 +22,12 @@ class BranchController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
 
         $branches = $this->branch->get();
+        $branches = $this->branch->search($request);
+
 
         return view('admin.pages.branch.index' , compact('branches'));
     }
