@@ -512,7 +512,7 @@
                                             @forelse ($product as $product)
                                                 <div class="pf-item mx-2" style="width: 300px" >
                                                     <div class="item" style="width: 300px">
-                                                        <div class="" >
+                                                        <div class="" style="background-color: #E5F1FF;">
                                                             <img src="{{ asset('storage/' . $product->image) }}" width="300px" height="300px" class="object-fit-cover" alt="Thumb">
                                                         </div>
                                                         <div class="content">
