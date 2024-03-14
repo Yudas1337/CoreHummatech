@@ -14,6 +14,14 @@
 
 @section('content')
     <div class="py-3">
+        @if($errors->all())
+            <div class="alert alert-danger">
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </div>
+        @endif
+
         @forelse ($logos as $logo)
             <form action="{{ route('philosophy.update', $logo->id) }}" method="post" enctype="multipart/form-data">
                 @method('PUT')
@@ -58,7 +66,9 @@
                                     <div class="mb-3">
                                         <label for="image">Deskripsi <small class="text-danger ms-3">*Wajib
                                                 diisi</small></label>
-                                        <textarea type="text" class="form-control" name="description" placeholder="Deskripsi" rows="5">{{ $logo->description }}</textarea>
+
+                                        <div class="editor" style="height: 300px">{!! old('description', $logo->description) !!}</div>
+                                        <textarea type="text" class="form-control description d-none" name="description" placeholder="Deskripsi" rows="5">{!! old('description', $logo->description) !!}</textarea>
                                     </div>
                                     <div class="mb-3 d-flex justify-content-end">
                                         <button class="btn btn-primary" type="submit">Simpan</button>
@@ -79,7 +89,7 @@
                                 <div class="product-box">
                                     <div class="product-img">
                                         <div id="imageContainer">
-                                            <img src="../assets/images/Figure.png" id="selectedImage"
+                                            <img src="{{ asset('assets/images/Figure.png') }}" id="selectedImage"
                                                 style="object-fit: cover; width: 100%;" class="img-fluid" alt="Logo">
                                         </div>
 
@@ -112,7 +122,9 @@
                                     <div class="mb-3">
                                         <label for="image">Deskripsi <small class="text-danger ms-3">*Wajib
                                                 diisi</small></label>
-                                        <textarea type="text" class="form-control" name="description" placeholder="Deskripsi" rows="5"></textarea>
+
+                                        <div class="editor" style="height: 300px">{!! old('description') !!}</div>
+                                        <textarea type="text" class="form-control description d-none" name="description" placeholder="Deskripsi" rows="5"></textarea>
                                     </div>
                                     <div class="mb-3 d-flex justify-content-end">
                                         <button class="btn btn-primary" type="submit">Simpan</button>
@@ -128,6 +140,17 @@
 @endsection
 
 @section('script')
+    <script>
+        const quill = new Quill('.editor', {
+            theme: 'snow',
+            placeholder: "Silahkan masukkan deskripsi artikel.",
+        });
+
+        quill.on('text-change', (eventName, ...args) => {
+            $('.description').val(quill.root.innerHTML);
+        });
+    </script>
+
     <script>
         // Fungsi untuk menampilkan gambar yang dipilih
         function displayImage(event) {
