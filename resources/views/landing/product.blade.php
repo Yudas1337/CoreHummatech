@@ -146,7 +146,7 @@
                         <div class="row align-center">
                             <div class="col-lg-6 d-none d-md-none d-lg-inline-flex">
                                 <div class="thumb">
-                                    <img alt="{{ $product->name }}" src="{{ asset('storage/' . $product->image) }}" style="margin-left: 10px; margin-right: 10px; min-height: 400px;object-fit:contain;max-height:400px"/>
+                                    <img alt="{{ $product->name }}" src="{{ asset('storage/' . $product->image) }}" style="margin-left: 10px; margin-right: 10px; min-height: 400px;object-fit:contain;max-height:400px;background-color: #E5F1FF;"/>
                                 </div>
                             </div>
                             <div class="col-lg-6 info">
@@ -190,7 +190,7 @@
                             </div>
                             <div class="col-lg-5 d-none d-md-none d-lg-inline-flex">
                                 <div class="thumb">
-                                    <img alt="{{ $product->name }}" src="{{ asset('storage/'.$product->image) }}" style="margin-left: 10px; margin-right: 10px; min-height: 400px;object-fit:contain;max-height:400px" />
+                                    <img alt="{{ $product->name }}" src="{{ asset('storage/'.$product->image) }}" style="margin-left: 10px; margin-right: 10px; min-height: 400px;object-fit:contain;max-height:400px ;background-color: #E5F1FF;" />
                                 </div>
                             </div>
                         </div>
