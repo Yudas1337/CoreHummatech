@@ -309,16 +309,16 @@
                                 <div class="card rounded-container" style="min-height: 500px">
                                     <div class="card-body" >
                                         <div class="d-flex justify-content-center rounded-container" style="background-color: #E5F1FF;">
-                                            <img class="img-fluid pt-3 mb-3" style="margin-left: 10px; margin-right: 10px; min-height: 400px;object-fit:contain" src="{{ asset('storage/' . $produk->image) }}" width="300" height="200" alt="">
+                                            <img class="img-fluid pt-3 mb-3" style="margin-left: 10px; margin-right: 10px; min-height: 200px;object-fit:contain;max-height:200px" src="{{ asset('storage/' . $produk->image) }}" width="300" height="200" alt="">
                                         </div>
                                         <h4 class="text-dark mt-3" style="font-weight:600">
                                             {{$produk->name}}
                                         </h4>
 
                                         <p class="text-dark">
-                                            {{ Str::limit($produk['description'], 40) }}
+                                            {{ Str::limit($produk['description'], 160) }}
                                         </p>
-                                        <div class="bottom">
+                                        <div class="bottom d-flex justify-content-center mt-4">
                                             <a href="{{ route('detail.product', $produk->slug) }}" class="btn btn-primary rounded-pill py-2 px-4 ">
                                                  Lihat Detail   <i class="fas fa-arrow-right"></i>
                                             </a>
