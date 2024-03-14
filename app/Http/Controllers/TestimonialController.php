@@ -34,7 +34,9 @@ class TestimonialController extends Controller
      */
     public function index(Request $request)
     {
-        $testimonials = $this->testimonial->customPaginate($request, 10);
+        // $testimonials = $this->testimonial->customPaginate($request, 10);
+        $testimonials = $this->testimonial->search($request);
+
         $services = $this->serviceData->get();
         $products = $this->productData->get();
         return view('admin.pages.testimonial.index', compact('testimonials','services','products'));
