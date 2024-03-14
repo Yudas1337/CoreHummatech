@@ -20,7 +20,6 @@
             <!-- Start Atribute Navigation -->
             <div class="attr-nav">
                 <ul>
-                    <li class="search"><a href="#"><i class="ti-search"></i></a></li>
                     <li class="side-menu">
                         <a href="#">
                             <span class="bar-1"></span>
@@ -75,7 +74,7 @@
                             </li>
                         </ul>
                     </li>
-                    
+
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Layanan</a>
                         <ul class="dropdown-menu">
