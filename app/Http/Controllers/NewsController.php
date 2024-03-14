@@ -37,7 +37,9 @@ class NewsController extends Controller
      */
     public function index(Request $request)
     {
-        $news = $this->news->customPaginate($request, 12);
+        // $news = $this->news->customPaginate($request, 12);
+        $news = $this->news->search($request);
+
         return view('admin.pages.news.index', compact('news'));
     }
 

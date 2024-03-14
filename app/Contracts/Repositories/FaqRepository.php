@@ -45,4 +45,12 @@ class FaqRepository extends BaseRepository implements FaqInterface
     {
         return $this->model->query()->where($relation, $id)->get();
     }
+    public function search(Request $request): mixed
+    {
+        return $this->model->query()
+            ->when($request->question, function ($query) use ($request) {
+                $query->where('question', 'LIKE', '%' . $request->question . '%');
+            })
+            ->get();
+    }
 }

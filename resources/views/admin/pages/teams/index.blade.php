@@ -30,6 +30,7 @@
                     <h5 class="m-2 fw-bold">Tim Hummatech</h5>
                 </div>
                 <div class="col-12 col-lg-6">
+                    <form action="/setting/teams">
                     <div class="d-flex justify-content-lg-end justify-content-start">
                         <div class="d-flex align-teams-center gap-2">
                             <p class="m-0 me-2">Cari:</p>
@@ -37,6 +38,7 @@
                         </div>
                         <a class="btn btn-primary m-0" href="#tambah" data-bs-toggle="modal">Tambah</a>
                     </div>
+                </form>
                 </div>
             </div>
         </div>
@@ -176,11 +178,11 @@
         </div>
     </div>
 
-    @if($teams->hasPages())
+    {{-- @if($teams->hasPages())
     <div class="mb-3">
         {{ $teams->links() }}
     </div>
-    @endif
+    @endif --}}
 
     @include('admin.components.delete-modal-component')
 @endsection

@@ -14,17 +14,19 @@
                     </div>
                 </div>
                 <div class="col-12 col-lg-6">
-                    <div class="d-flex justify-content-lg-end justify-content-start">
-                        <div class="d-flex align-items-center gap-2">
-                            <p class="m-0 me-2">Cari:</p>
-                            <input class="form-control me-2" type="text" placeholder="Search" aria-label="Search">
+                    <form action="/faq">
+                        <div class="d-flex justify-content-lg-end justify-content-start">
+                            <div class="d-flex align-items-center gap-2">
+                                <p class="m-0 me-2">Cari:</p>
+                                <input class="form-control me-2" name="question" value="{{ request()->question }}" type="text" placeholder="Search" aria-label="Search">
+                            </div>
+
+                            <!-- Button Add Modal -->
+                            <button class="btn btn-primary m-0" type="button" data-bs-toggle="modal"
+                                data-bs-target="#tambah">Tambah</button>
+
                         </div>
-
-                        <!-- Button Add Modal -->
-                        <button class="btn btn-primary m-0" type="button" data-bs-toggle="modal"
-                            data-bs-target="#tambah">Tambah</button>
-
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -74,7 +76,8 @@
     </div>
 
     <!-- Pagination -->
-    {{ $faqs->links('pagination::bootstrap-5') }}
+    {{-- {{ $faqs->links('pagination::bootstrap-5') }} --}}
+
     <!-- Add Modal -->
     <div class="modal fade modal-bookmark" id="tambah" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">

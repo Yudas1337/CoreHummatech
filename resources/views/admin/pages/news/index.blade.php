@@ -14,11 +14,14 @@
                 </div>
                 <div class="col-sm-5">
                     <div class="d-flex align-items-center">
-                        <label for="search">Cari:</label>
-                        <input type="text" id="search" class="form-control mx-3">
+                        <form action="/news/index">
+                            <div class="d-flex justify-content-lg-end justify-content-start">
+                                <p class="m-0 me-2">Cari:</p>&nbsp;
+                                <input class="form-control me-2" name="title" value="{{ request()->title }}" type="text" placeholder="Search" aria-label="Search">
+                            </div>
+                        </form>
+                        <a href="/news/create" class="btn btn-primary">Tambah</a>&nbsp;
                         <a href="/berita" class="btn btn-secondary w75 col-3" target="_blank">Lihat Berita</a> &nbsp;
-                        <a href="/news/create" class="btn btn-primary">Tambah</a>
-
                         <div class="modal fade" id="add" tabindex="-1" aria-labelledby="exampleModalLabel"
                             aria-hidden="true">
                             <div class="modal-dialog">
@@ -65,7 +68,7 @@
                                 </div>
                                 <div class="product-details">
                                     <small style="font-size: 13px"><span
-                                            class="text-primary mb-3 fw-bold"></span>{{ \Carbon\Carbon::parse($news['date'])->locale('id_ID')->isoFormat('dddd, D MMMM YYYY') }}</small>
+                                            class="text-primary mb-3 fw-bold"></span>{{ \Carbon\Carbon::parse($item['date'])->locale('id_ID')->isoFormat('dddd, D MMMM YYYY') }}</small>
                                     <a href="/news">
                                         <h4 class="mb-1 mt-3">{{ $item->title }}</h4>
                                     </a>
@@ -109,7 +112,7 @@
         </div>
     </div>
 
-    {{ $news->links() }}
+    {{-- {{ $news->links() }} --}}
 @endsection
 
 @section('script')

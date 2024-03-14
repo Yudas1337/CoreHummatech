@@ -31,4 +31,12 @@ class TeamRepository extends BaseRepository implements TeamInterface
     {
         return $this->model->query()->findOrFail($id)->delete($id);
     }
+    public function search(Request $request): mixed
+    {
+        return $this->model->query()
+            ->when($request->name, function ($query) use ($request) {
+                $query->where('name', 'LIKE', '%' . $request->name . '%');
+            })
+            ->get();
+    }
 }

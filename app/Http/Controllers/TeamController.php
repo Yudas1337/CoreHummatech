@@ -27,7 +27,8 @@ class TeamController extends Controller
      */
     public function index(Request $request)
     {
-        $teams = $this->team->customPaginate($request, 12);
+        // $teams = $this->team->customPaginate($request, 12);
+        $teams = $this->team->search($request);
         $positions = $this->position->get();
         return view('admin.pages.teams.index' , compact('teams' , 'positions'));
     }
