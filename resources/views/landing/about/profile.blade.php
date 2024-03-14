@@ -117,7 +117,7 @@
         </div>
     </div>
 
-    <div class="about-us-area pt-5">
+    <div class="about-us-area pt-5 mb-5">
         <div class="container">
             <img src="{{ asset('assets-home/img/about-polygon.svg') }}" class="about-triangle" alt="Polygon" />
             <div class="about-items">
