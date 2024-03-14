@@ -49,7 +49,7 @@
                                     @enderror
                                 </div>
                                 <div class="mb-3">
-                                    <label>Judul Berita</label>
+                                    <label >Judul Berita</label>
                                     <input class="form-control" value="{{ old('title') }}" type="text" name="title"
                                         placeholder="Mis: Peluncuran Humma Academy" />
                                     @error('title')

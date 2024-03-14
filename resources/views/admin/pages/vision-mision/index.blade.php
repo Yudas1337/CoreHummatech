@@ -77,8 +77,8 @@
                 <div class="card-header">
                     <div class="card-header-right">
                         <ul class="">
-                            <li><i class="fa fa-pen text-primary btn-edit-misi" type="button" data-id="{{ $item->id }}"
-                                    data-misi="{{ $item->mission }}"></i></li>
+                            <li><i class="fa fa-pen text-primary btn-edit-misi" type="button"
+                                    data-id="{{ $item->id }}" data-misi="{{ $item->mission }}"></i></li>
                             <li><i class="fa fa-trash text-primary btn-delete-misi" data-id="{{ $item->id }}"></i></li>
                         </ul>
                     </div>
@@ -105,16 +105,22 @@
             <div class="modal-content">
                 <div class="advance-options">
                     <ul class="simple-wrapper nav nav-tabs modal-header" id="myTab" role="tablist">
-                        <li class="nav-item"><a class="nav-link active txt-primary" id="profile-tabs" data-bs-toggle="tab" href="#chats" role="tab" aria-controls="profile" aria-selected="false">Kantor</a></li>
-                        <li class="nav-item"><a class="nav-link txt-primary" id="contact-tab" data-bs-toggle="tab" href="#contacts  " role="tab" aria-controls="contact" aria-selected="false">Layanan</a></li>
+                        <li class="nav-item">
+                            <a class="nav-link active txt-primary" id="profile-tabs" data-bs-toggle="tab" href="#chats" role="tab" aria-controls="profile" aria-selected="false">Kantor</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link txt-primary" id="contact-tab" data-bs-toggle="tab" href="#contacts  " role="tab" aria-controls="contact" aria-selected="false">Layanan</a>
+                        </li>
                         <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
                     </ul>
                     <div class="tab-content" id="chat-options-tabContent">
-                        <div class="tab-pane fade show active" id="chats" role="tabpanel" aria-labelledby="chats-tab">
+                        <div class="tab-pane fade show active" id="chats" role="tabpanel"
+                            aria-labelledby="chats-tab">
                             <form class="form-bookmark needs-validation" action="{{ route('create.vision.mision') }}"
                                 method="POST" id="bookmark-form" novalidate="" enctype="multipart/form-data">
                                 @csrf
-                                <input type="hidden" name="status" value="office">
+                                <input type="hidden" aria-hidden="true" name="status" value="office" />
+
                                 <div class="modal-body">
                                     <div class="row g-2">
                                         <div class="mb-3 mt-0 col-md-12">
@@ -162,9 +168,9 @@
                                             <label for="service_id">Tampilkan di</label>
                                             <select class="tambah" aria-label=".form-select example" name="service_id">
                                                 @foreach ($services as $service)
-                                                <option value="{{ $service->id }}"
-                                                    {{ $service->service_id == $service->id ? 'selected' : '' }}>
-                                                    {{ $service->name }}</option>
+                                                    <option value="{{ $service->id }}"
+                                                        {{ $service->service_id == $service->id ? 'selected' : '' }}>
+                                                        {{ $service->name }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -279,18 +285,18 @@
 @endsection
 
 @section('script')
-<script>
-    $(document).ready(function() {
-        $(".tambah").select2({
-            dropdownParent: $("#tambah")
+    <script>
+        $(document).ready(function() {
+            $(".tambah").select2({
+                dropdownParent: $("#tambah")
+            });
         });
-    });
-    $(document).ready(function() {
-        $(".js-example-basic-single").select2({
-            dropdownParent: $("#edit")
+        $(document).ready(function() {
+            $(".js-example-basic-single").select2({
+                dropdownParent: $("#edit")
+            });
         });
-    });
-</script>
+    </script>
     <script>
         const deleteElement = (id) => $('#' + id).remove();
 
