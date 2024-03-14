@@ -223,7 +223,7 @@
                                                             }
                                                         @endphp
 
-                                                        <a href="https://wa.me/{{ $cleanPhone }}">{{ $cleanPhone }}</a>
+                                                        <a href="https://wa.me/{{ $profile->phone }}" target="_blank">{{ $cleanPhone }}</a>
                                                     @else
                                                         <a href="https://wa.me/6285176777785">085176777785</a>
                                                     @endisset
