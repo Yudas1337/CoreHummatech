@@ -134,7 +134,7 @@
 
                         @if ($profile->proposal)
                             <a class="btn btn-gradient effect btn-md"
-                                href="detail/profile"
+                                href="/detail/profile"
                                >Lihat Profil Lengkap</a>
                         @endif
                     </div>
