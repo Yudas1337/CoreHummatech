@@ -30,8 +30,6 @@
     <link href="{{ asset('assets-home/css/elegant-icons.css') }}" rel="stylesheet" />
     <link href="{{ asset('assets-home/css/flaticon-set.css') }}" rel="stylesheet" />
     <link href="{{ asset('assets-home/css/magnific-popup.css') }}" rel="stylesheet" />
-    <link href="{{ asset('assets-home/css/owl.carousel.min.css') }}" rel="stylesheet" />
-    <link href="{{ asset('assets-home/css/owl.theme.default.min.css') }}" rel="stylesheet" />
     <link href="{{ asset('assets-home/css/animate.css') }}" rel="stylesheet" />
     <link href="{{ asset('assets-home/css/bootsnav.css') }}" rel="stylesheet" />
     <link href="{{ asset('assets-home/style.css') }}" rel="stylesheet">
@@ -277,7 +275,6 @@
 <script src="{{ asset('assets-home/js/custom-chart.js') }}"></script>
 <script src="{{ asset('assets-home/js/main.js') }}"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script src="jquery.min.js"></script>
 <script src="owlcarousel/owl.carousel.min.js"></script>
 @yield('script')
 

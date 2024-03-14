@@ -273,7 +273,6 @@
             <script src="{{ asset('assets-home/js/custom-chart.js') }}"></script>
             <script src="{{ asset('assets-home/js/main.js') }}"></script>
             <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-            <script src="jquery.min.js"></script>
             <script src="owlcarousel/owl.carousel.min.js"></script>
 
         </body>
