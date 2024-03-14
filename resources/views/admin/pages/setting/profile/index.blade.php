@@ -16,6 +16,14 @@
 @section('content')
     <div class="py-3">
         <div class="row">
+            @if($errors->all())
+                @foreach ($errors->all() as $error)
+                    <div class="alert alert-danger" role="alert">
+                        {{ $error }}
+                    </div>
+                @endforeach
+            @endif
+
             @forelse ($profile as $profil)
                 <div class="col-sm-12">
                     <div class="card card-body">
@@ -50,25 +58,25 @@
                                 </div>
                                 <div class="col-sm-8">
                                     <div class="mt-1">
-                                        <label for="headline">Judul <span style="font-size: 11px" class="text-danger">*Wajib
+                                        <label for="headline">Judul <span style="font-size: .6875rem" class="text-danger">*Wajib
                                                 diisi</span></label>
                                         <input type="text" class="form-control" id="headline" name="title"
                                             value="{{ $profil->title }}">
                                     </div>
                                     <div class="my-1">
-                                        <label for="subheadline">Subjudul <span style="font-size: 11px"
+                                        <label for="subheadline">Subjudul <span style="font-size: .6875rem"
                                                 class="text-danger">*Wajib diisi</span></label>
                                         <input type="text" class="form-control" id="subheadline" name="subtitle"
                                             value="{{ $profil->subtitle }}">
                                     </div>
                                     <div class="my-1">
-                                        <label for="deskripsi">Deskripsi <span style="font-size: 11px"
+                                        <label for="deskripsi">Deskripsi <span style="font-size: .6875rem"
                                                 class="text-danger">*Wajib diisi</span></label>
-                                        <div id="editor" style="height: 200px">{!! $profil->description !!}</div>
-                                        <textarea name="description" class="d-none description-hidden" id=" deskripsi" cols="30" rows="10">{!! old('description') !!}</textarea>
+                                        <div id="editor" style="height: 12.5rem">{!! $profil->description !!}</div>
+                                        <textarea name="description" class="d-none description-hidden" id=" deskripsi" cols="30" rows="10">{!! old('description', $profil->description) !!}</textarea>
                                     </div>
                                     <div class="my-1">
-                                        <label for="address">Alamat <span style="font-size: 11px"
+                                        <label for="address">Alamat <span style="font-size: .6875rem"
                                                 class="text-danger">*Wajib diisi</span></label>
                                         <textarea name="address" id="address" class="form-control" rows="5">{{ $profil->address }}</textarea>
                                     </div>
@@ -118,25 +126,25 @@
                                 </div>
                                 <div class="col-sm-8">
                                     <div class="mt-1">
-                                        <label for="headline">Judul <span style="font-size: 11px"
+                                        <label for="headline">Judul <span style="font-size: .6875rem"
                                                 class="text-danger">*Wajib diisi</span></label>
                                         <input type="text" class="form-control" id="headline" name="title"
                                             value="" placeholder="Masukkan Judul">
                                     </div>
                                     <div class="my-1">
-                                        <label for="subheadline">Subjudul <span style="font-size: 11px"
+                                        <label for="subheadline">Subjudul <span style="font-size: .6875rem"
                                                 class="text-danger">*Wajib diisi</span></label>
                                         <input type="text" class="form-control" id="subheadline" name="subtitle"
                                             value="" placeholder="Masukkan Subjudul">
                                     </div>
                                     <div class="my-1">
-                                        <label for="deskripsi">Deskripsi <span style="font-size: 11px"
+                                        <label for="deskripsi">Deskripsi <span style="font-size: .6875rem"
                                                 class="text-danger">*Wajib diisi</span></label>
-                                        <div id="editor" style="height: 200px">{!! old('description') !!}</div>
+                                        <div id="editor" style="height: 12.5rem">{!! old('description') !!}</div>
                                         <textarea name="description" class="d-none description-hidden" id="description" cols="30" rows="10">{!! old('description') !!}</textarea>
                                     </div>
                                     <div class="my-1">
-                                        <label for="address">Alamat <span style="font-size: 11px"
+                                        <label for="address">Alamat <span style="font-size: .6875rem"
                                                 class="text-danger">*Wajib diisi</span></label>
                                         <textarea name="address" id="address" class="form-control" rows="5" placeholder="Alamat Perusahaan"></textarea>
                                     </div>
@@ -297,10 +305,6 @@
                     }
                 }
             },
-        });
-
-        quill.on('text-change', (eventName, ...args) => {
-            $('.description-hidden').val(quill.root.innerHTML);
         });
 
         quill.on('text-change', (eventName, ...args) => {

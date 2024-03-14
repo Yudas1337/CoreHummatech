@@ -153,7 +153,7 @@ Route::middleware('auth')->group(function () {
     Route::put('update/profile/{profile}', [ProfileController::class, 'update'])->name('update.profile');
 
     // Visi dan Misi
-    Route::get('vision-mision', [VisionAndMisionController::class, 'index'])->name('vision.mision');
+    Route::get('vision-mision', [VisionAndMisionController::class, 'inde`x'])->name('vision.mision');
     Route::post('create/vision/mision/', [VisionAndMisionController::class, 'store'])->name('create.vision.mision');
     Route::put('update/vision/mision/{visionAndMision}', [VisionAndMisionController::class, 'update'])->name('update.vision.mision');
     Route::put('update/mision/mision/{misionItems}', [VisionAndMisionController::class, 'updatemision'])->name('update.mision.mision');
