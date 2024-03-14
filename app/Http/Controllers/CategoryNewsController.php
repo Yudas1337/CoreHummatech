@@ -7,6 +7,7 @@ use App\Models\CategoryNews;
 use App\Http\Requests\StoreCategoryNewsRequest;
 use App\Http\Requests\UpdateCategoryNewsRequest;
 use App\Services\CategoryNewsService;
+use Illuminate\Http\Request;
 
 class CategoryNewsController extends Controller
 {
@@ -21,9 +22,11 @@ class CategoryNewsController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
         $categoryNews = $this->model->get();
+        $categoryNews = $this->model->search($request);
+
         return view('admin.pages.news-category.index' , compact('categoryNews'));
     }
 

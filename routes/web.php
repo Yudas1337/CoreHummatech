@@ -69,8 +69,8 @@ Route::middleware('auth')->group(function () {
 
     // News Category
     Route::get('category-news', [CategoryNewsController::class, 'index']);
+    Route::delete('delete/category/news/{model}', [CategoryNewsController::class, 'destroy'])->name('delete.category.news');
     Route::post('create/category/news', [CategoryNewsController::class, 'store'])->name('create.category.news');
-    Route::delete('delete/category/news/{categoryNews}', [CategoryNewsController::class, 'destroy'])->name('delete.category.news');
     Route::put('update/category/news/{categoryNews}', [CategoryNewsController::class, 'update'])->name('update.category.news');
 
 
