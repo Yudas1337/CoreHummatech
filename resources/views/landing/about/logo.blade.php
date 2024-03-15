@@ -140,6 +140,7 @@
 
                                     {!! Str::limit($logo->description, 250) !!}
                                 </p>
+                                
                                 <a href="/detail-logo" class="btn btn-gradient btn-lg">Selengkapnya</a>
                                 {{-- <button class="btn btn-gradient btn-lg">Selengkapnya</button> --}}
                             </div>
