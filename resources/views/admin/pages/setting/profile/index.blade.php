@@ -16,6 +16,14 @@
 @section('content')
     <div class="py-3">
         <div class="row">
+            @if ($errors->all())
+                @foreach ($errors->all() as $error)
+                    <div class="alert alert-danger" role="alert">
+                        {{ $error }}
+                    </div>
+                @endforeach
+            @endif
+
             @forelse ($profile as $profil)
                 <div class="col-sm-12">
                     <div class="card card-body">
@@ -40,7 +48,7 @@
                                     <div class="my-1">
                                         <label for="call">No. Telp</label>
                                         <input type="text" class="form-control" name="phone" placeholder="No telp"
-                                            value="{{ $profil->phone }}">
+                                            value="{{ $profil->phone }}" onkeyup="formatPhone(event)" />
                                     </div>
                                     <div class="my-1">
                                         <label for="call">Email</label>
@@ -50,25 +58,26 @@
                                 </div>
                                 <div class="col-sm-8">
                                     <div class="mt-1">
-                                        <label for="headline">Judul <span style="font-size: 11px" class="text-danger">*Wajib
+                                        <label for="headline">Judul <span style="font-size: .6875rem"
+                                                class="text-danger">*Wajib
                                                 diisi</span></label>
                                         <input type="text" class="form-control" id="headline" name="title"
                                             value="{{ $profil->title }}">
                                     </div>
                                     <div class="my-1">
-                                        <label for="subheadline">Subjudul <span style="font-size: 11px"
+                                        <label for="subheadline">Subjudul <span style="font-size: .6875rem"
                                                 class="text-danger">*Wajib diisi</span></label>
                                         <input type="text" class="form-control" id="subheadline" name="subtitle"
                                             value="{{ $profil->subtitle }}">
                                     </div>
                                     <div class="my-1">
-                                        <label for="deskripsi">Deskripsi <span style="font-size: 11px"
+                                        <label for="deskripsi">Deskripsi <span style="font-size: .6875rem"
                                                 class="text-danger">*Wajib diisi</span></label>
-                                        <div id="editor" style="height: 200px">{!! $profil->description !!}</div>
-                                        <textarea name="description" class="d-none description-hidden" id=" deskripsi" cols="30" rows="10">{!! old('description') !!}</textarea>
+                                        <div id="editor" style="height: 12.5rem">{!! $profil->description !!}</div>
+                                        <textarea name="description" class="d-none description-hidden" id=" deskripsi" cols="30" rows="10">{!! old('description', $profil->description) !!}</textarea>
                                     </div>
                                     <div class="my-1">
-                                        <label for="address">Alamat <span style="font-size: 11px"
+                                        <label for="address">Alamat <span style="font-size: .6875rem"
                                                 class="text-danger">*Wajib diisi</span></label>
                                         <textarea name="address" id="address" class="form-control" rows="5">{{ $profil->address }}</textarea>
                                     </div>
@@ -108,7 +117,7 @@
                                     <div class="my-1">
                                         <label for="call">No. Telp</label>
                                         <input type="text" class="form-control" name="phone" placeholder="No telp"
-                                            value="">
+                                            value="" onkeyup="formatPhone(event)" />
                                     </div>
                                     <div class="my-1">
                                         <label for="call">Email</label>
@@ -118,25 +127,25 @@
                                 </div>
                                 <div class="col-sm-8">
                                     <div class="mt-1">
-                                        <label for="headline">Judul <span style="font-size: 11px"
+                                        <label for="headline">Judul <span style="font-size: .6875rem"
                                                 class="text-danger">*Wajib diisi</span></label>
                                         <input type="text" class="form-control" id="headline" name="title"
                                             value="" placeholder="Masukkan Judul">
                                     </div>
                                     <div class="my-1">
-                                        <label for="subheadline">Subjudul <span style="font-size: 11px"
+                                        <label for="subheadline">Subjudul <span style="font-size: .6875rem"
                                                 class="text-danger">*Wajib diisi</span></label>
                                         <input type="text" class="form-control" id="subheadline" name="subtitle"
                                             value="" placeholder="Masukkan Subjudul">
                                     </div>
                                     <div class="my-1">
-                                        <label for="deskripsi">Deskripsi <span style="font-size: 11px"
+                                        <label for="deskripsi">Deskripsi <span style="font-size: .6875rem"
                                                 class="text-danger">*Wajib diisi</span></label>
-                                        <div id="editor" style="height: 200px">{!! old('description') !!}</div>
+                                        <div id="editor" style="height: 12.5rem">{!! old('description') !!}</div>
                                         <textarea name="description" class="d-none description-hidden" id="description" cols="30" rows="10">{!! old('description') !!}</textarea>
                                     </div>
                                     <div class="my-1">
-                                        <label for="address">Alamat <span style="font-size: 11px"
+                                        <label for="address">Alamat <span style="font-size: .6875rem"
                                                 class="text-danger">*Wajib diisi</span></label>
                                         <textarea name="address" id="address" class="form-control" rows="5" placeholder="Alamat Perusahaan"></textarea>
                                     </div>
@@ -191,28 +200,22 @@
     <script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.polyfills.min.js"></script>
 
     <script>
-        // Fungsi untuk menampilkan gambar yang dipilih
         function displayImage(event) {
             const input = event.target;
             const imageContainer = document.getElementById('imageContainer');
             const selectedImage = document.getElementById('selectedImage');
 
-            // Memastikan ada file yang dipilih
             if (input.files && input.files[0]) {
                 const reader = new FileReader();
 
-                // Membaca file gambar yang dipilih
                 reader.onload = function(e) {
                     selectedImage.src = e.target.result;
                 };
 
-                // Membaca file sebagai URL data
                 reader.readAsDataURL(input.files[0]);
 
-                // Menampilkan kontainer gambar
                 imageContainer.style.display = 'block';
             } else {
-                // Jika tidak ada file yang dipilih, sembunyikan kontainer gambar
                 imageContainer.style.display = 'none';
             }
         }
@@ -227,6 +230,26 @@
     <script>
         var targetTags = new Tagify(document.getElementById('tags'));
     </script>
+
+    <script>
+        function formatPhone(event) {
+            const phoneInput = event.target;
+            const inputText = phoneInput.value.trim();
+
+            // Menghapus karakter selain angka
+            const phoneNumber = inputText.replace(/\D/g, '');
+
+            // Mengatur awalan menjadi "+62"
+            let formattedPhone = "+62";
+
+            // Menghapus angka 0 setelah "+62"
+            formattedPhone += phoneNumber.substr(2).replace(/^0+/, '');
+
+            // Memperbarui nilai input dengan nomor telepon yang diformat
+            phoneInput.value = formattedPhone;
+        }
+    </script>
+
 
     <script>
         var customToolbar = [
@@ -297,10 +320,6 @@
                     }
                 }
             },
-        });
-
-        quill.on('text-change', (eventName, ...args) => {
-            $('.description-hidden').val(quill.root.innerHTML);
         });
 
         quill.on('text-change', (eventName, ...args) => {

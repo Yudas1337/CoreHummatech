@@ -38,4 +38,12 @@ class TermsconditionRepository extends BaseRepository implements TermsconditionI
     {
         return $this->model->query()->findOrFail($id)->delete($id);
     }
+    public function search(Request $request): mixed
+    {
+        return $this->model->query()
+        ->when($request->termcondition, function ($query) use ($request) {
+            $query->where('termcondition', 'LIKE', '%' . $request->termcondition . '%');
+        })
+        ->get();
+    }
 }

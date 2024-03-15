@@ -61,17 +61,17 @@
                 <div class="col-12 col-lg-6">
                     <h4 class="m-2">Jabatan</h4>
                 </div>
-                <form action="/setting/departement">
-                    <div class="col-12 col-lg-12 d-flex justify-content-end">
-                        <div class="d-flex gap-2 col-sm-4">
-                            <div class="input-group">
-                                <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-magnifying-glass"></i></span>
-                                <input class="form-control me-2" name="name" value="{{ request()->name }}" type="text" placeholder="Search" aria-label="Search">
-                            </div>
-                            <button class="btn btn-primary m-0" type="button" data-bs-toggle="modal"
-                                data-bs-target="#tambah">Tambah</button>
-
+                <form class="col-12 col-lg-6 d-flex justify-content-end" action="/setting/departement">
+                    <div class="d-flex gap-2 col-sm-4">
+                        <div class="input-group">
+                            <span class="input-group-text" id="basic-addon1"><i
+                                    class="fa-solid fa-magnifying-glass"></i></span>
+                            <input class="form-control me-2" name="name" value="{{ request()->name }}" type="text"
+                                placeholder="Search" aria-label="Search">
                         </div>
+                        <button class="btn btn-primary m-0" type="button" data-bs-toggle="modal"
+                            data-bs-target="#tambah">Tambah</button>
+
                     </div>
                 </form>
             </div>
@@ -95,8 +95,10 @@
                         <td>{{ $index + 1 }}</td>
                         <td> {{ $position->name }}</td>
                         <td>
-                            <button  class="btn btn-warning btn-edit" id="{{ $position->id }}" data-id="{{ $position->id }}" data-name="{{ $position->name }}">Edit</button>
-                            <button class="btn btn-danger btn-delete" id="{{ $position->id }}" data-id="{{ $position->id }}">Hapus</button>
+                            <button class="btn btn-warning btn-edit" id="{{ $position->id }}" data-id="{{ $position->id }}"
+                                data-name="{{ $position->name }}">Edit</button>
+                            <button class="btn btn-danger btn-delete" id="{{ $position->id }}"
+                                data-id="{{ $position->id }}">Hapus</button>
                         </td>
                     </tr>
                 @empty
@@ -142,8 +144,8 @@
     </div>
 
     <!-- Edit Modal -->
-    <div class="modal fade modal-bookmark" id="modal-edit" tabindex="-1" role="dialog"
-        aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade modal-bookmark" id="modal-edit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">

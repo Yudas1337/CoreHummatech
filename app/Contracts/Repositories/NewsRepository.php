@@ -61,4 +61,11 @@ class NewsRepository extends BaseRepository implements NewsInterface
     {
         return $this->model->query()->count();
     }
+    public function search(Request $request): mixed
+    {
+        return $this->model->query()
+        ->when($request->title, function($query) use ($request){
+            $query->where('title', 'LIKE', '%' . $request->title . '%');
+        })->get();
+    }
 }

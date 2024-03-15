@@ -125,8 +125,8 @@
                                 style="height: 48px;width: auto;" alt="Logo">
 
                             @isset($profile)
-                                <p>{{ Str::limit($profile->description, 300) }}</p>
-                                <a href="{{ url('/about-us') }}">Lihat Selengkapnya</a>
+                                <p>{!! Str::limit(strip_tags($profile->description), 300) !!}</p>
+                                <a href="{{ url('/about-us/profile') }}">Lihat Selengkapnya</a>
                             @else
                                 <p>
                                     Bertransformasi menjadi perusahaan yang mampu menjawab tantangan di era revolusi
@@ -223,7 +223,7 @@
                                                             }
                                                         @endphp
 
-                                                        <a href="https://wa.me/{{ $cleanPhone }}">{{ $cleanPhone }}</a>
+                                                        <a href="https://wa.me/{{ $profile->phone }}" target="_blank">{{ $cleanPhone }}</a>
                                                     @else
                                                         <a href="https://wa.me/6285176777785">085176777785</a>
                                                     @endisset

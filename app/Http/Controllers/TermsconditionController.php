@@ -8,6 +8,7 @@ use App\Contracts\Interfaces\ServiceInterface;
 use App\Http\Requests\StoreTermsconditionRequest;
 use App\Http\Requests\UpdateTermsconditionRequest;
 use App\Contracts\Interfaces\TermsconditionInterface;
+use Illuminate\Http\Request;
 
 class TermsconditionController extends Controller
 {
@@ -24,9 +25,11 @@ class TermsconditionController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $termscondition = $this->termscondition->customPaginate(request(), 5);
+        // $termscondition = $this->termscondition->customPaginate(request(), 5);
+        $termscondition = $this->termscondition->search($request);
+
         $services = $this->service->get();
         return view('admin.pages.terms-condition.index', compact('termscondition', 'services'));
     }

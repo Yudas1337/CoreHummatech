@@ -128,14 +128,11 @@
                         <h2>{{ $profile->subtitle }}</h2>
                         <img src="{{ asset('storage/' . $profile->image) }}" alt="Thumb"
                             class="w-75 mb-3 d-block mx-auto d-lg-none" />
-                        <p>
-                            {{$profile->description}}
-                        </p>
+                        <p>{!! $profile->description !!}</p>
 
                         @if ($profile->proposal)
                             <a class="btn btn-gradient effect btn-md"
-                                href="detail/profile"
-                               >Lihat Profil Lengkap</a>
+                                href="{{ url('detail/profile') }}">Lihat Profil Lengkap</a>
                         @endif
                     </div>
                     <div class="col-lg-6 d-none d-md-none d-lg-inline">

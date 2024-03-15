@@ -8,6 +8,7 @@ use App\Contracts\Interfaces\ServiceInterface;
 use App\Models\Faq;
 use App\Http\Requests\StoreFaqRequest;
 use App\Http\Requests\UpdateFaqRequest;
+use Illuminate\Http\Request;
 
 class FaqController extends Controller
 {
@@ -23,9 +24,11 @@ class FaqController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $faqs = $this->faq->customPaginate(request(), 5);
+        // $faqs = $this->faq->customPaginate(request(), 5);
+        $faqs = $this->faq->search($request);
+
         $services = $this->service->get();
         $products = $this->product->get();
         // dd($products);

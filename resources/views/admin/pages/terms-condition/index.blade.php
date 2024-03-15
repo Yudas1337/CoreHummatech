@@ -14,17 +14,19 @@
                     </div>
                 </div>
                 <div class="col-12 col-lg-6">
-                    <div class="d-flex justify-content-lg-end justify-content-start">
-                        <div class="d-flex align-items-center gap-2">
-                            <p class="m-0 me-2">Cari:</p>
-                            <input class="form-control me-2" type="text" placeholder="Search" aria-label="Search">
+                    <form action="/terms_condition">
+                        <div class="d-flex justify-content-lg-end justify-content-start">
+                            <div class="d-flex align-items-center gap-2">
+                                <p class="m-0 me-2">Cari:</p>
+                                <input class="form-control me-2" name="termcondition" value="{{ request()->termcondition }}" type="text" placeholder="Search" aria-label="Search">
+                            </div>
+
+                            <!-- Button Add Modal -->
+                            <button class="btn btn-primary m-0" type="button" data-bs-toggle="modal"
+                                data-bs-target="#tambah">Tambah</button>
+
                         </div>
-
-                        <!-- Button Add Modal -->
-                        <button class="btn btn-primary m-0" type="button" data-bs-toggle="modal"
-                            data-bs-target="#tambah">Tambah</button>
-
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -69,9 +71,9 @@
     </div>
 
     <!-- Pagination -->
-    <div class="pt-3 pb-5 align-items-center d-flex gap-2 justify-content-end">
+    {{-- <div class="pt-3 pb-5 align-items-center d-flex gap-2 justify-content-end">
         {{ $termscondition->links('pagination::bootstrap-4') }}
-    </div>
+    </div> --}}
 
     <!-- Add Modal -->
     <div class="modal fade modal-bookmark" id="tambah" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"

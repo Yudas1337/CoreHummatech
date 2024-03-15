@@ -129,7 +129,7 @@
                         <img src="{{ asset('storage/' . $profile->image) }}" alt="Thumb"
                             class="w-75 mb-3 d-block mx-auto d-lg-none" />
                         <p>
-                            {{$profile->description}}
+                            {!! $profile->description !!}
                         </p>
 
                         @if ($profile->proposal)

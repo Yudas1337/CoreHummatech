@@ -18,6 +18,7 @@ class VacancyController extends Controller
         $this->vacancy = $vacancy;
         $this->service = $service;
     }
+    
     /**
      * Display a listing of the resource.
      */

@@ -123,8 +123,8 @@
                                 style="height: 48px;width: auto;" alt="Logo">
 
                             @isset($profiles)
-                                <p>{{ Str::limit($profiles->description, 300) }}</p>
-                                <a href="{{ url('/about-us') }}">Lihat Selengkapnya</a>
+                                <p>{!! Str::limit(strip_tags($profile->description), 300) !!}</p>
+                                <a href="{{ url('/about-us/profile') }}">Lihat Selengkapnya</a>
                             @else
                                 <p>
                                     Bertransformasi menjadi perusahaan yang mampu menjawab tantangan di era revolusi
@@ -240,8 +240,9 @@
                         <div class="footer-bottom-box mt-0 p-4">
                             <div class="row">
                                 <div class="col-lg-12">
-                                    <p class="text-center">&copy; Copyright 2024. All Rights Reserved by <a href="{{ url('/') }}">
-                                        PT. Humma Teknologi Indonesia                                 </a></p>
+                                    <p class="text-center">&copy; Copyright 2024. All Rights Reserved by <a
+                                            href="{{ url('/') }}">
+                                            PT. Humma Teknologi Indonesia </a></p>
                                 </div>
                             </div>
                         </div>
@@ -252,7 +253,7 @@
             <!-- End Footer -->
 
             <!-- jQuery Frameworks
-                            ============================================= -->
+                                    ============================================= -->
             <script src="{{ asset('assets-home/js/jquery-3.6.0.min.js') }}"></script>
             <script src="{{ asset('assets-home/js/popper.min.js') }}"></script>
             <script src="{{ asset('assets-home/js/bootstrap.min.js') }}"></script>
