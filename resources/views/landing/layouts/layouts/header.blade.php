@@ -58,7 +58,7 @@
                                 <a href="/about-us/vision-mision">visi & misi</a>
                             </li>
                             <li class="">
-                                <a href="/about-us/structure-organisation">struktur organisai</a>
+                                <a href="/about-us/structure-organisation">struktur organisasi</a>
                             </li>
                             <li class="">
                                 <a href="/about-us/structure-office">struktur usaha</a>
