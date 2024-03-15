@@ -114,11 +114,9 @@
                             </div>
                         </div>
                     </div>
-                    <ul>
-                        <li style="list-style: disc">
-                            {!! $logo->description !!}
-                        </li>
-                    </ul>
+                    <p>
+                        {!! $logo->description !!}
+                    </p>
 
                     @empty
 
