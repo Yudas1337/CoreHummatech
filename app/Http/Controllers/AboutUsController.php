@@ -62,7 +62,7 @@ class AboutUsController extends Controller
     public function vision_mision()
     {
         $visionMisions = $this->visionMision->get();
-        $missions = $this->visionMision->get();
+        $missions = $this->misionItems->get();
         $background = $this->background->getByType('Tentang Kami');
         return view('landing.about.vision-mision', compact('visionMisions', 'background', 'missions'));
     }

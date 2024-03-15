@@ -47,7 +47,16 @@
                 padding-right: unset;
             }
         }
+
     </style>
+    <style>
+        @media (max-width: 600px) {
+            .carousel-image {
+                max-width: 200px;
+            }
+        }
+    </style>
+
     <style>
         #owl-carousel-mitra::before,
         #owl-carousel-mitra::after {
@@ -378,33 +387,33 @@
                                 <!-- End Faq -->
                             </div>
                         @endif
+
                         @if ($servicemitras->count() > 0)
-                            <div class="py-2 mb-5">
-                                <div class="title-service">
-                                    <h4 class="m-0">Mitra Kami</h4>
-                                    <div class="dash"></div>
-                                    <div class="devider"></div>
-                                    <div class="team-slider owl-carousel d-flex justify-content-center">
-                                        @forelse ($servicemitras as $mitra)
-                                            <div class="team-item mx-1 ">
-                                                <img src="{{ asset('storage/' . $mitra->mitra->image) }}" alt="Mitra Image"
-                                                    class="img-fluid">
+                        <div class="py-2 mb-5">
+                            <div class="title-service">
+                                <h4 class="m-0">Mitra Kami</h4>
+                                <div class="dash"></div>
+                                <div class="devider"></div>
+                                <div class="team-slider owl-carousel d-flex justify-content-center">
+                                    @forelse ($servicemitras as $mitra)
+                                        <div class="item mx-2" style="display: flex; align-items: center; justify-content: center; ">
+                                            <img src="{{ asset('storage/' . $mitra->mitra->image) }}" alt="Mitra Image"
+                                                class="img-fluid carousel-image" style="object-fit: contain;">
+                                        </div>
+                                    @empty
+                                        <div class="col-12">
+                                            <div class="d-flex justify-content-center">
+                                                <img src="{{ asset('nodata-gif.gif') }}" alt="" width="800px">
                                             </div>
-                                        @empty
-                                            <div class="col-12">
-                                                <div class="d-flex justify-content-center">
-                                                    <img src="{{ asset('nodata-gif.gif') }}" alt=""
-                                                        width="800px">
-                                                </div>
-                                                <h4 class="text-center text-dark" style="font-weight:600">
-                                                    Belum ada Mitra
-                                                </h4>
-                                            </div>
-                                        @endforelse
-                                    </div>
+                                            <h4 class="text-center text-dark" style="font-weight:600">
+                                                Belum ada Mitra
+                                            </h4>
+                                        </div>
+                                    @endforelse
                                 </div>
                             </div>
-                        @endif
+                        </div>
+                    @endif
 
                         @if ($procedures->count() > 0)
                             <div class="py-2 mb-5">
@@ -562,28 +571,39 @@
             </div>
         </div>
     </div>
+    
 @endsection
 
 @section('script')
-    <script>
-        $(document).ready(function() {
-            $(".team-slider").owlCarousel({
-                items: 1,
-                loop: $(".team-slider .owl-item").length > 1,
-                autoplay: true,
-                autoplayTimeout: 3000,
-                responsive: {
-                    0: {
-                        items: 1
-                    },
-                    768: {
-                        items: 3
-                    },
-                    992: {
-                        items: 5
-                    }
+
+<!-- CSS Owl Carousel -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+
+<!-- JS Owl Carousel -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+
+<script>
+    $(document).ready(function(){
+        var itemCount = $('.team-slider .item').length;
+        $('.team-slider').owlCarousel({
+            items:1,
+            loop: itemCount > 1,
+            autoplay: true,
+            autoplayTimeout: 3000,
+            responsive:{
+                0:{
+                    items:1
+                },
+                600:{
+                    items:3
+                },
+                1000:{
+                    items:5
                 }
-            });
+            }
         });
-    </script>
+    });
+</script>
+
 @endsection
