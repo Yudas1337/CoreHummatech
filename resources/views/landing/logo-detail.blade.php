@@ -116,7 +116,7 @@
                     </div>
                     <ul>
                         <li style="list-style: disc">
-                            {{ $logo->description }}
+                            {!! $logo->description !!}
                         </li>
                     </ul>
 
