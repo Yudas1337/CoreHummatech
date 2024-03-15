@@ -150,7 +150,7 @@
                     @forelse ($missions as $mission)
                         <div class="single-item col-lg-4 col-md-6 mb-4 text-dark fadeInRight shadow"  data-wow-delay="300ms"
                         style="visibility: visible; animation-delay: 300ms; animation-name: fadeInRight;">
-                            <div class="py-5 px-5" style="border-radius: 8px; box-shadow: 0px 0px 15px .3px #00000012">
+                            <div class="py-5 px-5" style="border-radius: 8px; box-shadow: 0px 0px 15px .3px #00000012; min-height: 100%; max-height: 100%;">
                                 <div class=" d-flex justify-content-center align-items-center">
                                     <p class="text-primary" style="font-weight: 900">______________</p>
                                     <h3 class="mt-2 px-3 text-primary " style="font-weight: 900">Misi</h3>
