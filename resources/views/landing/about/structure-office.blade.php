@@ -117,7 +117,7 @@
         </div>
     </div>
 
-    <div class="work-process-area features-area default-padding-bottom">
+    <div class="work-process-area features-area default-padding-bottom pt-5 mt-5">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 offset-lg-2">
