@@ -136,8 +136,12 @@
                             </div>
                             <div class="item-details pt-5">
                                 <h3 style="font-size: 37px;"><b>{{ $logo->title }}</b></h3>
-                                <p>{!! $logo->description !!}</p>
-                                <a href="/detail-logo" class="btn btn-gradient btn-lg mt-2">Selengkapnya</a>
+                                <ul>
+                                    <li style="list-style: disc">
+                                        {!! Str::limit($logo->description, 250) !!}
+                                    </li>
+                                </ul>
+                                <a href="/detail-logo" class="btn btn-gradient btn-lg">Selengkapnya</a>
                                 {{-- <button class="btn btn-gradient btn-lg">Selengkapnya</button> --}}
                             </div>
                         </div>
