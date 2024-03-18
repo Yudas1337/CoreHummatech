@@ -105,18 +105,20 @@
                 <div class="row">
                     @forelse ($logo as $logo)
                     <div class="single-item col-lg-5 col-md-6 mx-auto">
-                        <div class="item">
+                        <div class="item text-center">
                             <div class="logo-container">
                                 <img class="logo-image" src="{{ asset('storage/' . $logo->image) }}" alt="{{ $logo->title }}" style="max-width: 60%; height: auto; display: block; margin: 0 auto;">
                             </div>
-                            <div class="item-details pt-5 text-center">
+                            <div class="item-details pt-5">
                                 <h3 style="font-size: 37px;"><b>{{ $logo->title }}</b></h3>
+                                <p class="mb-5">
+
+                                    {!! $logo->description !!}
+                                </p>
+
                             </div>
                         </div>
                     </div>
-                    <p>
-                        {!! $logo->description !!}
-                    </p>
 
                     @empty
 
