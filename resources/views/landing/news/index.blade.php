@@ -79,7 +79,7 @@
                                                 </a>
 
                                                 <time class="date"
-                                                    datetime="{{ $news->news->created_at->format('Y-m-d') }}">{{ \Carbon\Carbon::parse($news->news->created_at)->locale('id_ID')->isoFormat('D MMMM Y') }}</time>
+                                                    datetime="{{ $news->news->created_at->format('Y-m-d') }}">{{ \Carbon\Carbon::parse($news->news->date)->locale('id_ID')->isoFormat('D MMMM Y') }}</time>
                                             </div>
                                             <div class="info">
                                                 <div class="meta">
@@ -109,7 +109,7 @@
                                                         alt="{{ $news->title }}"></a>
 
                                                 <time class="date"
-                                                    datetime="{{ $news->created_at->format('Y-m-d') }}">{{ \Carbon\Carbon::parse($news->created_at)->locale('id_ID')->isoFormat('D MMMM Y') }}</time>
+                                                    datetime="{{ $news->date->format('Y-m-d') }}">{{ \Carbon\Carbon::parse($news->date)->locale('id_ID')->isoFormat('D MMMM Y') }}</time>
                                             </div>
                                             <div class="info">
                                                 <div class="meta">

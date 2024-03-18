@@ -13,8 +13,8 @@
                                     <div class="thumb">
                                         <a href=""><img src="{{ asset('storage/' . $news->thumbnail) }}"
                                                 alt="{{ $news->title }}"></a>
-                                        <time datetime="{{ $news->created_at->format('Y-m-d') }}" class="date">
-                                            {{ \Carbon\Carbon::parse($news->created_at)->locale('id_ID')->isoFormat('D MMMM Y') }}
+                                        <time datetime="{{ $news->date->format('Y-m-d') }}" class="date">
+                                            {{ \Carbon\Carbon::parse($news->date)->locale('id_ID')->isoFormat('D MMMM Y') }}
                                         </time>
                                     </div>
                                     <div class="info">
@@ -64,7 +64,7 @@
                                         </div>
                                         <div class="info">
                                             <div class="meta-title">
-                                                <time datetime="{{ $news->created_at->format('Y-m-d') }}" class="post-date"><i class="fas fa-clock"></i> {{ \Carbon\Carbon::parse($news->created_at)->locale('id_ID')->isoFormat('D MMMM Y') }}</time>
+                                                <time datetime="{{ $news->date->format('Y-m-d') }}" class="post-date"><i class="fas fa-clock"></i> {{ \Carbon\Carbon::parse($news->date)->locale('id_ID')->isoFormat('D MMMM Y') }}</time>
                                             </div>
                                             <a class="d-block mb-2" href="{{ url("berita/{$news->slug}") }}">{{ $news->title }}</a>
                                             <p class="mb-0">{{ Str::limit(strip_tags($news->description), 20) }}</p>
