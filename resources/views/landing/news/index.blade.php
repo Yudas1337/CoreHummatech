@@ -77,7 +77,6 @@
                                                         src="{{ asset('storage/' . $news->news->thumbnail) }}"
                                                         alt="{{ $news->news->title }}">
                                                 </a>
-
                                                 <time class="date"
                                                     datetime="">{{ \Carbon\Carbon::parse($news->news->date)->locale('id_ID')->isoFormat('D MMMM Y') }}</time>
                                             </div>
@@ -127,8 +126,8 @@
                                                 <h4>
                                                     <a href="/berita/{{ $news->slug }}">{{ $news->title }}</a>
                                                 </h4>
-                                                <p class="text-break text-justify">{!! Str::limit(strip_tags($news->description), 200) !!}</p>
-                                                {{-- <p class="text-break justify-content-center">{!! Str::limit(strip_tags($news->description), 200) !!}</p> --}}
+                                                {{-- <p class="text-break text-justify">{!! Str::limit(strip_tags($news->description), 200) !!}</p> --}}
+                                                <p class="text-break justify-content-center">{!! Str::limit(strip_tags($news->description), 200) !!}</p>
                                             </div>
                                         </div>
                                     </div>
