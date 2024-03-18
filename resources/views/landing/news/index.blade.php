@@ -108,8 +108,7 @@
                                                         src="{{ asset('storage/' . $news->thumbnail) }}"
                                                         alt="{{ $news->title }}"></a>
 
-                                                <time class="date"
-                                                    datetime="{{ $news->date->format('Y-m-d') }}">{{ \Carbon\Carbon::parse($news->date)->locale('id_ID')->isoFormat('D MMMM Y') }}</time>
+                                                <time class="date">{{ \Carbon\Carbon::parse($news->date)->locale('id_ID')->isoFormat('D MMMM Y') }}</time>
                                             </div>
                                             <div class="info">
                                                 <div class="meta">
