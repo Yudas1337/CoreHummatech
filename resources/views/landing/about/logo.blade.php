@@ -129,7 +129,7 @@
                     </div>
                     @forelse ($logos as $logo)
                     <div class="single-item  col-12 mx-auto">
-                        <div class="d-flex">
+                        <div class="d-flex justify-content-center align-items-center">
                             <div class="logo-container">
                                 <img class="logo-image" src="{{ asset('storage/' . $logo->image) }}" alt="{{ $logo->title }}" style="max-width: 60%; height: auto; display: block; margin: 0 auto;">
                             </div>
