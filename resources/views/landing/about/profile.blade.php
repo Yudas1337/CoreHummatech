@@ -71,6 +71,9 @@
                 text-align: left !important;
             }
         }
+        .ql-align-justify{
+            text-align: justify !important;
+        }
     </style>
 @endsection
 
