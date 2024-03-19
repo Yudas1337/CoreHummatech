@@ -1,6 +1,20 @@
 @extends('landing.layouts.layouts.app')
 
 @section('content')
+    <div class="breadcrumb-area text-center shadow dark text-light bg-cover"
+        style="background-image: url({{ $background == null ? asset('assets-home/img/default-bg.png') : asset('storage/' . $background->image) }});">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 offset-lg-2">
+                    <h1>Berita</h1>
+                    <ul class="breadcrumb">
+                        <li><a href="{{ url('/') }}"><i class="fas fa-home"></i> Beranda</a></li>
+                        <li class="active">Berita</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="blog-area right-sidebar full-blog mt-5">
         <div class="container">
             <div class="blog-items">
@@ -31,7 +45,7 @@
                                             <a href="{{ url("berita/{$news->slug}") }}">{{ $news->title }}</a>
                                         </h3>
                                         <p>
-                                            <div style="white-space: pre-wrap;">{!! $news->description !!}</div>
+                                        <div style="white-space: pre-wrap;">{!! $news->description !!}</div>
                                         </p>
                                     </div>
                                 </div>
@@ -53,30 +67,35 @@
                                 <div class="title">
                                     <h4>Berita Lainnya</h4>
                                 </div>
-                                @if($otherNews->count() > 0)
-                                <ul>
-                                    @foreach ($otherNews as $news)
-                                    <li>
-                                        <div class="thumb">
-                                            <a href="{{ url("berita/{$news->slug}") }}">
-                                                <img alt="{{ $news->title }}" src="{{ asset("storage/{$news->thumbnail}") }}" />
-                                            </a>
-                                        </div>
-                                        <div class="info">
-                                            <div class="meta-title">
-                                                <time class="post-date"><i class="fas fa-clock"></i> {{ \Carbon\Carbon::parse($news->date)->locale('id_ID')->isoFormat('D MMMM Y') }}</time>
-                                            </div>
-                                            <a class="d-block mb-2" href="{{ url("berita/{$news->slug}") }}">{{ $news->title }}</a>
-                                            <p class="mb-0">{{ Str::limit(strip_tags($news->description), 20) }}</p>
-                                        </div>
-                                    </li>
-                                    @endforeach
-                                </ul>
+                                @if ($otherNews->count() > 0)
+                                    <ul>
+                                        @foreach ($otherNews as $news)
+                                            <li>
+                                                <div class="thumb">
+                                                    <a href="{{ url("berita/{$news->slug}") }}">
+                                                        <img alt="{{ $news->title }}"
+                                                            src="{{ asset("storage/{$news->thumbnail}") }}" />
+                                                    </a>
+                                                </div>
+                                                <div class="info">
+                                                    <div class="meta-title">
+                                                        <time class="post-date"><i class="fas fa-clock"></i>
+                                                            {{ \Carbon\Carbon::parse($news->date)->locale('id_ID')->isoFormat('D MMMM Y') }}</time>
+                                                    </div>
+                                                    <a class="d-block mb-2"
+                                                        href="{{ url("berita/{$news->slug}") }}">{{ $news->title }}</a>
+                                                    <p class="mb-0">{{ Str::limit(strip_tags($news->description), 20) }}
+                                                    </p>
+                                                </div>
+                                            </li>
+                                        @endforeach
+                                    </ul>
                                 @else
-                                <div class="mx-auto d-flex flex-column justify-content-center text-center">
-                                    <img src="{{ asset('nodata-gif-post.gif') }}" alt="No Data" height="200" class="mx-auto" width="200" />
-                                <p class="text-muted">Belum ada berita</p>
-                                </div>
+                                    <div class="mx-auto d-flex flex-column justify-content-center text-center">
+                                        <img src="{{ asset('nodata-gif-post.gif') }}" alt="No Data" height="200"
+                                            class="mx-auto" width="200" />
+                                        <p class="text-muted">Belum ada berita</p>
+                                    </div>
                                 @endif
                             </div>
                         </aside>
