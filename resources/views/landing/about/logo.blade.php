@@ -128,8 +128,8 @@
                         </div>
                     </div>
                     @forelse ($logos as $logo)
-                    <div class="single-item col-lg-5 col-md-6 mx-auto">
-                        <div class="item text-center">
+                    <div class="single-item  col-12 mx-auto">
+                        <div class="d-flex">
                             <div class="logo-container">
                                 <img class="logo-image" src="{{ asset('storage/' . $logo->image) }}" alt="{{ $logo->title }}" style="max-width: 60%; height: auto; display: block; margin: 0 auto;">
                             </div>
@@ -137,27 +137,24 @@
                                 <h3 style="font-size: 37px;"><b>{{ $logo->title }}</b></h3>
                                 <p class="mb-5">
 
-                                    {!! Str::limit($logo->description, 250) !!}
+                                    {!! $logo->description !!}
                                 </p>
 
-                                <a href="/detail-logo" class="btn btn-gradient btn-lg">Selengkapnya</a>
-                                {{-- <button class="btn btn-gradient btn-lg">Selengkapnya</button> --}}
                             </div>
                         </div>
                     </div>
 
-
                     @empty
-                        <div class="col-lg-8 offset-lg-2">
-                            <div class=" text-center">
-                                <div class="d-flex justify-content-center">
-                                    <img src="{{ asset('nodata-gif.gif') }}" alt="Not Found" width="800px" />
-                                </div>
-                                <h4 class="text-center text-dark" style="font-weight:600">
-                                    Logo belum diunggah
-                                </h4>
-                            </div>
+
+                    <div class="col-12">
+                        <div class="d-flex justify-content-center">
+                            <img src="{{ asset('nodata-gif.gif') }}" alt="" width="800px">
                         </div>
+                        <h4 class="text-center text-dark" style="font-weight:600">
+                            Logo belum diunggah
+                        </h4>
+                    </div>
+
                     @endforelse
                 </div>
             </div>
