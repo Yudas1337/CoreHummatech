@@ -119,29 +119,30 @@
     <div class="team-area default-padding bottom-less">
         <div class="container">
             <div class="team-items">
-                <div class="row">
+                {{-- <div class="row"> --}}
+                    @forelse ($logos as $logo)
                     <div class="col-lg-8 offset-lg-2">
-                        <div class="site-heading text-center">
+                        <div class="site-heading m-0 p-0 text-center">
                             <h4>FILOSOFI LOGO</h4>
-                            <h2>Simbol Kuat Inovasi dan Keandalan: Filosofi di Balik Logo Kami</h2>
+                            <h2>{{ $logo->title }}</h2>
                             <div class="devider"></div>
                         </div>
                     </div>
-                    @forelse ($logos as $logo)
-                        <div class="d-flex justify-content-center align-items-center">
-                            <div class="logo-container col-5">
+                    <div class="row">
+                        <div class="col-lg-5 d-flex justify-content-center align-items-center flex-column">
+                            <div class="logo-container">
                                 <img class="logo-image" src="{{ asset('storage/' . $logo->image) }}" alt="{{ $logo->title }}" style="max-width: 60%; height: auto; display: block; margin: 0 auto;">
                             </div>
-                            <div class="item-details col-7 pt-5">
-                                <h3 style="font-size: 37px;"><b>{{ $logo->title }}</b></h3>
-                                <p class="mb-5">
+                        </div>
+                        <div class="col-lg-7">
+                            <div class="item-details px-4">
+                                <p class="mb-5 px-4">
                                     {!! $logo->description !!}
                                 </p>
                             </div>
                         </div>
-
+                    </div>
                     @empty
-
                     <div class="col-12">
                         <div class="d-flex justify-content-center">
                             <img src="{{ asset('nodata-gif.gif') }}" alt="" width="800px">
@@ -150,12 +151,12 @@
                             Logo belum diunggah
                         </h4>
                     </div>
-
                     @endforelse
-                </div>
+                {{-- </div> --}}
             </div>
         </div>
     </div>
+    
 @endsection
 @section('script')
     <script>
