@@ -2,7 +2,7 @@
 
 @section('subcontent')
     <div class="d-flex justify-content-between align-items-end pt-4">
-        <div class="col-12 col-lg-3">
+        {{-- <div class="col-12 col-lg-3">
             <label for="kategori">Pilih kategori</label>
             <select class="form-select" aria-label="Default select example">
                 <option>Semua</option>
@@ -12,20 +12,20 @@
                     <option value="">Belum ada kategori produk</option>
                 @endforelse
             </select>
-        </div>
+        </div> --}}
         <form action="/product">
-            <div class="col-12 col-lg-12 d-flex justify-content-end">
-                <div class="d-flex gap-2 col-sm-12">
-                    <div class="input-group">
-                        <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-magnifying-glass"></i></span>
-                        <input type="text" name="name" value="{{ request()->name }}" class="form-control"
-                        placeholder="Cari Produk" aria-label="Username" aria-describedby="basic-addon1">
-                    </div>
-                    <a href="/data/product" class="btn btn-secondary w75 col-4" target="_blank">Lihat Produk</a>
-                    <a href="{{ route('product.create') }}" class="btn btn-primary w-75">Tambah Produk</a>
+            <div class="col-12 col-lg-7">
+                <div class="input-group">
+                    <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-magnifying-glass"></i></span>
+                    <input type="text" name="name" value="{{ request()->name }}" class="form-control"
+                    placeholder="Cari Produk" aria-label="Username" aria-describedby="basic-addon1">
                 </div>
             </div>
         </form>
+        <div class=" col-12 col-lg-5 gap-2 d-flex justify-content-end">
+            <a href="/data/product" class="btn btn-secondary col-4" target="_blank">Lihat Produk</a>
+            <a href="{{ route('product.create') }}" class="btn btn-primary">Tambah Produk</a>
+        </div>
     </div>
 @endsection
 
