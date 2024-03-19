@@ -1,6 +1,4 @@
 @extends('landing.layouts.app')
-
-
 @section('seo')
 <meta name="title" content="Hummatech - Perusahaan Software Terbaik di Malang" />
 <meta name="description" content="Hummatech adalah perusahaan software development terbaik di Malang. Kami menyediakan solusi perangkat lunak yang inovatif dan berkualitas tinggi." />

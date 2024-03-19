@@ -1,5 +1,5 @@
 @extends('landing.layouts.layouts.app')
-
+@section('title' , 'Berita')
 @section('style')
     <style>
         .subtitle {
@@ -97,15 +97,15 @@
                 <div class="col-lg-6 info mx-3">
                     <h1>Lorem ipsum vulputate</h1>
                     <p>
-                        Lorem ipsum dolor sit amet consectetur. 
-                        Tincidunt pellentesque pellentesque sed in. 
-                        Sit nunc velit aliquam quis faucibus nibh nisl pellentesque. 
-                        Massa natoque mattis quisque ut molestie turpis at fusce integer. 
-                        Tincidunt lorem egestas sed ipsum proin. 
-                        Ac vestibulum euismod amet dignissim et lobortis blandit bibendum. 
-                        Nulla venenatis vitae dui sapien duis dolor sed ut dictum. 
-                        Neque diam senectus suspendisse id. 
-                        Pretium congue erat pharetra aliquet. 
+                        Lorem ipsum dolor sit amet consectetur.
+                        Tincidunt pellentesque pellentesque sed in.
+                        Sit nunc velit aliquam quis faucibus nibh nisl pellentesque.
+                        Massa natoque mattis quisque ut molestie turpis at fusce integer.
+                        Tincidunt lorem egestas sed ipsum proin.
+                        Ac vestibulum euismod amet dignissim et lobortis blandit bibendum.
+                        Nulla venenatis vitae dui sapien duis dolor sed ut dictum.
+                        Neque diam senectus suspendisse id.
+                        Pretium congue erat pharetra aliquet.
                         Platea aliquet aliquam ac vitae senectus quis.
                     </p>
                     <a class="btn btn-gradient effect btn-md" href="">Ajukan Proposal</a>

@@ -19,7 +19,6 @@
     @endif
 
     @yield('seo')
-
     <!-- ========== Favicon Icon ========== -->
     <link rel="shortcut icon" href="{{ asset('mobilelogo.png') }}" type="image/x-icon">
 

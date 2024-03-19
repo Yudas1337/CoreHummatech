@@ -1,5 +1,5 @@
 @extends('landing.layouts.layouts.app')
-
+@section('title' , {{ $slugs->name }})
 @section('style')
     <style>
         .subtitle {
@@ -571,7 +571,7 @@
             </div>
         </div>
     </div>
-    
+
 @endsection
 
 @section('script')

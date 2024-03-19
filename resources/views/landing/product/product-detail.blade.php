@@ -1,5 +1,5 @@
 @extends('landing.layouts.layouts.app')
-
+@section('title' , 'Detail Portofolio')
 @section('style')
     <style>
         .subtitle {

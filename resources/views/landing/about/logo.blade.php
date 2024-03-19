@@ -1,6 +1,5 @@
 @extends('landing.layouts.layouts.app')
-
-
+@section('title' , 'Logo')
 @section('style')
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet" />
 
@@ -140,7 +139,7 @@
 
                                     {!! Str::limit($logo->description, 250) !!}
                                 </p>
-                                
+
                                 <a href="/detail-logo" class="btn btn-gradient btn-lg">Selengkapnya</a>
                                 {{-- <button class="btn btn-gradient btn-lg">Selengkapnya</button> --}}
                             </div>

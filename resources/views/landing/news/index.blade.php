@@ -1,5 +1,5 @@
 @extends('landing.layouts.layouts.app')
-
+@section('title' , 'Berita')
 @section('style')
     <style>
         .custom-tabs {
