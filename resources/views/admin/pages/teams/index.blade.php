@@ -36,6 +36,7 @@
                             <p class="m-0 me-2">Cari:</p>
                             <input class="form-control me-2" type="text" placeholder="Search" aria-label="Search">
                         </div>
+                        <a href="/about-us/team" class="btn btn-secondary me-2" target="_blank">Lihat di website</a>
                         <a class="btn btn-primary m-0" href="#tambah" data-bs-toggle="modal">Tambah</a>
                     </div>
                 </form>

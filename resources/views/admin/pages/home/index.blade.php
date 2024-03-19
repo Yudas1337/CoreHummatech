@@ -1,17 +1,14 @@
 @extends('admin.layouts.app')
 
 @section('subcontent')
-    <div class="d-flex justify-content-between align-items-end pt-4">
-        <div class="col-12 col-lg-7 ">
-           <h3>Judul dan deskripsi bagian produk di beranda</h3>
-        </div>
-        <div class="col-12 col-lg-2 d-flex justify-content-end">
-            <div class="d-flex gap-2 col-sm-7">
-                @if (!$home)
-                    <button class="btn btn-primary" type="button" data-bs-toggle="modal"
-                        data-bs-target="#tambah">Tambah</button>
-                @endif
-            </div>
+    <div class="d-flex justify-content-between pt-4 col-12">
+        <h3>Judul dan deskripsi bagian produk di beranda</h3>
+        <div class="d-flex gap-2">
+            <a href="/" target="_blank" class="btn btn-primary m-0">Lihat Website</a>
+            @if (!$home)
+                <button class="btn btn-primary" type="button" data-bs-toggle="modal"
+                    data-bs-target="#tambah">Tambah</button>
+            @endif
         </div>
     </div>
 @endsection

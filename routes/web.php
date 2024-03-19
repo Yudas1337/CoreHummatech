@@ -240,6 +240,7 @@ Route::controller(ContactUsController::class)->name('contact.')->group(function(
     Route::post('contact/store', 'store')->name('store');
 });
 
+
 Route::get('mitra',  [HomePageController::class , 'mitra']);
 
 //alumni-detail

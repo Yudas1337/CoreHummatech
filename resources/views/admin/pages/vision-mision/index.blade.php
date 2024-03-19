@@ -4,17 +4,17 @@
     <div class=" p-1">
         <div class="card border-0 shadow p-3 mt-3">
             <div class="row">
-                <div class="col-12 col-lg-6">
+                <div class="col-12 col-lg-4">
                     <h5 class="m-2 fw-bold">Visi dan Misi</h5>
                 </div>
-                <div class="col-12 col-lg-6">
+                <div class="col-12 col-lg-8">
                     <div class="d-flex justify-content-lg-end justify-content-start">
                         <div class="d-flex align-items-center gap-2">
                             <p class="m-0 me-2">Cari:</p>
                             <input class="form-control me-2" type="text" placeholder="Search" aria-label="Search">
                         </div>
-                        <button class="btn btn-primary m-0" type="button" data-bs-toggle="modal"
-                            data-bs-target="#tambah">Tambah</button>
+                        <a href="/about-us/vision-mision" class="btn btn-secondary me-2" target="_blank">Lihat di website</a>
+                        <button class="btn btn-primary m-0" type="button" data-bs-toggle="modal" data-bs-target="#tambah">Tambah</button>
                     </div>
                 </div>
             </div>

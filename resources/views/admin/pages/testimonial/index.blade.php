@@ -397,7 +397,6 @@
             var name = $(this).data('name');
             var description = $(this).data('description');
             var service_id = $(this).data('service_id');
-
             $('#form-update-service').attr('action', '/testimonial/' + id);
             $('#name-edit').val(name);
             $('#description-edit').val(description);

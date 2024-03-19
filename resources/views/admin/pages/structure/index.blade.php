@@ -31,6 +31,7 @@
                 </div>
                 <div class="col-12 col-lg-6">
                     <div class="d-flex justify-content-lg-end justify-content-start">
+                        <a href="/about-us/structure-organization" class="btn btn-secondary me-2" target="_blank">Lihat di website</a>
                         @if ($organization && $business)
                         @else
                             <a class="btn btn-primary m-0" href="#tambah" data-bs-toggle="modal">Tambah</a>

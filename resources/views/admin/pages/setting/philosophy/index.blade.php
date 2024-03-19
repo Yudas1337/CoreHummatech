@@ -3,10 +3,9 @@
 @section('subcontent')
     <div class="container-fluid">
         <div class="page-title">
-            <div class="row">
-                <div class="col-sm-6 ps-0">
+            <div class="d-flex justify-content-between">
                     <h3>logo perusahaan</h3>
-                </div>
+                    <a href="/about-us/logo" class="btn btn-secondary w75" target="_blank">Lihat di website</a>
             </div>
         </div>
     </div>

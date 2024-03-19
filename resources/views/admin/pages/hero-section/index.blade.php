@@ -1,8 +1,11 @@
 @extends('admin.layouts.app')
 
 @section('subcontent')
-    <div class="py-4">
-        <div class="p-4 m-5">
+<div class="py-4">
+        <div class="text-end me-4">
+            <a href="/" target="_blank" class="btn btn-primary m-0">Lihat Website</a>
+        </div>
+        <div class="px-4 m-5">
             <ul class="simple-wrapper nav nav-tabs justify-content-between" id="myTab" role="tablist">
                 <div class="d-flex">
                     <li class="nav-item"><a class="nav-link active txt-primary" id="profile-tabs" data-bs-toggle="tab"
@@ -18,7 +21,6 @@
             <div class="tab-content" id="myTabContent">
                 <div class="tab-pane fade show active py-3" id="section" role="tabpanel">
                     <div class="d-flex justify-content-lg-end justify-content-start  gap-2">
-                        <a href="/" target="_blank" class="btn btn-primary m-0">Lihat Slider</a>
                         <a class="btn btn-primary m-0" href="{{ url('/hero-section/create') }}"
                             >Tambah</a>
                     </div>
@@ -65,7 +67,6 @@
                 </div>
                 <div class="tab-pane fade py-3" id="background" role="tabpanel" aria-labelledby="contact-tab">
                     <div class="d-flex justify-content-lg-end justify-content-start  gap-2">
-                        <a href="/about-us" target="_blank" class="btn btn-primary m-0">Lihat Background</a>
                         <button class="btn btn-primary m-0" type="button" data-bs-toggle="modal" data-bs-target="#tambah"
                             >Tambah</button>
                     </div>
