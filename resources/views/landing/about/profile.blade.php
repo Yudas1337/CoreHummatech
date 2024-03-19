@@ -128,7 +128,7 @@
                         <h2>{{ $profile->subtitle }}</h2>
                         <img src="{{ asset('storage/' . $profile->image) }}" alt="Thumb"
                             class="w-75 mb-3 d-block mx-auto d-lg-none" />
-                        <p>
+                        <p class="text-justify">
                             {!! $profile->description !!}
                         </p>
 
