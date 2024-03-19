@@ -79,7 +79,7 @@
                                                 </a>
 
                                                 <time class="date"
-                                                    datetime="">{{ \Carbon\Carbon::parse($news->news->date)->locale('id_ID')->isoFormat('D MMMM Y') }}</time>
+                                                datetime="{{ $news->news->created_at->format('Y-m-d') }}">{{ \Carbon\Carbon::parse($news->news->date)->locale('id_ID')->isoFormat('D MMMM Y') }}</time>
                                             </div>
                                             <div class="info">
                                                 <div class="meta">
@@ -97,12 +97,11 @@
                                                     <a href="/berita/{{ $news->news->slug }}">{{ $news->news->title }}</a>
                                                 </h4>
 
-                                                <p class="text-break text-justify">{!! Str::limit(strip_tags($news->news->description), 200) !!}</p>
+                                                <p class="text-break">{!! Str::limit(strip_tags($news->news->description), 200) !!}</p>
                                             </div>
                                         </div>
                                     </div>
-                                @else
-                                <div class="col-lg-4 col-md-6 single-item">
+                                @else<div class="col-lg-4 col-md-6 single-item">
                                         <div class="item">
                                             <div class="thumb">
                                                 <a href="/berita/{{ $news->slug }}"><img
@@ -110,8 +109,7 @@
                                                         alt="{{ $news->title }}"></a>
 
                                                 <time class="date"
-                                                    datetime="">{{ \Carbon\Carbon::parse($news->date)->locale('id_ID')->isoFormat('D MMMM Y') }}</time>
-                                            </div>
+                                                datetime="{{ $news->created_at->format('Y-m-d') }}">{{ \Carbon\Carbon::parse($news->created_at)->locale('id_ID')->isoFormat('D MMMM Y') }}</time>                                            </div>
                                             <div class="info">
                                                 <div class="meta">
                                                     <ul>
@@ -127,8 +125,8 @@
                                                 <h4>
                                                     <a href="/berita/{{ $news->slug }}">{{ $news->title }}</a>
                                                 </h4>
-                                                <p class="text-break text-justify">{!! Str::limit(strip_tags($news->description), 200) !!}</p>
-                                                {{-- <p class="text-break justify-content-center">{!! Str::limit(strip_tags($news->description), 200) !!}</p> --}}
+
+                                                <p class="text-break">{!! Str::limit(strip_tags($news->description), 200) !!}</p>
                                             </div>
                                         </div>
                                     </div>
