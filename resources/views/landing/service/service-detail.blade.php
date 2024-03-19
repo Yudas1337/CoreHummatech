@@ -1,5 +1,5 @@
 @extends('landing.layouts.layouts.app')
-@section('title' , {{ $slugs->name }})
+@section('title' ,  $slugs->name )
 @section('style')
     <style>
         .subtitle {
