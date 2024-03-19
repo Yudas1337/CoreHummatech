@@ -46,7 +46,7 @@
         <h4 class="text-dark fs-5 mb-2" style="font-weight:600">
             Detail Profile
         </h4>
-        <a href="/about-us" class="btn btn-secondary">Kembali</a>
+        <a href="/about-us/profile" class="btn btn-secondary">Kembali</a>
     </div>
 </div>
 <div class="container d-flex justify-content-center mt-5 mb-5">
