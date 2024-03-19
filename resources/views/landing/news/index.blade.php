@@ -97,7 +97,7 @@
                                                     <a href="/berita/{{ $news->news->slug }}">{{ $news->news->title }}</a>
                                                 </h4>
 
-                                                <p class="text-justify">{!! Str::limit(strip_tags($news->news->description), 200) !!}</p>
+                                                <p class="">{!! Str::limit(strip_tags($news->news->description), 200) !!}</p>
                                             </div>
                                         </div>
                                     </div>
@@ -127,7 +127,7 @@
                                                 <h4>
                                                     <a href="/berita/{{ $news->slug }}">{{ $news->title }}</a>
                                                 </h4>
-                                                <p class="text-break text-justify">{!! Str::limit(strip_tags($news->description), 200) !!}</p>
+                                                <p class="">{!! Str::limit(strip_tags($news->description), 200) !!}</p>
                                                 {{-- <p class="text-break justify-content-center">{!! Str::limit(strip_tags($news->description), 200) !!}</p> --}}
                                             </div>
                                         </div>
