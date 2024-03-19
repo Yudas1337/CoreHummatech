@@ -128,7 +128,6 @@
                         </div>
                     </div>
                     @forelse ($logos as $logo)
-                    <div class="single-item  col-12 mx-auto">
                         <div class="d-flex justify-content-center align-items-center">
                             <div class="logo-container">
                                 <img class="logo-image" src="{{ asset('storage/' . $logo->image) }}" alt="{{ $logo->title }}" style="max-width: 60%; height: auto; display: block; margin: 0 auto;">
@@ -136,13 +135,10 @@
                             <div class="item-details pt-5">
                                 <h3 style="font-size: 37px;"><b>{{ $logo->title }}</b></h3>
                                 <p class="mb-5">
-
                                     {!! $logo->description !!}
                                 </p>
-
                             </div>
                         </div>
-                    </div>
 
                     @empty
 
