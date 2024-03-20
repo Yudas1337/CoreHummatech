@@ -31,43 +31,102 @@
 
 @section('content')
     <div class="row py-5">
-        @forelse ($products as $product)
-            <div class="col-lg-3">
-                <div class="card border-0 shadow rounded">
-                    <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}"
-                        style="object-fit: cover; width: 100%; height: 200px" class="rounded-top card-img-thumbnail" />
-                    <div class="card-header text-center h4 border-bottom"
-                        style="margin-top: -1rem; border-radius: var(--bs-border-radius) var(--bs-border-radius) 0 0 !important;">
-                        {{ $product->name }}</div>
-                    <div class="card-body">
-                        <p>{{ Str::limit($product->description, 80) }}</p>
-
-                        <div class="gap-2 d-flex">
-                            <div class="d-grid flex-grow-1">
-                                <a href="{{ route('product.show', $product->id) }}"
-                                    class="btn btn-light-primary btn-mini">Lihat
-                                    Detail</a>
-                            </div>
-                            <div class="d-flex flex-shrink-0 gap-2">
-                                <button class="btn btn-light-warning px-3 m-0 btn-edit" type="button"
-                                    onclick="window.location.href='{{ $product->type == 'company' ? route('productCompany.edit', $product->id) : route('product.edit', $product->id) }}'">
-                                    <i class="fas fa-pencil"></i>
-                                </button>
-                                <button class="btn btn-light-danger px-3 m-0 btn-delete" type="button"
-                                    data-id="{{ $product->id }}"><i class="fas fa-trash"></i></button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        @empty
+        @if($products->isEmpty() && $comingProducts->isEmpty())
             <div class="d-flex justify-content-center">
                 <img src="{{ asset('nodata.jpg') }}" alt="" width="400px">
             </div>
             <h5 class="text-center">
                 Data Masih Kosong
             </h5>
-        @endforelse
+        @else
+            @foreach($comingProducts as $comingProduct)
+                <div class="col-lg-3">
+                    <div class="card border-0 shadow rounded">
+                        <img src="{{ asset('storage/' . $comingProduct->image) }}" alt="{{ $comingProduct->name }}"
+                            style="object-fit: cover; width: 100%; height: 200px" class="rounded-top card-img-thumbnail" />
+                        <div class="card-header text-center h4 border-bottom"
+                            style="margin-top: -1rem; border-radius: var(--bs-border-radius) var(--bs-border-radius) 0 0 !important;">
+                            {{ $comingProduct->name }}</div>
+                        <div class="card-body">
+                            <p>{{ Str::limit($comingProduct->description, 80) }}</p>
+
+                            <div class="gap-2 d-flex">
+                                <div class="d-grid flex-grow-1">
+                                    <button type="button" class="btn btn-light-primary btn-mini btn-detail" 
+                                    data-id="{{ $comingProduct->id }}" 
+                                    data-name="{{ $comingProduct->name }}"
+                                    data-category="{{ $comingProduct->CategoryProduct->name }}"
+                                    data-description="{{ $comingProduct->description }}"
+                                    data-link="{{ $comingProduct->link }}"
+                                    data-image="{{ asset('storage/'. $comingProduct->image) }}">Lihat
+                                        Detail</button>
+                                </div>
+                                <div class="d-flex flex-shrink-0 gap-2">
+                                    <button class="btn btn-light-warning px-3 m-0 btn-edit" type="button"
+                                        onclick="window.location.href='{{ route('product-coming.edit', $comingProduct->id) }}'">
+                                        <i class="fas fa-pencil"></i>
+                                    </button>
+                                    <button class="btn btn-light-danger px-3 m-0 btn-delete-coming" type="button"
+                                        data-id="{{ $comingProduct->id }}"><i class="fas fa-trash"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+
+            @foreach($products as $product)
+                <div class="col-lg-3">
+                    <div class="card border-0 shadow rounded">
+                        <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}"
+                            style="object-fit: cover; width: 100%; height: 200px" class="rounded-top card-img-thumbnail" />
+                        <div class="card-header text-center h4 border-bottom"
+                            style="margin-top: -1rem; border-radius: var(--bs-border-radius) var(--bs-border-radius) 0 0 !important;">
+                            {{ $product->name }}</div>
+                        <div class="card-body">
+                            <p>{{ Str::limit($product->description, 80) }}</p>
+
+                            <div class="gap-2 d-flex">
+                                <div class="d-grid flex-grow-1">
+                                    <a href="{{ route('product.show', $product->id) }}"
+                                        class="btn btn-light-primary btn-mini">Lihat
+                                        Detail</a>
+                                </div>
+                                <div class="d-flex flex-shrink-0 gap-2">
+                                    <button class="btn btn-light-warning px-3 m-0 btn-edit" type="button"
+                                        onclick="window.location.href='{{ $product->type == 'company' ? route('productCompany.edit', $product->id) : route('product.edit', $product->id) }}'">
+                                        <i class="fas fa-pencil"></i>
+                                    </button>
+                                    <button class="btn btn-light-danger px-3 m-0 btn-delete" type="button"
+                                        data-id="{{ $product->id }}"><i class="fas fa-trash"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+        @endif
+    </div>
+
+    <div class="modal fade modal-bookmark" id="detail" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content px-2">
+                <div class="modal-header border-bottom">
+                    <h5 class="modal-title me-2" id="exampleModalLabel">Detail Produk</h5>
+                    <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="col-lg-12 d-flex justify-content-between" id="detail-content">
+                        
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="d-flex justify-content-end">
+                        <button class="purchase-btn btn btn-hover-effect btn-light-danger text-white f-w-500" type="button" data-bs-dismiss="modal">Tutup</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     @include('admin.components.delete-modal-component')
 @endsection
@@ -86,9 +145,29 @@
         </script>
     @endif
     <script>
+         $('.btn-detail').click(function() {
+            var detail = $('#detail-content');
+            detail.empty();
+            var id = $(this).data('id');
+            var name = $(this).data('name'); 
+            var category = $(this).data('category'); 
+            var link = $(this).data('link'); 
+            var description = $(this).data('description'); 
+            var image = $(this).data('image');
+
+            detail.append('<div class="left"> <h2>'+name+'</h2> <p class="text-primary">'+link+'</p> <p class="text-muted">Kategori: '+category+'</p> <div class="my-1"> <p>'+description+'</p> </div> </div> <div class="right"> <img src="'+image+'" width="100%" </div>');
+            $('#detail').modal('show');
+        });
+
         $('.btn-delete').on('click', function() {
             var id = $(this).data('id');
             $('#form-delete').attr('action', '/product/' + id);
+            $('#modal-delete').modal('show');
+        });
+
+        $('.btn-delete-coming').on('click', function() {
+            var id = $(this).data('id');
+            $('#form-delete').attr('action', '/coming-soon-product/' + id);
             $('#modal-delete').modal('show');
         });
     </script>

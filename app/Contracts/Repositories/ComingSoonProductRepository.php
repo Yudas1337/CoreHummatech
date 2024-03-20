@@ -2,14 +2,14 @@
 namespace App\Contracts\Repositories;
 
 use App\Contracts\Interfaces\ComingSoonProductInterface;
-use App\Models\Product;
+use App\Models\ComingSoonProduct;
 use Illuminate\Http\Request;
 
 class ComingSoonProductRepository extends BaseRepository implements ComingSoonProductInterface
 {
-    public function __construct(Product $product )
+    public function __construct(ComingSoonProduct $comingSoonProduct )
     {
-        $this->model = $product ;
+        $this->model = $comingSoonProduct ;
     }
 
     public function get(): mixed

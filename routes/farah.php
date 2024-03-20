@@ -4,6 +4,7 @@ use App\Http\Controllers\BackgroundController;
 use App\Http\Controllers\CategoryProductController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\HomeDescriptionController;
+use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/category-product', [CategoryProductController::class, 'index'])->name('category-product.index');
@@ -24,3 +25,8 @@ Route::get('home-description', [HomeDescriptionController::class, 'index'])->nam
 Route::post('home-description/store', [HomeDescriptionController::class, 'store'])->name('home-description.store');
 Route::put('home-description/{home}', [HomeDescriptionController::class, 'update'])->name('home-description.update');
 Route::delete('home-description/{home}', [HomeDescriptionController::class, 'destroy'])->name('home-description.destroy');
+
+Route::post('coming-soon-product/store', [ProductController::class, 'storeComing'])->name('product-coming.store');
+Route::put('coming-soon-product/{comingSoonProduct}', [ProductController::class, 'updateComing'])->name('product-coming.update');
+Route::get('coming-soon-product/edit/{comingSoonProduct}', [ProductController::class, 'editComing'])->name('product-coming.edit');
+Route::delete('coming-soon-product/{comingSoonProduct}', [ProductController::class, 'destroyComing'])->name('product-coming.delete');

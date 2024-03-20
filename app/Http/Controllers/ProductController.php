@@ -114,7 +114,6 @@ class ProductController extends Controller
         $productfeatureFirst = $this->productFeature->getByServiceId($product->id)->First();
         $productfeatures = $this->productFeature->getByServiceId($product->id);
 
-
         return view('admin.pages.products.editCompany', compact( 'services', 'productfeatures', 'product', 'productfeatureFirst', 'categories'));
     }
 
@@ -127,6 +126,13 @@ class ProductController extends Controller
         // dd($productfeature);
 
         return view('admin.pages.products.edit', compact('services', 'productfeatures', 'product', 'productfeatureFirst', 'categories'));
+    }
+
+    public function editComing(ComingSoonProduct $comingSoonProduct)
+    {
+        $categories = $this->categoryProduct->get();
+
+        return view('admin.pages.products.editComingProduct', compact('comingSoonProduct', 'categories'));
     }
 
     /**
