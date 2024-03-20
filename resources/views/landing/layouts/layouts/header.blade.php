@@ -19,7 +19,10 @@
 
             <!-- Start Atribute Navigation -->
             <div class="attr-nav">
-                <ul>
+                <ul class="side-menu">
+                    <li>
+                        <div id="google_translate_element"></div>
+                    </li>
                     <li class="side-menu">
                         <a href="#">
                             <span class="bar-1"></span>

@@ -129,7 +129,7 @@
     <div class="about-us-area">
         <div class="container">
             <ul class="nav custom-tabs">
-                <li @if (!request()->category && !request()->is('data/product/coming-soon')) class="active" @endif><a href="{{ url('/data/product') }}">Semua</a></li>
+                <li @if (!request()->category && !request()->is('data/product/coming-soon')) class="active" @endif><a href="{{ url('/portofolio') }}">Semua</a></li>
                 @foreach ($categories as $category)
                     <li class="{{ request()->is("data/product/kategori/{$category->slug}") ? 'active' : '' }}">
                         <a href="{{ url("data/product/kategori/{$category->slug}") }}">{{ $category->name }}</a>
