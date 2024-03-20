@@ -15,6 +15,9 @@ use App\Http\Requests\UpdateProductRequest;
 use App\Http\Requests\StoreProductCompanyRequest;
 use App\Http\Requests\UpdateProductCompanyRequest;
 use App\Contracts\Interfaces\ProductFeatureInterface;
+use App\Http\Requests\StoreComingSoonProductRequest;
+use App\Http\Requests\UpdateComingSoonProductRequest;
+use App\Models\ComingSoonProduct;
 
 class ProductService
 {
@@ -207,5 +210,37 @@ class ProductService
     public function delete(Product $product)
     {
         $this->remove($product->image);
+    }
+
+    public function storeComing(StoreComingSoonProductRequest $request): array|bool
+    {
+        $data = $request->validated();
+        $data['slug'] = Str::slug($request->name);
+
+        if ($request->hasFile('image') && $request->file('image')->isValid()) {
+            $data['image'] = $request->file('image')->store(TypeEnum::PRODUCT->value, 'public');
+            return $data;
+        }
+        return $data;
+    }
+
+    public function updateComing(ComingSoonProduct $comingSoonProduct, UpdateComingSoonProductRequest $request): array|bool
+    {
+        $data = $request->validated();
+        $data['slug'] = Str::slug($request->name);
+
+        if ($request->has('image')) {
+            $this->remove($comingSoonProduct->image);
+            $data['image'] = $request->file('image')->store(TypeEnum::PRODUCT->value, 'public');
+        } else {
+            $data['image'] = $comingSoonProduct->image;
+        }
+
+        return $data;
+    }
+
+    public function deleteComing(ComingSoonProduct $comingSoonProduct)
+    {
+        $this->remove($comingSoonProduct->image);
     }
 }

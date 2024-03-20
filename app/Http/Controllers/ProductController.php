@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Contracts\Interfaces\CategoryProductInterface;
+use App\Contracts\Interfaces\ComingSoonProductInterface;
 use App\Contracts\Interfaces\FaqInterface;
 use App\Contracts\Interfaces\ProductFeatureInterface;
 use App\Models\Product;
@@ -13,8 +14,12 @@ use App\Http\Requests\UpdateProductRequest;
 use App\Contracts\Interfaces\ProductInterface;
 use App\Contracts\Interfaces\ServiceInterface;
 use App\Contracts\Interfaces\TestimonialInterface;
+use App\Http\Requests\StoreComingSoonProductRequest;
 use App\Http\Requests\StoreProductCompanyRequest;
+use App\Http\Requests\UpdateComingSoonProductRequest;
 use App\Http\Requests\UpdateProductCompanyRequest;
+use App\Models\ComingSoonProduct;
+use App\Services\ComingSoonProductService;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -26,8 +31,9 @@ class ProductController extends Controller
     private FaqInterface $faq;
     private ProductFeatureInterface $productFeature;
     private CategoryProductInterface $categoryProduct;
+    private ComingSoonProductInterface $comingProduct;
 
-    public function __construct(ProductInterface $product, CategoryProductInterface $categoryProduct, ProductFeatureInterface $productFeature, ProductService $productService, ServiceInterface $service, TestimonialInterface $testimonial, FaqInterface $faq)
+    public function __construct(ProductInterface $product, CategoryProductInterface $categoryProduct, ProductFeatureInterface $productFeature, ProductService $productService, ServiceInterface $service, TestimonialInterface $testimonial, FaqInterface $faq, private ComingSoonProductInterface $model, ComingSoonProductInterface $comingProduct)
     {
         $this->product = $product;
         $this->testimonial = $testimonial;
@@ -36,6 +42,7 @@ class ProductController extends Controller
         $this->faq = $faq;
         $this->productFeature = $productFeature;
         $this->categoryProduct = $categoryProduct;
+        $this->comingProduct = $comingProduct;
     }
     /**
      * Display a listing of the resource.
@@ -44,7 +51,8 @@ class ProductController extends Controller
     {
         $products = $this->product->search($request);
         $services = $this->service->get();
-        return view('admin.pages.products.index', compact('products', 'services'));
+        $comingProducts = $this->comingProduct->get();
+        return view('admin.pages.products.index', compact('products', 'services', 'comingProducts'));
     }
 
     /**
@@ -76,6 +84,13 @@ class ProductController extends Controller
         $data = $this->productService->storeCompany($request);
         $product_id = $this->product->store($data);
         $this->productService->storefeaturecompany($request, $product_id);
+        return to_route('product.index')->with('success', 'Produk berhasil di tambahkan');
+    }
+
+    public function storeComing(StoreComingSoonProductRequest $request)
+    {
+        $data = $this->productService->storeComing($request);
+        $this->comingProduct->store($data);
         return to_route('product.index')->with('success', 'Produk berhasil di tambahkan');
     }
 
@@ -138,6 +153,13 @@ class ProductController extends Controller
         return to_route('product.index')->with('success', 'Produk Berhasil Di Update');
     }
 
+    public function updateComing(UpdateComingSoonProductRequest $request, ComingSoonProduct $comingSoonProduct)
+    {
+        $data = $this->productService->updateComing($comingSoonProduct, $request);
+        $this->comingProduct->update($comingSoonProduct->id , $data);
+        return back()->with('success','Product Berhasil Diperbarui');
+    }
+
     public function feature(ProductFeature $ProductFeature)
     {
         // dd($ProductFeature);
@@ -153,6 +175,13 @@ class ProductController extends Controller
         $this->productService->delete($product);
         $this->product->delete($product->id);
         return back()->with('success', 'Produk Berhasil Di Hapus');
+    }
+    
+    public function destroyComing(ComingSoonProduct $comingSoonProduct)
+    {
+        $this->productService->deleteComing($comingSoonProduct);
+        $this->comingProduct->delete($comingSoonProduct->id);
+        return back()->with('success','Product berhasil dihapus');
     }
 
     public function showproduct(Product $product)
