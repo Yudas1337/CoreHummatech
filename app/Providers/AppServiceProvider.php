@@ -65,6 +65,7 @@ use App\Contracts\Repositories\MisionItemsRepository;
 use App\Contracts\Repositories\SosialMediaRepository;
 use App\Contracts\Repositories\TestimonialRepository;
 use App\Contracts\Interfaces\CategoryProductInterface;
+use App\Contracts\Interfaces\ComingSoonProductInterface;
 use App\Contracts\Interfaces\VisionAndMisionInterface;
 use App\Contracts\Repositories\CategoryNewsRepository;
 use App\Contracts\Repositories\NewsCategoryRepository;
@@ -77,6 +78,7 @@ use App\Contracts\Repositories\TermsconditionRepository;
 use App\Contracts\Repositories\CategoryProductRepository;
 use App\Contracts\Repositories\VisionAndMisionRepository;
 use App\Contracts\Interfaces\EnterpriseStructureInterface;
+use App\Contracts\Repositories\ComingSoonProductRepository;
 use App\Contracts\Repositories\VisitorDetectionRepository;
 use App\Contracts\Repositories\EnterpriseStructureRepository;
 
@@ -119,6 +121,7 @@ class AppServiceProvider extends ServiceProvider
         ServiceMitraInterface::class => ServiceMitraRepository::class,
         HomeInterface::class => HomeRepository::class,
         MisionItemsInterface::class => MisionItemsRepository::class,
+        ComingSoonProductInterface::class => ComingSoonProductRepository::class,
     ];
 
     /**
