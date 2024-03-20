@@ -135,10 +135,11 @@
                         <a href="{{ url("data/product/kategori/{$category->slug}") }}">{{ $category->name }}</a>
                     </li>
                 @endforeach
-                @if ($comingProducts != null)
-                    <li class="{{ request()->is("data/product/coming-soon") ? 'active' : '' }}">
-                        <a href="{{ url("data/product/coming-soon") }}">Coming soon</a>
-                    </li>
+                @if ($comingProducts->isEmpty())
+                @else
+                <li class="{{ request()->is("data/product/coming-soon") ? 'active' : '' }}">
+                    <a href="{{ url("data/product/coming-soon") }}">Coming soon</a>
+                </li>
                 @endif
             </ul>
         </div>
