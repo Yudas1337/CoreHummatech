@@ -220,7 +220,7 @@ Route::get('about-us/team', [AboutUsController::class,'team']);
 Route::get('detail/profile', [AboutUsController::class, 'showPdf']);
 
 // Berita
-Route::get('berita', [NewsController::class, 'news']);
+Route::get('news', [NewsController::class, 'news']);
 Route::get('berita/kategori/{category:slug}', [NewsController::class, 'newsCategory'])->name('news.category');
 Route::get('berita/{slugnews}', [NewsController::class, 'showNews'])->name('news.view');
 
@@ -228,7 +228,7 @@ Route::get('berita/{slugnews}', [NewsController::class, 'showNews'])->name('news
 Route::get('layanan/{slugService}', [ServiceController::class, 'ShowService']);
 
 //product
-Route::get('data/product', [HomeProductController::class, 'index']);
+Route::get('/portofolio', [HomeProductController::class, 'index']);
 Route::get('data/product/kategori/{category:slug}',[HomeProductController::class,'productCategory']);
 
 // Detail Product

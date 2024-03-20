@@ -84,11 +84,11 @@
                             @endforelse
                         </ul>
                     </li>
-                    <li class="{{ request()->is('data/product') ? 'active' : '' }}">
-                        <a href="{{ url('/data/product') }}">Portofolio</a>
+                    <li class="{{ request()->is('/portofolio') ? 'active' : '' }}">
+                        <a href="{{ url('/portofolio') }}">Portofolio</a>
                     </li>
-                    <li class="{{ request()->is('berita*', 'detail/news') ? 'active' : '' }}">
-                        <a href="/berita">Berita</a>
+                    <li class="{{ request()->is('news*', 'detail/news') ? 'active' : '' }}">
+                        <a href="/news">Berita</a>
                     </li>
                     <li class="{{ request()->is('contact') ? 'active' : '' }}">
                         <a href="/contact">Hubungi</a>

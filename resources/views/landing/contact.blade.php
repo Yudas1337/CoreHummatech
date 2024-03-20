@@ -1,5 +1,5 @@
 @extends('landing.layouts.layouts.app')
-@section('title' , 'Hubungi')
+@section('title' , 'Contact')
 @section('style')
     <meta name="csrf-token" content="{{ csrf_token() }}" />
 
