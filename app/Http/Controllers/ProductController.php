@@ -163,7 +163,7 @@ class ProductController extends Controller
     {
         $data = $this->productService->updateComing($comingSoonProduct, $request);
         $this->comingProduct->update($comingSoonProduct->id , $data);
-        return back()->with('success','Product Berhasil Diperbarui');
+        return to_route('product.index')->with('success', 'Produk Berhasil Di Update');
     }
 
     public function feature(ProductFeature $ProductFeature)
