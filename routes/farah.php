@@ -4,6 +4,7 @@ use App\Http\Controllers\BackgroundController;
 use App\Http\Controllers\CategoryProductController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\HomeDescriptionController;
+use App\Http\Controllers\HomeProductController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
@@ -30,3 +31,5 @@ Route::post('coming-soon-product/store', [ProductController::class, 'storeComing
 Route::put('coming-soon-product/{comingSoonProduct}', [ProductController::class, 'updateComing'])->name('product-coming.update');
 Route::get('coming-soon-product/edit/{comingSoonProduct}', [ProductController::class, 'editComing'])->name('product-coming.edit');
 Route::delete('coming-soon-product/{comingSoonProduct}', [ProductController::class, 'destroyComing'])->name('product-coming.delete');
+
+Route::get('data/product/coming-soon', [HomeProductController::class, 'productComing']);

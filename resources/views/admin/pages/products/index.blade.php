@@ -41,9 +41,10 @@
         @else
             @foreach($comingProducts as $comingProduct)
                 <div class="col-lg-3">
-                    <div class="card border-0 shadow rounded">
+                    <div class="card border-0 shadow rounded ribbon-wrapper-right">
+                        <div class="ribbon ribbon-primary ribbon-clip-right ribbon-right" style="margin-bottom: -30px">Coming soon!</div>
                         <img src="{{ asset('storage/' . $comingProduct->image) }}" alt="{{ $comingProduct->name }}"
-                            style="object-fit: cover; width: 100%; height: 200px" class="rounded-top card-img-thumbnail" />
+                            style="object-fit: cover; width: 100%; height: 200px" class="rounded-top card-img-thumbnail position-relative" />
                         <div class="card-header text-center h4 border-bottom"
                             style="margin-top: -1rem; border-radius: var(--bs-border-radius) var(--bs-border-radius) 0 0 !important;">
                             {{ $comingProduct->name }}</div>

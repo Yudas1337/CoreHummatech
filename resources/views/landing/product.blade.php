@@ -129,85 +129,97 @@
     <div class="about-us-area">
         <div class="container">
             <ul class="nav custom-tabs">
-                <li @if (!request()->category) class="active" @endif><a href="{{ url('/data/product') }}">Semua</a></li>
+                <li @if (!request()->category && !request()->is('data/product/coming-soon')) class="active" @endif><a href="{{ url('/data/product') }}">Semua</a></li>
                 @foreach ($categories as $category)
                     <li class="{{ request()->is("data/product/kategori/{$category->slug}") ? 'active' : '' }}">
                         <a href="{{ url("data/product/kategori/{$category->slug}") }}">{{ $category->name }}</a>
                     </li>
                 @endforeach
+                @if ($comingProducts != null)
+                    <li class="{{ request()->is("data/product/coming-soon") ? 'active' : '' }}">
+                        <a href="{{ url("data/product/coming-soon") }}">Coming soon</a>
+                    </li>
+                @endif
             </ul>
         </div>
     </div>
 
     <div class="thumb-services-area inc-thumbnail default-padding bottom-less ps-5">
-        @forelse ($products as $key => $product)
-            @if ($key % 2 === 1)
-                <div class="container">
-                    <div class="about-items">
-                        <div class="row align-center">
-                            <div class="col-lg-6 d-none d-md-none d-lg-inline-flex">
-                                <div class="thumb">
-                                    <img alt="{{ $product->name }}" src="{{ asset('storage/' . $product->image) }}" style="margin-left: 10px; margin-right: 10px; min-height: 400px;object-fit:contain;max-height:400px"/>
+        @php
+            if (request()->is('data/product/coming-soon')) {
+                $compact = $comingProducts;
+            } else {
+                $compact = $products;
+            }
+        @endphp
+            @forelse ( $compact as $key => $product )
+                @if ($key % 2 === 1)
+                    <div class="container">
+                        <div class="about-items">
+                            <div class="row align-center">
+                                <div class="col-lg-6 d-none d-md-none d-lg-inline-flex">
+                                    <div class="thumb">
+                                        <img alt="{{ $product->name }}" src="{{ asset('storage/' . $product->image) }}" style="margin-left: 10px; margin-right: 10px; min-height: 400px;object-fit:contain;max-height:400px"/>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-lg-6 info">
-                                <h1>{{ $product->name }}</h1>
-                                <img alt="{{ $product->name }}" src="{{ asset('storage/'.$product->image) }}" class="w-100 mb-3 d-lg-none" />
+                                <div class="col-lg-6 info">
+                                    <h1>{{ $product->name }}</h1>
+                                    <img alt="{{ $product->name }}" src="{{ asset('storage/'.$product->image) }}" class="w-100 mb-3 d-lg-none" />
 
-                                <p>
-                                    {{ $product->description }}
-                                </p>
+                                    <p>
+                                        {{ $product->description }}
+                                    </p>
 
-                                <div class="d-flex gap-2">
-                                    <a class="btn btn-stroke-gradient text-gradient effect btn-md" href="{{ route('detail.product', $product->slug) }}">Lihat
-                                        Detail</a>
-                                    <a class="btn btn-gradient effect btn-md" target="_blank" href="{{ $product->link }}">Kunjungi
-                                        website</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            @else
-                <div class="right-shape">
-                    <img src="{{ asset('assets-home/img/shape/9.png') }}" alt="Shape">
-                </div>
-                <div class="container my-5 py-5">
-                    <div class="about-items">
-                        <div class="row align-center">
-                            <div class="col-lg-6 info">
-                                <h1>{{ $product->name }}</h1>
-                                <img alt="{{ $product->name }}" src="{{ asset('storage/'.$product->image) }}" class="w-100 mb-3 d-lg-none" />
-                                <p>
-                                    {{ $product->description }}
-                                </p>
-
-                                <div class="d-flex gap-2">
-                                    <a class="btn btn-stroke-gradient effect btn-md text-gradient" href="{{ route('detail.product', $product->slug) }}">Lihat
-                                        Detail</a>
-                                    <a class="btn btn-gradient effect btn-md" target="_blank" href="{{ $product->link }}">Kunjungi
-                                        website</a>
-                                </div>
-                            </div>
-                            <div class="col-lg-5 d-none d-md-none d-lg-inline-flex">
-                                <div class="thumb">
-                                    <img alt="{{ $product->name }}" src="{{ asset('storage/'.$product->image) }}" style="margin-left: 10px; margin-right: 10px; min-height: 400px;object-fit:contain;max-height:400px ;" />
+                                    <div class="d-flex gap-2">
+                                        <a class="btn btn-stroke-gradient text-gradient effect btn-md" href="{{ route('detail.product', $product->slug) }}">Lihat
+                                            Detail</a>
+                                        <a class="btn btn-gradient effect btn-md" target="_blank" href="{{ $product->link }}">Kunjungi
+                                            website</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            @endif
-        @empty
+                @else
+                    <div class="right-shape">
+                        <img src="{{ asset('assets-home/img/shape/9.png') }}" alt="Shape">
+                    </div>
+                    <div class="container my-5 py-5">
+                        <div class="about-items">
+                            <div class="row align-center">
+                                <div class="col-lg-6 info">
+                                    <h1>{{ $product->name }}</h1>
+                                    <img alt="{{ $product->name }}" src="{{ asset('storage/'.$product->image) }}" class="w-100 mb-3 d-lg-none" />
+                                    <p>
+                                        {{ $product->description }}
+                                    </p>
 
-            <div class="col-12">
-                <div class="d-flex justify-content-center">
-                    <img src="{{ asset('nodata-gif.gif') }}" alt="" width="800px">
+                                    <div class="d-flex gap-2">
+                                        <a class="btn btn-stroke-gradient effect btn-md text-gradient" href="{{ route('detail.product', $product->slug) }}">Lihat
+                                            Detail</a>
+                                        <a class="btn btn-gradient effect btn-md" target="_blank" href="{{ $product->link }}">Kunjungi
+                                            website</a>
+                                    </div>
+                                </div>
+                                <div class="col-lg-5 d-none d-md-none d-lg-inline-flex">
+                                    <div class="thumb">
+                                        <img alt="{{ $product->name }}" src="{{ asset('storage/'.$product->image) }}" style="margin-left: 10px; margin-right: 10px; min-height: 400px;object-fit:contain;max-height:400px ;" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                @endif
+            @empty
+
+                <div class="col-12">
+                    <div class="d-flex justify-content-center">
+                        <img src="{{ asset('nodata-gif.gif') }}" alt="" width="800px">
+                    </div>
+                    <h4 class="text-center text-dark" style="font-weight:600">
+                        Belum ada Produk
+                    </h4>
                 </div>
-                <h4 class="text-center text-dark" style="font-weight:600">
-                    Belum ada Produk
-                </h4>
-            </div>
-        @endforelse
+            @endforelse
     </div>
 @endsection

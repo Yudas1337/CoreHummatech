@@ -507,35 +507,57 @@
                                 <div class="case-items-area">
                                     <div class="masonary">
                                         <div id="portfolio-grid" class="gallery-items colums-3 gap-2">
-                                            @forelse ($product as $product)
+                                            @if($product->isEmpty() && $comingProducts->isEmpty())
+                                                <div class="d-flex justify-content-center">
+                                                    <img src="{{ asset('nodata.jpg') }}" alt="" width="400px">
+                                                </div>
+                                                <h5 class="text-center">
+                                                    Data Masih Kosong
+                                                </h5>
+                                            @else
+                                                @foreach($comingProducts as $comingProduct)
                                                 <div class="pf-item mx-2" style="width: 300px" >
                                                     <div class="item" style="width: 300px">
                                                         <div class="" style="background-color: #E5F1FF;">
-                                                            <img src="{{ asset('storage/' . $product->image) }}" width="300px" height="300px" class="object-fit-cover" alt="Thumb">
+                                                            <div class="p-2 bg-primary text-white" style="position-absolute">Coming soon!</div>
+                                                            <img src="{{ asset('storage/' . $comingProduct->image) }}" width="300px" height="260px" style="object-fit: cover;" alt="Thumb">
                                                         </div>
                                                         <div class="content">
                                                             <div class="info">
-                                                                <h4><a href="{{ route('detail.product', $product->slug) }}">{{ $product->name }}</a></h4>
-                                                                <span>{{ Str::limit($product->description, 50, '...') }}</span>
+                                                                <h4><a href="{{ route('detail.product', $comingProduct->slug) }}">{{ $comingProduct->name }}</a></h4>
+                                                                <span>{{ Str::limit($comingProduct->description, 50, '...') }}</span>
                                                             </div>
                                                             <div class="button">
-                                                                <a href="{{ asset('storage/' . $product->image) }}" class="item popup-gallery">
+                                                                <a href="{{ asset('storage/' . $comingProduct->image) }}" class="item popup-gallery">
                                                                     <i class="fas fa-plus"></i>
                                                                 </a>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            @empty
-                                            <div class="col-12">
-                                                <div class="d-flex justify-content-center">
-                                                    <img src="{{ asset('nodata-gif.gif') }}" alt="" width="800px">
-                                                </div>
-                                                <h4 class="text-center text-dark" style="font-weight:600">
-                                                    Belum ada Portofolio
-                                                </h4><br>
-                                            </div>
-                                            @endforelse
+                                                @endforeach
+
+                                                @foreach($product as $product)
+                                                    <div class="pf-item mx-2" style="width: 300px" >
+                                                        <div class="item" style="width: 300px">
+                                                            <div class="" style="background-color: #E5F1FF;">
+                                                                <img src="{{ asset('storage/' . $product->image) }}" width="300px" height="300px" class="object-fit-cover" alt="Thumb">
+                                                            </div>
+                                                            <div class="content">
+                                                                <div class="info">
+                                                                    <h4><a href="{{ route('detail.product', $product->slug) }}">{{ $product->name }}</a></h4>
+                                                                    <span>{{ Str::limit($product->description, 50, '...') }}</span>
+                                                                </div>
+                                                                <div class="button">
+                                                                    <a href="{{ asset('storage/' . $product->image) }}" class="item popup-gallery">
+                                                                        <i class="fas fa-plus"></i>
+                                                                    </a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                @endforeach
+                                            @endif
                                         </div>
                                     </div>
                                 </div>
