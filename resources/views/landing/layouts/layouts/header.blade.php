@@ -20,9 +20,9 @@
             <!-- Start Atribute Navigation -->
             <div class="attr-nav">
                 <ul class="side-menu">
-                    <li>
+                    {{-- <li>
                         <div id="google_translate_element"></div>
-                    </li>
+                    </li> --}}
                     <li class="side-menu">
                         <a href="#">
                             <span class="bar-1"></span>
