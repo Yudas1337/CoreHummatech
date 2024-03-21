@@ -132,7 +132,7 @@
             <div class="work-process-items features-content">
                 <div class="text-center">
                     @if ($imageStructure)
-                        <img src="{{ asset('storage/'. $imageStructure->image) }}" class="rounded-3" alt="Struktur Usaha dari Hummatech" />
+                        <img src="{{ asset('storage/'. $imageStructure->image) }}" class="rounded rounded-3" alt="Struktur Usaha dari Hummatech" />
                     @else
                         <div class="d-flex justify-content-center">
                             <img src="{{ asset('nodata-gif.gif') }}" alt="Not Found" width="800px" />
