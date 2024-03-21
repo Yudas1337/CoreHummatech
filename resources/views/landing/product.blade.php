@@ -129,7 +129,7 @@
     <div class="about-us-area">
         <div class="container">
             <ul class="nav custom-tabs">
-                <li @if (!request()->category && !request()->is('data/product/coming-soon')) class="active" @endif><a href="{{ url('/data/product') }}">Semua</a></li>
+                <li @if (!request()->category && !request()->is('data/product/coming-soon')) class="active" @endif><a href="{{ url('/portofolio') }}">Semua</a></li>
                 @foreach ($categories as $category)
                     <li class="{{ request()->is("data/product/kategori/{$category->slug}") ? 'active' : '' }}">
                         <a href="{{ url("data/product/kategori/{$category->slug}") }}">{{ $category->name }}</a>
@@ -154,6 +154,7 @@
             }
         @endphp
             @forelse ( $compact as $key => $product )
+            {{-- @dd($compact) --}}
                 @if ($key % 2 === 1)
                     <div class="container">
                         <div class="about-items">
@@ -172,7 +173,7 @@
                                     </p>
 
                                     <div class="d-flex gap-2">
-                                        <a class="btn btn-stroke-gradient text-gradient effect btn-md" href="{{ route('detail.product', $product->slug) }}">Lihat
+                                        <a class="btn btn-stroke-gradient text-gradient effect btn-md" href="{{ $compact == $comingProducts ? route('detail.comming-soon', $product->slug) : route('detail.product', $product->slug) }}">Lihat
                                             Detail</a>
                                         <a class="btn btn-gradient effect btn-md" target="_blank" href="{{ $product->link }}">Kunjungi
                                             website</a>
@@ -196,7 +197,7 @@
                                     </p>
 
                                     <div class="d-flex gap-2">
-                                        <a class="btn btn-stroke-gradient effect btn-md text-gradient" href="{{ route('detail.product', $product->slug) }}">Lihat
+                                        <a class="btn btn-stroke-gradient effect btn-md text-gradient" href="{{ $compact == $comingProducts ? route('detail.comming-soon', $product->slug) : route('detail.product', $product->slug) }}">Lihat
                                             Detail</a>
                                         <a class="btn btn-gradient effect btn-md" target="_blank" href="{{ $product->link }}">Kunjungi
                                             website</a>
