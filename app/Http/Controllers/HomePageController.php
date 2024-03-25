@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Contracts\Interfaces\BackgroundInterface;
 use App\Contracts\Interfaces\CategoryProductInterface;
 use App\Contracts\Interfaces\CollabCategoryInterface;
 use App\Contracts\Interfaces\CollabMitraInterface;
@@ -29,9 +30,10 @@ class HomePageController extends Controller
     private ProductInterface $product;
     private HomeInterface $home;
     private ComingSoonProductInterface $comingProduct;
+    private BackgroundInterface $background;
 
 
-    public function __construct(HomeInterface $home, ProfileInterface $profile,VisitorDetectionInterface $visitorDetection, ServiceInterface $service, NewsInterface $news, CollabMitraInterface $mitras, SectionInterface $section, ProductInterface $product, CollabCategoryInterface $mitraCategory, ComingSoonProductInterface $comingProduct)
+    public function __construct(HomeInterface $home, ProfileInterface $profile,VisitorDetectionInterface $visitorDetection, ServiceInterface $service, NewsInterface $news, CollabMitraInterface $mitras, SectionInterface $section, ProductInterface $product, CollabCategoryInterface $mitraCategory, ComingSoonProductInterface $comingProduct, BackgroundInterface $background)
     {
         $this->profile = $profile;
         $this->service = $service;
@@ -43,6 +45,7 @@ class HomePageController extends Controller
         $this->mitraCategory = $mitraCategory;
         $this->home = $home;
         $this->comingProduct = $comingProduct;
+        $this->background = $background;
     }
     /**
      * Display a listing of the resource.
@@ -115,6 +118,7 @@ class HomePageController extends Controller
     {
         $mitras = $this->mitras->get();
         $mitraCategories = $this->mitraCategory->get();
-        return view('landing.mitra' , compact('mitras', 'mitraCategories'));
+        $background = $this->background->getByType('Mitra Kami');
+        return view('landing.mitra' , compact('mitras', 'mitraCategories', 'background'));
     }
 }

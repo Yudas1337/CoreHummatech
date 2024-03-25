@@ -15,5 +15,6 @@ enum PageEnum :string
     case BERITA = 'Berita';
     case HUBUNGI = 'Hubungi Kami';
     case LOWONGAN = 'Lowongan';
+    case MITRA = 'Mitra Kami';
 }
 

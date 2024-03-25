@@ -189,6 +189,7 @@
                                     <option value="" disabled selected>Pilih Halaman</option>
                                     <option value="Tentang Kami">Tentang Kami</option>
                                     <option value="Layanan">Layanan</option>
+                                    <option value="Mitra Kami">Mitra Kami</option>
                                     <option value="Portofolio">Portofolio</option>
                                     <option value="Berita">Berita</option>
                                     <option value="Hubungi Kami">Hubungi Kami</option>
@@ -269,6 +270,7 @@
                                     <option value="" disabled selected>Pilih Halaman</option>
                                     <option value="Tentang Kami">Tentang Kami</option>
                                     <option value="Layanan">Layanan</option>
+                                    <option value="Mitra Kami">Mitra Kami</option>
                                     <option value="Portofolio">Portofolio</option>
                                     <option value="Berita">Berita</option>
                                     <option value="Hubungi Kami">Hubungi Kami</option>
