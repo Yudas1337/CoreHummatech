@@ -167,44 +167,59 @@
             <!-- End Google Maps -->
         @endif
     @endsection
-
     @section('script')
-        <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
-        <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onloadTurnstileCallback" defer></script>
+    <style>
+        .leaflet-marker-icon {
+            background-image: url('{{ asset('marker1.png') }}');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            width: 60px;
+            height: 60px;
+        }
+    </style>
 
-        @if ($branches->count() > 0)
-            <script>
-                var map = L.map('maps1');
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onloadTurnstileCallback" defer></script>
 
-                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                    attribution: '&copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors'
-                }).addTo(map);
-
-                var markers = [];
-                var bounds = L.latLngBounds();
-
-                @foreach ($branches as $branch)
-                    var marker = L.marker([{{ $branch->latitude }}, {{ $branch->lotitude }}]).addTo(map);
-                    marker.bindPopup("<div class='popup-content'><b>{{ $branch->name }}</b><br>{{ $branch->address }}</div>");
-                    markers.push(marker);
-                    bounds.extend(marker.getLatLng());
-
-                    @if ($branch->type === 'center')
-                        map.setView(marker.getLatLng(), 12);
-                        marker.openPopup();
-                    @endif
-                @endforeach
-
-                map.fitBounds(bounds);
-            </script>
-        @endif
-
-        {{-- For Cloudflare Turnstile --}}
+    @if ($branches->count() > 0)
         <script>
-            window.onloadTurnstileCallback = function() {
-                turnstile.render('#cf-turnstile', {
-                    sitekey: "{{ config('turnstile.site_key') }}",
-                });
-            };
+            var map = L.map('maps1');
+
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors'
+            }).addTo(map);
+
+            var markers = [];
+            var bounds = L.latLngBounds();
+
+            @foreach ($branches as $branch)
+                var marker = L.marker([{{ $branch->latitude }}, {{ $branch->lotitude }}]).addTo(map);
+                marker.setIcon(L.icon({
+                    iconUrl: '{{ asset('marker1.png') }}',
+                    iconSize: [60, 60],
+                    iconAnchor: [20, 20]
+                }));
+                marker.bindPopup("<div class='popup-content'><b>{{ $branch->name }}</b><br>{{ $branch->address }}</div>");
+                markers.push(marker);
+                bounds.extend(marker.getLatLng());
+
+                @if ($branch->type === 'center')
+                    map.setView(marker.getLatLng(), 12);
+                    marker.openPopup();
+                @endif
+            @endforeach
+
+            map.fitBounds(bounds);
         </script>
-    @endsection
+    @endif
+
+    {{-- For Cloudflare Turnstile --}}
+    <script>
+        window.onloadTurnstileCallback = function() {
+            turnstile.render('#cf-turnstile', {
+                sitekey: "{{ config('turnstile.site_key') }}",
+            });
+        };
+    </script>
+@endsection
