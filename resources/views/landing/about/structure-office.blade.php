@@ -131,14 +131,14 @@
         <div class="container">
             <div class="work-process-items features-content">
                 <div class="text-center">
-                    @if ($imageStructures->count() > 0 && isset($imageStructures[1]))
-                        <img src="{{ Storage::url($imageStructures[1]->image) }}" alt="Struktur Usaha dari Hummatech" />
+                    @if ($imageStructure)
+                        <img src="{{ asset('storage/'. $imageStructure->image) }}" class="rounded rounded-3" style="border-radius: " alt="Struktur Usaha dari Hummatech" />
                     @else
                         <div class="d-flex justify-content-center">
                             <img src="{{ asset('nodata-gif.gif') }}" alt="Not Found" width="800px" />
                         </div>
                         <h4 class="text-center text-dark" style="font-weight:600">
-                            Gambar struktur organisasi belum diunggah
+                            Gambar struktur usaha belum diunggah
                         </h4>
                     @endif
                 </div>

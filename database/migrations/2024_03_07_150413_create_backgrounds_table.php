@@ -17,6 +17,7 @@ return new class extends Migration
             $table->enum('show_in', [
                 PageEnum::TENTANG->value, 
                 PageEnum::LAYANAN->value, 
+                PageEnum::MITRA->value, 
                 PageEnum::PORTOFOLIO->value, 
                 PageEnum::BERITA->value, 
                 PageEnum::HUBUNGI->value, 

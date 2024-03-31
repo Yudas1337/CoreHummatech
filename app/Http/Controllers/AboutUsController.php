@@ -69,16 +69,16 @@ class AboutUsController extends Controller
 
     public function structure_organisation()
     {
-        $imageStructures = $this->imageStructure->get();
+        $imageStructure = $this->imageStructure->getByType('structure_organize');
         $background = $this->background->getByType('Tentang Kami');
-        return view('landing.about.structure-organisation', compact('imageStructures', 'background'));
+        return view('landing.about.structure-organisation', compact('imageStructure', 'background'));
     }
 
     public function structure_office()
     {
-        $imageStructures = $this->imageStructure->get();
+        $imageStructure = $this->imageStructure->getByType('structure_business');
         $background = $this->background->getByType('Tentang Kami');
-        return view('landing.about.structure-office', compact('imageStructures', 'background'));
+        return view('landing.about.structure-office', compact('imageStructure', 'background'));
     }
 
     public function logo()

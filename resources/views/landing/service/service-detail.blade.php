@@ -234,6 +234,7 @@
                                 href="">Kunjungi website</a>
                         @endif
 
+                        @if (!$products->isEmpty())
                         <div class="mt-5">
                             <div class="title-service">
                                 <h4 class="m-0">Produk Yang Dihasilkan</h4>
@@ -270,7 +271,9 @@
                                 </div>
                             @endforelse
                         </div>
+                        @endif
 
+                        @if (!$testimonials->isEmpty())
                         <div class="my-5 py-3">
                             <div class="title-service">
                                 <h4 class="m-0">Testimoni Layanan</h4>
@@ -327,6 +330,8 @@
                                 </div>
                             </div>
                         </div>
+                        @endif
+                        
                         @if ($faqs->count() > 0)
                             <div class="py-3 mb-5">
                                 <div class="title-service">
@@ -496,7 +501,7 @@
                                 </div>
                             </div>
                         </div> --}}
-                        @if ($galeries)
+                        @if (!$galeries->isEmpty())
                             <div class="py-2 mb-5">
                                 <div class="title-service">
                                     <h4 class="m-0">Galeri</h4>

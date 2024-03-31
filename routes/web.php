@@ -233,6 +233,7 @@ Route::get('data/product/kategori/{category:slug}',[HomeProductController::class
 
 // Detail Product
 Route::get('detail/{product:slug}', [ProductController::class, 'showproduct'])->name('detail.product');
+Route::get('detail/coming-soon/{ComingSoonProduct:slug}', [ProductController::class, 'showproductcommingsoon'])->name('detail.comming-soon');
 
 // Contact Us With Controller
 Route::controller(ContactUsController::class)->name('contact.')->group(function() {

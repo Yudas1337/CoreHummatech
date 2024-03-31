@@ -182,7 +182,7 @@ class ProductController extends Controller
         $this->product->delete($product->id);
         return back()->with('success', 'Produk Berhasil Di Hapus');
     }
-    
+
     public function destroyComing(ComingSoonProduct $comingSoonProduct)
     {
         $this->productService->deleteComing($comingSoonProduct);
@@ -197,5 +197,15 @@ class ProductController extends Controller
         $faqs = $this->faq->ServiceProductShow('product_id', $id);
 
         return view('landing.product.product-detail', compact('product', 'testimonial', 'faqs'));
+    }
+
+    public function showproductcommingsoon(ComingSoonProduct $ComingSoonProduct)
+    {
+        $testimonial = $this->testimonial->get();
+        $id  = $ComingSoonProduct->id;
+        $faqs = $this->faq->ServiceProductShow('product_id', $id);
+
+
+        return view('landing.product.product-detail-coming-soon', compact('ComingSoonProduct', 'testimonial', 'faqs'));
     }
 }
