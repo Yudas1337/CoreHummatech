@@ -94,7 +94,7 @@
                     <li class="{{ request()->is('contact') ? 'active' : '' }}">
                         <a href="/contact">Hubungi</a>
                     </li>
-                    <li class="{{ request()->is('/job-vacancy') ? 'active' : '' }}">
+                    <li class="{{ request()->is('job-vacancy') ? 'active' : '' }}">
                         <a href="/job-vacancy">Lowongan</a>
 
                     </li>
