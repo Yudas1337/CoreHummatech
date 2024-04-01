@@ -241,8 +241,7 @@
                             <div class="row">
                                 <div class="col-lg-12">
                                     <p class="text-center">&copy; Copyright 2024. All Rights Reserved by <a
-                                            href="{{ url('/') }}">
-                                            PT. Humma Teknologi Indonesia </a></p>
+                                            href="{{ url('/') }}">Hummatech </a></p>
                                 </div>
                             </div>
                         </div>

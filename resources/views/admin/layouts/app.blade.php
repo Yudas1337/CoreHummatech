@@ -141,7 +141,7 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-md-6 p-0 footer-copyright">
-                            <p class="mb-0">Copyright {{ date("Y") }} <a href="{{ url('/') }}">PT Hummatech Digital Indonesia</a>.</p>
+                            <p class="mb-0">Copyright {{ date("Y") }} <a href="{{ url('/') }}">Hummatech All Rights Reserved</a>.</p>
                         </div>
                     </div>
                 </div>
