@@ -94,8 +94,8 @@
                     <li class="{{ request()->is('contact') ? 'active' : '' }}">
                         <a href="/contact">Hubungi</a>
                     </li>
-                    <li class="{{ request()->is('data/lowongan') ? 'active' : '' }}">
-                        <a href="/data/lowongan">Lowongan</a>
+                    <li class="{{ request()->is('job-vacancy') ? 'active' : '' }}">
+                        <a href="/job-vacancy">Lowongan</a>
 
                     </li>
                 </ul>

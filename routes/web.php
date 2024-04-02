@@ -249,7 +249,7 @@ Route::get('alumni-detail', function () {
     return view('landing.service.alumni-detail');
 });
 //vacancy
-Route::get('data/lowongan', HomeVacancyController::class);
+Route::get('job-vacancy', HomeVacancyController::class);
 //gatau
 Route::post('image-uploader', ImageUploader::class)->name('image-uploader');
 
