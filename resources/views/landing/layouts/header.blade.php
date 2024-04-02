@@ -55,22 +55,22 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Tentang</a>
                         <ul class="dropdown-menu">
                             <li class="">
-                                <a href="/about-us/profile">Profile</a>
+                                <a href="/about/profile">Profil</a>
                             </li>
                             <li class="">
-                                <a href="/about-us/vision-mision">visi & misi</a>
+                                <a href="/about/vision-mision">visi & misi</a>
                             </li>
                             <li class="">
-                                <a href="/about-us/structure-organisation">struktur organisasi</a>
+                                <a href="/about/structure-organisation">struktur organisasi</a>
                             </li>
                             <li class="">
-                                <a href="/about-us/structure-office">struktur usaha</a>
+                                <a href="/about/structure-office">struktur usaha</a>
                             </li>
                             <li class="">
-                                <a href="/about-us/logo">logo</a>
+                                <a href="/about/logo">logo</a>
                             </li>
                             <li class="">
-                                <a href="/about-us/team">tim</a>
+                                <a href="/about/team">tim</a>
                             </li>
                         </ul>
                     </li>
