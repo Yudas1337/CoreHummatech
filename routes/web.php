@@ -214,7 +214,7 @@ Route::get('/', [HomePageController::class, 'index']);
 Route::get('about/profile', [AboutUsController::class, 'profile']);
 Route::get('about/vision-mision', [AboutUsController::class, 'vision_mision']);
 Route::get('about/organizational-structure', [AboutUsController::class, 'structure_organisation']);
-Route::get('about/structure-office', [AboutUsController::class, 'structure_office']);
+Route::get('about/company-structure', [AboutUsController::class, 'structure_office']);
 Route::get('about/logo', [AboutUsController::class,'logo']);
 Route::get('about/team', [AboutUsController::class,'team']);
 Route::get('detail/profile', [AboutUsController::class, 'showPdf']);

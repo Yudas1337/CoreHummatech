@@ -64,7 +64,7 @@
                                 <a href="/about/organizational-structure">struktur organisasi</a>
                             </li>
                             <li class="">
-                                <a href="/about/structure-office">struktur usaha</a>
+                                <a href="/about/company-structure">struktur perusahaan</a>
                             </li>
                             <li class="">
                                 <a href="/about/logo">logo</a>

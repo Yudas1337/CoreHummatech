@@ -1,5 +1,5 @@
 @extends('landing.layouts.layouts.app')
-@section('title' , 'Structure Office')
+@section('title' , 'Company Structure')
 @section('style')
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet" />
 
@@ -102,7 +102,7 @@
 
 @section('content')
     <div class="breadcrumb-area text-center shadow dark text-light bg-cover"
-        style="background-image: url({{ $background != null && $background->show_in == 'Tentang Kami' && $background->about_in == 'Struktur Usaha' ? asset('storage/'. $background->image) : asset('assets-home/img/default-bg.png') }});">
+        style="background-image: url({{ $background != null && $background->show_in == 'Tentang Kami' && $background->about_in == 'Struktur PERUsahaAN' ? asset('storage/'. $background->image) : asset('assets-home/img/default-bg.png') }});">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 offset-lg-2">
@@ -121,8 +121,8 @@
             <div class="row">
                 <div class="col-lg-8 offset-lg-2">
                     <div class="site-heading text-center">
-                        <h4>STRUKTUR USAHA</h4>
-                        <h2>Struktur Usaha yang Membawa Inovasi dan Keberlanjutan</h2>
+                        <h4>STRUKTUR PERUSAHAAN</h4>
+                        <h2>Struktur perusahaan yang Membawa Inovasi dan Keberlanjutan</h2>
                         <div class="devider"></div>
                     </div>
                 </div>
@@ -132,13 +132,13 @@
             <div class="work-process-items features-content">
                 <div class="text-center">
                     @if ($imageStructure)
-                        <img src="{{ asset('storage/'. $imageStructure->image) }}" class="rounded rounded-3" style="border-radius: " alt="Struktur Usaha dari Hummatech" />
+                        <img src="{{ asset('storage/'. $imageStructure->image) }}" class="rounded rounded-3" style="border-radius: " alt="Struktur PERUsahaAN dari Hummatech" />
                     @else
                         <div class="d-flex justify-content-center">
                             <img src="{{ asset('nodata-gif.gif') }}" alt="Not Found" width="800px" />
                         </div>
                         <h4 class="text-center text-dark" style="font-weight:600">
-                            Gambar struktur usaha belum diunggah
+                            Gambar struktur perusahaan belum diunggah
                         </h4>
                     @endif
                 </div>
