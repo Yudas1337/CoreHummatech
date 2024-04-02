@@ -132,13 +132,13 @@
             <div class="work-process-items features-content">
                 <div class="text-center">
                     @if ($imageStructure)
-                        <img src="{{ asset('storage/'. $imageStructure->image) }}" class="rounded rounded-3" style="border-radius: " alt="Struktur PERUsahaAN dari Hummatech" />
+                        <img src="{{ asset('storage/'. $imageStructure->image) }}" class="rounded rounded-3" style="border-radius: " alt="Struktur perusahaan dari Hummatech" />
                     @else
                         <div class="d-flex justify-content-center">
                             <img src="{{ asset('nodata-gif.gif') }}" alt="Not Found" width="800px" />
                         </div>
                         <h4 class="text-center text-dark" style="font-weight:600">
-                            Gambar struktur perusahaan belum diunggah
+                            Gambar struktur perusahaan  belum diunggah
                         </h4>
                     @endif
                 </div>
