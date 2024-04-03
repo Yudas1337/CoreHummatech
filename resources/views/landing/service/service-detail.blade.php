@@ -537,7 +537,7 @@
                                 <ul>
                                     @foreach ($services as $service)
                                         <li class=""><a
-                                                class="{{ $service->slug == $slugs->slug ? 'active bg-primary text-light' : '' }}"href="/layanan/{{ $service->slug }}">{{ $service->name }}</a>
+                                                class="{{ $service->slug == $slugs->slug ? 'active bg-primary text-light' : '' }}"href="/services/{{ $service->slug }}">{{ $service->name }}</a>
                                         </li>
                                     @endforeach
                                 </ul>
