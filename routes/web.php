@@ -225,7 +225,7 @@ Route::get('berita/kategori/{category:slug}', [NewsController::class, 'newsCateg
 Route::get('berita/{slugnews}', [NewsController::class, 'showNews'])->name('news.view');
 
 //showService
-Route::get('layanan/{slugService}', [ServiceController::class, 'ShowService']);
+Route::get('services/{slugService}', [ServiceController::class, 'ShowService']);
 
 //product
 Route::get('/portofolio', [HomeProductController::class, 'index']);
