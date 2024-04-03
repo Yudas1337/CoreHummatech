@@ -5,6 +5,7 @@ use App\Http\Controllers\CategoryProductController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\HomeDescriptionController;
 use App\Http\Controllers\HomeProductController;
+use App\Http\Controllers\PortfolioController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
@@ -33,3 +34,8 @@ Route::get('coming-soon-product/edit/{comingSoonProduct}', [ProductController::c
 Route::delete('coming-soon-product/{comingSoonProduct}', [ProductController::class, 'destroyComing'])->name('product-coming.delete');
 
 Route::get('data/product/coming-soon', [HomeProductController::class, 'productComing']);
+
+Route::get('admin/portfolio', [PortfolioController::class, 'index'])->name('portfolio.index');
+Route::post('admin/portfolio', [PortfolioController::class, 'store'])->name('portfolio.store');
+Route::put('admin/portfolio/update/{product}', [PortfolioController::class, 'update'])->name('portfolio.update');
+Route::delete('admin/portfolio/{product}', [PortfolioController::class, 'destroy'])->name('portfolio.destroy');

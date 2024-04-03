@@ -8,7 +8,7 @@
         <div class="card-body p-4 m-5">
                 <ul class="simple-wrapper nav nav-tabs modal-header justify-content-between" id="myTab" role="tablist">
                     <div class="d-flex">
-                        <li class="nav-item"><a class="nav-link active txt-primary" id="profile-tabs" data-bs-toggle="tab" href="#organisasi" role="tab" aria-controls="profile" aria-selected="false">Produk</a></li>
+                        <li class="nav-item"><a class="nav-link active txt-primary" id="profile-tabs" data-bs-toggle="tab" href="#organisasi" role="tab" aria-controls="profile" aria-selected="false">Produk/Portofolio</a></li>
                         <li class="nav-item"><a class="nav-link txt-primary" id="contact-tab" data-bs-toggle="tab" href="#usaha" role="tab" aria-controls="contact" aria-selected="false">Produk layanan</a></li>
                         <li class="nav-item"><a class="nav-link txt-primary" id="soon-tab" data-bs-toggle="tab" href="#soon" role="tab" aria-controls="soon" aria-selected="false">Produk coming soon</a></li>
                     </div>
