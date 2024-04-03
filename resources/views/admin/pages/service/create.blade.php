@@ -24,6 +24,10 @@
                             <input class="form-control" id="name" name="name" type="text" required placeholder="Masukkan nama layanan" />
                         </div>
                         <div class="form-group mb-3 mt-0 col-md-12">
+                            <label for="slug">Slug</label>
+                            <input class="form-control" id="slug" name="slug" type="text" required placeholder="Masukkan slug" />
+                        </div>
+                        <div class="form-group mb-3 mt-0 col-md-12">
                             <label for="description">Deskripsi Layanan</label>
                             <textarea rows="5" class="form-control" id="description" name="description" placeholder="Masukkan deskripsi layanan"></textarea>
                         </div>
