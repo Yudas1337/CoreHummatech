@@ -576,10 +576,7 @@
                                     @endisset
                                 </p>
                                 @if ($instagram)
-                                    @php
-                                        $insta = Illuminate\Support\Str::after($instagram->link, 'instagram.com/')
-                                    @endphp
-                                    <p>DM Instagram: <a href="{{ $instagram->link }}" target="_blank">{{ @$insta }}</a>
+                                    <p>DM Instagram: <a href="{{ $instagram->link }}" target="_blank">{{ '@'. Illuminate\Support\Str::after($instagram->link, 'instagram.com/') }}</a>
                                     </p>
                                 @endif
                                 <p class="mb-0">
