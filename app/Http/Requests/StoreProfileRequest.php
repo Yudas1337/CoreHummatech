@@ -29,7 +29,7 @@ class StoreProfileRequest extends FormRequest
             'email' => 'required',
             'phone' => 'required',
             'image' => 'mimes:png,jpg',
-            'proposal' => 'required'
+            'proposal' => 'required|url'
         ];
     }
 }

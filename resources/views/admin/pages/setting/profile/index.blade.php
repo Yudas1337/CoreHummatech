@@ -43,7 +43,7 @@
                                     </div>
                                     <div class="my-1 mb-2">
                                         <label for="proposal">Proposal Perusahaan</label>
-                                        <input type="file" class="form-control" name="proposal">
+                                        <input type="url" value="{{ $profil->proposal }}" class="form-control" name="proposal">
                                     </div>
                                     <div class="my-1">
                                         <label for="call">No. Telp</label>
@@ -112,7 +112,7 @@
                                     </div>
                                     <div class="my-1 mb-2">
                                         <label for="proposal">Proposal Perusahaan</label>
-                                        <input type="file" class="form-control" name="proposal">
+                                        <input type="url" class="form-control" name="proposal">
                                     </div>
                                     <div class="my-1">
                                         <label for="call">No. Telp</label>

@@ -29,7 +29,7 @@ class UpdateProfileRequest extends FormRequest
             'address' => 'required',
             'email' => 'required',
             'phone' => 'required',
-            'proposal' => 'nullable|mimes:pdf'
+            'proposal' => 'required|url'
         ];
     }
 }
