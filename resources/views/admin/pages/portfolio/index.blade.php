@@ -12,7 +12,7 @@
             </div>
         </form>
         <div class=" col-8 gap-2 d-flex justify-content-end">
-            <a href="/data/portfolio" class="btn btn-secondary col-4" target="_blank">Lihat Portfolio</a>
+            {{-- <a href="/data/portfolio" class="btn btn-secondary col-4" target="_blank">Lihat Portfolio</a> --}}
             <button data-bs-target="#add" data-bs-toggle="modal" class="btn btn-primary">Tambah Portfolio</button>
         </div>
     </div>
