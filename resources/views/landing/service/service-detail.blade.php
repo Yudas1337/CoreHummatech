@@ -584,7 +584,7 @@
                                         Ploso, Kabupaten Malang, Jawa Timur 65152.
                                     @endisset
                                 </p>
-                                @if ($instagram)
+                                {{-- @if ($instagram)
                                     <p>DM Instagram: <a href="{{ $instagram->link }}" target="_blank">{{ $instagram->link }}</a>
                                     </p>
                                     @foreach ($socmed as $socmed)
@@ -599,7 +599,7 @@
                                         </li>
                                     @endforeach
 
-                                @endif
+                                @endif --}}
                             </div>
                         </div>
                         @foreach ($services->where('slug', $slugs->slug) as $service)
