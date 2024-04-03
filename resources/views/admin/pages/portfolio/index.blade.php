@@ -111,7 +111,7 @@
                                 @enderror
                             </div>
                             <div class="form-group mb-3 mt-0 w-50">
-                                <label for="category">Kategori Produk</label>
+                                <label for="category">Kategori Portfolio</label>
                                 <select name="category_product_id" class="js-example-basic-single form-select" id="#edit">
                                     <option value="" disabled selected>Pilih Kategori</option>
                                     @forelse ($categories as $category)
@@ -183,7 +183,7 @@
                                 @enderror
                             </div>
                             <div class="form-group mb-3 mt-0 w-50">
-                                <label for="category">Kategori Produk</label>
+                                <label for="category">Kategori Portfolio</label>
                                 <select name="category_product_id" class="js-example-basic-single form-select" id="#edit">
                                     <option value="" disabled selected>Pilih Kategori</option>
                                     @forelse ($categories as $category)
