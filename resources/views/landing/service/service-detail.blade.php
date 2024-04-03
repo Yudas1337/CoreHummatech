@@ -394,7 +394,7 @@
                         @endif
 
                         @if ($servicemitras->count() > 0)
-                        <div class="py-2 mb-5">
+                        <div class="py-5 mb-5">
                             <div class="title-service">
                                 <h4 class="m-0">Mitra Kami</h4>
                                 <div class="dash"></div>
