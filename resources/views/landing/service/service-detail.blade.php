@@ -584,22 +584,10 @@
                                         Ploso, Kabupaten Malang, Jawa Timur 65152.
                                     @endisset
                                 </p>
-                                {{-- @if ($instagram)
+                                @if ($instagram)
                                     <p>DM Instagram: <a href="{{ $instagram->link }}" target="_blank">{{ $instagram->link }}</a>
                                     </p>
-                                    @foreach ($socmed as $socmed)
-                                        <li>
-                                            <a href="{{ $socmed->link }}" target="_blank"
-                                                style="display: flex;gap: .5rem;align-items: center">
-                                                <i class="fas fa-angle-right"></i>
-                                                <img alt="Facebook Logo" src="{{ asset("storage/{$socmed->image}") }}"
-                                                    height="16px" class="mb-0" width="16px" />
-                                                {{ $socmed->platform }}
-                                            </a>
-                                        </li>
-                                    @endforeach
-
-                                @endif --}}
+                                @endif
                             </div>
                         </div>
                         @foreach ($services->where('slug', $slugs->slug) as $service)
