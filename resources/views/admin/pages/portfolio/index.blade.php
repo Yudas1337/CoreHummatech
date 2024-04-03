@@ -165,7 +165,7 @@
         <div class="modal-dialog modal-xl" role="document">
             <div class="modal-content px-2">
                 <div class="modal-header border-bottom">
-                    <h5 class="modal-title me-2" id="exampleModalLabel">Portfolio Baru</h5>
+                    <h5 class="modal-title me-2" id="exampleModalLabel">Edit Portfolio</h5>
                     <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
             <form method="POST" id="form-edit" enctype="multipart/form-data">
