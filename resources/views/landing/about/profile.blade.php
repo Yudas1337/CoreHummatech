@@ -136,7 +136,7 @@
 
                         @if ($profile->proposal)
                             <a class="btn btn-gradient effect btn-md" target="_blank"
-                                href="/{{ $profile->proposal }}"
+                                href="{{ $profile->proposal }}"
                                >Lihat Profil Lengkap</a>
                         @endif
                     </div>
