@@ -585,7 +585,7 @@
                                     @endisset
                                 </p>
                                 @if ($instagram)
-                                    <p>DM Instagram: <a href="{{ $instagram->link }}" target="_blank">{{ str_after($instagram->link, 'instagram.com/') }}</a>
+                                    <p>DM Instagram: <a href="{{ $instagram->link }}" target="_blank">{{ $instagram->link }}</a>
                                     </p>
                                     @foreach ($socmed as $socmed)
                                         <li>
