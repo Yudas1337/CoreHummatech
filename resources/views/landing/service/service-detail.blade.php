@@ -549,11 +549,56 @@
                             <div class="content">
                                 <i class="fas fa-phone"></i>
                                 <h4>Perlu bantuan?</h4>
-                                <p>
-                                    Kami di sini untuk membantu pelanggan kapan saja. Anda dapat menghubungi kami 24/7 untuk
-                                    menjawab pertanyaan Anda. </p>
-                                @if ($profile)
-                                    <h2>{{ $profile->phone }}</h2>
+                                <p>Kami siap melayani 24 jam, silahkan hubungi layanan call center kami melalui:</p>
+                                <p class="mb-0">Phone: 
+                                    @isset($profile)
+                                        @php
+                                            $cleanPhone = str_replace(
+                                                ['+', '-', ' '],
+                                                '',
+                                                $profile->phone,
+                                            );
+                                            if (substr($cleanPhone, 0, 2) === '62') {
+                                                $cleanPhone = '0' . substr($cleanPhone, 2);
+                                            }
+                                        @endphp
+
+                                        <a href="https://wa.me/{{ $profile->phone }}" target="_blank">{{ $cleanPhone }}</a>
+                                    @else
+                                        <a href="https://wa.me/6285176777785">085176777785</a>
+                                    @endisset
+                                </p>
+                                <p class="mb-0">Email:
+                                    @isset($profile)
+                                        <a href="mailto:{{ $profile->email }}">{{ $profile->email }}</a>
+                                    @else
+                                        <a href="mailto:info@hummatech.com">info@hummatech.com</a>
+                                    @endisset
+                                </p>
+                                <p class="mb-0">
+                                    Alamat: 
+                                    @isset($profile)
+                                        {{ $profile->address }}
+                                    @else
+                                        Perum Permata Regency 1 Blok 10/28, Perun Gpa, Ngijo, Kec. Karang
+                                        Ploso, Kabupaten Malang, Jawa Timur 65152.
+                                    @endisset
+                                </p>
+                                @if ($instagram)
+                                    <p>DM Instagram: <a href="{{ $instagram->link }}" target="_blank">{{ str_after($instagram->link, 'instagram.com/') }}</a>
+                                    </p>
+                                    @foreach ($socmed as $socmed)
+                                        <li>
+                                            <a href="{{ $socmed->link }}" target="_blank"
+                                                style="display: flex;gap: .5rem;align-items: center">
+                                                <i class="fas fa-angle-right"></i>
+                                                <img alt="Facebook Logo" src="{{ asset("storage/{$socmed->image}") }}"
+                                                    height="16px" class="mb-0" width="16px" />
+                                                {{ $socmed->platform }}
+                                            </a>
+                                        </li>
+                                    @endforeach
+
                                 @endif
                             </div>
                         </div>
