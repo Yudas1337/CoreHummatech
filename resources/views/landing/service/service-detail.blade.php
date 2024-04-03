@@ -575,6 +575,10 @@
                                         <a href="mailto:info@hummatech.com">info@hummatech.com</a>
                                     @endisset
                                 </p>
+                                @if ($instagram)
+                                    <p>DM Instagram: <a href="{{ $instagram->link }}" target="_blank">{{ $instagram->link }}</a>
+                                    </p>
+                                @endif
                                 <p class="mb-0">
                                     Alamat: 
                                     @isset($profile)
@@ -584,10 +588,6 @@
                                         Ploso, Kabupaten Malang, Jawa Timur 65152.
                                     @endisset
                                 </p>
-                                @if ($instagram)
-                                    <p>DM Instagram: <a href="{{ $instagram->link }}" target="_blank">{{ $instagram->link }}</a>
-                                    </p>
-                                @endif
                             </div>
                         </div>
                         @foreach ($services->where('slug', $slugs->slug) as $service)
