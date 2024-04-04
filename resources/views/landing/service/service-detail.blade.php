@@ -227,7 +227,7 @@
                         <img src="{{ asset('storage/' . $slugs->image) }}" alt="Thumb">
                         <h2 class="wow fadeInLeft">{{ $slugs->name }}</h2>
                         <p class="wow fadeInLeft">
-                            {!! Str::limit($slugs->description, 800) !!}
+                            {!! $slugs->description !!}
                         </p>
                         @if ($slugs->link)
                             <a href="{{ $slugs->link }}" target="_blank" class="btn btn-gradient effect btn-md"
