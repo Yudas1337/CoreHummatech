@@ -1,5 +1,5 @@
 @extends('landing.layouts.layouts.app')
-@section('title' , 'About Us Company')
+@section('title' , 'About Company')
 @section('style')
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet" />
 
@@ -135,8 +135,8 @@
                         </p>
 
                         @if ($profile->proposal)
-                            <a class="btn btn-gradient effect btn-md"
-                                href="/detail/profile"
+                            <a class="btn btn-gradient effect btn-md" target="_blank"
+                                href="{{ $profile->proposal }}"
                                >Lihat Profil Lengkap</a>
                         @endif
                     </div>

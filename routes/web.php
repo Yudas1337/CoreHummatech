@@ -211,12 +211,12 @@ Route::get('/', [HomePageController::class, 'index']);
 
 // Tentang Kami
 // Route::get('about-us', [AboutUsController::class, 'index']);
-Route::get('about-us/profile', [AboutUsController::class, 'profile']);
-Route::get('about-us/vision-mision', [AboutUsController::class, 'vision_mision']);
-Route::get('about-us/structure-organisation', [AboutUsController::class, 'structure_organisation']);
-Route::get('about-us/structure-office', [AboutUsController::class, 'structure_office']);
-Route::get('about-us/logo', [AboutUsController::class,'logo']);
-Route::get('about-us/team', [AboutUsController::class,'team']);
+Route::get('about/profile', [AboutUsController::class, 'profile']);
+Route::get('about/vision-mision', [AboutUsController::class, 'vision_mision']);
+Route::get('about/organizational-structure', [AboutUsController::class, 'structure_organisation']);
+Route::get('about/company-structure', [AboutUsController::class, 'structure_office']);
+Route::get('about/logo', [AboutUsController::class,'logo']);
+Route::get('about/team', [AboutUsController::class,'team']);
 Route::get('detail/profile', [AboutUsController::class, 'showPdf']);
 
 // Berita
@@ -225,10 +225,10 @@ Route::get('berita/kategori/{category:slug}', [NewsController::class, 'newsCateg
 Route::get('berita/{slugnews}', [NewsController::class, 'showNews'])->name('news.view');
 
 //showService
-Route::get('layanan/{slugService}', [ServiceController::class, 'ShowService']);
+Route::get('services/{slugService}', [ServiceController::class, 'ShowService']);
 
 //product
-Route::get('/portofolio', [HomeProductController::class, 'index']);
+Route::get('/portfolio', [HomeProductController::class, 'index']);
 Route::get('data/product/kategori/{category:slug}',[HomeProductController::class,'productCategory']);
 
 // Detail Product

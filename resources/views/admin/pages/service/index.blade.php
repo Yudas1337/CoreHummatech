@@ -40,7 +40,7 @@
                             <a href="detail/service/{{ $service->id }}" class="btn btn-light-primary btn-sm">Lihat Detail</a>
                         </div>
                         <div class="d-flex flex-shrink-0 gap-2">
-                            <button class="btn btn-light-warning px-3 m-0 btn-edit btn-sm"  type="button" data-id="{{ $service->id }}" data-name="{{ $service->name }}" data-description="{{ $service->description }}" data-link="{{ $service->link }}" data-image="{{ $service->image }}"><i class="fas fa-pencil"></i></button>
+                            <button class="btn btn-light-warning px-3 m-0 btn-edit btn-sm"  type="button" data-slug="{{ $service->slug }}" data-id="{{ $service->id }}" data-name="{{ $service->name }}" data-description="{{ $service->description }}" data-link="{{ $service->link }}" data-image="{{ $service->image }}"><i class="fas fa-pencil"></i></button>
                             <button class="btn px-3 btn-light-danger btn-delete btn-sm" data-id="{{ $service->id }}" type="button"><i class="fas fa-trash"></i></button>
                         </div>
                     </div>
@@ -80,6 +80,10 @@
                         <div class="form-group mb-3 mt-0 col-md-12">
                             <label for="name">Nama Layanan</label>
                             <input class="form-control name-edit" id="name" name="name" type="text" required placeholder="Masukkan nama layanan" />
+                        </div>
+                        <div class="form-group mb-3 mt-0 col-md-12">
+                            <label for="slug">Slug</label>
+                            <input class="form-control slug-edit" id="slug" name="slug" type="text" required placeholder="Masukkan slug" />
                         </div>
                         <div class="form-group mb-3 mt-0 col-md-12">
                             <label for="description">Deskripsi Layanan</label>
@@ -126,10 +130,12 @@
         var id = $(this).data('id');
         var image = $(this).data('image');
         var name = $(this).data('name');
+        var slug = $(this).data('slug');
         var description = $(this).data('description');
         var link = $(this).data('link');
         $('#form-update').attr('action', '/service/' + id);
         $('.name-edit').val(name);
+        $('.slug-edit').val(slug);
         $('.description-edit').val(description);
         $('.link-edit').val(link);
         $('.image-show').attr('src', 'storage/' + image);

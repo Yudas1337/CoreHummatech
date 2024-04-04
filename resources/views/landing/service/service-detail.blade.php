@@ -227,7 +227,7 @@
                         <img src="{{ asset('storage/' . $slugs->image) }}" alt="Thumb">
                         <h2 class="wow fadeInLeft">{{ $slugs->name }}</h2>
                         <p class="wow fadeInLeft">
-                            {!! Str::limit($slugs->description, 800) !!}
+                            {!! $slugs->description !!}
                         </p>
                         @if ($slugs->link)
                             <a href="{{ $slugs->link }}" target="_blank" class="btn btn-gradient effect btn-md"
@@ -394,7 +394,7 @@
                         @endif
 
                         @if ($servicemitras->count() > 0)
-                        <div class="py-2 mb-5">
+                        <div class="py-5 mb-5">
                             <div class="title-service">
                                 <h4 class="m-0">Mitra Kami</h4>
                                 <div class="dash"></div>
@@ -537,7 +537,7 @@
                                 <ul>
                                     @foreach ($services as $service)
                                         <li class=""><a
-                                                class="{{ $service->slug == $slugs->slug ? 'active bg-primary text-light' : '' }}"href="/layanan/{{ $service->slug }}">{{ $service->name }}</a>
+                                                class="{{ $service->slug == $slugs->slug ? 'active bg-primary text-light' : '' }}"href="/services/{{ $service->slug }}">{{ $service->name }}</a>
                                         </li>
                                     @endforeach
                                 </ul>
@@ -549,12 +549,45 @@
                             <div class="content">
                                 <i class="fas fa-phone"></i>
                                 <h4>Perlu bantuan?</h4>
-                                <p>
-                                    Kami di sini untuk membantu pelanggan kapan saja. Anda dapat menghubungi kami 24/7 untuk
-                                    menjawab pertanyaan Anda. </p>
-                                @if ($profile)
-                                    <h2>{{ $profile->phone }}</h2>
+                                <p>Kami siap melayani 24 jam, silahkan hubungi layanan call center kami melalui:</p>
+                                <p class="mb-0">Phone: 
+                                    @isset($profile)
+                                        @php
+                                            $cleanPhone = str_replace(
+                                                ['+', '-', ' '],
+                                                '',
+                                                $profile->phone,
+                                            );
+                                            if (substr($cleanPhone, 0, 2) === '62') {
+                                                $cleanPhone = '0' . substr($cleanPhone, 2);
+                                            }
+                                        @endphp
+
+                                        <a href="https://wa.me/{{ $profile->phone }}" target="_blank">{{ $cleanPhone }}</a>
+                                    @else
+                                        <a href="https://wa.me/6285176777785">085176777785</a>
+                                    @endisset
+                                </p>
+                                <p class="mb-0">Email:
+                                    @isset($profile)
+                                        <a href="mailto:{{ $profile->email }}">{{ $profile->email }}</a>
+                                    @else
+                                        <a href="mailto:info@hummatech.com">info@hummatech.com</a>
+                                    @endisset
+                                </p>
+                                @if ($instagram)
+                                    <p>DM Instagram: <a href="{{ $instagram->link }}" target="_blank">{{ '@'. Illuminate\Support\Str::after($instagram->link, 'instagram.com/') }}</a>
+                                    </p>
                                 @endif
+                                <p class="mb-0">
+                                    Alamat: 
+                                    @isset($profile)
+                                        {{ $profile->address }}
+                                    @else
+                                        Perum Permata Regency 1 Blok 10/28, Perun Gpa, Ngijo, Kec. Karang
+                                        Ploso, Kabupaten Malang, Jawa Timur 65152.
+                                    @endisset
+                                </p>
                             </div>
                         </div>
                         @foreach ($services->where('slug', $slugs->slug) as $service)

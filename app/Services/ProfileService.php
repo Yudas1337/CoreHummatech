@@ -39,11 +39,11 @@ class ProfileService
     {
         $data = $request->validated();
         $image = $request->hasFile('image') && $request->file('image')->isValid();
-        $proposal = $request->hasFile('proposal') && $request->file('proposal')->isValid();
+        // $proposal = $request->hasFile('proposal') && $request->file('proposal')->isValid();
 
-        if ($image && $proposal) {
+        if ($image) {
             $data['image'] = $request->file('image')->store(TypeEnum::PROFILE->value, 'public');
-            $data['proposal'] = $request->file('proposal')->store(TypeEnum::PROFILE->value, 'public');
+            // $data['proposal'] = $request->file('proposal')->store(TypeEnum::PROFILE->value, 'public');
             return $data;
         }
 
@@ -66,14 +66,14 @@ class ProfileService
                 $this->remove($profile->image);
             }
 
-            if ($request->hasFile('proposal') && $request->file('proposal')->isValid()) {
-                if ($profile->proposal != NULL) {
-                    $this->remove($profile->proposal);
-                }
-                $data['proposal'] = $request->file('proposal')->store(TypeEnum::PROFILE->value, 'public');
-            } else {
-                $data['proposal'] = $profile->proposal;
-            }
+            // if ($request->hasFile('proposal') && $request->file('proposal')->isValid()) {
+            //     if ($profile->proposal != NULL) {
+            //         $this->remove($profile->proposal);
+            //     }
+            //     $data['proposal'] = $request->file('proposal')->store(TypeEnum::PROFILE->value, 'public');
+            // } else {
+            //     $data['proposal'] = $profile->proposal;
+            // }
 
             $data['image'] = $request->file('image')->store(TypeEnum::PROFILE->value, 'public');
         } else {

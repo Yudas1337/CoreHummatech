@@ -9,5 +9,5 @@ use App\Contracts\Interfaces\Eloquent\UpdateInterface;
 
 interface SosialMediaInterface extends GetInterface , StoreInterface ,UpdateInterface, DeleteInterface, SearchInterface
 {
-
+    public function instagram(): mixed;
 }

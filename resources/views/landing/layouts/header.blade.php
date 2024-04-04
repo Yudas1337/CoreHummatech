@@ -55,22 +55,22 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Tentang</a>
                         <ul class="dropdown-menu">
                             <li class="">
-                                <a href="/about-us/profile">Profile</a>
+                                <a href="/about/profile">Profil</a>
                             </li>
                             <li class="">
-                                <a href="/about-us/vision-mision">visi & misi</a>
+                                <a href="/about/vision-mision">visi & misi</a>
                             </li>
                             <li class="">
-                                <a href="/about-us/structure-organisation">struktur organisasi</a>
+                                <a href="/about/organizational-structure">struktur organisasi</a>
                             </li>
                             <li class="">
-                                <a href="/about-us/structure-office">struktur usaha</a>
+                                <a href="/about/company-structure">struktur perusahaan</a>
                             </li>
                             <li class="">
-                                <a href="/about-us/logo">logo</a>
+                                <a href="/about/logo">logo</a>
                             </li>
                             <li class="">
-                                <a href="/about-us/team">tim</a>
+                                <a href="/about/team">tim</a>
                             </li>
                         </ul>
                     </li>
@@ -79,16 +79,16 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Layanan</a>
                         <ul class="dropdown-menu">
                             @forelse ($services as $service)
-                            <li class="{{ request()->is('/layanan/' . $service->slug) ? 'active' : '' }}">
-                                <a href="/layanan/{{ $service->slug }}">{{ $service->name }}</a>
+                            <li class="{{ request()->is('/services/' . $service->slug) ? 'active' : '' }}">
+                                <a href="/services/{{ $service->slug }}">{{ $service->name }}</a>
                             </li>
                             @empty
                                 <li><a href="javascript:void(0)">Layanan Masih Kosong</a></li>
                             @endforelse
                         </ul>
                     </li>
-                    <li class="{{ request()->is('/portofolio') ? 'active' : '' }}">
-                        <a href="{{ url('/portofolio') }}">Portofolio</a>
+                    <li class="{{ request()->is('/portfolio') ? 'active' : '' }}">
+                        <a href="{{ url('/portfolio') }}">Portofolio</a>
                     </li>
                     <li class="{{ request()->is('/news') ? 'active' : '' }}">
                         <a href="/news">Berita</a>

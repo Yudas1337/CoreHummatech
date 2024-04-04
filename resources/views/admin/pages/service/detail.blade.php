@@ -108,7 +108,7 @@
             <div class="col-md-7">
                 <h1 class="title">{{ $services->name }}</h1>
                 <p class="subtitle">{{ $services->description }}</p>
-                <a href="{{ url("/layanan/{$services->slug}") }}" target="_blank"  class="btn btn-lg btn-primary">Detail Layanan</a>
+                <a href="{{ url("/services/{$services->slug}") }}" target="_blank"  class="btn btn-lg btn-primary">Detail Layanan</a>
             </div>
         </div>
 

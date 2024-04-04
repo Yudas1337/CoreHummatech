@@ -38,7 +38,7 @@ class Product extends Model
 
     public function CategoryProduct()
     {
-        return $this->belongsTo(Testimonial::class);
+        return $this->belongsTo(CategoryProduct::class);
     }
 
 }

@@ -35,4 +35,8 @@ class SosialMediaRepository extends BaseRepository implements SosialMediaInterfa
             $query->where('platform', 'LIKE', '%' . $request->platform . '%');
         })->get();
     }
+    public function instagram(): mixed
+    {
+        return $this->model->query()->where('platform', 'Instagram')->first();
+    }
 }

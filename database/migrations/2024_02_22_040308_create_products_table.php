@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('link');
             $table->foreignId('service_id')->nullable()->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->string('image');
-            $table->enum('type', [ProductEnum::COMPANY->value, ProductEnum::SERVICE->value]);
+            $table->enum('type', [ProductEnum::COMPANY->value, ProductEnum::SERVICE->value, ProductEnum::PORTFOLIO->value]);
             $table->timestamps();
         });
     }

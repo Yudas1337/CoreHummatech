@@ -53,6 +53,7 @@ class ProductRepository extends BaseRepository implements ProductInterface
     public function search(Request $request): mixed
     {
         return $this->model->query()
+            ->where('type', '!=', 'portfolio')
             ->when($request->name, function ($query) use ($request) {
                 $query->where('name', 'LIKE', '%' . $request->name . '%');
             })

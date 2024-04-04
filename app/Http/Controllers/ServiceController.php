@@ -14,6 +14,7 @@ use App\Contracts\Interfaces\ProfileInterface;
 use App\Contracts\Interfaces\SaleInterface;
 use App\Contracts\Interfaces\ServiceInterface;
 use App\Contracts\Interfaces\ServiceMitraInterface;
+use App\Contracts\Interfaces\SosialMediaInterface;
 use App\Contracts\Interfaces\TestimonialInterface;
 use App\Contracts\Repositories\FaqRepository;
 use App\Contracts\Repositories\ProductRepository;
@@ -46,9 +47,10 @@ class ServiceController extends Controller
     private BackgroundInterface $background;
     private ServiceMitraInterface $serviceMitra;
     private  MisionItemsInterface $misionItems;
+    private  SosialMediaInterface $sosmed;
 
 
-    public function __construct(GaleryImageInterface $galleryImage, GalleryInterface $galery, ServiceInterface $service, ServiceService $serviceService, Termscondition $termscondition, TestimonialInterface $testimonial, FaqInterface $faq, ProductInterface $product, ProcedureInterface $procedure, SaleInterface $sale, ProfileInterface $profile, CollabMitraInterface $mitras, BackgroundInterface $background, ServiceMitraInterface $serviceMitra, MisionItemsInterface $misionItems)
+    public function __construct( SosialMediaInterface $sosmed, GaleryImageInterface $galleryImage, GalleryInterface $galery, ServiceInterface $service, ServiceService $serviceService, Termscondition $termscondition, TestimonialInterface $testimonial, FaqInterface $faq, ProductInterface $product, ProcedureInterface $procedure, SaleInterface $sale, ProfileInterface $profile, CollabMitraInterface $mitras, BackgroundInterface $background, ServiceMitraInterface $serviceMitra, MisionItemsInterface $misionItems)
     {
         $this->mitras = $mitras;
         $this->galleryImage = $galleryImage;
@@ -65,6 +67,7 @@ class ServiceController extends Controller
         $this->background = $background;
         $this->serviceMitra = $serviceMitra;
         $this->misionItems = $misionItems;
+        $this->sosmed = $sosmed;
     }
     /**
      * Display a listing of the resource.
@@ -134,7 +137,8 @@ class ServiceController extends Controller
         $galerys = $this->galery->ServiceProductShow('service_id', $slugs->id)->get();
         $background = $this->background->getByServiceId($service->id);
         $galeries = $this->galleryImage->whereIn('gallery_id',$galerys->pluck('id'))->get();
-        return view('landing.service.service-detail', compact('servicemitras','slugs', 'services', 'products', 'testimonials', 'faqs', 'procedures', 'sales', 'profile', 'galeries', 'background'));
+        $instagram = $this->sosmed->instagram();
+        return view('landing.service.service-detail', compact('instagram', 'servicemitras','slugs', 'services', 'products', 'testimonials', 'faqs', 'procedures', 'sales', 'profile', 'galeries', 'background'));
     }
     /**
      * Update the specified resource in storage.
