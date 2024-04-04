@@ -260,7 +260,7 @@
                                     {{ Str::limit($service['description'], 100) }}
                                 </p>
                                 <div class="bottom">
-                                    <a href="/layanan/{{ $service->slug }}"><i class="fas fa-arrow-right"></i> Lihat
+                                    <a href="/services/{{ $service->slug }}"><i class="fas fa-arrow-right"></i> Lihat
                                         Selengkapnya</a>
                                 </div>
                             </div>
