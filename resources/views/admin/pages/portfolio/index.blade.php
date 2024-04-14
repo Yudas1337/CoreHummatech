@@ -7,13 +7,13 @@
                 <div class="input-group">
                     <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-magnifying-glass"></i></span>
                     <input type="text" name="name" value="{{ request()->name }}" class="form-control"
-                    placeholder="Cari Portfolio" aria-label="Username" aria-describedby="basic-addon1">
+                    placeholder="Cari Portofolio" aria-label="Username" aria-describedby="basic-addon1">
                 </div>
             </div>
         </form>
         <div class=" col-8 gap-2 d-flex justify-content-end">
             {{-- <a href="/data/portfolio" class="btn btn-secondary col-4" target="_blank">Lihat Portfolio</a> --}}
-            <button data-bs-target="#add" data-bs-toggle="modal" class="btn btn-primary">Tambah Portfolio</button>
+            <button data-bs-target="#add" data-bs-toggle="modal" class="btn btn-primary">Tambah Portofolio</button>
         </div>
     </div>
 @endsection
@@ -73,7 +73,7 @@
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content px-2">
                 <div class="modal-header border-bottom">
-                    <h5 class="modal-title me-2" id="exampleModalLabel">Detail Portfolio</h5>
+                    <h5 class="modal-title me-2" id="exampleModalLabel">Detail Portofolio</h5>
                     <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -94,7 +94,7 @@
         <div class="modal-dialog modal-xl" role="document">
             <div class="modal-content px-2">
                 <div class="modal-header border-bottom">
-                    <h5 class="modal-title me-2" id="exampleModalLabel">Portfolio Baru</h5>
+                    <h5 class="modal-title me-2" id="exampleModalLabel">Portofolio Baru</h5>
                     <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
             <form action="{{ route('portfolio.store') }}" method="POST" enctype="multipart/form-data">
@@ -103,15 +103,15 @@
                     <div class="row g-2">
                         <div class="d-flex gap-4">
                             <div class="form-group mb-3 mt-0 col-md-8">
-                                <label for="name">Nama Portfolio</label>
+                                <label for="name">Judul Portofolio</label>
                                 <input class="form-control" name="name" id="name" type="text" required
-                                    placeholder="Nama portfolio" autocomplete="name" />
+                                    placeholder="Judul portfolio" autocomplete="name" />
                                 @error('name')
                                     <small class="text-danger">{{ $message }}</small>
                                 @enderror
                             </div>
                             <div class="form-group mb-3 mt-0 w-50">
-                                <label for="category">Kategori Portfolio</label>
+                                <label for="category">Kategori Portofolio</label>
                                 <select name="category_product_id" class="js-example-basic-single form-select" id="#edit">
                                     <option value="" disabled selected>Pilih Kategori</option>
                                     @forelse ($categories as $category)
@@ -128,7 +128,7 @@
                         <div class="form-group mb-3 mt-0 col-md-12">
                             <label for="description">Deskripsi</label>
                             <textarea rows="5" class="form-control" name="description" id="description" name="description"
-                                placeholder="Jelaskan deskripsi portfolionya"></textarea>
+                                placeholder="Jelaskan deskripsi portofolionya"></textarea>
                             @error('description')
                                 <small class="text-danger">{{ $message }}</small>
                             @enderror
@@ -142,7 +142,7 @@
                             @enderror
                         </div>
                         <div class="form-group mb-3 mt-0 col-md-12">
-                            <label for="photo">Foto Portfolio</label>
+                            <label for="photo">Foto Portofolio</label>
                             <input class="form-control" id="photo" type="file" name="image" />
                             @error('image')
                                 <small class="text-danger">{{ $message }}</small>
@@ -165,7 +165,7 @@
         <div class="modal-dialog modal-xl" role="document">
             <div class="modal-content px-2">
                 <div class="modal-header border-bottom">
-                    <h5 class="modal-title me-2" id="exampleModalLabel">Edit Portfolio</h5>
+                    <h5 class="modal-title me-2" id="exampleModalLabel">Edit Portofolio</h5>
                     <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
             <form method="POST" id="form-edit" enctype="multipart/form-data">
@@ -175,15 +175,15 @@
                     <div class="row g-2">
                         <div class="d-flex gap-4">
                             <div class="form-group mb-3 mt-0 col-md-8">
-                                <label for="name">Nama Portfolio</label>
+                                <label for="name">Judul Portofolio</label>
                                 <input class="form-control" name="name" id="name-edit" type="text" required
-                                    placeholder="Nama portfolio" autocomplete="name" />
+                                    placeholder="Judul portfolio" autocomplete="name" />
                                 @error('name')
                                     <small class="text-danger">{{ $message }}</small>
                                 @enderror
                             </div>
                             <div class="form-group mb-3 mt-0 w-50">
-                                <label for="category">Kategori Portfolio</label>
+                                <label for="category">Kategori Portofolio</label>
                                 <select name="category_product_id" class="js-example-basic-single form-select" id="#edit">
                                     <option value="" disabled selected>Pilih Kategori</option>
                                     @forelse ($categories as $category)
@@ -200,7 +200,7 @@
                         <div class="form-group mb-3 mt-0 col-md-12">
                             <label for="description">Deskripsi</label>
                             <textarea rows="5" class="form-control" name="description" id="description-edit" name="description"
-                                placeholder="Jelaskan deskripsi portfolionya"></textarea>
+                                placeholder="Jelaskan deskripsi portofolionya"></textarea>
                             @error('description')
                                 <small class="text-danger">{{ $message }}</small>
                             @enderror
@@ -214,7 +214,7 @@
                             @enderror
                         </div>
                         <div class="form-group mb-3 mt-0 col-md-12">
-                            <label for="photo">Foto Portfolio</label>
+                            <label for="photo">Foto Portofolio</label>
                             <input class="form-control" id="photo-edit" type="file" name="image" />
                             @error('image')
                                 <small class="text-danger">{{ $message }}</small>

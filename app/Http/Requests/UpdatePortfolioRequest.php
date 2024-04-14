@@ -22,8 +22,8 @@ class UpdatePortfolioRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|max:40',
-            'description' => 'required',
+            'name' => 'required|max:200',
+            'description' => 'required|max:600',
             'image' => 'nullable|mimes:png,jpg,jpeg',
             'link' => 'required|max:255|url',
             'category_product_id' => 'required',

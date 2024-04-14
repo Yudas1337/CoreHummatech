@@ -81,7 +81,7 @@
                 <a href="/category-product">Kategori</a>
             </li>
             <li >
-                <a href="/product">Produk</a>
+                <a href="/admin/product">Produk</a>
             </li>
         </ul>
     </li>

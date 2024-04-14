@@ -35,6 +35,15 @@ class HomeProductController extends Controller
         return view('landing.product', compact('products', 'background','categories', 'comingProducts'));
     }
 
+    public function portfolio()
+    {
+        $portfolios = $this->product->getByType('portfolio');
+        $background = $this->background->getByType('Portofolio');
+        $categories = $this->categoryProduct->get();
+
+        return view('landing.portfolio', compact('portfolios', 'background','categories'));
+    }
+
     public function productCategory(Request $request, CategoryProduct $category)
     {
         $products = $this->product->where($category->id);

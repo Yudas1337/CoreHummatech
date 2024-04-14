@@ -90,6 +90,9 @@
                     <li class="{{ request()->is('/portfolio') ? 'active' : '' }}">
                         <a href="{{ url('/portfolio') }}">Portofolio</a>
                     </li>
+                    <li class="{{ request()->is('/product') ? 'active' : '' }}">
+                        <a href="{{ url('/product') }}">Produk</a>
+                    </li>
                     <li class="{{ request()->is('/news') ? 'active' : '' }}">
                         <a href="/news">Berita</a>
                     </li>

@@ -1,5 +1,5 @@
 @extends('landing.layouts.layouts.app')
-@section('title' , 'Portofolio')
+@section('title' , 'Product')
 
 @section('style')
     <style>
@@ -116,10 +116,10 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 offset-lg-2">
-                    <h1>Portofolio</h1>
+                    <h1>Produk</h1>
                     <ul class="breadcrumb">
                         <li><a href="/"><i class="fas fa-home"></i> Beranda</a></li>
-                        <li class="active">Portofolio</li>
+                        <li class="active">Produk</li>
                     </ul>
                 </div>
             </div>
@@ -129,7 +129,7 @@
     <div class="about-us-area">
         <div class="container">
             <ul class="nav custom-tabs">
-                <li @if (!request()->category && !request()->is('data/product/coming-soon')) class="active" @endif><a href="{{ url('/portofolio') }}">Semua</a></li>
+                <li @if (!request()->category && !request()->is('data/product/coming-soon')) class="active" @endif><a href="{{ url('/product') }}">Semua</a></li>
                 @foreach ($categories as $category)
                     <li class="{{ request()->is("data/product/kategori/{$category->slug}") ? 'active' : '' }}">
                         <a href="{{ url("data/product/kategori/{$category->slug}") }}">{{ $category->name }}</a>

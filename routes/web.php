@@ -90,7 +90,7 @@ Route::middleware('auth')->group(function () {
     Route::get('detail/service/{service}', [ServiceController::class, 'show'])->name('detail.service');
 
     // Product
-    Route::resource('product', ProductController::class);
+    Route::resource('admin/product', ProductController::class);
     Route::delete('product/feature/{ProductFeature}', [ProductController::class, 'feature'])->name('product.feature');
     Route::post('product-company/store', [ProductController::class, 'storeCompany'])->name('productCompany.store');
     Route::get('product-company/{product}/edit', [ProductController::class, 'editCompany'])->name('productCompany.edit');
@@ -228,7 +228,8 @@ Route::get('berita/{slugnews}', [NewsController::class, 'showNews'])->name('news
 Route::get('services/{slugService}', [ServiceController::class, 'ShowService']);
 
 //product
-Route::get('/portfolio', [HomeProductController::class, 'index']);
+Route::get('/portfolio', [HomeProductController::class, 'portfolio']);
+Route::get('/product', [HomeProductController::class, 'index']);
 Route::get('data/product/kategori/{category:slug}',[HomeProductController::class,'productCategory']);
 
 // Detail Product
