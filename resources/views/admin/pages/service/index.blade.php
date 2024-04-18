@@ -76,14 +76,23 @@
                             <label for="image">Foto Layanan</label><br>
                             <img class="image-show mb-3" height="200px" class="mb-2">
                             <input class="form-control image-edit" id="image" type="file" name="image" required  />
+                            @error('image')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
                         </div>
                         <div class="form-group mb-3 mt-0 col-md-12">
                             <label for="name">Nama Layanan</label>
                             <input class="form-control name-edit" id="name" name="name" type="text" required placeholder="Masukkan nama layanan" />
+                            @error('name')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
                         </div>
                         <div class="form-group mb-3 mt-0 col-md-12">
                             <label for="slug">Slug</label>
                             <input class="form-control slug-edit" id="slug" name="slug" type="text" required placeholder="Masukkan slug" />
+                            @error('slug')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
                         </div>
                         <div class="form-group mb-3 mt-0 col-md-12">
                             <label for="bm-title">Deskripsi Layanan</label>
@@ -97,10 +106,16 @@
                         <div class="form-group mb-3 mt-0 col-md-12">
                             <label for="link">Tautan Layanan <small class="text-danger">*Isi jika ada</small></label>
                             <input class="form-control link-edit" id="link" name="link" type="text" required placeholder="Masukkan tautan layanan" />
+                            @error('link')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
                         </div>
                         <div class="form-group mb-3 mt-0 col-md-12">
                             <label for="proposal">File Proposal <small>(opsional)</small></label>
-                            <input class="form-control" id="proposal" name="proposal" type="file" required placeholder="Contoh: https://hummatech.com/linknya" />
+                            <input class="form-control" id="proposal" name="proposal" type="file"/>
+                            @error('proposal')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
                         </div>
                     </div>
                 </div>
