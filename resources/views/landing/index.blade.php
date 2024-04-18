@@ -210,7 +210,7 @@
                             <p class="text-break">
                                 {!! Str::limit($profile->description, 200) !!}
                             </p>
-                            <a class="btn btn-gradient effect btn-md" href="/about-us/profile">Selengkapnya</a>
+                            <a class="btn btn-gradient effect btn-md" href="/about/profile">Selengkapnya</a>
                             @empty
                             <div class="col-12">
                                 <div class="d-flex justify-content-center ">
