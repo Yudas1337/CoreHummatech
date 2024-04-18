@@ -263,6 +263,7 @@
         $('#description-edit').val(quill2.root.innerHTML);
     });
 </script>
+
 <script>
     $('.btn-edit').on('click', function() {
         var id = $(this).data('id');
@@ -271,11 +272,12 @@
         var slug = $(this).data('slug');
         var description = $(this).data('description');
         var link = $(this).data('link');
+
+        quill2.root.innerHTML = description;
+
         $('#form-update').attr('action', '/service/' + id);
         $('.name-edit').val(name);
         $('.slug-edit').val(slug);
-        quill2.setContents(description);
-        $('.description-edit').val(description);
         $('.link-edit').val(link);
         $('.image-show').attr('src', 'storage/' + image);
         $('.edit').modal('show');
