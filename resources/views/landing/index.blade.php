@@ -257,7 +257,7 @@
                             <div class="d-flex flex-column align-items-center">
                                 <h4 class="mb-0 pb-0">{{$service->name}}</h4>
                                 <div style="min-height: 70px; max-height: 70px" class="text-white py-2">
-                                    {!! Str::words($service->description, 100, '') !!}
+                                    {!! Str::words($service->description, 80, '') !!}
                                 </div>
                                 <div class="pt-5 mt-3">
                                     <a href="/services/{{ $service->slug }}"><i class="fas fa-arrow-right"></i> Lihat
