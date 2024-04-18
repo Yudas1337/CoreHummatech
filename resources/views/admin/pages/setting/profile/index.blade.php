@@ -40,20 +40,32 @@
                                     <div class="my-1 mb-2">
                                         <label for="image">Foto Profil</label>
                                         <input type="file" class="form-control" name="image">
+                                        @error('image')
+                                            <div class="text-danger">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                     <div class="my-1 mb-2">
                                         <label for="proposal">Proposal Perusahaan</label>
                                         <input type="url" value="{{ $profil->proposal }}" class="form-control" name="proposal">
+                                        @error('proposal')
+                                            <div class="text-danger">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                     <div class="my-1">
                                         <label for="call">No. Telp</label>
                                         <input type="text" class="form-control" name="phone" placeholder="No telp"
                                             value="{{ $profil->phone }}" onkeyup="formatPhone(event)" />
+                                        @error('phone')
+                                            <div class="text-danger">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                     <div class="my-1">
                                         <label for="call">Email</label>
                                         <input type="email" class="form-control" name="email" placeholder="Email"
                                             value="{{ $profil->email }}">
+                                        @error('email')
+                                            <div class="text-danger">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="col-sm-8">
@@ -63,23 +75,35 @@
                                                 diisi</span></label>
                                         <input type="text" class="form-control" id="headline" name="title"
                                             value="{{ $profil->title }}">
+                                            @error('title')
+                                            <div class="text-danger">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                     <div class="my-1">
                                         <label for="subheadline">Deskripsi singkat <span style="font-size: .6875rem"
                                                 class="text-danger">*Wajib diisi</span></label>
                                         <textarea name="subtitle" class="form-control" id="subheadline" name="subtitle"
                                          rows="5">{{ $profil->subtitle }}</textarea>
+                                         @error('subtitle')
+                                            <div class="text-danger">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                     <div class="my-1">
                                         <label for="deskripsi">Deskripsi <span style="font-size: .6875rem"
                                                 class="text-danger">*Wajib diisi</span></label>
                                         <div id="editor" style="height: 12.5rem">{!! $profil->description !!}</div>
                                         <textarea name="description" class="d-none description-hidden" id=" deskripsi" cols="30" rows="10">{!! old('description', $profil->description) !!}</textarea>
+                                        @error('description')
+                                            <div class="text-danger">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                     <div class="my-1">
                                         <label for="address">Alamat <span style="font-size: .6875rem"
                                                 class="text-danger">*Wajib diisi</span></label>
                                         <textarea name="address" id="address" class="form-control" rows="5">{{ $profil->address }}</textarea>
+                                        @error('address')
+                                            <div class="text-danger">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                     <br>
                                     <button type="submit" class="btn btn-primary float-end">Simpan</button>
