@@ -23,9 +23,10 @@ class UpdateServiceRequest extends FormRequest
     {
         return [
             'image' => 'nullable|mimes:png,jpg,jpeg',
-            'name' => 'required',
-            'description' => 'required',
-            'link' => 'nullable',
+            'name' => 'required|max:255',
+            'slug' => 'required|max:255',
+            'description' => 'required|max:10000',
+            'link' => 'nullable|max:255',
             'proposal' => 'nullable|mimes:pdf'
         ];
     }
@@ -35,8 +36,13 @@ class UpdateServiceRequest extends FormRequest
         return [
             'image.mimes' => 'Foto/logo harus berupa png, jpg atau jpeg',
             'name.required' => 'Nama harus diisi',
+            'name.max' => 'Nama maksimal :max karakter',
+            'slug.required' => 'Slug harus diisi',
+            'slug.max' => 'Slug maksimal :max karakter',
             'description.required' => 'Deskripsi harus diisi',
-            'proposal.mimes' => 'Proposal harus berupa pdf'
+            'description.max' => 'Deskripsi maksimal :max karakter',
+            'proposal.mimes' => 'Proposal harus berupa pdf',
+            'link.max' => 'Link terlalu panjang, maksimal :max'
         ];
     }
 }
