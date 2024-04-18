@@ -272,9 +272,7 @@
         var slug = $(this).data('slug');
         var description = $(this).data('description');
         var link = $(this).data('link');
-
         quill2.root.innerHTML = description;
-
         $('#form-update').attr('action', '/service/' + id);
         $('.name-edit').val(name);
         $('.slug-edit').val(slug);
