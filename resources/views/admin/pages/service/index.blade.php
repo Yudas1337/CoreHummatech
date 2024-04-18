@@ -33,7 +33,7 @@
                     style="margin-top: -1rem; border-radius: var(--bs-border-radius) var(--bs-border-radius) 0 0 !important;">
                     {{ $service->name }}</div>
                 <div class="card-body">
-                    <p>{!! Str::words($service->description, 80, '') !!}</p>
+                    <p>{!! Str::words($service->description, 80) !!}</p>
 
                     <div class="gap-2 d-flex">
                         <div class="d-grid flex-grow-1">
