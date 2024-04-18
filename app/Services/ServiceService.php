@@ -72,13 +72,16 @@ class ServiceService
         if ($request->hasFile('image') && $request->file('image')->isValid()) {
             $this->remove($service->image);
             $data['image'] = $request->file('image')->store(TypeEnum::SERVICE->value, 'public');
-
-            if ($request->hasFile('proposal') && $request->file('proposal')->isValid()) {
-                $this->remove($service->proposal);
-                $data['proposal'] = $request->file('proposal')->store(TypeEnum::PROPOSAL->value, 'public');
-            }
         } else {
             $data['image'] = $service->image;
+        }
+
+        if ($request->hasFile('proposal') && $request->file('proposal')->isValid()) {
+            if ($service->proposal != null) {
+                $this->remove($service->proposal);
+            }
+            $data['proposal'] = $request->file('proposal')->store(TypeEnum::PROPOSAL->value, 'public');
+        } else {
             $data['proposal'] = $service->proposal;
         }
 
