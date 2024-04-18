@@ -206,9 +206,9 @@
                         </div>
                     </div>
                     <div class="col-md-6 info">
-                            <h2 class="text-break">{{ $profile->subtitle }}</h2>
+                            <h2 class="text-break">{{ $profile->title }}</h2>
                             <p class="text-break">
-                                {!! Str::limit($profile->description, 200) !!}
+                                {{ $profile->subtitle }}
                             </p>
                             <a class="btn btn-gradient effect btn-md" href="/about/profile">Selengkapnya</a>
                             @empty
