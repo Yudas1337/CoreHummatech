@@ -51,10 +51,10 @@
     <div class="about-us-area">
         <div class="container">
             <ul class="nav custom-tabs">
-                <li @if (!request()->category) class="active" @endif><a href="{{ url('/berita') }}">Terbaru</a></li>
+                <li @if (!request()->category) class="active" @endif><a href="{{ url('/news') }}">Terbaru</a></li>
                 @foreach ($newsCategories as $category)
-                    <li class="{{ request()->is("berita/kategori/{$category->slug}") ? 'active' : '' }}">
-                        <a href="{{ url("berita/kategori/{$category->slug}") }}">{{ $category->name }}</a>
+                    <li class="{{ request()->is("news/category/{$category->slug}") ? 'active' : '' }}">
+                        <a href="{{ url("news/category/{$category->slug}") }}">{{ $category->name }}</a>
                     </li>
                 @endforeach
             </ul>
@@ -72,7 +72,7 @@
                                     <div class="col-lg-4 col-md-6 single-item">
                                         <div class="item">
                                             <div class="thumb">
-                                                <a href="/berita/{{ $news->news->slug }}">
+                                                <a href="/news/{{ $news->news->slug }}">
                                                     <img
                                                         src="{{ asset('storage/' . $news->news->thumbnail) }}"
                                                         alt="{{ $news->news->title }}">
@@ -94,7 +94,7 @@
                                                 </div>
 
                                                 <h4>
-                                                    <a href="/berita/{{ $news->news->slug }}">{{ $news->news->title }}</a>
+                                                    <a href="/news/{{ $news->news->slug }}">{{ $news->news->title }}</a>
                                                 </h4>
 
                                                 <p class="">{!! Str::limit(strip_tags($news->news->description), 200) !!}</p>
@@ -105,7 +105,7 @@
                                 <div class="col-lg-4 col-md-6 single-item">
                                         <div class="item">
                                             <div class="thumb">
-                                                <a href="/berita/{{ $news->slug }}"><img
+                                                <a href="/news/{{ $news->slug }}"><img
                                                         src="{{ asset('storage/' . $news->thumbnail) }}"
                                                         alt="{{ $news->title }}"></a>
 
@@ -125,7 +125,7 @@
                                                 </div>
 
                                                 <h4>
-                                                    <a href="/berita/{{ $news->slug }}">{{ $news->title }}</a>
+                                                    <a href="/news/{{ $news->slug }}">{{ $news->title }}</a>
                                                 </h4>
                                                 <p class="">{!! Str::limit(strip_tags($news->description), 200) !!}</p>
                                                 {{-- <p class="text-break justify-content-center">{!! Str::limit(strip_tags($news->description), 200) !!}</p> --}}
