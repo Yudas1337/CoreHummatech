@@ -65,10 +65,10 @@
                                             value="{{ $profil->title }}">
                                     </div>
                                     <div class="my-1">
-                                        <label for="subheadline">Subjudul <span style="font-size: .6875rem"
+                                        <label for="subheadline">Deskripsi singkat <span style="font-size: .6875rem"
                                                 class="text-danger">*Wajib diisi</span></label>
-                                        <input type="text" class="form-control" id="subheadline" name="subtitle"
-                                            value="{{ $profil->subtitle }}">
+                                        <textarea name="subtitle" class="form-control" id="subheadline" name="subtitle"
+                                        value="{{ $profil->subtitle }}" rows="5"></textarea>
                                     </div>
                                     <div class="my-1">
                                         <label for="deskripsi">Deskripsi <span style="font-size: .6875rem"
