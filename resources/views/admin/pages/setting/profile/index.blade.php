@@ -83,7 +83,7 @@
                                         <label for="subheadline">Deskripsi singkat <span style="font-size: .6875rem"
                                                 class="text-danger">*Wajib diisi</span></label>
                                         <textarea name="subtitle" class="form-control" id="subheadline" name="subtitle"
-                                         rows="5">{{ $profil->subtitle }}</textarea>
+                                         rows="3">{{ $profil->subtitle }}</textarea>
                                          @error('subtitle')
                                             <div class="text-danger">{{ $message }}</div>
                                         @enderror
