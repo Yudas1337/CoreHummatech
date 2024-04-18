@@ -133,7 +133,10 @@ Route::middleware('auth')->group(function () {
 
     // News
     Route::get('news/index', [NewsController::class, 'index'])->name('news.index');
-    Route::resource('news', NewsController::class);
+    Route::post('news', [NewsController::class, 'store'])->name('news.store');
+    Route::put('news/{news}', [NewsController::class, 'update'])->name('news.update');
+    Route::delete('news/{news}', [NewsController::class, 'destroy'])->name('news.destroy');
+    // Route::resource('news', NewsController::class);
 
     // Position
     Route::get('setting/departement', [PositionController::class, 'index'])->name('setting.departement');
@@ -222,7 +225,7 @@ Route::get('detail/profile', [AboutUsController::class, 'showPdf']);
 // Berita
 Route::get('news', [NewsController::class, 'news']);
 Route::get('news/category/{category:slug}', [NewsController::class, 'newsCategory'])->name('news.category');
-Route::get('berita/{slugnews}', [NewsController::class, 'showNews'])->name('news.view');
+Route::get('news/{slugnews}', [NewsController::class, 'showNews'])->name('news.view');
 
 //showService
 Route::get('services/{slugService}', [ServiceController::class, 'ShowService']);

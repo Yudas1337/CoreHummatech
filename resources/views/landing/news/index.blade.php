@@ -105,7 +105,7 @@
                                 <div class="col-lg-4 col-md-6 single-item">
                                         <div class="item">
                                             <div class="thumb">
-                                                <a href="/berita/{{ $news->slug }}"><img
+                                                <a href="/news/{{ $news->slug }}"><img
                                                         src="{{ asset('storage/' . $news->thumbnail) }}"
                                                         alt="{{ $news->title }}"></a>
 
