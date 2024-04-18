@@ -255,11 +255,11 @@
                     <div class="col-lg-4 col-md-6 single-item wow fadeInRight" data-wow-delay="700ms">
                         <div class="item" style="background-image: url({{ asset('storage/' . $service->image) }}); min-height: 20rem; max-height: 20rem;">
                             <div class="d-flex flex-column align-items-center">
-                                <h4>{{$service->name}}</h4>
-                                <p style="min-height: 80px; max-height: 80px">
-                                    {{ Str::limit($service['description'], 100) }}
-                                </p>
-                                <div class="bottom">
+                                <h4 class="mb-0 pb-0">{{$service->name}}</h4>
+                                <div style="min-height: 70px; max-height: 70px" class="text-white py-2">
+                                    {!! Str::words($service->description, 100, '') !!}
+                                </div>
+                                <div class="pt-5 mt-3">
                                     <a href="/services/{{ $service->slug }}"><i class="fas fa-arrow-right"></i> Lihat
                                         Selengkapnya</a>
                                 </div>

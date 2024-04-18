@@ -1,7 +1,7 @@
 @extends('admin.layouts.app')
 
 @section('subcontent')
-<div class="card border-0 pt-4 mt-2">
+<div class="card border-0 pt-4 mt-2 px-2">
     <div class="row">
         <div class="col-12 col-lg-4">
             <div class="d-flex align-items-center gap-2">
@@ -33,7 +33,7 @@
                     style="margin-top: -1rem; border-radius: var(--bs-border-radius) var(--bs-border-radius) 0 0 !important;">
                     {{ $service->name }}</div>
                 <div class="card-body">
-                    <p>{{ Str::limit($service->description, 80) }}</p>
+                    <p>{!! Str::words($service->description, 80, '') !!}</p>
 
                     <div class="gap-2 d-flex">
                         <div class="d-grid flex-grow-1">
@@ -58,12 +58,12 @@
     </div>
 
 
-    <div class="modal fade modal-bookmark edit" id="edit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+<div class="modal fade modal-bookmark edit" id="edit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title fw-semibold" id="exampleModalLabel">Edit Produk</h5>
+                <h5 class="modal-title fw-semibold" id="exampleModalLabel">Edit Layanan</h5>
                 <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <form class="form-bookmark needs-validation" method="POST" id="form-update" novalidate=""
@@ -86,8 +86,13 @@
                             <input class="form-control slug-edit" id="slug" name="slug" type="text" required placeholder="Masukkan slug" />
                         </div>
                         <div class="form-group mb-3 mt-0 col-md-12">
-                            <label for="description">Deskripsi Layanan</label>
-                            <textarea rows="5" class="form-control description-edit" id="description" name="description" placeholder="Masukkan deskripsi layanan"></textarea>
+                            <label for="bm-title">Deskripsi Layanan</label>
+                            <div id="editor2" class="description-edit" style="height: 300px">{!! old('description') !!}</div>
+                            <textarea name="description" class="d-none" id="description-edit" cols="30" rows="10">{!! old('description') !!}</textarea>
+
+                            @error('description')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
                         </div>
                         <div class="form-group mb-3 mt-0 col-md-12">
                             <label for="link">Tautan Layanan <small class="text-danger">*Isi jika ada</small></label>
@@ -102,7 +107,7 @@
                 <div class="modal-footer">
                     <div class="d-flex justify-content-end">
                         <button class="btn btn-light-danger" type="button" data-bs-dismiss="modal">Tutup</button>
-                        <button class="btn btn-primary" type="submit">Perbaharui</button>
+                        <button class="btn btn-primary" type="submit">Perbarui</button>
                     </div>
                 </div>
             </form>
@@ -113,6 +118,9 @@
 @endsection
 @section('script')
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+<script src="{{ asset('assets/js/slick/slick.min.js') }}"></script>
+<script src="{{ asset('assets/js/slick/slick.js') }}"></script>
+<script src="{{ asset('assets/js/header-slick.js') }}"></script>
 @if(session('success'))
 <script>
     Swal.fire({
@@ -125,6 +133,136 @@
     });
 </script>
 @endif
+
+<script>
+    var customToolbar = [
+        ['bold', 'italic', 'underline', 'strike', 'blockquote', 'image'],
+
+        ['link'],
+
+        [{
+            'color': []
+        }, {
+            'background': []
+        }],
+        [{
+            'font': []
+        }],
+        [{
+            'align': [],
+        }],
+
+        ['clean'],
+    ];
+
+    const quill = new Quill('#editor', {
+        theme: 'snow',
+        placeholder: "Silahkan masukkan deskripsi layanan.",
+        modules: {
+            toolbar: {
+                container: customToolbar,
+                handlers: {
+                    image: () => {
+                        $('#uploadImageModal').modal('show');
+
+                        let $image = $('#image-uploader-form #image'),
+                            formData = new FormData();
+
+                        $image.change((e) => {
+                            let filename = e.target.files[0].name;
+                            $('#image-uploader-form #alt').val(filename);
+                        });
+
+                        $('#save-button-uploader').click((e) => {
+                            e.preventDefault();
+
+                            formData.append('image', $image[0].files[0]);
+                            formData.append('_token', '{{ csrf_token() }}');
+
+                            $.ajax({
+                                url: '{{ route('image-uploader') }}',
+                                type: 'POST',
+                                data: formData,
+                                processData: false,
+                                contentType: false,
+                                success: ({
+                                    data
+                                }) => {
+                                    let index = quill.getSelection() ? quill
+                                        .getSelection().index : 0;
+
+                                    quill.insertEmbed(index, 'image',
+                                        `{{ url('/storage') }}/${data.image}`);
+
+                                    $('#image-uploader-form').trigger('reset');
+                                    $('#uploadImageModal').modal('hide');
+                                }
+                            });
+                        });
+                    }
+                }
+            }
+        },
+    });
+
+    quill.on('text-change', (eventName, ...args) => {
+        $('#description').val(quill.root.innerHTML);
+    });
+
+    const quill2 = new Quill('#editor2', {
+        theme: 'snow',
+        placeholder: "Silahkan masukkan deskripsi layanan.",
+        modules: {
+            toolbar: {
+                container: customToolbar,
+                handlers: {
+                    image: () => {
+                        $('#uploadImageModal').modal('show');
+
+                        let $image = $('#image-uploader-form #image'),
+                            formData = new FormData();
+
+                        $image.change((e) => {
+                            let filename = e.target.files[0].name;
+                            $('#image-uploader-form #alt').val(filename);
+                        });
+
+                        $('#save-button-uploader').click((e) => {
+                            e.preventDefault();
+
+                            formData.append('image', $image[0].files[0]);
+                            formData.append('_token', '{{ csrf_token() }}');
+
+                            $.ajax({
+                                url: '{{ route('image-uploader') }}',
+                                type: 'POST',
+                                data: formData,
+                                processData: false,
+                                contentType: false,
+                                success: ({
+                                    data
+                                }) => {
+                                    let index = quill.getSelection() ? quill
+                                        .getSelection().index : 0;
+
+                                    quill.insertEmbed(index, 'image',
+                                        `{{ url('/storage') }}/${data.image}`);
+
+                                    $('#image-uploader-form').trigger('reset');
+                                    $('#uploadImageModal').modal('hide');
+                                }
+                            });
+                        });
+                    }
+                }
+            }
+        },
+    });
+
+    quill2.on('text-change', (eventName, ...args) => {
+        $('#description-edit').val(quill2.root.innerHTML);
+    });
+</script>
 <script>
     $('.btn-edit').on('click', function() {
         var id = $(this).data('id');
@@ -136,6 +274,7 @@
         $('#form-update').attr('action', '/service/' + id);
         $('.name-edit').val(name);
         $('.slug-edit').val(slug);
+        quill2.setContents(description);
         $('.description-edit').val(description);
         $('.link-edit').val(link);
         $('.image-show').attr('src', 'storage/' + image);

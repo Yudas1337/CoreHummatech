@@ -107,7 +107,7 @@
             </div>
             <div class="col-md-7">
                 <h1 class="title">{{ $services->name }}</h1>
-                <p class="subtitle">{{ $services->description }}</p>
+            <p class="subtitle">{!! $services->description !!}</p>
                 <a href="{{ url("/services/{$services->slug}") }}" target="_blank"  class="btn btn-lg btn-primary">Detail Layanan</a>
             </div>
         </div>
@@ -124,7 +124,7 @@
                                 style="margin-top: -1rem; border-radius: var(--bs-border-radius) var(--bs-border-radius) 0 0 !important;">
                                 {{ $product->name }}</div>
                             <div class="card-body">
-                                <p>{{ $product->description }}</p>
+                                <p>{!! $product->description !!}</p>
 
                                 <a href="{{ $product->link }}" target="_blank" class="btn btn-primary">Kunjungi Situs</a>
                             </div>
