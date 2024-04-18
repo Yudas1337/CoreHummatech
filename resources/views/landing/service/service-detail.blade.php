@@ -574,11 +574,11 @@
                                                 $profile->phone,
                                             );
                                             if (substr($cleanPhone, 0, 2) === '62') {
-                                                $cleanPhone = '0' . substr($cleanPhone, 2);
+                                                $phoneNumber = '0' . substr($cleanPhone, 2);
                                             }
                                         @endphp
 
-                                        <a href="https://wa.me/{{ $profile->phone }}" target="_blank">{{ $cleanPhone }}</a>
+                                        <a href="https://wa.me/{{ $cleanPhone }}" target="_blank">{{ $phoneNumber }}</a>
                                     @else
                                         <a href="https://wa.me/6285176777785">085176777785</a>
                                     @endisset
