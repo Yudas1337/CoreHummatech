@@ -132,7 +132,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('sales-package', SalesPackageController::class);
 
     // News
-    Route::get('news/index', [NewsController::class, 'index']);
+    Route::get('news/index', [NewsController::class, 'index'])->name('news.index');
     Route::resource('news', NewsController::class);
 
     // Position
@@ -222,7 +222,7 @@ Route::get('detail/profile', [AboutUsController::class, 'showPdf']);
 // Berita
 Route::get('news', [NewsController::class, 'news']);
 Route::get('news/category/{category:slug}', [NewsController::class, 'newsCategory'])->name('news.category');
-Route::get('news/{slugnews}', [NewsController::class, 'showNews'])->name('news.view');
+Route::get('berita/{slugnews}', [NewsController::class, 'showNews'])->name('news.view');
 
 //showService
 Route::get('services/{slugService}', [ServiceController::class, 'ShowService']);
