@@ -20,7 +20,7 @@
     <div class="page-title">
         <div class="d-flex justify-content-between">
             <h3>Berita baru</h3>
-            <a href="/news" class="btn btn-light">Kembali</a>
+            <a href="/admin/news" class="btn btn-light">Kembali</a>
         </div>
     </div>
 @endsection
@@ -92,7 +92,7 @@
                                 </div>
 
                                 <div class="text-end">
-                                    <a class="btn btn-light-danger me-3" href="/news">Tutup</a>
+                                    <a class="btn btn-light-danger me-3" href="/admin/news">Tutup</a>
                                     <button type="submit" class="btn btn-send btn-primary me-3">Tambah</button>
                                 </div>
                             </div>

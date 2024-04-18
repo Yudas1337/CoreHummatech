@@ -132,11 +132,8 @@ Route::middleware('auth')->group(function () {
     Route::resource('sales-package', SalesPackageController::class);
 
     // News
-    Route::get('news/index', [NewsController::class, 'index'])->name('news.index');
-    Route::post('news', [NewsController::class, 'store'])->name('news.store');
-    Route::put('news/{news}', [NewsController::class, 'update'])->name('news.update');
-    Route::delete('news/{news}', [NewsController::class, 'destroy'])->name('news.destroy');
-    // Route::resource('news', NewsController::class);
+    // Route::get('news/index', [NewsController::class, 'index'])->name('news.index');
+    Route::resource('admin/news', NewsController::class);
 
     // Position
     Route::get('setting/departement', [PositionController::class, 'index'])->name('setting.departement');

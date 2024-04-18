@@ -20,7 +20,7 @@
     <div class="page-title">
         <div class="d-flex justify-content-between">
             <h3>Ubah Data Berita</h3>
-            <a href="/news" class="btn btn-light">Kembali</a>
+            <a href="/admin/news" class="btn btn-light">Kembali</a>
         </div>
     </div>
 @endsection
@@ -95,7 +95,7 @@
                                 </div>
 
                                 <div class="justify-content-end d-flex align-items-center">
-                                    <a class="btn btn-light-danger me-3" href="/news">Tutup</a>
+                                    <a class="btn btn-light-danger me-3" href="/admin/news">Tutup</a>
                                     <button type="submit" class="btn btn-send btn-primary">Simpan</button>
                                 </div>
                             </div>

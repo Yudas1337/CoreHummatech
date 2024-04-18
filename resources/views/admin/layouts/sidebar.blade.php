@@ -133,7 +133,7 @@
                 <a href="/category-news">Kategori</a>
             </li>
             <li>
-                <a href="/news/index">Berita</a>
+                <a href="/admin/news/">Berita</a>
             </li>
         </ul>
     </li>

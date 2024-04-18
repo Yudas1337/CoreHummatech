@@ -14,38 +14,14 @@
                 </div>
                 <div class="col-sm-5">
                     <div class="d-flex align-items-center">
-                        <form action="/news/index">
+                        <form action="/admin/news/">
                             <div class="d-flex justify-content-lg-end justify-content-start">
                                 <p class="m-0 me-2">Cari:</p>&nbsp;
                                 <input class="form-control me-2" name="title" value="{{ request()->title }}" type="text" placeholder="Search" aria-label="Search">
                             </div>
                         </form>
-                        <a href="/news/create" class="btn btn-primary">Tambah</a>&nbsp;
-                        <a href="/berita" class="btn btn-secondary w75 col-3" target="_blank">Lihat Berita</a> &nbsp;
-                        <div class="modal fade" id="add" tabindex="-1" aria-labelledby="exampleModalLabel"
-                            aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">Tambah Kategori</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                            aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <div class="col">
-                                            <label for="name">Kategori</label>
-                                            <input class="form-control" type="text" name="name" id="name"
-                                                placeholder="Buat Kategori">
-                                        </div>
-                                    </div>
-                                    <div class="d-flex justify-content-end mx-3 mb-3">
-                                        <button type="button" class="btn btn-secondary me-2"
-                                            data-bs-dismiss="modal">Batal</button>
-                                        <button type="button" class="btn btn-primary">Tambah</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        <a href="/admin/news/create" class="btn btn-primary">Tambah</a>&nbsp;
+                        <a href="/news" class="btn btn-secondary w75 col-3" target="_blank">Lihat Berita</a> &nbsp;
                     </div>
                 </div>
             </div>
@@ -69,7 +45,7 @@
                                 <div class="product-details">
                                     <small style="font-size: 13px"><span
                                             class="text-primary mb-3 fw-bold"></span>{{ \Carbon\Carbon::parse($item['date'])->locale('id_ID')->isoFormat('dddd, D MMMM YYYY') }}</small>
-                                    <a href="/news">
+                                    <a href="{{ route('news.show', $item->id) }}">
                                         <h4 class="mb-1 mt-3">{{ $item->title }}</h4>
                                     </a>
                                     <p class="mt-0 mb-2" style="font-size: 13px">{!! Str::words(strip_tags($item->description), 14, '...') !!}</p>
