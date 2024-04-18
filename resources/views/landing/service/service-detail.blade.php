@@ -527,19 +527,6 @@
                                 </div>
                             </div>
                         @endif
-
-                        @foreach ($services->where('slug', $slugs->slug) as $service)
-                            @if ($service->proposal)
-                                <div class="single-widget brochure">
-                                    <h4 class="widget-title">Proposal</h4>
-                                    <ul>
-                                        <li><a href="{{ asset('storage/' . $service->proposal) }}"
-                                                download="{{ asset('storage/' . $service->proposal) }}"><i
-                                                    class="fas fa-file-pdf"></i>Unduh Proposal</a></li>
-                                    </ul>
-                                </div>
-                            @endif
-                        @endforeach
                     </div>
 
                     <div class="col-lg-4 services-sidebar">
@@ -603,6 +590,19 @@
                                 </p>
                             </div>
                         </div>
+                        @foreach ($services->where('slug', $slugs->slug) as $service)
+                            @if ($service->proposal)
+                                <div class="single-widget brochure">
+                                    <h4 class="widget-title">Proposal</h4>
+                                    <ul>
+                                        <li><a href="{{ asset('storage/' . $service->proposal) }}"
+                                                download="{{ asset('storage/' . $service->proposal) }}"><i
+                                                    class="fas fa-file-pdf"></i>Unduh Proposal</a></li>
+                                    </ul>
+                                </div>
+                            @endif
+                        @endforeach
+
                     </div>
 
                 </div>
