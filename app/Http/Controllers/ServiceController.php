@@ -148,7 +148,7 @@ class ServiceController extends Controller
         $data = $this->serviceService->update($service, $request);
         $this->service->update($service->id, $data);
 
-        return back()->with('success', 'Penjualan berhasil diperbarui');
+        return back()->with('success', 'Layanan berhasil diperbarui');
     }
 
     /**
@@ -158,7 +158,7 @@ class ServiceController extends Controller
     {
         $this->serviceService->delete($service);
         $this->service->delete($service->id);
-        return back()->with('success', 'Penjualan Berhasil Di Hapus');
+        return back()->with('success', 'Layanan Berhasil Di Hapus');
     }
 
 
