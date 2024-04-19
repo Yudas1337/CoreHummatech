@@ -44,7 +44,7 @@
                             <a href="/detail/service/{{ $service->id }}" class="btn btn-light-primary btn-sm">Lihat Detail</a>
                         </div>
                         <div class="d-flex flex-shrink-0 gap-2">
-                            <button class="btn btn-light-warning px-3 m-0 btn-edit btn-sm"  type="button" data-slug="{{ $service->slug }}" data-id="{{ $service->id }}" data-name="{{ $service->name }}" data-description="{{ $service->description }}" data-short-description="{{ $service->short_description }}" data-link="{{ $service->link }}" data-image="{{ $service->image }}"><i class="fas fa-pencil"></i></button>
+                            <button class="btn btn-light-warning px-3 m-0 btn-edit btn-sm"  type="button" data-slug="{{ $service->slug }}" data-id="{{ $service->id }}" data-name="{{ $service->name }}" data-description="{{ $service->description }}" data-short_description="{{ $service->short_description }}" data-link="{{ $service->link }}" data-image="{{ $service->image }}"><i class="fas fa-pencil"></i></button>
                             <button class="btn px-3 btn-light-danger btn-delete btn-sm" data-id="{{ $service->id }}" type="button"><i class="fas fa-trash"></i></button>
                         </div>
                     </div>
@@ -109,7 +109,7 @@
                                     <span class="char">0</span>
                                 </span>
                             </div>
-                            <textarea class="form-control shortDescription short-description-edit" name="short_description" oninput="Count()"
+                            <textarea class="form-control shortDescription" id="short-description-edit" name="short_description" oninput="Count()"
                              rows="2">{{ old('short_decription') }}</textarea>
                              @error('short_decription')
                                 <div class="text-danger">{{ $message }}</div>
@@ -312,7 +312,8 @@
         quill2.root.innerHTML = description;
         $('#form-update').attr('action', '/service/' + id);
         $('.name-edit').val(name);
-        $('.short-description-edit').val(short_description);
+        $('#short-description-edit').val(short_description);
+        console.log(short_description);
         $('.slug-edit').val(slug);
         $('.link-edit').val(link);
         $('.image-show').attr('src', 'storage/' + image);
