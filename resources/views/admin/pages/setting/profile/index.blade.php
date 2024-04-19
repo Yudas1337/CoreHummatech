@@ -133,20 +133,32 @@
                                         <label for="image">Foto Profil</label>
                                         <input type="file" id="inputImage" class="form-control" name="image"
                                             accept="image/*" onchange="displayImage(event)">
+                                        @error('image')
+                                            <div class="text-danger">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                     <div class="my-1 mb-2">
                                         <label for="proposal">Proposal Perusahaan</label>
                                         <input type="url" class="form-control" name="proposal">
+                                        @error('proposal')
+                                            <div class="text-danger">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                     <div class="my-1">
                                         <label for="call">No. Telp</label>
                                         <input type="text" class="form-control" name="phone" placeholder="No telp"
-                                            value="" onkeyup="formatPhone(event)" />
+                                            value="{{ old('phone') }}" onkeyup="formatPhone(event)" />
+                                        @error('phone')
+                                            <div class="text-danger">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                     <div class="my-1">
                                         <label for="call">Email</label>
                                         <input type="email" class="form-control" name="email" placeholder="Email"
-                                            value="">
+                                            value="{{ old('email') }}">
+                                        @error('email')
+                                            <div class="text-danger">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="col-sm-8">
@@ -154,24 +166,36 @@
                                         <label for="headline">Judul <span style="font-size: .6875rem"
                                                 class="text-danger">*Wajib diisi</span></label>
                                         <input type="text" class="form-control" id="headline" name="title"
-                                            value="" placeholder="Masukkan Judul">
+                                            value="{{ old('title') }}" placeholder="Masukkan Judul">
+                                        @error('title')
+                                            <div class="text-danger">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                     <div class="my-1">
-                                        <label for="subheadline">Subjudul <span style="font-size: .6875rem"
-                                                class="text-danger">*Wajib diisi</span></label>
-                                        <input type="text" class="form-control" id="subheadline" name="subtitle"
-                                            value="" placeholder="Masukkan Subjudul">
+                                        <label for="subheadline">Deskripsi singkat <span style="font-size: .6875rem"
+                                            class="text-danger">*Wajib diisi</span></label>
+                                        <textarea name="subtitle" class="form-control" id="subheadline" name="subtitle"
+                                        rows="3">{{ old('subtitle') }}</textarea>
+                                        @error('subtitle')
+                                            <div class="text-danger">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                     <div class="my-1">
                                         <label for="deskripsi">Deskripsi <span style="font-size: .6875rem"
                                                 class="text-danger">*Wajib diisi</span></label>
                                         <div id="editor" style="height: 12.5rem">{!! old('description') !!}</div>
                                         <textarea name="description" class="d-none description-hidden" id="description" cols="30" rows="10">{!! old('description') !!}</textarea>
+                                        @error('description')
+                                            <div class="text-danger">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                     <div class="my-1">
                                         <label for="address">Alamat <span style="font-size: .6875rem"
                                                 class="text-danger">*Wajib diisi</span></label>
-                                        <textarea name="address" id="address" class="form-control" rows="5" placeholder="Alamat Perusahaan"></textarea>
+                                        <textarea name="address" id="address" class="form-control" rows="5" placeholder="Alamat Perusahaan">{{ old('address') }}</textarea>
+                                        @error('address')
+                                            <div class="text-danger">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                     <br>
                                     <button type="submit" class="btn btn-primary float-end">Simpan</button>
@@ -350,4 +374,6 @@
             $('.description-hidden').val(quill.root.innerHTML);
         });
     </script>
+
+
 @endsection
