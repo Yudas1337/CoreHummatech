@@ -30,7 +30,6 @@ class ServiceRepository extends BaseRepository implements ServiceInterface
 
     public function update(mixed $id, array $data): mixed
     {
-        // dd($data);
         return $this->model->query()->findOrFail($id)->update($data);
     }
 
