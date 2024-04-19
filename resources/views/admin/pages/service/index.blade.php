@@ -33,7 +33,11 @@
                     style="margin-top: -1rem; border-radius: var(--bs-border-radius) var(--bs-border-radius) 0 0 !important;">
                     {{ $service->name }}</div>
                 <div class="card-body">
-                    <p>{{ $service->short_description }}</p>
+                    <p>
+                        {!! $service->short_description == null ? 
+                            Str::words(html_entity_decode($service->description), 15, '') : 
+                            $service->short_description !!}      
+                    </p>
 
                     <div class="gap-2 d-flex">
                         <div class="d-grid flex-grow-1">
