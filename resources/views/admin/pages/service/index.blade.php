@@ -33,14 +33,14 @@
                     style="margin-top: -1rem; border-radius: var(--bs-border-radius) var(--bs-border-radius) 0 0 !important;">
                     {{ $service->name }}</div>
                 <div class="card-body">
-                    <p>{!! Str::words($service->description, 40) !!}</p>
+                    <p>{{ $service->short_description }}</p>
 
                     <div class="gap-2 d-flex">
                         <div class="d-grid flex-grow-1">
-                            <a href="detail/service/{{ $service->id }}" class="btn btn-light-primary btn-sm">Lihat Detail</a>
+                            <a href="/detail/service/{{ $service->id }}" class="btn btn-light-primary btn-sm">Lihat Detail</a>
                         </div>
                         <div class="d-flex flex-shrink-0 gap-2">
-                            <button class="btn btn-light-warning px-3 m-0 btn-edit btn-sm"  type="button" data-slug="{{ $service->slug }}" data-id="{{ $service->id }}" data-name="{{ $service->name }}" data-description="{{ $service->description }}" data-link="{{ $service->link }}" data-image="{{ $service->image }}"><i class="fas fa-pencil"></i></button>
+                            <button class="btn btn-light-warning px-3 m-0 btn-edit btn-sm"  type="button" data-slug="{{ $service->slug }}" data-id="{{ $service->id }}" data-name="{{ $service->name }}" data-description="{{ $service->description }}" data-short-description="{{ $service->short_description }}" data-link="{{ $service->link }}" data-image="{{ $service->image }}"><i class="fas fa-pencil"></i></button>
                             <button class="btn px-3 btn-light-danger btn-delete btn-sm" data-id="{{ $service->id }}" type="button"><i class="fas fa-trash"></i></button>
                         </div>
                     </div>
@@ -91,6 +91,23 @@
                             <label for="slug">Slug</label>
                             <input class="form-control slug-edit" id="slug" name="slug" type="text" required placeholder="Masukkan slug" />
                             @error('slug')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="my-1">
+                            <div class="d-flex justify-content-between">
+                                <label for="shortDesciption" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                                    Deskripsi singkat <span style="font-size: .6875rem"
+                                    class="text-danger">*Wajib diisi</span>
+                                </label>
+                                <span class="count">
+                                    Jumlah Karakter:
+                                    <span class="char">0</span>
+                                </span>
+                            </div>
+                            <textarea class="form-control shortDescription short-description-edit" name="short_description" oninput="Count()"
+                             rows="2">{{ old('short_decription') }}</textarea>
+                             @error('short_decription')
                                 <div class="text-danger">{{ $message }}</div>
                             @enderror
                         </div>
@@ -285,11 +302,13 @@
         var image = $(this).data('image');
         var name = $(this).data('name');
         var slug = $(this).data('slug');
+        var short_description = $(this).data('short_description');
         var description = $(this).data('description');
         var link = $(this).data('link');
         quill2.root.innerHTML = description;
         $('#form-update').attr('action', '/service/' + id);
         $('.name-edit').val(name);
+        $('.short-description-edit').val(short_description);
         $('.slug-edit').val(slug);
         $('.link-edit').val(link);
         $('.image-show').attr('src', 'storage/' + image);
@@ -302,4 +321,25 @@
         $('#modal-delete').modal('show');
     });
 </script>
+
+<script>
+    function Count() {
+        var shortDescriptions = $('.shortDescription');
+        var charCounters = $('.char');
+        var countDisplays = $('.count');
+
+        shortDescriptions.each(function(index) {
+            var shortDescription = $(this).val();
+            charCounters.eq(index).html(shortDescription.length);
+            if (shortDescription.length > 0 && shortDescription.length < 10) {
+                countDisplays.eq(index).css('color', 'red');
+            } else if (shortDescription.length >= 10 && shortDescription.length < 25) {
+                countDisplays.eq(index).css('color', 'green');
+            } else {
+                countDisplays.eq(index).css('color', 'red');
+            }
+        });
+    }
+</script>
+
 @endsection

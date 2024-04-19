@@ -36,6 +36,23 @@
                                 <div class="text-danger">{{ $message }}</div>
                             @enderror
                         </div>
+                        <div class="my-1">
+                            <div class="d-flex justify-content-between">
+                                <label for="shortDesciption" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                                    Deskripsi singkat <span style="font-size: .6875rem"
+                                    class="text-danger">*Wajib diisi</span>
+                                </label>
+                                <span class="count">
+                                    Jumlah Karakter:
+                                    <span class="char">0</span>
+                                </span>
+                            </div>
+                            <textarea class="form-control shortDescription" name="short_description" oninput="Count()"
+                             rows="2">{{ old('short_decription') }}</textarea>
+                             @error('short_decription')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
                         <div class="form-group mb-3 mt-0 col-md-12">
                             <label for="bm-title">Deskripsi Layanan</label>
                             <div id="editor" style="height: 300px">{!! old('description') !!}</div>
