@@ -47,20 +47,6 @@
             </div>
         </div>
     </div>
-
-    {{-- <div class="about-us-area">
-        <div class="container">
-            <ul class="nav custom-tabs">
-                <li @if (!request()->category) class="active" @endif><a href="{{ url('/news') }}">Terbaru</a></li>
-                @foreach ($newsCategories as $category)
-                    <li class="{{ request()->is("news/category/{$category->slug}") ? 'active' : '' }}">
-                        <a href="{{ url("news/category/{$category->slug}") }}">{{ $category->name }}</a>
-                    </li>
-                @endforeach
-            </ul>
-        </div>
-    </div> --}}
-
     <div class="blog-area right-sidebar full-blog mt-5">
         <div class="container">
             <div class="blog-items">
@@ -123,8 +109,12 @@
                                                                     <h4>
                                                                         <a href="/news/{{ $news->news->slug }}">{{ $news->news->title }}</a>
                                                                     </h4>
-                    
-                                                                    <p class="">{!! Str::limit(strip_tags($news->news->description), 200) !!}</p>
+                                                                    @php
+                                                                        $description = $news->news->description;
+                                                                        $lines = explode("\n", $description);
+                                                                        $limitedDescription = implode("\n", array_slice($lines, 0, 4));
+                                                                    @endphp
+                                                                    <p class="">{!! $limitedDescription !!}</p>
                                                                 </div>
                                                             </div>
                                                         </div>
