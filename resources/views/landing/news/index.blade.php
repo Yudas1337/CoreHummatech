@@ -145,7 +145,7 @@
                                                                         <a href="/news/{{ $news->slug }}">{{ $news->title }}</a>
                                                                     </h4>
                                                                     @php
-                                                                        $description = $news->news->description;
+                                                                        $description = $news->description;
                                                                         $lines = explode("\n", $description);
                                                                         $limitedDescription = implode("\n", array_slice($lines, 0, 4));
                                                                     @endphp
