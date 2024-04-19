@@ -46,7 +46,7 @@
                                     </div>
                                     <div class="my-1 mb-2">
                                         <label for="proposal">Proposal Perusahaan</label>
-                                        <input type="url" value="{{ $profil->proposal }}" class="form-control" name="proposal">
+                                        <input type="url" value="{{ old('proposal', $profil->proposal) }}" class="form-control" name="proposal">
                                         @error('proposal')
                                             <div class="text-danger">{{ $message }}</div>
                                         @enderror
@@ -54,7 +54,7 @@
                                     <div class="my-1">
                                         <label for="call">No. Telp</label>
                                         <input type="text" class="form-control" name="phone" placeholder="No telp"
-                                            value="{{ $profil->phone }}" onkeyup="formatPhone(event)" />
+                                            value="{{ old('phone', $profil->phone) }}" onkeyup="formatPhone(event)" />
                                         @error('phone')
                                             <div class="text-danger">{{ $message }}</div>
                                         @enderror
@@ -62,7 +62,7 @@
                                     <div class="my-1">
                                         <label for="call">Email</label>
                                         <input type="email" class="form-control" name="email" placeholder="Email"
-                                            value="{{ $profil->email }}">
+                                            value="{{ old('email', $profil->email) }}">
                                         @error('email')
                                             <div class="text-danger">{{ $message }}</div>
                                         @enderror
@@ -74,16 +74,24 @@
                                                 class="text-danger">*Wajib
                                                 diisi</span></label>
                                         <input type="text" class="form-control" id="headline" name="title"
-                                            value="{{ $profil->title }}">
+                                            value="{{ old('title', $profil->title) }}">
                                             @error('title')
                                             <div class="text-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
                                     <div class="my-1">
-                                        <label for="subheadline">Deskripsi singkat <span style="font-size: .6875rem"
-                                                class="text-danger">*Wajib diisi</span></label>
-                                        <textarea name="subtitle" class="form-control" id="subheadline" name="subtitle"
-                                         rows="3">{{ $profil->subtitle }}</textarea>
+                                        <div class="d-flex justify-content-between">
+                                            <label for="shortDesciption" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                                                Deskripsi singkat <span style="font-size: .6875rem"
+                                                class="text-danger">*Wajib diisi</span>
+                                            </label>
+                                            <span id="count">
+                                                Jumlah Karakter:
+                                                <span id="char">0</span>
+                                            </span>
+                                        </div>
+                                        <textarea name="subtitle" class="form-control" id="shortDescription" name="subtitle" oninput="Count()"
+                                         rows="3">{{ old('subtitle', $profil->subtitle) }}</textarea>
                                          @error('subtitle')
                                             <div class="text-danger">{{ $message }}</div>
                                         @enderror
@@ -100,7 +108,7 @@
                                     <div class="my-1">
                                         <label for="address">Alamat <span style="font-size: .6875rem"
                                                 class="text-danger">*Wajib diisi</span></label>
-                                        <textarea name="address" id="address" class="form-control" rows="5">{{ $profil->address }}</textarea>
+                                        <textarea name="address" id="address" class="form-control" rows="5">{{ old('address', $profil->address) }}</textarea>
                                         @error('address')
                                             <div class="text-danger">{{ $message }}</div>
                                         @enderror
@@ -171,10 +179,19 @@
                                             <div class="text-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
+
                                     <div class="my-1">
-                                        <label for="subheadline">Deskripsi singkat <span style="font-size: .6875rem"
-                                            class="text-danger">*Wajib diisi</span></label>
-                                        <textarea name="subtitle" class="form-control" id="subheadline" name="subtitle"
+                                        <div class="d-flex justify-content-between">
+                                            <label for="shortDesciption" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                                                Deskripsi singkat <span style="font-size: .6875rem"
+                                                class="text-danger">*Wajib diisi</span>
+                                            </label>
+                                            <span id="count">
+                                                Jumlah Karakter:
+                                                <span id="char">0</span>
+                                            </span>
+                                        </div>
+                                        <textarea name="subtitle" class="form-control" id="shortDescription" name="subtitle" oninput="Count()"
                                         rows="3">{{ old('subtitle') }}</textarea>
                                         @error('subtitle')
                                             <div class="text-danger">{{ $message }}</div>
@@ -375,5 +392,17 @@
         });
     </script>
 
-
+    <script>
+        function Count() {
+            var shortDescription = $('#shortDescription').val();
+            $('#char').html(shortDescription.length);
+            if (shortDescription.length > 0 && shortDescription.length < 50) {
+                $('#count').css('color', 'red');
+            } else if (shortDescription.length > 50 && shortDescription.length < 255) {
+                $('#count').css('color', 'green');
+            } else {
+                $('#count').css('color', 'red');
+            }
+        }
+    </script>
 @endsection
