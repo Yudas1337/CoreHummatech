@@ -337,7 +337,7 @@
             charCounters.eq(index).html(shortDescription.length);
             if (shortDescription.length > 0 && shortDescription.length < 10) {
                 countDisplays.eq(index).css('color', 'red');
-            } else if (shortDescription.length >= 10 && shortDescription.length < 25) {
+            } else if (shortDescription.length >= 10 && shortDescription.length < 100) {
                 countDisplays.eq(index).css('color', 'green');
             } else {
                 countDisplays.eq(index).css('color', 'red');
