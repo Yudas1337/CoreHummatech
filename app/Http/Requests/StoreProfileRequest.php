@@ -24,13 +24,13 @@ class StoreProfileRequest extends FormRequest
         return [
             'title' => 'required|max:255',
             'subtitle' => 'required|max:255',
-            'description' => 'required',
-            'address' => 'required',
-            'email' => 'required',
-            'type' => 'required',
-            'phone' => 'required',
+            'description' => 'required|max:500000',
+            'address' => 'required|max:300',
+            'email' => 'required|max:255',
+            'type' => 'required|max:255',
+            'phone' => 'required|max:255',
             'image' => 'mimes:png,jpg',
-            'proposal' => 'required|url'
+            'proposal' => 'required|url|max:255'
         ];
     }
 }
