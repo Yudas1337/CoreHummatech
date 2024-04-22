@@ -239,6 +239,7 @@
                                                     <div class="icon">
                                                         <i class="fas fa-phone"></i>                                                    </div>
                                                     <div class="content">
+                                                        <strong>Phone</strong>
                                                         <a href="tel: 085176777785">085176777785</a>
                                                     </div>  
                                                 @endif
