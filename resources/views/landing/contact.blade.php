@@ -91,11 +91,11 @@
                                     @endif 
                                     @else
                                     <div class="icon">
-                                        <i class="fab fa-whatsapp"></i>                                            
+                                        <i class="fas fa-phone"></i>                                         
                                     </div>
                                     <div class="content">
-                                        <h5>WhatsApp</h5>
-                                        <a href="https://wa.me/6285176777785">085176777785</a>
+                                        <h5>Phone</h5>
+                                        <a href="tel: 085176777785">085176777785</a>
                                     </div>  
                                 @endif
                                 </li>
