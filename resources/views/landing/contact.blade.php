@@ -84,16 +84,17 @@
                                                 if (substr($cleanPhone, 0, 2) === '62') {
                                                     $phoneNumber = '0' . substr($cleanPhone, 2);
                                                 }
-                                            @endphp
+                                                @endphp
 
                                             <a href="tel:{{ $cleanPhone }}" target="_blank">{{ $phoneNumber }}</a>
                                         </div>
                                     @endif 
-                                @else
+                                    @else
                                     <div class="icon">
                                         <i class="fab fa-whatsapp"></i>                                            
                                     </div>
                                     <div class="content">
+                                        <h5>WhatsApp:</h5>
                                         <a href="https://wa.me/6285176777785">085176777785</a>
                                     </div>  
                                 @endif
