@@ -66,7 +66,7 @@
                                             <i class="fab fa-whatsapp"></i>
                                         </div>
                                         <div class="content">
-                                            <h5>WhatsApp:</h5>
+                                            <h5>WhatsApp</h5>
                                             <a href="{{ $profile->phone }}" target="_blank">{{ $profile->phone }}</a>
                                         </div>
                                     @else
@@ -74,7 +74,7 @@
                                             <i class="fas fa-phone"></i>
                                         </div>
                                         <div class="content">
-                                            <h5>Phone:</h5>
+                                            <h5>Phone</h5>
                                             @php
                                                 $cleanPhone = str_replace(
                                                     ['+', '-', ' '],
@@ -94,7 +94,7 @@
                                         <i class="fab fa-whatsapp"></i>                                            
                                     </div>
                                     <div class="content">
-                                        <h5>WhatsApp:</h5>
+                                        <h5>WhatsApp</h5>
                                         <a href="https://wa.me/6285176777785">085176777785</a>
                                     </div>  
                                 @endif
