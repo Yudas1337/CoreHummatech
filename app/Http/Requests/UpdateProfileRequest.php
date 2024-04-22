@@ -28,6 +28,7 @@ class UpdateProfileRequest extends FormRequest
             'description' => 'required',
             'address' => 'required',
             'email' => 'required',
+            'type' => 'required',
             'phone' => 'required',
             'proposal' => 'required|url'
         ];

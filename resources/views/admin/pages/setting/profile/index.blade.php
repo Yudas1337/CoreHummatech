@@ -51,14 +51,24 @@
                                             <div class="text-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
-                                    <div class="my-1">
-                                        <label for="call">No. Telp</label>
-                                        <input type="text" class="form-control" name="phone" placeholder="No telp"
-                                            value="{{ old('phone', $profil->phone) }}" onkeyup="formatPhone(event)" />
-                                        @error('phone')
-                                            <div class="text-danger">{{ $message }}</div>
-                                        @enderror
+
+                                    <div class="pt-3 d-flex gap-4">
+                                        <div>
+                                            <input type="radio" id="whatsapp" name="type" {{ $profil->type == 'wa' ? 'checked' : '' }} value="wa" onclick="editPhone('whatsappInputEdit')">
+                                            <label for="whatsapp">Set WhatsApp</label>
+                                        </div>
+                                        <div>
+                                            <input type="radio" id="telpon" name="type" {{ $profil->type == 'telp' ? 'checked' : '' }} value="telp" onclick="editPhone('telponInputEdit')">
+                                            <label for="telpon">Set Telepon</label>
+                                        </div>
                                     </div>
+                                    <div id="whatsappInputEdit" style="display: {{ $profil->type == 'wa' ? 'block' : 'none' }};">
+                                        <input type="url" class="form-control" id="whatsappLinkEdit" name="phone" value="{{ old('phone', $profil->phone) }}" placeholder="Masukkan link WhatsApp">
+                                    </div>
+                                    <div id="telponInputEdit" style="display: {{ $profil->type == 'telp' ? 'block' : 'none' }};">
+                                        <input type="tel" class="form-control" id="phoneNumberEdit" name="phone" value="{{ old('phone', $profil->phone) }}" placeholder="Masukkan nomor telepon">
+                                    </div>
+
                                     <div class="my-1">
                                         <label for="call">Email</label>
                                         <input type="email" class="form-control" name="email" placeholder="Email"
@@ -152,14 +162,24 @@
                                             <div class="text-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
-                                    <div class="my-1">
-                                        <label for="call">No. Telp</label>
-                                        <input type="text" class="form-control" name="phone" placeholder="No telp"
-                                            value="{{ old('phone') }}" onkeyup="formatPhone(event)" />
-                                        @error('phone')
-                                            <div class="text-danger">{{ $message }}</div>
-                                        @enderror
+                                    
+                                    <div class="pt-3 d-flex gap-4">
+                                        <div>
+                                            <input type="radio" id="whatsapp" name="type" value="whatsapp" onclick="showInput('whatsappInput')">
+                                            <label for="whatsapp">Set WhatsApp</label>
+                                        </div>
+                                        <div>
+                                            <input type="radio" id="telpon" name="type" value="telpon" onclick="showInput('telponInput')">
+                                            <label for="telpon">Set Telepon</label>
+                                        </div>
                                     </div>
+                                    <div id="whatsappInput" style="display: none;">
+                                        <input type="url" class="form-control" id="whatsappLink" name="phone" placeholder="Masukkan link WhatsApp">
+                                    </div>
+                                    <div id="telponInput" style="display: none;">
+                                        <input type="tel" class="form-control" id="phoneNumber" name="phone" placeholder="Masukkan nomor telepon">
+                                    </div>
+
                                     <div class="my-1">
                                         <label for="call">Email</label>
                                         <input type="email" class="form-control" name="email" placeholder="Email"
@@ -263,6 +283,45 @@
     <script src="../assets/js/header-slick.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify"></script>
     <script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.polyfills.min.js"></script>
+
+    <script>
+        function showInput(inputId) {
+            var inputs = document.querySelectorAll('div[id$="Input"]');
+            inputs.forEach(function(input) {
+                if (input.id === inputId) {
+                    input.style.display = 'block';
+                } else {
+                    input.style.display = 'none';
+                }
+            });
+        }
+    </script>
+
+<script>
+    function editPhone(inputId) {
+        var whatsappInput = document.getElementById('whatsappInputEdit');
+        var telponInput = document.getElementById('telponInputEdit');
+        
+        var inputwa = document.getElementById('whatsappLinkEdit');
+        var inputtelp = document.getElementById('phoneNumberEdit');
+
+
+        if (inputId === 'whatsappInputEdit') {
+            whatsappInput.style.display = 'block';
+            telponInput.style.display = 'none';
+            inputtelp.value = '';
+            inputtelp.disabled = true;
+            inputwa.disabled = false
+        } else if (inputId === 'telponInputEdit') {
+            whatsappInput.style.display = 'none';
+            inputwa.value = '';
+            inputwa.disabled = true
+            inputtelp.disabled = false;
+            telponInput.style.display = 'block';
+        }
+    }
+</script>
+
 
     <script>
         function displayImage(event) {

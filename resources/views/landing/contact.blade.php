@@ -60,30 +60,47 @@
                                     </div>
                                 </li>
                                 <li>
+                                @if ($profile->type != null)
+                                    @if ($profile->type == 'wa')
+                                        <div class="icon">
+                                            <i class="fab fa-whatsapp"></i>
+                                        </div>
+                                        <div class="content">
+                                            <h5>WhatsApp:</h5>
+                                            <a href="{{ $profile->phone }}" target="_blank">{{ $profile->phone }}</a>
+                                        </div>
+                                    @else
+                                        <div class="icon">
+                                            <i class="fas fa-phone"></i>
+                                        </div>
+                                        <div class="content">
+                                            <h5>Phone:</h5>
+                                            @php
+                                                $cleanPhone = str_replace(
+                                                    ['+', '-', ' '],
+                                                    '',
+                                                    $profile->phone,
+                                                );
+                                                if (substr($cleanPhone, 0, 2) === '62') {
+                                                    $phoneNumber = '0' . substr($cleanPhone, 2);
+                                                }
+                                            @endphp
+
+                                            <a href="tel:{{ $cleanPhone }}" target="_blank">{{ $phoneNumber }}</a>
+                                        </div>
+                                    @endif 
+                                @else
                                     <div class="icon">
-                                        <i class="fas fa-phone"></i>
+                                        <i class="fab fa-whatsapp"></i>                                            
                                     </div>
                                     <div class="content">
-                                        <h5>Contact</h5>
-                                        <p>
-                                            @isset($profiles)
-                                                @php
-                                                    $cleanPhone = str_replace(['+', '-', ' '], '', $profiles->phone);
-                                                    if (substr($cleanPhone, 0, 2) === '62') {
-                                                        $cleanPhone = '0' . substr($cleanPhone, 2);
-                                                    }
-                                                @endphp
-
-                                                <a href="https://wa.me/{{ $cleanPhone }}">{{ $cleanPhone }}</a>
-                                            @else
-                                                <a href="https://wa.me/6285176777785">085176777785</a>
-                                            @endisset
-                                        </p>
-                                    </div>
+                                        <a href="https://wa.me/6285176777785">085176777785</a>
+                                    </div>  
+                                @endif
                                 </li>
                                 <li>
                                     <div class="icon">
-                                        <i class="fas fa-phone"></i>
+                                        <i class="fas fa-envelope"></i>
                                     </div>
                                     <div class="content">
                                         <h5>Email</h5>

@@ -105,7 +105,7 @@
 
 @section('content')
     <div class="breadcrumb-area text-center shadow dark text-light bg-cover"
-        style="background-image: url({{ $background != null && $background->show_in == 'Tentang Kami' && $background->about_in == 'Profile' ? asset('storage/'. $background->image) : asset('assets-home/img/default-bg.png') }});">
+        style="background-image: url({{ $background != null && $background->show_in == 'Tentang Kami' && $background->about_in == 'Profile' ? asset('storage/'. $background->image) : asset('assets_landing/background/Profile.jpg') }});">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 offset-lg-2">

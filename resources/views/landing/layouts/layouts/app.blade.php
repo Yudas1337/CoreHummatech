@@ -205,28 +205,43 @@
                                                 </div>
                                             </li>
                                             <li>
-                                                <div class="icon">
-                                                    <i class="fas fa-phone"></i>
-                                                </div>
-                                                <div class="content">
-                                                    <strong>Phone:</strong>
-                                                    @isset($profiles)
-                                                        @php
-                                                            $cleanPhone = str_replace(
-                                                                ['+', '-', ' '],
-                                                                '',
-                                                                $profile->phone,
-                                                            );
-                                                            if (substr($cleanPhone, 0, 2) === '62') {
-                                                                $phoneNumber = '0' . substr($cleanPhone, 2);
-                                                            }
-                                                        @endphp
-
-                                                        <a href="https://wa.me/{{ $cleanPhone }}" target="_blank">{{ $phoneNumber }}</a>
+                                                @if ($profile->type != null)
+                                                    @if ($profile->type == 'wa')
+                                                        <div class="icon">
+                                                            <i class="fab fa-whatsapp"></i>
+                                                        </div>
+                                                        <div class="content">
+                                                            <strong>WhatsApp:</strong>
+                                
+                                                            <a href="{{ $profile->phone }}" target="_blank">{{ $profile->phone }}</a>
+                                                        </div>
                                                     @else
+                                                        <div class="icon">
+                                                            <i class="fas fa-phone"></i>
+                                                        </div>
+                                                        <div class="content">
+                                                            <strong>Phone:</strong>
+                                                            @php
+                                                                $cleanPhone = str_replace(
+                                                                    ['+', '-', ' '],
+                                                                    '',
+                                                                    $profile->phone,
+                                                                );
+                                                                if (substr($cleanPhone, 0, 2) === '62') {
+                                                                    $phoneNumber = '0' . substr($cleanPhone, 2);
+                                                                }
+                                                            @endphp
+                
+                                                            <a href="tel:{{ $cleanPhone }}" target="_blank">{{ $phoneNumber }}</a>
+                                                        </div>
+                                                    @endif 
+                                                @else
+                                                    <div class="icon">
+                                                        <i class="fab fa-whatsapp"></i>                                            </div>
+                                                    <div class="content">
                                                         <a href="https://wa.me/6285176777785">085176777785</a>
-                                                    @endisset
-                                                </div>
+                                                    </div>  
+                                                @endif
                                             </li>
                                         </ul>
                                     </div>

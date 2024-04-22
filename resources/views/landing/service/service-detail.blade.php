@@ -565,7 +565,29 @@
                                 <i class="fas fa-phone"></i>
                                 <h4>Perlu bantuan?</h4>
                                 <p>Kami siap melayani 24 jam, silahkan hubungi layanan call center kami melalui:</p>
-                                <p class="mb-0">Phone: 
+                                @if($profile->type != null)
+                                    @if ($profile->type == 'wa')
+                                        <p class="mb-0 pb-0">WhatsApp:
+                                        <a href="{{ $profile->phone }}" target="_blank">{{ $profile->phone }}</a></p class="mb-0 pb-0">
+                                    @else
+                                        @php
+                                            $cleanPhone = str_replace(
+                                                ['+', '-', ' '],
+                                                '',
+                                                $profile->phone,
+                                            );
+                                            if (substr($cleanPhone, 0, 2) === '62') {
+                                                $phoneNumber = '0' . substr($cleanPhone, 2);
+                                            }
+                                        @endphp
+                                        <p class="mb-0 pb-0">Phone:
+                                        <a href="tel:{{ $cleanPhone }}" target="_blank">{{ $phoneNumber }}</a></p>
+                                    @endif 
+                                @else
+                                    <p class="mb-0 pb-0">Phone:
+                                    <a href="https://wa.me/6285176777785">085176777785</a></p>
+                                @endif
+                                {{-- <p class="mb-0">Phone: 
                                     @isset($profile)
                                         @php
                                             $cleanPhone = str_replace(
@@ -582,7 +604,7 @@
                                     @else
                                         <a href="https://wa.me/6285176777785">085176777785</a>
                                     @endisset
-                                </p>
+                                </p> --}}
                                 <p class="mb-0">Email:
                                     @isset($profile)
                                         <a href="mailto:{{ $profile->email }}">{{ $profile->email }}</a>

@@ -18,7 +18,8 @@ return new class extends Migration
             $table->longText('description');
             $table->longText('address');
             $table->string('email');
-            $table->char('phone');
+            $table->enum('type', ['telp', 'wa']);
+            $table->string('phone');
             $table->string('image');
             $table->string('proposal');
             $table->timestamps();
