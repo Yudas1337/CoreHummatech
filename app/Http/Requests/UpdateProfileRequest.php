@@ -22,15 +22,15 @@ class UpdateProfileRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title' => 'max:255',
-            'subtitle' => 'max:255',
+            'title' => 'required|max:255',
+            'subtitle' => 'required|max:255',
             'image' => 'nullable|mimes:png,jpg',
-            'description' => 'required',
-            'address' => 'required',
-            'email' => 'required',
-            'type' => 'required',
-            'phone' => 'required',
-            'proposal' => 'required|url'
+            'description' => 'required|max:500000',
+            'address' => 'required|max:00',
+            'email' => 'required|max:255',
+            'type' => 'required|max:255',
+            'phone' => 'required|max:255',
+            'proposal' => 'required|url|max:255'
         ];
     }
 }
