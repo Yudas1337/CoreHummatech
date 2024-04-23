@@ -2,7 +2,9 @@
 
 namespace App\Http\Middleware;
 
+use App\Models\UniqueVisitor;
 use App\Models\VisitorDetection;
+use Carbon\Carbon;
 use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -24,6 +26,13 @@ class VisitorMiddleware
         if (!$existingVisitor) {
             // Simpan data pengunjung ke dalam database
             VisitorDetection::create([
+                'ip_address' => $ipAddress,
+            ]);
+        }
+
+        $checkVisitor = UniqueVisitor::where('ip_address', $ipAddress)->whereDate('created_at', Carbon::now())->first();
+        if (!$checkVisitor) {
+            UniqueVisitor::create([
                 'ip_address' => $ipAddress,
             ]);
         }

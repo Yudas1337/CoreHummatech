@@ -125,34 +125,60 @@
             </div>
         </div>
     </div>
-    <div class="col-12">
-        <div class="card">
-          <div class="card-header">
-            <div class="header-top">
-              <h3>Data Pengunjung</h3>
-              <div class="card-header-right-icon">
-                <div class="dropdown">
-                  <button class="btn dropdown-toggle" id="dropdownMenuButton" type="button" data-bs-toggle="dropdown">{{ Carbon\Carbon::now()->format('Y') }}</button>
-                  <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton"><a class="dropdown-item" href="#">Yesterday</a></div>
+    <div class="col-12 row">
+        <div class="col-xl-6">
+            <div class="card">
+                <div class="card-header">
+                    <div class="header-top">
+                        <h3>Data Pengunjung</h3>
+                        <div class="card-header-right-icon">
+                            <div class="dropdown">
+                                <button class="btn dropdown-toggle" id="dropdownMenuButton" type="button"
+                                    data-bs-toggle="dropdown">{{ Carbon\Carbon::now()->format('Y') }}</button>
+                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton"><a
+                                        class="dropdown-item" href="#">Yesterday</a></div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-              </div>
+                <div class="card-body">
+                    <div class="chart-container progress-chart">
+                        <div id="sales-overview-1"></div>
+                    </div>
+                </div>
             </div>
-          </div>
-          <div class="card-body">
-            <div class="chart-container progress-chart">
-              <div id="sales-overview-2"></div>
-            </div>
-          </div>
         </div>
-      </div>
+        <div class="col-xl-6">
+            <div class="card">
+                <div class="card-header">
+                    <div class="header-top">
+                        <h3>Data Unique Visitor</h3>
+                        <div class="card-header-right-icon">
+                            <div class="dropdown">
+                                <button class="btn dropdown-toggle" id="dropdownMenuButton" type="button"
+                                    data-bs-toggle="dropdown">{{ Carbon\Carbon::now()->format('Y') }}</button>
+                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton"><a
+                                        class="dropdown-item" href="#">Yesterday</a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="chart-container progress-chart">
+                        <div id="sales-overview-2"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection
 
 @section('script')
-<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 
     <script>
         (function($) {
-            var ChartData = @json($chart);
+            var ChartData = @json($chartUnique);
             var options = {
                 series: [{
                     name: 'Jumlah Pengunjung',
@@ -239,4 +265,172 @@
 
 
     </script>
+    <script>
+        (function($) {
+            var ChartData = @json($chartVisitor);
+            var options = {
+                series: [{
+                    name: 'Jumlah Pengunjung',
+                    type: 'area',
+                    data: ChartData.map(data => parseInt(data.visitor))
+                },],
+                chart: {
+                    height: 320,
+                    type: 'line',
+                    stacked: false,
+                    toolbar: {
+                        show: false,
+                    },
+                    zoom: {
+                        enabled: false,
+                    },
+                },
+                stroke: {
+                    curve: 'smooth',
+                    width: [3, 3],
+                    dashArray: [0, 4]
+
+                },
+                grid: {
+                    show: true,
+                    strokeDashArray: 0,
+                    position: 'back',
+                    xaxis: {
+                        lines: {
+                            show: true,
+                        },
+                    },
+                    yaxis: {
+                        lines: {
+                            show: false,
+                        },
+                    },
+                },
+                labels: ChartData.map(data => data.month),
+                colors: [dunzoAdminConfig.primary],
+                fill: {
+                    type: ['gradient', 'solid', 'gradient'],
+                    gradient: {
+                        shade: 'light',
+                        type: "vertical",
+                        shadeIntensity: 1,
+                        gradientToColors: [dunzoAdminConfig.primary, '#fff5f7', dunzoAdminConfig.primary],
+                        inverseColors: true,
+                        opacityFrom: 0.4,
+                        opacityTo: 0,
+                        stops: [0, 100, 100, 100],
+                    }
+                },
+
+                xaxis: {
+                    labels: {
+                        style: {
+                            fontFamily: 'Outfit, sans-serif',
+                            fontWeight: 500,
+                            colors: '#8D8D8D',
+                        },
+                    },
+                    axisBorder: {
+                        show: false
+                    },
+                },
+                yaxis: {
+                    labels: {
+                        show: false
+                    },
+                },
+                responsive: [{
+                    breakpoint: 1440,
+                    options: {
+                        chart: {
+                            height: 220
+                        },
+                    },
+                }, ]
+            };
+            var chart = new ApexCharts(document.querySelector("#sales-overview-1"), options);
+            chart.render();
+        })(jQuery);
+
+
+    </script>
+
+    {{-- <script>
+        (function($) {
+            var ChartData = @json($chart);
+            var options = {
+                series: [{
+                    name: 'Total visitors',
+                    data: [44, 55, 57, 56, 61, 58, 63, 60, 66, 70, 60, 54]
+                }, {
+                    name: 'Unique visitors',
+                    data: ChartData.map(data => parseInt(data.visitor))
+                }],
+                chart: {
+                    type: 'bar',
+                    height: 350
+                },
+                plotOptions: {
+                    bar: {
+                        horizontal: false,
+                        columnWidth: '55%',
+                        endingShape: 'rounded'
+                    },
+                },
+                dataLabels: {
+                    enabled: false
+                },
+                stroke: {
+                    show: true,
+                    width: 2,
+                    colors: ['transparent']
+                },
+                labels: ChartData.map(data => data.month),
+                fill: {
+                    type: ['gradient', 'solid', 'gradient'],
+                    gradient: {
+                        shade: 'light',
+                        type: "vertical",
+                        shadeIntensity: 1,
+                        gradientToColors: [dunzoAdminConfig.primary, '#fff5f7', dunzoAdminConfig.primary],
+                        inverseColors: true,
+                        opacityFrom: 0.4,
+                        opacityTo: 0,
+                        stops: [0, 100, 100, 100],
+                    }
+                },
+
+                xaxis: {
+                    labels: {
+                        style: {
+                            fontFamily: 'Outfit, sans-serif',
+                            fontWeight: 500,
+                            colors: '#8D8D8D',
+                        },
+                    },
+                    axisBorder: {
+                        show: false
+                    },
+                },
+                yaxis: {
+                    title: {
+                        text: 'Hummatech'
+                    }
+                },
+                fill: {
+                    opacity: 1
+                },
+                tooltip: {
+                    y: {
+                        formatter: function(val) {
+                            return val + " pengunjung"
+                        }
+                    }
+                }
+            };
+
+            var chart = new ApexCharts(document.querySelector("#sales-overview-2"), options);
+            chart.render();
+        })(jQuery);
+    </script> --}}
 @endsection

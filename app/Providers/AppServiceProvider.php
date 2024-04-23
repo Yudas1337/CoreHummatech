@@ -78,9 +78,11 @@ use App\Contracts\Repositories\TermsconditionRepository;
 use App\Contracts\Repositories\CategoryProductRepository;
 use App\Contracts\Repositories\VisionAndMisionRepository;
 use App\Contracts\Interfaces\EnterpriseStructureInterface;
+use App\Contracts\Interfaces\UniqueVisitorInterface;
 use App\Contracts\Repositories\ComingSoonProductRepository;
 use App\Contracts\Repositories\VisitorDetectionRepository;
 use App\Contracts\Repositories\EnterpriseStructureRepository;
+use App\Contracts\Repositories\UniqueVisitorRepository;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -114,6 +116,7 @@ class AppServiceProvider extends ServiceProvider
         GaleryImageInterface::class => GaleryImageRepository::class,
         WorkFlowInterface::class => WorkFlowRepository::class,
         VisitorDetectionInterface::class => VisitorDetectionRepository::class,
+        UniqueVisitorInterface::class => UniqueVisitorRepository::class,
         ProductFeatureInterface::class => ProductFeatureRepository::class,
         LogoInterface::class => LogoRepository::class,
         CategoryProductInterface::class => CategoryProductRepository::class,
