@@ -24,7 +24,7 @@ class SosialMediaService
         $data = $request->validated();
 
         if ($request->hasFile('image') && $request->file('image')->isValid()) {
-            $data['image'] = $request->file('image')->store(TypeEnum::SOSIALMEDIA->value, 'public');
+            $data['image'] = $request->file('image')->store($data['platform'], TypeEnum::SOSIALMEDIA->value, 'public');
             return $data;
         }
         return false;
@@ -36,7 +36,7 @@ class SosialMediaService
 
         if ($request->hasFile('image') && $request->file('image')->isValid()) {
             $this->remove($partner->image);
-            $data['image'] = $request->file('image')->store(TypeEnum::SOSIALMEDIA->value, 'public');
+            $data['image'] = $request->file('image')->store($data['platform'], TypeEnum::SOSIALMEDIA->value, 'public');
         } else {
             $data['image'] = $partner->image;
         }

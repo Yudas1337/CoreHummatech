@@ -54,7 +54,7 @@ class LogoService
         $data = $request->validated();
 
         if ($request->hasFile('image') && $request->file('image')->isValid()) {
-            $data['image'] = $request->file('image')->store('logo '.$request->title , $request->type, 'public');
+            $data['image'] = $request->file('image')->store('logo-'.$request->title , $request->type, 'public');
             return $data;
         }
         return false;
@@ -74,7 +74,7 @@ class LogoService
 
         if ($request->hasFile('image') && $request->file('image')->isValid()) {
             $this->remove($logo->image);
-            $data['image'] = $request->file('image')->store('logo '.$request->title, $request->type, 'public');
+            $data['image'] = $request->file('image')->store('logo-'.$request->title, $request->type, 'public');
         } else {
             $data['image'] = $logo->image;
         }

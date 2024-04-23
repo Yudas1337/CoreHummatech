@@ -16,7 +16,7 @@ class TermsconditionService
             $data[] = [
                 'service_id' => $request->service_id,
                 'termcondition' => $value,
-            ];
+        ];
         }
 
         return $data;

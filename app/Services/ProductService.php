@@ -68,7 +68,7 @@ class ProductService
         // dd($data);
 
         if ($request->hasFile('image') && $request->file('image')->isValid()) {
-            $data['image'] = $request->file('image')->store(TypeEnum::PRODUCT->value, 'public');
+            $data['image'] = $request->file('image')->store($data['name'], TypeEnum::PRODUCT->value, 'public');
             return $data;
         }
         return $data;
@@ -89,7 +89,7 @@ class ProductService
         // dd($data);
 
         if ($request->hasFile('image') && $request->file('image')->isValid()) {
-            $data['image'] = $request->file('image')->store(TypeEnum::PRODUCT->value, 'public');
+            $data['image'] = $request->file('image')->store($data['name'], TypeEnum::PRODUCT->value, 'public');
             return $data;
         }
         return $data;
@@ -168,7 +168,7 @@ class ProductService
         // dd($data);
         if ($request->has('image')) {
             $this->remove($product->image);
-            $data['image'] = $request->file('image')->store(TypeEnum::PRODUCT->value, 'public');
+            $data['image'] = $request->file('image')->store($data['name'], TypeEnum::PRODUCT->value, 'public');
         } else {
             $data['image'] = $product->image;
         }
@@ -195,7 +195,7 @@ class ProductService
         // dd($data);
         if ($request->has('image')) {
             $this->remove($product->image);
-            $data['image'] = $request->file('image')->store(TypeEnum::PRODUCT->value, 'public');
+            $data['image'] = $request->file('image')->store($data['name'], TypeEnum::PRODUCT->value, 'public');
         } else {
             $data['image'] = $product->image;
         }
@@ -218,7 +218,7 @@ class ProductService
         $data['slug'] = Str::slug($request->name);
 
         if ($request->hasFile('image') && $request->file('image')->isValid()) {
-            $data['image'] = $request->file('image')->store(TypeEnum::PRODUCT->value, 'public');
+            $data['image'] = $request->file('image')->store($data['name'], TypeEnum::PRODUCT->value, 'public');
             return $data;
         }
         return $data;
@@ -231,7 +231,7 @@ class ProductService
 
         if ($request->has('image')) {
             $this->remove($comingSoonProduct->image);
-            $data['image'] = $request->file('image')->store(TypeEnum::PRODUCT->value, 'public');
+            $data['image'] = $request->file('image')->store($data['name'], TypeEnum::PRODUCT->value, 'public');
         } else {
             $data['image'] = $comingSoonProduct->image;
         }

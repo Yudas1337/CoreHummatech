@@ -41,7 +41,7 @@ class SaleService
         $proposal = $request->hasFile('proposal') && $request->file('proposal')->isValid();
 
         if ($image && $proposal) {
-            $data['image'] = $request->file('image')->store(TypeEnum::PRODUCT->value, 'public');
+            $data['image'] = $request->file('image')->store($data['name'], TypeEnum::PRODUCT->value, 'public');
             $data['proposal'] = $request->file('proposal')->store(TypeEnum::PROPOSAL->value, 'public');
             return $data;
         }
@@ -64,7 +64,7 @@ class SaleService
 
         if ($image) {
             $this->remove($sale->image);
-            $data['image'] = $request->file('image')->store(TypeEnum::SALE->value, 'public');
+            $data['image'] = $request->file('image')->store($data['name'], TypeEnum::SALE->value, 'public');
         } else {
             $data['image'] = $sale->image;
         }

@@ -44,7 +44,7 @@ class SectionService
     {
         $data = $request->validated();
 
-        $data['image'] = $this->compressImage($request->image, TypeEnum::SECTION->value, [
+        $data['image'] = $this->compressImage($data['title'], $request->image, TypeEnum::SECTION->value, [
             'duplicate' => false,
             'name' => Str::slug($data['title']),
             'quality' => 50,
@@ -66,7 +66,7 @@ class SectionService
 
         if ($request->hasFile('image')) {
             $this->remove($section->image);
-            $data['image'] = $this->compressImage($request->image, TypeEnum::SECTION->value, [
+            $data['image'] = $this->compressImage($data['title'], $request->image, TypeEnum::SECTION->value, [
                 'duplicate' => false,
                 'name' => Str::slug($data['title']),
                 'quality' => 50,

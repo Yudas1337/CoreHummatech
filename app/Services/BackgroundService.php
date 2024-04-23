@@ -41,7 +41,7 @@ class BackgroundService
         $data = $request->validated();
 
         if ($request->hasFile('image') && $request->file('image')->isValid()) {
-            $data['image'] = $request->file('image')->store('Background '.$request->show_in, $request->type, 'public');
+            $data['image'] = $request->file('image')->store('Background-'.$request->show_in, $request->type, 'public');
             return $data;
         }
         return false;
@@ -64,7 +64,7 @@ class BackgroundService
 
         if ($request->hasFile('image') && $request->file('image')->isValid()) {
             $this->remove($background->image);
-            $data['image'] = $request->file('image')->store('Background '.$request->show_in, $request->type, 'public');
+            $data['image'] = $request->file('image')->store('Background-'.$request->show_in, $request->type, 'public');
         } else {
             $data['image'] = $background->image;
         }

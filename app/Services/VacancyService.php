@@ -35,7 +35,7 @@ class VacancyService
         $data = $request->validated();
 
         if ($request->hasFile('image') && $request->file('image')->isValid()) {
-            $data['image'] = $request->file('image')->store(TypeEnum::VACANCY->value, 'public');
+            $data['image'] = $request->file('image')->store($data['title'], TypeEnum::VACANCY->value, 'public');
             return $data;
         }
         return false;
@@ -47,7 +47,7 @@ class VacancyService
 
         if ($request->hasFile('image') && $request->file('image')->isValid()) {
             $this->remove($vacancy->image);
-            $data['image'] = $request->file('image')->store(TypeEnum::VACANCY->value, 'public');
+            $data['image'] = $request->file('image')->store($data['title'], TypeEnum::VACANCY->value, 'public');
         } else {
             $data['image'] = $vacancy->image;
         }

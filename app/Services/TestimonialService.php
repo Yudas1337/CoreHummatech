@@ -35,7 +35,7 @@ class TestimonialService
         $data['type'] = 'service';
 
         if ($request->hasFile('image') && $request->file('image')->isValid()) {
-            $data['image'] = $request->file('image')->store(TypeEnum::TESTIMONIAL->value, 'public');
+            $data['image'] = $request->file('image')->store($data['name'], TypeEnum::TESTIMONIAL->value, 'public');
             return $data;
         }
         return false;
@@ -47,7 +47,7 @@ class TestimonialService
         $data['type'] = 'product';
 
         if ($request->hasFile('image') && $request->file('image')->isValid()) {
-            $data['image'] = $request->file('image')->store(TypeEnum::TESTIMONIAL->value, 'public');
+            $data['image'] = $request->file('image')->store($data['name'], TypeEnum::TESTIMONIAL->value, 'public');
             return $data;
         }
         return false;
@@ -60,7 +60,7 @@ class TestimonialService
 
         if ($request->hasFile('image') && $request->file('image')->isValid()) {
             $this->remove($testimonial->image);
-            $data['image'] = $request->file('image')->store(TypeEnum::TESTIMONIAL->value, 'public');
+            $data['image'] = $request->file('image')->store($data['name'], TypeEnum::TESTIMONIAL->value, 'public');
         } else {
             $data['image'] = $testimonial->image;
         }
@@ -75,7 +75,7 @@ class TestimonialService
 
         if ($request->hasFile('image') && $request->file('image')->isValid()) {
             $this->remove($testimonial->image);
-            $data['image'] = $request->file('image')->store(TypeEnum::TESTIMONIAL->value, 'public');
+            $data['image'] = $request->file('image')->store($data['name'], TypeEnum::TESTIMONIAL->value, 'public');
         } else {
             $data['image'] = $testimonial->image;
         }

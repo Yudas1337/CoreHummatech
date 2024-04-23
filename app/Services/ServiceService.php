@@ -46,10 +46,10 @@ class ServiceService
         // $data['slug'] = Str::slug($request->slug);
 
         if ($request->hasFile('image') && $request->file('image')->isValid()) {
-            $data['image'] = $request->file('image')->store(TypeEnum::SERVICE->value, 'public');
+            $data['image'] = $request->file('image')->store($data['name'],TypeEnum::SERVICE->value, 'public');
 
             if ($request->hasFile('proposal') && $request->file('proposal')->isValid()) {
-                $data['proposal'] = $request->file('proposal')->store(TypeEnum::PROPOSAL->value, 'public');
+                $data['proposal'] = $request->file('proposal')->store('Proposal-layanan-'.$data['name'].'-Hummatech',TypeEnum::PROPOSAL->value, 'public');
             }
 
             return $data;
@@ -71,7 +71,7 @@ class ServiceService
 
         if ($request->hasFile('image') && $request->file('image')->isValid()) {
             $this->remove($service->image);
-            $data['image'] = $request->file('image')->store(TypeEnum::SERVICE->value, 'public');
+            $data['image'] = $request->file('image')->store($data['name'],TypeEnum::SERVICE->value, 'public');
         } else {
             $data['image'] = $service->image;
         }
@@ -80,7 +80,7 @@ class ServiceService
             if ($service->proposal != null) {
                 $this->remove($service->proposal);
             }
-            $data['proposal'] = $request->file('proposal')->store(TypeEnum::PROPOSAL->value, 'public');
+            $data['proposal'] = $request->file('proposal')->store('Proposal-layanan-'.$data['name'].'-Hummatech',TypeEnum::PROPOSAL->value, 'public');
         } else {
             $data['proposal'] = $service->proposal;
         }

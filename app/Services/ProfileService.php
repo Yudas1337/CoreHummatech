@@ -42,7 +42,7 @@ class ProfileService
         // $proposal = $request->hasFile('proposal') && $request->file('proposal')->isValid();
 
         if ($image) {
-            $data['image'] = $request->file('image')->store(TypeEnum::PROFILE->value, 'public');
+            $data['image'] = $request->file('image')->store($data['title'], TypeEnum::PROFILE->value, 'public');
             // $data['proposal'] = $request->file('proposal')->store(TypeEnum::PROFILE->value, 'public');
             return $data;
         }
@@ -75,7 +75,7 @@ class ProfileService
             //     $data['proposal'] = $profile->proposal;
             // }
 
-            $data['image'] = $request->file('image')->store(TypeEnum::PROFILE->value, 'public');
+            $data['image'] = $request->file('image')->store($data['title'], TypeEnum::PROFILE->value, 'public');
         } else {
             $data['image'] = $profile->image;
         }

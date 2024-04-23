@@ -28,7 +28,7 @@ class PartnerService
         ];
 
         if ($request->hasFile('image') && $request->file('image')->isValid()) {
-            $data['image'] = $request->file('image')->store(TypeEnum::PARTNER->value, 'public');
+            $data['image'] = $request->file('image')->store($request->name, TypeEnum::PARTNER->value, 'public');
             return $data;
         }
         return false;
@@ -43,7 +43,7 @@ class PartnerService
         ];
         if ($request->hasFile('image') && $request->file('image')->isValid()) {
             $this->remove($partner->image);
-            $data['image'] = $request->file('image')->store(TypeEnum::PARTNER->value, 'public');
+            $data['image'] = $request->file('image')->store($request->name, TypeEnum::PARTNER->value, 'public');
         } else {
             $data['image'] = $partner->image;
         }

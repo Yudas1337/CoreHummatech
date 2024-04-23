@@ -47,7 +47,7 @@ class TeamService
         $data = $request->validated();
 
         if ($request->hasFile('image') && $request->file('image')->isValid()) {
-            $data['image'] = $request->file('image')->store(TypeEnum::TEAM->value, 'public');
+            $data['image'] = $request->file('image')->store($data['name'], TypeEnum::TEAM->value, 'public');
             return $data;
         }
         return false;
@@ -67,7 +67,7 @@ class TeamService
 
         if ($request->hasFile('image') && $request->file('image')->isValid()) {
             $this->remove($team->image);
-            $data['image'] = $request->file('image')->store(TypeEnum::TEAM->value, 'public');
+            $data['image'] = $request->file('image')->store($data['name'], TypeEnum::TEAM->value, 'public');
         } else {
             $data['image'] = $team->image;
         }

@@ -16,7 +16,7 @@ class NewsImageUploader
      */
     public function process(Request $request)
     {
-        return ImageCompressing::process($request->image, TypeEnum::NEWSDESC->value, [
+        return ImageCompressing::process($request->title, $request->image, TypeEnum::NEWSDESC->value, [
             'quality' => 75,
         ]);
     }

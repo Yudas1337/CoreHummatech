@@ -43,7 +43,7 @@ class EnterpriseStructureService
     {
         $data = $request->validated();
 
-        $data['image'] = $request->file('image')->store(TypeEnum::ENTERPRISESTRUCTURE->value, 'public');
+        $data['image'] = $request->file('image')->store('Enterprise-structure', TypeEnum::ENTERPRISESTRUCTURE->value, 'public');
 
         // Converting products json
         $dataProducts = Arr::where($data['products'], fn($value) => !is_null($value));
@@ -65,7 +65,7 @@ class EnterpriseStructureService
         $data = $request->validated();
 
         if ($request->hasFile('image') && $request->file('image')->isValid()) {
-            $data['image'] = $request->file('image')->store(TypeEnum::ENTERPRISESTRUCTURE->value, 'public');
+            $data['image'] = $request->file('image')->store('Enterprise-structure', TypeEnum::ENTERPRISESTRUCTURE->value, 'public');
         } else {
             $data['image'] = $service->image;
         }

@@ -73,7 +73,7 @@ class NewsService
             $this->remove($service->image);
             $this->remove($service->thumbnail);
 
-            $files = $this->compressImage($request->image, TypeEnum::NEWS->value, [
+            $files = $this->compressImage($data['slug'], $request->image, TypeEnum::NEWS->value, [
                 'duplicate' => true,
                 'name' => $data['slug'],
                 'quality' => 50,

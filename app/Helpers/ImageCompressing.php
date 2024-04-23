@@ -28,9 +28,10 @@ class ImageCompressing
      * @param array{name:string, duplicate:bool, quality:int} $options The compress option
      * @return \Illuminate\Support\Collection<array-key, mixed>
      */
-    public static function process(UploadedFile $request, string $targetPath, array $options = [])
+    public static function process($fileName, UploadedFile $request, string $targetPath, array $options = [])
     {
-        $fileName = $options['name'] ?? Str::random(64);
+        $number = 1;
+        $fileName = $options['name'] ?? $fileName.$number++;
         $originalFileExt = $request->getClientOriginalExtension();
 
         $uploadImage = $request->storeAs("{$targetPath}", "{$fileName}.{$originalFileExt}", 'public');
