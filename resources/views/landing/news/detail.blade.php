@@ -83,7 +83,7 @@
                                                             {{ \Carbon\Carbon::parse($news->date)->locale('id_ID')->isoFormat('D MMMM Y') }}</time>
                                                     </div>
                                                     <a class="d-block mb-2"
-                                                        href="{{ url("berita/{$news->slug}") }}">{{ $news->title }}</a>
+                                                        href="{{ url("news/{$news->slug}") }}">{{ $news->title }}</a>
                                                     <p class="mb-0">{{ Str::limit(strip_tags($news->description), 20) }}
                                                     </p>
                                                 </div>
