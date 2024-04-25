@@ -26,7 +26,7 @@ class UpdateProfileRequest extends FormRequest
             'subtitle' => 'required|max:255',
             'image' => 'nullable|mimes:png,jpg',
             'description' => 'required|max:500000',
-            'address' => 'required|max:00',
+            'address' => 'required|max:200',
             'email' => 'required|max:255',
             'type' => 'required|max:255',
             'phone' => 'required|max:255',
