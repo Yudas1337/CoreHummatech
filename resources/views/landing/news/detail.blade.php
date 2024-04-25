@@ -72,7 +72,7 @@
                                         @foreach ($otherNews as $news)
                                             <li>
                                                 <div class="thumb">
-                                                    <a href="{{ url("berita/{$news->slug}") }}">
+                                                    <a href="{{ url("news/{$news->slug}") }}">
                                                         <img alt="{{ $news->title }}"
                                                             src="{{ asset("storage/{$news->thumbnail}") }}" />
                                                     </a>
