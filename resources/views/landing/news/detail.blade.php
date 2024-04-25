@@ -1,5 +1,5 @@
 @extends('landing.layouts.layouts.app')
-@section('title' , 'Berita Hummatech')
+@section('title' , $news->title.' - Berita Hummatech')
 @section('content')
     <div class="breadcrumb-area text-center shadow dark text-light bg-cover"
         style="background-image: url({{ $background == null ? asset('assets-home/img/default-bg.png') : asset('storage/' . $background->image) }});">
