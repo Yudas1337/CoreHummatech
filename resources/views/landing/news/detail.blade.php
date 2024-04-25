@@ -42,7 +42,7 @@
                                             </ul>
                                         </div>
                                         <h3>
-                                            <a href="{{ url("berita/{$news->slug}") }}">{{ $news->title }}</a>
+                                            <a href="{{ url("/news/{$news->slug}") }}">{{ $news->title }}</a>
                                         </h3>
                                         <p>
                                         <div style="white-space: pre-wrap;">{!! $news->description !!}</div>
