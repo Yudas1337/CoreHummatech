@@ -161,7 +161,7 @@
                                 <ul>
                                     @forelse ($services as $service)
                                         <li>
-                                            <a href="{{ url("/layanan/{$service->slug}") }}"><i
+                                            <a href="{{ url("/services/{$service->slug}") }}"><i
                                                     class="fas fa-angle-right"></i> {{ $service->name }}</a>
                                         </li>
                                     @empty
@@ -211,7 +211,7 @@
                                                         </div>
                                                         <div class="content">
                                                             <strong>WhatsApp:</strong>
-                                
+
                                                             <a href="{{ $profile->phone }}" target="_blank">{{ $profile->phone }}</a>
                                                         </div>
                                                     @else
@@ -232,18 +232,18 @@
                                                                     $phoneNumber = $profile->phone;
                                                                 }
                                                             @endphp
-                
+
                                                             <a href="tel:{{ $cleanPhone }}" target="_blank">{{ $phoneNumber }}</a>
                                                         </div>
-                                                    @endif 
+                                                    @endif
                                                 @else
                                                     <div class="icon">
-                                                        <i class="fas fa-phone"></i>                                           
+                                                        <i class="fas fa-phone"></i>
                                                     </div>
                                                     <div class="content">
                                                         <strong>Phone</strong>
                                                         <a href="tel: 085176777785">085176777785</a>
-                                                    </div>  
+                                                    </div>
                                                 @endif
                                             </li>
                                         </ul>
