@@ -228,6 +228,8 @@
                                                                 );
                                                                 if (substr($cleanPhone, 0, 2) === '62') {
                                                                     $phoneNumber = '0' . substr($cleanPhone, 2);
+                                                                } else {
+                                                                    $phoneNumber = $profile->phone;
                                                                 }
                                                             @endphp
                 
