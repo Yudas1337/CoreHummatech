@@ -36,8 +36,13 @@ class CollabMitraRepository extends BaseRepository implements CollabMitraInterfa
     public function search(Request $request): mixed
     {
         return $this->model->query()
-        ->when($request->name, function ($query) use ($request){
-            $query->where('name', 'LIKE', '%' . $request->name . '%');
-        })->get();
+            ->when($request->has('name'), function ($query) use ($request) {
+                $query->where('name', 'LIKE', '%' . $request->name . '%');
+            })
+            ->when($request->has('collab_category_id'), function ($query) use ($request) {
+                $query->where('collab_category_id', $request->collab_category_id);
+            })
+            ->get();
     }
+
 }
