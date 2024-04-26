@@ -18,7 +18,7 @@
                 <div class="d-flex gap-2 col-sm-12">
                     <div class="input-group">
                         <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-magnifying-glass"></i></span>
-                        <input type="text" name="name" value="{{ request()->name }}" class="form-control" placeholder="Cari Produk" aria-label="Username"
+                        <input type="text" name="name" value="{{ request()->name }}" class="form-control" placeholder="Cari Mitra" aria-label="Username"
                             aria-describedby="basic-addon1">
                     </div>
                     <a href="/mitra" class="btn btn-secondary w75 col-4" target="_blank">Lihat Mitra</a>
@@ -140,7 +140,7 @@
                                 @enderror
                             </div>
                             <div class="mb-3 mt-0 col-md-12">
-                                <label for="bm-title">Foto</label>
+                                <label for="bm-title">Logo</label>
                                 <input class="form-control" name="image" id="formFile" type="file">
                                 @error('image')
                                     <span class="invalid-feedback" role="alert">
@@ -202,7 +202,7 @@
                                 </select>
                             </div>
                             <div class="mb-3 mt-0 col-md-12">
-                                <label for="bm-title">Foto</label><br>
+                                <label for="bm-title">Logo</label><br>
                                 <img id="image-edit" style="width: 200px; height: auto; border: 1px solid #ccc;">
                                 <input class="form-control" type="file" name="image">
                             </div>
