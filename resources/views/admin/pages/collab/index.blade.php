@@ -2,17 +2,20 @@
 
 @section('subcontent')
     <div class="d-flex justify-content-between align-items-end pt-4">
-        <div class="col-12 col-lg-3 ">
+        <div class="col-12 col-lg-3">
+        <form action="/collab" id="kategoriForm">
             <label for="kategori" class="form-label">Pilih kategori</label>
-            <select class="form-select" aria-label="Default select example" name="kategori">
-                <option>Semua</option>
+            <select class="js-example-basic-single" aria-label="Default select example" name="collab_category_id" id="kategori">
+                <option value="">Semua</option>
                 @foreach ($categories as $category)
-                    <option value="{{ $category->id }}"
-                        {{ $category->collab_category_id == $category->id ? 'selected' : '' }}>
-                        {{ $category->name }}</option>
+                    <option value="{{ $category->id }}" {{ $category->collab_category_id == $category->id ? 'selected' : '' }}>
+                        {{ $category->name }}
+                    </option>
                 @endforeach
             </select>
+        </form>
         </div>
+
         <form action="/collab">
             <div class="col-12 col-lg-12 d-flex justify-content-end">
                 <div class="d-flex gap-2 col-sm-12">
@@ -38,7 +41,7 @@
             font-size: 10px;
         }
     </style>
-    <div class="col-lg-12 pt-5">
+    <div class="col-lg-12 pt-5" id="collab-mitra-container">
         <div class="row">
             @forelse ($collabMitras as $index=>$collabMitra)
                 <div class="col-12 col-lg-3 col-md-4">
@@ -222,6 +225,14 @@
     @include('admin.components.delete-modal-component')
 @endsection
 @section('script')
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0-beta.1/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0-beta.1/js/select2.min.js"></script>
+<select class="js-example-basic-single" aria-label="Default select example" name="kategori" id="kategori-filter">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0-beta.1/js/select2.min.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0-beta.1/css/select2.min.css" rel="stylesheet" />
+
+
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     @if (session('success'))
         <script>
@@ -275,6 +286,15 @@
         $(document).ready(function() {
             $(".js-example-basic-single").select2({
                 dropdownParent: $("#edit")
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function() {
+            $('.js-example-basic-single').select2();
+
+            $('#kategori').on('change', function() {
+                $('#kategoriForm').submit();
             });
         });
     </script>
