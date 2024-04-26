@@ -6,11 +6,11 @@
             <label for="kategori" class="form-label">Pilih kategori</label>
             <select class="form-select" aria-label="Default select example" name="kategori">
                 <option>Semua</option>
-                @forelse ($collabMitras as $collabMitra)
-                    <option value="{{ $collabMitra->id }}">{{ $collabMitra->name }}</option>
-                @empty
-                    <option value="" disabled>Belum ada kategori produk</option>
-                @endforelse
+                @foreach ($categories as $category)
+                    <option value="{{ $category->id }}"
+                        {{ $category->collab_category_id == $category->id ? 'selected' : '' }}>
+                        {{ $category->name }}</option>
+                @endforeach
             </select>
         </div>
         <form action="/collab">
@@ -18,8 +18,8 @@
                 <div class="d-flex gap-2 col-sm-12">
                     <div class="input-group">
                         <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-magnifying-glass"></i></span>
-                        <input type="text" name="name" value="{{ request()->name }}" class="form-control" placeholder="Cari Mitra" aria-label="Username"
-                            aria-describedby="basic-addon1">
+                        <input type="text" name="name" value="{{ request()->name }}" class="form-control"
+                            placeholder="Cari Mitra" aria-label="Username" aria-describedby="basic-addon1">
                     </div>
                     <a href="/mitra" class="btn btn-secondary w75 col-4" target="_blank">Lihat Mitra</a>
 
@@ -246,7 +246,7 @@
             var name = $(this).data('name'); // Mengambil nilai name dari tombol yang diklik
             var image = $(this).data('image');
             var collab_category_id = $(this).data('collab_category_id');
-            var service_ids = $(this).data('service').map(function (item) {
+            var service_ids = $(this).data('service').map(function(item) {
                 return item.service_id;
             });
             $('#form-update').attr('action', 'update/collab/mitra/' + id); // Mengubah nilai atribut action form
