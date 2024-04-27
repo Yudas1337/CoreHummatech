@@ -1,5 +1,5 @@
 @extends('landing.layouts.layouts.app')
-@section('title', 'News')
+@section('title', 'Berita')
 @section('style')
     <style>
         .custom-tabs {
@@ -61,9 +61,14 @@
                                     </div>
                                     <div class="sidebar-info">
                                         <ul>
+                                            <li>
+                                                <a href="/news" class="{{ request()->is('news') ? 'text-primary' : '' }}">
+                                                    Semua
+                                                </a>
+                                            </li>
                                             @foreach ($newsCategories as $category)
                                                 <li>
-                                                    <a class="{{ request()->is('/news/category/' . $category->slug) ? 'active bg-primary text-light' : '' }}"
+                                                    <a class="{{ request()->is('news/category/' . $category->slug) ? 'active text-primary' : '' }}"
                                                         href="{{ url("/news/category/{$category->slug}") }}">{{ $category->slug }}</a>
                                                 </li>
                                             @endforeach
@@ -76,10 +81,10 @@
                     </div>
                     <div class="col-12 col-xl-9">
                         <div class="blog-item-box">
-                            <div class="row">
+                            <div class="row mb-5 mt-2">
                                 @forelse ($newses as $news)
                                     @if ($news->news)
-                                        <div class="col-lg-6 col-md-6">
+                                        <div class="col-lg-6 col-md-6 mt-2">
                                             <div class="item">
                                                 <div class="thumb">
                                                     <a href="/news/{{ $news->news->slug }}">
@@ -113,7 +118,7 @@
                                             </div>
                                         </div>
                                     @else
-                                        <div class="col-lg-6 col-md-6 single-item">
+                                        <div class="col-lg-6 col-md-6 single-item mt-2">
                                             <div class="item">
                                                 <div class="thumb">
                                                     <a href="/news/{{ $news->slug }}"><img
