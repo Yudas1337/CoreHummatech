@@ -10,6 +10,7 @@
         "guzzlehttp/guzzle": "^7.2",
         "intervention/image": "^3.4",
         "intervention/image-laravel": "*",
+        "larabug/larabug": "^3.0",
         "laravel/framework": "^10.10",
         "laravel/sanctum": "^3.3",
         "laravel/tinker": "^2.8",
@@ -18,6 +19,7 @@
         "yoeunes/toastr": "^2.3"
     },
     "require-dev": {
+        "barryvdh/laravel-debugbar": "^3.13",
         "fakerphp/faker": "^1.9.1",
         "laravel/pint": "^1.0",
         "laravel/sail": "^1.18",

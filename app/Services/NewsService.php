@@ -44,7 +44,7 @@ class NewsService
         $data = $request->validated();
 
         $data['slug'] = Str::slug($request->title);
-        $files = $this->compressImage($request->image, TypeEnum::NEWS->value, [
+        $files = $this->compressImage($data['title'], $request->image, TypeEnum::NEWS->value, [
             'duplicate' => true,
             'name' => $data['slug'],
             'quality' => 50,

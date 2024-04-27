@@ -15,8 +15,8 @@
                 <div class="col-sm-5">
                     <div class="d-flex align-items-center">
                         <form action="/admin/news/">
-                            <div class="d-flex justify-content-lg-end justify-content-start">
-                                <p class="m-0 me-2">Cari:</p>&nbsp;
+                            <div class="d-flex align-items-center gap-2 justify-content-lg-end justify-content-start">
+                                <p class="m-0">Cari:</p>&nbsp;
                                 <input class="form-control me-2" name="title" value="{{ request()->title }}" type="text" placeholder="Search" aria-label="Search">
                             </div>
                         </form>

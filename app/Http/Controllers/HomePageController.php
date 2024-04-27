@@ -3,19 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Contracts\Interfaces\BackgroundInterface;
-use App\Contracts\Interfaces\CategoryProductInterface;
 use App\Contracts\Interfaces\CollabCategoryInterface;
 use App\Contracts\Interfaces\CollabMitraInterface;
 use App\Contracts\Interfaces\ComingSoonProductInterface;
 use App\Contracts\Interfaces\HomeInterface;
-use App\Contracts\Interfaces\HomePageInterface;
 use App\Contracts\Interfaces\NewsInterface;
 use App\Contracts\Interfaces\ProductInterface;
 use App\Contracts\Interfaces\ProfileInterface;
 use App\Contracts\Interfaces\SectionInterface;
 use App\Contracts\Interfaces\ServiceInterface;
 use App\Contracts\Interfaces\VisitorDetectionInterface;
-use App\Http\Requests\StoreVisitorDetectionRequest;
 use Illuminate\Http\Request;
 
 class HomePageController extends Controller
@@ -111,7 +108,7 @@ class HomePageController extends Controller
     public function destroy(string $id)
     {
         //
-        
+
     }
 
     public function mitra()
