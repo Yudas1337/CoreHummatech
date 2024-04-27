@@ -257,9 +257,9 @@
                             <div class="d-flex flex-column align-items-center">
                                 <h4 class="mb-0 pb-0">{{$service->name}}</h4>
                                 <div style="min-height: 70px; max-height: 70px" class="text-white py-2">
-                                    {!! $service->short_description == null ? 
-                                        Str::words(html_entity_decode($service->description), 15, '') : 
-                                        $service->short_description !!}                                    
+                                    {!! $service->short_description == null ?
+                                        Str::words(html_entity_decode($service->description), 15, '') :
+                                        $service->short_description !!}
                                 </div>
                                 <div class="pt-5 mt-3">
                                     <a href="/services/{{ $service->slug }}"><i class="fas fa-arrow-right"></i> Lihat
@@ -447,11 +447,11 @@
                                                                         </ul>
                                                                     </div>
                                                                     <h4>
-                                                                        <a href="/berita/{{ $newsItem->slug }}">{{ $newsItem['title'] }}</a>
+                                                                        <a href="/news/{{ $newsItem->slug }}">{{ $newsItem['title'] }}</a>
                                                                     </h4>
                                                                     <p class="line-clamp">{!! Str::limit($newsItem['description'], 200) !!}
                                                                     </p>
-                                                                    <a href="/berita/{{ $newsItem->slug }}" class="btn btn-outline-primary rounded-pill py-2 px-4 text-dark">Baca Selengkapnya</a>
+                                                                    <a href="/news/{{ $newsItem->slug }}" class="btn btn-outline-primary rounded-pill py-2 px-4 text-dark">Baca Selengkapnya</a>
                                                                 </div>
                                                             </div>
                                                         </div>
