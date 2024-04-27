@@ -161,7 +161,7 @@
                                 <ul>
                                     @forelse ($services as $service)
                                         <li>
-                                            <a href="{{ url("/layanan/{$service->slug}") }}"><i
+                                            <a href="{{ url("/services/{$service->slug}") }}"><i
                                                     class="fas fa-angle-right"></i> {{ $service->name }}</a>
                                         </li>
                                     @empty

@@ -63,7 +63,8 @@
                                         <ul>
                                             @foreach ($newsCategories as $category)
                                                 <li>
-                                                    <a href="{{ url("/news/category/{$category->slug}") }}">{{ $category->slug }}</a>
+                                                    <a class="{{ request()->is('/news/category/'.$category->slug) ? 'active bg-primary text-light' : '' }}"
+                                                     href="{{ url("/news/category/{$category->slug}") }}">{{ $category->slug }}</a>
                                                 </li>
                                             @endforeach
                                         </ul>
