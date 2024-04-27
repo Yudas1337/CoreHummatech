@@ -205,7 +205,7 @@
                                                 </div>
                                             </li>
                                             <li>
-                                                @if ($profile->type != null)
+                                                @if (isset($profile) && $profile->type != null)
                                                     @if ($profile->type == 'wa')
                                                         <div class="icon">
                                                             <i class="fab fa-whatsapp"></i>
