@@ -132,7 +132,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        foreach ($this->register as $index => $value) $this->app->bind($index, $value);
+        foreach ($this->register as $index => $value) {
+            $this->app->bind($index, $value);
+        }
     }
 
     /**
