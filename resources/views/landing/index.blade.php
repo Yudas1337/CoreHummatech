@@ -436,7 +436,7 @@
             }
 
             .single-item {
-                flex: 1 0 300px; /* Atur lebar kartu sesuai kebutuhan */
+                flex: 1 0 250px; /* Atur lebar kartu sesuai kebutuhan */
                 margin: 10px; /* Atur margin sesuai kebutuhan */
             }
         </style>
@@ -455,7 +455,6 @@
                                     <div class="carousel-inner">
                                         <div class="">
                                             <div class="row">
-                                                
                                                 @foreach ($news as $index => $newsItem)
                                                     @if ($index < 3)
                                                         <div class="col-lg-4 col-md-6 single-item">
