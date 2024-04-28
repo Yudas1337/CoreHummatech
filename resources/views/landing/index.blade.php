@@ -509,6 +509,8 @@
         </div>
     </div>
 
+    @if ($product->isEmpty())
+    @else
     <div class="services-details-area default-padding">
         <div class="container">
             <div class="row">
@@ -532,15 +534,7 @@
                                 <div class="case-items-area">
                                     <div class="masonary">
                                         <div id="portfolio-grid" class="gallery-items colums-3 gap-2">
-                                            @if ($product->isEmpty() && $comingProducts->isEmpty())
-                                                <div class="d-flex justify-content-center">
-                                                    <img src="{{ asset('nodata.jpg') }}" alt="" width="400px">
-                                                </div>
-                                                <h5 class="text-center">
-                                                    Data Masih Kosong
-                                                </h5>
-                                            @else
-                                                @foreach ($comingProducts as $comingProduct)
+                                                {{-- @foreach ($comingProducts as $comingProduct)
                                                     <div class="pf-item mx-2" style="width: 300px">
                                                         <div class="item" style="width: 300px">
                                                             <div class="" style="background-color: #E5F1FF;">
@@ -566,9 +560,10 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                @endforeach
+                                                @endforeach --}}
 
-                                                @foreach ($product as $product)
+                                                @foreach ($product as $index => $product)
+                                                    @if ($index < 3)
                                                     <div class="pf-item mx-2" style="width: 300px">
                                                         <div class="item" style="width: 300px">
                                                             <div class="" style="background-color: #E5F1FF;">
@@ -592,8 +587,9 @@
                                                             </div>
                                                         </div>
                                                     </div>
+                                                        
+                                                    @endif
                                                 @endforeach
-                                            @endif
                                         </div>
                                     </div>
                                 </div>
@@ -603,17 +599,19 @@
                 </div>
             </div>
             <div class="d-flex justify-content-center pt-5">
-                @if (count($products) > 0)
+                @if (count($products) > 3)
                     <a class="text-primary" href="/portfolio">
                         <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24">
                             <path fill="currentColor"
                                 d="M16.15 13H5q-.425 0-.712-.288T4 12q0-.425.288-.712T5 11h11.15L13.3 8.15q-.3-.3-.288-.7t.288-.7q.3-.3.713-.312t.712.287L19.3 11.3q.15.15.213.325t.062.375q0 .2-.062.375t-.213.325l-4.575 4.575q-.3.3-.712.288t-.713-.313q-.275-.3-.288-.7t.288-.7z" />
                         </svg> Lihat Selengkapnya
                     </a>
+                @else
                 @endif
             </div>
         </div>
     </div>
+    @endif
 
 
 

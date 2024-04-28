@@ -13,6 +13,7 @@ use App\Contracts\Interfaces\ProfileInterface;
 use App\Contracts\Interfaces\SectionInterface;
 use App\Contracts\Interfaces\ServiceInterface;
 use App\Contracts\Interfaces\VisitorDetectionInterface;
+use App\Enums\ProductEnum;
 use Illuminate\Http\Request;
 
 class HomePageController extends Controller
@@ -55,7 +56,7 @@ class HomePageController extends Controller
         $news = $this->news->get();
         $mitras = $this->mitras->get();
         $section = $this->section->get();
-        $product = $this->product->getByType('company');
+        $product = $this->product->getByType(ProductEnum::PORTFOLIO);
         $home = $this->home->get();
         $comingProducts = $this->comingProduct->get();
 
