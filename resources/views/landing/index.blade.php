@@ -436,7 +436,7 @@
             }
 
             .single-item {
-                flex: 1 0 250px; /* Atur lebar kartu sesuai kebutuhan */
+                flex: 1 0 300px; /* Atur lebar kartu sesuai kebutuhan */
                 margin: 10px; /* Atur margin sesuai kebutuhan */
             }
         </style>
