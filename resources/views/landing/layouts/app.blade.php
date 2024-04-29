@@ -122,7 +122,7 @@
                             <img src="{{ asset('assets/images/LOGO-HUMMATECH_Putih.png') }}"
                                 style="height: 48px;width: auto;" alt="Logo">
 
-                            @isset($profiles)
+                            @isset($profile)
                                 <p>{!! Str::limit(strip_tags($profile->description), 300) !!}</p>
                                 <a href="{{ url('/about-us/profile') }}">Lihat Selengkapnya</a>
                             @else
