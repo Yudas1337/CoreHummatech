@@ -127,7 +127,7 @@
                     <div class="col-lg-6 info text-center text-lg-start">
                         <h4 class="subtitle">Profile Perusahaan</h4>
                         @forelse ($profiles as $profile)
-                        <h2>{{ $profile->subtitle }}</h2>
+                        <h2>{{ $profile->title }}</h2>
                         <img src="{{ asset('storage/' . $profile->image) }}" alt="Thumb"
                             class="w-75 mb-3 d-block mx-auto d-lg-none" />
                         <p class="text-justify">
