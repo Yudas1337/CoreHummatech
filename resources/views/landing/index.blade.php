@@ -359,7 +359,7 @@
     </div>
     <!-- End Product Area -->
 
-    <div class="thumbs-services-area default-padding">
+    <div class="thumbs-services-area m-5">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 offset-lg-2">
@@ -402,7 +402,7 @@
         @endif
 
         @if (count($mitras) > 0)
-            <div class="col-md-12 pagi-area text-center mt-5 mb-5">
+            <div class="col-md-12 pagi-area text-center">
                 <a class="text-primary" href="/mitra">
                     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24">
                         <path fill="currentColor"
@@ -587,7 +587,7 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                        
+
                                                     @endif
                                                 @endforeach
                                         </div>
