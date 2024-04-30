@@ -127,7 +127,7 @@
 
 
             <div class="portofolio">
-                <h4><b>Portofolio Terbaru</b></h4>
+                <h4><b>Produk Terbaru</b></h4>
                 <div class="gallery-area overflow-hidden pt-3">
                     <div class="container">
                         <div class="case-items-area">
@@ -136,7 +136,7 @@
 
                                 <div class="mx-auto d-flex flex-column justify-content-center text-center">
                                     <img src="{{ asset('nodata-gif-post.gif') }}" alt="No Data" height="200" class="mx-auto" width="200" />
-                                    <p class="text-muted">Belum ada portofolio</p>
+                                    <p class="text-muted">Belum ada produk</p>
                                 </div>
                                 @endif
                                 <div id="portfolio-grid" class="gallery-items colums-2">
