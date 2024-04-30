@@ -531,9 +531,9 @@
                         @foreach ($services->where('slug', $slugs->slug) as $service)
                             @if ($service->proposal)
                                 <div class="services-sidebar m-0 p-0">
-                                    <div class="single-widget brochure pt-4">
+                                    <div class="single-widget brochure pt-4 ">
                                         <h4 class="widget-title">Proposal</h4>
-                                        <ul class="w-50">
+                                        <ul class="w-50 px-0 mx-0">
                                             <a href="{{ asset('storage/' . $service->proposal) }}"
                                                     download="{{ asset('storage/' . $service->proposal) }}"><i
                                                         class="fas fa-file-pdf"></i>Unduh Proposal</a>
