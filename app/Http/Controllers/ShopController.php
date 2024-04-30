@@ -23,7 +23,7 @@ class ShopController extends Controller
     public function index()
     {
         $shops = $this->shopinterface->get();
-        return view('shops.index', compact('shops'));
+        return view('', compact('shops'));
     }
 
     /**
