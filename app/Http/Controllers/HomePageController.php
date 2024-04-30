@@ -48,12 +48,12 @@ class HomePageController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
         $visitorDetections = $this->visitorDetection->GetCount();
         $profile = $this->profile->get();
         $service = $this->service->get();
-        $news = $this->news->get();
+        $news = $this->news->customPaginate($request, 12);
         $mitras = $this->mitras->get();
         $section = $this->section->get();
         $product = $this->product->getByType(ProductEnum::COMPANY);
