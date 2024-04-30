@@ -78,12 +78,16 @@ use App\Contracts\Repositories\TermsconditionRepository;
 use App\Contracts\Repositories\CategoryProductRepository;
 use App\Contracts\Repositories\VisionAndMisionRepository;
 use App\Contracts\Interfaces\EnterpriseStructureInterface;
+use App\Contracts\Interfaces\HiglightInterface;
 use App\Contracts\Interfaces\ShopInterface;
+use App\Contracts\Interfaces\TitleInterface;
 use App\Contracts\Interfaces\UniqueVisitorInterface;
 use App\Contracts\Repositories\ComingSoonProductRepository;
 use App\Contracts\Repositories\VisitorDetectionRepository;
 use App\Contracts\Repositories\EnterpriseStructureRepository;
+use App\Contracts\Repositories\HiglightRepository;
 use App\Contracts\Repositories\ShopRepository;
+use App\Contracts\Repositories\TitleRepository;
 use App\Contracts\Repositories\UniqueVisitorRepository;
 
 class AppServiceProvider extends ServiceProvider
@@ -127,7 +131,9 @@ class AppServiceProvider extends ServiceProvider
         HomeInterface::class => HomeRepository::class,
         MisionItemsInterface::class => MisionItemsRepository::class,
         ComingSoonProductInterface::class => ComingSoonProductRepository::class,
-        ShopInterface::class => ShopRepository::class
+        ShopInterface::class => ShopRepository::class,
+        TitleInterface::class => TitleRepository::class,
+        HiglightInterface::class => HiglightRepository::class
     ];
 
     /**
