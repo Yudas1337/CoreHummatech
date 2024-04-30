@@ -245,12 +245,11 @@
                         </div>
                     </div>
                 </div>
-                <!-- Start Footer Bottom -->
                 <div class="footer-bottom">
                     <div class="container">
                         <div class="footer-bottom-box mt-0 p-4">
                             <div class="row">
-                                <div class="col-lg-8">
+                                <div class="col-lg-12">
                                     <p class="text-center" style="font-weight: 600">&copy; Copyright 2024. All Rights Reserved by <a
                                         href="{{ url('/') }}">Hummatech </a></p>
                                 </div>
