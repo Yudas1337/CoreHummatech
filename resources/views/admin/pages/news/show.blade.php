@@ -13,7 +13,10 @@
     <div class="page-title">
         <div class="d-flex justify-content-between">
             {{ \Carbon\Carbon::parse($news['date'])->locale('id_ID')->isoFormat('dddd, D MMMM YYYY') }}
-            <a href="/admin/news" class="btn btn-primary">Kembali</a>
+            <div class="d-flex">
+                <a href="/news/{{ $news->slug }}" class="btn btn-secondary " target="_blank">Lihat website</a>
+                <a href="/admin/news" class="btn btn-primary">Kembali</a>
+            </div>
         </div>
         <p class="mb-0 fs-6" style="font-weight: 600">
             Judul
