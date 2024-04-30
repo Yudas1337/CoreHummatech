@@ -54,18 +54,15 @@
 
                                     <div class="pt-3 d-flex gap-4">
                                         <div>
-                                            <input type="radio" id="whatsapp" name="type" {{ $profil->type == 'wa' ? 'checked' : '' }} value="wa" onclick="editPhone('whatsappInputEdit')">
+                                            <input type="radio" id="whatsapp" name="type" {{ $profil->type == 'wa' ? 'checked' : '' }} value="wa">
                                             <label for="whatsapp">Set WhatsApp</label>
                                         </div>
                                         <div>
-                                            <input type="radio" id="telpon" name="type" {{ $profil->type == 'telp' ? 'checked' : '' }} value="telp" onclick="editPhone('telponInputEdit')">
+                                            <input type="radio" id="telpon" name="type" {{ $profil->type == 'telp' ? 'checked' : '' }} value="telp">
                                             <label for="telpon">Set Telepon</label>
                                         </div>
                                     </div>
-                                    <div id="whatsappInputEdit" style="display: {{ $profil->type == 'wa' ? 'block' : 'none' }};">
-                                        <input type="url" class="form-control" id="whatsappLinkEdit" name="phone" value="{{ old('phone', $profil->phone) }}" placeholder="Masukkan link WhatsApp">
-                                    </div>
-                                    <div id="telponInputEdit" style="display: {{ $profil->type == 'telp' ? 'block' : 'none' }};">
+                                    <div id="telponInputEdit">
                                         <input type="tel" class="form-control" id="phoneNumberEdit" name="phone" value="{{ old('phone', $profil->phone) }}" placeholder="Masukkan nomor telepon">
                                     </div>
 
@@ -165,19 +162,19 @@
 
                                     <div class="pt-3 d-flex gap-4">
                                         <div>
-                                            <input type="radio" id="whatsapp" name="type" value="wa" onclick="showInput('whatsappInput')">
+                                            <input type="radio" id="whatsapp" name="type" value="wa">
                                             <label for="whatsapp">Set WhatsApp</label>
                                         </div>
                                         <div>
-                                            <input type="radio" id="telpon" name="type" value="telp" onclick="showInput('telponInput')">
+                                            <input type="radio" id="telpon" name="type" value="telp">
                                             <label for="telpon">Set Telepon</label>
                                         </div>
                                     </div>
-                                    <div id="whatsappInput" style="display: none;">
-                                        <input type="url" class="form-control" id="whatsappLink" name="phone" placeholder="Masukkan link WhatsApp">
-                                    </div>
-                                    <div id="telponInput" style="display: none;">
-                                        <input type="tel" class="form-control" id="phoneNumber" name="phone" placeholder="Masukkan nomor telepon">
+                                    <div id="telponInput">
+                                        <input type="tel" class="form-control" id="phoneNumber" name="phone" value="{{ old('phone') }}" placeholder="Masukkan nomor telepon">
+                                        @error('phone')
+                                            <div class="text-danger">{{ $message }}</div>
+                                        @enderror
                                     </div>
 
                                     <div class="my-1">
@@ -283,45 +280,6 @@
     <script src="../assets/js/header-slick.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify"></script>
     <script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.polyfills.min.js"></script>
-
-    <script>
-        function showInput(inputId) {
-            var inputs = document.querySelectorAll('div[id$="Input"]');
-            inputs.forEach(function(input) {
-                if (input.id === inputId) {
-                    input.style.display = 'block';
-                } else {
-                    input.style.display = 'none';
-                }
-            });
-        }
-    </script>
-
-<script>
-    function editPhone(inputId) {
-        var whatsappInput = document.getElementById('whatsappInputEdit');
-        var telponInput = document.getElementById('telponInputEdit');
-
-        var inputwa = document.getElementById('whatsappLinkEdit');
-        var inputtelp = document.getElementById('phoneNumberEdit');
-
-
-        if (inputId === 'whatsappInputEdit') {
-            whatsappInput.style.display = 'block';
-            telponInput.style.display = 'none';
-            inputtelp.value = '';
-            inputtelp.disabled = true;
-            inputwa.disabled = false
-        } else if (inputId === 'telponInputEdit') {
-            whatsappInput.style.display = 'none';
-            inputwa.value = '';
-            inputwa.disabled = true
-            inputtelp.disabled = false;
-            telponInput.style.display = 'block';
-        }
-    }
-</script>
-
 
     <script>
         function displayImage(event) {
