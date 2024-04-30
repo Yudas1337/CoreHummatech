@@ -89,7 +89,7 @@
         <i class="fa fa-thumb-tack"></i>
         <a class="sidebar-link sidebar-title link-nav" href="/admin/portfolio">
             <i class="fa-brands fa-wpforms text-white"></i>
-            <span>Portofolio</span>
+            <span class="ps-4">Portofolio</span>
         </a>
     </li>
     <li class="sidebar-list">

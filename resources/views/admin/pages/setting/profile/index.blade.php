@@ -162,14 +162,14 @@
                                             <div class="text-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
-                                    
+
                                     <div class="pt-3 d-flex gap-4">
                                         <div>
-                                            <input type="radio" id="whatsapp" name="type" value="whatsapp" onclick="showInput('whatsappInput')">
+                                            <input type="radio" id="whatsapp" name="type" value="wa" onclick="showInput('whatsappInput')">
                                             <label for="whatsapp">Set WhatsApp</label>
                                         </div>
                                         <div>
-                                            <input type="radio" id="telpon" name="type" value="telpon" onclick="showInput('telponInput')">
+                                            <input type="radio" id="telpon" name="type" value="telp" onclick="showInput('telponInput')">
                                             <label for="telpon">Set Telepon</label>
                                         </div>
                                     </div>
@@ -301,7 +301,7 @@
     function editPhone(inputId) {
         var whatsappInput = document.getElementById('whatsappInputEdit');
         var telponInput = document.getElementById('telponInputEdit');
-        
+
         var inputwa = document.getElementById('whatsappLinkEdit');
         var inputtelp = document.getElementById('phoneNumberEdit');
 
