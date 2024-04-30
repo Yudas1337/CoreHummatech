@@ -509,7 +509,7 @@
         </div>
     </div>
 
-    @if ($product->isEmpty())
+    @if ($portfolios->isEmpty())
     @else
     <div class="services-details-area default-padding">
         <div class="container">
@@ -562,24 +562,24 @@
                                                     </div>
                                                 @endforeach --}}
 
-                                                @foreach ($product as $index => $product)
+                                                @foreach ($portfolios as $index => $portfolio)
                                                     @if ($index < 3)
                                                     <div class="pf-item mx-2" style="width: 300px">
                                                         <div class="item" style="width: 300px">
                                                             <div class="" style="background-color: #E5F1FF;">
-                                                                <img src="{{ asset('storage/' . $product->image) }}"
+                                                                <img src="{{ asset('storage/' . $portfolio->image) }}"
                                                                     width="300px" height="300px"
                                                                     class="object-fit-cover" alt="Thumb">
                                                             </div>
                                                             <div class="content">
                                                                 <div class="info">
                                                                     <h4><a
-                                                                            href="{{ route('detail.product', $product->slug) }}">{{ $product->name }}</a>
+                                                                            href="{{ route('detail.product', $portfolio->slug) }}">{{ $portfolio->name }}</a>
                                                                     </h4>
-                                                                    <span>{{ Str::limit($product->description, 50, '...') }}</span>
+                                                                    <span>{{ Str::limit($portfolio->description, 50, '...') }}</span>
                                                                 </div>
                                                                 <div class="button">
-                                                                    <a href="{{ asset('storage/' . $product->image) }}"
+                                                                    <a href="{{ asset('storage/' . $portfolio->image) }}"
                                                                         class="item popup-gallery">
                                                                         <i class="fas fa-plus"></i>
                                                                     </a>
@@ -599,7 +599,7 @@
                 </div>
             </div>
             <div class="d-flex justify-content-center pt-5">
-                @if (count($products) > 3)
+                @if (count($portfolios) > 3)
                     <a class="text-primary" href="/portfolio">
                         <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24">
                             <path fill="currentColor"

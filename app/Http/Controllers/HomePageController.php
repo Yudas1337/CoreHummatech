@@ -56,11 +56,12 @@ class HomePageController extends Controller
         $news = $this->news->get();
         $mitras = $this->mitras->get();
         $section = $this->section->get();
-        $product = $this->product->getByType(ProductEnum::PORTFOLIO);
+        $product = $this->product->getByType(ProductEnum::COMPANY);
+        $portfolios = $this->product->getByType(ProductEnum::PORTFOLIO);
         $home = $this->home->get();
         $comingProducts = $this->comingProduct->get();
 
-        return view('landing.index', compact('profile','service','news','mitras','section','product' ,'visitorDetections', 'home', 'comingProducts'));
+        return view('landing.index', compact('profile','service','news','mitras','section','product','portfolios' ,'visitorDetections', 'home', 'comingProducts'));
     }
 
     /**
