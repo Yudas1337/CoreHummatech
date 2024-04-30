@@ -124,7 +124,7 @@
 
                             @isset($profile)
                                 <p>{!! Str::limit(strip_tags($profile->description), 300) !!}</p>
-                                <a href="{{ url('/about-us/profile') }}">Lihat Selengkapnya</a>
+                                <a href="{{ url('/about/profile') }}">Lihat Selengkapnya</a>
                             @else
                                 <p>
                                     Bertransformasi menjadi perusahaan yang mampu menjawab tantangan di era revolusi
