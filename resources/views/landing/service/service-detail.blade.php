@@ -566,45 +566,25 @@
                                 <h4>Perlu bantuan?</h4>
                                 <p>Kami siap melayani 24 jam, silahkan hubungi layanan call center kami melalui:</p>
                                 @if($profile->type != null)
-                                    @if ($profile->type == 'wa')
-                                        <p class="mb-0 pb-0">WhatsApp:
-                                        <a href="{{ $profile->phone }}" target="_blank">{{ $profile->phone }}</a></p class="mb-0 pb-0">
-                                    @else
                                         @php
-                                            $cleanPhone = str_replace(
-                                                ['+', '-', ' '],
-                                                '',
-                                                $profile->phone,
-                                            );
+                                            $cleanPhone = str_replace(['+', '-', ' '], '', $profile->phone);
+
                                             if (substr($cleanPhone, 0, 2) === '62') {
                                                 $phoneNumber = '0' . substr($cleanPhone, 2);
+                                                $waNumber = $cleanPhone;
+                                            } elseif (substr($cleanPhone, 0, 1) === '0') {
+                                                $waNumber = '62' . substr($cleanPhone, 1);
+                                                $phoneNumber = $cleanPhone;
+                                            } else {
+                                                $phoneNumber = $cleanPhone;
                                             }
                                         @endphp
-                                        <p class="mb-0 pb-0">Phone:
-                                        <a href="tel:{{ $cleanPhone }}" target="_blank">{{ $phoneNumber }}</a></p>
-                                    @endif 
+                                        <p class="mb-0 pb-0">{{ $profile->type == 'wa' ? 'WhatsApp: ' : 'Phone:' }}
+                                        <a href="{{ $profile->type == 'wa' ? 'https://wa.me/'.$waNumber : 'tel: '.$phoneNumber }}" target="_blank">{{ $phoneNumber }}</a></p>
                                 @else
                                     <p class="mb-0 pb-0">Phone:
                                     <a href="https://wa.me/6285176777785">085176777785</a></p>
                                 @endif
-                                {{-- <p class="mb-0">Phone: 
-                                    @isset($profile)
-                                        @php
-                                            $cleanPhone = str_replace(
-                                                ['+', '-', ' '],
-                                                '',
-                                                $profile->phone,
-                                            );
-                                            if (substr($cleanPhone, 0, 2) === '62') {
-                                                $phoneNumber = '0' . substr($cleanPhone, 2);
-                                            }
-                                        @endphp
-
-                                        <a href="https://wa.me/{{ $cleanPhone }}" target="_blank">{{ $phoneNumber }}</a>
-                                    @else
-                                        <a href="https://wa.me/6285176777785">085176777785</a>
-                                    @endisset
-                                </p> --}}
                                 <p class="mb-0">Email:
                                     @isset($profile)
                                         <a href="mailto:{{ $profile->email }}">{{ $profile->email }}</a>

@@ -204,41 +204,32 @@
                                                 </div>
                                             </li>
                                             <li>
-                                                @if ($profile->type != null)
-                                                    @if ($profile->type == 'wa')
+                                                @if (isset($profile) && $profile->type != null)
                                                         <div class="icon">
-                                                            <i class="fab fa-whatsapp"></i>
-                                                        </div>
-                                                        <div class="content">
-                                                            <strong>WhatsApp:</strong>
-
-                                                            <a href="{{ $profile->phone }}" target="_blank">{{ $profile->phone }}</a>
-                                                        </div>
-                                                    @else
-                                                        <div class="icon">
-                                                            <i class="fas fa-phone"></i>
-                                                        </div>
-                                                        <div class="content">
-                                                            <strong>Phone:</strong>
+                                                            <i class="{{ $profile->type == 'wa' ? 'fab fa-whatsapp' : 'fas fa-phone' }}"></i>
+                                                            </div>
+                                                            <div class="content">
+                                                                <strong>{{ $profile->type == 'wa' ? 'Whatsapp:' : 'Phone:' }}</strong>
+                                                                
                                                             @php
-                                                                $cleanPhone = str_replace(
-                                                                    ['+', '-', ' '],
-                                                                    '',
-                                                                    $profile->phone,
-                                                                );
+                                                                $cleanPhone = str_replace(['+', '-', ' '], '', $profile->phone);
+
                                                                 if (substr($cleanPhone, 0, 2) === '62') {
                                                                     $phoneNumber = '0' . substr($cleanPhone, 2);
+                                                                    $waNumber = $cleanPhone;
+                                                                } elseif (substr($cleanPhone, 0, 1) === '0') {
+                                                                    $waNumber = '62' . substr($cleanPhone, 1);
+                                                                    $phoneNumber = $cleanPhone;
                                                                 } else {
-                                                                    $phoneNumber = $profile->phone;
+                                                                    $phoneNumber = $cleanPhone;
                                                                 }
                                                             @endphp
 
-                                                            <a href="tel:{{ $cleanPhone }}" target="_blank">{{ $phoneNumber }}</a>
+                                                            <a href="{{ $profile->type == 'wa' ? 'https://wa.me/'. $waNumber : 'tel: '. $phoneNumber }}" target="_blank">{{ $phoneNumber }}</a>
                                                         </div>
-                                                    @endif
                                                 @else
                                                     <div class="icon">
-                                                        <i class="fas fa-phone"></i>
+                                                        <i class="fas fa-phone"></i>                                                    
                                                     </div>
                                                     <div class="content">
                                                         <strong>Phone</strong>
