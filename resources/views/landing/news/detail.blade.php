@@ -4,8 +4,9 @@
 @endsection
 @section('title', $slugs->name)
 @section('seo')
+    <meta property="og:title" content="{{ $news->name }} - Berita Hummatech." />
+    <meta property="og:image" content="{{ asset('storage/' . $news->thumbnail) }}" />
     <meta name="title" content="{{ $news->name }} - Berita Hummatech." />
-    <meta name="og:image" content="{{ asset('storage/' . $news->thumbnail) }}" />
     <meta name="og:description" content="{!! $news->description !!}" />
     <meta name="twitter:image" content="{{ asset('mobilelogo.png') }}" />
     <meta property="og:url" content="{{ url('/') }}" />
