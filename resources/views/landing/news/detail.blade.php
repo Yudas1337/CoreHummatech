@@ -9,11 +9,10 @@
     <meta name="og:image" content="{{ asset('storage/' . $news->image) }}"/>
     <meta name="og:image:secure_url" content="{{ asset('storage/' . $news->image) }}"/>
     <meta name="og:image:type" content="image/jpeg" />
-    <meta name="og:image:width" content="100%" />
-    <meta name="og:image:height" content="100%" />
-    <meta name="twitter:image" content="{{ asset('storage/' . $news->image) }}" />
+    <meta property="og:image" content="{{ asset('storage/' . $news->image) }}" />
+    <meta property="og:image:alt" content="{{ $news->title }}" />
     <meta property="og:url" content="{{ url('/') }}" />
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content="article" />
     <link rel="canonical" href="{{ url('/') }}" />
 @endsection
 @section('content')
