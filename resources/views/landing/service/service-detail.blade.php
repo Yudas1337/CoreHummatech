@@ -1,6 +1,6 @@
 @extends('landing.layouts.layouts.app')
 @section('description')
-<meta name="description" content="{!! $slugs->description !!}" />
+<meta name="description" content="haiii" />
 @endsection
 @section('title', $slugs->name)
 @section('seo')
