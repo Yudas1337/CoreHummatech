@@ -2,7 +2,7 @@
 
 @section('subcontent')
     <div class="d-flex justify-content-between align-items-end pt-4">
-        <form action="/product">
+        <form action="/admin/portfolio/">
             <div class="col-9">
                 <div class="input-group">
                     <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-magnifying-glass"></i></span>
@@ -47,6 +47,7 @@
                                 data-id="{{ $portfolio->id }}" 
                                     data-name="{{ $portfolio->name }}" 
                                     data-category="{{ $portfolio->CategoryProduct->name }}" 
+                                    data-category-id="{{ $portfolio->category_product_id }}" 
                                     data-description="{{ $portfolio->description }}" 
                                     data-link="{{ $portfolio->link }}" 
                                     data-image="{{ asset('storage/'. $portfolio->image) }}">
@@ -184,12 +185,12 @@
                             </div>
                             <div class="form-group mb-3 mt-0 w-50">
                                 <label for="category">Kategori Portofolio</label>
-                                <select name="category_product_id" class="js-example-basic-single form-select" id="#edit">
-                                    <option value="" disabled selected>Pilih Kategori</option>
+                                <select name="category_product_id" class="js-example-basic-single form-select" id="categoryEdit">
+                                    <option value="" disabled>Pilih Kategori</option>
                                     @forelse ($categories as $category)
                                         <option value="{{ $category->id }}">{{ $category->name }}</option>
                                     @empty
-                                        <option value="" disabled selected>Kategori Masih Kosong</option>
+                                        <option value="" disabled>Kategori Masih Kosong</option>
                                     @endforelse
                                 </select>
                                 @error('category_product_id')
@@ -267,14 +268,17 @@
             var id = $(this).data('id');
             var name = $(this).data('name'); 
             var category = $(this).data('category'); 
+            var categoryId = $(this).data('category-id'); 
             var link = $(this).data('link'); 
             var description = $(this).data('description'); 
             var image = $(this).data('image');
             console.log(id);
+
             $('#name-edit').val(name);
             $('#link-edit').val(link);
             $('#description-edit').val(description);
             $('#image-edit').val(image);
+            $('#categoryEdit').val(categoryId).trigger('change');
             $('#form-edit').attr('action', '/admin/portfolio/update/' + id);
             $('#modal-edit').modal('show');
         });

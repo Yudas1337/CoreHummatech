@@ -66,6 +66,7 @@ use App\Contracts\Repositories\SosialMediaRepository;
 use App\Contracts\Repositories\TestimonialRepository;
 use App\Contracts\Interfaces\CategoryProductInterface;
 use App\Contracts\Interfaces\ComingSoonProductInterface;
+use App\Contracts\Interfaces\ContactUsInterface;
 use App\Contracts\Interfaces\VisionAndMisionInterface;
 use App\Contracts\Repositories\CategoryNewsRepository;
 use App\Contracts\Repositories\NewsCategoryRepository;
@@ -83,6 +84,7 @@ use App\Contracts\Interfaces\ShopInterface;
 use App\Contracts\Interfaces\TitleInterface;
 use App\Contracts\Interfaces\UniqueVisitorInterface;
 use App\Contracts\Repositories\ComingSoonProductRepository;
+use App\Contracts\Repositories\ContactUsRepository;
 use App\Contracts\Repositories\VisitorDetectionRepository;
 use App\Contracts\Repositories\EnterpriseStructureRepository;
 use App\Contracts\Repositories\HiglightRepository;
@@ -133,7 +135,8 @@ class AppServiceProvider extends ServiceProvider
         ComingSoonProductInterface::class => ComingSoonProductRepository::class,
         ShopInterface::class => ShopRepository::class,
         TitleInterface::class => TitleRepository::class,
-        HiglightInterface::class => HiglightRepository::class
+        HiglightInterface::class => HiglightRepository::class,
+        ContactUsInterface::class => ContactUsRepository::class
     ];
 
     /**
