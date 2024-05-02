@@ -1,5 +1,5 @@
 @extends('landing.layouts.layouts.app')
-@section('title' , $news->title.' - Berita') @endsection
+@section('title' , $news->title.' - Berita') 
 @section('seo')
     <meta name="description" content="{!! $news->description !!}">
     <meta name="keywords" content="{{ $news->title }}">
