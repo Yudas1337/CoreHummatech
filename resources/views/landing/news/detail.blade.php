@@ -5,15 +5,25 @@
 @endsection
 {{-- @section('title', $slugs->name) --}}
 @section('seo')
-    <meta name="title" content="{{ $news->title }} - Hummatech" />
-    <meta name="og:image" content="{{ asset('storage/' . $news->image) }}"/>
-    <meta name="og:image:secure_url" content="{{ asset('storage/' . $news->image) }}"/>
-    <meta name="og:image:type" content="image/jpeg" />
-    <meta property="og:image" content="{{ asset('storage/' . $news->image) }}" />
-    <meta property="og:image:alt" content="{{ $news->title }}" />
-    <meta property="og:url" content="{{ url('/') }}" />
-    <meta property="og:type" content="article" />
-    <link rel="canonical" href="{{ url('/') }}" />
+<meta name="title" content="{{ $news->title }} - Hummatech" />
+<meta name="og:image" content="{{ asset('storage/' . $news->image) }}"/>
+<meta name="og:image:secure_url" content="{{ asset('storage/' . $news->image) }}"/>
+<meta name="og:image:type" content="image/jpeg" />
+<meta property="og:image" content="{{ asset('storage/' . $news->image) }}" />
+<meta property="og:image:alt" content="{{ $news->title }}" />
+<meta property="og:url" content="{{ url('/') }}" />
+<meta property="og:type" content="article" />
+<link rel="canonical" href="{{ url('/') }}" />
+
+<style>
+    /* Style untuk gambar */
+    .og-image {
+        width: 1200px; /* Lebar gambar */
+        height: 630px; /* Tinggi gambar */
+        object-fit: cover;
+    }
+</style>
+
 @endsection
 @section('content')
     <div class="breadcrumb-area text-center shadow dark text-light bg-cover"
