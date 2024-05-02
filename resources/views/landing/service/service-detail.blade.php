@@ -1,5 +1,15 @@
 @extends('landing.layouts.layouts.app')
-@section('title' ,  $slugs->name )
+@section('title', $slugs->name)
+@section('seo')
+    <meta name="title" content="Hummatech - {{ $slugs->name }}" />
+    <meta name="description" content="{!! $slugs->description !!}" />
+    <meta name="og:image" content="{{ asset('storage/' . $slugs->image) }}" />
+    <meta name="og:description" content="{!! $slugs->description !!}" />
+    <meta name="twitter:image" content="{{ asset('mobilelogo.png') }}" />
+    <meta property="og:url" content="{{ url('/') }}" />
+    <meta property="og:type" content="website" />
+    <link rel="canonical" href="{{ url('/') }}" />
+@endsection
 @section('style')
     <style>
         .subtitle {
@@ -47,7 +57,6 @@
                 padding-right: unset;
             }
         }
-
     </style>
     <style>
         @media (max-width: 600px) {
@@ -235,103 +244,106 @@
                         @endif
 
                         @if (!$products->isEmpty())
-                        <div class="mt-5">
-                            <div class="title-service">
-                                <h4 class="m-0">Produk Yang Dihasilkan</h4>
-                                <div class="dash"></div>
-                            </div>
-                            @forelse ($products as $index => $product)
-                                <div class="about-content-area pb-5 mb-5">
-                                    <div class="row @if ($index % 2 === 1) flex-row-reverse @endif">
-                                        <div class="col-lg-5 thumb wow fadeInUp">
-                                            <div class="img-box">
-                                                <img src="{{ asset('storage/' . $product->image) }}" alt="Thumb">
-                                                <div class="shape" style="background-image: url(assets/img/shape/1.png);">
+                            <div class="mt-5">
+                                <div class="title-service">
+                                    <h4 class="m-0">Produk Yang Dihasilkan</h4>
+                                    <div class="dash"></div>
+                                </div>
+                                @forelse ($products as $index => $product)
+                                    <div class="about-content-area pb-5 mb-5">
+                                        <div class="row @if ($index % 2 === 1) flex-row-reverse @endif">
+                                            <div class="col-lg-5 thumb wow fadeInUp">
+                                                <div class="img-box">
+                                                    <img src="{{ asset('storage/' . $product->image) }}" alt="Thumb">
+                                                    <div class="shape"
+                                                        style="background-image: url(assets/img/shape/1.png);">
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="col-lg-7 wow fadeInDown">
-                                            <h2>{{ $product->name }}</h2>
-                                            <p>{{ $product->description }}</p>
-                                            <a class="btn btn-stroke-gradient text-gradient effect btn-md"
-                                                href="/detail/{{ $product->slug }}">Lihat detail</a>
-                                            <a class="btn btn-gradient effect btn-md" href="{{ $product->link }}">Kunjungi
-                                                website</a>
+                                            <div class="col-lg-7 wow fadeInDown">
+                                                <h2>{{ $product->name }}</h2>
+                                                <p>{{ $product->description }}</p>
+                                                <a class="btn btn-stroke-gradient text-gradient effect btn-md"
+                                                    href="/detail/{{ $product->slug }}">Lihat detail</a>
+                                                <a class="btn btn-gradient effect btn-md"
+                                                    href="{{ $product->link }}">Kunjungi
+                                                    website</a>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            @empty
-                                <div class="col-12">
-                                    <div class="d-flex justify-content-center">
-                                        <img src="{{ asset('nodata-gif.gif') }}" alt="" width="800px">
+                                @empty
+                                    <div class="col-12">
+                                        <div class="d-flex justify-content-center">
+                                            <img src="{{ asset('nodata-gif.gif') }}" alt="" width="800px">
+                                        </div>
+                                        <h4 class="text-center text-dark" style="font-weight:600">
+                                            Belum ada produk
+                                        </h4>
                                     </div>
-                                    <h4 class="text-center text-dark" style="font-weight:600">
-                                        Belum ada produk
-                                    </h4>
-                                </div>
-                            @endforelse
-                        </div>
+                                @endforelse
+                            </div>
                         @endif
 
                         @if (!$testimonials->isEmpty())
-                        <div class="my-5 py-3">
-                            <div class="title-service">
-                                <h4 class="m-0">Testimoni Layanan</h4>
-                                <div class="dash"></div>
-                            </div>
-                            <div class="testimonials-area">
-                                <div class="container">
-                                    <div class="testimonial-items bg-gradient-gray">
-                                        <div class="row align-center bg-gradient-gray">
-                                            <div class="col-lg-7 testimonials-content">
-                                                <div class="testimonials-carousel owl-carousel owl-theme">
-                                                    @forelse ($testimonials as $testimonial)
-                                                        <div class="item">
-                                                            <div class="info">
-                                                                <p>
-                                                                    {{ $testimonial->description }}
-                                                                </p>
-                                                                <div class="provider">
-                                                                    <div class="thumb">
-                                                                        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-                                                                            style="background-image: url('{{ asset('storage/' . $testimonial->image) }}'); background-size: cover; background-position: center;"
-                                                                            alt="Author" class="object-fit-cover">
-                                                                    </div>
-                                                                    <div class="content">
-                                                                        <h4 class="text-primary">{{ $testimonial->name }}
-                                                                        </h4>
+                            <div class="my-5 py-3">
+                                <div class="title-service">
+                                    <h4 class="m-0">Testimoni Layanan</h4>
+                                    <div class="dash"></div>
+                                </div>
+                                <div class="testimonials-area">
+                                    <div class="container">
+                                        <div class="testimonial-items bg-gradient-gray">
+                                            <div class="row align-center bg-gradient-gray">
+                                                <div class="col-lg-7 testimonials-content">
+                                                    <div class="testimonials-carousel owl-carousel owl-theme">
+                                                        @forelse ($testimonials as $testimonial)
+                                                            <div class="item">
+                                                                <div class="info">
+                                                                    <p>
+                                                                        {{ $testimonial->description }}
+                                                                    </p>
+                                                                    <div class="provider">
+                                                                        <div class="thumb">
+                                                                            <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                                                                                style="background-image: url('{{ asset('storage/' . $testimonial->image) }}'); background-size: cover; background-position: center;"
+                                                                                alt="Author" class="object-fit-cover">
+                                                                        </div>
+                                                                        <div class="content">
+                                                                            <h4 class="text-primary">
+                                                                                {{ $testimonial->name }}
+                                                                            </h4>
+                                                                        </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                        </div>
-                                                    @empty
-                                                        <div class="col-12">
-                                                            <div class="d-flex justify-content-center">
-                                                                <img src="{{ asset('nodata-gif.gif') }}" alt=""
-                                                                    width="800px">
+                                                        @empty
+                                                            <div class="col-12">
+                                                                <div class="d-flex justify-content-center">
+                                                                    <img src="{{ asset('nodata-gif.gif') }}" alt=""
+                                                                        width="800px">
+                                                                </div>
+                                                                <h4 class="text-center text-dark" style="font-weight:600">
+                                                                    Belum ada Testimoni
+                                                                </h4>
                                                             </div>
-                                                            <h4 class="text-center text-dark" style="font-weight:600">
-                                                                Belum ada Testimoni
-                                                            </h4>
-                                                        </div>
-                                                    @endforelse
+                                                        @endforelse
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="col-lg-5 info">
-                                                <h4>Testimoni</h4>
-                                                <h3>Testimoni Membuktikan Kualitas produk Kami</h3>
-                                                <p>
-                                                    Tingkatkan Kepercayaan Anda: Dengarlah Suara Pelanggan Kami Melalui
-                                                    Testimoni Mereka
-                                                </p>
+                                                <div class="col-lg-5 info">
+                                                    <h4>Testimoni</h4>
+                                                    <h3>Testimoni Membuktikan Kualitas produk Kami</h3>
+                                                    <p>
+                                                        Tingkatkan Kepercayaan Anda: Dengarlah Suara Pelanggan Kami Melalui
+                                                        Testimoni Mereka
+                                                    </p>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
                         @endif
-                        
+
                         @if ($faqs->count() > 0)
                             <div class="py-3 mb-5">
                                 <div class="title-service">
@@ -394,31 +406,34 @@
                         @endif
 
                         @if ($servicemitras->count() > 0)
-                        <div class="py-5 mb-5">
-                            <div class="title-service">
-                                <h4 class="m-0">Mitra Kami</h4>
-                                <div class="dash"></div>
-                                <div class="devider"></div>
-                                <div class="team-slider owl-carousel d-flex justify-content-center">
-                                    @forelse ($servicemitras as $mitra)
-                                        <div class="item mx-2" style="display: flex; align-items: center; justify-content: center; ">
-                                            <img src="{{ asset('storage/' . $mitra->mitra->image) }}" alt="Mitra Image"
-                                                class="img-fluid carousel-image" style="object-fit: contain;">
-                                        </div>
-                                    @empty
-                                        <div class="col-12">
-                                            <div class="d-flex justify-content-center">
-                                                <img src="{{ asset('nodata-gif.gif') }}" alt="" width="800px">
+                            <div class="py-5 mb-5">
+                                <div class="title-service">
+                                    <h4 class="m-0">Mitra Kami</h4>
+                                    <div class="dash"></div>
+                                    <div class="devider"></div>
+                                    <div class="team-slider owl-carousel d-flex justify-content-center">
+                                        @forelse ($servicemitras as $mitra)
+                                            <div class="item mx-2"
+                                                style="display: flex; align-items: center; justify-content: center; ">
+                                                <img src="{{ asset('storage/' . $mitra->mitra->image) }}"
+                                                    alt="Mitra Image" class="img-fluid carousel-image"
+                                                    style="object-fit: contain;">
                                             </div>
-                                            <h4 class="text-center text-dark" style="font-weight:600">
-                                                Belum ada Mitra
-                                            </h4>
-                                        </div>
-                                    @endforelse
+                                        @empty
+                                            <div class="col-12">
+                                                <div class="d-flex justify-content-center">
+                                                    <img src="{{ asset('nodata-gif.gif') }}" alt=""
+                                                        width="800px">
+                                                </div>
+                                                <h4 class="text-center text-dark" style="font-weight:600">
+                                                    Belum ada Mitra
+                                                </h4>
+                                            </div>
+                                        @endforelse
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    @endif
+                        @endif
 
                         @if ($procedures->count() > 0)
                             <div class="py-2 mb-5">
@@ -510,7 +525,7 @@
                                 <div class="galeri">
                                     <div class="d-flex flex-wrap col-12">
                                         @forelse ($galeries as $galery)
-                                            <img src="{{ asset('storage/'.$galery->image) }}"
+                                            <img src="{{ asset('storage/' . $galery->image) }}"
                                                 style="object-fit: cover; width: 18vw; height: 12vw" class="m-2">
                                         @empty
                                             <div class="col-12">
@@ -535,8 +550,8 @@
                                         <h4 class="widget-title">Proposal</h4>
                                         <ul class="w-50 px-0 mx-0">
                                             <a href="{{ asset('storage/' . $service->proposal) }}"
-                                                    download="{{ asset('storage/' . $service->proposal) }}"><i
-                                                        class="fas fa-file-pdf"></i>Unduh Proposal</a>
+                                                download="{{ asset('storage/' . $service->proposal) }}"><i
+                                                    class="fas fa-file-pdf"></i>Unduh Proposal</a>
                                         </ul>
                                     </div>
                                 </div>
@@ -565,25 +580,28 @@
                                 <i class="fas fa-phone"></i>
                                 <h4>Perlu bantuan?</h4>
                                 <p>Kami siap melayani 24 jam, silahkan hubungi layanan call center kami melalui:</p>
-                                @if($profile->type != null)
-                                        @php
-                                            $cleanPhone = str_replace(['+', '-', ' '], '', $profile->phone);
+                                @if ($profile->type != null)
+                                    @php
+                                        $cleanPhone = str_replace(['+', '-', ' '], '', $profile->phone);
 
-                                            if (substr($cleanPhone, 0, 2) === '62') {
-                                                $phoneNumber = '0' . substr($cleanPhone, 2);
-                                                $waNumber = $cleanPhone;
-                                            } elseif (substr($cleanPhone, 0, 1) === '0') {
-                                                $waNumber = '62' . substr($cleanPhone, 1);
-                                                $phoneNumber = $cleanPhone;
-                                            } else {
-                                                $phoneNumber = $cleanPhone;
-                                            }
-                                        @endphp
-                                        <p class="mb-0 pb-0">{{ $profile->type == 'wa' ? 'WhatsApp: ' : 'Phone:' }}
-                                        <a href="{{ $profile->type == 'wa' ? 'https://wa.me/'.$waNumber : 'tel: '.$phoneNumber }}" target="_blank">{{ $phoneNumber }}</a></p>
+                                        if (substr($cleanPhone, 0, 2) === '62') {
+                                            $phoneNumber = '0' . substr($cleanPhone, 2);
+                                            $waNumber = $cleanPhone;
+                                        } elseif (substr($cleanPhone, 0, 1) === '0') {
+                                            $waNumber = '62' . substr($cleanPhone, 1);
+                                            $phoneNumber = $cleanPhone;
+                                        } else {
+                                            $phoneNumber = $cleanPhone;
+                                        }
+                                    @endphp
+                                    <p class="mb-0 pb-0">{{ $profile->type == 'wa' ? 'WhatsApp: ' : 'Phone:' }}
+                                        <a href="{{ $profile->type == 'wa' ? 'https://wa.me/' . $waNumber : 'tel: ' . $phoneNumber }}"
+                                            target="_blank">{{ $phoneNumber }}</a>
+                                    </p>
                                 @else
                                     <p class="mb-0 pb-0">Phone:
-                                    <a href="https://wa.me/6285176777785">085176777785</a></p>
+                                        <a href="https://wa.me/6285176777785">085176777785</a>
+                                    </p>
                                 @endif
                                 <p class="mb-0">Email:
                                     @isset($profile)
@@ -593,11 +611,12 @@
                                     @endisset
                                 </p>
                                 @if ($instagram)
-                                    <p>DM Instagram: <a href="{{ $instagram->link }}" target="_blank">{{ '@'. Illuminate\Support\Str::after($instagram->link, 'instagram.com/') }}</a>
+                                    <p>DM Instagram: <a href="{{ $instagram->link }}"
+                                            target="_blank">{{ '@' . Illuminate\Support\Str::after($instagram->link, 'instagram.com/') }}</a>
                                     </p>
                                 @endif
                                 <p class="mb-0">
-                                    Alamat: 
+                                    Alamat:
                                     @isset($profile)
                                         {{ $profile->address }}
                                     @else
@@ -618,34 +637,35 @@
 
 @section('script')
 
-<!-- CSS Owl Carousel -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+    <!-- CSS Owl Carousel -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
 
-<!-- JS Owl Carousel -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+    <!-- JS Owl Carousel -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
 
-<script>
-    $(document).ready(function(){
-        var itemCount = $('.team-slider .item').length;
-        $('.team-slider').owlCarousel({
-            items:1,
-            loop: itemCount > 1,
-            autoplay: true,
-            autoplayTimeout: 3000,
-            responsive:{
-                0:{
-                    items:1
-                },
-                600:{
-                    items:3
-                },
-                1000:{
-                    items:5
+    <script>
+        $(document).ready(function() {
+            var itemCount = $('.team-slider .item').length;
+            $('.team-slider').owlCarousel({
+                items: 1,
+                loop: itemCount > 1,
+                autoplay: true,
+                autoplayTimeout: 3000,
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    600: {
+                        items: 3
+                    },
+                    1000: {
+                        items: 5
+                    }
                 }
-            }
+            });
         });
-    });
-</script>
+    </script>
 
 @endsection
