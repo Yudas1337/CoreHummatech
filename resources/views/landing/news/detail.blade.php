@@ -1,12 +1,12 @@
 @extends('landing.layouts.layouts.app')
-@section('title' , $news->title.' - Berita')
+@section('title', $news->title . ' - Berita')
 @section('description')
-<meta name="description" content="{{ Str::limit(strip_tags($news->description), 200) }}" />
+    <meta name="description" content="{{ Str::limit(strip_tags($news->description), 200) }}" />
 @endsection
 {{-- @section('title', $slugs->name) --}}
 @section('seo')
     <meta name="title" content="{{ $news->title }} - Hummatech" />
-    <meta name="og:image" content="{{ asset('storage/' . $news->thumbnail) }}" />
+    <meta name="og:image" content="{{ asset('storage/' . $news->thumbnail) }}" width="500" height="300" />
     <meta name="twitter:image" content="{{ asset('mobilelogo.png') }}" />
     <meta property="og:url" content="{{ url('/') }}" />
     <meta property="og:type" content="website" />
