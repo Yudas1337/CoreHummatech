@@ -6,8 +6,8 @@
 {{-- @section('title', $slugs->name) --}}
 @section('seo')
     <meta name="title" content="{{ $news->title }} - Hummatech" />
-    <meta name="og:image" content="{{ asset('storage/' . $news->thumbnail) }}" style="width: 500px; object-fit:cover"/>
-    <meta name="twitter:image" content="{{ asset('storage/' . $news->thumbnail) }}" />
+    <meta name="og:image" content="{{ asset('storage/' . $news->image) }}"/>
+    <meta name="twitter:image" content="{{ asset('storage/' . $news->image) }}" />
     <meta property="og:url" content="{{ url('/') }}" />
     <meta property="og:type" content="website" />
     <link rel="canonical" href="{{ url('/') }}" />
