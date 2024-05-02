@@ -2,7 +2,7 @@
 @section('description')
 <meta name="description" content="{!! $news->description !!}" />
 @endsection
-@section('title', $slugs->name)
+@section('title', $news->name)
 @section('seo')
     <meta property="og:title" content="{{ $news->title }} - Berita Hummatech." />
     <meta property="og:image" content="{{ asset('storage/' . $news->thumbnail) }}" />
