@@ -2,7 +2,7 @@
 @section('description')
 <meta name="description" content="Hummatech adalah perusahaan software development terbaik di Malang. Kami menyediakan solusi perangkat lunak yang inovatif dan berkualitas tinggi." />
 @endsection
-@section('title', $slugs->name)
+{{-- @section('title', $slugs->name) --}}
 @section('seo')
     <meta name="title" content="Berita - Hummatech." />
     <meta name="og:image" content="{{ asset('mobilelogo.png') }}" />
