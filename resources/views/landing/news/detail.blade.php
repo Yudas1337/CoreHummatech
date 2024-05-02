@@ -4,11 +4,10 @@
 @endsection
 @section('title' , $news->title.' - Berita')
 @section('seo')
-    <meta property="og:title" content="{{ $news->title }}" />
-    <meta property="og:image" content="{{ asset('storage/' . $news->thumbnail) }}" />
-    <meta property="og:description" content="{!! $news->description !!}" />
-    <meta property="og:url" content="{{ url("/news/{$news->slug}") }}" />
-    <meta property="og:type" content="article" />
+    <meta name="title" content="{{ $news->title }}" />
+    <meta name="image" content="{{ asset('storage/' . $news->thumbnail) }}" />
+    <meta name="description" content="{!! strip_tags($news->description) !!}" />
+    <meta name="url" content="{{ url("/news/{$news->slug}") }}" />
 @endsection
 @section('content')
     <div class="breadcrumb-area text-center shadow dark text-light bg-cover"
