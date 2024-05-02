@@ -7,9 +7,6 @@
         content="Hummatech adalah perusahaan software development terbaik di Malang. Kami menyediakan solusi perangkat lunak yang inovatif dan berkualitas tinggi." />
     <meta name="og:image" content="{{ asset('mobilelogo.png') }}" />
     <meta name="twitter:image" content="{{ asset('mobilelogo.png') }}" />
-    <meta name="twitter:title" content="Hummatech - Perusahaan Software Terbaik di Malang" />
-    <meta name="twitter:description"
-        content="Hummatech adalah per businesses software development terbaik di Malang. Kami menyediakan solusi perangkat lunak yang inovatif dan berkualitas tinggi." />
     <meta property="og:url" content="{{ url('/') }}" />
     <meta property="og:type" content="website" />
     <link rel="canonical" href="{{ url('/') }}" />
@@ -116,7 +113,7 @@
 
 @section('content')
     <!-- Start Banner
-                                        ============================================= -->
+                                            ============================================= -->
     <div class="banner-area text-center text-big top-pad-50">
         <div id="bootcarousel" class="carousel text-light slide animate_text" data-ride="carousel">
 
@@ -241,7 +238,7 @@
     <!-- End About -->
 
     <!-- Star Services Area
-                                    ============================================= -->
+                                        ============================================= -->
     <div class="thumb-services-area inc-thumbnail default-padding bottom-less mt-5">
         <div class="right-shape">
             <img src="assets-home/img/shape/9.png" alt="Shape">
@@ -511,29 +508,29 @@
 
     @if ($portfolios->isEmpty())
     @else
-    <div class="services-details-area default-padding">
-        <div class="container">
-            <div class="row">
-
-                <div class="col-lg-8 offset-lg-2">
-                    <div class="site-heading text-center mt-4">
-                        <h4>portofolio</h4>
-                        <h3>Inspirasi dari Karya: Portfolio Hummatech Menggambarkan Keunggulan Produk</h3>
-                        <div class="devider"></div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-        <div class="container">
-            <div class="services-details-items">
+        <div class="services-details-area default-padding">
+            <div class="container">
                 <div class="row">
-                    <div class="col-lg-12 services-single-content">
-                        <div class="gallery-area overflow-hidden pt-3">
-                            <div class="container">
-                                <div class="case-items-area">
-                                    <div class="masonary">
-                                        <div id="portfolio-grid" class="gallery-items colums-3 gap-2">
+
+                    <div class="col-lg-8 offset-lg-2">
+                        <div class="site-heading text-center mt-4">
+                            <h4>portofolio</h4>
+                            <h3>Inspirasi dari Karya: Portfolio Hummatech Menggambarkan Keunggulan Produk</h3>
+                            <div class="devider"></div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="container">
+                <div class="services-details-items">
+                    <div class="row">
+                        <div class="col-lg-12 services-single-content">
+                            <div class="gallery-area overflow-hidden pt-3">
+                                <div class="container">
+                                    <div class="case-items-area">
+                                        <div class="masonary">
+                                            <div id="portfolio-grid" class="gallery-items colums-3 gap-2">
                                                 {{-- @foreach ($comingProducts as $comingProduct)
                                                     <div class="pf-item mx-2" style="width: 300px">
                                                         <div class="item" style="width: 300px">
@@ -564,32 +561,32 @@
 
                                                 @foreach ($portfolios as $index => $portfolio)
                                                     @if ($index < 3)
-                                                    <div class="pf-item mx-2" style="width: 300px">
-                                                        <div class="item" style="width: 300px">
-                                                            <div class="" style="background-color: #E5F1FF;">
-                                                                <img src="{{ asset('storage/' . $portfolio->image) }}"
-                                                                    width="300px" height="300px"
-                                                                    class="object-fit-cover" alt="Thumb">
-                                                            </div>
-                                                            <div class="content">
-                                                                <div class="info">
-                                                                    <h4><a
-                                                                            href="{{ route('detail.product', $portfolio->slug) }}">{{ $portfolio->name }}</a>
-                                                                    </h4>
-                                                                    <span>{{ Str::limit($portfolio->description, 50, '...') }}</span>
+                                                        <div class="pf-item mx-2" style="width: 300px">
+                                                            <div class="item" style="width: 300px">
+                                                                <div class="" style="background-color: #E5F1FF;">
+                                                                    <img src="{{ asset('storage/' . $portfolio->image) }}"
+                                                                        width="300px" height="300px"
+                                                                        class="object-fit-cover" alt="Thumb">
                                                                 </div>
-                                                                <div class="button">
-                                                                    <a href="{{ asset('storage/' . $portfolio->image) }}"
-                                                                        class="item popup-gallery">
-                                                                        <i class="fas fa-plus"></i>
-                                                                    </a>
+                                                                <div class="content">
+                                                                    <div class="info">
+                                                                        <h4><a
+                                                                                href="{{ route('detail.product', $portfolio->slug) }}">{{ $portfolio->name }}</a>
+                                                                        </h4>
+                                                                        <span>{{ Str::limit($portfolio->description, 50, '...') }}</span>
+                                                                    </div>
+                                                                    <div class="button">
+                                                                        <a href="{{ asset('storage/' . $portfolio->image) }}"
+                                                                            class="item popup-gallery">
+                                                                            <i class="fas fa-plus"></i>
+                                                                        </a>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-
                                                     @endif
                                                 @endforeach
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -597,20 +594,19 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="d-flex justify-content-center pt-5">
-                @if (count($portfolios) > 3)
-                    <a class="text-primary" href="/portfolio">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24">
-                            <path fill="currentColor"
-                                d="M16.15 13H5q-.425 0-.712-.288T4 12q0-.425.288-.712T5 11h11.15L13.3 8.15q-.3-.3-.288-.7t.288-.7q.3-.3.713-.312t.712.287L19.3 11.3q.15.15.213.325t.062.375q0 .2-.062.375t-.213.325l-4.575 4.575q-.3.3-.712.288t-.713-.313q-.275-.3-.288-.7t.288-.7z" />
-                        </svg> Lihat Selengkapnya
-                    </a>
-                @else
-                @endif
+                <div class="d-flex justify-content-center pt-5">
+                    @if (count($portfolios) > 3)
+                        <a class="text-primary" href="/portfolio">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24">
+                                <path fill="currentColor"
+                                    d="M16.15 13H5q-.425 0-.712-.288T4 12q0-.425.288-.712T5 11h11.15L13.3 8.15q-.3-.3-.288-.7t.288-.7q.3-.3.713-.312t.712.287L19.3 11.3q.15.15.213.325t.062.375q0 .2-.062.375t-.213.325l-4.575 4.575q-.3.3-.712.288t-.713-.313q-.275-.3-.288-.7t.288-.7z" />
+                            </svg> Lihat Selengkapnya
+                        </a>
+                    @else
+                    @endif
+                </div>
             </div>
         </div>
-    </div>
     @endif
 
 

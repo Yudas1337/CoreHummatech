@@ -1,5 +1,19 @@
 @extends('landing.layouts.layouts.app')
 @section('title' , 'About Company')
+@section('seo')
+@section('seo')
+@foreach ($profiles as $profile)
+<meta name="title" content="Hummatech - {{ $profile->title }}" />
+<meta name="description"
+    content="{{ $profile->subtitle }}" />
+<meta name="og:image" content="{{ asset('mobilelogo.png') }}" />
+<meta name="twitter:image" content="{{ asset('mobilelogo.png') }}" />
+<meta property="og:url" content="{{ url('/') }}" />
+<meta property="og:type" content="website" />
+<link rel="canonical" href="{{ url('/') }}" />
+@endforeach
+@endsection
+@endsection
 @section('style')
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet" />
 
@@ -128,7 +142,7 @@
                         <h4 class="subtitle">Profile Perusahaan</h4>
                         @forelse ($profiles as $profile)
                         <h2>{{ $profile->title }}</h2>
-                        
+
                         <img src="{{ asset('storage/' . $profile->image) }}" alt="Thumb"
                             class="w-75 mb-3 d-block mx-auto d-lg-none" />
                         <p class="text-justify">

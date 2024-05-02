@@ -7,10 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content="{{ config('app.name', 'Laravel') }}" />
-    <meta name="title" content="Hummatech - Perusahaan Software Terbaik di Malang" />
-    <meta name="description"
-        content="Hummatech , Hummatech adalah perusahaan software development terbaik di Malang. Kami menyediakan solusi perangkat lunak yang inovatif dan berkualitas tinggi." />
-
+    
     <!-- ========== Page Title ========== -->
     @hasSection('title')
         <title>{!! "{$__env->yieldContent('title')} &mdash; " . config('app.name', 'Laravel') !!}</title>
@@ -211,7 +208,7 @@
                                                             </div>
                                                             <div class="content">
                                                                 <strong>{{ $profile->type == 'wa' ? 'Whatsapp:' : 'Phone:' }}</strong>
-                                                                
+
                                                             @php
                                                                 $cleanPhone = str_replace(['+', '-', ' '], '', $profile->phone);
 
@@ -230,7 +227,7 @@
                                                         </div>
                                                 @else
                                                     <div class="icon">
-                                                        <i class="fas fa-phone"></i>                                                    
+                                                        <i class="fas fa-phone"></i>
                                                     </div>
                                                     <div class="content">
                                                         <strong>Phone</strong>
