@@ -1,8 +1,10 @@
 @extends('landing.layouts.layouts.app')
+@section('description')
+<meta name="description" content="{!! $slugs->description !!}" />
+@endsection
 @section('title', $slugs->name)
 @section('seo')
     <meta name="title" content="Hummatech - {{ $slugs->name }}" />
-    <meta name="description" content="{!! $slugs->description !!}" />
     <meta name="og:image" content="{{ asset('storage/' . $slugs->image) }}" />
     <meta name="og:description" content="{!! $slugs->description !!}" />
     <meta name="twitter:image" content="{{ asset('mobilelogo.png') }}" />
