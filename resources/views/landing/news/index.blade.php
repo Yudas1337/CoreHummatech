@@ -1,4 +1,16 @@
 @extends('landing.layouts.layouts.app')
+@section('description')
+<meta name="description" content="Hummatech adalah perusahaan software development terbaik di Malang. Kami menyediakan solusi perangkat lunak yang inovatif dan berkualitas tinggi." />
+@endsection
+@section('title', $slugs->name)
+@section('seo')
+    <meta name="title" content="Berita - Hummatech." />
+    <meta name="og:image" content="{{ asset('mobilelogo.png') }}" />
+    <meta name="twitter:image" content="{{ asset('mobilelogo.png') }}" />
+    <meta property="og:url" content="{{ url('/') }}" />
+    <meta property="og:type" content="website" />
+    <link rel="canonical" href="{{ url('/') }}" />
+@endsection
 @section('title', 'Berita')
 @section('style')
     <style>
