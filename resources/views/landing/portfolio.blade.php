@@ -1,5 +1,6 @@
+
 @extends('landing.layouts.layouts.app')
-@section('title' , 'Portfolio')
+@section('title' , 'Portofolio')
 
 @section('style')
     <style>
@@ -126,51 +127,75 @@
         </div>
     </div>
 
-    <div class="p-5 mx-5 row">
-        @forelse ($portfolios as $portfolio)
-            <div class="col-xl-4 col-md-6 col-sm-12">
-                <div class="card shadow-sm p-4" style="min-height: 100%; max-height: 100%; border-radius: 12px">
-                    <div class="card-header border-0 bg-transparent" style="min-height: 100%; max-height: 100%;">
-                        <h4 class="text-center" style="font-weight: 500" >{{ $portfolio->name }}</h4>
-                    </div>
-                    <div class="card-body">
-                        <div class="text-center">
-                            <img src="{{ asset('storage/'. $portfolio->image) }}" height="200px" style="border-radius: 14px; object-fit: cover;">
+    <div class="thumb-services-area inc-thumbnail default-padding bottom-less ps-5">
+            @forelse ( $portfolios as $key => $portfolio )
+            {{-- @dd($compact) --}}
+                @if ($key % 2 === 1)
+                    <div class="container">
+                        <div class="about-items">
+                            <div class="row align-center">
+                                <div class="col-lg-6 d-none d-md-none d-lg-inline-flex">
+                                    <div class="thumb">
+                                        <img alt="{{ $portfolio->name }}" src="{{ asset('storage/' . $portfolio->image) }}" style="margin-left: 10px; margin-right: 10px; min-height: 400px;object-fit:contain;max-height:400px"/>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 info">
+                                    <h1>{{ $portfolio->name }}</h1>
+                                    <img alt="{{ $portfolio->name }}" src="{{ asset('storage/'.$portfolio->image) }}" class="w-100 mb-3 d-lg-none" />
+
+                                    <p>
+                                        {{ $portfolio->description }}
+                                    </p>
+
+                                    <div class="d-flex gap-2">
+                                        <a class="btn btn-stroke-gradient text-gradient effect btn-md" href="/detail/{{ $portfolio->slug }}">Lihat
+                                            Detail</a>
+                                        <a class="btn btn-gradient effect btn-md" target="_blank" href="{{ $portfolio->link }}">Kunjungi
+                                            website</a>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <h5 class="my-4 text-start text-muted">
-                            "{{ $portfolio->description }}"
-                        </h5>
                     </div>
-                    <div class="card-footer bg-transparent border-0">
-                        <h6 class="text-muted pb-0 mb-0 px-0 mx-0" style="text-align: end">
-                            {{ $portfolio->CategoryProduct->name }}
-                        </h6>
+                @else
+                    <div class="right-shape">
+                        <img src="{{ asset('assets-home/img/shape/9.png') }}" alt="Shape">
                     </div>
-                </div>
-            </div>
-        @empty
+                    <div class="container my-5 py-5">
+                        <div class="about-items">
+                            <div class="row align-center">
+                                <div class="col-lg-6 info">
+                                    <h1>{{ $portfolio->name }}</h1>
+                                    <img alt="{{ $portfolio->name }}" src="{{ asset('storage/'.$portfolio->image) }}" class="w-100 mb-3 d-lg-none" />
+                                    <p>
+                                        {{ $portfolio->description }}
+                                    </p>
+
+                                    <div class="d-flex gap-2">
+                                        <a class="btn btn-stroke-gradient text-gradient effect btn-md" href="/detail/{{ $portfolio->slug }}">Lihat
+                                            Detail</a>
+                                        <a class="btn btn-gradient effect btn-md" target="_blank" href="{{ $portfolio->link }}">Kunjungi
+                                            website</a>
+                                    </div>
+                                </div>
+                                <div class="col-lg-5 d-none d-md-none d-lg-inline-flex">
+                                    <div class="thumb">
+                                        <img alt="{{ $portfolio->name }}" src="{{ asset('storage/'.$portfolio->image) }}" style="margin-left: 10px; margin-right: 10px; min-height: 400px;object-fit:contain;max-height:400px ;" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                @endif
+            @empty
             <div class="col-12">
                 <div class="d-flex justify-content-center">
-                    <img src="{{ asset('nodata-gif.gif') }}" class="img-fluid" alt="" width="300px">
+                    <img src="{{ asset('nodata-gif.gif') }}" alt="" width="800px">
                 </div>
                 <h4 class="text-center text-dark" style="font-weight:600">
-                    Portofolio belum diupload
+                    Belum ada Produk
                 </h4>
             </div>
-        @endforelse
+            @endforelse
     </div>
-
-    {{-- <div class="about-us-area">
-        <div class="container">
-            <ul class="nav custom-tabs">
-                <li @if (!request()->category) class="active" @endif><a href="{{ url('/portfolio') }}">Semua</a></li>
-                @foreach ($categories as $category)
-                    <li class="{{ request()->is("data/product/kategori/{$category->slug}") ? 'active' : '' }}">
-                        <a href="{{ url("data/product/kategori/{$category->slug}") }}">{{ $category->name }}</a>
-                    </li>
-                @endforeach
-            </ul>
-        </div>
-    </div> --}}
-
 @endsection
