@@ -7,7 +7,11 @@
 @section('seo')
     <meta name="title" content="{{ $news->title }} - Hummatech" />
     <meta name="og:image" content="{{ asset('storage/' . $news->image) }}"/>
+    <meta name="og:image:width" content="1200" />
+    <meta name="og:image:height" content="630" />
     <meta name="twitter:image" content="{{ asset('storage/' . $news->image) }}" />
+    <meta name="twitter:image:width" content="1200" />
+    <meta name="twitter:image:height" content="630" />
     <meta property="og:url" content="{{ url('/') }}" />
     <meta property="og:type" content="website" />
     <link rel="canonical" href="{{ url('/') }}" />
