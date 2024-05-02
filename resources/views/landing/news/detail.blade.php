@@ -5,29 +5,13 @@
 @endsection
 {{-- @section('title', $slugs->name) --}}
 @section('seo')
-    <style>
-        .image-above-title {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-        }
-
-        .image-above-title img {
-            width: 500px;
-            height: 300px;
-            margin-bottom: 10px;
-        }
-    </style>
-
     <meta name="title" content="{{ $news->title }} - Hummatech" />
-    <div class="image-above-title">
-        <img src="{{ asset('storage/' . $news->thumbnail) }}" alt="Thumbnail" />
-    </div>
+    <meta name="og:image" content="{{ asset('storage/' . $news->thumbnail) }}" />
     <meta name="twitter:image" content="{{ asset('mobilelogo.png') }}" />
     <meta property="og:url" content="{{ url('/') }}" />
     <meta property="og:type" content="website" />
     <link rel="canonical" href="{{ url('/') }}" />
+    <meta name="description" content="Image Analysis: The image appears to be a screenshot of a news article or blog post, with a man standing in front of a crowd and a large investment announcement displayed on a screen. The man is likely a speaker or presenter, and the crowd is likely gathered to hear his presentation. The image also features a cell phone and a tie, which may be relevant to the context of the article or post." />
 @endsection
 @section('content')
     <div class="breadcrumb-area text-center shadow dark text-light bg-cover"
