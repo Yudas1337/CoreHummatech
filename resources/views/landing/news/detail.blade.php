@@ -1,12 +1,5 @@
 @extends('landing.layouts.layouts.app')
-@section('seo')
-    <meta name="description" content="{!! $news->description !!}">
-    <meta name="keywords" content="{{ $news->title }}">
-    <meta property="og:title" content="{{ $news->title }}">
-    <meta property="og:description" content="{!! $news->description !!}">
-    <meta property="og:image" content="{{ asset('storage/' . $news->thumbnail) }}">
-    <meta property="og:type" content="{!! $news->description !!}">
-@endsection
+@section('title' , $news->title.' - Berita')
 @section('content')
     <div class="breadcrumb-area text-center shadow dark text-light bg-cover"
         style="background-image: url({{ $background == null ? asset('assets-home/img/default-bg.png') : asset('storage/' . $background->image) }});">
