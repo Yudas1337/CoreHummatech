@@ -1,7 +1,7 @@
 @extends('landing.layouts.layouts.app')
 @section('title' , $news->title.' - Berita')
 @section('description')
-{{-- <meta name="description" content="{!! $news->description !!}" /> --}}
+<meta name="description" content="{{ Str::limit(strip_tags($news->description), 20) }}" />
 @endsection
 {{-- @section('title', $slugs->name) --}}
 @section('seo')
