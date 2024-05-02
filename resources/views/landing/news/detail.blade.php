@@ -5,8 +5,25 @@
 @endsection
 {{-- @section('title', $slugs->name) --}}
 @section('seo')
+    <style>
+        .image-above-title {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .image-above-title img {
+            width: 500px;
+            height: 300px;
+            margin-bottom: 10px;
+        }
+    </style>
+
     <meta name="title" content="{{ $news->title }} - Hummatech" />
-    <meta name="og:image" content="{{ asset('storage/' . $news->thumbnail) }}" width="500" height="300" />
+    <div class="image-above-title">
+        <img src="{{ asset('storage/' . $news->thumbnail) }}" alt="Thumbnail" />
+    </div>
     <meta name="twitter:image" content="{{ asset('mobilelogo.png') }}" />
     <meta property="og:url" content="{{ url('/') }}" />
     <meta property="og:type" content="website" />
