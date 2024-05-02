@@ -1,12 +1,12 @@
 @extends('landing.layouts.layouts.app')
 @section('title' , $news->title.' - Berita')
 @section('description')
-<meta name="description" content="Hummatech adalah perusahaan software development terbaik di Malang. Kami menyediakan solusi perangkat lunak yang inovatif dan berkualitas tinggi." />
+<meta name="description" content="{!! $news->description !!}" />
 @endsection
 {{-- @section('title', $slugs->name) --}}
 @section('seo')
-    <meta name="title" content="Berita - Hummatech." />
-    <meta name="og:image" content="{{ asset('mobilelogo.png') }}" />
+    <meta name="title" content="{{ $news->title }} - Hummatech" />
+    <meta name="og:image" content="{{ asset('storage/' . $news->thumbnail) }}" />
     <meta name="twitter:image" content="{{ asset('mobilelogo.png') }}" />
     <meta property="og:url" content="{{ url('/') }}" />
     <meta property="og:type" content="website" />
