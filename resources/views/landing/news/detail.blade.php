@@ -6,12 +6,11 @@
 {{-- @section('title', $slugs->name) --}}
 @section('seo')
     <meta name="title" content="{{ $news->title }} - Hummatech" />
-    <meta name="og:image" content="{{ asset('storage/' . $news->thumbnail) }}" />
-    <meta name="twitter:image" content="{{ asset('mobilelogo.png') }}" />
+    <meta name="og:image" content="{{ asset('storage/' . $news->thumbnail) }}" style="width: 500px; object-fit:cover"/>
+    <meta name="twitter:image" content="{{ asset('storage/' . $news->thumbnail) }}" />
     <meta property="og:url" content="{{ url('/') }}" />
     <meta property="og:type" content="website" />
     <link rel="canonical" href="{{ url('/') }}" />
-    <meta name="description" content="Image Analysis: The image appears to be a screenshot of a news article or blog post, with a man standing in front of a crowd and a large investment announcement displayed on a screen. The man is likely a speaker or presenter, and the crowd is likely gathered to hear his presentation. The image also features a cell phone and a tie, which may be relevant to the context of the article or post." />
 @endsection
 @section('content')
     <div class="breadcrumb-area text-center shadow dark text-light bg-cover"
