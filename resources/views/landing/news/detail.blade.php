@@ -1,5 +1,17 @@
 @extends('landing.layouts.layouts.app')
 @section('title' , $news->title.' - Berita')
+@section('description')
+<meta name="description" content="Hummatech adalah perusahaan software development terbaik di Malang. Kami menyediakan solusi perangkat lunak yang inovatif dan berkualitas tinggi." />
+@endsection
+{{-- @section('title', $slugs->name) --}}
+@section('seo')
+    <meta name="title" content="Berita - Hummatech." />
+    <meta name="og:image" content="{{ asset('mobilelogo.png') }}" />
+    <meta name="twitter:image" content="{{ asset('mobilelogo.png') }}" />
+    <meta property="og:url" content="{{ url('/') }}" />
+    <meta property="og:type" content="website" />
+    <link rel="canonical" href="{{ url('/') }}" />
+@endsection
 @section('content')
     <div class="breadcrumb-area text-center shadow dark text-light bg-cover"
         style="background-image: url({{ $background == null ? asset('assets-home/img/default-bg.png') : asset('storage/' . $background->image) }});">
