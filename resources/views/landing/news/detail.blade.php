@@ -1,18 +1,4 @@
 @extends('landing.layouts.layouts.app')
-@section('description')
-<meta name="description" content="{!! $news->description !!}" />
-@endsection
-@section('title', $news->name)
-@section('seo')
-    <meta property="og:title" content="{{ $news->title }} - Berita Hummatech." />
-    <meta property="og:image" content="{{ asset('storage/' . $news->thumbnail) }}" />
-    <meta name="title" content="{{ $news->name }} - Berita Hummatech." />
-    <meta name="og:description" content="{!! $news->description !!}" />
-    <meta name="twitter:image" content="{{ asset('mobilelogo.png') }}" />
-    <meta property="og:url" content="{{ url('/') }}" />
-    <meta property="og:type" content="website" />
-    <link rel="canonical" href="{{ url('/') }}" />
-@endsection
 @section('title' , $news->title.' - Berita')
 @section('content')
     <div class="breadcrumb-area text-center shadow dark text-light bg-cover"
