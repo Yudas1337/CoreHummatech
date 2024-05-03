@@ -74,6 +74,9 @@
 @endsection
 
 @section('seo')
+
+<meta name="og:image" content="{{ asset('storage/'. $imageStructure->image) }}" />
+<meta name="twitter:image" content="{{ asset('storage/'. $imageStructure->image) }}" />
 <meta name="title" content="Struktur Organisasi - Profil Hummatech" />
 
     <!-- ========== Breadcrumb Markup (JSON-LD) ========== -->
