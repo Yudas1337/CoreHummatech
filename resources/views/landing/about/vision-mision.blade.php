@@ -1,5 +1,5 @@
 @extends('landing.layouts.layouts.app')
-@section('title' , 'Vision & Mision')
+@section('title', 'Vision & Mision')
 @section('style')
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet" />
 
@@ -95,25 +95,24 @@
       ]
     }
 </script>
-<meta name="title" content="Visi Misi - Profil Hummatech" />
-<meta name="description" content="Perusahaan Software House terbaik se-Jawa Timur" />
-<meta name="og:description" content="Perusahaan Software House terbaik se-Jawa Timur" />
+    <meta name="title" content="Visi Misi - Profil Hummatech" />
+    <meta name="description" content="Perusahaan Software House terbaik se-Jawa Timur" />
+    <meta name="og:description" content="Perusahaan Software House terbaik se-Jawa Timur" />
 @endsection
 
 @section('content')
     <div class="breadcrumb-area text-center shadow dark text-light bg-cover"
-        style="background-image: url({{ $background != null && $background->show_in == 'Tentang Kami' && $background->about_in == 'Visi & Misi' ? asset('storage/'. $background->image) : asset('assets-home/img/default-bg.png') }});">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 offset-lg-2">
-                    <h1>Tentang Kami</h1>
-                    <ul class="breadcrumb">
-                        <li><a href="#"><i class="fas fa-home"></i> Beranda</a></li>
-                        <li class="active">Tentang Kami</li>
-                    </ul>
-                </div>
+        style="background-image: url({{ $background != null && $background->show_in == 'Tentang Kami' && $background->about_in == 'Profile' ? asset('storage/' . $background->image) : asset('assets_landing/background/Profile.jpg') }});">
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2">
+                <h1>Tentang Kami</h1>
+                <ul class="breadcrumb">
+                    <li><a href="#"><i class="fas fa-home"></i> Beranda</a></li>
+                    <li class="active">Tentang Kami</li>
+                </ul>
             </div>
         </div>
+    </div>
     </div>
 
     <div class="work-process-area features-area default-padding-bottom py-5">
@@ -132,8 +131,8 @@
         <div class="container">
             <div class="row">
                 @forelse ($visionMisions as $visionMission)
-                    <div class="single-item  col-lg-4 col-md-6 mb-4 text-light fadeInRight "  data-wow-delay="300ms"
-                    style="visibility: visible; animation-delay: 300ms; animation-name: fadeInRight;">
+                    <div class="single-item  col-lg-4 col-md-6 mb-4 text-light fadeInRight " data-wow-delay="300ms"
+                        style="visibility: visible; animation-delay: 300ms; animation-name: fadeInRight;">
                         <div class=" bg-primary py-5 px-5 rounded">
                             <div class=" d-flex justify-content-center align-items-center">
                                 <p class="text-light" style="font-weight: 900">______________</p>
@@ -147,9 +146,10 @@
                     </div>
 
                     @forelse ($missions as $mission)
-                        <div class="single-item col-lg-4 col-md-6 mb-4 text-dark fadeInRight shadow"  data-wow-delay="300ms"
-                        style="visibility: visible; animation-delay: 300ms; animation-name: fadeInRight;">
-                            <div class="py-5 px-5" style="border-radius: 8px; box-shadow: 0px 0px 15px .3px #00000012; min-height: 100%; max-height: 100%;">
+                        <div class="single-item col-lg-4 col-md-6 mb-4 text-dark fadeInRight shadow" data-wow-delay="300ms"
+                            style="visibility: visible; animation-delay: 300ms; animation-name: fadeInRight;">
+                            <div class="py-5 px-5"
+                                style="border-radius: 8px; box-shadow: 0px 0px 15px .3px #00000012; min-height: 100%; max-height: 100%;">
                                 <div class=" d-flex justify-content-center align-items-center">
                                     <p class="text-primary" style="font-weight: 900">______________</p>
                                     <h3 class="mt-2 px-3 text-primary " style="font-weight: 900">Misi</h3>
