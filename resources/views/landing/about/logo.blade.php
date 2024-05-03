@@ -74,6 +74,9 @@
 @endsection
 
 @section('seo')
+
+    <meta name="og:image" content="{{ asset('mobilelogo.png') }}" />
+    <meta name="twitter:image" content="{{ asset('mobilelogo.png') }}" />
     <meta name="title" content="Logo - Profil Hummatech" />
 
     <!-- ========== Breadcrumb Markup (JSON-LD) ========== -->
