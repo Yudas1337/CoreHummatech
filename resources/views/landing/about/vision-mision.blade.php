@@ -95,7 +95,7 @@
       ]
     }
 </script>
-
+<meta name="title" content="Visi Misi - Profil Hummatech" />
 <meta name="description" content="Perusahaan Software House terbaik se-Jawa Timur" />
 <meta name="og:description" content="Perusahaan Software House terbaik se-Jawa Timur" />
 @endsection

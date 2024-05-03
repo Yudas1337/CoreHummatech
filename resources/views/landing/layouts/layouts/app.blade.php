@@ -8,11 +8,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     @yield('description')
     <!-- ========== Page Title ========== -->
-    @hasSection('title')
-        <title>{!! "{$__env->yieldContent('title')} &mdash; " . config('app.name', 'Laravel') !!}</title>
-    @else
-        <title>{{ config('app.name', 'Laravel') }}</title>
-    @endif
 
     @yield('seo')
     <!-- ========== Favicon Icon ========== -->
