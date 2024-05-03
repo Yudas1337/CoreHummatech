@@ -1,5 +1,16 @@
 @extends('landing.layouts.layouts.app')
-@section('title' , 'Contact')
+@section('title', 'Contact')
+@section('seo')
+    <meta name="title" content="Hubungi Kami - Layanan Hummatech" />
+    <meta name="og:image" content="{{ asset('mobilelogo.png') }}" />
+    <meta name="description"
+        content="Hummatech adalah perusahaan software development terbaik di Malang. Kami menyediakan solusi perangkat lunak yang inovatif dan berkualitas tinggi." />
+    <meta name="title" content="Produk - Hummatech" />
+    <meta name="twitter:image" content="{{ asset('mobilelogo.png') }}" />
+    <meta property="og:url" content="{{ url('/') }}" />
+    <meta property="og:type" content="website" />
+    <link rel="canonical" href="{{ url('/') }}" />
+@endsection
 @section('style')
     <meta name="csrf-token" content="{{ csrf_token() }}" />
 
@@ -60,7 +71,7 @@
                                     </div>
                                 </li>
                                 <li>
-                                @if ($profile->type != null)
+                                    @if ($profile->type != null)
                                         <div class="icon">
                                             <i class="{{ $profile->type == 'wa' ? 'fab fa-whatsapp' : 'fas fa-phone' }}"></i>
                                         </div>
@@ -80,17 +91,18 @@
                                                 }
                                             @endphp
 
-                                            <a href="{{ $profile->type == 'wa' ? 'https://wa.me/'.$waNumber : 'tel: '.$phoneNumber }}" target="_blank">{{ $phoneNumber }}</a>
+                                            <a href="{{ $profile->type == 'wa' ? 'https://wa.me/' . $waNumber : 'tel: ' . $phoneNumber }}"
+                                                target="_blank">{{ $phoneNumber }}</a>
                                         </div>
                                     @else
-                                    <div class="icon">
-                                        <i class="fas fa-phone"></i>                                         
-                                    </div>
-                                    <div class="content">
-                                        <h5>Phone</h5>
-                                        <a href="tel: 085176777785">085176777785</a>
-                                    </div>  
-                                @endif
+                                        <div class="icon">
+                                            <i class="fas fa-phone"></i>
+                                        </div>
+                                        <div class="content">
+                                            <h5>Phone</h5>
+                                            <a href="tel: 085176777785">085176777785</a>
+                                        </div>
+                                    @endif
                                 </li>
                                 <li>
                                     <div class="icon">
@@ -178,7 +190,7 @@
             <!-- End Google Maps -->
         @endif
     @endsection
-    @section('script')
+@section('script')
     <style>
         .leaflet-marker-icon {
             background-image: url('{{ asset('marker1.png') }}');
