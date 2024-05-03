@@ -74,9 +74,13 @@
 @endsection
 
 @section('seo')
-
+@if ($imageStructure)
 <meta name="og:image" content="{{ asset('storage/'. $imageStructure->image) }}" />
 <meta name="twitter:image" content="{{ asset('storage/'. $imageStructure->image) }}" />
+@else
+<meta name="og:image" content="{{ asset('mobilelogo.png') }}" />
+<meta name="twitter:image" content="{{ asset('mobilelogo.png') }}" />
+@endif
 <meta name="title" content="Struktur Organisasi - Profil Hummatech" />
 
     <!-- ========== Breadcrumb Markup (JSON-LD) ========== -->
