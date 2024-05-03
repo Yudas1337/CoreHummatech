@@ -1,5 +1,5 @@
 @extends('landing.layouts.layouts.app')
-@section('title' , 'Team')
+@section('title', 'Team')
 @section('style')
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet" />
 
@@ -74,8 +74,9 @@
 @endsection
 
 @section('seo')
-<meta name="title" content="Team - Profil Hummatech" />
-
+    <meta name="title" content="Team - Profil Hummatech" />
+    <meta name="og:image" content="{{ asset('mobilelogo.png') }}" />
+    <meta name="twitter:image" content="{{ asset('mobilelogo.png') }}" />
     <!-- ========== Breadcrumb Markup (JSON-LD) ========== -->
     <script type="application/ld+json">
     {
@@ -98,13 +99,13 @@
     }
 </script>
 
-<meta name="description" content="Perusahaan Software House terbaik se-Jawa Timur" />
-<meta name="og:description" content="Perusahaan Software House terbaik se-Jawa Timur" />
+    <meta name="description" content="Perusahaan Software House terbaik se-Jawa Timur" />
+    <meta name="og:description" content="Perusahaan Software House terbaik se-Jawa Timur" />
 @endsection
 
 @section('content')
     <div class="breadcrumb-area text-center shadow dark text-light bg-cover"
-        style="background-image: url({{ $background != null && $background->show_in == 'Tentang Kami' && $background->about_in == 'Tim' ? asset('storage/'. $background->image) : asset('assets-home/img/default-bg.png') }});">
+        style="background-image: url({{ $background != null && $background->show_in == 'Tentang Kami' && $background->about_in == 'Tim' ? asset('storage/' . $background->image) : asset('assets-home/img/default-bg.png') }});">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 offset-lg-2">
