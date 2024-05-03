@@ -75,6 +75,9 @@
 
 @section('seo')
 <meta name="title" content="Struktur Perusahaan - Profil Hummatech" />
+
+<meta name="og:image" content="{{ asset('storage/'. $imageStructure->image) }}" />
+<meta name="twitter:image" content="{{ asset('storage/'. $imageStructure->image) }}" />
     <!-- ========== Breadcrumb Markup (JSON-LD) ========== -->
     <script type="application/ld+json">
     {
