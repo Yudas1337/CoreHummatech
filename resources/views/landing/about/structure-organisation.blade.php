@@ -74,6 +74,8 @@
 @endsection
 
 @section('seo')
+<meta name="title" content="Struktur Organisasi - Profil Hummatech" />
+
     <!-- ========== Breadcrumb Markup (JSON-LD) ========== -->
     <script type="application/ld+json">
     {
