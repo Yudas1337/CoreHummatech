@@ -3,7 +3,7 @@
 @section('seo')
 @section('seo')
 @foreach ($profiles as $profile)
-<meta name="title" content="{{ $profile->title }} - Profil Hummatech" />
+<meta name="title" content="{{ $profile->title }}" />
 <meta name="description"
     content="{{ $profile->subtitle }}" />
 <meta name="og:image" content="{{ asset('mobilelogo.png') }}" />
