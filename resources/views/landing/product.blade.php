@@ -87,6 +87,8 @@
 @endsection
 
 @section('seo')
+<meta name="description" content="Hummatech adalah perusahaan software development terbaik di Malang. Kami menyediakan solusi perangkat lunak yang inovatif dan berkualitas tinggi." />
+<meta name="title" content="Produk - Hummatech" />
     <!-- ========== Breadcrumb Markup (JSON-LD) ========== -->
     <script type="application/ld+json">
 {

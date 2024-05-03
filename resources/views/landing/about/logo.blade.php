@@ -1,5 +1,5 @@
 @extends('landing.layouts.layouts.app')
-@section('title' , 'Logo')
+@section('title', 'Logo')
 @section('style')
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet" />
 
@@ -74,6 +74,8 @@
 @endsection
 
 @section('seo')
+    <meta name="title" content="Logo - Profil Hummatech" />
+
     <!-- ========== Breadcrumb Markup (JSON-LD) ========== -->
     <script type="application/ld+json">
     {
@@ -96,13 +98,13 @@
     }
 </script>
 
-<meta name="description" content="Perusahaan Software House terbaik se-Jawa Timur" />
-<meta name="og:description" content="Perusahaan Software House terbaik se-Jawa Timur" />
+    <meta name="description" content="Perusahaan Software House terbaik se-Jawa Timur" />
+    <meta name="og:description" content="Perusahaan Software House terbaik se-Jawa Timur" />
 @endsection
 
 @section('content')
     <div class="breadcrumb-area text-center shadow dark text-light bg-cover"
-        style="background-image: url({{ $background != null && $background->show_in == 'Tentang Kami' && $background->about_in == 'Logo' ? asset('storage/'. $background->image) : asset('assets-home/img/default-bg.png') }});">
+        style="background-image: url({{ $background != null && $background->show_in == 'Tentang Kami' && $background->about_in == 'Logo' ? asset('storage/' . $background->image) : asset('assets-home/img/default-bg.png') }});">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 offset-lg-2">
@@ -120,7 +122,7 @@
         <div class="container">
             <div class="team-items">
                 {{-- <div class="row"> --}}
-                    @forelse ($logos as $logo)
+                @forelse ($logos as $logo)
                     <div class="col-lg-8 offset-lg-2">
                         <div class="site-heading m-0 p-0 text-center">
                             <h4>FILOSOFI LOGO</h4>
@@ -131,7 +133,9 @@
                     <div class="row">
                         <div class="col-lg-5 d-flex justify-content-center align-items-center flex-column">
                             <div class="logo-container">
-                                <img class="logo-image" src="{{ asset('storage/' . $logo->image) }}" alt="{{ $logo->title }}" style="max-width: 60%; height: auto; display: block; margin: 0 auto;">
+                                <img class="logo-image" src="{{ asset('storage/' . $logo->image) }}"
+                                    alt="{{ $logo->title }}"
+                                    style="max-width: 60%; height: auto; display: block; margin: 0 auto;">
                             </div>
                         </div>
                         <div class="col-lg-7">
@@ -142,7 +146,7 @@
                             </div>
                         </div>
                     </div>
-                    @empty
+                @empty
                     <div class="col-12">
                         <div class="d-flex justify-content-center">
                             <img src="{{ asset('nodata-gif.gif') }}" alt="" width="800px">
@@ -151,12 +155,12 @@
                             Logo belum diunggah
                         </h4>
                     </div>
-                    @endforelse
+                @endforelse
                 {{-- </div> --}}
             </div>
         </div>
     </div>
-    
+
 @endsection
 @section('script')
     <script>

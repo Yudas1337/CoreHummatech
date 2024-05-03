@@ -51,6 +51,13 @@
 @endsection
 
 @section('seo')
+    <meta name="title" content="{{ $product->name }} - Layanan Hummatech" />
+    <meta name="og:image" content="{{ asset('storage/' . $product->image) }}" />
+    <meta name="og:description" content="{!! $product->description !!}" />
+    <meta name="twitter:image" content="{{ asset('storage/' . $product->image) }}" />
+    <meta property="og:url" content="{{ url('/') }}" />
+    <meta property="og:type" content="website" />
+    <link rel="canonical" href="{{ url('/') }}" />
     <!-- ========== Breadcrumb Markup (JSON-LD) ========== -->
     <script type="application/ld+json">
     {
