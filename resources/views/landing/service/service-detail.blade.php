@@ -1,13 +1,11 @@
 @extends('landing.layouts.layouts.app')
-@section('description')
-    <meta name="description" content="{!! $slugs->description !!}" />
-@endsection
+
 @section('title', $slugs->name)
 @section('seo')
     <meta name="publisher" content="hummatech.com" />
     <meta name="keywords" content="Hummatech,Layanan Hummatech,{{ $slugs->name }}," />
     <meta name="description" itemprop="description"
-        content="{!! $slugs->description !!}" />
+        content="{!! strip_tags($slugs->description)!!}" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@dailysocial" />
     <meta name="twitter:creator" content="@dailysocial" />
@@ -16,13 +14,13 @@
     <meta name="twitter:title"
         content="{{ $slugs->name }} - Layanan Hummatech" />
     <meta name="twitter:description"
-        content="{!! $slugs->description !!}" />
+        content="{!! strip_tags($slugs->description)!!}" />
     <meta name="twitter:image"
         content="{{ asset('storage/' . $slugs->image) }}" />
     <meta property="og:title"
         content="{{ $slugs->name }}" />
     <meta property="og:description"
-        content="{!! $slugs->description !!}" />
+        content="{!! strip_tags($slugs->description)!!}" />
     <meta property="og:type" content="website" />
     <meta property="og:url"
         content="/services/{{ $slugs->slug }}" />
