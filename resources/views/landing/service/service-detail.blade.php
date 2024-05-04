@@ -25,7 +25,7 @@
         content="{!! $slugs->description !!}" />
     <meta property="og:type" content="website" />
     <meta property="og:url"
-        content="/services/{{ $service->slug }}" />
+        content="/services/{{ $slugs->slug }}" />
     <meta property="og:image"
         content="{{ asset('storage/' . $slugs->image) }}" />
 @endsection
