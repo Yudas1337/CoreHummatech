@@ -1,16 +1,33 @@
 @extends('landing.layouts.layouts.app')
 @section('description')
-<meta name="description" content="{!! $slugs->description !!}" />
+    <meta name="description" content="{!! $slugs->description !!}" />
 @endsection
 @section('title', $slugs->name)
 @section('seo')
-    <meta name="title" content="{{ $slugs->name }} - Layanan Hummatech" />
-    <meta name="og:image" content="{{ asset('storage/' . $slugs->image) }}" />
-    <meta name="og:description" content="{!! $slugs->description !!}" />
-    <meta name="twitter:image" content="{{ asset('mobilelogo.png') }}" />
-    <meta property="og:url" content="{{ url('/') }}" />
+    <meta name="publisher" content="hummatech.com" />
+    <meta name="keywords" content="Hummatech,Layanan Hummatech,{{ $slugs->name }}," />
+    <meta name="description" itemprop="description"
+        content="{!! $slugs->description !!}" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@dailysocial" />
+    <meta name="twitter:creator" content="@dailysocial" />
+    <meta name="twitter:url"
+        content="/services/{{ $slugs->slug }}" />
+    <meta name="twitter:title"
+        content="{{ $slugs->name }} - Layanan Hummatech" />
+    <meta name="twitter:description"
+        content="{!! $slugs->description !!}" />
+    <meta name="twitter:image"
+        content="{{ asset('storage/' . $slugs->image) }}" />
+    <meta property="og:title"
+        content="{{ $slugs->name }}" />
+    <meta property="og:description"
+        content="{!! $slugs->description !!}" />
     <meta property="og:type" content="website" />
-    <link rel="canonical" href="{{ url('/') }}" />
+    <meta property="og:url"
+        content="/services/{{ $service->slug }}" />
+    <meta property="og:image"
+        content="{{ asset('storage/' . $slugs->image) }}" />
 @endsection
 @section('style')
     <style>
@@ -321,8 +338,8 @@
                                                         @empty
                                                             <div class="col-12">
                                                                 <div class="d-flex justify-content-center">
-                                                                    <img src="{{ asset('nodata-gif.gif') }}" alt=""
-                                                                        width="800px">
+                                                                    <img src="{{ asset('nodata-gif.gif') }}"
+                                                                        alt="" width="800px">
                                                                 </div>
                                                                 <h4 class="text-center text-dark" style="font-weight:600">
                                                                     Belum ada Testimoni
