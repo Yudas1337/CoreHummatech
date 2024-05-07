@@ -569,11 +569,11 @@
                                                                         alt="{{ $portfolio->name }}">
                                                                 </div>
                                                                 <div class="content">
-                                                                    <div class="info">
-                                                                        <h4><a
+                                                                    <div class="info mb-0">
+                                                                        <h4 class=" mb-0"><a
                                                                                 href="{{ route('detail.product', $portfolio->slug) }}">{{ Str::limit($portfolio->name, 25, '...') }}</a>
                                                                         </h4>
-                                                                        <span>{{ Str::limit($portfolio->description, 40, '...') }}</span>
+                                                                        <p class=" mb-0">{{ Str::limit($portfolio->description, 50, '...') }}</p >
                                                                     </div>
                                                                     <div class="button">
                                                                         <a href="{{ asset('storage/' . $portfolio->image) }}"
