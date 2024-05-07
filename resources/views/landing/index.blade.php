@@ -561,8 +561,8 @@
 
                                                 @foreach ($portfolios as $index => $portfolio)
                                                     @if ($index < 3)
-                                                        <div class="pf-item mx-2" style="width: 400px">
-                                                            <div class="item" style="width: 400px">
+                                                        <div class="pf-item mx-2" style="width: 350px">
+                                                            <div class="item" style="width: 350px">
                                                                 <div class="" style="background-color: #E5F1FF;">
                                                                     <img src="{{ asset('storage/' . $portfolio->image) }}"
                                                                         class="object-fit-cover" style="object-fit: cover"
