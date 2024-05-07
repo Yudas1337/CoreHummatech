@@ -571,7 +571,7 @@
                                                                 <div class="content">
                                                                     <div class="info">
                                                                         <h4><a
-                                                                                href="{{ route('detail.product', $portfolio->slug) }}">{{ Str::limit($portfolio->name , 15 ,'...') }}</a>
+                                                                                href="{{ route('detail.product', $portfolio->slug) }}">{{ Str::limit($portfolio->name , 25 ,'...') }}</a>
                                                                         </h4>
                                                                         <span>{{ Str::limit($portfolio->description, 50, '...') }}</span>
                                                                     </div>
