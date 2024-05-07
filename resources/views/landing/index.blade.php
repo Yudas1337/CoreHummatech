@@ -565,7 +565,7 @@
                                                             <div class="item" style="width: 300px">
                                                                 <div class="" style="background-color: #E5F1FF;">
                                                                     <img src="{{ asset('storage/' . $portfolio->image) }}"
-                                                                        class="object-fit-cover" style="object-fit: cover" alt="{{ $portofolio->name }}">
+                                                                        class="object-fit-cover" style="object-fit: cover" alt="{{ $portfolio->name }}">
                                                                 </div>
                                                                 <div class="content">
                                                                     <div class="info">
