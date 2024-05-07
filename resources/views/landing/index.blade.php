@@ -571,9 +571,9 @@
                                                                 <div class="content">
                                                                     <div class="info mb-0">
                                                                         <h4 class=" mb-0"><a
-                                                                                href="{{ route('detail.product', $portfolio->slug) }}">{{ Str::limit($portfolio->name, 35, '...') }}</a>
+                                                                                href="{{ route('detail.product', $portfolio->slug) }}">{{ Str::limit($portfolio->name, 45, '...') }}</a>
                                                                         </h4>
-                                                                        <p class="text-white mb-0">{{ Str::limit($portfolio->description, 60, '...') }}</p >
+                                                                        <p class="text-white mb-0">{{ Str::limit($portfolio->description, 80, '...') }}</p >
                                                                             <div class="button">
                                                                                 <a href="{{ asset('storage/' . $portfolio->image) }}"
                                                                                     class="item popup-gallery">
