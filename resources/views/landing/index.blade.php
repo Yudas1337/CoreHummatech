@@ -565,6 +565,7 @@
                                                             <div class="item" style="width: 300px">
                                                                 <div class="" style="background-color: #E5F1FF;">
                                                                     <img src="{{ asset('storage/' . $portfolio->image) }}"
+                                                                        width="300px" height="300px"
                                                                         class="object-fit-cover" style="object-fit: cover" alt="Thumb">
                                                                 </div>
                                                                 <div class="content">
