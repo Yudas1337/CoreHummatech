@@ -572,7 +572,7 @@
                                                                         <h4><a
                                                                                 href="{{ route('detail.product', $portfolio->slug) }}">{{ Str::limit($portfolio->name , 25 ,'...') }}</a>
                                                                         </h4>
-                                                                        <span>{{ Str::limit($portfolio->description, 50, '...') }}</span>
+                                                                        <span>{{ Str::limit($portfolio->description, 40, '...') }}</span>
                                                                     </div>
                                                                     <div class="button">
                                                                         <a href="{{ asset('storage/' . $portfolio->image) }}"
