@@ -578,16 +578,7 @@
                                                                     <div class="button">
                                                                         <a href="{{ asset('storage/' . $portfolio->image) }}"
                                                                             class="item popup-gallery">
-                                                                            <svg xmlns="http://www.w3.org/2000/svg"
-                                                                                width="27" height="27"
-                                                                                viewBox="0 0 24 24"
-                                                                                style="fill: rgb(255, 255, 255);transform: ;msFilter:;">
-                                                                                <path d="M11 6H9v3H6v2h3v3h2v-3h3V9h-3z">
-                                                                                </path>
-                                                                                <path
-                                                                                    d="M10 2c-4.411 0-8 3.589-8 8s3.589 8 8 8a7.952 7.952 0 0 0 4.897-1.688l4.396 4.396 1.414-1.414-4.396-4.396A7.952 7.952 0 0 0 18 10c0-4.411-3.589-8-8-8zm0 14c-3.309 0-6-2.691-6-6s2.691-6 6-6 6 2.691 6 6-2.691 6-6 6z">
-                                                                                </path>
-                                                                            </svg>
+                                                                            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 24 24"><path fill="currentColor" d="m19.6 21l-6.3-6.3q-.75.6-1.725.95T9.5 16q-2.725 0-4.612-1.888T3 9.5q0-2.725 1.888-4.612T9.5 3q2.725 0 4.613 1.888T16 9.5q0 1.1-.35 2.075T14.7 13.3l6.3 6.3zM9.5 14q1.875 0 3.188-1.312T14 9.5q0-1.875-1.312-3.187T9.5 5Q7.625 5 6.313 6.313T5 9.5q0 1.875 1.313 3.188T9.5 14m-1-1.5v-2h-2v-2h2v-2h2v2h2v2h-2v2z"/></svg>
                                                                         </a>
                                                                     </div>
                                                                 </div>
