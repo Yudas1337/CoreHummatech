@@ -561,8 +561,8 @@
 
                                                 @foreach ($portfolios as $index => $portfolio)
                                                     @if ($index < 3)
-                                                        <div class="pf-item mx-2" style="width: 300px">
-                                                            <div class="item" style="width: 300px">
+                                                        <div class="pf-item mx-2" style="width: 400px">
+                                                            <div class="item" style="width: 400px">
                                                                 <div class="" style="background-color: #E5F1FF;">
                                                                     <img src="{{ asset('storage/' . $portfolio->image) }}"
                                                                         class="object-fit-cover" style="object-fit: cover"
@@ -573,7 +573,7 @@
                                                                         <h4 class=" mb-0"><a
                                                                                 href="{{ route('detail.product', $portfolio->slug) }}">{{ Str::limit($portfolio->name, 25, '...') }}</a>
                                                                         </h4>
-                                                                        <p class=" mb-0">{{ Str::limit($portfolio->description, 50, '...') }}</p >
+                                                                        <p class="text-white mb-0">{{ Str::limit($portfolio->description, 55, '...') }}</p >
                                                                     </div>
                                                                     <div class="button">
                                                                         <a href="{{ asset('storage/' . $portfolio->image) }}"
