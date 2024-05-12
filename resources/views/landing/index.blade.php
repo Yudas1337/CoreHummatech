@@ -261,7 +261,7 @@
                         <!-- Single Item -->
                         <div class="col-lg-4 col-md-6 single-item wow fadeInRight" data-wow-delay="700ms">
                             <div class="item"
-                                style="background-image: url({{ asset('storage/' . $service->image) }}); min-height: 20rem; max-height: 20rem;">
+                                style="background-image: url('{{ asset('storage/' . $service->image) }}'); min-height: 20rem; max-height: 20rem;">
                                 <div class="d-flex flex-column align-items-center">
                                     <h4 class="mb-0 pb-0">{{ $service->name }}</h4>
                                     <div style="min-height: 70px; max-height: 70px" class="text-white py-2">
