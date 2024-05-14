@@ -168,10 +168,10 @@
                                 </div>
                             </div>
                             <div class="col-lg-6 info">
-                                <h4>
+                                <h3>
                                     <a
                                         href="{{ $compact == $comingProducts ? route('detail.comming-soon', $product->slug) : route('detail.product', $product->slug) }}">{{ $product->name }}</a>
-                                </h4>
+                                </h3>
                                 <img alt="{{ $product->name }}" src="{{ asset('storage/' . $product->image) }}"
                                     class="w-100 mb-3 d-lg-none" />
 
@@ -199,10 +199,10 @@
                     <div class="about-items">
                         <div class="row align-center">
                             <div class="col-lg-6 info">
-                                <h4>
+                                <h3>
                                     <a
                                         href="{{ $compact == $comingProducts ? route('detail.comming-soon', $product->slug) : route('detail.product', $product->slug) }}">{{ $product->name }}</a>
-                                </h4>
+                                </h3>
                                 <img alt="{{ $product->name }}" src="{{ asset('storage/' . $product->image) }}"
                                     class="w-100 mb-3 d-lg-none" />
                                 <p>
