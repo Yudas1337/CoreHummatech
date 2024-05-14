@@ -34,9 +34,16 @@ class NewsRepository extends BaseRepository implements NewsInterface
         return $this->model->query()->latest()->get();
     }
 
+    // public function customPaginate(Request $request, int $pagination = 10): mixed
+    // {
+    //     return $this->model->query()->latest()->paginate($pagination);
+    // }
+
     public function customPaginate(Request $request, int $pagination = 10): mixed
     {
-        return $this->model->query()->latest()->paginate($pagination);
+        $order = $request->input('order', 'desc');
+        $query = $this->model->newQuery()->orderBy('date', $order);
+        return $query->paginate($pagination);
     }
 
     public function store(array $data): mixed

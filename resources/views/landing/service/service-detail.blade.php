@@ -279,7 +279,7 @@
                                             </div>
                                             <div class="col-lg-7 wow fadeInDown">
                                                 <h2>{{ $product->name }}</h2>
-                                                <p>{{ $product->description }}</p>
+                                                <p style="color: black;">{{ $product->description }}</p>
                                                 <a class="btn btn-stroke-gradient text-gradient effect btn-md"
                                                     href="/detail/{{ $product->slug }}">Lihat detail</a>
                                                 <a class="btn btn-gradient effect btn-md"
