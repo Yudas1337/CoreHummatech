@@ -112,10 +112,16 @@
                                                     <div class="meta">
                                                         <ul>
                                                             <li>
-                                                                <img src="{{ asset('mobilelogo.png') }}"
-                                                                    alt="Hummatech Logo" />
-                                                                <span>By </span>
-                                                                <a href="javascript:void(0)">Hummatech</a>
+                                                                <img src="{{ asset('mobilelogo.png') }}" alt="Hummatech Logo" />
+                                                                @php
+                                                                    $newsCategories = App\Models\NewsCategory::where('news_id', $news->news->id)->get();
+                                                                @endphp
+                                                                @foreach ($newsCategories as $index => $newsCategory)
+                                                                    <a href="javascript:void(0)">{{ $newsCategory->category->name }}</a>
+                                                                    @if (!$loop->last)
+                                                                    <a href="javascript:void(0)">,</a>
+                                                                    @endif
+                                                                @endforeach
                                                             </li>
                                                         </ul>
                                                     </div>
@@ -145,10 +151,17 @@
                                                     <div class="meta">
                                                         <ul>
                                                             <li>
-                                                                <img src="{{ asset('mobilelogo.png') }}"
-                                                                    alt="Hummatech Logo" />
-                                                                <span>By </span>
-                                                                <a href="javascript:void(0)">Hummatech</a>
+                                                                <img src="{{ asset('mobilelogo.png') }}" alt="Hummatech Logo" />
+                                                                {{-- <span>By </span> --}}
+                                                                @php
+                                                                    $newsCategories = App\Models\NewsCategory::where('news_id', $news->id)->get();
+                                                                @endphp
+                                                                @foreach ($newsCategories as $index => $newsCategory)
+                                                                    <a href="javascript:void(0)">{{ $newsCategory->category->name }}</a>
+                                                                    @if (!$loop->last)
+                                                                        <a href="javascript:void(0)">,</a>
+                                                                    @endif
+                                                                @endforeach
                                                             </li>
                                                         </ul>
                                                     </div>
