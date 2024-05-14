@@ -3663,6 +3663,7 @@ body,
     transform: translateY(-50%);
     height: 13px;
     width: 13px;
+    /* border: 3px solid #1273eb; */
     border-radius: 50%;
     transition: all 0.35s ease-in-out;
 }
