@@ -87,6 +87,8 @@
 @endsection
 
 @section('seo')
+<meta name="description" content="Portofolio Hummatech." />
+<meta name="title" content="Portofolio - Hummatech" />
     <!-- ========== Breadcrumb Markup (JSON-LD) ========== -->
     <script type="application/ld+json">
 {
