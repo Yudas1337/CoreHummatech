@@ -1,6 +1,5 @@
-
 @extends('landing.layouts.layouts.app')
-@section('title' , 'Portofolio')
+@section('title', 'Portofolio')
 
 @section('style')
     <style>
@@ -113,7 +112,7 @@
 
 @section('content')
     <div class="breadcrumb-area text-center shadow dark text-light bg-cover"
-        style="background-image: url({{ $background == null ? asset('assets-home/img/default-bg.png') : asset('storage/'. $background->image) }});">
+        style="background-image: url({{ $background == null ? asset('assets-home/img/default-bg.png') : asset('storage/' . $background->image) }});">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 offset-lg-2">
@@ -128,66 +127,78 @@
     </div>
 
     <div class="thumb-services-area inc-thumbnail default-padding bottom-less ps-5">
-            @forelse ( $portfolios as $key => $portfolio )
+        @forelse ($portfolios as $key => $portfolio)
             {{-- @dd($compact) --}}
-                @if ($key % 2 === 1)
-                    <div class="container">
-                        <div class="about-items">
-                            <div class="row align-center">
-                                <div class="col-lg-6 d-none d-md-none d-lg-inline-flex">
-                                    <div class="thumb">
-                                        <img alt="{{ $portfolio->name }}" src="{{ asset('storage/' . $portfolio->image) }}" style="margin-left: 10px; margin-right: 10px; min-height: 400px;object-fit:contain;max-height:400px"/>
-                                    </div>
+            @if ($key % 2 === 1)
+                <div class="container">
+                    <div class="about-items">
+                        <div class="row align-center">
+                            <div class="col-lg-6 d-none d-md-none d-lg-inline-flex">
+                                <div class="thumb">
+                                    <img alt="{{ $portfolio->name }}" src="{{ asset('storage/' . $portfolio->image) }}"
+                                        style="margin-left: 10px; margin-right: 10px; min-height: 400px;object-fit:contain;max-height:400px" />
                                 </div>
-                                <div class="col-lg-6 info">
-                                    <h1>{{ $portfolio->name }}</h1>
-                                    <img alt="{{ $portfolio->name }}" src="{{ asset('storage/'.$portfolio->image) }}" class="w-100 mb-3 d-lg-none" />
+                            </div>
+                            <div class="col-lg-6 info">
+                                <h4>
+                                    <a href="/detail/{{ $portfolio->slug }}">{{ $portfolio->name }}</a>
+                                </h4>
+                                <img alt="{{ $portfolio->name }}" src="{{ asset('storage/' . $portfolio->image) }}"
+                                    class="w-100 mb-3 d-lg-none" />
 
-                                    <p>
-                                        {{ $portfolio->description }}
-                                    </p>
+                                <p>
+                                    {{ $portfolio->description }}
+                                </p>
 
-                                    <div class="d-flex gap-2">
-                                        <a class="btn btn-stroke-gradient text-gradient effect btn-md" href="/detail/{{ $portfolio->slug }}">Lihat
-                                            Detail</a>
-                                        <a class="btn btn-gradient effect btn-md" target="_blank" href="{{ $portfolio->link }}">Kunjungi
-                                            website</a>
-                                    </div>
+                                <div class="d-flex gap-2">
+                                    <a class="btn btn-stroke-gradient text-gradient effect btn-md"
+                                        href="/detail/{{ $portfolio->slug }}">Lihat
+                                        Detail</a>
+                                    <a class="btn btn-gradient effect btn-md" target="_blank"
+                                        href="{{ $portfolio->link }}">Kunjungi
+                                        website</a>
                                 </div>
                             </div>
                         </div>
                     </div>
-                @else
-                    <div class="right-shape">
-                        <img src="{{ asset('assets-home/img/shape/9.png') }}" alt="Shape">
-                    </div>
-                    <div class="container my-5 py-5">
-                        <div class="about-items">
-                            <div class="row align-center">
-                                <div class="col-lg-6 info">
-                                    <h1>{{ $portfolio->name }}</h1>
-                                    <img alt="{{ $portfolio->name }}" src="{{ asset('storage/'.$portfolio->image) }}" class="w-100 mb-3 d-lg-none" />
-                                    <p>
-                                        {{ $portfolio->description }}
-                                    </p>
+                </div>
+            @else
+                <div class="right-shape">
+                    <img src="{{ asset('assets-home/img/shape/9.png') }}" alt="Shape">
+                </div>
+                <div class="container my-5 py-5">
+                    <div class="about-items">
+                        <div class="row align-center">
+                            <div class="col-lg-6 info">
+                                <h4>
+                                    <a href="/detail/{{ $portfolio->slug }}">{{ $portfolio->name }}</a>
+                                </h4>
+                                <img alt="{{ $portfolio->name }}" src="{{ asset('storage/' . $portfolio->image) }}"
+                                    class="w-100 mb-3 d-lg-none" />
+                                <p>
+                                    {{ $portfolio->description }}
+                                </p>
 
-                                    <div class="d-flex gap-2">
-                                        <a class="btn btn-stroke-gradient text-gradient effect btn-md" href="/detail/{{ $portfolio->slug }}">Lihat
-                                            Detail</a>
-                                        <a class="btn btn-gradient effect btn-md" target="_blank" href="{{ $portfolio->link }}">Kunjungi
-                                            website</a>
-                                    </div>
+                                <div class="d-flex gap-2">
+                                    <a class="btn btn-stroke-gradient text-gradient effect btn-md"
+                                        href="/detail/{{ $portfolio->slug }}">Lihat
+                                        Detail</a>
+                                    <a class="btn btn-gradient effect btn-md" target="_blank"
+                                        href="{{ $portfolio->link }}">Kunjungi
+                                        website</a>
                                 </div>
-                                <div class="col-lg-5 d-none d-md-none d-lg-inline-flex">
-                                    <div class="thumb">
-                                        <img alt="{{ $portfolio->name }}" src="{{ asset('storage/'.$portfolio->image) }}" style="margin-left: 10px; margin-right: 10px; min-height: 400px;object-fit:contain;max-height:400px ;" />
-                                    </div>
+                            </div>
+                            <div class="col-lg-5 d-none d-md-none d-lg-inline-flex">
+                                <div class="thumb">
+                                    <img alt="{{ $portfolio->name }}" src="{{ asset('storage/' . $portfolio->image) }}"
+                                        style="margin-left: 10px; margin-right: 10px; min-height: 400px;object-fit:contain;max-height:400px ;" />
                                 </div>
                             </div>
                         </div>
                     </div>
-                @endif
-            @empty
+                </div>
+            @endif
+        @empty
             <div class="col-12">
                 <div class="d-flex justify-content-center">
                     <img src="{{ asset('nodata-gif.gif') }}" alt="" width="800px">
@@ -196,6 +207,6 @@
                     Belum ada Produk
                 </h4>
             </div>
-            @endforelse
+        @endforelse
     </div>
 @endsection
