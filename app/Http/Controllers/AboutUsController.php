@@ -11,6 +11,7 @@ use App\Contracts\Interfaces\StructureInterface;
 use App\Contracts\Interfaces\BackgroundInterface;
 use App\Contracts\Interfaces\MisionItemsInterface;
 use App\Contracts\Interfaces\VisionAndMisionInterface;
+use App\Enums\PageEnum;
 
 class AboutUsController extends Controller
 {
@@ -55,7 +56,7 @@ class AboutUsController extends Controller
     public function profile()
     {
         $profiles = $this->profile->get();
-        $background = $this->background->getByType('Tentang Kami');
+        $background = $this->background->getByAbout(PageEnum::PROFILE->value);
         return view('landing.about.profile', compact('profiles', 'background'));
     }
 
@@ -63,28 +64,28 @@ class AboutUsController extends Controller
     {
         $visionMisions = $this->visionMision->get();
         $missions = $this->misionItems->get();
-        $background = $this->background->getByType('Tentang Kami');
+        $background = $this->background->getByAbout(PageEnum::VISIMISI->value);
         return view('landing.about.vision-mision', compact('visionMisions', 'background', 'missions'));
     }
 
     public function structure_organisation()
     {
         $imageStructure = $this->imageStructure->getByType('structure_organize');
-        $background = $this->background->getByType('Tentang Kami');
+        $background = $this->background->getByAbout(PageEnum::ORGANISASI->value);
         return view('landing.about.structure-organisation', compact('imageStructure', 'background'));
     }
 
     public function structure_office()
     {
         $imageStructure = $this->imageStructure->getByType('structure_business');
-        $background = $this->background->getByType('Tentang Kami');
+        $background = $this->background->getByAbout(PageEnum::USAHA->value);
         return view('landing.about.structure-office', compact('imageStructure', 'background'));
     }
 
     public function logo()
     {
         $logos = $this->logo->get();
-        $background = $this->background->getByType('Tentang Kami');
+        $background = $this->background->getByAbout(PageEnum::LOGO->value);
 
         return view('landing.about.logo', compact('logos', 'background'));
     }
@@ -92,7 +93,7 @@ class AboutUsController extends Controller
     public function team(Request $request)
     {
         $teams = $this->ourTeams->customPaginate($request, 9);
-        $background = $this->background->getByType('Tentang Kami');
+        $background = $this->background->getByAbout(PageEnum::TIM->value);
 
         return view('landing.about.team', compact('teams', 'background'));
     }

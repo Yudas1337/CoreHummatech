@@ -10,5 +10,5 @@ use App\Contracts\Interfaces\Eloquent\UpdateInterface;
 
 interface BackgroundInterface extends GetInterface , StoreInterface, UpdateInterface, DeleteInterface, GetByTypeInterface, GetByServiceIdInterface
 {
-
+    public function getByAbout(string $about): mixed;
 }

@@ -135,7 +135,7 @@ class ServiceController extends Controller
         $mitras = $this->mitras->get();
         $servicemitras = $this->serviceMitra->where($slugs->id)->whereIn('mitra_id',$mitras->pluck('id'))->get();
         $galerys = $this->galery->ServiceProductShow('service_id', $slugs->id)->get();
-        $background = $this->background->getByServiceId($service->id);
+        $background = $this->background->getByServiceId($slugs->id);
         $galeries = $this->galleryImage->whereIn('gallery_id',$galerys->pluck('id'))->get();
         $instagram = $this->sosmed->instagram();
         return view('landing.service.service-detail', compact('instagram', 'servicemitras','slugs', 'services', 'products', 'testimonials', 'faqs', 'procedures', 'sales', 'profile', 'galeries', 'background'));

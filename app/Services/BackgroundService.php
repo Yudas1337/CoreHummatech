@@ -39,9 +39,25 @@ class BackgroundService
     public function store(StoreBackgroundRequest $request): array|bool
     {
         $data = $request->validated();
+        if($request->show_in != 'Layanan') {
+            $data['service_id'] = null;
+        }
+        
+        if ($request->show_in != 'Tentang Kami') {
+            $data['about_in'] = null;
+        }
+
+        $fileName = $request->show_in;
+        if ($data['service_id'] != null) {
+           $fileName = $fileName.'-'.$data['service_id'];
+        }
+        
+        if ($data['about_in'] != null) {
+           $fileName = $fileName.'-'.$data['about_in'];
+        }
 
         if ($request->hasFile('image') && $request->file('image')->isValid()) {
-            $data['image'] = $request->file('image')->store('Background-'.$request->show_in, $request->type, 'public');
+            $data['image'] = $request->file('image')->store('Background-'.$fileName, $request->type, 'public');
             return $data;
         }
         return false;
@@ -62,9 +78,22 @@ class BackgroundService
             $data['service_id'] = null;
         }
 
+        if ($request->show_in != 'Tentang Kami') {
+            $data['about_in'] = null;
+        }
+
+        $fileName = $request->show_in;
+        if ($data['service_id'] != null) {
+           $fileName = $fileName.'-'.$data['service_id'];
+        }
+        
+        if ($data['about_in'] != null) {
+           $fileName = $fileName.'-'.$data['about_in'];
+        }
+
         if ($request->hasFile('image') && $request->file('image')->isValid()) {
             $this->remove($background->image);
-            $data['image'] = $request->file('image')->store('Background-'.$request->show_in, $request->type, 'public');
+            $data['image'] = $request->file('image')->store('Background-'.$fileName, $request->type, 'public');
         } else {
             $data['image'] = $background->image;
         }
