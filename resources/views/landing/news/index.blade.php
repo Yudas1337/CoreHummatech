@@ -46,7 +46,7 @@
 
 @section('content')
     <div class="breadcrumb-area text-center shadow dark text-light bg-cover"
-        style="background-image: url('{{ $background == null ? asset('assets-home/img/default-bg.png') : asset('storage/' . $background->image) }}');">
+        style="background-image: url({{ $background == null ? asset('assets-home/img/default-bg.png') : asset('storage/' . $background->image) }});">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 offset-lg-2">
@@ -112,16 +112,10 @@
                                                     <div class="meta">
                                                         <ul>
                                                             <li>
-                                                                <img src="{{ asset('mobilelogo.png') }}" alt="Hummatech Logo" />
-                                                                @php
-                                                                    $newsCategories = App\Models\NewsCategory::where('news_id', $news->news->id)->get();
-                                                                @endphp
-                                                                @foreach ($newsCategories as $index => $newsCategory)
-                                                                    <a href="javascript:void(0)">{{ $newsCategory->category->name }}</a>
-                                                                    @if (!$loop->last)
-                                                                    <a href="javascript:void(0)">,</a>
-                                                                    @endif
-                                                                @endforeach
+                                                                <img src="{{ asset('mobilelogo.png') }}"
+                                                                    alt="Hummatech Logo" />
+                                                                <span>By </span>
+                                                                <a href="javascript:void(0)">Hummatech</a>
                                                             </li>
                                                         </ul>
                                                     </div>
@@ -151,17 +145,10 @@
                                                     <div class="meta">
                                                         <ul>
                                                             <li>
-                                                                <img src="{{ asset('mobilelogo.png') }}" alt="Hummatech Logo" />
-                                                                {{-- <span>By </span> --}}
-                                                                @php
-                                                                    $newsCategories = App\Models\NewsCategory::where('news_id', $news->id)->get();
-                                                                @endphp
-                                                                @foreach ($newsCategories as $index => $newsCategory)
-                                                                    <a href="javascript:void(0)">{{ $newsCategory->category->name }}</a>
-                                                                    @if (!$loop->last)
-                                                                        <a href="javascript:void(0)">,</a>
-                                                                    @endif
-                                                                @endforeach
+                                                                <img src="{{ asset('mobilelogo.png') }}"
+                                                                    alt="Hummatech Logo" />
+                                                                <span>By </span>
+                                                                <a href="javascript:void(0)">Hummatech</a>
                                                             </li>
                                                         </ul>
                                                     </div>
