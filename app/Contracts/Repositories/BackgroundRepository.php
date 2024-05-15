@@ -40,4 +40,9 @@ class BackgroundRepository extends BaseRepository implements BackgroundInterface
     {
         return $this->model->query()->where('service_id', $type)->first();
     }
+    
+    public function getByAbout(string $about): mixed
+    {
+        return $this->model->query()->where('about_in', $about)->first();
+    }
 }
