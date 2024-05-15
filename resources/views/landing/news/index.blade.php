@@ -41,12 +41,49 @@
             border-bottom: 4px solid #1273eb;
             color: #1273eb;
         }
+        .meta {
+            overflow: hidden;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+
+        .meta ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .meta li {
+            display: flex;
+            align-items: center;
+        }
+
+        .meta img {
+            margin-right: 10px;
+        }
+
+        .categories {
+            flex-wrap: wrap;
+            display: flex;
+            gap: 0 5px;
+            align-items: center;
+        }
+
+        .category-link {
+            font-size: 12px;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .categories span {
+            margin: 0 5px;
+        }
     </style>
 @endsection
 
 @section('content')
     <div class="breadcrumb-area text-center shadow dark text-light bg-cover"
-        style="background-image: url({{ $background == null ? asset('assets-home/img/default-bg.png') : asset('storage/' . $background->image) }});">
+        style="background-image: url('{{ $background == null ? asset('assets-home/img/default-bg.png') : asset('storage/' . $background->image) }}');">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 offset-lg-2">
@@ -112,10 +149,18 @@
                                                     <div class="meta">
                                                         <ul>
                                                             <li>
-                                                                <img src="{{ asset('mobilelogo.png') }}"
-                                                                    alt="Hummatech Logo" />
-                                                                <span>By </span>
-                                                                <a href="javascript:void(0)">Hummatech</a>
+                                                                <img src="{{ asset('mobilelogo.png') }}" alt="Hummatech Logo" />
+                                                                @php
+                                                                    $newsCategories = App\Models\NewsCategory::where('news_id', $news->news->id)->get();
+                                                                @endphp
+                                                                <div class="categories">
+                                                                    @foreach ($newsCategories as $index => $newsCategory)
+                                                                        <a href="javascript:void(0)" class="category-link">{{ $newsCategory->category->name }}</a>
+                                                                        @if (!$loop->last)
+                                                                            <a>,</a>
+                                                                        @endif
+                                                                    @endforeach
+                                                                </div>
                                                             </li>
                                                         </ul>
                                                     </div>
@@ -145,10 +190,18 @@
                                                     <div class="meta">
                                                         <ul>
                                                             <li>
-                                                                <img src="{{ asset('mobilelogo.png') }}"
-                                                                    alt="Hummatech Logo" />
-                                                                <span>By </span>
-                                                                <a href="javascript:void(0)">Hummatech</a>
+                                                                <img src="{{ asset('mobilelogo.png') }}" alt="Hummatech Logo" />
+                                                                @php
+                                                                    $newsCategories = App\Models\NewsCategory::where('news_id', $news->id)->get();
+                                                                @endphp
+                                                                <div class="categories">
+                                                                    @foreach ($newsCategories as $index => $newsCategory)
+                                                                        <a href="javascript:void(0)" class="category-link">{{ $newsCategory->category->name }}</a>
+                                                                        @if (!$loop->last)
+                                                                            <a>,</a>
+                                                                        @endif
+                                                                    @endforeach
+                                                                </div>
                                                             </li>
                                                         </ul>
                                                     </div>
