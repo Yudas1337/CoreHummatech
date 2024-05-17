@@ -86,9 +86,16 @@
                     <small class="text-danger">{{ $message }}</small>
                 @enderror
             </div>
+            <div class="mb-3 form-group">
+                <label for="subheadline">Keterangan <small class="text-danger">*Wajib Diisi</small></label>
+                <input type="text" id="subheadline" name="information" class="form-control" placeholder="Contoh: Ini Adalah Subheadline" />
+                @error('subtitle')
+                    <small class="text-danger">{{ $message }}</small>
+                @enderror
+            </div>
 
             <div class="mb-3 form-group">
-                <label for="link">Link Youtube <small class="text-muted">(Opsional)</small></label>
+                <label for="link">Link <small class="text-muted">(Opsional)</small></label>
                 <input type="url" id="link" name="link" class="form-control" placeholder="Contoh: https://youtu.be/oae13ksn" />
             </div>
 

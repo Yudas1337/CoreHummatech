@@ -129,9 +129,9 @@
                                     <div class="row">
                                         <div class="col-lg-10 offset-lg-1">
                                             <div class="content">
-                                                <h2>{{ $sectionItem->title }}</h2>
+                                                <h2>{{ $sectionItem->title }}  <span>{{ $sectionItem->subtitle }}</span></h2>
                                                 <p class="animated slideInRight">
-                                                    {{ $sectionItem->subtitle }}
+                                                    {{ $sectionItem->information }}
                                                 </p>
                                                 @if (!empty($sectionItem->link))
                                                     <a data-animation="animated zoomInUp"
