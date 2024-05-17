@@ -35,8 +35,11 @@
 
                                             <div class="content-center">
                                                 <h3 class="title">{{ $section->title }}</h3>
-                                                <p class="subtitle fs-6">{{ $section->subtitle }}</p>
+                                                <p class="subtitle fs-5 mb-0 pb-0">{{ $section->subtitle }}</p>
+                                                <p style="font-size: 13px">{{ $section->information }}</p>
+                                                @if ($section->link != null)
                                                 <div class="btn btn-lg btn-primary">Lihat Selengkapnya</div>
+                                                @endif
                                             </div>
 
                                             <div class="product-hover">
