@@ -22,6 +22,43 @@
         height: 630px; /* Tinggi gambar */
         object-fit: cover;
     }
+    .meta {
+            overflow: hidden;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+
+        .meta ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .meta li {
+            display: flex;
+            align-items: center;
+        }
+
+        .meta img {
+            margin-right: 10px;
+        }
+
+        .categories {
+            flex-wrap: wrap;
+            display: flex;
+            gap: 0 5px;
+            align-items: center;
+        }
+
+        .category-link {
+            font-size: 12px;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .categories span {
+            margin: 0 5px;
+        }
 </style>
 
 @endsection
@@ -60,9 +97,18 @@
                                         <div class="meta">
                                             <ul>
                                                 <li>
-                                                    <img src="{{ asset('mobilelogo.png') }}" alt="Author">
-                                                    <span>By </span>
-                                                    <a href="#">HUMMATECH</a>
+                                                    <img src="{{ asset('mobilelogo.png') }}" alt="Hummatech Logo" />
+                                                    @php
+                                                        $newsCategories = App\Models\NewsCategory::where('news_id', $news->id)->get();
+                                                    @endphp
+                                                    <div class="categories">
+                                                        @foreach ($newsCategories as $index => $newsCategory)
+                                                            <a href="javascript:void(0)" class="category-link">{{ $newsCategory->category->name }}</a>
+                                                            @if (!$loop->last)
+                                                                <a>,</a>
+                                                            @endif
+                                                        @endforeach
+                                                    </div>
                                                 </li>
                                             </ul>
                                         </div>
