@@ -129,7 +129,7 @@
                                     <div class="row">
                                         <div class="col-lg-10 offset-lg-1">
                                             <div class="content">
-                                                <h4>{{ $sectionItem->title }} <span>{{ $sectionItem->subtitle }}</span></h4>
+                                                <h3>{{ $sectionItem->title }} <span>{{ $sectionItem->subtitle }}</span></h3>
                                                 <p class="animated slideInRight">
                                                     {{ $sectionItem->information }}
                                                 </p>
