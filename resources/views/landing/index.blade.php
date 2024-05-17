@@ -136,7 +136,8 @@
                                                 @if (!empty($sectionItem->link))
                                                     <a data-animation="animated zoomInUp"
                                                         class="btn btn-gradient effect btn-md"
-                                                        href="{{ $sectionItem->link }}">
+                                                        href="{{ $sectionItem->link }}"
+                                                        target="_blank">
                                                         Lihat Selengkapnya
                                                     </a>
                                                 @endif

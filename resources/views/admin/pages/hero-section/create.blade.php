@@ -88,7 +88,7 @@
             </div>
             <div class="mb-3 form-group">
                 <label for="subheadline">Keterangan <small class="text-danger">*Wajib Diisi</small></label>
-                <input type="text" id="subheadline" name="information" class="form-control" placeholder="Contoh: Ini Adalah Subheadline" />
+                <input type="text" id="subheadline" name="information" class="form-control" placeholder="Contoh: Ini Adalah Keterangan" />
                 @error('subtitle')
                     <small class="text-danger">{{ $message }}</small>
                 @enderror
@@ -96,7 +96,7 @@
 
             <div class="mb-3 form-group">
                 <label for="link">Link <small class="text-muted">(Opsional)</small></label>
-                <input type="url" id="link" name="link" class="form-control" placeholder="Contoh: https://youtu.be/oae13ksn" />
+                <input type="url" id="link" name="link" class="form-control" placeholder="Contoh: https://www.mischool.id/" />
             </div>
 
             <div class="pt-3 me-auto d-flex gap-2 w-100 justify-content-end align-items-center">
