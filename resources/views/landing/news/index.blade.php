@@ -155,9 +155,9 @@
                                                                 @endphp
                                                                 <div class="categories">
                                                                     @foreach ($newsCategories as $index => $newsCategory)
-                                                                        <a href="javascript:void(0)" class="category-link">{{ $newsCategory->category->name }}</a>
+                                                                        <p href="javascript:void(0)" class="category-link">{{ $newsCategory->category->name }}</p>
                                                                         @if (!$loop->last)
-                                                                            <a>,</a>
+                                                                            <p>,</p>
                                                                         @endif
                                                                     @endforeach
                                                                 </div>
