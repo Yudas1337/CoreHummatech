@@ -258,7 +258,7 @@
         <div class="container">
             <div class="services-items text-center">
                 <div class="row">
-                    @forelse ($service as $service)
+                    @forelse ($services->take(6) as $service)
                         <!-- Single Item -->
                         <div class="col-lg-4 col-md-6 single-item wow fadeInRight" data-wow-delay="700ms">
                             <div class="item"
@@ -269,16 +269,13 @@
                                         {!! Str::words($service->description, 15, '') !!}
                                     </div>
                                     <div class="pt-5 mt-3">
-                                        <a href="/services/{{ $service->slug }}"><i class="fas fa-arrow-right"></i> Lihat
-                                            Selengkapnya</a>
+                                        <a href="/services/{{ $service->slug }}"><i class="fas fa-arrow-right"></i> Lihat Selengkapnya</a>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <!-- End Single Item -->
-
                     @empty
-
                         <div class="col-12">
                             <div class="d-flex justify-content-center">
                                 <img src="{{ asset('nodata-gif.gif') }}" alt="" width="800px">
@@ -289,6 +286,7 @@
                         </div>
                     @endforelse
                 </div>
+
             </div>
         </div>
     </div>
