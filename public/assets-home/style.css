@@ -1569,8 +1569,8 @@ body,
 }
 
 .carousel-inner .carousel-item > .slider-thumb {
-    -webkit-animation: zoom 20s;
-    animation: zoom 20s;
+    -webkit-animation: zoom 6s;
+    animation: zoom 6s;
 }
 
 .banner-area .carousel-zoom .slider-thumb {
