@@ -227,13 +227,16 @@ Route::get('news/{slugnews}', [NewsController::class, 'showNews'])->name('news.v
 //showService
 Route::get('services/{slugService}', [ServiceController::class, 'ShowService']);
 
-//product
+//portofolio
 Route::get('/portfolio', [HomeProductController::class, 'portfolio']);
+
+
 Route::get('/product', [HomeProductController::class, 'index']);
 Route::get('data/product/kategori/{category:slug}',[HomeProductController::class,'productCategory']);
 
 // Detail Product
 Route::get('product/{product:slug}', [ProductController::class, 'showproduct'])->name('detail.product');
+Route::get('portfolio/{product:slug}', [ProductController::class, 'showproduct'])->name('detail.portfolio');
 Route::get('product/coming-soon/{ComingSoonProduct:slug}', [ProductController::class, 'showproductcommingsoon'])->name('detail.comming-soon');
 
 // Contact Us With Controller
