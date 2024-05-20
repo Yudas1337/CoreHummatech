@@ -24,7 +24,7 @@ class UpdateComingSoonProductRequest extends FormRequest
         return [
             'name' => 'required|max:255',
             'description' => 'required',
-            'image' => 'required|mimes:png,jpg',
+            'image' => 'nullable|mimes:png,jpg',
             'link' => 'required|max:255',
             'category_product_id' => 'required',
         ];
