@@ -233,8 +233,8 @@ Route::get('/product', [HomeProductController::class, 'index']);
 Route::get('data/product/kategori/{category:slug}',[HomeProductController::class,'productCategory']);
 
 // Detail Product
-Route::get('detail/{product:slug}', [ProductController::class, 'showproduct'])->name('detail.product');
-Route::get('detail/coming-soon/{ComingSoonProduct:slug}', [ProductController::class, 'showproductcommingsoon'])->name('detail.comming-soon');
+Route::get('product/{product:slug}', [ProductController::class, 'showproduct'])->name('detail.product');
+Route::get('product/coming-soon/{ComingSoonProduct:slug}', [ProductController::class, 'showproductcommingsoon'])->name('detail.comming-soon');
 
 // Contact Us With Controller
 Route::controller(ContactUsController::class)->name('contact.')->group(function() {
