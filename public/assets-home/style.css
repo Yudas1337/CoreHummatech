@@ -7519,14 +7519,13 @@ footer .footer-bottom li::before {
 
 footer .footer-bottom li:first-child::before {
     display: none;
+   
 }
 
 footer .footer-bottom-box {
     padding: 50px 0;
-    width: 150%;
-    left: -27%;
+    width: 500vw;
     position: relative;
-    background: #24282b;
     z-index: -1;
     opacity: 0.8;
 }
@@ -7536,7 +7535,7 @@ footer .footer-bottom-box::after {
     top: 0;
     content: "";
     height: 100%;
-    width: 500%;
+    width: 500vw;
 }
 
 /* ==============================================================
