@@ -246,7 +246,7 @@
                 </div>
                 <!-- Start Footer Bottom -->
                 <div class="footer-bottom">
-                    <div class="container">
+                    <div class="container d-flex justify-content-center">
                         <div class="footer-bottom-box mt-0 p-4">
                             <div class="row">
                                 <div class="col-lg-12">
