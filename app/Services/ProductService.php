@@ -158,7 +158,7 @@ class ProductService
         $data = $request->validated();
         $data = [
             'name' => $request->name,
-            'slug' => Str::slug($request->description),
+            'slug' => Str::slug($request->name),
             'description' => $request->description,
             'link' => $request->link,
             'service_id' => $request->service_id,
@@ -186,7 +186,7 @@ class ProductService
         $data = $request->validated();
         $data = [
             'name' => $request->name,
-            'slug' => Str::slug($request->description),
+            'slug' => Str::slug($request->name),
             'description' => $request->description,
             'link' => $request->link,
             'type' => $request->type,

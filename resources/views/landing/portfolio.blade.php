@@ -143,7 +143,7 @@
                             </div>
                             <div class="col-lg-6 info">
                                 <h3>
-                                    <a href="/detail/{{ $portfolio->slug }}">{{ $portfolio->name }}</a>
+                                    <a href="/portfolio/{{ $portfolio->slug }}">{{ $portfolio->name }}</a>
                                 </h3>
                                 <img alt="{{ $portfolio->name }}" src="{{ asset('storage/' . $portfolio->image) }}"
                                     class="w-100 mb-3 d-lg-none" />
@@ -154,7 +154,7 @@
 
                                 <div class="d-flex gap-2">
                                     <a class="btn btn-stroke-gradient text-gradient effect btn-md"
-                                        href="/detail/{{ $portfolio->slug }}">Lihat
+                                        href="/portfolio/{{ $portfolio->slug }}">Lihat
                                         Detail</a>
                                     <a class="btn btn-gradient effect btn-md" target="_blank"
                                         href="{{ $portfolio->link }}">Kunjungi
@@ -173,7 +173,7 @@
                         <div class="row align-center">
                             <div class="col-lg-6 info">
                                 <h3>
-                                    <a href="/detail/{{ $portfolio->slug }}">{{ $portfolio->name }}</a>
+                                    <a href="/portfolio/{{ $portfolio->slug }}">{{ $portfolio->name }}</a>
                                 </h3>
                                 <img alt="{{ $portfolio->name }}" src="{{ asset('storage/' . $portfolio->image) }}"
                                     class="w-100 mb-3 d-lg-none" />
@@ -183,7 +183,7 @@
 
                                 <div class="d-flex gap-2">
                                     <a class="btn btn-stroke-gradient text-gradient effect btn-md"
-                                        href="/detail/{{ $portfolio->slug }}">Lihat
+                                        href="/portfolio/{{ $portfolio->slug }}">Lihat
                                         Detail</a>
                                     <a class="btn btn-gradient effect btn-md" target="_blank"
                                         href="{{ $portfolio->link }}">Kunjungi
