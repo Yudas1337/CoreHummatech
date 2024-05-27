@@ -249,7 +249,7 @@
                 <div class="col-lg-8 offset-lg-2">
                     <div class="site-heading text-center">
                         <h4>Layanan kami</h4>
-                        <h2>Kami menyediakan layanan software untuk mendukung perusahhan dan bisnis anda</h2>
+                        <h2>Kami menyediakan layanan software untuk mendukung perusahaan dan bisnis anda</h2>
                         <div class="devider"></div>
                     </div>
                 </div>
